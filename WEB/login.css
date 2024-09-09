@@ -1,0 +1,267 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+ :root{
+    --bg-col:#874e40;
+    --box-col:transparent;
+    --form-col:#fff;
+    --blk-col:#000;
+    --whi-col:#fff;
+    --inp-col:#8f8f8f;
+    --blu-col:#244855;
+    --trans-col: rgba(0,0,0,0.5);
+    --pro-col: rgb(255, 246, 204);
+    
+ }
+
+ input:-webkit-autofill,
+ input:-webkit-autofill:hover, 
+ input:-webkit-autofill:focus, 
+ input:-webkit-autofill:active {
+     -webkit-box-shadow: 0 0 0 50px var(--whi-col) inset !important;
+
+ }
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+
+
+.box{
+    position: relative;
+    width: 450px;
+    height: 600px;
+    background: var(--box-col);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.borderline{
+    position: absolute;
+    top: 0;
+    inset: 0;
+}
+
+.box form{
+    position: absolute;
+    inset: 4px;
+    padding: 20px 40px;
+    border-radius: 20px;
+    background-color: var(--form-col);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.box form h2{
+    color: var(--blk-col);
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: 0.1rem;
+
+}
+
+.box form .inputbox{
+    position: relative;
+    width: 100%;
+    margin-top: 25px;
+}
+
+.box form .inputbox input{
+    position: relative;
+    width: 100%;
+    padding: 15px 50px 10px 10px;
+    background: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    color: var(--blc-col);
+    font-size: 1rem;
+    letter-spacing: 0.05rem;
+    transition: 0.5s;
+    z-index: 10;
+    border-bottom: #000 2px solid;
+
+
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.box form .inputbox span{
+    position: absolute;
+    left: 0;
+    padding: 15px 0px 10px;
+    pointer-events: none;
+    color: var(--inp-col);
+    font-size: 1rem;
+    letter-spacing: 0.05rem;
+    transition: 0.5s;
+}
+
+
+
+#loginBtn{
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.box form .inputbox input:not(:placeholder-shown) ~ span,
+.box form .inputbox input:focus ~ span {
+    color: var(--blk-col);
+    font-size: 0.9em;
+    transform: translateY(-34px);
+}
+
+
+
+
+.box form .links{
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal {
+    display: block; /* Keep the modal in the DOM */
+    position: fixed;
+    z-index: 1000; /* Ensures modal appears above everything */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0; /* Initially hidden */
+    visibility: hidden; /* Keeps it invisible */
+    transition: opacity 0.3s ease, visibility 0.3s ease; 
+}
+
+.modal.show {
+    opacity: 1; /* Show the modal */
+    visibility: visible; /* Make the modal visible */
+}
+
+.box, 
+.login_box{
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 300px;
+    border-radius: 10px;
+}
+
+.box form .links a{
+    margin: 20px 0;
+    font-size: 0.9em;
+    color: var(--inp-col);
+    text-decoration: none;
+}
+
+.box form .links a:hover{
+    color: var(--blk-col);
+    text-decoration: underline;
+}
+
+.box form input[type="submit"]{
+    border: none;
+    outline: none;
+    padding: 9px 25px;
+    background: var(--bg-col);
+    cursor: pointer;
+    font-size: 1em;
+    border-radius: 70px 35px 70px 35px;
+    font-weight: 600;
+    width: 70%;
+    justify-content: center;
+    color: var(--whi-col);
+    letter-spacing: 1px;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+
+.box form input[type="submit"]:active{
+    opacity: 0.8;
+}
+
+.box form input[type="submit"]:hover{
+    background-color: var(--blk-col);
+    color: var(--whi-col);
+    font-weight: 500;
+}
+
+
+.box form select{
+    width: 100%;
+    padding: 20px 0px 10px;
+    background: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    color: var(--inp-col);
+    font-size: 1rem;
+    letter-spacing: 0.05rem;
+}
+
+
+.box form .inputbox select:valid{
+    color: #000;
+}
+
+
+.login_box{
+    width: 450px;
+    height: 420px;
+}
+.login_box form{
+    padding: 20px;
+}
+.login_box form .inputbox{
+    position: relative;
+    margin-top: 35px;
+}
+
+.login_box form .inputbox img{
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-40%);
+    width: 30px;
+    cursor: pointer;
+    z-index: 100000000000000;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+}
+
+
+
+.field-icon {
+    float: right;
+    margin-left: -25px;
+    margin-top: -25px;
+    position: relative;
+    z-index: 2;
+  }
