@@ -1,0 +1,98 @@
+CREATE TABLE IF NOT EXISTS konyvtar CHARACTER SET utf8 COLLATE utf8_hungarian_ci;
+USE untamed_trails;
+CREATE TABLE IF NOT EXISTS book(
+    ISBN_id INT AUTO_INCREMENT PRIMARY KEY,
+    ISBN VARCHAR(13),
+    title VARCHAR(255),
+    publisher_id INT,
+    release_date DATE,
+    lang_id INT,
+    descriptior TEXT,
+    picture_base64 TEXT
+)
+CREATE TABLE IF NOT EXISTS languages(
+    lang_id INT AUTO_INCREMENT PRIMARY KEY,
+    lang VARCHAR(255)
+)
+CREATE TABLE IF NOT EXISTS publishers(
+    publisher_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    phone VARCHAR(255),
+    email VARCHAR(255),
+    webpage VARCHAR(255)
+)
+CREATE TABLE IF NOT EXISTS genres(
+    genre_id INT AUTO_INCREMENT PRIMARY KEY,
+    genre VARCHAR(255)
+)
+CREATE TABLE IF NOT EXISTS authors(
+    author_id INT AUTO_INCREMENT PRIMARY KEY,
+    author VARCHAR(255)
+)
+CREATE TABLE IF NOT EXISTS books_genres_conn(
+    ISBN_id INT NOT NULL,
+    genre_id INT NOT NULL,
+    FOREIGN KEY(ISBN_id) REFENCES(book(ISNB_id)),
+    FOREIGN KEY(genre_id) REFENCES(genres(genre_id))
+)
+CREATE TABLE IF NOT EXISTS books_authors_conn(
+    ISBN_id INT NOT NULL,
+    author_id INT NOT NULL,
+    FOREIGN KEY(ISBN_id) REFENCES(book(ISNB_id)),
+    FOREIGN KEY(autor_id) REFENCES(authors(autor_id))
+)
+CREATE TABLE IF NOT EXISTS inventory(
+    ISBN_id INT NOT NULL,
+    book_id INT AUTO_INCREMENT PRIMARY KEY,
+    available BOOL,
+    FOREIGN KEY(ISBN_id) REFENCES(book(ISNB_id))
+)
+CREATE TABLE IF NOT users EXISTS (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    surname VARCHAR(255),
+    first_name VARCHAR(255),
+    birth_date DATE,
+    membership_end_date DATE,
+    email VARCHAR(255),
+    phone_number VARCHAR(255),
+    password VARBINARY(16),
+    birh_place VARCHAR(255),
+    address VARCHAR(255),
+    mother_maiden_name VARCHAR(255),
+    active BOOL
+)
+CREATE TABLE IF NOT EXISTS reservation(
+    reservation_id INT AUTO_INCREMENT PRIMARY KEY
+    ISBN_id INT NOT NULL,
+    user_id INT NOT NULL,
+    FOREIGN KEY(ISBN_id) REFENCES(book(ISNB_id)),
+    FOREIGN KEY(user_id) REFENCES(users(user_id))
+)
+CREATE TABLE IF NOT EXISTS borrowings(
+    borrowing_id INT AUTO_INCREMENT PRIMARY KEY
+    ISBN_id INT NOT NULL,
+    user_id INT NOT NULL,
+    start_date DATE,
+    end_date DATE,
+    FOREIGN KEY(ISBN_id) REFENCES(book(ISNB_id)),
+    FOREIGN KEY(user_id) REFENCES(users(user_id))
+)
+CREATE TABLE IF NOT EXISTS booking(
+    booking_id INT AUTO_INCREMENT PRIMARY KEY
+    ISBN_id INT NOT NULL,
+    user_id INT NOT NULL,
+    end_date DATE,
+    FOREIGN KEY(ISBN_id) REFENCES(book(ISNB_id)),
+    FOREIGN KEY(user_id) REFENCES(users(user_id))
+)
+CREATE TABLE IF NOT EXISTS votes(
+    vote_id INT AUTO_INCREMENT PRIMARY KEY,
+    author VARCHAR(255),
+    book_title VARCHAR(255)
+)
+CREATE TABLE IF NOT EXISTS users_votes_conn(
+    user_id INT NOT NULL,
+    vote_id INT NOT NULL,
+    FOREIGN KEY(user_id) REFENCES(users(user_id)),
+    FOREIGN KEY(vote_id) REFENCES(votes(vote_id)))
+)
