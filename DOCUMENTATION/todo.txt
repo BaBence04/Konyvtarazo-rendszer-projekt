@@ -1,9 +1,5 @@
 To Do:
--ISBN-nek saját kód
--flagelések -> példány (kivehető-e) és felhasználónál (meg akarja-e újítani)
--alapbeállítások tábla
--kiadó webhelye
--nyelvek tábla
+
 
 MEGKÉRDEZNI: 
 -darabszámra vagy két ugyanolyan könyvet megkülönböztetnek
