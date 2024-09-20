@@ -1,15 +1,5 @@
 CREATE DATABASE IF NOT EXISTS konyvtar CHARACTER SET utf8 COLLATE utf8_hungarian_ci;
 USE konyvtar;
-CREATE TABLE IF NOT EXISTS book(
-    ISBN_id INT AUTO_INCREMENT PRIMARY KEY,
-    ISBN VARCHAR(13),
-    title VARCHAR(255),
-    publisher_id INT,
-    release_date DATE,
-    lang_id INT,
-    descriptior TEXT,
-    picture_base64 TEXT
-);
 CREATE TABLE IF NOT EXISTS languages(
     lang_id INT AUTO_INCREMENT PRIMARY KEY,
     lang VARCHAR(255)
@@ -20,6 +10,18 @@ CREATE TABLE IF NOT EXISTS publishers(
     phone VARCHAR(255),
     email VARCHAR(255),
     webpage VARCHAR(255)
+);
+CREATE TABLE IF NOT EXISTS book(
+    ISBN_id INT AUTO_INCREMENT PRIMARY KEY,
+    ISBN VARCHAR(13),
+    title VARCHAR(255),
+    publisher_id INT,
+    release_date DATE,
+    lang_id INT,
+    descriptior TEXT,
+    picture_base64 TEXT,
+    FOREIGN KEY(lang_id) REFERENCES languages(lang_id),
+    FOREIGN KEY(publisher_id) REFERENCES publishers(publisher_id)
 );
 CREATE TABLE IF NOT EXISTS genres(
     genre_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -68,14 +70,21 @@ CREATE TABLE IF NOT EXISTS reservation(
     FOREIGN KEY(ISBN_id) REFERENCES book(ISBN_id),
     FOREIGN KEY(user_id) REFERENCES users(user_id)
 );
+CREATE TABLE IF NOT EXISTS employees(
+    empl_id INT AUTO_INCREMENT PRIMARY KEY,
+    empl_namme VARCHAR(255),
+    password VARBINARY(16) 
+);
 CREATE TABLE IF NOT EXISTS borrowings(
     borrowing_id INT AUTO_INCREMENT PRIMARY KEY,
     ISBN_id INT NOT NULL,
     user_id INT NOT NULL,
+    empl_e INT NOT NULL, 
     start_date DATE,
     end_date DATE,
     FOREIGN KEY(ISBN_id) REFERENCES book(ISBN_id),
-    FOREIGN KEY(user_id) REFERENCES users(user_id)
+    FOREIGN KEY(user_id) REFERENCES users(user_id),
+    FOREIGN KEY(empl_e) REFERENCES employees(empl_id)
 );
 CREATE TABLE IF NOT EXISTS booking(
     booking_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -95,11 +104,6 @@ CREATE TABLE IF NOT EXISTS users_votes_conn(
     vote_id INT NOT NULL,
     FOREIGN KEY(user_id) REFERENCES users(user_id),
     FOREIGN KEY(vote_id) REFERENCES votes(vote_id) 
-);
-CREATE TABLE IF NOT EXISTS employees(
-    empl_id INT AUTO_INCREMENT PRIMARY KEY,
-    empl_namme VARCHAR(255),
-    password VARBINARY(16) 
 );
 CREATE TABLE IF NOT EXISTS  system_settings (
     membership_fee INT,
