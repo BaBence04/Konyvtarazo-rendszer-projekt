@@ -2,11 +2,10 @@
     
     
     function sql_query($query,  $mode){
-         //connects to the database
-         do{
-            $conn  = mysqli_connect("localhost", "root", "", "szabvanyok");
+        //CHANGE PORT IF NOT WORKING }while(mysqli_connect_errno());
+        do{
+            $conn = mysqli_connect("localhost", "root", "", "konyvtar", 84);
         }while(mysqli_connect_errno());
-
         
         //runs the query
         if ($result = $conn -> query($query)) {
@@ -20,6 +19,26 @@
         //Modes: assoc<-asszociatív array, numeric<-indexed array, row<-returns the number of rows, none<-returns true if there were no errors       
         GetRequestedDataTypeFromConnection($mode,$result);
     
+    }
+
+    function makeDb(){
+        //CHANGE PORT IF NOT WORKING
+        $dbMaker = fopen("dbMaker.txt", "r") or die("Unable to open file");
+        $makerComm = fread($dbMaker, filesize("dbMaker.txt"));
+        fclose($dbMaker);
+        do{
+            $conn = mysqli_connect("localhost", "root", "", "");
+            echo mysqli_connect_errno();
+        }while(mysqli_connect_errno());
+
+        if($result = $conn -> multi_query($makerComm)){
+        }
+        else{
+            return false;
+        }
+        mysqli_close($conn);
+
+        GetRequestedDataTypeFromConnection("", $result);
     }
 
     function GetRequestedDataTypeFromConnection($mode,$result){
