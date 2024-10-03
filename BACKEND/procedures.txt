@@ -1,4 +1,5 @@
--- list all books with all filters applied
+-- list all books with all filters applied, mostmár elv jo
+DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS listBooksFiltered(
   IN title VARCHAR(255),
   IN genre VARCHAR(255),
@@ -9,7 +10,7 @@ CREATE PROCEDURE IF NOT EXISTS listBooksFiltered(
   OUT ISBN_id INT
 ) BEGIN
 SELECT
-  book.ISBN
+  book.ISBN_id INTO ISBN_id
 FROM
   book
   INNER JOIN (
@@ -30,5 +31,6 @@ WHERE
   AND CAST(book.release_date AS VARCHAR(255)) LIKE release_date
   AND languages.lang = language
   AND book.ISBN = ISBN
-  AND inventory.available 
-END
+  AND inventory.available = TRUE;
+END;//
+DELIMITER;
