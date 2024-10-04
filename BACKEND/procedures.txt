@@ -1,4 +1,4 @@
--- list all books with all filters applied, mostmár elv jo
+-- procedure that lists books with filters applied
 DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS listBooksFiltered(
   IN title VARCHAR(255),
@@ -6,11 +6,10 @@ CREATE PROCEDURE IF NOT EXISTS listBooksFiltered(
   IN author VARCHAR(255),
   IN realease_date VARCHAR(255),
   IN languages VARCHAR (255),
-  IN ISBN VARCHAR(13),
-  OUT ISBN_id INT
+  IN ISBN VARCHAR(13)
 ) BEGIN
-SELECT DISTINCT
-  book.ISBN_id INTO ISBN_id
+SELECT
+  book.ISBN_id, book.title, book.picture_base64, GROUP_CONCAT(genres.genre), GROUP_CONCAT(authors.author), publishers.publisher_id, book.release_date, languages.lang 
 FROM
   book
   INNER JOIN (
@@ -31,6 +30,47 @@ WHERE
   AND CAST(book.release_date AS VARCHAR(255)) LIKE release_date
   AND languages.lang = language
   AND book.ISBN = ISBN
-  AND inventory.available = TRUE;
+  AND inventory.available = TRUE
+GROUP BY 1;
 END;//
-DELIMITER;
+DELIMITER ;
+
+-- procedure, that gets every information abt a book by id
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS getBookById(
+  IN ID INT
+) BEGIN
+SELECT
+  book.ISBN_id, book.title, book.picture_base64, GROUP_CONCAT(genres.genre), GROUP_CONCAT(authors.author), publishers.publisher_id, book.release_date, languages.lang, book.ISBN, book.description
+FROM
+  book
+  INNER JOIN (
+    books_genres_conn
+    INNER JOIN genres ON genres.genre_id = books_genres_conn.genre_id
+  ) ON book.ISBN_id = books_genres_conn.ISBN_id
+  INNER JOIN (
+    books_authors_conn
+    INNER JOIN authors ON authors.author_id = books_authors_conn.author_id
+  ) ON book.ISBN_id = books_authors_conn.ISBN_id
+  INNER JOIN publishers ON publishers.publisher_id = book.publisher_id
+  INNER JOIN languages ON languages.lang_id = book.lang_id
+  INNER JOIN inventory ON inventory.ISBN_id = book.ISBN_id
+WHERE
+  book.ISBN_id = ID
+GROUP BY 1;
+END;//
+DELIMITER ;
+
+-- get all borrowed books borrowed by userID
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS getBorrowedBooks(
+  IN ID INT
+) BEGIN
+SELECT 
+  inventory.book_id, book.ISBN_id, book.title, book.picture_base64, borrowings.end_date, borrowings.start_date, ( SELECT CASE WHEN COUNT(reservation.ISBN_id) > 0 THEN 'True' ELSE 'False' END FROM reservation WHERE reservation.ISBN_id = inventory.ISBN_id ) 
+FROM 
+  users INNER JOIN( borrowings INNER JOIN( inventory INNER JOIN book ON book.ISBN_id = inventory.ISBN_id ) ON inventory.book_id = borrowings.book_id ) ON users.user_id = borrowings.user_id 
+WHERE 
+  users.user_id = 1;
+END;//
+DELIMITER ;
