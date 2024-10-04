@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS book(
     publisher_id INT,
     release_date DATE,
     lang_id INT,
-    descriptior TEXT,
+    description TEXT,
     picture_base64 TEXT,
     FOREIGN KEY(lang_id) REFERENCES languages(lang_id),
     FOREIGN KEY(publisher_id) REFERENCES publishers(publisher_id)
