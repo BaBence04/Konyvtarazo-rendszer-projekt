@@ -4,12 +4,12 @@ CREATE PROCEDURE IF NOT EXISTS listBooksFiltered(
   IN title VARCHAR(255),
   IN genre VARCHAR(255),
   IN author VARCHAR(255),
-  IN realease_date VARCHAR(255),
-  IN languages VARCHAR (255),
-  IN ISBN VARCHAR(13)
+  IN release_date VARCHAR(255),
+  IN var_languages VARCHAR (255),
+  IN var_ISBN VARCHAR(13)
 ) BEGIN
-SELECT
-  book.ISBN_id, book.title, book.picture_base64, GROUP_CONCAT(genres.genre), GROUP_CONCAT(authors.author), publishers.publisher_id, book.release_date, languages.lang 
+CALL listBooksByIds((SELECT
+  GROUP_CONCAT(DISTINCT book.ISBN_id)
 FROM
   book
   INNER JOIN (
@@ -25,15 +25,42 @@ FROM
   INNER JOIN inventory ON inventory.ISBN_id = book.ISBN_id
 WHERE
   book.title LIKE CONCAT("%", title, "%")
-  AND genres.genre = genre
-  AND authors.author = author
-  AND CAST(book.release_date AS VARCHAR(255)) LIKE release_date
-  AND languages.lang = language
-  AND book.ISBN = ISBN
+  FIND_IN_SET(genres.genre, genre)
+  AND authors.author LIKE CONCAT("%", author, "%")
+  AND CAST(book.release_date AS VARCHAR(255)) LIKE CONCAT("%", release_date, "%")
+  AND languages.lang LIKE CONCAT("%", var_languages, "%")
+  AND book.ISBN LIKE CONCAT("%", var_ISBN, "%")
   AND inventory.available = TRUE
+));
+END;//
+DELIMITER ;
+
+-- procedure, that gets every information abt a book by id
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS listBooksByIds(
+  IN ID VARCHAR(255)
+) BEGIN
+SELECT
+  book.ISBN_id, book.title, book.picture_base64, GROUP_CONCAT(DISTINCT genres.genre), GROUP_CONCAT(DISTINCT authors.author), publishers.publisher_id, book.release_date, languages.lang, book.ISBN, book.description
+FROM
+  book
+  INNER JOIN (
+    books_genres_conn
+    INNER JOIN genres ON genres.genre_id = books_genres_conn.genre_id
+  ) ON book.ISBN_id = books_genres_conn.ISBN_id
+  INNER JOIN (
+    books_authors_conn
+    INNER JOIN authors ON authors.author_id = books_authors_conn.author_id
+  ) ON book.ISBN_id = books_authors_conn.ISBN_id
+  INNER JOIN publishers ON publishers.publisher_id = book.publisher_id
+  INNER JOIN languages ON languages.lang_id = book.lang_id
+  INNER JOIN inventory ON inventory.ISBN_id = book.ISBN_id
+WHERE
+  FIND_IN_SET(CAST(book.ISBN_id AS VARCHAR(255)), ID)
 GROUP BY 1;
 END;//
 DELIMITER ;
+
 
 -- procedure, that gets every information abt a book by id
 DELIMITER //
@@ -41,7 +68,7 @@ CREATE PROCEDURE IF NOT EXISTS getBookById(
   IN ID INT
 ) BEGIN
 SELECT
-  book.ISBN_id, book.title, book.picture_base64, GROUP_CONCAT(genres.genre), GROUP_CONCAT(authors.author), publishers.publisher_id, book.release_date, languages.lang, book.ISBN, book.description
+  book.ISBN_id, book.title, book.picture_base64, GROUP_CONCAT(DISTINCT genres.genre), GROUP_CONCAT(DISTINCT authors.author), publishers.publisher_id, book.release_date, languages.lang, book.ISBN, book.description
 FROM
   book
   INNER JOIN (
@@ -72,5 +99,14 @@ FROM
   users INNER JOIN( borrowings INNER JOIN( inventory INNER JOIN book ON book.ISBN_id = inventory.ISBN_id ) ON inventory.book_id = borrowings.book_id ) ON users.user_id = borrowings.user_id 
 WHERE 
   users.user_id = 1;
+END;//
+DELIMITER ;
+
+-- checks if username is valid and sends password NOT TESTED NEEDS TESTING
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS sendPassword(
+  username VARCHAR(255)
+) BEGIN
+SELECT CASE WHEN username IN users.username THEN users.password ELSE 'FALSE' END FROM users;
 END;//
 DELIMITER ;
