@@ -102,11 +102,37 @@ WHERE
 END;//
 DELIMITER ;
 
--- checks if username is valid and sends password NOT TESTED NEEDS TESTING
+-- checks if username is valid and sends password
 DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS sendPassword(
-  username VARCHAR(255)
+  IN username VARCHAR(255)
 ) BEGIN
-SELECT CASE WHEN username IN users.username THEN users.password ELSE 'FALSE' END FROM users;
+SELECT users.password FROM users WHERE users.username = username AND users.active;
+END;//
+DELIMITER ;
+
+-- returns if the book can be reserved or booked
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS checkAvailability(
+  IN ISBN INT,
+  OUT selected VARCHAR(10)
+) BEGIN
+SET selected = (SELECT CASE WHEN COUNT(borrowings.book_id) + (SELECT COUNT(booking.book_id) FROM booking INNER JOIN inventory ON booking.book_id = inventory.book_id WHERE inventory.ISBN_id = ISBN ) >= COUNT(inventory.book_id) THEN 'reservation' ELSE 'booking' END FROM borrowings RIGHT JOIN inventory ON borrowings.book_id = inventory.book_id WHERE inventory.ISBN_id = ISBN AND inventory.available);
+END;//
+DELIMITER ;
+
+-- reserves or books a book depending on avaliablity
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS addReservationOrBooking(
+  ISBN INT
+  userid INT
+) BEGIN
+DECLARE _selected VARCHAR(20) DEFAULT '';
+CALL checkAvailability(ISBN, _selected);
+IF (_selected = 'booking') THEN 
+	INSERT INTO booking(book_id, user_id, end_date) VALUES((SELECT inventory.book_id FROM inventory LEFT JOIN borrowings ON borrowings.book_id = inventory.book_id WHERE borrowings.book_id IS NULL AND inventory.ISBN_id = ISBN AND inventory.available LIMIT 1), userid, CURRENT_DATE());
+ELSEIF (_selected = 'reservation') THEN 
+  INSERT INTO reservation(ISBN_id, user_id) VALUES(ISBN, userid);
+END IF;
 END;//
 DELIMITER ;
