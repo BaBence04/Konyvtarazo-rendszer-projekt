@@ -92,7 +92,7 @@ CREATE TABLE IF NOT EXISTS booking(
     book_id INT NOT NULL,
     user_id INT NOT NULL,
     end_date DATE,
-    FOREIGN KEY(booking_id) REFERENCES inventory(book_id),
+    FOREIGN KEY(book_id) REFERENCES inventory(book_id),
     FOREIGN KEY(user_id) REFERENCES users(user_id) 
 );
 CREATE TABLE IF NOT EXISTS votes(
