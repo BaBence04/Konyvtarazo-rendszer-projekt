@@ -98,7 +98,7 @@ SELECT
 FROM 
   users INNER JOIN( borrowings INNER JOIN( inventory INNER JOIN book ON book.ISBN_id = inventory.ISBN_id ) ON inventory.book_id = borrowings.book_id ) ON users.user_id = borrowings.user_id 
 WHERE 
-  users.user_id = 1;
+  users.user_id = ID;
 END;//
 DELIMITER ;
 
@@ -117,6 +117,7 @@ CREATE PROCEDURE IF NOT EXISTS checkAvailability(
  ISBN INT,
  userid INT
 ) BEGIN
+DECLARE sth VARCHAR(11) DEFAULT "";
 SET sth = (SELECT CASE WHEN
     COUNT(borrowings.book_id) +(
     SELECT
@@ -125,22 +126,22 @@ SET sth = (SELECT CASE WHEN
         booking
     INNER JOIN inventory ON booking.book_id = inventory.book_id
     WHERE
-        inventory.ISBN_id = 1
+        inventory.ISBN_id = ISBN
 ) >= COUNT(inventory.book_id) THEN 'reservation' ELSE 'booking'
 END
 FROM
     borrowings
 RIGHT JOIN inventory ON borrowings.book_id = inventory.book_id
 WHERE
-    inventory.ISBN_id = 1 AND inventory.available);
-SELECT sth, IF(stb.....)
+    inventory.ISBN_id = ISBN AND inventory.available);
+SELECT sth, IF(sht='reservation', CASE WHEN (SELECT COUNT(reservation.ISBN_id) FROM reservation INNER JOIN users ON reservation.user_id = users.user_id WHERE users.user_id = userid)<=3 THEN 'true' ELSE 'false' END, CASE WHEN (SELECT COUNT(booking.book_id) FROM booking INNER JOIN users ON booking.user_id = users.user_id WHERE users.user_id = userid)<=3 THEN 'true' ELSE 'false' END);
 END;//
 DELIMITER ;
 
 -- reserves or books a book depending on avaliablity
 DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS addReservationOrBooking(
-  ISBN INT
+  ISBN INT,
   userid INT
 ) BEGIN
 DECLARE _selected VARCHAR(20) DEFAULT '';
