@@ -40,7 +40,7 @@ DELIMITER ;
 -- procedure, that gets every information abt a book by id
 DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS getBookById(
-  IN ID INT
+  IN ID VARCHAR(255)
 ) BEGIN
 SELECT
   book.ISBN_id, book.title, book.picture_base64, GROUP_CONCAT(DISTINCT genres.genre), GROUP_CONCAT(DISTINCT authors.author), publishers.publisher_id, book.release_date, languages.lang, book.ISBN, book.description
