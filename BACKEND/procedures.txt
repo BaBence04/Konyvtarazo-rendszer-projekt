@@ -58,7 +58,7 @@ FROM
   INNER JOIN languages ON languages.lang_id = book.lang_id
   INNER JOIN inventory ON inventory.ISBN_id = book.ISBN_id
 WHERE
-  book.ISBN_id = ID
+  FIND_IN_SET(CAST(book.ISBN_id AS VARCHAR(255)), ID)
 GROUP BY 1;
 END;//
 DELIMITER ;
