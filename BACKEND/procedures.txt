@@ -1,4 +1,5 @@
 -- procedure that lists books with filters applied
+-- LIMIT NOT TESTED, WE NEED TO TEST IT IN WEBPAGE
 DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS listBooksFiltered(
   IN title VARCHAR(255),
@@ -6,7 +7,8 @@ CREATE PROCEDURE IF NOT EXISTS listBooksFiltered(
   IN author VARCHAR(255),
   IN release_date VARCHAR(255),
   IN var_languages VARCHAR (255),
-  IN var_ISBN VARCHAR(13)
+  IN var_ISBN VARCHAR(13),
+  IN page_num INT
 ) BEGIN
 CALL getBookById((SELECT
   GROUP_CONCAT(DISTINCT book.ISBN_id)
@@ -31,6 +33,7 @@ WHERE
   AND languages.lang LIKE CONCAT("%", var_languages, "%")
   AND book.ISBN LIKE CONCAT("%", var_ISBN, "%")
   AND inventory.available = TRUE
+LIMIT 10 OFFSET (page_num-1*10)
 ));
 END;//
 DELIMITER ;
@@ -38,6 +41,7 @@ DELIMITER ;
 
 
 -- procedure, that gets every information abt a book by id
+-- can be used for desktop app too
 DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS getBookById(
   IN ID VARCHAR(255)
@@ -139,3 +143,47 @@ UPDATE borrowings SET borrowings.end_date = DATE_ADD(borrowings.end_date, INTERV
 END;//
 DELIMITER ;
 
+-- PROCEDURES FOR THE DESKTOP APP
+-- Gets all books can be searched by book id and isbn
+-- NOT TESTED NEED TO TEST IN APP
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS getAllBooks(
+  IN searchTerm VARCHAR(13),
+  IN page_num INT
+) BEGIN
+SELECT book.ISBN, inventory.book_id, book.title FROM book INNER JOIN inventory ON inventory.ISBN_id = book.ISBN_id WHERE (inventory.book_id = searchTerm OR book.ISBN = searchTerm) OR searchTerm = '' LIMIT 10 OFFSET (page_num-1*10);
+END;//
+DELIMITER ;
+
+-- Add a book
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS addBookType(
+  IN ISBN VARCHAR(13),
+  IN title VARCHAR(255),
+  IN allGenres VARCHAR(255),
+  IN allAuthors VARCHAR(255),
+  IN publisherID INT,
+  IN releaseDate DATE,
+  IN lang VARCHAR(255),
+  IN descript TEXT,
+  IN picture TEXT
+) BEGIN
+IF (SELECT COUNT(book.ISBN_id) FROM book WHERE book.ISBN = ISBN) = 0 THEN
+	BEGIN
+    	-- add book
+        IF (SELECT COUNT(languages.lang_id) FROM languages WHERE languages.lang = lang) = 0 THEN
+        	BEGIN
+            	INSERT INTO languages(languages.lang) VALUES(lang);
+             END;
+        END IF;
+        INSERT INTO book(book.ISBN, book.title, book.publisher_id, book.release_date, book.lang_id, book.description, book.picture_base64) VALUES(ISBN, title, pulisherID, releaseDate, (SELECT languages.lang_id FROM languages WHERE languages.lang = lang), descript, picture);
+		-- add authors
+        
+        -- add cathegories
+        
+    END;
+ELSE
+	SELECT 'Already exists';
+END IF;
+END;//
+DELIMITER ;
