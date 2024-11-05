@@ -1,0 +1,101 @@
+<title>Responsive Navbar Using HTML CSS & JavaScript | With Search & Login</title>
+<link rel="stylesheet" href="style.css">
+<!-- <link rel="stylesheet" href="login.css"> -->
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
+</head>
+
+
+<header class="header" id="header">
+  <nav class="nav container">
+    <a class="nav__logo" href="#">Logo</a>
+
+    <div class="nav__menu" id="nav-menu">
+      <ul class="nav__list">
+        <li class="nav__item"><a class="nav__link" href="#">Főoldal</a></li>
+        <li class="nav__item"><a class="nav__link" href="#">Összes könyv</a></li>
+        <li class="nav__item"><a class="nav__link" href="#">Rólunk</a></li>
+        <li class="nav__item"><a class="nav__link" href="#">Kapcsolat</a></li>
+        
+
+      </ul>
+      <!-- Close button -->
+      <div class="nav__close" id="nav-close">
+        <i class="ri-close-line"></i>
+      </div>
+    </div>
+
+    <div class="nav__actions">
+
+      <li class="nav__search" id="search-btn"><i class="ri ri-search-line"></i></li>
+
+      <li class="nav__login" id="login-btn"><i class="ri ri-user-line"></i></li>
+
+
+      <!-- Toggle button -->
+      <div class="nav__toggle" id="nav-toggle">
+        <i class="ri ri-menu-line"></i>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!--==================== SEARCH ====================-->
+<div class="search" id="search">
+  <form class="search__form" action="">
+    <i class="ri-search-line"></i>
+    <input class="search__input" placeholder="Keresés">
+    <span class="search__close" id="search-close">&times;</span>
+  </form>
+</div>
+
+<!--==================== LOGIN ====================-->
+<div class="login" id="login">
+  <div class="login_box">
+    <span class="borderline"></span>
+    <form action="" method="post">
+      <span class="close" id="login-close">&times;</span>
+      <h2>Bejelentkezés</h2>
+  
+          <div class="inputbox">
+              <input type="email" name="email" required="required" placeholder=" ">
+              <span>Email</span>
+              <i></i>
+          </div>
+  
+          <div class="inputbox">
+              <img src="imgs/eye-off-line.png" id="eyeicon" alt="">
+              <input type="password" id="password" name="password" required="required" placeholder=" ">
+              <span>Jelszó</span>
+              <i></i>
+          </div>
+          
+          <div class="links">
+              <a href="#">Elfelejtettem a jelszavamat</a>
+          </div>
+  
+          <input type="submit" value="Bejelentkezés" name="submit">
+    </form>
+  </div>
+</div>
+
+
+
+<script src="main.js"></script>
+
+<!-- <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script> -->
+<script>
+  let eyeicon = document.getElementById("eyeicon");
+  let password = document.getElementById("password");
+
+  eyeicon.onclick = function(){
+      if(password.type == "password"){
+          password.type = "text";
+          eyeicon.src = "imgs/eye-line.png"
+      }else{
+          password.type = "password";
+          eyeicon.src = "imgs/eye-off-line.png"
+      }
+  }
+</script>
