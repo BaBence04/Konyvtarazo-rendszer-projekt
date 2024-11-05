@@ -3,9 +3,7 @@
     
     function sql_query($query,  $mode){
         //CHANGE PORT IF NOT WORKING }while(mysqli_connect_errno());
-        do{
-            $conn = mysqli_connect("localhost", "root", "", "konyvtar", 84);
-        }while(mysqli_connect_errno());
+        require "databaseConnect.php";
         
         //runs the query
         if ($result = $conn -> query($query)) {

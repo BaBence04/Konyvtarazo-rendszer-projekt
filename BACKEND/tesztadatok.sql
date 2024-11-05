@@ -8,8 +8,8 @@ INSERT INTO languages (lang) VALUES
 ('German');
 
 INSERT INTO book (ISBN, title, publisher_id, release_date, lang_id, description, picture_base64) VALUES
-('9783161484100', 'Learning SQL', 1, '2020-08-15', 2, 'A guide to learning SQL', NULL),
-('9783161484201', 'Mastering Databases', 2, '2019-05-21', 1, 'Comprehensive guide to databases', NULL);
+('9783161484100', 'Learning SQL', 1, '2020-08-15', 2, 'A guide to learning SQL', "https://unsplash.it/500/500"),
+('9783161484201', 'Mastering Databases', 2, '2019-05-21', 1, 'Comprehensive guide to databases', "https://unsplash.it/500/500");
 
 INSERT INTO genres (genre) VALUES
 ('Science Fiction'),
@@ -27,6 +27,7 @@ INSERT INTO books_genres_conn (ISBN_id, genre_id) VALUES
 
 INSERT INTO books_authors_conn (ISBN_id, author_id) VALUES
 (1, 1),
+(1, 3),
 (2, 2);
 
 INSERT INTO inventory (ISBN_id, available) VALUES
