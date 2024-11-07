@@ -155,7 +155,7 @@ SELECT book.ISBN, inventory.book_id, book.title FROM book INNER JOIN inventory O
 END;//
 DELIMITER ;
 
--- Add a book
+-- Add a book type
 DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS addBookType(
   IN ISBN VARCHAR(13),
@@ -255,5 +255,25 @@ IF (SELECT COUNT(book.ISBN_id) FROM book WHERE book.ISBN = ISBN) = 0 THEN
 ELSE
 	SELECT 'Already exists';
 END IF;
+END;//
+DELIMITER ;
+
+-- Add a book
+-- NEEDS TO BE TESTED
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS addBook(
+  IN ISBN VARCHAR(13)
+) BEGIN
+INSERT INTO inventory(inventory.ISBN_id, inventory.available) VALUES((SELECT book.ISBN_id FROM book WHERE book.ISBN = ISBN), 'TRUE')
+END;//
+DELIMITER ;
+
+-- for desktop login
+-- NEEDS TO BE TESTED
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS LoginEmployee(
+  IN username VARCHAR(255)
+) BEGIN
+SELECT employees.password FROM employees WHERE empl_name = username;
 END;//
 DELIMITER ;
