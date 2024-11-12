@@ -321,3 +321,64 @@ DELETE FROM reservation WHERE reservation.reservation_id = (SELECT reservation.r
 END IF;
 END;//
 DELIMITER ;
+
+-- adds a publisher
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS addPublisher(
+  IN pubname VARCHAR(255),
+  IN phone VARCHAR(255),
+  IN email VARCHAR(255),
+  IN webpage VARCHAR(255)
+) BEGIN
+IF ((SELECT publishers.name FROM publishers WHERE publishers.name = pubname) IS NULL) THEN 
+	INSERT INTO publishers(publishers.name, publishers.phone, publishers.email, publishers.webpage) VALUES(pubname, phone, email, webpage); 
+ELSE 
+	SELECT "ilyen név már létezik"; 
+END IF; 
+END;//
+DELIMITER ;
+
+-- adds a user
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS addUser(
+  IN surname VARCHAR(255), 
+  IN firstname VARCHAR(255), 
+  IN uname VARCHAR(255),
+  IN birthdate DATE, 
+  IN email VARCHAR(255),
+  IN phone VARCHAR(255),
+  IN pw VARBINARY(16),
+  IN birthplace VARCHAR(255), 
+  IN address VARCHAR(255),
+  IN mmn VARBINARY(16) 
+) BEGIN
+IF ((SELECT users.user_id FROM users WHERE users.surname = surname AND users.first_name = firstname AND users.birth_date = birthdate AND users.birth_place = birthplace AND users.mother_maiden_name  = mmn) IS NULL) THEN 
+	INSERT INTO users(users.surname, users.first_name, users.username, users.birth_date, users.membership_end_date, users.email, users.phone_number, users.password, users.birth_place, users.address, users.mother_maiden_name, users.active) VALUES(surname, firstname, uname ,birthdate, (SELECT CURRENT_DATE() - INTERVAL 1 DAY), email, phone, pw, birthplace, address, mmn, 1);
+ELSE 
+	SELECT "a személy már egyszer beregisztrált"; 
+END IF; 
+END;//
+DELIMITER ;
+
+-- adds an employee
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS addEmployee(
+  IN uname VARCHAR(255),
+  IN pw VARBINARY(16)
+) BEGIN
+IF ((SELECT employees.empl_id FROM employees WHERE employees.empl_name = uname AND employees.password = pw) IS NULL) THEN 
+	INSERT INTO employees(employees.empl_name, employees.password) VALUES(uname, pw);
+ELSE 
+	SELECT "az alkalmazott már egyszer beregisztrált"; 
+END IF; 
+END;//
+DELIMITER ;
+
+-- renew membership (member for a year)
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS renewMembership(
+  IN uname VARCHAR(255)
+) BEGIN
+	UPDATE users SET users.membership_end_date = CURRENT_DATE() + INTERVAL 1 YEAR WHERE users.username = uname;
+END;//
+DELIMITER ;
