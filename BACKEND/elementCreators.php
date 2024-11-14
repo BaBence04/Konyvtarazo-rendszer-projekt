@@ -13,7 +13,7 @@
 
     function CreateDetailedBookElement($id) : string {
         $result = "";
-        $data = GetBookById($id)[0];
+        $data = GetBookByIsbnId($id)[0];
         //create the html for detailed book
 
         return $result;
