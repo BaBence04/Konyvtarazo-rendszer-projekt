@@ -38,7 +38,22 @@ LIMIT 10 OFFSET (page_num-1*10)
 END;//
 DELIMITER ;
 
+-- get book by isbn
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS getBookByISBN(
+  IN ISBN VARCHAR(255)
+) BEGIN
+	CALL getBookById(SELECT book.ISBN_id FROM book WHERE book.ISBN = ISBN LIMIT 1);
+END;//
+DELIMITER ;
 
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS getIdFromISBN(
+  IN ISBN VARCHAR(255)
+) BEGIN
+	SELECT book.ISBN_id FROM book WHERE book.ISBN = ISBN LIMIT 1;
+END;//
+DELIMITER ;
 
 -- procedure, that gets every information abt a book by id
 -- can be used for desktop app too
