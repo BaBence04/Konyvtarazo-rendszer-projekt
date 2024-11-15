@@ -8,7 +8,8 @@ CREATE PROCEDURE IF NOT EXISTS listBooksFiltered(
   IN release_date VARCHAR(255),
   IN var_languages VARCHAR (255),
   IN var_ISBN VARCHAR(13),
-  IN page_num INT
+  IN offseter INT,
+  IN limiter INT
 ) BEGIN
 CALL getBookById((SELECT
   GROUP_CONCAT(DISTINCT book.ISBN_id)
@@ -33,7 +34,7 @@ WHERE
   AND languages.lang LIKE CONCAT("%", var_languages, "%")
   AND book.ISBN LIKE CONCAT("%", var_ISBN, "%")
   AND inventory.available = TRUE
-LIMIT 10 OFFSET (page_num-1*10)
+LIMIT limiter OFFSET offseter
 ));
 END;//
 DELIMITER ;
@@ -166,9 +167,10 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS getAllBooks(
   IN searchTerm VARCHAR(13),
-  IN page_num INT
+  IN offseter INT,
+  IN limiter INT
 ) BEGIN
-SELECT book.ISBN, inventory.book_id, book.title FROM book INNER JOIN inventory ON inventory.ISBN_id = book.ISBN_id WHERE (inventory.book_id = searchTerm OR book.ISBN = searchTerm) OR searchTerm = '' LIMIT 10 OFFSET (page_num-1*10);
+SELECT book.ISBN, inventory.book_id, book.title FROM book INNER JOIN inventory ON inventory.ISBN_id = book.ISBN_id WHERE (inventory.book_id = searchTerm OR book.ISBN = searchTerm) OR searchTerm = '' LIMIT limiter OFFSET offseter;
 END;//
 DELIMITER ;
 
