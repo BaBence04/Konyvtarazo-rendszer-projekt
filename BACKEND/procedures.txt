@@ -323,7 +323,6 @@ CREATE PROCEDURE IF NOT EXISTS returnBook(
   IN bookID INT,
   IN emplID INT
 ) BEGIN
-BEGIN
 -- check if it is late
 IF (SELECT borrowings.end_date FROM borrowings WHERE borrowings.user_id = userID AND borrowings.book_id = bookID AND borrowings.returned = 0)-CURRENT_DATE()<0 THEN
 SELECT (CURRENT_DATE()-(SELECT borrowings.end_date FROM borrowings WHERE borrowings.user_id = userID AND borrowings.book_id = bookID AND borrowings.returned = 0))*(SELECT system_settings.latency_fee FROM system_settings);
