@@ -283,7 +283,7 @@ DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS addBook(
   IN ISBN VARCHAR(13)
 ) BEGIN
-INSERT INTO inventory(inventory.ISBN_id, inventory.available) VALUES((SELECT book.ISBN_id FROM book WHERE book.ISBN = ISBN), 'TRUE')
+INSERT INTO inventory(inventory.ISBN_id, inventory.available) VALUES((SELECT book.ISBN_id FROM book WHERE book.ISBN = ISBN), 1);
 END;//
 DELIMITER ;
 
