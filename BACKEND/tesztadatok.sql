@@ -47,8 +47,8 @@ INSERT INTO employees (empl_namme, password) VALUES
 ('Nagy László', 'password');
 
 INSERT INTO borrowings (book_id, user_id, empl_e, start_date, end_date) VALUES
-(1, 1, 1, '2024-01-01', '2024-01-15'),
-(2, 2, 2, '2024-02-01', '2024-02-15');
+(1, 1, 1, '2024-01-01', '2024-01-15', 1),
+(2, 2, 2, '2024-02-01', '2024-02-15'), 1;
 
 INSERT INTO booking (book_id, user_id, end_date) VALUES
 (1, 1, '2024-03-01'),
