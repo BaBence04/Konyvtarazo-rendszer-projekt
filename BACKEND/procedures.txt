@@ -113,7 +113,7 @@ CREATE PROCEDURE IF NOT EXISTS checkAvailability(
  ISBN INT,
  userid INT
 ) BEGIN
-DECLARE sth VARCHAR(11) DEFAULT "";
+DECLARE status VARCHAR(11) DEFAULT "";
 SET status = (SELECT CASE WHEN
     COUNT(borrowings.book_id) +(
     SELECT
