@@ -83,6 +83,7 @@ CREATE TABLE IF NOT EXISTS borrowings(
     empl_e INT NOT NULL, 
     start_date DATE,
     end_date DATE,
+    returned TINYINT(1),
     FOREIGN KEY(book_id) REFERENCES inventory(book_id),
     FOREIGN KEY(user_id) REFERENCES users(user_id),
     FOREIGN KEY(empl_e) REFERENCES employees(empl_id)
