@@ -130,7 +130,7 @@ FROM
 RIGHT JOIN inventory ON borrowings.book_id = inventory.book_id
 WHERE
     inventory.ISBN_id = ISBN AND inventory.available AND borrowings.returned = 0);
-SELECT status, IF(sth='reservation', CASE WHEN (SELECT COUNT(reservation.ISBN_id) FROM reservation INNER JOIN users ON reservation.user_id = users.user_id WHERE users.user_id = userid)<=3 THEN 'true' ELSE 'false' END, CASE WHEN (SELECT COUNT(booking.book_id) FROM booking INNER JOIN users ON booking.user_id = users.user_id WHERE users.user_id = userid)<=3 THEN 'true' ELSE 'false' END) AS `available`;
+SELECT status, IF(status='reservation', CASE WHEN (SELECT COUNT(reservation.ISBN_id) FROM reservation INNER JOIN users ON reservation.user_id = users.user_id WHERE users.user_id = userid)<=3 THEN 'true' ELSE 'false' END, CASE WHEN (SELECT COUNT(booking.book_id) FROM booking INNER JOIN users ON booking.user_id = users.user_id WHERE users.user_id = userid)<=3 THEN 'true' ELSE 'false' END) AS `available`;
 END;//
 DELIMITER ;
 
