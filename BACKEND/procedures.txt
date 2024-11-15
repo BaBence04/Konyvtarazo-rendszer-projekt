@@ -1,5 +1,4 @@
 -- procedure that lists books with filters applied
--- LIMIT NOT TESTED, WE NEED TO TEST IT IN WEBPAGE
 DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS listBooksFiltered(
   IN title VARCHAR(255),
@@ -48,6 +47,7 @@ CREATE PROCEDURE IF NOT EXISTS getBookByISBN(
 END;//
 DELIMITER ;
 
+-- converts isbn to isbnid
 DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS getIdFromISBN(
   IN ISBN VARCHAR(255)
@@ -278,7 +278,6 @@ END;//
 DELIMITER ;
 
 -- Add a book
--- NEEDS TO BE TESTED
 DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS addBook(
   IN ISBN VARCHAR(13)
