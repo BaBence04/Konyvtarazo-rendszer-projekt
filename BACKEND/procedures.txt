@@ -47,6 +47,14 @@ CREATE PROCEDURE IF NOT EXISTS getBookByISBN(
 END;//
 DELIMITER ;
 
+-- gets all genres
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS getGenres(
+) BEGIN
+	SELECT genres.genre FROM genres;
+END;//
+DELIMITER ;
+
 -- converts isbn to isbnid
 DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS getIdFromISBN(
@@ -63,7 +71,7 @@ CREATE PROCEDURE IF NOT EXISTS getBookById(
   IN ID VARCHAR(255)
 ) BEGIN
 SELECT
-  book.ISBN_id, book.title, book.picture_base64, GROUP_CONCAT(DISTINCT genres.genre) AS genres, GROUP_CONCAT(DISTINCT authors.author) AS authors, publishers.publisher_id, book.release_date, languages.lang, book.ISBN, book.description
+  book.ISBN_id, book.title, book.picture_base64, GROUP_CONCAT(DISTINCT genres.genre) AS `genres`, GROUP_CONCAT(DISTINCT authors.author) AS `authors`, publishers.publisher_id, book.release_date, languages.lang, book.ISBN, book.description
 FROM
   book
   INNER JOIN (

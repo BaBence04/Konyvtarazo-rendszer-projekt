@@ -13,6 +13,18 @@
         return $results->fetch_all(MYSQLI_ASSOC);
     }
 
+    function GetGenres(){
+        require "databaseConnect.php";
+
+        $query = "CALL getGenres();";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        return $results->fetch_all(MYSQLI_ASSOC);
+
+    }
+
     function GetBookByIsbnId($id){
         require "databaseConnect.php";
 
@@ -57,6 +69,18 @@
 
     }
 
+    function GetBorrowedBooks($user_id){
+        require "databaseConnect.php";
+
+        $query = "CALL getBorrowedBoos(?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("i", $user_id); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        return $results->fetch_all(MYSQLI_ASSOC);
+
+    }
     
     function CheckBookAvailability($isbn_id, $user_id) : array {
         //returns "reservation" | "booking"
@@ -117,5 +141,156 @@
         return $results->fetch_all(MYSQLI_ASSOC);
     }
 
+    function ExtendReturnDate($book_id, $user_id){
+        require "databaseConnect.php";
+
+        $query = "CALL extendReturnDate(?,?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("ii", $book_id,$user_id); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        return $results->fetch_all(MYSQLI_ASSOC);
+    }
+
+    //From here mainly desktop functions
+    function GetAllBooks($searchTerm, $offseter, $limiter){
+        require "databaseConnect.php";
+
+        $query = "CALL getAllBooks(?,?,?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("sii", $searchTerm,$offseter, $limiter); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        return $results->fetch_all(MYSQLI_ASSOC);
+    }
+
+    function AddBookType($isbn, $title, $allGenres, $allAuthors, $publisherId, $releaseDate, $lang, $descript, $picture){
+        require "databaseConnect.php";
+
+        $query = "CALL addBookType(?,?,?,?,?,?,?,?,?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("ssssissss", $isbn,$title,$allGenres, $allAuthors, $publisherId, $releaseDate, $lang, $descritp, $picture); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        if($results->fetch_all(MYSQLI_NUM)[0][0] == "Already exists"){
+            return -1;
+        }
+        else{
+            return $results->fetch_all(MYSQLI_ASSOC);
+        }
+    }
+
+    function AddBook($isbn){
+        require "databaseConnect.php";
+
+        $query = "CALL extendReturnDate(?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("s", $isbn); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        return $results->fetch_all(MYSQLI_ASSOC);
+    }
+
+    function LoginEmployee($username){
+        require "databaseConnect.php";
+
+        $query = "CALL loginEmployee(?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("s", $username); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        return $results->fetch_all(MYSQLI_NUM)[0][0];
+    }
+
+    function BorrowBook($user_id, $book_id, $empl_id){
+        require "databaseConnect.php";
+
+        $query = "CALL borrowBook(?,?,?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("iii", $user_id, $book_id, $empl_id); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        return $results->fetch_all(MYSQLI_ASSOC);
+    }
+
+    function ReturnBook($user_id, $book_id, $empl_id){
+        require "databaseConnect.php";
+
+        $query = "CALL returnBook(?,?,?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("iii", $user_id, $book_id, $empl_id); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        return $results->fetch_all(MYSQLI_ASSOC);
+    }
+
+    function AddPublisher($pubname, $phone, $email, $webpage){
+        require "databaseConnect.php";
+
+        $query = "CALL addPublisher(?,?,?,?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("ssss", $pubname, $phone, $email, $webpage); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        if($results->fetch_all(MYSQLI_NUM)[0][0] == "ilyen név már létezik"){
+            return -1;
+        }else{
+            return $results->fetch_all(MYSQLI_ASSOC);
+        }
+    }
+
+    function AddUser($surname, $firstname, $uname, $birthdate, $email, $phone, $pw, $birthplace, $address, $mmn){
+        require "databaseConnect.php";
+
+        $query = "CALL addUser(?,?,?,?,?,?,?,?,?,?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("ssssssssss", $surname, $firstname, $uname, $birthdate, $email, $phone, $pw, $birthplace, $address, $mmn); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        if($results->fetch_all(MYSQLI_NUM)[0][0] == "a személy már egyszer beregisztrált"){
+            return -1;
+        }else{
+            return $results->fetch_all(MYSQLI_ASSOC);
+        }
+    }
+
+    function AddEmployee($uname, $pw){
+        require "databaseConnect.php";
+
+        $query = "CALL addEmployee(?,?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("ss", $uname, $pw); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        if($results->fetch_all(MYSQLI_NUM)[0][0] == "az alkalmazott már egyszer beregisztrált"){
+            return -1;
+        }else{
+            return $results->fetch_all(MYSQLI_ASSOC);
+        }
+
+    }
+
+    function RenewMembership($uname){
+        require "databaseConnect.php";
+
+        $query = "CALL renewMembership(?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("s", $uname); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        return $results->fetch_all(MYSQLI_ASSOC);
+
+    }
 
 ?>

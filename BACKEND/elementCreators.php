@@ -1,4 +1,5 @@
 <?php
+    require "databaseFunctions.php";
     function CreateBookElement($data):string{
         $result = "
             <div class='grid-item' data-isbn='".$data["ISBN_id"]."'>
@@ -30,6 +31,20 @@
         }
 
         $resultHTML.="</div>";
+        return $resultHTML;
+    }
+
+    function CreateGenreFilter(){
+        $resultHTML = '<div class="genre-filter">
+        <label for="genre-select" class="filter-label">Szűrés műfaj szerint</label>
+        <select id="genre-select" class="genre-select">
+            <option value="">Összes műfaj</option>';
+        $data = GetGenres();
+        for ($i=0; $i < count($data); $i++) { 
+            $resultHTML .= '<option value="'.$data[$i]['genre'].'">'.$data[$i]['genre'].'</option>';
+        }
+        $resultHTML .= '</select>
+        </div>';
         return $resultHTML;
     }
 
