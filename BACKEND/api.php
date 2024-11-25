@@ -1,11 +1,11 @@
 <?php
-    require "databaseFunctions.php";
+    require_once "databaseFunctions.php";
     require "elementCreators.php";
     //listBooksFiltered
 
     if($_SERVER['REQUEST_METHOD'] === 'GET'){
-        if(isset($_GET["title"],$_GET["genre"],$_GET["author"],$_GET["release_date"],$_GET["lang"],$_GET["isbn"]) && count($_GET)==6){
-            print_r(CreateListedBooksElements($_GET["title"],$_GET["genre"],$_GET["author"],$_GET["release_date"],$_GET["lang"],$_GET["isbn"]));
+        if(isset($_GET["title"],$_GET["genre"],$_GET["author"],$_GET["release_date"],$_GET["lang"],$_GET["ISBN"]) && count($_GET)==6){
+            print_r(CreateListedBooksElements($_GET["title"],$_GET["genre"],$_GET["author"],$_GET["release_date"],$_GET["lang"],$_GET["ISBN"]));
     
         }
 

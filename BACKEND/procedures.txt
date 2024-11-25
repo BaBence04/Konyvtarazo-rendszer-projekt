@@ -55,6 +55,14 @@ CREATE PROCEDURE IF NOT EXISTS getGenres(
 END;//
 DELIMITER ;
 
+-- gets all genres
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS getLangs(
+) BEGIN
+	SELECT languages.lang FROM languages;
+END;//
+DELIMITER ;
+
 -- converts isbn to isbnid
 DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS getIdFromISBN(

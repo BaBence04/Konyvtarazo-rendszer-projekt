@@ -4,7 +4,8 @@
     function GetBooksFiltered($title, $genre, $author, $release_date, $lang, $isbn){
         require "databaseConnect.php";
 
-        $query = "CALL listBooksFiltered(?,?,?,?,?,?);";
+        //temporary fix page offset and limit not dealt with yet
+        $query = "CALL listBooksFiltered(?,?,?,?,?,?,0,10);";
 
         $stmt = $conn->prepare($query); // Prepare statement
         $stmt->bind_param("ssssss", $title, $genre, $author, $release_date, $lang, $isbn); // Bind parameter to SQL query
@@ -17,6 +18,18 @@
         require "databaseConnect.php";
 
         $query = "CALL getGenres();";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        return $results->fetch_all(MYSQLI_ASSOC);
+
+    }
+
+    function GetLangs(){
+        require "databaseConnect.php";
+
+        $query = "CALL getLangs();";
 
         $stmt = $conn->prepare($query); // Prepare statement
         $stmt->execute(); // Execute the SQL query

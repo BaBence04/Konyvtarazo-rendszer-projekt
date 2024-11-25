@@ -34,7 +34,7 @@ INSERT INTO inventory (ISBN_id, available) VALUES
 (1, TRUE),
 (2, FALSE);
 
-INSERT INTO users (surname, first_name, username, birth_date, membership_end_date, email, phone_number, password, birh_place, address, mother_maiden_name, active) VALUES
+INSERT INTO users (surname, first_name, username, birth_date, membership_end_date, email, phone_number, password, birth_place, address, mother_maiden_name, active) VALUES
 ('Kovács', 'János', '7584937648', '1985-03-15', '2025-03-15', 'janos.kovacs@example.com', '06123456789', 'password', 'Budapest', '123 Main St', 'Nagy Erzsébet', TRUE),
 ('Szabó', 'Anna', '6453957465', '1990-10-22', '2025-10-22', 'anna.szabo@example.com', '06789123456', 'password', 'Debrecen', '456 High St', 'Kiss Júlia', TRUE);
 
@@ -42,13 +42,13 @@ INSERT INTO reservation (ISBN_id, user_id) VALUES
 (1, 1),
 (2, 2);
 
-INSERT INTO employees (empl_namme, password) VALUES
+INSERT INTO employees (empl_name, password) VALUES
 ('Tóth Péter', 'password'),
 ('Nagy László', 'password');
 
-INSERT INTO borrowings (book_id, user_id, empl_e, start_date, end_date) VALUES
+INSERT INTO borrowings (book_id, user_id, empl_e, start_date, end_date, returned) VALUES
 (1, 1, 1, '2024-01-01', '2024-01-15', 1),
-(2, 2, 2, '2024-02-01', '2024-02-15'), 1;
+(2, 2, 2, '2024-02-01', '2024-02-15', 1);
 
 INSERT INTO booking (book_id, user_id, end_date) VALUES
 (1, 1, '2024-03-01'),
