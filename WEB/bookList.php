@@ -12,7 +12,7 @@
 <body>
     <h1>Összes könyvünk</h1>
     <?php
-        echo CreateGenreFilter();
+        echo CreateFilter();
     ?>
     
     <?php
@@ -42,14 +42,57 @@
             $lang = $_GET['lang'];
         }
  
-        if(isset($_GET['isbn'])){
-            $isbn = $_GET['isbn'];
+        if(isset($_GET['ISBN'])){
+            $isbn = $_GET['ISBN'];
         }
-        echo CreateListedBooksElements("", "", "", "","", "");
+
     ?>
+    <div id="test"><?php
+    echo CreateListedBooksElements($title, $genre, $author, $release_date, $lang, $isbn);?>
+    </div>
+        
     <script src="jquery.js"></script>
     <script>
-        
+       function applyFilters(){
+            $.ajax({
+            url: "../BACKEND/api.php",
+            type: "get", //send it through get method
+            data: { 
+                title: $("#title")[0].value, 
+                genre: $("#genre-select")[0].value, 
+                author: $("#author")[0].value,
+                release_date: $("#date")[0].value, 
+                lang: $("#lang-select")[0].value, 
+                ISBN: $("#ISBN")[0].value
+            },
+            success: function(response)  {
+                $("#test")[0].innerHTML = response; 
+                var extra = "?";
+                if($("#title")[0].value!=""){
+                    extra+= "title="+$("#title")[0].value+"&";
+                }
+                if($("#genre-select")[0].value!=""){
+                    extra+= "genre="+$("#genre-select")[0].value+"&";
+                }
+                if($("#author")[0].value!=""){
+                    extra+= "author="+$("#author")[0].value+"&";
+                }
+                if($("#date")[0].value!=""){
+                    extra+= "release_date="+$("#date")[0].value+"&";
+                }
+                if($("#lang-select")[0].value!=""){
+                    extra+= "lang="+$("#lang-select")[0].value+"&";
+                }
+                if($("#ISBN")[0].value!=""){
+                    extra+= "ISBN="+$("#ISBN")[0].value+"&";
+                }
+                if(extra.length>1){
+                    extra = extra.slice(0, -1);
+                }
+                window.history.pushState({},"",extra);
+            }
+            });
+       } 
     </script>
 </body>
 </html>
