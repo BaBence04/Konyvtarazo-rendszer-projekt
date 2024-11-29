@@ -2,7 +2,7 @@
     require_once "databaseFunctions.php";
     function CreateBookElement($data):string{
         $result = "
-            <div class='grid-item' data-isbn='".$data["ISBN_id"]."'>
+            <div class='grid-item' onclick=window.location='bookDetailed.php?ISBN=".$data['ISBN']."'; data-isbn='".$data["ISBN_id"]."'>
                 <img src='".$data["picture_base64"]."' alt='".$data["title"]." könyv borítóképe'>
                 <div class='book-title'>".$data["title"]."</div>
                 <div class='book-author'>".str_replace(",",", ",$data["authors"])."</div>
@@ -96,6 +96,45 @@
         </div>
         <input type="button" onclick="applyFilters()" value="Szűrés">
         </div>';
+        return $resultHTML;
+    }
+    
+    function createAccountDetails($userid):string{
+        //not finished
+        $data = GetUser($userid);
+        $resultHTML = '<div class="account-details">
+            <h2>Fiók adatai</h2>
+            <div class="account-info">
+                <label>Név:</label>
+                <p>'.$data['surname'].' '.$data['first_name'].'</p>
+
+                <label>Felhasználónév:</label>
+                <p>'.$data['username'].'<p>
+                
+                <label>Születési hely:</label>
+                <p>'.$data['birth_place'].'<p>
+
+                <label>Születési dátum:</label>
+                <p>'.$data['birth_date'].'<p>
+                
+                <label>Lakhely:</label>
+                <p>'.$data['address'].'<p>
+                
+                <label>Email:</label>
+                <p>'.$data['email'].'</p>
+
+                <label>Telefonszám:</label>
+                <p>'.$data['phone_number'].'</p>
+
+                <label>Telefonszám:</label>
+                <p>'.$data['phone_number'].'</p>
+
+                <label>Tagság érvényessége:</label>
+                <p>2024. december 31.</p>
+            </div>
+        </div>';
+
+
         return $resultHTML;
     }
 

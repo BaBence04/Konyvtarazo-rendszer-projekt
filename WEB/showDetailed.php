@@ -29,20 +29,25 @@
                 <button class="wishlist-button">Kívánságlistához adás</button>
 
                 <?php
+                    session_start();
                     //if te user is logged in
                     if(isset($_SESSION["user_id"])){
                         //returns "reservation" | "booking"
                         $availability_data = CheckBookAvailability(GetIsbnIdByIsbn($_GET["ISBN"]),$_SESSION["user_id"]);
-                        if($availability_data["available"] == "true"){
-                            if($availability_data["status"] == "reservation"){
-                                echo `<button class="reserve-button">Előjegyzés</button>`;        
-
-                            }else{
-                                echo `<button class="reserve-button">Foglalás</button>`;        
-                            }
-
-
+                        //EZEKRE A GOMBOKRA KELL EGY DISABLED STÍLUS
+                        $buttonHtml = '<button class="reserve-button" id="reserve-button" onclick="reserveOrBook();"';
+                        if($availability_data["available"] != "true"){
+                            $buttonHtml .= ' disabled';
+               
                         }
+                        $buttonHtml .= '>';
+                        if($availability_data["status"] == "reservation"){
+                            $buttonHtml .= "Előjegyzés";
+                        }else{
+                            $buttonHtml .= "Foglalás";
+                        }
+                        $buttonHtml .= "</button>";
+                        echo $buttonHtml;
                     }
 
                 ?>

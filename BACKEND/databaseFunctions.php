@@ -105,7 +105,7 @@
         $stmt->bind_param("ii", $isbn_id,$user_id); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
-        return $results->fetch_all(MYSQLI_ASSOC);
+        return $results->fetch_all(MYSQLI_ASSOC)[0];
         //we may wanto do something with it though not only return "reservation" or "booking"
     }
 
@@ -130,7 +130,7 @@
     
     }
 
-    function AddReservationOrBooking($isbn_id, $user_id) : string {
+    function AddReservationOrBooking($isbn_id, $user_id):string {
         require "databaseConnect.php";
 
         $query = "CALL addReservationOrBooking(?,?);";
@@ -139,10 +139,10 @@
         $stmt->bind_param("ii", $isbn_id,$user_id); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
-        return $results->fetch_all(MYSQLI_ASSOC);
+        return $results->fetch_all(MYSQLI_ASSOC)[0]['status'];
     }
 
-    function GetPassword($username) : array {
+    function GetPassword($username) : string {
         require "databaseConnect.php";
 
         $query = "CALL sendPassword(?);";
@@ -151,7 +151,29 @@
         $stmt->bind_param("s", $username); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
-        return $results->fetch_all(MYSQLI_ASSOC);
+        return $results->fetch_all(MYSQLI_ASSOC)[0]['result'];
+    }
+    function GetUserId($username) : string {
+        require "databaseConnect.php";
+
+        $query = "CALL getUserId(?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("s", $username); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        return $results->fetch_all(MYSQLI_ASSOC)[0]['user_id'];
+    }
+    function GetUser($user_id) : array {
+        require "databaseConnect.php";
+
+        $query = "CALL getUser(?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("", $user_id); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        return $results->fetch_all(MYSQLI_ASSOC)[0];
     }
 
     function ExtendReturnDate($book_id, $user_id){

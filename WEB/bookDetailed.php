@@ -45,6 +45,27 @@
     
     </div>
 </div>
-
+<script src="jquery.js"></script>
+<script>
+    function reserveOrBook(){
+        if(<?=isset($_SESSION['user_id'])?>){
+           $.ajax({
+            url: "../BACKEND/api.php",
+            type: "POST", //send it through get method
+            data: { 
+                user_id: <?=$_SESSION['user_id']?>, 
+                isbn_id: <?=$book_data['ISBN_id']?> 
+            },
+            success: function(response)  {
+                //Ezt is szép fancyre meg kell csinálni
+               if(response != '<?=$availability_data["status"]?>'){
+                    alert("közben megváltozott");
+               }
+               document.getElementById("reserve-button").disabled = true;
+            }
+            }); 
+        }
+    }
+</script>
 </body>
 </html>

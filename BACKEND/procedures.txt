@@ -119,7 +119,29 @@ DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS sendPassword(
   IN username VARCHAR(255)
 ) BEGIN
-SELECT users.password FROM users WHERE users.username = username AND users.active;
+IF((SELECT COUNT(users.user_id) FROM users WHERE users.username = username)=0) THEN
+  SELECT 'not found' AS result;
+ELSE
+  SELECT (CASE WHEN (SELECT users.active FROM users WHERE users.username = username) THEN (SELECT users.password FROM users WHERE users.username = username AND users.active) ELSE 'inactive user' END) AS 'result';
+END IF;
+END;//
+DELIMITER ;
+
+-- for login get userid so we can set session
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS getUserId(
+  IN username VARCHAR(255)
+) BEGIN
+SELECT users.user_id FROM users WHERE users.username = username;
+END;//
+DELIMITER ;
+
+-- gets user data
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS getUser(
+  IN userid INT
+) BEGIN
+SELECT users.surname, users.first_name, users.username, users.birth_date, users.birth_place, users.email, users.phone_number, users.address, users.mother_maiden_name, users.membership_end_date FROM users WHERE users.user_id = userid;
 END;//
 DELIMITER ;
 
@@ -130,25 +152,10 @@ CREATE PROCEDURE IF NOT EXISTS checkAvailability(
  userid INT
 ) BEGIN
 DECLARE status VARCHAR(11) DEFAULT "";
-SET status = (SELECT CASE WHEN
-    COUNT(borrowings.book_id) +(
-    SELECT
-        COUNT(booking.book_id)
-    FROM
-        booking
-    INNER JOIN inventory ON booking.book_id = inventory.book_id
-    WHERE
-        inventory.ISBN_id = ISBN
-) >= COUNT(inventory.book_id) THEN 'reservation' ELSE 'booking'
-END
-FROM
-    borrowings
-RIGHT JOIN inventory ON borrowings.book_id = inventory.book_id
-WHERE
-    inventory.ISBN_id = ISBN AND inventory.available AND borrowings.returned = 0);
+SET status = (SELECT CASE WHEN (SELECT COUNT(borrowings.book_id) FROM borrowings INNER JOIN inventory ON borrowings.book_id = inventory.book_id WHERE inventory.ISBN_id = ISBN AND inventory.available AND borrowings.returned = 1) +( SELECT COUNT(booking.book_id) FROM booking INNER JOIN inventory ON booking.book_id = inventory.book_id WHERE inventory.ISBN_id = ISBN ) >= (SELECT COUNT(inventory.book_id) FROM inventory WHERE inventory.ISBN_id = ISBN) THEN 'reservation' ELSE 'booking' END);
 SELECT status, IF(status='reservation', CASE WHEN (SELECT COUNT(reservation.ISBN_id) FROM reservation INNER JOIN users ON reservation.user_id = users.user_id WHERE users.user_id = userid)<=3 THEN 'true' ELSE 'false' END, CASE WHEN (SELECT COUNT(booking.book_id) FROM booking INNER JOIN users ON booking.user_id = users.user_id WHERE users.user_id = userid)<=3 THEN 'true' ELSE 'false' END) AS `available`;
 END;//
-DELIMITER ;
+DELIMITER;
 
 
 -- reserves or books a book depending on avaliablity
@@ -158,14 +165,18 @@ CREATE PROCEDURE IF NOT EXISTS addReservationOrBooking(
   userid INT
 ) BEGIN
 DECLARE _selected VARCHAR(20) DEFAULT '';
-SET _selected = (SELECT CASE WHEN COUNT(borrowings.book_id) + (SELECT COUNT(booking.book_id) FROM booking INNER JOIN inventory ON booking.book_id = inventory.book_id WHERE inventory.ISBN_id = 2 ) >= (SELECT COUNT(inventory.book_id) FROM inventory WHERE inventory.ISBN_id = 2 AND inventory.available) THEN 'reservation' ELSE 'booking' END FROM borrowings INNER JOIN inventory ON borrowings.book_id = inventory.book_id WHERE inventory.ISBN_id = 2 AND inventory.available AND borrowings.returned = 0);
+SET _selected = (SELECT CASE WHEN (SELECT COUNT(borrowings.book_id) FROM borrowings INNER JOIN inventory ON borrowings.book_id = inventory.book_id WHERE inventory.ISBN_id = ISBN AND inventory.available AND borrowings.returned = 1) +( SELECT COUNT(booking.book_id) FROM booking INNER JOIN inventory ON booking.book_id = inventory.book_id WHERE inventory.ISBN_id = ISBN ) >= (SELECT COUNT(inventory.book_id) FROM inventory WHERE inventory.ISBN_id = ISBN) THEN 'reservation' ELSE 'booking' END);
 IF (_selected = 'booking') THEN 
-	INSERT INTO booking(book_id, user_id, end_date) VALUES((SELECT inventory.book_id FROM inventory INNER JOIN borrowings ON borrowings.book_id = inventory.book_id WHERE borrowings.book_id NOT IN (SELECT borrowings.book_id FROM borrowings WHERE borrowings.book_id IN (SELECT inventory.book_id FROM inventory WHERE inventory.ISBN_id = ISBN) AND borrowings.returned = 0) AND inventory.ISBN_id = ISBN AND inventory.available LIMIT 1), userid, CURRENT_DATE());
+  DECLARE _bookid INT DEFAULT '';
+  SET _bookid = (SELECT inventory.book_id FROM inventory LEFT JOIN borrowings ON borrowings.book_id = inventory.book_id WHERE inventory.book_id NOT IN (SELECT borrowings.book_id FROM borrowings WHERE borrowings.returned = 1) AND inventory.book_id NOT IN (SELECT booking.book_id FROM booking) AND inventory.ISBN_id = ISBN AND inventory.available LIMIT 1);
+	INSERT INTO booking(book_id, user_id, end_date) VALUES(_bookid, userid, CURRENT_DATE());
 ELSEIF (_selected = 'reservation') THEN 
   INSERT INTO reservation(ISBN_id, user_id) VALUES(ISBN, userid);
 END IF;
+SELECT _selected AS status;
 END;//
 DELIMITER ;
+
 
 -- extends the return date
 DELIMITER //

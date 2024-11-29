@@ -18,6 +18,25 @@
                 print "invalid";
             }
         }
+        if(isset($_POST['user_id'], $_POST['isbn_id'])){
+            echo AddReservationOrBooking($_POST['isbn_id'], $_POST['user_id']);
+        }
+        //PASSWORD CHECK IS NOT FINAL IT IS NOT HASHING
+        if(isset($_POST['uname'], $_POST['pw'])){
+            $gotPw = GetPassword($_POST['uname']);
+            if($gotPw == "not found" || $gotPw == "inactive user"){
+                echo $gotPw;
+            }else{
+                if($gotPw == $_POST['pw']){
+                    session_start();
+                    $_SESSION['user_id'] = GetUserId($_POST['uname']);
+                    echo "success";
+                }else{
+                    echo "incorrect";
+                }
+            }
+
+        }
     }
 
 
