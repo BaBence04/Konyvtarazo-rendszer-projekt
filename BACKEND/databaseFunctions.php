@@ -170,7 +170,7 @@
         $query = "CALL getUser(?);";
 
         $stmt = $conn->prepare($query); // Prepare statement
-        $stmt->bind_param("", $user_id); // Bind parameter to SQL query
+        $stmt->bind_param("i", $user_id); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
         return $results->fetch_all(MYSQLI_ASSOC)[0];
