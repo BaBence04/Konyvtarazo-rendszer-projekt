@@ -106,13 +106,31 @@ CREATE PROCEDURE IF NOT EXISTS getBorrowedBooks(
   IN ID INT
 ) BEGIN
 SELECT 
-  inventory.book_id, book.ISBN_id, book.title, book.picture_base64, borrowings.end_date, borrowings.start_date, ( SELECT CASE WHEN COUNT(reservation.ISBN_id) > 0 THEN 'True' ELSE 'False' END FROM reservation WHERE reservation.ISBN_id = inventory.ISBN_id ) AS `meghosszabbithato`
+  inventory.book_id, GROUP_CONCAT(DISTINCT authors.author) AS `authors`,  book.ISBN_id, book.title, book.picture_base64, borrowings.end_date, borrowings.start_date, ( SELECT CASE WHEN COUNT(reservation.ISBN_id) > 0 THEN 'True' ELSE 'False' END FROM reservation WHERE reservation.ISBN_id = inventory.ISBN_id ) AS `meghosszabbithato`
 FROM 
-  users INNER JOIN( borrowings INNER JOIN( inventory INNER JOIN book ON book.ISBN_id = inventory.ISBN_id ) ON inventory.book_id = borrowings.book_id ) ON users.user_id = borrowings.user_id 
+  users INNER JOIN( borrowings INNER JOIN( ((inventory INNER JOIN book ON book.ISBN_id = inventory.ISBN_id) INNER JOIN books_authors_conn on books_authors_conn.ISBN_id = book.ISBN_id) INNER JOIN authors on authors.author_id = books_authors_conn.author_id ) ON inventory.book_id = borrowings.book_id ) ON users.user_id = borrowings.user_id 
 WHERE 
-  users.user_id = ID AND borrowings.returned = 0;
+  users.user_id = ID AND borrowings.returned = 0 
+GROUP BY book.ISBN_id;
 END;//
 DELIMITER ;
+
+-- returns books that were previously borrowed by the given user
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS getPreviouslyBorrowedBooks(
+  IN ID INT
+) BEGIN
+SELECT 
+  inventory.book_id, GROUP_CONCAT(DISTINCT authors.author) AS `authors`,  book.ISBN_id, book.title, book.picture_base64, borrowings.end_date, borrowings.start_date, ( SELECT CASE WHEN COUNT(reservation.ISBN_id) > 0 THEN 'True' ELSE 'False' END FROM reservation WHERE reservation.ISBN_id = inventory.ISBN_id ) AS `meghosszabbithato`
+FROM 
+  users INNER JOIN( borrowings INNER JOIN( ((inventory INNER JOIN book ON book.ISBN_id = inventory.ISBN_id) INNER JOIN books_authors_conn on books_authors_conn.ISBN_id = book.ISBN_id) INNER JOIN authors on authors.author_id = books_authors_conn.author_id ) ON inventory.book_id = borrowings.book_id ) ON users.user_id = borrowings.user_id 
+WHERE 
+  users.user_id = ID AND borrowings.returned = 1
+GROUP BY book.ISBN_id;
+END;//
+DELIMITER ;
+
+
 
 -- checks if username is valid and sends password
 DELIMITER //
@@ -336,7 +354,7 @@ IF (bookID IN (SELECT booking.book_id FROM booking) AND (userID NOT IN (SELECT b
 SELECT 'Már valaki lefoglalta ezt a könyvet';
 ELSE
 -- add an active borrowing
-INSERT INTO borrowings(borrowings.book_id, borrowings.user_id, borrowings.empl_e, borrowings.start_date, borrowings.end_date) VALUES(bookID, userID, emplID, CURRENT_DATE(), (SELECT CURRENT_DATE()+ INTERVAL (SELECT system_settings.borrowing_time FROM system_settings) DAY));
+INSERT INTO borrowings(borrowings.book_id, borrowings.user_id, borrowings.empl_e, borrowings.start_date, borrowings.end_date, borrowings.returned) VALUES(bookID, userID, emplID, CURRENT_DATE(), (SELECT CURRENT_DATE()+ INTERVAL (SELECT system_settings.borrowing_time FROM system_settings) DAY), 0);
 IF (bookID IN (SELECT booking.book_id FROM booking) AND (userID IN (SELECT booking.user_id FROM booking WHERE booking.book_id = bookID))) THEN 
 DELETE FROM booking WHERE booking.book_id = bookID;
 END IF;

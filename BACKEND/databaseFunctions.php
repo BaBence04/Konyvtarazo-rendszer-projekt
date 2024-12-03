@@ -85,7 +85,20 @@
     function GetBorrowedBooks($user_id){
         require "databaseConnect.php";
 
-        $query = "CALL getBorrowedBoos(?);";
+        $query = "CALL getBorrowedBooks(?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("i", $user_id); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        return $results->fetch_all(MYSQLI_ASSOC);
+
+    }
+
+    function GetPreviouslyBorrowedBooks($user_id){
+        require "databaseConnect.php";
+
+        $query = "CALL getPreviouslyBorrowedBooks(?);";
 
         $stmt = $conn->prepare($query); // Prepare statement
         $stmt->bind_param("i", $user_id); // Bind parameter to SQL query

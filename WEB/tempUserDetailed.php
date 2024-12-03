@@ -132,33 +132,59 @@
         </div>
     </div>
 
-    IDÁIG VAN KÉSZ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    
     <!-- Jelenlegi kivett könyvek -->
     <div class="book-section">
         <?php
+            // var_dump($_SESSION['user_id']);
             $borrowedBooks = GetBorrowedBooks($_SESSION["user_id"]);
-            
-        ?>
-        <h3>Jelenlegi kivett könyvek</h3>
-        <ul class="book-list">
-            <li>
-                <span class="book-title">A könyv címe 1</span> <br>
-                <span class="book-author">Szerző neve</span> <br>
-                <span class="return-date">Visszavételi dátum: 2024. október 25.</span>
-            </li>
-            <li>
-                <span class="book-title">A könyv címe 2</span> <br>
-                <span class="book-author">Szerző neve</span> <br>
-                <span class="return-date">Visszavételi dátum: 2024. november 5.</span>
-            </li>
-        </ul>
-    </div>
 
+            if(count($borrowedBooks)>0){
+                echo "<h3>Jelenlegi kivett könyvek</h3>";
+
+                echo '<ul class="book-list">';
+                foreach ($borrowedBooks as $key => $borrowedBookData) {
+                    echo '
+                    <li>';
+                        echo '<span class="book-title">'.$borrowedBookData["title"].'</span> <br>';
+                        echo '<span class="book-author">'.str_replace(",", ", ",$borrowedBookData["authors"]).'</span> <br>';
+
+                        echo '<span class="return-date'.(date("Y-m-d")>$borrowedBookData["end_date"]?"-past":"").'">Határidő: '.$borrowedBookData["end_date"].'</span>
+                    </li>';
+                }
+                echo "</ul>";
+            }
+        ?>
+        
+        
+    </div>
+    Meg kell javítani, a readme-ben le van írva a hiba!!!!!!
     <!-- Korábban kivett könyvek -->
     <div class="book-section">
-        <h3>Korábban kivett könyvek</h3>
+
+        
         <ul class="book-list">
-            <li>
+            <?php
+                $previouslyBorrowedBooks = GetPreviouslyBorrowedBooks($_SESSION["user_id"]);    
+                if(count($previouslyBorrowedBooks)>0){
+                    echo "<h3>Korábban kivett könyvek</h3>";
+        
+                    echo '<ul class="book-list">';
+                    foreach ($previouslyBorrowedBooks as $key => $previouslyBorrowedBookData) {
+                        echo '
+                        <li>';
+                            echo '<span class="book-title">'.$previouslyBorrowedBookData["title"].'</span> <br>';
+                            echo '<span class="book-author">'.str_replace(",", ", ",$previouslyBorrowedBookData["authors"]).'</span> <br>';
+        
+                            echo '<span class="return-date">Határidő: '.$previouslyBorrowedBookData["end_date"].'</span>
+                        </li>';
+                    }
+                    echo "</ul>";
+
+                }
+
+            ?>
+            <!-- <li>
                 <span class="book-title">A könyv címe 3</span> <br>
                 <span class="book-author">Szerző neve</span> <br>
                 <span class="return-date-past">Visszavéve: 2024. szeptember 15.</span>
@@ -169,7 +195,7 @@
                 <span class="book-author">Szerző neve</span> <br>
                 <span class="return-date-past">Visszavéve: 2024. augusztus 30.</span>
                 <span>Viszavitt</span>
-            </li>
+            </li> -->
         </ul>
     </div>
 </div>
