@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="./style.css">
+<script defer src="main.js"></script>
 <?php
     require_once "databaseFunctions.php";
     function CreateBookElement($data):string{

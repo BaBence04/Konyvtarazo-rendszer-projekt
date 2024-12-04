@@ -971,6 +971,10 @@ a {
   background-color: var(--body-color);
 }
 
+#filters{
+  display: none;
+}
+
 .filter-label {
   margin-right: 20px;
   font-size: var(--normal-font-size);

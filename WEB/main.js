@@ -69,7 +69,14 @@ togglePassword.addEventListener("click", function () {
     }
 });
 
-
+function hideAndShowDiv(){
+  var filtersDiv = document.getElementById("filters");
+  if (filtersDiv.style.display === "none" || filtersDiv.style.display === "") {
+    filtersDiv.style.display = "block";
+  } else {
+    filtersDiv.style.display = "none";
+  }
+}
 
 
 /* function showGenres() {
