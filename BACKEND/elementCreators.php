@@ -99,43 +99,6 @@
         return $resultHTML;
     }
     
-    function createAccountDetails($userid):string{
-        //not finished
-        $data = GetUser($userid);
-        $resultHTML = '<div class="account-details">
-            <h2>Fiók adatai</h2>
-            <div class="account-info">
-                <label>Név:</label>
-                <p>'.$data['surname'].' '.$data['first_name'].'</p>
-
-                <label>Felhasználónév:</label>
-                <p>'.$data['username'].'<p>
-                
-                <label>Születési hely:</label>
-                <p>'.$data['birth_place'].'<p>
-
-                <label>Születési dátum:</label>
-                <p>'.$data['birth_date'].'<p>
-                
-                <label>Lakhely:</label>
-                <p>'.$data['address'].'<p>
-                
-                <label>Email:</label>
-                <p>'.$data['email'].'</p>
-
-                <label>Telefonszám:</label>
-                <p>'.$data['phone_number'].'</p>
-
-                <label>Telefonszám:</label>
-                <p>'.$data['phone_number'].'</p>
-
-                <label>Tagság érvényessége:</label>
-                <p>2024. december 31.</p>
-            </div>
-        </div>';
-
-
-        return $resultHTML;
-    }
+    
 
 ?>
