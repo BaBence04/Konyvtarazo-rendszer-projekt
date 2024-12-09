@@ -340,5 +340,23 @@
         return $results->fetch_all(MYSQLI_ASSOC);
 
     }
+    /**
+     * Return true or false depending if the end date of borrowing the given book is extendable.
+     *
+     * @param int $user_id The id of the user who want to extend the book
+     * @param int $book_id The id of the book which would be extended
+     * @return bool Return true or false depending if the end date of borrowing the given book is extendable.
+     */
+    function IsItExtendable($user_id, $book_id):bool{
+        require "databaseConnect.php";
+
+        $query = "CALL extendable(?, ?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("ii", $user_id, $book_id); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        return $results->fetch_all(MYSQLI_ASSOC)[0] == "true";
+    }
 
 ?>
