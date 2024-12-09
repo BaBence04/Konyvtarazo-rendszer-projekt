@@ -204,7 +204,17 @@ CREATE PROCEDURE IF NOT EXISTS extendReturnDate(
   bookid INT,
   userid INT
 ) BEGIN
-UPDATE borrowings SET borrowings.end_date = DATE_ADD(borrowings.end_date, INTERVAL (SELECT system_settings.lengthening_time FROM system_settings) WEEK) WHERE borrowings.user_id = userid AND borrowings.book_id = bookid AND borrowings.returned = 0;
+UPDATE borrowings SET borrowings.end_date = DATE_ADD(borrowings.end_date, INTERVAL (SELECT system_settings.lengthening_time FROM system_settings) DAY) WHERE borrowings.user_id = userid AND borrowings.book_id = bookid AND borrowings.returned = 0;
+END;//
+DELIMITER ;
+
+-- check if return date can be extended
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS extendable(
+  bookid INT,
+  userid INT
+) BEGIN
+IF(((SELECT DATEDIFF(borrowings.end_date, borrowings.start_date) FROM borrowings WHERE borrowings.user_id = userid AND borrowings.book_id = bookid AND borrowings.returned = 0)<(SELECT system_settings.borrowing_time+system_settings.lengthening_time*system_settings.max_lengthenings FROM system_settings)) AND ((SELECT inventory.ISBN_id FROM inventory WHERE inventory.book_id = (SELECT borrowings.book_id FROM borrowings WHERE borrowings.user_id = userid AND borrowings.book_id = bookid AND borrowings.returned = 0)) NOT IN (SELECT reservation.ISBN_id FROM reservations))) THEN SELECT 'true'; ELSE SELECT 'false'; END IF;
 END;//
 DELIMITER ;
 
