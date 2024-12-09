@@ -10,6 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./jquery.js"></script>
     <title>Felhasználói Fiók</title>
     <style>
         body {
@@ -93,6 +94,10 @@
             color: red;
         }
 
+        .book-section input[type="button"]{
+            float: right
+        }
+
     </style>
 </head>
 <body>
@@ -148,9 +153,13 @@
                         echo '<span class="book-title">'.$borrowedBookData["title"].'</span> <br>';
                         echo '<span class="book-author">'.str_replace(",", ", ",$borrowedBookData["authors"]).'</span> <br>';
 
-                        echo '<span class="return-date'.(date("Y-m-d")>$borrowedBookData["end_date"]?"-past":"").'">Határidő: '.$borrowedBookData["end_date"].'</span>
-                    </li>';
-                    var_dump(IsItExtendable($_SESSION["user_id"],$borrowedBookData["book_id"]))  ;
+                        echo '<span class="return-date'.(date("Y-m-d")>$borrowedBookData["end_date"]?"-past":"").'">Határidő: '.$borrowedBookData["end_date"].'</span>';
+                        
+                        if(IsItExtendable($_SESSION["user_id"], $borrowedBookData["book_id"])){
+                            echo '<input data-book-id="'.$borrowedBookData["book_id"].'" type="button" value="Meghosszabbítás" onclick="Meghosszabbitas(this)">';
+                        }
+                    echo '</li>';
+
                 }
                 echo "</ul>";
             }
@@ -199,6 +208,32 @@
         </ul>
     </div>
 </div>
+
+<script>
+    function Meghosszabbitas(element){
+        var action = "extend";
+        var bookId = element.getAttribute("data-book-id");
+        var userId = <?=$_SESSION["user_id"]?>;
+
+        var params = {
+            book_id: bookId,
+            user_id: userId,
+            action: action
+        }
+
+        $.post("../BACKEND/api.php", params,(data, status)=>{
+            // console.log((data));
+            if(data.message == "Sikeres hosszabbítás!"){
+                location.reload();
+            }else{
+                alert(data.message);
+            }
+        },"json").fail((data, status)=>{
+            console.log(data);
+            console.log(status);
+        })
+    }
+</script>
 
 </body>
 </html>

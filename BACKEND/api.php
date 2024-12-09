@@ -17,12 +17,13 @@
             }else{
                 print "invalid";
             }
-        }
-        if(isset($_POST['user_id'], $_POST['isbn_id'])){
+
+        }else if(isset($_POST['user_id'], $_POST['isbn_id']) && count($_POST)==2){
             echo AddReservationOrBooking($_POST['isbn_id'], $_POST['user_id']);
-        }
-        //PASSWORD CHECK IS NOT FINAL IT IS NOT HASHING
-        if(isset($_POST['uname'], $_POST['pw'])){
+
+
+            //PASSWORD CHECK IS NOT FINAL IT IS NOT HASHING
+        }else if(isset($_POST['uname'], $_POST['pw']) && count($_POST)==2){
             $gotPw = GetPassword($_POST['uname']);
             if($gotPw == "not found" || $gotPw == "inactive user"){
                 echo $gotPw;
@@ -36,6 +37,20 @@
                 }
             }
 
+        }else if(count($_POST)==3 && isset($_POST["user_id"], $_POST["book_id"], $_POST["action"]) && $_POST["action"] == "extend" ){
+            $result = [];
+            
+            if(IsItExtendable($_POST["user_id"], $_POST["book_id"])){
+                ExtendReturnDate($_POST["book_id"], $_POST["user_id"]);
+                $result["message"] = "Sikeres hosszabbítás!";
+            }else{
+                $result["message"] = "Nem lehet hosszabítani! Feltehetőleg valaki előjegyezte a könyvet mióta megnyitotta az oldalt!";
+            }
+
+            echo json_encode($result);
+            
+        }else{
+            throw new Exception("Nincs ilyen");
         }
     }
 
