@@ -1,8 +1,8 @@
 /* navbar script */
 
-const navMenu = document.getElementById("nav-menu"),
-  navToggle = document.getElementById("nav-toggle"),
-  navClose = document.getElementById("nav-close");
+const navMenu = document.getElementById("nav-menu");
+var navToggle = document.getElementById("nav-toggle");
+var navClose = document.getElementById("nav-close");
 
 navToggle.addEventListener("click", () => {
   navMenu.classList.add("show-menu");
@@ -54,7 +54,8 @@ loginClose.addEventListener("click", () => {
 /* LOGIN SCRIPT */
 
 const passwordField = document.getElementById("password");
-const togglePassword = document.querySelector(".password-toggle-icon i");
+// const togglePassword = document.querySelector(".password-toggle-icon i");
+const togglePassword = document.querySelector("#eyeicon");
 
 togglePassword.addEventListener("click", function () {
     if (passwordField.type === "password") {
