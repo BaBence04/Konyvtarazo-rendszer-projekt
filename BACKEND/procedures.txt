@@ -214,7 +214,7 @@ CREATE PROCEDURE IF NOT EXISTS extendable(
   bookid INT,
   userid INT
 ) BEGIN
-IF(((SELECT DATEDIFF(borrowings.end_date, borrowings.start_date) FROM borrowings WHERE borrowings.user_id = userid AND borrowings.book_id = bookid AND borrowings.returned = 0)<(SELECT system_settings.borrowing_time+system_settings.lengthening_time*system_settings.max_lengthenings FROM system_settings)) AND ((SELECT inventory.ISBN_id FROM inventory WHERE inventory.book_id = (SELECT borrowings.book_id FROM borrowings WHERE borrowings.user_id = userid AND borrowings.book_id = bookid AND borrowings.returned = 0)) NOT IN (SELECT reservation.ISBN_id FROM reservations))) THEN SELECT 'true'; ELSE SELECT 'false'; END IF;
+IF(((SELECT DATEDIFF(borrowings.end_date, borrowings.start_date) FROM borrowings WHERE borrowings.user_id = userid AND borrowings.book_id = bookid AND borrowings.returned = 0)<(SELECT system_settings.borrowing_time+system_settings.lengthening_time*system_settings.max_lengthenings FROM system_settings)) AND ((SELECT inventory.ISBN_id FROM inventory WHERE inventory.book_id = (SELECT borrowings.book_id FROM borrowings WHERE borrowings.user_id = userid AND borrowings.book_id = bookid AND borrowings.returned = 0)) NOT IN (SELECT reservation.ISBN_id FROM reservation))) THEN SELECT 'true'; ELSE SELECT 'false'; END IF;
 END;//
 DELIMITER ;
 
