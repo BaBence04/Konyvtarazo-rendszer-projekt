@@ -14,7 +14,7 @@
 
   <?php require "footer.html";?>
 
-<script src="main.js"></script>
+<script defer src="main.js"></script>
 
 
 
