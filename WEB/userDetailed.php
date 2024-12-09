@@ -150,6 +150,7 @@
 
                         echo '<span class="return-date'.(date("Y-m-d")>$borrowedBookData["end_date"]?"-past":"").'">Határidő: '.$borrowedBookData["end_date"].'</span>
                     </li>';
+                    var_dump(IsItExtendable($_SESSION["user_id"],$borrowedBookData["book_id"]))  ;
                 }
                 echo "</ul>";
             }
