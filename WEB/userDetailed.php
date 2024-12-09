@@ -106,16 +106,16 @@
             <p><?=$data['surname'].' '.$data['first_name']?></p>
 
             <label>Felhasználónév:</label>
-            <p><?=$data['username']?><p>
+            <p><?=$data['username']?></p>
 
             <label>Születési hely:</label>
-            <p><?=$data['birth_place']?><p>
+            <p><?=$data['birth_place']?></p>
 
             <label>Születési dátum:</label>
-            <p><?=$data['birth_date']?><p>
+            <p><?=$data['birth_date']?></p>
 
             <label>Lakhely:</label>
-            <p><?=$data['address']?><p>
+            <p><?=$data['address']?></p>
 
             <label>Email:</label>
             <p><?=$data['email']?></p>
@@ -133,10 +133,9 @@
     </div>
 
     
-    <!-- Jelenlegi kivett könyvek -->
+    <!-- Jelenleg kivett könyvek -->
     <div class="book-section">
         <?php
-            // var_dump($_SESSION['user_id']);
             $borrowedBooks = GetBorrowedBooks($_SESSION["user_id"]);
 
             if(count($borrowedBooks)>0){
@@ -158,7 +157,7 @@
         
         
     </div>
-    Meg kell javítani, a readme-ben le van írva a hiba!!!!!!
+    
     <!-- Korábban kivett könyvek -->
     <div class="book-section">
 
