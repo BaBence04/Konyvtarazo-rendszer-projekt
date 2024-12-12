@@ -154,6 +154,23 @@ SELECT users.user_id FROM users WHERE users.username = username;
 END;//
 DELIMITER ;
 
+-- update user details
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS updateUserDetails(
+  IN userID INT,
+  IN surname VARCHAR(255),
+  IN first_name VARCHAR(255),
+  IN birth_place VARCHAR(255),
+  IN birth_date DATE,
+  IN address VARCHAR(255),
+  IN email VARCHAR(255),
+  IN phone_num VARCHAR(255),
+  IN mmn VARCHAR(255)
+) BEGIN
+UPDATE users SET users.surname = surname, users.first_name = first_name, users.birth_place = birth_place, users.birth_date = birth_date, users.address = address, users.email = email, users.phone_number = phone_num, users.membership_end_date = mmn WHERE users.user_id = userID;
+END;//
+DELIMITER ;
+
 -- gets user data
 DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS getUser(
