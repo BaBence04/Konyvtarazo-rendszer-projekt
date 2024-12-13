@@ -54,20 +54,18 @@ loginClose.addEventListener("click", () => {
 /* LOGIN SCRIPT */
 
 const passwordField = document.getElementById("password");
-// const togglePassword = document.querySelector(".password-toggle-icon i");
-const togglePassword = document.querySelector("#eyeicon");
+const togglePassword = document.getElementById("#eyeicon");
 
 togglePassword.addEventListener("click", function () {
     if (passwordField.type === "password") {
-    passwordField.type = "text";
-    togglePassword.classList.remove("fa-eye");
-    togglePassword.classList.add("fa-eye-slash");
+        passwordField.type = "text";
+        togglePassword.src = "imgs/eye-line.png";
     } else {
-    passwordField.type = "password";
-    togglePassword.classList.remove("fa-eye-slash");
-    togglePassword.classList.add("fa-eye");
+        passwordField.type = "password";
+        togglePassword.src = "imgs/eye-off-line.png";
     }
 });
+
 
 function HideAndShowFilters(){
   const additionalFilters = document.getElementById("additional-filters");
