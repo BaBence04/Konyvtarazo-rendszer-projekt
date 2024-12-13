@@ -10,7 +10,7 @@
 
 	<?php require "navbar.html";?>
 
-  <?php require "bookList.html";?>
+  <?php require "bookList.php";?>
 
   <?php require "footer.html";?>
 

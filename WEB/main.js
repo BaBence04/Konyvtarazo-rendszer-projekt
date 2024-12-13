@@ -69,23 +69,14 @@ togglePassword.addEventListener("click", function () {
     }
 });
 
-function hideAndShowDiv(){
-  var filtersDiv = document.getElementById("filters");
-  if (filtersDiv.style.display === "none" || filtersDiv.style.display === "") {
-    filtersDiv.style.display = "block";
+function HideAndShowFilters(){
+  const additionalFilters = document.getElementById("additional-filters");
+
+  if (additionalFilters.style.display === "none" || additionalFilters.style.display === "") {
+    additionalFilters.style.display = "grid";
   } else {
-    filtersDiv.style.display = "none";
-  }
+    additionalFilters.style.display = "none";
 }
-
-
-/* function showGenres() {
-	var x = document.getElementById("choose_genres");
-	if (x.style.display === "none"  || x.style.display === "") {
-	  x.style.display = "block";
-	} else {
-	  x.style.display = "none";
-	}
-} */
+}
 
 

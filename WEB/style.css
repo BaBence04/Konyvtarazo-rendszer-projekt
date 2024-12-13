@@ -958,19 +958,6 @@ a {
   }
 }
 
-.genre-filter {
-  display: flex;
-  align-items: center;
-  margin: 20px 0;
-  padding: 10px;
-  background-color: var(--container-color);
-  border-radius: 5px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  margin: 0 auto;
-  background-color: var(--body-color);
-}
-
 #filters{
   display: none;
 }
@@ -1005,6 +992,76 @@ a {
 .genre-button.active {
   background-color: hsl(171, 85%, 20%);
   color: var(--whi-col);
+}
+
+#filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px; 
+  padding: 20px;
+  border-radius: 10px;
+  background-color: var(--body-color);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+#toggleFilters{
+  height: 2.2rem;
+  margin-top: auto;
+  border-radius: 5px;
+}
+
+#toggleFilters:hover{
+  cursor: pointer;
+  background-color: var(--second-color);
+}
+
+
+#additional-filters {
+  display: none;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  grid-column: span 2;
+}
+
+#filters label {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+#filters input[type="text"],
+#filters input[type="date"],
+#filters select {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+#filters input[type="button"] {
+  padding: 10px 20px;
+  font-size: 14px;
+  color: white;
+  background-color: #0073e6;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  grid-column: span 2;
+  margin-top: 10px;
+}
+#filters input[type="button"]:hover {
+  background-color: #005bb5;
+}
+.genre-filter,
+.lang-filter,
+.title-filter,
+.author-filter,
+.releaseDate-filter,
+.ISBN-filter {
+  display: flex;
+  flex-direction: column;
 }
 
 

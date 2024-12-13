@@ -3,7 +3,6 @@
 
     //DEV THING REMOVE WHEN PROD OR LOGIN DONE
     session_start();
-    print_r($_SESSION)
 ?>
 <!DOCTYPE html>
 <html lang="hu">
@@ -16,7 +15,6 @@
 </head>
 <body>
     <h1>Összes könyvünk</h1>
-    <button onclick="hideAndShowDiv()">Szűrők</button>
     <?php
         echo CreateFilter();
     ?>
