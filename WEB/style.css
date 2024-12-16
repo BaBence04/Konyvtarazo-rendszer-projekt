@@ -958,10 +958,10 @@ a {
   }
 }
 
-#filters{
+/* #filters{
   display: none;
 }
-
+ */
 .filter-label {
   margin-right: 20px;
   font-size: var(--normal-font-size);
@@ -1001,19 +1001,20 @@ a {
   padding: 20px;
   border-radius: 10px;
   background-color: var(--body-color);
-  max-width: 800px;
   margin: 0 auto;
+  max-width: 800px;
+  width: 60%;
 }
 
 #toggleFilters{
   height: 2.2rem;
   margin-top: auto;
   border-radius: 5px;
+  background-color: var(--second-color);
 }
 
 #toggleFilters:hover{
   cursor: pointer;
-  background-color: var(--second-color);
 }
 
 
@@ -1044,16 +1045,14 @@ a {
   padding: 10px 20px;
   font-size: 14px;
   color: white;
-  background-color: #0073e6;
+  background-color: var(--first-color);
   border: none;
   border-radius: 5px;
   cursor: pointer;
   grid-column: span 2;
   margin-top: 10px;
 }
-#filters input[type="button"]:hover {
-  background-color: #005bb5;
-}
+
 .genre-filter,
 .lang-filter,
 .title-filter,
@@ -1064,7 +1063,27 @@ a {
   flex-direction: column;
 }
 
+#title{
+  grid-column: span 2;
+}
 
+#searchButton{
+  width: 20%;
+  min-width: fit-content;
+}
 
+@media screen and (max-width: 840px) {
+  #toggleFilters{
+    grid-column: span 2;
+/*     flex-direction: column;
+    width: 100%; */
+  }
+
+  .title-filter{
+    grid-column: span 2;
+    flex-direction: column;
+    width: 100%;
+  }
+}
 
 

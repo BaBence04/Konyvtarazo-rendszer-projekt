@@ -71,7 +71,7 @@
         $resultHTML = '<div id="filters">
             <div class="title-filter">
                 <label for="title">Cím</label>
-                <input type="text" id="title" value="" name="title" placeholder="pl.: Állatfarm">
+                <input type="text" id="title" value="" name="title" placeholder="pl.:  Állatfarm">
             </div>
             
             <button id="toggleFilters" type="button" onclick="HideAndShowFilters();">További szűrők</button>
@@ -81,7 +81,7 @@
                 
                 <div class="author-filter">
                     <label for="author">Szerző</label>
-                    <input type="text" id="author" name="author">
+                    <input type="text" id="author" name="author" placeholder="pl.:  George Orwell">
                 </div>
                 
                 <div class="releaseDate-filter">
@@ -98,7 +98,13 @@
                 
                 
             </div>
-            <input type="button" onclick="applyFilters()" value="Keresés">
+
+
+            
+            
+            <input id="searchButton" type="button" onclick="applyFilters()" value="Keresés">
+
+
         </div>';
         return $resultHTML;
     }
