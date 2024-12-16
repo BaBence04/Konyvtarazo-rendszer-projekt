@@ -1,3 +1,21 @@
+<?php
+$page = isset($_GET['page']) ? $_GET['page'] : 'mainPage';
+
+require "navbar.html";
+
+if ($page === 'mainPage') {
+    require "mainPage.php";
+} elseif ($page === 'bookList') {
+    require "bookList.php";
+} elseif ($page === 'aboutUs') {
+  require "aboutUs.php";
+} else {
+    echo "<h2>Az oldal nem található</h2>";
+}
+
+require "footer.html";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,18 +26,7 @@
 </head>
 <body>
 
-	<?php require "navbar.html";?>
-
-  <?php require "bookList.php";?>
-
-  <?php require "footer.html";?>
-
 <script defer src="main.js"></script>
-
-
-
-
-
 
 </body>
 </html>

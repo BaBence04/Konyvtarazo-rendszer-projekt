@@ -8,10 +8,11 @@
   --first-color: hsl(171, 85%, 26%);
   --second-color: hsl(172, 35%, 70%);
   --title-color: hsl(230, 75%, 15%);
-  --text-color: hsl(230, 12%, 40%);
+  --text-color: hsl(0, 0%, 0%);
   --body-color: 	hsl(0, 0%, 96%);
   --container-color: hsl(230, 100%, 97%);
   --border-color: hsl(230, 25%, 80%);
+  --white-color: hsl(180, 0%, 100%);
 
   --bg-col:#874e40;
   --box-col:transparent;
@@ -965,7 +966,7 @@ a {
 .filter-label {
   margin-right: 20px;
   font-size: var(--normal-font-size);
-  color: var(--title-color);
+  color: var(--text-color);
 }
 
 .genre-buttons {
@@ -1061,6 +1062,7 @@ a {
 .ISBN-filter {
   display: flex;
   flex-direction: column;
+  color: var(--text-color);
 }
 
 #title{
@@ -1085,5 +1087,175 @@ a {
     width: 100%;
   }
 }
+
+
+/* ///////////////////// MAIN PAGE STYLE//////////////////////// */
+
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 4rem 1.5rem;
+  background-color: var(--bg-col);
+  color: var(--whi-col);
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: var(--font-semi-bold);
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero .cta-button {
+  background-color: var(--first-color);
+  color: var(--whi-col);
+  padding: 0.8rem 2rem;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  border-radius: 30px;
+  transition: background-color 0.3s;
+}
+
+.hero .cta-button:hover {
+  background-color: var(--second-color);
+}
+
+@media screen and (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .hero .cta-button {
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+  }
+}
+
+/* Services Section */
+.services {
+  padding: 0 0 4rem 0;
+  background-color: var(--container-color);
+  text-align: center;
+  color: var(--white-color);
+}
+
+.borrowing_section{
+  background-image: url(imgs/old_books.jpg);
+
+}
+
+.main_section{
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.main_section::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.services h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.service {
+  margin-bottom: 5rem;
+  margin-top: 5rem;
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+}
+
+.service img {
+  max-width: 80px;
+  margin-bottom: 1rem;
+}
+.service img,
+.service h3,
+.service p {
+  z-index: 2;
+}
+
+.service h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.service p {
+  font-size: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .services {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* Membership Section */
+.membership {
+  padding: 4rem 1.5rem;
+  background-color: var(--body-color);
+  text-align: center;
+}
+
+.membership h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.membership p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.membership .cta-button {
+  background-color: var(--first-color);
+  color: var(--whi-col);
+  padding: 0.8rem 2rem;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  border-radius: 30px;
+  transition: background-color 0.3s;
+}
+
+.membership .cta-button:hover {
+  background-color: var(--second-color);
+}
+
+@media screen and (max-width: 768px) {
+  .membership h2 {
+    font-size: 1.75rem;
+  }
+
+  .membership p {
+    font-size: 1rem;
+  }
+
+  .membership .cta-button {
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+  }
+}
+
 
 
