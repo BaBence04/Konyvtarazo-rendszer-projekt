@@ -7,29 +7,36 @@
     <title>Könytvtár</title>
 </head>
 <body>
-    <section class="hero">
-        <h1>Üdvözöljük az online könytárunkban!</h1>
-        <p>Ide valami szlogen</p>
-        <a href="?page=bookList" class="cta-button">Könyvek böngészése</a>
+
+    <section class="hero main_section">
+        <div class="service">
+            <h1>Üdvözöljük az online könytárunkban!</h1>
+            <p>Ide valami szlogen</p>
+            <a href="?page=bookList" class="cta-button">Könyvek böngészése</a>
+        </div>
+
     </section>
+
     <section class="services">
+
+
         <section class="borrowing_section main_section">
             <div class="service">
                 <img src="imgs/borrow-icon.png" alt="Borrow">
                 <h3>Könyvek lefoglalása</h3>
-                <p>Foglalja le bármelyik elérhető könyvet és mi 24 órára félretesszük Önnek</p>
+                <p>Foglalja le bármelyik elérhető könyvet és mi 24 órára félretesszük Önnek</p> 
             </div>
         </section>
 
         <section class="collection_section main_section">
             <div class="service">
-                <img src="imgs/book-shelf-line.png" alt="Events">
+                <img src="imgs/book-icon.png" alt="Events">
                 <h3>Hatalmas könyvgyűjtemény</h3>
                 <p>Weboldalunkon megtalálja könyvtárunk összes, több mint [ide a könyvek számát, amennyivel feltöltjük] könyvét</p>
             </div>
         </section>
 
-        <section>
+        <secton class="asdf main_section">
             <div class="service">
                 <img src="digital-icon.png" alt="Digital">
                 <h3>Digital Library</h3>
@@ -42,9 +49,10 @@
 
 
     <section class="membership">
-        <h2>Join Our Library</h2>
-        <p>Become a member of [Library Name] today! Enjoy unlimited access to books, events, and more.</p>
-        <a href="signup.html" class="cta-button">Sign Up Now</a>
+        <div class="servic">
+            <h2>Legyen tagja könyvtárunknak</h2>
+            <p>asdf</p>
+        </div>
     </section>
 
 

@@ -1102,10 +1102,14 @@ a {
 /* Hero Section */
 .hero {
   text-align: center;
-  padding: 4rem 1.5rem;
+  padding: 5rem 1.5rem;
   background-color: #8d806b;
   color: var(--whi-col);
+  background-image: url(imgs/library_image.jpg);
+  height: 100vh;
+  align-content: center;
 }
+
 
 .hero h1 {
   font-size: 2.5rem;
@@ -1148,22 +1152,26 @@ a {
 
 /* Services Section */
 .services {
-  padding: 0 0 4rem 0;
+  padding: 0 0 0 0;
   background-color: var(--container-color);
   text-align: center;
   color: var(--white-color);
 }
 
 .borrowing_section{
-  background-image: url(imgs/library_image.jpg);
-}
-
-.collection_section{
-  /* background-image: url(imgs/old_books.jpg); */
   background-color: #8d806b;
 }
 
-.main_section{
+.collection_section{
+  background-image: url(imgs/books_background.jpg);
+}
+
+.asdf{
+  background-color: #8d806b;
+}
+
+.main_section,
+.membership{
   background-size: cover;
   background-position: center;
   position: relative;
@@ -1185,7 +1193,7 @@ a {
   margin-bottom: 2rem;
 }
 
-.service {
+.service{
   margin-bottom: 5rem;
   margin-top: 5rem;
   height: 20rem;
@@ -1199,9 +1207,7 @@ a {
   max-width: 80px;
   margin-bottom: 1rem;
 }
-.service img,
-.service h3,
-.service p {
+.service > *{
   z-index: 2;
 }
 
@@ -1215,15 +1221,16 @@ a {
 }
 
 .services {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
+  display: grid;
+  grid-template-columns: 1fr;
+}
 
 /* Membership Section */
 .membership {
   padding: 4rem 1.5rem;
-  background-color: var(--body-color);
+  background-image: url(imgs/bookstore_background.jpg);
   text-align: center;
+  color: var(--white-color);
 }
 
 .membership h2 {
