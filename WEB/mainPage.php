@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Könytvtár</title>
 </head>
 <body>
     <section class="hero">
@@ -21,11 +21,11 @@
             </div>
         </section>
 
-        <section class=" main_section">
+        <section class="collection_section main_section">
             <div class="service">
-                <img src="imgs/library_image" alt="Events">
-                <h3>Events and Workshops</h3>
-                <p>Join our community events, book clubs, and workshops.</p>
+                <img src="imgs/book-shelf-line.png" alt="Events">
+                <h3>Hatalmas könyvgyűjtemény</h3>
+                <p>Weboldalunkon megtalálja könyvtárunk összes, több mint [ide a könyvek számát, amennyivel feltöltjük] könyvét</p>
             </div>
         </section>
 

@@ -36,7 +36,7 @@
             var_dump($book_data);
             print "</pre>"; */
             require "showDetailed.php";
-
+            require "navbar.html";
 
         }
 

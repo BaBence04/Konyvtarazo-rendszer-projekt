@@ -1155,8 +1155,12 @@ a {
 }
 
 .borrowing_section{
-  background-image: url(imgs/old_books.jpg);
+  background-image: url(imgs/library_image.jpg);
+}
 
+.collection_section{
+  /* background-image: url(imgs/old_books.jpg); */
+  background-color: #8d806b;
 }
 
 .main_section{
@@ -1210,13 +1214,10 @@ a {
   font-size: 1rem;
 }
 
-@media screen and (min-width: 768px) {
-  .services {
+.services {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2rem;
   }
-}
 
 /* Membership Section */
 .membership {
