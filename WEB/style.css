@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Gloock&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 :root {
   --header-height: 2.5rem;
@@ -25,7 +26,7 @@
   --pro-col: rgb(255, 246, 204);
 
 
-  --body-font: 'Gloock', sans-serif;
+  --body-font: 'Playfair Display', sans-serif;
   --h2-font-size: 1.25rem;
   --normal-font-size: 1rem;
 
@@ -154,6 +155,12 @@ a {
   transition: opacity 0.4s;
   justify-content: center;
 
+}
+
+.header,
+.search,
+.login{
+  font-family: 'Gloock', sans-serif;
 }
 
 
@@ -1096,7 +1103,7 @@ a {
 .hero {
   text-align: center;
   padding: 4rem 1.5rem;
-  background-color: var(--bg-col);
+  background-color: #8d806b;
   color: var(--whi-col);
 }
 

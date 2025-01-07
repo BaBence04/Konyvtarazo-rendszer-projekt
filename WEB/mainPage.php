@@ -8,9 +8,9 @@
 </head>
 <body>
     <section class="hero">
-        <h1>Üdvözöljük az online könytárban</h1>
-        <p>Your gateway to knowledge, adventure, and discovery!</p>
-        <a href="?page=bookList" class="cta-button">Browse Our Collection</a>
+        <h1>Üdvözöljük az online könytárunkban!</h1>
+        <p>Ide valami szlogen</p>
+        <a href="?page=bookList" class="cta-button">Könyvek böngészése</a>
     </section>
     <section class="services">
         <section class="borrowing_section main_section">
