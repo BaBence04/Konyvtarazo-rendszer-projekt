@@ -7,7 +7,7 @@
   --header-height: 2.5rem;
   /*HSL(hue, saturation, lightness)*/
   --first-color: hsl(171, 85%, 26%);
-  --second-color: hsl(172, 35%, 70%);
+  --second-color: rgb(152, 205, 198);
   --title-color: hsl(230, 75%, 15%);
   --text-color: hsl(0, 0%, 0%);
   --body-color: 	hsl(0, 0%, 96%);
@@ -44,6 +44,10 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 50px var(--whi-col) inset !important;
 
+}
+
+input[type=button]:hover, button:hover{
+  cursor: pointer;
 }
 
 @media screen and (min-width: 1023px) {
@@ -781,6 +785,10 @@ a {
   margin-right: 30px;
 }
 
+.book-image>img{
+  width: 100%;
+}
+
 .book-info {
   max-width: 800px;
 }
@@ -1003,9 +1011,9 @@ a {
 }
 
 #filters {
-  display: grid;
+  /* display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px; 
+  column-gap: 20px;  */
   padding: 20px;
   border-radius: 10px;
   background-color: var(--body-color);
@@ -1015,14 +1023,16 @@ a {
 }
 
 #toggleFilters{
-  height: 2.2rem;
-  margin-top: auto;
+  height: 1.8rem;
+  margin-top: 5px;
   border-radius: 5px;
   background-color: var(--second-color);
 }
 
 #toggleFilters:hover{
   cursor: pointer;
+  background-color: rgb(152, 205, 198, 0.9);;
+
 }
 
 
@@ -1030,7 +1040,15 @@ a {
   display: none;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
-  grid-column: span 2;
+  /* grid-column: span 2; */
+  margin-top: 20px;
+}
+
+#baseFilters{
+  /* grid-column: span 2; */
+  /* display: flex; */
+  /* flex-direction: column; */
+  width: 100%;
 }
 
 #filters label {
@@ -1058,7 +1076,7 @@ a {
   border-radius: 5px;
   cursor: pointer;
   grid-column: span 2;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .genre-filter,
