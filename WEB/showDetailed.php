@@ -29,27 +29,57 @@
                 <button class="wishlist-button">Kívánságlistához adás</button>
 
                 <?php
-                    session_start();
                     //if te user is logged in
                     if(isset($_SESSION["user_id"])){
                         //returns "reservation" | "booking"
                         $availability_data = CheckBookAvailability(GetIsbnIdByIsbn($_GET["ISBN"]),$_SESSION["user_id"]);
                         //EZEKRE A GOMBOKRA KELL EGY DISABLED STÍLUS
-                        $buttonHtml = '<button class="reserve-button" id="reserve-button" onclick="reserveOrBook();"';
                         if($availability_data["available"] != "true"){
-                            $buttonHtml .= ' disabled';
-               
-                        }
-                        $buttonHtml .= '>';
-                        if($availability_data["status"] == "reservation"){
-                            $buttonHtml .= "Előjegyzés";
+                            
+                            
                         }else{
-                            $buttonHtml .= "Foglalás";
+                            $buttonHtml = '<button class="reserve-button" id="reserve-button" onclick="reserveOrBook();"';
+
+                            $buttonHtml .= '>';
+                            if($availability_data["status"] == "reservation"){
+                                $buttonHtml .= "Előjegyzés";
+                            }else{
+                                $buttonHtml .= "Foglalás";
+                            }
+                            $buttonHtml .= "</button>";
+                            echo $buttonHtml;
                         }
-                        $buttonHtml .= "</button>";
-                        echo $buttonHtml;
                     }
 
                 ?>
             </div>
         </div>
+
+        <script src="jquery.js"></script>
+        <script>
+            function reserveOrBook(){
+                if(<?=isset($_SESSION['user_id'])?>){
+                $.ajax({
+                    url: "../BACKEND/api.php",
+                    type: "POST", //send it through get method
+                    data: { 
+                        user_id: <?=$_SESSION['user_id']?>, 
+                        isbn_id: <?=$book_data['ISBN_id']?> 
+                    },
+                    success: function(response)  {
+                        //Ezt is szép fancyre meg kell csinálni
+                    if(response != '<?=$availability_data["status"]?>'){
+                        alert("A könyv állapota menetközben megváltozott, úgyhogy "+(response=="reservation")?"elő lett jegyezve":"le lett foglalva");
+                        
+                    }else if(response == "reservation"){
+                        alert("Sikeres előjegyzés!");
+
+                    }else if(response == "booking"){
+                        alert("Sikeres foglalás!");
+                    }
+                    document.getElementById("reserve-button").disabled = true;
+                    }
+                    }); 
+                }
+            }
+        </script>
