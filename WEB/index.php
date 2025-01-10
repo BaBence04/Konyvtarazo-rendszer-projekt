@@ -1,19 +1,7 @@
 <?php
+session_start();
 $page = isset($_GET['page']) ? $_GET['page'] : 'mainPage';
 
-require "navbar.html";
-
-if ($page === 'mainPage') {
-    require "mainPage.php";
-} elseif ($page === 'bookList') {
-    require "bookList.php";
-} elseif ($page === 'aboutUs') {
-  require "aboutUs.php";
-} else {
-    echo "<h2>Az oldal nem található</h2>";
-}
-
-require "footer.html";
 ?>
 
 <!DOCTYPE html>
@@ -21,12 +9,51 @@ require "footer.html";
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Főoldal</title>
+  <title><?php 
+    if ($page === 'mainPage') {
+        echo "Főoldal";
+
+    }else if ($page === 'bookList') {
+        echo "Könyveink";
+
+    }else if ($page === 'aboutUs') {
+      echo "Rólunk";
+
+    }else if ($page === 'userDetailed') {
+      echo "Felhasználói oldal";
+
+    }else {
+        echo "Az oldal nem található";
+    }
+  
+  ?></title>
   <link rel="stylesheet" href="style.css">
+  <script defer src="main.js"></script>
+  <script src="jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 </head>
 <body>
+  
+  <?php
+    require_once "navbar.html";
 
-<script defer src="main.js"></script>
+    if ($page === 'mainPage') {
+        require_once "mainPage.php";
 
-</body>
+    }else if ($page === 'bookList') {
+        require_once "bookList.php";
+
+    }else if ($page === 'aboutUs') {
+      require_once "aboutUs.php";
+
+    }else if ($page === 'userDetailed') {
+      require_once "userDetailed.php";
+
+    }else {
+        echo "<h2>Az oldal nem található</h2>";
+    }
+    
+    require_once "footer.html";
+    
+  ?>
 </html>
