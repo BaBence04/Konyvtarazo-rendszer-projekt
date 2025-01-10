@@ -7,14 +7,14 @@
 
 <header class="header" id="header">
   <nav class="nav container">
-    <a class="nav__logo" href="#">Logo</a>
+    <a class="nav__logo" href="./">Logo</a>
 
     <div class="nav__menu" id="nav-menu">
       <ul class="nav__list">
-        <li class="nav__item"><a class="nav__link" href="?page=mainPage">Főoldal</a></li>
-        <li class="nav__item"><a class="nav__link" href="?page=bookList">Összes könyvünk</a></li>
-        <li class="nav__item"><a class="nav__link" href="?page=">Rólunk</a></li>
-        <li class="nav__item"><a class="nav__link" href="?page=">Kapcsolat</a></li>
+        <li class="nav__item"><a class="nav__link" href="./">Főoldal</a></li>
+        <li class="nav__item"><a class="nav__link" href="./?page=bookList">Összes könyvünk</a></li>
+        <li class="nav__item"><a class="nav__link" href="./?page=aboutus">Rólunk</a></li>
+        <li class="nav__item"><a class="nav__link" href="./?page=contacts">Kapcsolat</a></li>
         
 
       </ul>
@@ -56,8 +56,8 @@
       <h2>Bejelentkezés</h2>
   
           <div class="inputbox">
-              <input type="email" name="email" required="required" placeholder=" ">
-              <span>Email</span>
+              <input type="text" name="username" id="username" required="required" placeholder=" ">
+              <span>Felhasználó név</span>
               <i></i>
           </div>
   
@@ -75,7 +75,7 @@
               <a href="#">Elfelejtettem a jelszavamat</a>
           </div>
   
-          <input type="submit" value="Bejelentkezés" name="submit">
+          <input type="button" onclick="CheckLogin();" value="Bejelentkezés" name="submit">
     </form>
   </div>
 </div>
