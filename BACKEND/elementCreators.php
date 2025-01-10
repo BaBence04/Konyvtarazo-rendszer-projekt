@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="./style.css">
-<script defer src="main.js"></script>
 <?php
     require_once "databaseFunctions.php";
     function CreateBookElement($data):string{
@@ -76,7 +74,7 @@
             
             <button id="toggleFilters" type="button" onclick="HideAndShowFilters();">További szűrők</button>
             
-            <div id="additional-filters" style="display: none;">
+            <div id="additional-filters" data-open="0" style="display: none;">
                 ' . CreateGenreFilter() . '
                 
                 <div class="author-filter">
