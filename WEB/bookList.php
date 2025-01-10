@@ -2,7 +2,7 @@
     require "../BACKEND/elementCreators.php";
 
     //DEV THING REMOVE WHEN PROD OR LOGIN DONE
-    session_start();
+    // session_start();
 ?>
 <!DOCTYPE html>
 <html lang="hu">
@@ -16,7 +16,8 @@
 <body>
     <h1>Összes könyvünk</h1>
     <?php
-        echo CreateFilter();
+        // echo CreateFilter();
+        require_once "bookListFilters.php";
     ?>
     
     <?php
