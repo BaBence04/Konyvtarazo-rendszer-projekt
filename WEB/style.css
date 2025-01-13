@@ -42,7 +42,9 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus, 
 input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 50px var(--whi-col) inset !important;
+    --color: rgba(245,245,245,255);
+
+    -webkit-box-shadow: 0 0 0 50px var(--color) inset !important;
 
 }
 
@@ -360,7 +362,7 @@ a {
   margin-top: 25px;
 }
 
-.login_box form .inputbox input{
+.login_box form .inputbox input {
   position: relative;
   width: 100%;
   padding: 15px 15px 10px 10px;
@@ -377,8 +379,16 @@ a {
   display: inline-block;
   vertical-align: middle;
 }
+input:-webkit-autofill{
+    background-color: pink !important; /* Your desired background color */
+    color: #000 !important; /* Your desired text color */
+    font-style: normal; /* Reset styles */
+    border: 1px solid #ccc; /* Custom border */
+    transition: background-color 5000s ease-in-out 0s; /* Prevent flashing */
+}
 
 .login_box form .inputbox span{
+  z-index: 10;
   position: absolute;
   left: 0;
   padding: 15px 0px 10px;
