@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="style.css">
+<!-- <link rel="stylesheet" href="style.css"> -->
 <!-- <link rel="stylesheet" href="login.css"> -->
 <head>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
@@ -63,7 +63,7 @@
   
           <div class="inputbox">
             <img src="imgs/eye-off-line.png" id="eyeicon" alt="Toggle Password Visibility">
-            <input type="password" id="password" name="password" required="required" placeholder=" ">
+            <input onkeyup="KeyUpInUsernameInputForLogin(event);" type="password" id="password" name="password" required="required" placeholder=" ">
             <span>Jelszó</span>
             <i></i>
           </div>
