@@ -372,9 +372,10 @@ DELIMITER ;
 -- NEEDS TO BE TESTED
 DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS loginEmployee(
-  IN username VARCHAR(255)
+  IN username VARCHAR(255), 
+  IN pw VARCHAR(255)
 ) BEGIN
-SELECT employees.password FROM employees WHERE empl_name = username;
+CASE WHEN (SELECT employees.password FROM employees WHERE employees.empl_uname = username) = PASSWORD(pw) THEN 'true' ELSE 'false'
 END;//
 DELIMITER ;
 
