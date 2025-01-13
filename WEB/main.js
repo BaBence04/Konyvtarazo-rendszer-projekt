@@ -98,6 +98,14 @@ togglePassword.addEventListener("click", function () {
     }
 });
 
+function KeyUpInUsernameInputForLogin(event){
+  console.log('event :>> ', event);
+  if(event.key == "Enter" && document.getElementById("username")?.value != ""){
+    event.target.blur();
+    CheckLogin();
+  }
+}
+
 
 function HideAndShowFilters(){
   const additionalFilters = document.getElementById("additional-filters");
