@@ -2,6 +2,10 @@
 session_start();
 $page = isset($_GET['page']) ? $_GET['page'] : 'mainPage';
 
+if($page == "userDetailed" && !isset($_SESSION["user_id"])){
+  $page = "mainPage";
+}
+
 ?>
 
 <!DOCTYPE html>
