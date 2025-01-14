@@ -1,8 +1,6 @@
 <?php
     require_once "databaseFunctions.php";
     require "elementCreators.php";
-    
-    session_start();
     //listBooksFiltered
 
     if($_SERVER['REQUEST_METHOD'] === 'GET'){
@@ -51,19 +49,12 @@
 
             echo json_encode($result);
             
-        }else if(isset($_POST["action"]) && count($_POST) == 1 && $_POST["action"] == "isLoggedIn"){
-            echo isset($_SESSION['user_id']) ? $_SESSION["user_id"] : "";
-
-        }else if(isset($_SESSION["user_id"], $_POST["action"]) && $_POST["action"] == "logout"){
-            unset($_SESSION["user_id"]);
-
-            
+        }else if(isset($_POST['test']) && $_POST['test'] == "ping"){
+            echo "pong";
         }else{
             throw new Exception("Nincs ilyen");
         }
     }
-
-    session_commit()
 
 
 
