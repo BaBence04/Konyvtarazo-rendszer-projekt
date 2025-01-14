@@ -74,7 +74,8 @@ CREATE TABLE IF NOT EXISTS reservation(
 CREATE TABLE IF NOT EXISTS employees(
     empl_id INT AUTO_INCREMENT PRIMARY KEY,
     empl_name VARCHAR(255),
-    password VARBINARY(16) 
+    empl_uname VARCHAR(5),
+    password VACHAR(255) 
 );
 CREATE TABLE IF NOT EXISTS borrowings(
     borrowing_id INT AUTO_INCREMENT PRIMARY KEY,
