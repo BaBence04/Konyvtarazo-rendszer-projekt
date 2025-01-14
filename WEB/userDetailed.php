@@ -8,13 +8,6 @@
 
 
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f4f4f4;
-    }
-
     .content__container {
         max-width: 1200px;
         margin: 0 auto;
@@ -209,7 +202,10 @@
                 </li> -->
             </ul>
         </div>
-        <button onclick="Kijelentkezés();">Kijelentkezés</button>
+        <div class="logout-container">
+            <button id="logoutButton" onclick="Kijelentkezés();">Kijelentkezés</button>
+        </div>
+        
     </div>
 
     <script>
