@@ -99,6 +99,14 @@ GROUP BY 1;
 END;//
 DELIMITER ;
 
+-- get all booked and reserved book by userID
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS getBookedAndReservedBooks(
+  IN ID INT
+) BEGIN
+(SELECT book.title AS 'Title', GROUP_CONCAT(DISTINCT authors.author) AS 'Authors', 'booking' AS 'Status' FROM booking INNER JOIN (inventory INNER JOIN (book INNER JOIN (books_authors_conn INNER JOIN authors ON books_authors_conn.author_id = authors.author_id) ON books_authors_conn.ISBN_id = book.ISBN_id) ON book.ISBN_id = inventory.ISBN_id) ON booking.book_id = inventory.book_id WHERE booking.user_id = ID)UNION ALL(SELECT book.title, GROUP_CONCAT(DISTINCT authors.author), 'reservation' FROM reservation INNER JOIN (inventory INNER JOIN (book INNER JOIN (books_authors_conn INNER JOIN authors ON books_authors_conn.author_id = authors.author_id) ON books_authors_conn.ISBN_id = book.ISBN_id) ON inventory.ISBN_id = book.ISBN_id)ON reservation.ISBN_id = inventory.ISBN_id WHERE reservation.user_id = ID);
+END;//
+DELIMITER ;
 
 -- get all borrowed books borrowed by userID
 DELIMITER //
@@ -364,9 +372,10 @@ DELIMITER ;
 -- NEEDS TO BE TESTED
 DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS loginEmployee(
-  IN username VARCHAR(255)
+  IN username VARCHAR(255), 
+  IN pw VARCHAR(255)
 ) BEGIN
-SELECT employees.password FROM employees WHERE empl_name = username;
+SELECT CASE WHEN (SELECT employees.password FROM employees WHERE employees.empl_uname = username) = PASSWORD(pw) THEN 'true' ELSE 'false' END;
 END;//
 DELIMITER ;
 

@@ -56,6 +56,8 @@
         }else if(isset($_SESSION["user_id"], $_POST["action"]) && $_POST["action"] == "logout"){
             unset($_SESSION["user_id"]);
 
+        }else if(isset($_POST["username"])&& isset($_POST["passw"]) && count($_POST)==2){
+            echo LoginEmployee($_POST["username"], $_POST["passw"]);
         }else if(isset($_POST['test']) && $_POST['test'] == "ping"){
             echo "pong";
         }else{

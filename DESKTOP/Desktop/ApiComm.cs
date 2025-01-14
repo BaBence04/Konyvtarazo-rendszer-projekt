@@ -11,15 +11,15 @@ namespace Desktop
 {
     internal class ApiComm
     {
-        public static async Task<object> SendPost()
+        public static async Task<object> SendPost(Dictionary<string, string> args)
         {
             var client = new HttpClient();
-            var values = new Dictionary<string, string> { { "test", "ping" } };
+            var values = args;
             var content = new FormUrlEncodedContent(values);
-            var response = await client.PostAsync("http://localhost:84/Konyvtarazo-rendszer-projekt-main/BACKEND/api.php", content);
+            var response = await client.PostAsync("http://localhost:8000/api.php", content);
             var responseString = await response.Content.ReadAsStringAsync();
-            return responseString;
             client.Dispose();
+            return responseString;
         }
 
     }

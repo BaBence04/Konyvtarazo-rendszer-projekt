@@ -58,6 +58,7 @@
     <Compile Include="AllBooksPage.Designer.cs">
       <DependentUpon>AllBooksPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="ApiComm.cs" />
     <Compile Include="BookLendingPage.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -254,13 +254,13 @@
         return $results->fetch_all(MYSQLI_ASSOC);
     }
 
-    function LoginEmployee($username){
+    function LoginEmployee($username, $pw){
         require "databaseConnect.php";
 
-        $query = "CALL loginEmployee(?);";
+        $query = "CALL loginEmployee(?,?);";
 
         $stmt = $conn->prepare($query); // Prepare statement
-        $stmt->bind_param("s", $username); // Bind parameter to SQL query
+        $stmt->bind_param("ss", $username, $pw); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
         return $results->fetch_all(MYSQLI_NUM)[0][0];
