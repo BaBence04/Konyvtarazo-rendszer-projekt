@@ -32,7 +32,7 @@ INSERT INTO books_authors_conn (ISBN_id, author_id) VALUES
 
 INSERT INTO inventory (ISBN_id, available) VALUES
 (1, TRUE),
-(2, FALSE);
+(2, TRUE);
 
 INSERT INTO users (surname, first_name, username, birth_date, membership_end_date, email, phone_number, password, birth_place, address, mother_maiden_name, active) VALUES
 ('Kovács', 'János', '7584937648', '1985-03-15', '2025-03-15', 'janos.kovacs@example.com', '06123456789', 'password', 'Budapest', '123 Main St', 'Nagy Erzsébet', TRUE),

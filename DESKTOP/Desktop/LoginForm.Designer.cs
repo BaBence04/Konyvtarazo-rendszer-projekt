@@ -31,6 +31,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button_CloseLoginForm = new Desktop.CustomButton();
             this.customButton1 = new Desktop.CustomButton();
+=======
+            this.btnLogin = new Desktop.CustomButton();
+>>>>>>> Stashed changes
             this.tbLoginPw = new Desktop.CustomTextbox();
             this.tbLoginUname = new Desktop.CustomTextbox();
             this.SuspendLayout();
@@ -78,6 +81,24 @@
             this.customButton1.Text = "Bejelentkezés";
             this.customButton1.UseVisualStyleBackColor = false;
             this.customButton1.Click += new System.EventHandler(this.customButton1_Click);
+=======
+            // btnLogin
+            // 
+            this.btnLogin.BackColor = System.Drawing.Color.DimGray;
+            this.btnLogin.BorderColor = System.Drawing.Color.White;
+            this.btnLogin.BorderRadius = 30;
+            this.btnLogin.BorderSize = 0;
+            this.btnLogin.FlatAppearance.BorderSize = 0;
+            this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogin.ForeColor = System.Drawing.Color.White;
+            this.btnLogin.Location = new System.Drawing.Point(73, 368);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(150, 31);
+            this.btnLogin.TabIndex = 2;
+            this.btnLogin.Text = "Bejelentkezés";
+            this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.customButton1_Click);
+>>>>>>> Stashed changes
             // 
             // tbLoginPw
             // 
@@ -132,6 +153,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button_CloseLoginForm);
             this.Controls.Add(this.customButton1);
+=======
+            this.Controls.Add(this.btnLogin);
+>>>>>>> Stashed changes
             this.Controls.Add(this.tbLoginPw);
             this.Controls.Add(this.tbLoginUname);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -148,6 +172,9 @@
         private CustomTextbox tbLoginUname;
         private CustomTextbox tbLoginPw;
         private CustomButton customButton1;
+=======
+        private CustomButton btnLogin;
+>>>>>>> Stashed changes
         private CustomButton button_CloseLoginForm;
         private System.Windows.Forms.Label label1;
     }
