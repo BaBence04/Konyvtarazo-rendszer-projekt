@@ -27,3 +27,4 @@ TODO:
 -a userDetailed-nál valószínűleg jobb lenne ha legalább a könyvek címeire rá lehetne nyomni, hogy megnyissa a részletes oldalát a könyvnek
 -a GetBorrowedBooks-ban, és a GetPreviouslyBorrowedBooks-ban a procedure-nek vissza kell adnia az ISBN-t, hogy meg lehessen csinálni, hogy a felhasználó részletesnél a kiírt könyveket meg lehessen nyitni
 -a getBookedAndReservedBooks nem adja vissza az összeset, mindakettőnél csak egyet ad vissza
+
