@@ -104,7 +104,27 @@ DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS getBookedAndReservedBooks(
   IN ID INT
 ) BEGIN
-(SELECT book.title AS 'title', GROUP_CONCAT(DISTINCT authors.author) AS 'authors', 'booking' AS 'status', book.ISBN FROM booking INNER JOIN (inventory INNER JOIN (book INNER JOIN (books_authors_conn INNER JOIN authors ON books_authors_conn.author_id = authors.author_id) ON books_authors_conn.ISBN_id = book.ISBN_id) ON book.ISBN_id = inventory.ISBN_id) ON booking.book_id = inventory.book_id WHERE booking.user_id = ID GROUP BY booking.booking_id)UNION ALL(SELECT book.title, GROUP_CONCAT(DISTINCT authors.author), 'reservation', book.ISBN FROM reservation INNER JOIN (inventory INNER JOIN (book INNER JOIN (books_authors_conn INNER JOIN authors ON books_authors_conn.author_id = authors.author_id) ON books_authors_conn.ISBN_id = book.ISBN_id) ON inventory.ISBN_id = book.ISBN_id)ON reservation.ISBN_id = inventory.ISBN_id WHERE reservation.user_id = ID GROUP BY reservation.reservation_ids);
+(SELECT book.title AS 'title', GROUP_CONCAT(DISTINCT authors.author) AS 'authors', 'booking' AS 'status', book.ISBN, booking.booking_id AS 'id' FROM booking INNER JOIN (inventory INNER JOIN (book INNER JOIN (books_authors_conn INNER JOIN authors ON books_authors_conn.author_id = authors.author_id) ON books_authors_conn.ISBN_id = book.ISBN_id) ON book.ISBN_id = inventory.ISBN_id) ON booking.book_id = inventory.book_id WHERE booking.user_id = ID GROUP BY booking.booking_id)UNION ALL(SELECT book.title, GROUP_CONCAT(DISTINCT authors.author), 'reservation', book.ISBN, reservation.reservation_id FROM reservation INNER JOIN (inventory INNER JOIN (book INNER JOIN (books_authors_conn INNER JOIN authors ON books_authors_conn.author_id = authors.author_id) ON books_authors_conn.ISBN_id = book.ISBN_id) ON inventory.ISBN_id = book.ISBN_id)ON reservation.ISBN_id = inventory.ISBN_id WHERE reservation.user_id = ID GROUP BY reservation.reservation_ids);
+END;//
+DELIMITER ;
+
+-- cancel reservation by id and userid check
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS cancelReservation(
+  IN RESID INT,
+  IN USID INT
+) BEGIN
+DELETE FROM reservation WHERE reservation.reservation_id = RESID AND reservation.user_id = USID;
+END;//
+DELIMITER ;
+
+-- cancel booking by id and userid check
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS cancelBooking(
+  IN BOOKID INT,
+  IN USID INT
+) BEGIN
+DELETE FROM booking WHERE booking.booking_id = BOOKID AND booking.user_id = USID;
 END;//
 DELIMITER ;
 
