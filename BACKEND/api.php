@@ -6,13 +6,13 @@
     //listBooksFiltered
 
     if($_SERVER['REQUEST_METHOD'] === 'GET'){
-        if(isset($_GET["title"],$_GET["genre"],$_GET["author"],$_GET["release_date"],$_GET["lang"],$_GET["ISBN"]) && (count($_GET)==6 || (count($_GET) == 7 && isset($_GET["page"])))){
-            $page = 1;
-            if(isset($_GET["page"])){
-                $page = $_GET["page"];
+        if(isset($_GET["title"],$_GET["genre"],$_GET["author"],$_GET["release_date"],$_GET["lang"],$_GET["ISBN"]) && (count($_GET)==6 || (count($_GET) == 7 && isset($_GET["page_number"])))){
+            $page_number = 1;
+            if(isset($_GET["page_number"])){
+                $page_number = $_GET["page_number"];
             }
 
-            print_r(create_listed_books_elements($_GET["title"],$_GET["genre"],$_GET["author"],$_GET["release_date"],$_GET["lang"],$_GET["ISBN"], $_GET["page"]));
+            print_r(create_listed_books_elements($_GET["title"],$_GET["genre"],$_GET["author"],$_GET["release_date"],$_GET["lang"],$_GET["ISBN"], $_GET["page_number"]));
     
         }
 
