@@ -11,7 +11,7 @@ CREATE PROCEDURE IF NOT EXISTS listBooksFiltered(
   IN limiter INT
 ) BEGIN
 CALL getBookById((SELECT
-  GROUP_CONCAT(DISTINCT book.ISBN_id)
+  GROUP_CONCAT(DISTINCT book.ISBN_id LIMIT limiter OFFSET offseter)
 FROM
   book
   INNER JOIN (
@@ -33,7 +33,7 @@ WHERE
   AND languages.lang LIKE CONCAT("%", var_languages, "%")
   AND book.ISBN LIKE CONCAT("%", var_ISBN, "%")
   AND inventory.available = TRUE
-LIMIT limiter OFFSET offseter
+
 ));
 END;//
 DELIMITER ;
@@ -104,7 +104,7 @@ DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS getBookedAndReservedBooks(
   IN ID INT
 ) BEGIN
-(SELECT book.title AS 'Title', GROUP_CONCAT(DISTINCT authors.author) AS 'Authors', 'booking' AS 'Status' FROM booking INNER JOIN (inventory INNER JOIN (book INNER JOIN (books_authors_conn INNER JOIN authors ON books_authors_conn.author_id = authors.author_id) ON books_authors_conn.ISBN_id = book.ISBN_id) ON book.ISBN_id = inventory.ISBN_id) ON booking.book_id = inventory.book_id WHERE booking.user_id = ID)UNION ALL(SELECT book.title, GROUP_CONCAT(DISTINCT authors.author), 'reservation' FROM reservation INNER JOIN (inventory INNER JOIN (book INNER JOIN (books_authors_conn INNER JOIN authors ON books_authors_conn.author_id = authors.author_id) ON books_authors_conn.ISBN_id = book.ISBN_id) ON inventory.ISBN_id = book.ISBN_id)ON reservation.ISBN_id = inventory.ISBN_id WHERE reservation.user_id = ID);
+(SELECT book.title AS 'title', GROUP_CONCAT(DISTINCT authors.author) AS 'authors', 'booking' AS 'status', book.ISBN FROM booking INNER JOIN (inventory INNER JOIN (book INNER JOIN (books_authors_conn INNER JOIN authors ON books_authors_conn.author_id = authors.author_id) ON books_authors_conn.ISBN_id = book.ISBN_id) ON book.ISBN_id = inventory.ISBN_id) ON booking.book_id = inventory.book_id WHERE booking.user_id = ID)UNION ALL(SELECT book.title, GROUP_CONCAT(DISTINCT authors.author), 'reservation', book.ISBN FROM reservation INNER JOIN (inventory INNER JOIN (book INNER JOIN (books_authors_conn INNER JOIN authors ON books_authors_conn.author_id = authors.author_id) ON books_authors_conn.ISBN_id = book.ISBN_id) ON inventory.ISBN_id = book.ISBN_id)ON reservation.ISBN_id = inventory.ISBN_id WHERE reservation.user_id = ID);
 END;//
 DELIMITER ;
 
