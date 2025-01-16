@@ -5,7 +5,6 @@ Mesterremek projekt, könyvtárazó rendszer
 TODO:
 -meg kell csinálni, hogy ki legyenek listázva a userdetailed-nél a booked és a researved könyvek is, hogy vissza lehessen őket mondani, menő lenne ha ki lenne írva az is, hogy a max X-ből hány darab van már kivéve pl.: 2/3
 
--az asztalinál a témát mentse el, és mondjuk a rendzser alapértelmezettel kezdjen
 -mindenben keresés a navbar keresővel
 
 -asztalinál kell könyvrészletes
