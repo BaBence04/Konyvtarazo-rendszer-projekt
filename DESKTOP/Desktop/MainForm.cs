@@ -23,10 +23,7 @@ namespace Desktop
 			ThemeManager.SetTheme("Dark");
 		}
 
-		private void Form1_Load(object sender, EventArgs e)
-=======
 		private async void Form1_Load(object sender, EventArgs e)
->>>>>>> Stashed changes
 		{
             OpenChildForm(new HomePage());
 		}

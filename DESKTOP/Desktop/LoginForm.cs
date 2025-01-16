@@ -12,10 +12,9 @@ namespace Desktop
 {
     public partial class LoginForm : Form
     {
-<<<<<<< Updated upstream
-=======
+
         public static string employee;
->>>>>>> Stashed changes
+
         public LoginForm()
         {
             InitializeComponent();
@@ -37,20 +36,12 @@ namespace Desktop
                 Dictionary<string, string> values = new Dictionary<string, string>();
                 values.Add("username", tbLoginUname.Texts);
                 values.Add("passw", tbLoginPw.Texts);
-<<<<<<< Updated upstream
-                var result = await ApiComm.SendPost(values);
-                if (result.ToString() == "true")
-                {
-                    this.Hide();
-                    MainForm main = new MainForm();
-=======
                 List<Dictionary<string, string>> result = (List<Dictionary<string, string>>) await ApiComm.SendPost(values);
                 if (result.First()["info"] != "false")
                 {
                     this.Hide();
                     MainForm main = new MainForm();
                     employee = result.First()["info"];
->>>>>>> Stashed changes
                     main.Closed += (s, args) => this.Close();
                     main.Show();
                 }
