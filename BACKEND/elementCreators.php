@@ -20,10 +20,10 @@
         return $result;
     }
 
-    function CreateListedBooksElements($title,$genre,$author,$release_date,$lang,$isbn) : string {
+    function create_listed_books_elements($title, $genre, $author, $release_date, $lang, $isbn, $page) : string {
         $resultHTML="";
         // $data = GetBooksFiltered($_GET["title"],$_GET["genre"],$_GET["author"],$_GET["release_date"],$_GET["lang"],$_GET["isbn"]);
-        $data = GetBooksFiltered($title,$genre,$author,$release_date,$lang,$isbn);
+        $data = get_books_filtered($title,$genre,$author,$release_date,$lang,$isbn, $page);
         $resultHTML.="<div class='content_container grid-container'>";
         for ($i=0; $i < count($data); $i++) { 
             $resultHTML.=CreateBookElement($data[$i]);
