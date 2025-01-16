@@ -12,6 +12,8 @@ TODO:
 
 -asztalinál kell a kiadónak is külön oldal
 
+-foglalás oldal asztalin
+
 -a user-nél nincs hashelve a jelszó
 
 -mysql procedure, ami kitörli a lejárt foglalásokat, és ha van a törölt foglaláshoz tartozó könyvhöz még előjegyzés, akkor a sor elején lévőt (vagyis akinek közülük a legkissebb az id-ja), azt tegye be a booking-ba, és adja vissza a user-id-kat és a könyv-id-t ami bele lett téve a booking-ba
