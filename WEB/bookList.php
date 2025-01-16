@@ -1,8 +1,7 @@
 <?php
     require "../BACKEND/elementCreators.php";
 
-    //DEV THING REMOVE WHEN PROD OR LOGIN DONE
-    // session_start();
+
 ?>
 <!DOCTYPE html>
 <html lang="hu">
@@ -16,7 +15,6 @@
 <body>
     <h1>Összes könyvünk</h1>
     <?php
-        // echo CreateFilter();
         require_once "bookListFilters.php";
     ?>
     
@@ -27,6 +25,7 @@
         $release_date = "";
         $lang = "";
         $isbn = "";
+        $page_number = 1;
         if(isset($_GET['title'])){
             $title = $_GET['title'];
         }
@@ -51,50 +50,67 @@
             $isbn = $_GET['ISBN'];
         }
 
+        if(isset($_GET["page_number"])){
+            $page_number = $_GET["page_number"];
+        }
+
     ?>
-    <div id="test"><?php
-    echo CreateListedBooksElements($title, $genre, $author, $release_date, $lang, $isbn);?>
+    <div id="results">
+        <?=create_listed_books_elements($title, $genre, $author, $release_date, $lang, $isbn, $page_number)?>
     </div>
         
     <script src="jquery.js"></script>
     <script>
        function applyFilters(){
+            const currentUrl = new URL(window.location);
+
+            currentUrl.searchParams.delete("page_number");
+
             $.ajax({
             url: "../BACKEND/api.php",
             type: "get", //send it through get method
             data: { 
-                title: $("#title")[0].value, 
-                genre: $("#genre-select")[0].value, 
-                author: $("#author")[0].value,
-                release_date: $("#date")[0].value, 
-                lang: $("#lang-select")[0].value, 
-                ISBN: $("#ISBN")[0].value
+                title: document.getElementById("title").value, 
+                genre: document.getElementById("genre-select").value, 
+                author: document.getElementById("author").value,
+                release_date: document.getElementById("date").value, 
+                lang: document.getElementById("lang-select").value, 
+                ISBN: document.getElementById("ISBN").value,
+                page_number: 1
             },
             success: function(response)  {
-                $("#test")[0].innerHTML = response; 
-                var extra = "?";
-                if($("#title")[0].value!=""){
-                    extra+= "title="+$("#title")[0].value+"&";
+                document.getElementById("results").innerHTML = response; 
+                // var extra = "?";
+                if(document.getElementById("title").value!=""){
+                    // extra+= "title="+document.getElementById("title").value+"&";
+                    currentUrl.searchParams.set("title", document.getElementById("title").value);
                 }
-                if($("#genre-select")[0].value!=""){
-                    extra+= "genre="+$("#genre-select")[0].value+"&";
+                if(document.getElementById("genre-select").value!=""){
+                    // extra+= "genre="+document.getElementById("genre-select").value+"&";
+                    currentUrl.searchParams.set("genre", document.getElementById("genre-select").value);
                 }
-                if($("#author")[0].value!=""){
-                    extra+= "author="+$("#author")[0].value+"&";
+                if(document.getElementById("author").value!=""){
+                    // extra+= "author="+document.getElementById("author").value+"&";
+                    currentUrl.searchParams.set("author", document.getElementById("author").value);
+                    
                 }
-                if($("#date")[0].value!=""){
-                    extra+= "release_date="+$("#date")[0].value+"&";
+                if(document.getElementById("date").value!=""){
+                    // extra+= "release_date="+document.getElementById("date").value+"&";
+                    currentUrl.searchParams.set("release_date", document.getElementById("date").value);
                 }
-                if($("#lang-select")[0].value!=""){
-                    extra+= "lang="+$("#lang-select")[0].value+"&";
+                if(document.getElementById("lang-select").value!=""){
+                    // extra+= "lang="+document.getElementById("lang-select").value+"&";
+                    currentUrl.searchParams.set("lang", document.getElementById("lang-select").value);
                 }
-                if($("#ISBN")[0].value!=""){
-                    extra+= "ISBN="+$("#ISBN")[0].value+"&";
+                if(document.getElementById("ISBN").value!=""){
+                    // extra+= "ISBN="+document.getElementById("ISBN").value+"&";
+                    currentUrl.searchParams.set("ISBN", document.getElementById("ISBN").value);
                 }
-                if(extra.length>1){
-                    extra = extra.slice(0, -1);
-                }
-                window.history.pushState({},"",extra);
+                // if(extra.length>1){
+                //     extra = extra.slice(0, -1);
+                // }
+                // window.history.pushState({},"",extra);
+                window.history.pushState({}, "", currentUrl);
             }
             });
        } 
