@@ -31,16 +31,16 @@
 
             //PASSWORD CHECK IS NOT FINAL IT IS NOT HASHING
         }else if(isset($_POST['uname'], $_POST['pw']) && count($_POST)==2){
-            $gotPw = GetPassword($_POST['uname']);
+            $gotPw = GetPassword($_POST['uname'], $_POST['pw']);
             if($gotPw == "not found" || $gotPw == "inactive user"){
                 echo $gotPw;
             }else{
-                if($gotPw == $_POST['pw']){
-                    session_start();
+                if($gotPw == "true"){
                     $_SESSION['user_id'] = GetUserId($_POST['uname']);
                     echo "success";
                 }else{
-                    echo "incorrect";
+                    //echo "incorrect";
+                    echo $gotPw;
                 }
             }
 
