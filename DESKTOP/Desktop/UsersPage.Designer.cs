@@ -33,16 +33,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel_Users = new System.Windows.Forms.TableLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.customDataGridView1 = new Desktop.CustomDataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.customTextbox1 = new Desktop.CustomTextbox();
             this.customButton1 = new Desktop.CustomButton();
             this.tableLayoutPanel_Users.SuspendLayout();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.customDataGridView1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel_Users
@@ -63,18 +63,10 @@
             this.tableLayoutPanel_Users.TabIndex = 2;
             this.tableLayoutPanel_Users.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel_Users_Paint);
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.customTextbox1);
-            this.panel1.Controls.Add(this.customButton1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(734, 180);
-            this.panel1.TabIndex = 1;
-            // 
             // customDataGridView1
             // 
+            this.customDataGridView1.AllowUserToAddRows = false;
+            this.customDataGridView1.AllowUserToDeleteRows = false;
             this.customDataGridView1.AlternatingRowBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(88)))));
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(88)))));
             this.customDataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
@@ -118,7 +110,7 @@
             this.customDataGridView1.HeaderForeColor = System.Drawing.Color.WhiteSmoke;
             this.customDataGridView1.HeaderGradientColor = System.Drawing.Color.SlateBlue;
             this.customDataGridView1.HoverRowColor = System.Drawing.Color.LightSteelBlue;
-            this.customDataGridView1.Location = new System.Drawing.Point(0, 186);
+            this.customDataGridView1.Location = new System.Drawing.Point(0, 185);
             this.customDataGridView1.Margin = new System.Windows.Forms.Padding(0);
             this.customDataGridView1.Name = "customDataGridView1";
             this.customDataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -131,7 +123,7 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.customDataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.customDataGridView1.SelectedRowColor = System.Drawing.Color.CornflowerBlue;
-            this.customDataGridView1.Size = new System.Drawing.Size(740, 373);
+            this.customDataGridView1.Size = new System.Drawing.Size(740, 374);
             this.customDataGridView1.TabIndex = 0;
             this.customDataGridView1.UseHeaderGradient = false;
             this.customDataGridView1.UseRoundedCorners = false;
@@ -152,6 +144,16 @@
             this.Column3.HeaderText = "Column3";
             this.Column3.Name = "Column3";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.customTextbox1);
+            this.panel1.Controls.Add(this.customButton1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(734, 179);
+            this.panel1.TabIndex = 1;
+            // 
             // customTextbox1
             // 
             this.customTextbox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -162,7 +164,7 @@
             this.customTextbox1.BorderSize = 2;
             this.customTextbox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.customTextbox1.ForeColor = System.Drawing.Color.DimGray;
-            this.customTextbox1.Location = new System.Drawing.Point(10, 136);
+            this.customTextbox1.Location = new System.Drawing.Point(10, 135);
             this.customTextbox1.Margin = new System.Windows.Forms.Padding(4);
             this.customTextbox1.Multiline = false;
             this.customTextbox1.Name = "customTextbox1";
@@ -204,8 +206,8 @@
             this.Name = "UsersPage";
             this.Text = "Users";
             this.tableLayoutPanel_Users.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.customDataGridView1)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

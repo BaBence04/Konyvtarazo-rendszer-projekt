@@ -104,7 +104,7 @@ DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS getBookedAndReservedBooks(
   IN ID INT
 ) BEGIN
-(SELECT book.title AS 'title', GROUP_CONCAT(DISTINCT authors.author) AS 'authors', 'booking' AS 'status', book.ISBN, booking.booking_id AS 'id' FROM booking INNER JOIN (inventory INNER JOIN (book INNER JOIN (books_authors_conn INNER JOIN authors ON books_authors_conn.author_id = authors.author_id) ON books_authors_conn.ISBN_id = book.ISBN_id) ON book.ISBN_id = inventory.ISBN_id) ON booking.book_id = inventory.book_id WHERE booking.user_id = ID GROUP BY booking.booking_id)UNION ALL(SELECT book.title, GROUP_CONCAT(DISTINCT authors.author), 'reservation', book.ISBN, reservation.reservation_id FROM reservation INNER JOIN (inventory INNER JOIN (book INNER JOIN (books_authors_conn INNER JOIN authors ON books_authors_conn.author_id = authors.author_id) ON books_authors_conn.ISBN_id = book.ISBN_id) ON inventory.ISBN_id = book.ISBN_id)ON reservation.ISBN_id = inventory.ISBN_id WHERE reservation.user_id = ID GROUP BY reservation.reservation_ids);
+(SELECT book.title AS 'title', GROUP_CONCAT(DISTINCT authors.author) AS 'authors', 'booking' AS 'status', book.ISBN FROM booking INNER JOIN (inventory INNER JOIN (book INNER JOIN (books_authors_conn INNER JOIN authors ON books_authors_conn.author_id = authors.author_id) ON books_authors_conn.ISBN_id = book.ISBN_id) ON book.ISBN_id = inventory.ISBN_id) ON booking.book_id = inventory.book_id WHERE booking.user_id = ID GROUP BY booking.booking_id ORDER BY booking.booking_id DESC)UNION ALL(SELECT book.title, GROUP_CONCAT(DISTINCT authors.author), 'reservation', book.ISBN FROM reservation INNER JOIN (inventory INNER JOIN (book INNER JOIN (books_authors_conn INNER JOIN authors ON books_authors_conn.author_id = authors.author_id) ON books_authors_conn.ISBN_id = book.ISBN_id) ON inventory.ISBN_id = book.ISBN_id)ON reservation.ISBN_id = inventory.ISBN_id WHERE reservation.user_id = ID GROUP BY reservation.reservation_ids ORDER BY reservation.reservation_id DESC);
 END;//
 DELIMITER ;
 
@@ -139,7 +139,7 @@ FROM
   users INNER JOIN( borrowings INNER JOIN( ((inventory INNER JOIN book ON book.ISBN_id = inventory.ISBN_id) INNER JOIN books_authors_conn on books_authors_conn.ISBN_id = book.ISBN_id) INNER JOIN authors on authors.author_id = books_authors_conn.author_id ) ON inventory.book_id = borrowings.book_id ) ON users.user_id = borrowings.user_id 
 WHERE 
   users.user_id = ID AND borrowings.returned = 0 
-GROUP BY borrowings.borrowing_id;
+GROUP BY borrowings.borrowing_id ORDER BY borrowings.start_date DESC;
 END;//
 DELIMITER ;
 
@@ -163,12 +163,13 @@ DELIMITER ;
 -- checks if username is valid and sends password
 DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS sendPassword(
-  IN username VARCHAR(255)
+  IN username VARCHAR(255),
+  IN pw VARCHAR(255)
 ) BEGIN
 IF((SELECT COUNT(users.user_id) FROM users WHERE users.username = username)=0) THEN
   SELECT 'not found' AS result;
 ELSE
-  SELECT (CASE WHEN (SELECT users.active FROM users WHERE users.username = username) THEN (SELECT users.password FROM users WHERE users.username = username AND users.active) ELSE 'inactive user' END) AS 'result';
+  SELECT (CASE WHEN (SELECT users.active FROM users WHERE users.username = username) THEN CASE WHEN (SELECT users.password FROM users WHERE users.username = username) = PASSWORD(pw) THEN 'true' ELSE 'false' END END) AS 'result';
 END IF;
 END;//
 DELIMITER ;

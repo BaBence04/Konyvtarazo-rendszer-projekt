@@ -168,13 +168,13 @@
         return $results->fetch_all(MYSQLI_ASSOC)[0]['status'];
     }
 
-    function GetPassword($username) : string {
+    function GetPassword($username, $pw) : string {
         require "databaseConnect.php";
 
-        $query = "CALL sendPassword(?);";
+        $query = "CALL sendPassword(?,?);";
 
         $stmt = $conn->prepare($query); // Prepare statement
-        $stmt->bind_param("s", $username); // Bind parameter to SQL query
+        $stmt->bind_param("ss", $username, $pw); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
         return $results->fetch_all(MYSQLI_ASSOC)[0]['result'];
