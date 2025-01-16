@@ -20,8 +20,8 @@ namespace Desktop
         {
 			InitializeComponent();
 			CustomizeDesign();
-			ThemeManager.SetTheme("Dark");
-		}
+            ThemeManager.Initialize();
+        }
 
 		private async void Form1_Load(object sender, EventArgs e)
 		{
