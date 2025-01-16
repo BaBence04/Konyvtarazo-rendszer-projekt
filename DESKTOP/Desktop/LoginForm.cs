@@ -43,6 +43,7 @@ namespace Desktop
                     MainForm main = new MainForm();
                     employee = result.First()["info"];
                     main.Closed += (s, args) => this.Close();
+
                     main.Show();
                 }
                 else

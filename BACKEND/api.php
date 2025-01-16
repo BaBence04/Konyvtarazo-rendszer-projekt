@@ -57,7 +57,8 @@
             unset($_SESSION["user_id"]);
 
         }else if(isset($_POST["username"])&& isset($_POST["passw"]) && count($_POST)==2){
-            echo LoginEmployee($_POST["username"], $_POST["passw"]);
+            
+            echo json_encode(LoginEmployee($_POST["username"], $_POST["passw"]));
         }else if(isset($_POST['test']) && $_POST['test'] == "ping"){
             echo "pong";
         }else{
