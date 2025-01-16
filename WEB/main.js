@@ -104,6 +104,7 @@ function KeyUpInUsernameInputForLogin(event){
     event.target.blur();
     CheckLogin();
   }
+
 }
 
 
@@ -145,6 +146,7 @@ function CheckLogin(){
             // location.replace("bookList.php")
             // alert("sikeres bejelentkezés")
             login.classList.remove("show-login");
+            
         }
     
     }}); 

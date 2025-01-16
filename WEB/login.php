@@ -26,6 +26,7 @@
         },
         success: function(response)  {
             //ALERTEKET VALAMI MÁS LESZ MAJD EZ CSAK ÁTMENETI
+
             if(response == "not found"){
                 alert("helytelen felhasználónév")
             }else if(response == "inactive user"){
@@ -35,6 +36,7 @@
             }else{
                 //HA LESZ FŐOLDAL AKKOR ODA IRÁNYÍTSON
                 location.replace("bookList.php")
+                
             }
         
         }}); 

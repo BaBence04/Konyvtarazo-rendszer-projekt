@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS users (
     membership_end_date DATE,
     email VARCHAR(255),
     phone_number VARCHAR(255),
-    password VARBINARY(16),
+    password VARCHAR(255),
     birth_place VARCHAR(255),
     address VARCHAR(255),
     mother_maiden_name VARCHAR(255),
