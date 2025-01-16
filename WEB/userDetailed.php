@@ -3,11 +3,34 @@
 
     $data = GetUser($_SESSION['user_id']);
     $borrowedBooks = GetBorrowedBooks($_SESSION["user_id"]);
+    $previouslyBorrowedBooks = GetPreviouslyBorrowedBooks($_SESSION["user_id"]);  
+    
+    $bookedAndReservedBooks = GetBookedAndReservedBooks($_SESSION["user_id"]);
+
+    $booked_books = [];
+    $reserved_books = [];
+
+    foreach ($bookedAndReservedBooks as $key => $booked_or_reserved_books_data){
+        if($booked_or_reserved_books_data["status"] == "booking"){
+            $booked_books[] = $booked_or_reserved_books_data;
+        }else{
+            $reserved_books[] = $booked_or_reserved_books_data;
+        }
+    }
+
+
 
 ?>
 
 
 <style>
+    a, a:active, a:hover, a:visited, a:link{
+        color: unset;
+        text-decoration: unset;
+        padding: unset;
+        margin: unset;
+    }
+
     .content__container {
         max-width: 1200px;
         margin: 0 auto;
@@ -129,6 +152,70 @@
             </div>
         </div>
 
+        <!-- Előjegyzett könyvek -->
+            <!-- Kell gomb arra, hogy le lehessen mondani az előjegyzést -->
+        <div class="book-section <?php 
+            if(count($reserved_books)==0){
+                echo "hidden";
+            }
+        ?>">
+
+            
+            <ul class="book-list">
+                <?php
+                    if(count($reserved_books)>0){
+                        echo "<h3>Előjegyzett könyvek</h3>";
+            
+                        echo '<ul class="book-list">';
+                        foreach ($reserved_books as $key => $reserved_books_data) {
+                            echo '
+                            <li>';
+                                echo '<a href="./bookDetailed.php?ISBN='.$reserved_books_data["ISBN"].'"><span class="book-title">'.$reserved_books_data["title"].'</span></a> <br>';
+                                echo '<span class="book-author">'.str_replace(",", ", ",$reserved_books_data["authors"]).'</span> <br>';
+            
+                                
+                            echo '</li>';
+                        }
+                        echo "</ul>";
+
+                    }
+
+                ?>
+            </ul>
+        </div>
+
+        <!-- Lefoglalt könyvek -->
+                    <!-- Kell gomb arra, hogy le lehessen mondani a foglalást -->
+        <div class="book-section <?php 
+            if(count($booked_books)==0){
+                echo "hidden";
+            }
+        ?>">
+
+            
+            <ul class="book-list">
+                <?php
+                    if(count($booked_books)>0){
+                        echo "<h3>Lefoglalt könyvek</h3>";
+            
+                        echo '<ul class="book-list">';
+                        foreach ($booked_books as $key => $booked_books_data) {
+                            echo '
+                            <li>';
+                                echo '<a href="./bookDetailed.php?ISBN='.$booked_books_data["ISBN"].'"><span class="book-title">'.$booked_books_data["title"].'</span></a> <br>';
+                                echo '<span class="book-author">'.str_replace(",", ", ",$booked_books_data["authors"]).'</span> <br>';
+            
+                                
+                            echo '</li>';
+                        }
+                        echo "</ul>";
+
+                    }
+
+                ?>
+            </ul>
+        </div>
+
     
         <!-- Jelenleg kivett könyvek -->
         <div class="book-section <?php 
@@ -142,16 +229,16 @@
                     echo "<h3>Jelenlegi kivett könyvek</h3>";
 
                     echo '<ul class="book-list">';
-                    foreach ($borrowedBooks as $key => $borrowedBookData) {
+                    foreach ($borrowedBooks as $key => $borrowed_book_data) {
                         echo '
                         <li>';
-                            echo '<span class="book-title">'.$borrowedBookData["title"].'</span> <br>';
-                            echo '<span class="book-author">'.str_replace(",", ", ",$borrowedBookData["authors"]).'</span> <br>';
+                            echo '<a href="./bookDetailed.php?ISBN='.$borrowed_book_data["ISBN"].'"><span class="book-title">'.$borrowed_book_data["title"].'</span></a> <br>';
+                            echo '<span class="book-author">'.str_replace(",", ", ",$borrowed_book_data["authors"]).'</span> <br>';
 
-                            echo '<span class="return-date'.(date("Y-m-d")>$borrowedBookData["end_date"]?"-past":"").'">Határidő: '.$borrowedBookData["end_date"].'</span>';
+                            echo '<span class="return-date'.(date("Y-m-d")>$borrowed_book_data["end_date"]?"-past":"").'">Határidő: '.$borrowed_book_data["end_date"].'</span>';
                             
-                            if(IsItExtendable($_SESSION["user_id"], $borrowedBookData["book_id"])){
-                                echo '<input data-book-id="'.$borrowedBookData["book_id"].'" type="button" value="Meghosszabbítás" onclick="Meghosszabbitas(this)">';
+                            if(IsItExtendable($_SESSION["user_id"], $borrowed_book_data["book_id"])){
+                                echo '<input data-book-id="'.$borrowed_book_data["book_id"].'" type="button" value="Meghosszabbítás" onclick="Meghosszabbitas(this)">';
                             }
                         echo '</li>';
 
@@ -164,23 +251,26 @@
         </div>
         
         <!-- Korábban kivett könyvek -->
-        <div class="book-section">
+        <div class="book-section <?php 
+            if(count($previouslyBorrowedBooks)==0){
+                echo "hidden";
+            }
+        ?>">
 
             
             <ul class="book-list">
                 <?php
-                    $previouslyBorrowedBooks = GetPreviouslyBorrowedBooks($_SESSION["user_id"]);    
                     if(count($previouslyBorrowedBooks)>0){
                         echo "<h3>Korábban kivett könyvek</h3>";
             
                         echo '<ul class="book-list">';
-                        foreach ($previouslyBorrowedBooks as $key => $previouslyBorrowedBookData) {
+                        foreach ($previouslyBorrowedBooks as $key => $previously_borrowed_book_data) {
                             echo '
                             <li>';
-                                echo '<span class="book-title">'.$previouslyBorrowedBookData["title"].'</span> <br>';
-                                echo '<span class="book-author">'.str_replace(",", ", ",$previouslyBorrowedBookData["authors"]).'</span> <br>';
+                                echo '<a href="./bookDetailed.php?ISBN='.$previously_borrowed_book_data["ISBN"].'"><span class="book-title">'.$previously_borrowed_book_data["title"].'</span></a> <br>';
+                                echo '<span class="book-author">'.str_replace(",", ", ",$previously_borrowed_book_data["authors"]).'</span> <br>';
             
-                                echo '<span class="return-date">Határidő: '.$previouslyBorrowedBookData["end_date"].'</span>
+                                echo '<span class="return-date">Határidő: '.$previously_borrowed_book_data["end_date"].'</span>
                             </li>';
                         }
                         echo "</ul>";
