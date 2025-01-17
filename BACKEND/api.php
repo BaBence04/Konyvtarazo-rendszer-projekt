@@ -17,30 +17,25 @@
         }
 
     }else if($_SERVER['REQUEST_METHOD'] === "POST"){
-        if(isset($_POST["username"],$_POST["password"]) && count($_POST)==2){
-            $hashedPasswordFromDb = GetPassword($_POST["username"])[0]["password"];
-            if(password_verify($_POST["password"],$hashedPasswordFromDb)){
-                print "valid";
-            }else{
-                print "invalid";
-            }
-
-        }else if(isset($_POST['user_id'], $_POST['isbn_id']) && count($_POST)==2){
-            echo AddReservationOrBooking($_POST['isbn_id'], $_POST['user_id']);
+        if(isset($_POST['isbn_id'], $_SESSION["user_id"]) && count($_POST)==1){
+            echo AddReservationOrBooking($_POST['isbn_id'], $_SESSION["user_id"]);
 
 
-            //PASSWORD CHECK IS NOT FINAL IT IS NOT HASHING
+        //returns "not found"/"inactive"/"success"/"incorrect"
         }else if(isset($_POST['uname'], $_POST['pw']) && count($_POST)==2){
-            $gotPw = GetPassword($_POST['uname'], $_POST['pw']);
-            if($gotPw == "not found" || $gotPw == "inactive user"){
+            $gotPw = CheckCredentialForLogin($_POST['uname'], $_POST['pw']);
+            if($gotPw == "not found"){
                 echo $gotPw;
+
+            }elseif($gotPw == "NULL"){
+                echo "inactive";
+                
             }else{
                 if($gotPw == "true"){
                     $_SESSION['user_id'] = GetUserId($_POST['uname']);
                     echo "success";
                 }else{
-                    //echo "incorrect";
-                    echo $gotPw;
+                    echo "incorrect";
                 }
             }
 
@@ -64,6 +59,14 @@
         }else if(isset($_POST["username"])&& isset($_POST["passw"]) && count($_POST)==2){
             
             echo json_encode(LoginEmployee($_POST["username"], $_POST["passw"]));
+
+        }else if(isset($_POST["action"], $_POST["id"], $_SESSION["user_id"]) && ($_POST["action"] == "cancelReservation" || $_POST["action"] == "cancelBooking") && count($_POST) == 2){
+            if($_POST["action"] == "cancelReservation"){
+                cancel_reservation($_POST["id"], $_SESSION["user_id"]);
+            }else{
+                cancel_booking($_POST["id"], $_SESSION["user_id"]);
+            }
+        
         }else if(isset($_POST['test']) && $_POST['test'] == "ping"){
             echo "pong";
         }else{
