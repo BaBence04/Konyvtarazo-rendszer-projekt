@@ -137,7 +137,7 @@ function CheckLogin(){
         //ALERTEKET VALAMI MÁS LESZ MAJD EZ CSAK ÁTMENETI
         if(response == "not found"){
             alert("helytelen felhasználónév")
-        }else if(response == "inactive user"){
+        }else if(response == "inactive"){
             alert("ez a felhasználó inaktív")
         }else if(response == "incorrect"){
             alert("helytelen Jelszó")
@@ -151,6 +151,7 @@ function CheckLogin(){
     
     }}); 
 }
+
 
 // window.addEventListener('popstate', function (event) {
 //   // Code to refresh or reload content when the back button is clicked
