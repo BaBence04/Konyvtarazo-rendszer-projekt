@@ -63,13 +63,12 @@
                     url: "../BACKEND/api.php",
                     type: "POST", //send it through get method
                     data: { 
-                        user_id: <?=$_SESSION['user_id']?>, 
                         isbn_id: <?=$book_data['ISBN_id']?> 
                     },
                     success: function(response)  {
                         //Ezt is szép fancyre meg kell csinálni
                     if(response != '<?=$availability_data["status"]?>'){
-                        alert("A könyv állapota menetközben megváltozott, úgyhogy "+(response=="reservation")?"elő lett jegyezve":"le lett foglalva");
+                        alert("A könyv állapota menetközben megváltozott, úgyhogy "+((response=="reservation")?"elő lett jegyezve":"le lett foglalva"));
                         
                     }else if(response == "reservation"){
                         alert("Sikeres előjegyzés!");
