@@ -172,7 +172,7 @@
                             <li>';
                                 echo '<a href="./bookDetailed.php?ISBN='.$reserved_books_data["ISBN"].'"><span class="book-title">'.$reserved_books_data["title"].'</span></a> <br>';
                                 echo '<span class="book-author">'.str_replace(",", ", ",$reserved_books_data["authors"]).'</span> <br>';
-            
+                                echo '<input data-id="'.$reserved_books_data["id"].'" type="button" class="book_action_button" value="Lemondás" onclick="CancelReservationOrBooking(\'cancelReservation\', this)">';
                                 
                             echo '</li>';
                         }
@@ -204,7 +204,7 @@
                             <li>';
                                 echo '<a href="./bookDetailed.php?ISBN='.$booked_books_data["ISBN"].'"><span class="book-title">'.$booked_books_data["title"].'</span></a> <br>';
                                 echo '<span class="book-author">'.str_replace(",", ", ",$booked_books_data["authors"]).'</span> <br>';
-            
+                                echo '<input data-id="'.$booked_books_data["id"].'" type="button" class="book_action_button" value="Lemondás" onclick="CancelReservationOrBooking(\'cancelBooking\', this)">';
                                 
                             echo '</li>';
                         }
@@ -238,7 +238,7 @@
                             echo '<span class="return-date'.(date("Y-m-d")>$borrowed_book_data["end_date"]?"-past":"").'">Határidő: '.$borrowed_book_data["end_date"].'</span>';
                             
                             if(IsItExtendable($_SESSION["user_id"], $borrowed_book_data["book_id"])){
-                                echo '<input data-book-id="'.$borrowed_book_data["book_id"].'" type="button" value="Meghosszabbítás" onclick="Meghosszabbitas(this)">';
+                                echo '<input data-book-id="'.$borrowed_book_data["book_id"].'" type="button" class="book_action_button" value="Meghosszabbítás" onclick="Meghosszabbitas(this)">';
                             }
                         echo '</li>';
 
@@ -343,6 +343,26 @@
             }
             });
         }
+
+        function CancelReservationOrBooking(which, element){
+            if((which != "cancelReservation" && which != "cancelBooking") || parseInt(element.getAttribute("data-id")) != element.getAttribute("data-id")) return;
+
+
+            // console.log(document.getElementById("username").value, document.getElementById("password").value );
+            $.ajax({
+                url: "../BACKEND/api.php",
+                type: "POST", //send it through post method
+                data: { 
+                    action: which, 
+                    id: element.getAttribute("data-id") 
+                },
+                success: function(response)  {
+                    //remove the element or reload site
+                    location.reload();
+                }
+            }); 
+        }
+
     </script>
 
 </body>
