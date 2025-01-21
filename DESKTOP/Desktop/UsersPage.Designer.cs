@@ -75,6 +75,8 @@
             // 
             // cdgwUsers
             // 
+            this.cdgwUsers.AllowUserToAddRows = false;
+            this.cdgwUsers.AllowUserToDeleteRows = false;
             this.cdgwUsers.AlternatingRowBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(88)))));
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(88)))));
             this.cdgwUsers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;

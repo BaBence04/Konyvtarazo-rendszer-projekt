@@ -21,7 +21,6 @@ namespace Desktop
             var responseString = await response.Content.ReadAsStringAsync();
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             var responseDir = serializer.Deserialize(responseString, typeof(List<Dictionary<string, string>>));
-            Console.WriteLine(responseString);
             /*//THIS IS MAY BE TEMPORARY BUT IT SHOULD WORK IT'S JUST UGLY
             object responseDir;
             try
@@ -42,6 +41,7 @@ namespace Desktop
             }*/
             
             client.Dispose();
+  
             return responseDir;
         }
 
