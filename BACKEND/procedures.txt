@@ -126,7 +126,19 @@ CREATE PROCEDURE IF NOT EXISTS cancelBooking(
   IN BOOKID INT,
   IN USID INT
 ) BEGIN
+DECLARE IDBook INT DEFAULT 0;
+SET IDBook = (SELECT booking.book_id FROM booking WHERE booking.booking_id = BOOKID);
 DELETE FROM booking WHERE booking.booking_id = BOOKID AND booking.user_id = USID;
+IF ((SELECT COUNT(reservation.reservation_id) FROM reservation WHERE reservation.ISBN_id = (SELECT inventory.ISBN_id FROM inventory WHERE inventory.book_id = IDBook AND inventory.available))>0) THEN
+-- out of sync error occur when calling this maybe we need to add it manually
+-- CALL addReservationOrBooking((SELECT inventory.ISBN_id FROM inventory WHERE inventory.book_id = IDBook), (SELECT reservation.user_id FROM reservation WHERE reservation.ISBN_id = (SELECT inventory.ISBN_id FROM inventory WHERE inventory.book_id = IDBook) ORDER BY reservation.reservation_id ASC LIMIT 1));
+-- adding manually 
+INSERT INTO booking(booking.book_id, booking.user_id, booking.end_date) VALUES(IDBook, (SELECT reservation.user_id FROM reservation WHERE reservation.ISBN_id = (SELECT inventory.ISBN_id FROM inventory WHERE inventory.book_id = IDBook) ORDER BY reservation.reservation_id ASC LIMIT 1), CURRENT_DATE()+INTERVAL (SELECT system_settings.reservation_time FROM system_settings) DAY);
+-- delete the shifted reservation
+DELETE FROM reservation WHERE reservation.reservation_id = (SELECT reservation.reservation_id FROM reservation WHERE reservation.ISBN_id = (SELECT inventory.ISBN_id FROM inventory WHERE inventory.book_id = IDBook) ORDER BY reservation.reservation_id ASC LIMIT 1);
+-- notify which user is now booked
+SELECT booking.user_id FROM booking WHERE booking.book_id = IDBook;
+END IF;
 END;//
 DELIMITER ;
 
@@ -160,11 +172,35 @@ GROUP BY borrowings.borrowing_id;
 END;//
 DELIMITER ;
 
-
-
--- checks if username is valid and sends password
+-- automatically deletes bookings that are not picked up and notifies next (kinézet: egy concated string ami [bookid], [deletedUserid], [newUserid -1 ha nincs ilyen könyvre igény];[next row of things])
 DELIMITER //
-CREATE PROCEDURE IF NOT EXISTS sendPassword(
+CREATE PROCEDURE IF NOT EXISTS deleteLateBookings()
+BEGIN
+DECLARE output VARCHAR(255) DEFAULT "";
+-- delete lates
+FOR bookID IN (SELECT booking.book_id FROM booking WHERE booking.end_date<CURRENT_DATE())
+DO
+SET output = CONCAT(output, bookID.book_id, ',', (SELECT booking.user_id FROM booking WHERE booking.book_id = bookID.book_id));
+DELETE FROM booking WHERE booking.book_id = bookID.book_id;
+IF ((SELECT COUNT(reservation.reservation_id) FROM reservation WHERE reservation.ISBN_id = (SELECT inventory.ISBN_id FROM inventory WHERE inventory.book_id = bookID.book_id AND inventory.available))>0) THEN
+-- insert if there is reservation for the book
+INSERT INTO booking(booking.book_id, booking.user_id, booking.end_date) VALUES(bookID.book_id, (SELECT reservation.user_id FROM reservation WHERE reservation.ISBN_id = (SELECT inventory.ISBN_id FROM inventory WHERE inventory.book_id = bookID.book_id) ORDER BY reservation.reservation_id ASC LIMIT 1), CURRENT_DATE()+INTERVAL (SELECT system_settings.reservation_time FROM system_settings) DAY);
+-- delete the shifted reservation
+DELETE FROM reservation WHERE reservation.reservation_id = (SELECT reservation.reservation_id FROM reservation WHERE reservation.ISBN_id = (SELECT inventory.ISBN_id FROM inventory WHERE inventory.book_id = bookID.book_id) ORDER BY reservation.reservation_id ASC LIMIT 1);
+-- notify which user is now booked
+SET output = CONCAT(output, ',', (SELECT booking.user_id FROM booking WHERE booking.book_id = bookID.book_id));
+ELSE
+SET output = CONCAT(output, ',', '-1');
+END IF;
+SET output = CONCAT(output, ';');
+END FOR;
+SELECT output;
+END;//
+DELIMITER ;
+
+-- logs in user
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS loginUser(
   IN username VARCHAR(255),
   IN pw VARCHAR(255)
 ) BEGIN
@@ -219,7 +255,7 @@ CREATE PROCEDURE IF NOT EXISTS checkAvailability(
 ) BEGIN
 DECLARE status VARCHAR(11) DEFAULT "";
 SET status = (SELECT CASE WHEN (SELECT COUNT(borrowings.book_id) FROM borrowings INNER JOIN inventory ON borrowings.book_id = inventory.book_id WHERE inventory.ISBN_id = ISBN AND inventory.available AND borrowings.returned = 0) +( SELECT COUNT(booking.book_id) FROM booking INNER JOIN inventory ON booking.book_id = inventory.book_id WHERE inventory.ISBN_id = ISBN ) >= (SELECT COUNT(inventory.book_id) FROM inventory WHERE inventory.ISBN_id = ISBN) THEN 'reservation' ELSE 'booking' END);
-SELECT status, IF(status='reservation', CASE WHEN (SELECT COUNT(reservation.ISBN_id) FROM reservation INNER JOIN users ON reservation.user_id = users.user_id WHERE users.user_id = userid)<=3 THEN 'true' ELSE 'false' END, CASE WHEN (SELECT COUNT(booking.book_id) FROM booking INNER JOIN users ON booking.user_id = users.user_id WHERE users.user_id = userid)<=3 THEN 'true' ELSE 'false' END) AS `available`;
+SELECT status, IF(status='reservation', CASE WHEN (SELECT COUNT(reservation.ISBN_id) FROM reservation INNER JOIN users ON reservation.user_id = users.user_id WHERE users.user_id = userid)<=3 THEN 'true' ELSE 'false' END, CASE WHEN (SELECT COUNT(booking.book_id) FROM booking INNER JOIN users ON booking.user_id = users.user_id WHERE users.user_id = userid)<=(SELECT system_settings.max_reservations FROM system_settings) THEN 'true' ELSE 'false' END) AS `available`;
 END;//
 DELIMITER;
 
@@ -236,7 +272,7 @@ IF (_selected = 'booking') THEN
 BEGIN
   DECLARE _bookid INT DEFAULT '';
   SET _bookid = (SELECT inventory.book_id FROM inventory LEFT JOIN borrowings ON borrowings.book_id = inventory.book_id WHERE inventory.book_id NOT IN (SELECT borrowings.book_id FROM borrowings WHERE borrowings.returned = 0) AND inventory.book_id NOT IN (SELECT booking.book_id FROM booking) AND inventory.ISBN_id = ISBN AND inventory.available LIMIT 1);
-	INSERT INTO booking(book_id, user_id, end_date) VALUES(_bookid, userid, CURRENT_DATE());
+	INSERT INTO booking(book_id, user_id, end_date) VALUES(_bookid, userid, CURRENT_DATE()+INTERVAL (SELECT system_settings.reservation_time FROM system_settings) DAY);
 END;
 ELSEIF (_selected = 'reservation') THEN 
   INSERT INTO reservation(ISBN_id, user_id) VALUES(ISBN, userid);
@@ -429,16 +465,25 @@ CREATE PROCEDURE IF NOT EXISTS returnBook(
   IN emplID INT
 ) BEGIN
 -- check if it is late
+-- modifying so it works with the notification 
+DECLARE late INT DEFAULT 0;
 IF (SELECT borrowings.end_date FROM borrowings WHERE borrowings.user_id = userID AND borrowings.book_id = bookID AND borrowings.returned = 0)-CURRENT_DATE()<0 THEN
-SELECT (CURRENT_DATE()-(SELECT borrowings.end_date FROM borrowings WHERE borrowings.user_id = userID AND borrowings.book_id = bookID AND borrowings.returned = 0))*(SELECT system_settings.latency_fee FROM system_settings);
+SET late = (SELECT (CURRENT_DATE()-(SELECT borrowings.end_date FROM borrowings WHERE borrowings.user_id = userID AND borrowings.book_id = bookID AND borrowings.returned = 0))*(SELECT system_settings.latency_fee FROM system_settings));
 END IF;
 -- update borrowings
 UPDATE borrowings SET borrowings.returned = 1, borrowings.empl_e = emplID, borrowings.end_date = CURRENT_DATE() WHERE borrowings.user_id = userID AND borrowings.book_id = bookID AND borrowings.returned = 0;
 -- add next reservation to booking if exists
 IF ((SELECT COUNT(reservation.reservation_id) FROM reservation WHERE reservation.ISBN_id = (SELECT inventory.ISBN_id FROM inventory WHERE inventory.book_id = bookID AND inventory.available))>0) THEN
-CALL addReservationOrBooking((SELECT inventory.ISBN_id FROM inventory WHERE inventory.book_id = bookID), (SELECT reservation.user_id FROM reservation WHERE reservation.ISBN_id = (SELECT inventory.ISBN_id FROM inventory WHERE inventory.book_id = bookID) ORDER BY reservation.reservation_id ASC LIMIT 1));
+-- out of sync error occur when calling this maybe we need to add it manually
+-- CALL addReservationOrBooking((SELECT inventory.ISBN_id FROM inventory WHERE inventory.book_id = bookID), (SELECT reservation.user_id FROM reservation WHERE reservation.ISBN_id = (SELECT inventory.ISBN_id FROM inventory WHERE inventory.book_id = bookID) ORDER BY reservation.reservation_id ASC LIMIT 1));
+-- adding manually 
+INSERT INTO booking(booking.book_id, booking.user_id, booking.end_date) VALUES(bookID, (SELECT reservation.user_id FROM reservation WHERE reservation.ISBN_id = (SELECT inventory.ISBN_id FROM inventory WHERE inventory.book_id = bookID) ORDER BY reservation.reservation_id ASC LIMIT 1), CURRENT_DATE()+INTERVAL (SELECT system_settings.reservation_time FROM system_settings) DAY);
 -- delete the shifted reservation
 DELETE FROM reservation WHERE reservation.reservation_id = (SELECT reservation.reservation_id FROM reservation WHERE reservation.ISBN_id = (SELECT inventory.ISBN_id FROM inventory WHERE inventory.book_id = bookID) ORDER BY reservation.reservation_id ASC LIMIT 1);
+SELECT booking.user_id, late AS 'fee' FROM booking WHERE booking.book_id = bookID;
+ELSE
+-- will return -1 if nobody is in the reservation 
+SELECT -1, late;
 END IF;
 END;//
 DELIMITER ;
