@@ -60,8 +60,8 @@
             echo json_encode(LoginEmployee($_POST["username"], $_POST["passw"]));
         }
         else if(isset($_POST["type"]) && $_POST["type"] == "getUsers" && isset($_POST["search"]) && count($_POST) == 2){
-            //jsonEncode rossz
-            var_dump (GetUsers($_POST["search"]));
+            //jsonEncode rossz mostmár jó
+            echo json_encode(GetUsers($_POST["search"]));
         }else if(isset($_POST['test']) && $_POST['test'] == "ping"){
             echo "pong";
         }else{
