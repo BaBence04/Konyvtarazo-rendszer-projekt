@@ -9,12 +9,14 @@ TODO:
             -asztalinál kell a kiadónak is külön oldal
             -kell lehetőség arra is, hogy lehessen egy user-t inaktívvá tenni
             -a könyvrészletesen lehessen a kiadóra lehessen rákattintani, és megnyitni annak a részleteit
+            -automatikus törlős dologhoz valami frontend, popup window szerűség (- Bence)
 
 
         BACKEND:
             -kell lehetőség arra is, hogy lehessen egy user-t inaktívvá tenni
             -az asztali program indításakor fusson le a lejárt foglalás törlő procedure, és küldje ki az értesítéseket
             -return book módosítva nekem működött, de nem minden case-t néztem meg (- Bence)
+            -automatikus törlős dolog implementálása (- Bence)
 
     WEB:
         KINÉZET:
