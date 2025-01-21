@@ -263,7 +263,19 @@
         $stmt->bind_param("ss", $username, $pw); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
-        return $results->fetch_all(MYSQLI_NUM)[0][0];
+        return $results->fetch_all(MYSQLI_ASSOC);
+    }
+
+    function GetUsers($search){
+        require "databaseConnect.php";
+
+        $query = "CALL getUsers(?);";
+        
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("s", $search); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        return $results->fetch_all(MYSQLI_ASSOC);
     }
 
     function BorrowBook($user_id, $book_id, $empl_id){

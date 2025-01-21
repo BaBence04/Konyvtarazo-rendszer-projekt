@@ -34,15 +34,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel_Users = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.customDataGridView1 = new Desktop.CustomDataGridView();
+            this.cdgwUsers = new Desktop.CustomDataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customTextbox1 = new Desktop.CustomTextbox();
+            this.ctbSearch = new Desktop.CustomTextbox();
             this.customButton1 = new Desktop.CustomButton();
             this.tableLayoutPanel_Users.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.customDataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cdgwUsers)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel_Users
@@ -50,7 +50,7 @@
             this.tableLayoutPanel_Users.ColumnCount = 1;
             this.tableLayoutPanel_Users.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel_Users.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel_Users.Controls.Add(this.customDataGridView1, 0, 1);
+            this.tableLayoutPanel_Users.Controls.Add(this.cdgwUsers, 0, 1);
             this.tableLayoutPanel_Users.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel_Users.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel_Users.Location = new System.Drawing.Point(0, 0);
@@ -65,28 +65,28 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.customTextbox1);
+            this.panel1.Controls.Add(this.ctbSearch);
             this.panel1.Controls.Add(this.customButton1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(734, 180);
+            this.panel1.Size = new System.Drawing.Size(734, 179);
             this.panel1.TabIndex = 1;
             // 
-            // customDataGridView1
+            // cdgwUsers
             // 
-            this.customDataGridView1.AlternatingRowBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(88)))));
+            this.cdgwUsers.AlternatingRowBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(88)))));
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(88)))));
-            this.customDataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.customDataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.customDataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.customDataGridView1.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.customDataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.customDataGridView1.BorderThickness = 2;
-            this.customDataGridView1.CellBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.customDataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.customDataGridView1.CellForeColor = System.Drawing.Color.WhiteSmoke;
-            this.customDataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.cdgwUsers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.cdgwUsers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.cdgwUsers.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.cdgwUsers.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.cdgwUsers.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.cdgwUsers.BorderThickness = 2;
+            this.cdgwUsers.CellBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.cdgwUsers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.cdgwUsers.CellForeColor = System.Drawing.Color.WhiteSmoke;
+            this.cdgwUsers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(55)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
@@ -95,13 +95,13 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.customDataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.customDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.customDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.cdgwUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.cdgwUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.cdgwUsers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
             this.Column3});
-            this.customDataGridView1.CornerRadius = 8;
+            this.cdgwUsers.CornerRadius = 8;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -109,19 +109,19 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.customDataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
-            this.customDataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.customDataGridView1.EnableBorder = false;
-            this.customDataGridView1.EnableHeadersVisualStyles = false;
-            this.customDataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.customDataGridView1.HeaderBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(55)))));
-            this.customDataGridView1.HeaderForeColor = System.Drawing.Color.WhiteSmoke;
-            this.customDataGridView1.HeaderGradientColor = System.Drawing.Color.SlateBlue;
-            this.customDataGridView1.HoverRowColor = System.Drawing.Color.LightSteelBlue;
-            this.customDataGridView1.Location = new System.Drawing.Point(0, 186);
-            this.customDataGridView1.Margin = new System.Windows.Forms.Padding(0);
-            this.customDataGridView1.Name = "customDataGridView1";
-            this.customDataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.cdgwUsers.DefaultCellStyle = dataGridViewCellStyle3;
+            this.cdgwUsers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cdgwUsers.EnableBorder = false;
+            this.cdgwUsers.EnableHeadersVisualStyles = false;
+            this.cdgwUsers.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.cdgwUsers.HeaderBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(55)))));
+            this.cdgwUsers.HeaderForeColor = System.Drawing.Color.WhiteSmoke;
+            this.cdgwUsers.HeaderGradientColor = System.Drawing.Color.SlateBlue;
+            this.cdgwUsers.HoverRowColor = System.Drawing.Color.LightSteelBlue;
+            this.cdgwUsers.Location = new System.Drawing.Point(0, 185);
+            this.cdgwUsers.Margin = new System.Windows.Forms.Padding(0);
+            this.cdgwUsers.Name = "cdgwUsers";
+            this.cdgwUsers.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(55)))));
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -129,13 +129,13 @@
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.customDataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.customDataGridView1.SelectedRowColor = System.Drawing.Color.CornflowerBlue;
-            this.customDataGridView1.Size = new System.Drawing.Size(740, 373);
-            this.customDataGridView1.TabIndex = 0;
-            this.customDataGridView1.UseHeaderGradient = false;
-            this.customDataGridView1.UseRoundedCorners = false;
-            this.customDataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.customDataGridView1_CellContentClick);
+            this.cdgwUsers.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.cdgwUsers.SelectedRowColor = System.Drawing.Color.CornflowerBlue;
+            this.cdgwUsers.Size = new System.Drawing.Size(740, 374);
+            this.cdgwUsers.TabIndex = 0;
+            this.cdgwUsers.UseHeaderGradient = false;
+            this.cdgwUsers.UseRoundedCorners = false;
+            this.cdgwUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.customDataGridView1_CellContentClick);
             // 
             // Column1
             // 
@@ -152,28 +152,28 @@
             this.Column3.HeaderText = "Column3";
             this.Column3.Name = "Column3";
             // 
-            // customTextbox1
+            // ctbSearch
             // 
-            this.customTextbox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.customTextbox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(88)))));
-            this.customTextbox1.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.customTextbox1.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.customTextbox1.BorderRadius = 15;
-            this.customTextbox1.BorderSize = 2;
-            this.customTextbox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.customTextbox1.ForeColor = System.Drawing.Color.DimGray;
-            this.customTextbox1.Location = new System.Drawing.Point(10, 136);
-            this.customTextbox1.Margin = new System.Windows.Forms.Padding(4);
-            this.customTextbox1.Multiline = false;
-            this.customTextbox1.Name = "customTextbox1";
-            this.customTextbox1.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.customTextbox1.PasswordChar = false;
-            this.customTextbox1.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.customTextbox1.PlaceholderText = "Keresés";
-            this.customTextbox1.Size = new System.Drawing.Size(250, 31);
-            this.customTextbox1.TabIndex = 1;
-            this.customTextbox1.Texts = "Keresés";
-            this.customTextbox1.UnderlinedStyle = false;
+            this.ctbSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.ctbSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(88)))));
+            this.ctbSearch.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.ctbSearch.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.ctbSearch.BorderRadius = 15;
+            this.ctbSearch.BorderSize = 2;
+            this.ctbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.ctbSearch.ForeColor = System.Drawing.Color.DimGray;
+            this.ctbSearch.Location = new System.Drawing.Point(10, 135);
+            this.ctbSearch.Margin = new System.Windows.Forms.Padding(4);
+            this.ctbSearch.Multiline = false;
+            this.ctbSearch.Name = "ctbSearch";
+            this.ctbSearch.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.ctbSearch.PasswordChar = false;
+            this.ctbSearch.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.ctbSearch.PlaceholderText = "Keresés";
+            this.ctbSearch.Size = new System.Drawing.Size(250, 31);
+            this.ctbSearch.TabIndex = 1;
+            this.ctbSearch.Texts = "Keresés";
+            this.ctbSearch.UnderlinedStyle = false;
             // 
             // customButton1
             // 
@@ -203,9 +203,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "UsersPage";
             this.Text = "Users";
+            this.Load += new System.EventHandler(this.UsersPage_Load);
             this.tableLayoutPanel_Users.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.customDataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cdgwUsers)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -213,12 +214,12 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel_Users;
-        private CustomDataGridView customDataGridView1;
+        private CustomDataGridView cdgwUsers;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.Panel panel1;
-        private CustomTextbox customTextbox1;
+        private CustomTextbox ctbSearch;
         private CustomButton customButton1;
     }
 }

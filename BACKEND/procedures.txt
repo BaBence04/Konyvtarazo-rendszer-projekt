@@ -389,13 +389,26 @@ END;//
 DELIMITER ;
 
 -- for desktop login
--- NEEDS TO BE TESTED
 DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS loginEmployee(
   IN username VARCHAR(255), 
   IN pw VARCHAR(255)
 ) BEGIN
-SELECT CASE WHEN (SELECT employees.password FROM employees WHERE employees.empl_uname = username) = PASSWORD(pw) THEN 'true' ELSE 'false' END;
+SELECT CASE WHEN (SELECT employees.password FROM employees WHERE employees.empl_uname = username) = PASSWORD(pw) THEN 'true' ELSE 'false' END AS 'info';
+END;//
+DELIMITER ;
+
+-- gets all users for database
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS getUsers(
+IN searchTerm VARCHAR(255)
+)
+BEGIN
+IF(searchTerm = "") THEN
+SELECT users.surname, users.first_name, users.username FROM users;
+ELSE
+SELECT users.surname, users.first_name, users.username FROM users WHERE users.surname LIKE CONCAT("%", searchTerm, "%") OR users.first_name LIKE CONCAT("%", searchTerm, "%") OR users.username LIKE CONCAT("%", searchTerm, "%"); 
+END IF;
 END;//
 DELIMITER ;
 

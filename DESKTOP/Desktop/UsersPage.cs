@@ -26,5 +26,10 @@ namespace Desktop
         {
 
         }
+
+        private async void UsersPage_Load(object sender, EventArgs e)
+        {
+            cdgwUsers.DataSource = await ApiComm.SendPost(new Dictionary<string, string> { { "type", "getUsers" },{"search", "" } });
+        }
     }
 }
