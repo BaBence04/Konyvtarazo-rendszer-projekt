@@ -10,6 +10,8 @@ TODO:
             -kell lehetőség arra is, hogy lehessen egy user-t inaktívvá tenni
             -a könyvrészletesen lehessen a kiadóra lehessen rákattintani, és megnyitni annak a részleteit
             -automatikus törlős dologhoz valami frontend, popup window szerűség (- Bence)
+            -userDetailed form módosításhoz/törléshez (- Bence)
+            -UsersPage formon a customDataGridView-ban van 3 oszlop amit a világért sem tudok eltüntetni pls help (- Bence)
 
 
         BACKEND:
