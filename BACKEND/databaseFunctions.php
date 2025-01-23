@@ -1,13 +1,14 @@
 <?php
     require "sql.php";
 
+    $results_per_page = 5;
     function get_books_filtered($title, $genre, $author, $release_date, $lang, $isbn, $page){
         require "databaseConnect.php";
 
-        $book_per_page = 5;
+        global $results_per_page;
 
-        $offset = ($page-1) * $book_per_page;
-        $limit = $book_per_page;
+        $offset = ($page-1) * $results_per_page;
+        $limit = $results_per_page;
         
 
         //temporary fix page offset and limit not dealt with yet
