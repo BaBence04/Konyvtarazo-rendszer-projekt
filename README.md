@@ -36,7 +36,7 @@ TODO:
             -kezelje a databaseFunctions.php a cancelBooking-nál és a returnBook-nál 
 
     SQL:
-        -a getBooksFiltered-nél lehessen megkapni, hogy mennyi találat van, vagyis kéne egy olyan opció, hogy a limitet kiszedi
+        -a getBooksFiltered-nél lehessen megkapni, hogy mennyi találat van, vagyis kéne egy olyan opció, hogy a limitet kiszedi (LIMIT -1 seems to work - Bence)
         -mysql procedure, ami kitörli a lejárt foglalásokat, és ha van a törölt foglaláshoz tartozó könyvhöz még előjegyzés, akkor a sor elején lévőt (vagyis akinek közülük a legkissebb az id-ja), azt tegye be a booking-ba, és adja vissza a user-id-kat és a könyv-id-t ami bele lett téve a booking-ba (DONE check comment above the procedure to know everything also added to database functions - Bence)
         -   jelenleg addReservationOrBooking procedure borrowingnál a jelelegi dátumot adja meg (FIXED - Bence)
-        -getBorrowedBooks-ban adja vissza azt, hogy mennyibe kerül a késés
+        -getBorrowedBooks-ban adja vissza azt, hogy mennyibe kerül a késés (DONE - Bence)
