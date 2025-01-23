@@ -277,6 +277,17 @@
         $results = $stmt->get_result();
         return $results->fetch_all(MYSQLI_ASSOC);
     }
+    function GetBooks($search){
+        require "databaseConnect.php";
+
+        $query = "CALL getBooks(?);";
+        
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("s", $search); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        return $results->fetch_all(MYSQLI_ASSOC);
+    }
 
     function BorrowBook($user_id, $book_id, $empl_id){
         require "databaseConnect.php";
@@ -332,6 +343,18 @@
         }else{
             return $results->fetch_all(MYSQLI_ASSOC);
         }
+    }
+
+    function DeleteLateBookings(){
+        require "databaseConnect.php";
+
+        $query = "CALL deleteLateBookings();";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        //$stmt->bind_param("ssssssssss", $surname, $firstname, $uname, $birthdate, $email, $phone, $pw, $birthplace, $address, $mmn); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        return $results->fetch_all(MYSQLI_ASSOC);
     }
 
     function AddEmployee($uname, $pw){

@@ -33,16 +33,17 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel_Users = new System.Windows.Forms.TableLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.cdgwUsers = new Desktop.CustomDataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnKeres = new Desktop.CustomButton();
             this.ctbSearch = new Desktop.CustomTextbox();
             this.customButton1 = new Desktop.CustomButton();
             this.tableLayoutPanel_Users.SuspendLayout();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cdgwUsers)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel_Users
@@ -62,16 +63,6 @@
             this.tableLayoutPanel_Users.Size = new System.Drawing.Size(740, 559);
             this.tableLayoutPanel_Users.TabIndex = 2;
             this.tableLayoutPanel_Users.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel_Users_Paint);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.ctbSearch);
-            this.panel1.Controls.Add(this.customButton1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(734, 179);
-            this.panel1.TabIndex = 1;
             // 
             // cdgwUsers
             // 
@@ -154,6 +145,35 @@
             this.Column3.HeaderText = "Column3";
             this.Column3.Name = "Column3";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnKeres);
+            this.panel1.Controls.Add(this.ctbSearch);
+            this.panel1.Controls.Add(this.customButton1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(734, 179);
+            this.panel1.TabIndex = 1;
+            // 
+            // btnKeres
+            // 
+            this.btnKeres.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnKeres.BackColor = System.Drawing.Color.Black;
+            this.btnKeres.BorderColor = System.Drawing.Color.White;
+            this.btnKeres.BorderRadius = 40;
+            this.btnKeres.BorderSize = 0;
+            this.btnKeres.FlatAppearance.BorderSize = 0;
+            this.btnKeres.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnKeres.ForeColor = System.Drawing.Color.White;
+            this.btnKeres.Location = new System.Drawing.Point(284, 135);
+            this.btnKeres.Name = "btnKeres";
+            this.btnKeres.Size = new System.Drawing.Size(120, 31);
+            this.btnKeres.TabIndex = 2;
+            this.btnKeres.Text = "Keresés";
+            this.btnKeres.UseVisualStyleBackColor = false;
+            this.btnKeres.Click += new System.EventHandler(this.btnKeres_Click);
+            // 
             // ctbSearch
             // 
             this.ctbSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -207,8 +227,8 @@
             this.Text = "Users";
             this.Load += new System.EventHandler(this.UsersPage_Load);
             this.tableLayoutPanel_Users.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cdgwUsers)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -223,5 +243,6 @@
         private System.Windows.Forms.Panel panel1;
         private CustomTextbox ctbSearch;
         private CustomButton customButton1;
+        private CustomButton btnKeres;
     }
 }

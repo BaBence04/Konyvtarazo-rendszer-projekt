@@ -60,8 +60,11 @@
             echo json_encode(LoginEmployee($_POST["username"], $_POST["passw"]));
         }
         else if(isset($_POST["type"]) && $_POST["type"] == "getUsers" && isset($_POST["search"]) && count($_POST) == 2){
-            //jsonEncode rossz mostmár jó
             echo json_encode(GetUsers($_POST["search"]));
+        }else if(isset($_POST["type"]) && $_POST["type"] == "getBooks" && isset($_POST["search"]) && count($_POST) == 2){
+            echo json_encode(getBooks($_POST["search"]));
+        }else if(isset($_POST["type"]) && $_POST["type"] == "deleteExpiredBookings" && count($_POST) == 1){
+            echo json_encode(deleteLateBookings());
         }else if(isset($_POST['test']) && $_POST['test'] == "ping"){
             echo "pong";
         }else{

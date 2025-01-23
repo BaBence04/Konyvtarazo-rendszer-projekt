@@ -26,6 +26,9 @@ namespace Desktop
 		private async void Form1_Load(object sender, EventArgs e)
 		{
             OpenChildForm(new HomePage());
+			//WHEN FINAL VERSION UNCOMMENT THIS
+			/*List<Dictionary<string, string>> result = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string>() { { "type", "deleteExpiredBookings" } });
+			string changes = result.First()["output"];*/
 		}
 
 
@@ -115,6 +118,5 @@ namespace Desktop
 		{
 			OpenChildForm(new AddBookPage());
 		}
-
-	}
+    }
 }

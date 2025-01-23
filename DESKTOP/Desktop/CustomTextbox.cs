@@ -355,7 +355,7 @@ namespace Desktop
         {
             isFocused = false;
             this.Invalidate();
-            SetPlaceholder();   
+            SetPlaceholder();
         }
     }
 }
