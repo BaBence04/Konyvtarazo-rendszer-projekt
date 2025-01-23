@@ -158,7 +158,31 @@ GROUP BY borrowings.borrowing_id;
 END;//
 DELIMITER ;
 
-
+-- automatically deletes bookings that are not picked up and notifies next (kinézet: egy concated string ami [bookid], [deletedUserid], [newUserid -1 ha nincs ilyen könyvre igény];[next row of things])
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS deleteLateBookings()
+BEGIN
+DECLARE output VARCHAR(255) DEFAULT "";
+-- delete lates
+FOR bookID IN (SELECT booking.book_id FROM booking WHERE booking.end_date<CURRENT_DATE())
+DO
+SET output = CONCAT(output, bookID.book_id, ',', (SELECT booking.user_id FROM booking WHERE booking.book_id = bookID.book_id));
+DELETE FROM booking WHERE booking.book_id = bookID.book_id;
+IF ((SELECT COUNT(reservation.reservation_id) FROM reservation WHERE reservation.ISBN_id = (SELECT inventory.ISBN_id FROM inventory WHERE inventory.book_id = bookID.book_id AND inventory.available))>0) THEN
+-- insert if there is reservation for the book
+INSERT INTO booking(booking.book_id, booking.user_id, booking.end_date) VALUES(bookID.book_id, (SELECT reservation.user_id FROM reservation WHERE reservation.ISBN_id = (SELECT inventory.ISBN_id FROM inventory WHERE inventory.book_id = bookID.book_id) ORDER BY reservation.reservation_id ASC LIMIT 1), CURRENT_DATE()+INTERVAL (SELECT system_settings.reservation_time FROM system_settings) DAY);
+-- delete the shifted reservation
+DELETE FROM reservation WHERE reservation.reservation_id = (SELECT reservation.reservation_id FROM reservation WHERE reservation.ISBN_id = (SELECT inventory.ISBN_id FROM inventory WHERE inventory.book_id = bookID.book_id) ORDER BY reservation.reservation_id ASC LIMIT 1);
+-- notify which user is now booked
+SET output = CONCAT(output, ',', (SELECT booking.user_id FROM booking WHERE booking.book_id = bookID.book_id));
+ELSE
+SET output = CONCAT(output, ',', '-1');
+END IF;
+SET output = CONCAT(output, ';');
+END FOR;
+SELECT output;
+END;//
+DELIMITER ;
 
 -- checks if username is valid and sends password
 DELIMITER //
