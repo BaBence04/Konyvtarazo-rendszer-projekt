@@ -1336,6 +1336,7 @@ input:-webkit-autofill{
 }
 
 
+<<<<<<< Updated upstream
 
 /* /////////////////USER DETAILED//////////////////// */
 
@@ -1427,4 +1428,15 @@ a, a:active, a:hover, a:visited, a:link{
 
 .hidden{
   display: none;
+=======
+/*
+  Bálint did stuff:
+*/
+
+#results>.page_button_holder{
+  display: flex;
+  flex-direction: row;
+  /* margin-inline: auto; */
+  justify-content: center;
+>>>>>>> Stashed changes
 }
