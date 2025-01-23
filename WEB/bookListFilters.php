@@ -3,7 +3,7 @@
 
     <div class="title-filter">
         <label for="title">Cím</label>
-        <input type="text" id="title" value="" name="title" placeholder="pl.:  Állatfarm">
+        <input type="text" id="title" value="" name="title" placeholder="pl.:  Állatfarm" onkeypress="SearchOnEnter(event);">
     </div>
     
     <button id="toggleFilters" type="button" onclick="HideAndShowFilters();">További szűrők</button>
