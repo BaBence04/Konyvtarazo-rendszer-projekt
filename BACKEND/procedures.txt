@@ -148,7 +148,7 @@ CREATE PROCEDURE IF NOT EXISTS getBorrowedBooks(
   IN ID INT
 ) BEGIN
 SELECT 
-  inventory.book_id, GROUP_CONCAT(DISTINCT authors.author) AS `authors`,  book.ISBN, book.title, book.picture_base64, borrowings.end_date, borrowings.start_date, ( SELECT CASE WHEN COUNT(reservation.ISBN_id) > 0 THEN 'True' ELSE 'False' END FROM reservation WHERE reservation.ISBN_id = inventory.ISBN_id ) AS `meghosszabbithato`
+  inventory.book_id, GROUP_CONCAT(DISTINCT authors.author) AS `authors`,  book.ISBN, book.title, book.picture_base64, borrowings.end_date, borrowings.start_date, ( SELECT CASE WHEN COUNT(reservation.ISBN_id) > 0 THEN 'True' ELSE 'False' END FROM reservation WHERE reservation.ISBN_id = inventory.ISBN_id ) AS `meghosszabbithato`, ((CURRENT_DATE()- borrowings.end_date)*(SELECT system_settings.latency_fee FROM system_settings)) AS `fizetendo`
 FROM 
   users INNER JOIN( borrowings INNER JOIN( ((inventory INNER JOIN book ON book.ISBN_id = inventory.ISBN_id) INNER JOIN books_authors_conn on books_authors_conn.ISBN_id = book.ISBN_id) INNER JOIN authors on authors.author_id = books_authors_conn.author_id ) ON inventory.book_id = borrowings.book_id ) ON users.user_id = borrowings.user_id 
 WHERE 
