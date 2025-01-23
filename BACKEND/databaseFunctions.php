@@ -11,7 +11,6 @@
         $limit = $results_per_page;
         
 
-        //temporary fix page offset and limit not dealt with yet
         $query = "CALL listBooksFiltered(?,?,?,?,?,?,?,?);";
 
         $stmt = $conn->prepare($query); // Prepare statement
@@ -23,6 +22,24 @@
         
 
         return $results->fetch_all(MYSQLI_ASSOC);
+    }
+
+    function get_books_filtered_number_of_results($title, $genre, $author, $release_date, $lang, $isbn):int{
+        require "databaseConnect.php";
+
+        $offset = 0;
+        $limit = -1; //it is -1 so it will return all of the results
+
+        $query = "CALL listBooksFiltered(?,?,?,?,?,?,?,?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("ssssssii", $title, $genre, $author, $release_date, $lang, $isbn, $offset ,$limit); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        $conn->close();
+
+        $number_of_results = $results->num_rows;
+        return $number_of_results;
     }
 
     
