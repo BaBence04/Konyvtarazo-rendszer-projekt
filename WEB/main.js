@@ -1,6 +1,6 @@
 /* navbar script */
 
-// var navMenu = document.getElementById("nav-menu");
+var navMenu = document.getElementById("nav-menu");
 var navToggle = document.getElementById("nav-toggle");
 var navClose = document.getElementById("nav-close");
 

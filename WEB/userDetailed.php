@@ -23,190 +23,122 @@
 ?>
 <link rel="stylesheet" href="style.css">
 
+
 <body>
 
-    <div class="content__container">
-        <!-- Felhasználói adatok -->
-        <div class="account-details">
-            <h2>Fiók adatai</h2>
-            <div class="account-info">
-                <label>Név:</label>
-                <p><?=$data['surname'].' '.$data['first_name']?></p>
-
-                <label>Felhasználónév:</label>
-                <p><?=$data['username']?></p>
-
-                <label>Születési hely:</label>
-                <p><?=$data['birth_place']?></p>
-
-                <label>Születési dátum:</label>
-                <p><?=$data['birth_date']?></p>
-
-                <label>Lakhely:</label>
-                <p><?=$data['address']?></p>
-
-                <label>Email:</label>
-                <p><?=$data['email']?></p>
-
-                <label>Telefonszám:</label>
-                <p><?=$data['phone_number']?></p>
-
-                <label>Tagság érvényessége:</label>
-                <p><?=$data["membership_end_date"]?></p>
-                
-                <label>Anyja születéskori neve:</label>
-                <p><?=$data["mother_maiden_name"]?></p>
-                
+    <div class="container">
+        <div class="sidebar">
+            <div class="nav-item" id="nav-account-details" onclick="showSection('account-details')">
+                Fiók adatai <span class="indicator"></span>
+            </div>
+            <div class="nav-item" id="nav-reserved-books" onclick="showSection('reserved-books')">
+                Előjegyzett könyvek <span class="indicator"></span>
+            </div>
+            <div class="nav-item" id="nav-booked-books" onclick="showSection('booked-books')">
+                Lefoglalt könyvek <span class="indicator"></span>
+            </div>
+            <div class="nav-item" id="nav-borrowed-books" onclick="showSection('borrowed-books')">
+                Jelenleg kivett könyvek <span class="indicator"></span>
+            </div>
+            <div class="nav-item" id="nav-previously-borrowed-books" onclick="showSection('previously-borrowed-books')">
+                Korábban kivett könyvek <span class="indicator"></span>
             </div>
         </div>
 
-        <!-- Előjegyzett könyvek -->
-            <!-- Kell gomb arra, hogy le lehessen mondani az előjegyzést -->
-        <div class="book-section <?php 
-            if(count($reserved_books)==0){
-                echo "hidden";
-            }
-        ?>">
+        <div class="main-content">
+            <div class="section" id="account-details">
+                <h2>Fiók adatai</h2>
+                <div class="account-info">
+                    <div><strong>Név:</strong> <?=$data['surname'].' '.$data['first_name']?></div>
+                    <div><strong>Felhasználónév:</strong> <?=$data['username']?></div>
+                    <div><strong>Születési hely:</strong> <?=$data['birth_place']?></div>
+                    <div><strong>Születési dátum:</strong> <?=$data['birth_date']?></div>
+                    <div><strong>Lakhely:</strong> <?=$data['address']?></div>
+                    <div><strong>Email:</strong> <?=$data['email']?></div>
+                    <div><strong>Telefonszám:</strong> <?=$data['phone_number']?></div>
+                    <div><strong>Tagság érvényessége:</strong> <?=$data["membership_end_date"]?></div>
+                    <div><strong>Anyja születéskori neve:</strong> <?=$data["mother_maiden_name"]?></div>
+                </div>
+            </div>
 
-            
-            <ul class="book-list">
-                <?php
-                    if(count($reserved_books)>0){
-                        echo "<h3>Előjegyzett könyvek</h3>";
-            
-                        echo '<ul class="book-list">';
-                        foreach ($reserved_books as $key => $reserved_books_data) {
-                            echo '
-                            <li>';
-                                echo '<a href="./bookDetailed.php?ISBN='.$reserved_books_data["ISBN"].'"><span class="book-title">'.$reserved_books_data["title"].'</span></a> <br>';
-                                echo '<span class="book-author">'.str_replace(",", ", ",$reserved_books_data["authors"]).'</span> <br>';
-                                echo '<input data-id="'.$reserved_books_data["id"].'" type="button" class="book_action_button" value="Lemondás" onclick="CancelReservationOrBooking(\'cancelReservation\', this)">';
-                                
-                            echo '</li>';
-                        }
-                        echo "</ul>";
+            <div class="section" id="reserved-books">
+                <?php if(count($reserved_books) > 0): ?>
+                    <h3>Előjegyzett könyvek</h3>
+                    <?php foreach ($reserved_books as $reserved_books_data): ?>
+                        <div class="book-item">
+                            <a href="./bookDetailed.php?ISBN=<?= $reserved_books_data['ISBN'] ?>"><?= $reserved_books_data['title'] ?></a>
+                            <span class="book-author"><?= str_replace(",", ", ", $reserved_books_data['authors']) ?></span>
+                            <button class="book_action_button" onclick="CancelReservationOrBooking('cancelReservation', this)" data-id="<?= $reserved_books_data['id'] ?>">Lemondás</button>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
 
-                    }
+            <div class="section" id="booked-books">
+                <?php if(count($booked_books) > 0): ?>
+                    <h3>Lefoglalt könyvek</h3>
+                    <?php foreach ($booked_books as $booked_books_data): ?>
+                        <div class="book-item">
+                            <a href="./bookDetailed.php?ISBN=<?= $booked_books_data['ISBN'] ?>"><?= $booked_books_data['title'] ?></a>
+                            <span class="book-author"><?= str_replace(",", ", ", $booked_books_data['authors']) ?></span>
+                            <button class="book_action_button" onclick="CancelReservationOrBooking('cancelBooking', this)" data-id="<?= $booked_books_data['id'] ?>">Lemondás</button>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
 
-                ?>
-            </ul>
+            <div class="section" id="borrowed-books">
+                <?php if(count($borrowedBooks) > 0): ?>
+                    <h3>Jelenlegi kivett könyvek</h3>
+                    <?php foreach ($borrowedBooks as $borrowed_book_data): ?>
+                        <div class="book-item">
+                            <a href="./bookDetailed.php?ISBN=<?= $borrowed_book_data['ISBN'] ?>"><?= $borrowed_book_data['title'] ?></a>
+                            <span class="book-author"><?= str_replace(",", ", ", $borrowed_book_data['authors']) ?></span>
+                            <span class="return-date"><?= $borrowed_book_data['end_date'] ?></span>
+                            <button class="book_action_button" data-book-id="<?= $borrowed_book_data['book_id'] ?>" onclick="Meghosszabbitas(this)">Meghosszabbítás</button>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
+
+            <div class="section" id="previously-borrowed-books">
+                <?php if(count($previouslyBorrowedBooks) > 0): ?>
+                    <h3>Korábban kivett könyvek</h3>
+                    <?php foreach ($previouslyBorrowedBooks as $previously_borrowed_book_data): ?>
+                        <div class="book-item">
+                            <a href="./bookDetailed.php?ISBN=<?= $previously_borrowed_book_data['ISBN'] ?>"><?= $previously_borrowed_book_data['title'] ?></a>
+                            <span class="book-author"><?= str_replace(",", ", ", $previously_borrowed_book_data['authors']) ?></span>
+                            <span class="return-date"><?= $previously_borrowed_book_data['end_date'] ?></span>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
+
+            <div class="logout-container">
+                <button id="logoutButton" onclick="Kijelentkezés();">Kijelentkezés</button>
+            </div>
         </div>
-
-        <!-- Lefoglalt könyvek -->
-                    <!-- Kell gomb arra, hogy le lehessen mondani a foglalást -->
-        <div class="book-section <?php 
-            if(count($booked_books)==0){
-                echo "hidden";
-            }
-        ?>">
-
-            
-            <ul class="book-list">
-                <?php
-                    if(count($booked_books)>0){
-                        echo "<h3>Lefoglalt könyvek</h3>";
-            
-                        echo '<ul class="book-list">';
-                        foreach ($booked_books as $key => $booked_books_data) {
-                            echo '
-                            <li>';
-                                echo '<a href="./bookDetailed.php?ISBN='.$booked_books_data["ISBN"].'"><span class="book-title">'.$booked_books_data["title"].'</span></a> <br>';
-                                echo '<span class="book-author">'.str_replace(",", ", ",$booked_books_data["authors"]).'</span> <br>';
-                                echo '<input data-id="'.$booked_books_data["id"].'" type="button" class="book_action_button" value="Lemondás" onclick="CancelReservationOrBooking(\'cancelBooking\', this)">';
-                                
-                            echo '</li>';
-                        }
-                        echo "</ul>";
-
-                    }
-
-                ?>
-            </ul>
-        </div>
-
-    
-        <!-- Jelenleg kivett könyvek -->
-        <div class="book-section <?php 
-            if(count($borrowedBooks)==0){
-                echo "hidden";
-            }
-        ?>">
-            <?php
-
-                if(count($borrowedBooks)>0){
-                    echo "<h3>Jelenlegi kivett könyvek</h3>";
-
-                    echo '<ul class="book-list">';
-                    foreach ($borrowedBooks as $key => $borrowed_book_data) {
-                        echo '
-                        <li>';
-                            echo '<a href="./bookDetailed.php?ISBN='.$borrowed_book_data["ISBN"].'"><span class="book-title">'.$borrowed_book_data["title"].'</span></a> <br>';
-                            echo '<span class="book-author">'.str_replace(",", ", ",$borrowed_book_data["authors"]).'</span> <br>';
-
-                            echo '<span class="return-date'.(date("Y-m-d")>$borrowed_book_data["end_date"]?"-past":"").'">Határidő: '.$borrowed_book_data["end_date"].'</span>';
-                            
-                            if(IsItExtendable($_SESSION["user_id"], $borrowed_book_data["book_id"])){
-                                echo '<input data-book-id="'.$borrowed_book_data["book_id"].'" type="button" class="book_action_button" value="Meghosszabbítás" onclick="Meghosszabbitas(this)">';
-                            }
-                        echo '</li>';
-
-                    }
-                    echo "</ul>";
-                }
-            ?>
-            
-            
-        </div>
-        
-        <!-- Korábban kivett könyvek -->
-        <div class="book-section <?php 
-            if(count($previouslyBorrowedBooks)==0){
-                echo "hidden";
-            }
-        ?>">
-
-            
-            <ul class="book-list">
-                <?php
-                    if(count($previouslyBorrowedBooks)>0){
-                        echo "<h3>Korábban kivett könyvek</h3>";
-            
-                        echo '<ul class="book-list">';
-                        foreach ($previouslyBorrowedBooks as $key => $previously_borrowed_book_data) {
-                            echo '
-                            <li>';
-                                echo '<a href="./bookDetailed.php?ISBN='.$previously_borrowed_book_data["ISBN"].'"><span class="book-title">'.$previously_borrowed_book_data["title"].'</span></a> <br>';
-                                echo '<span class="book-author">'.str_replace(",", ", ",$previously_borrowed_book_data["authors"]).'</span> <br>';
-            
-                                echo '<span class="return-date">Határidő: '.$previously_borrowed_book_data["end_date"].'</span>
-                            </li>';
-                        }
-                        echo "</ul>";
-
-                    }
-
-                ?>
-                <!-- <li>
-                    <span class="book-title">A könyv címe 3</span> <br>
-                    <span class="book-author">Szerző neve</span> <br>
-                    <span class="return-date-past">Visszavéve: 2024. szeptember 15.</span>
-                    <span>Viszavitt</span>
-                </li>
-                <li>
-                    <span class="book-title">A könyv címe 4</span> <br>
-                    <span class="book-author">Szerző neve</span> <br>
-                    <span class="return-date-past">Visszavéve: 2024. augusztus 30.</span>
-                    <span>Viszavitt</span>
-                </li> -->
-            </ul>
-        </div>
-        <div class="logout-container">
-            <button id="logoutButton" onclick="Kijelentkezés();">Kijelentkezés</button>
-        </div>
-        
     </div>
 
     <script>
+
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.querySelector('.indicator').style.backgroundColor = 'transparent';
+            });
+            document.getElementById('nav-' + sectionId).querySelector('.indicator').style.backgroundColor = 'hsl(171, 85%, 26%)';
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            showSection('account-details');
+        });
 
         function Meghosszabbitas(element){
             var action = "extend";
