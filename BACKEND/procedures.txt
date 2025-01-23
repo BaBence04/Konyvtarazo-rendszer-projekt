@@ -419,9 +419,9 @@ IN searchTerm VARCHAR(255)
 )
 BEGIN
 IF(searchTerm = "") THEN
-SELECT inventory.book_id, inventory.ISBN_id, book.title FROM inventory INNER JOIN book ON book.ISBN_id = inventory.ISBN_id;
+SELECT inventory.book_id, book.ISBN, book.title FROM inventory INNER JOIN book ON book.ISBN_id = inventory.ISBN_id;
 ELSE
-SELECT inventory.book_id, inventory.ISBN_id, book.title FROM inventory INNER JOIN book ON book.ISBN_id = inventory.ISBN_id WHERE inventory.ISBN_id LIKE CONCAT("%", searchTerm, "%") OR book.title LIKE CONCAT("%", searchTerm, "%"); 
+SELECT inventory.book_id, book.ISBN, book.title FROM inventory INNER JOIN book ON book.ISBN_id = inventory.ISBN_id WHERE inventory.ISBN_id LIKE CONCAT("%", searchTerm, "%") OR book.title LIKE CONCAT("%", searchTerm, "%"); 
 END IF;
 END;//
 DELIMITER ;
