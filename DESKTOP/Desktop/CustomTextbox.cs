@@ -30,6 +30,7 @@ namespace Desktop
         public CustomTextbox()
         {
             InitializeComponent();
+            textBox1.KeyPress += TextBox1_KeyPress;
         }
 
         private void SetPlaceholder()
@@ -356,6 +357,15 @@ namespace Desktop
             isFocused = false;
             this.Invalidate();
             SetPlaceholder();
+        }
+
+        private void TextBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                MessageBox.Show("asdf");
+                e.Handled = true;
+            }
         }
     }
 }
