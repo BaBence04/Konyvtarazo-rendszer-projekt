@@ -123,6 +123,7 @@
             this.tbLoginUname.TabIndex = 0;
             this.tbLoginUname.Texts = "Felhasználónév";
             this.tbLoginUname.UnderlinedStyle = false;
+            this.tbLoginUname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbLoginUname_KeyPress);
             // 
             // LoginForm
             // 

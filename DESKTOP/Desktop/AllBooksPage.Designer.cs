@@ -146,6 +146,7 @@
             this.ctbSearch.TabIndex = 1;
             this.ctbSearch.Texts = "Keresés";
             this.ctbSearch.UnderlinedStyle = false;
+            this.ctbSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ctbSearch_KeyPress);
             // 
             // customButton1
             // 

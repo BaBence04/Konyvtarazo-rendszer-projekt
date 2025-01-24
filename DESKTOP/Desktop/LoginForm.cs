@@ -14,6 +14,7 @@ namespace Desktop
     {
 
         public static string employee;
+        public static MainForm main;
 
         public LoginForm()
         {
@@ -29,18 +30,28 @@ namespace Desktop
             this.Close();
         }
 
-        private async void customButton1_Click(object sender, EventArgs e)
+        private void customButton1_Click(object sender, EventArgs e)
+        {
+            loginUser();
+            
+        }
+
+        private void tbLoginPw_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            loginUser();
+        }
+        private async void loginUser()
         {
             if (tbLoginUname.Texts != tbLoginUname.PlaceholderText && tbLoginPw.Texts != tbLoginPw.PlaceholderText)
             {
                 Dictionary<string, string> values = new Dictionary<string, string>();
                 values.Add("username", tbLoginUname.Texts);
                 values.Add("passw", tbLoginPw.Texts);
-                List<Dictionary<string, string>> result = (List<Dictionary<string, string>>) await ApiComm.SendPost(values);
+                List<Dictionary<string, string>> result = (List<Dictionary<string, string>>)await ApiComm.SendPost(values);
                 if (result.First()["info"] != "false")
                 {
                     this.Hide();
-                    MainForm main = new MainForm();
+                    main = new MainForm();
                     employee = result.First()["info"];
                     main.Closed += (s, args) => this.Close();
 
@@ -56,10 +67,9 @@ namespace Desktop
                 MessageBox.Show("Nem adott meg felhasználónevet vagy jelszót", "Bejelentkezés hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void tbLoginPw_KeyPress(object sender, KeyPressEventArgs e)
+        private void tbLoginUname_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MessageBox.Show("asdf");
+            loginUser();
         }
     }
 }

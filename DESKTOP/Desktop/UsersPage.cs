@@ -85,16 +85,19 @@ namespace Desktop
             }
         }
 
-        private void ctbSearch_KeyPress(object sender, KeyPressEventArgs e)
+        private void btnKeres_Click(object sender, EventArgs e)
         {
-            
-            if (e.KeyChar == (char)Keys.Enter)
+            if (ctbSearch.Texts != ctbSearch.PlaceholderText)
             {
-                Console.WriteLine("nig");
+                updateUsersDgw(ctbSearch.Texts);
+            }
+            else
+            {
+                updateUsersDgw("");
             }
         }
 
-        private void btnKeres_Click(object sender, EventArgs e)
+        private void ctbSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (ctbSearch.Texts != ctbSearch.PlaceholderText)
             {

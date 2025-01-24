@@ -30,6 +30,7 @@ namespace Desktop
         public CustomTextbox()
         {
             InitializeComponent();
+            textBox1.KeyPress += textBox1_KeyPress;
         }
 
         private void SetPlaceholder()

@@ -47,6 +47,10 @@ namespace Desktop
                 btns.Name = "Részletesen";
                 btns.Text = "Részletes";
                 btns.UseColumnTextForButtonValue = true;
+                //add button column for booking/available/borrowed
+                DataGridViewButtonColumn btncol = new DataGridViewButtonColumn();
+                btncol.Name = "Műveletek";
+                
 
 
                 //make rows
@@ -59,12 +63,31 @@ namespace Desktop
                     }
                     dt.Rows.Add(row);
                 }
+                
                 cdgvBooks.DataSource = dt;
                 cdgvBooks.Columns.Add(btns);
+                cdgvBooks.Columns.Add(btncol);
 
                 cdgvBooks.CellClick += cdgvBooks_CellClick;
+                addBtnTextsManual();
             }
             
+        }
+        private void addBtnTextsManual()
+        {
+            foreach (DataGridViewRow row in cdgvBooks.Rows)
+            {
+                if ((string)row.Cells[3].Value == "borrowed")
+                {
+                    row.Cells[5].Value = "Visszavétel";
+                }
+                else
+                {
+                    row.Cells[5].Value = "Kiadás";
+                }
+                
+
+            }
         }
         private void cdgvBooks_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -72,11 +95,35 @@ namespace Desktop
             {
                 //ide meghívní a jó részletes formot ha lesz !!!
             }
+            else if(e.ColumnIndex == cdgvBooks.Columns["Műveletek"].Index)
+            {
+                if ((string)cdgvBooks.Rows[e.RowIndex].Cells[3].Value == "borrowed")
+                {
+                    LoginForm.main.OpenChildForm(new BookTakebackPage());
+                }
+                else
+                {
+                    LoginForm.main.OpenChildForm(new BookLendingPage());
+                }
+            }
         }
 
         private void btnKeres_Click(object sender, EventArgs e)
         {
             if (ctbSearch.Texts != ctbSearch.PlaceholderText)
+            {
+                updateBooksDgv(ctbSearch.Texts);
+            }
+            else
+            {
+                updateBooksDgv("");
+            }
+        }
+
+        private void ctbSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+           
+            if(ctbSearch.Texts != ctbSearch.PlaceholderText)
             {
                 updateBooksDgv(ctbSearch.Texts);
             }

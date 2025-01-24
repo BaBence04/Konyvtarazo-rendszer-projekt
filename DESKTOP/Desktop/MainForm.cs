@@ -59,7 +59,7 @@ namespace Desktop
 
 
 		private Form activeForm = null;
-		private void OpenChildForm(Form childForm)
+		public void OpenChildForm(Form childForm)
 		{
             
             if (activeForm != null)
