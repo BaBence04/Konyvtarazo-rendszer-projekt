@@ -100,6 +100,7 @@
             this.tbLoginPw.TabIndex = 1;
             this.tbLoginPw.Texts = "Jelszó";
             this.tbLoginPw.UnderlinedStyle = false;
+            this.tbLoginPw.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbLoginPw_KeyPress);
             // 
             // tbLoginUname
             // 

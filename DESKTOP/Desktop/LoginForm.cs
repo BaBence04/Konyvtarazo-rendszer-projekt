@@ -56,5 +56,10 @@ namespace Desktop
                 MessageBox.Show("Nem adott meg felhasználónevet vagy jelszót", "Bejelentkezés hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void tbLoginPw_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MessageBox.Show("asdf");
+        }
     }
 }
