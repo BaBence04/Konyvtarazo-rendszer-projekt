@@ -416,7 +416,6 @@
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
         $conn->close();
-        $conn->close();
         return $results->fetch_all(MYSQLI_ASSOC);
 
     }
@@ -449,6 +448,7 @@
         $stmt->bind_param("ii", $reservation_id, $user_id); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $conn->close();
+        return $results->fetch_row()[0];
     }
 
     function cancel_booking($booking_id, $user_id){
@@ -460,6 +460,7 @@
         $stmt->bind_param("ii", $booking_id, $user_id); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $conn->close();
+        return $results->fetch_row()[0];
     }
 
 
