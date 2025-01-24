@@ -14,7 +14,6 @@ TODO:
             -UsersPage formon a customDataGridView-ban van 3 oszlop amit a világért sem tudok eltüntetni pls help (- Bence)
             -bookDetailed form könyv módosítás és törléshez (- Bence)
             -összes könyves form úgy nézzen ki min a useres form (- Bence)
-            -keypress function custom textboxhoz (- Bence)
 
 
         BACKEND:
