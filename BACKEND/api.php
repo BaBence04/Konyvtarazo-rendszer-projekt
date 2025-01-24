@@ -23,15 +23,15 @@
 
         //returns "not found"/"inactive"/"success"/"incorrect"
         }else if(isset($_POST['uname'], $_POST['pw']) && count($_POST)==2){
-            $gotPw = CheckCredentialForLogin($_POST['uname'], $_POST['pw']);
-            if($gotPw == "not found"){
-                echo $gotPw;
+            $result = CheckCredentialForLogin($_POST['uname'], $_POST['pw']);
+            if($result == "not found"){
+                echo $result;
 
-            }elseif($gotPw == "NULL"){
+            }elseif($result == "NULL"){
                 echo "inactive";
                 
             }else{
-                if($gotPw == "true"){
+                if($result == "true"){
                     $_SESSION['user_id'] = GetUserId($_POST['uname']);
                     echo "success";
                 }else{
