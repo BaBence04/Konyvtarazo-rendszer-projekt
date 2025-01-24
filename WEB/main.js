@@ -125,8 +125,8 @@ function HideAndShowFilters(){
 }
 
 function CheckLogin(){
-  console.log(document.getElementById("username").value, document.getElementById("password").value )
-  $.ajax({
+   //console.log(document.getElementById("username").value, document.getElementById("password").value )
+   $.ajax({
     url: "../BACKEND/api.php",
     type: "POST", //send it through get method
     data: { 
@@ -135,17 +135,16 @@ function CheckLogin(){
     },
     success: function(response)  {
         //ALERTEKET VALAMI MÁS LESZ MAJD EZ CSAK ÁTMENETI
+        console.log(response, "asédlfkj");
         if(response == "not found"){
             alert("helytelen felhasználónév")
-        }else if(response == "inactive"){
-            alert("ez a felhasználó inaktív")
+        }else if(response == "inactive user"){
+            alert("ez a felhasználó nem aktív")
         }else if(response == "incorrect"){
             alert("helytelen Jelszó")
         }else{
             //HA LESZ FŐOLDAL AKKOR ODA IRÁNYÍTSON
-            // location.replace("bookList.php")
-            // alert("sikeres bejelentkezés")
-            login.classList.remove("show-login");
+            location.replace("index.php")
             
         }
     

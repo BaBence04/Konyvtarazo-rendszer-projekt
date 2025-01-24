@@ -16,7 +16,7 @@
    <script src="jquery.js"></script> 
    <script>    
     function checkLogin(){
-        console.log(document.getElementById("uname").value, document.getElementById("pw").value )
+        //console.log(document.getElementById("uname").value, document.getElementById("pw").value )
        $.ajax({
         url: "../BACKEND/api.php",
         type: "POST", //send it through get method
@@ -26,11 +26,11 @@
         },
         success: function(response)  {
             //ALERTEKET VALAMI MÁS LESZ MAJD EZ CSAK ÁTMENETI
-
+            console.log(response);
             if(response == "not found"){
                 alert("helytelen felhasználónév")
             }else if(response == "inactive user"){
-                alert("ez a felhasználó inaktív")
+                alert("ez a felhasználó nem aktív")
             }else if(response == "incorrect"){
                 alert("helytelen Jelszó")
             }else{

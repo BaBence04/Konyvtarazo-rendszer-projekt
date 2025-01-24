@@ -40,6 +40,7 @@ if($page == "userDetailed" && !isset($_SESSION["user_id"])){
   
   <?php
     require_once "navbar.html";
+    var_dump($_SESSION);
 
     if ($page === 'mainPage') {
         require_once "mainPage.php";

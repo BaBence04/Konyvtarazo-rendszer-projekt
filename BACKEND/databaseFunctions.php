@@ -208,7 +208,7 @@
         return $results->fetch_all(MYSQLI_ASSOC)[0]['status'];
     }
     //returns "not found" if there is no user with the given username, returns "false" if the password doesn't match, and returns true for successful logging in
-    function CheckCredentialForLogin($username, $pw) : string {
+    function CheckCredentialForLogin($username, $pw) {
         require "databaseConnect.php";
 
         $query = "CALL loginUser(?,?);";
@@ -218,7 +218,7 @@
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
         $conn->close();
-        return $results->fetch_all(MYSQLI_ASSOC)[0]['result'];
+        return $results->fetch_all(MYSQLI_ASSOC)[0];
     }
 
     //not tested hopefully works
@@ -325,7 +325,7 @@
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
         $conn->close();
-        return $results->fetch_all(MYSQLI_NUM)[0][0];
+        return $results->fetch_all(MYSQLI_ASSOC);
     }
 
     function BorrowBook($user_id, $book_id, $empl_id){
