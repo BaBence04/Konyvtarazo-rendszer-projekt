@@ -301,6 +301,18 @@
         return $results->fetch_all(MYSQLI_ASSOC);
     }
 
+    function ReturnInfo($book_id){
+        require "databaseConnect.php";
+
+        $query = "CALL returnInfo(?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("i", $book_id); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        return $results->fetch_all(MYSQLI_ASSOC);
+    }
+
     function ReturnBook($user_id, $book_id, $empl_id){
         require "databaseConnect.php";
 

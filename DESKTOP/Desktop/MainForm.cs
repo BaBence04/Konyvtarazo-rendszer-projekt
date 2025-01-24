@@ -28,7 +28,21 @@ namespace Desktop
             OpenChildForm(new HomePage());
 			//WHEN FINAL VERSION UNCOMMENT THIS
 			/*List<Dictionary<string, string>> result = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string>() { { "type", "deleteExpiredBookings" } });
-			string changes = result.First()["output"];*/
+			string changes = result.First()["output"];
+			if (changes.Length >0)
+			{
+				changes = changes.Remove(0, 1);
+				foreach (string line in changes.Split(';')) {
+					string[] data = line.Split(',');
+					if (data[2] == "-1")
+					{
+						data[2] = "nobody";
+					}
+					Console.WriteLine($"Removes happened: {data[0]}-bookid from {data[1]} to {data[2]}");
+				}
+			}*/
+
+
 		}
 
 
@@ -101,12 +115,12 @@ namespace Desktop
 
 		private void button_BookLending_Click(object sender, EventArgs e)
 		{
-			OpenChildForm(new BookLendingPage());
+			//OpenChildForm(new BookLendingPage());
 		}
 
 		private void button_BookTakeback_Click(object sender, EventArgs e)
 		{
-			OpenChildForm(new BookTakebackPage());
+			//OpenChildForm(new BookTakebackPage());
 		}
 
 		private void button_AllBooks_Click(object sender, EventArgs e)

@@ -99,12 +99,13 @@ namespace Desktop
             {
                 if ((string)cdgvBooks.Rows[e.RowIndex].Cells[3].Value == "borrowed")
                 {
-                    LoginForm.main.OpenChildForm(new BookTakebackPage());
+                    LoginForm.main.OpenChildForm(new BookTakebackPage((string)cdgvBooks.Rows[e.RowIndex].Cells[0].Value));
                 }
-                else
+                else 
                 {
-                    LoginForm.main.OpenChildForm(new BookLendingPage());
+                    LoginForm.main.OpenChildForm(new BookLendingPage((string)cdgvBooks.Rows[e.RowIndex].Cells[0].Value));
                 }
+               
             }
         }
 
