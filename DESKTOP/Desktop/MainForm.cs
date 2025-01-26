@@ -132,5 +132,10 @@ namespace Desktop
 		{
 			OpenChildForm(new AddBookPage());
 		}
-    }
+
+		private void button_Publishers_Click(object sender, EventArgs e)
+		{
+			OpenChildForm(new PublishersPage());
+		}
+	}
 }

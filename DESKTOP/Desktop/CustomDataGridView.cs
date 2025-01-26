@@ -137,6 +137,7 @@ namespace Desktop
 			this.ColumnHeadersDefaultCellStyle.BackColor = headerBackColor;
 			this.ColumnHeadersDefaultCellStyle.ForeColor = headerForeColor;
 			this.ColumnHeadersDefaultCellStyle.Font = new Font(this.Font, FontStyle.Bold);
+			this.ColumnHeadersHeight = 40;
 
 			// Row header (first column) styles
 			this.RowHeadersDefaultCellStyle.BackColor = headerBackColor;
@@ -200,18 +201,15 @@ namespace Desktop
 
 			base.OnCellPainting(e);
 
-			// Ensure no null reference occurs
 			if (e.CellStyle == null || e.FormattedValue == null)
 				return;
 
-			// Apply rounded corners to header cells if enabled
-			if (useRoundedCorners && e.RowIndex == -1) // Header row
+			if (useRoundedCorners && e.RowIndex == -1)
 			{
 				using (GraphicsPath path = GetRoundedRectanglePath(e.CellBounds, cornerRadius))
 				{
 					e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
-					// Create the brush explicitly based on the gradient flag
 					Brush brush = null;
 					try
 					{
@@ -224,7 +222,6 @@ namespace Desktop
 							brush = new SolidBrush(headerBackColor);
 						}
 
-						// Use the brush to fill the background
 						e.Graphics.FillPath(brush, path);
 					}
 					finally
@@ -232,7 +229,6 @@ namespace Desktop
 						brush?.Dispose();
 					}
 
-					// Draw text safely
 					if (e.FormattedValue != null)
 					{
 						TextRenderer.DrawText(e.Graphics, e.FormattedValue.ToString(), e.CellStyle.Font,
@@ -250,7 +246,6 @@ namespace Desktop
 		{
 			base.OnRowPrePaint(e);
 
-			// Apply hover effect to rows
 			if (this.Rows[e.RowIndex].Selected)
 			{
 				using (Brush selectionBrush = new SolidBrush(selectedRowColor))

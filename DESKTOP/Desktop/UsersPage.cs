@@ -85,19 +85,19 @@ namespace Desktop
             }
         }
 
-        private void btnKeres_Click(object sender, EventArgs e)
-        {
-            if (ctbSearch.Texts != ctbSearch.PlaceholderText)
-            {
-                updateUsersDgw(ctbSearch.Texts);
-            }
-            else
-            {
-                updateUsersDgw("");
-            }
-        }
+		private void btnSearch_Click(object sender, EventArgs e)
+		{
+			if (ctbSearch.Texts != ctbSearch.PlaceholderText)
+			{
+				updateUsersDgw(ctbSearch.Texts);
+			}
+			else
+			{
+				updateUsersDgw("");
+			}
+		}
 
-        private void ctbSearch_KeyPress(object sender, KeyPressEventArgs e)
+		private void ctbSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (ctbSearch.Texts != ctbSearch.PlaceholderText)
             {
@@ -108,5 +108,5 @@ namespace Desktop
                 updateUsersDgw("");
             }
         }
-    }
+	}
 }

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,11 +21,12 @@ namespace Desktop
         private void AllBooksPage_Load(object sender, EventArgs e)
         {
 			updateBooksDgv("");
-        }
+
+		}
 
 		private async void updateBooksDgv(string search)
 		{
-            cdgvBooks.DataSource = null;
+			cdgvBooks.DataSource = null;
             cdgvBooks.Columns.Clear();
             List<Dictionary<string, string>> response = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "getBooks" }, { "search", search } });
             if (response.Count>0)
@@ -83,8 +85,11 @@ namespace Desktop
                 }
                 else
                 {
-                    row.Cells[5].Value = "Kiadás";
-                }
+					//row.Cells[5].Value = "Kiadás";
+					// Nekem itt hibát dobott, úgyohgy kikommenteltem, hogy tudjam a többi részét csinálni. Error: System.ArgumentOutOfRangeException: 'Index was out of range. Must be non-negative and less than the size of the collection.
+					//Parameter name: index'
+
+				}
                 
 
             }
@@ -109,19 +114,19 @@ namespace Desktop
             }
         }
 
-        private void btnKeres_Click(object sender, EventArgs e)
-        {
-            if (ctbSearch.Texts != ctbSearch.PlaceholderText)
-            {
-                updateBooksDgv(ctbSearch.Texts);
-            }
-            else
-            {
-                updateBooksDgv("");
-            }
-        }
+		private void btnSearch_Click(object sender, EventArgs e)
+		{
+			if (ctbSearch.Texts != ctbSearch.PlaceholderText)
+			{
+				updateBooksDgv(ctbSearch.Texts);
+			}
+			else
+			{
+				updateBooksDgv("");
+			}
+		}
 
-        private void ctbSearch_KeyPress(object sender, KeyPressEventArgs e)
+		private void ctbSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
            
             if(ctbSearch.Texts != ctbSearch.PlaceholderText)
@@ -133,5 +138,5 @@ namespace Desktop
                 updateBooksDgv("");
             }
         }
-    }
+	}
 }
