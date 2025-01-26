@@ -7,12 +7,9 @@ ASZTALI:
         -
         -legyen lehetőség meghosszabítani a felhasználó tagságát
         -a book részletesen lehessen előjegyezni/foglalni egy adott user számára
-        -asztalinál kell a kiadónak is külön oldal
-        -kell lehetőség arra is, hogy lehessen egy user-t inaktívvá tenni
         -a könyvrészletesen lehessen a kiadóra lehessen rákattintani, és megnyitni annak a részleteit
         -automatikus törlős dologhoz valami frontend, popup window szerűség
         -userDetailed form módosításhoz/törléshez (- Bence)
-        -UsersPage formon a customDataGridView-ban van 3 oszlop amit a világért sem tudok eltüntetni pls help (- Bence)
 
 
     BACKEND:
