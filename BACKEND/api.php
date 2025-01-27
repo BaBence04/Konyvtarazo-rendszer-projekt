@@ -35,8 +35,8 @@
                 }else if($gotPw["result"] == "false"){
                     echo "incorrect";
                 }else{
-                    var_dump($gotPw);
-                    $_SESSION['user_id'] = $gotPw['result'];
+                    // var_dump($gotPw);
+                    $_SESSION['user_id'] = GetUserId($_POST["uname"]);
                     //there is no member key
                     if($gotPw['member'] == "false"){
                         $_SESSION['inactive'] = "true";
