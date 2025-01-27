@@ -28,25 +28,25 @@
 
     <div class="container">
         <div class="sidebar">
-            <div class="nav-item" id="nav-account-details" onclick="showSection('account-details')">
-                Fiók adatai <span class="indicator"></span>
+            <div class="nav-item selected" id="nav-account-details" onclick="showSection(this);">
+                Fiók <span>adatai</span> <span class="indicator"></span>
             </div>
-            <div class="nav-item" id="nav-reserved-books" onclick="showSection('reserved-books')">
-                Előjegyzett könyvek <span class="indicator"></span>
+            <div class="nav-item" id="nav-reserved-books" onclick="showSection(this);">
+                Előjegyzett <span>könyvek</span> <span class="indicator"></span>
             </div>
-            <div class="nav-item" id="nav-booked-books" onclick="showSection('booked-books')">
-                Lefoglalt könyvek <span class="indicator"></span>
+            <div class="nav-item" id="nav-booked-books" onclick="showSection(this);">
+                Lefoglalt <span>könyvek</span> <span class="indicator"></span>
             </div>
-            <div class="nav-item" id="nav-borrowed-books" onclick="showSection('borrowed-books')">
-                Jelenleg kivett könyvek <span class="indicator"></span>
+            <div class="nav-item" id="nav-borrowed-books" onclick="showSection(this);">
+                Jelenleg kivett <span>könyvek</span> <span class="indicator"></span>
             </div>
-            <div class="nav-item" id="nav-previously-borrowed-books" onclick="showSection('previously-borrowed-books')">
-                Korábban kivett könyvek <span class="indicator"></span>
+            <div class="nav-item" id="nav-previously-borrowed-books" onclick="showSection(this);">
+                Korábban kivett <span>könyvek</span> <span class="indicator"></span>
             </div>
         </div>
 
         <div class="main-content">
-            <div class="section" id="account-details">
+            <div class="section" style="display: block;" id="account-details">
                 <h2>Fiók adatai</h2>
                 <div class="account-info">
                     <div><strong>Név:</strong> <?=$data['surname'].' '.$data['first_name']?></div>
@@ -122,23 +122,38 @@
 
     <script>
 
-        function showSection(sectionId) {
-            const sections = document.querySelectorAll('.section');
-            sections.forEach(section => {
-                section.style.display = 'none';
-            });
-            document.getElementById(sectionId).style.display = 'block';
+        function showSection(element) {
+            let navItems = Array.from(document.querySelectorAll(".sidebar>.nav-item"));
+            const sections = Array.from(document.querySelectorAll('.section'));
 
-            const navItems = document.querySelectorAll('.nav-item');
-            navItems.forEach(item => {
-                item.querySelector('.indicator').style.backgroundColor = 'transparent';
-            });
-            document.getElementById('nav-' + sectionId).querySelector('.indicator').style.backgroundColor = 'hsl(171, 85%, 26%)';
+            let newIndex = navItems.indexOf(element);
+            let currentIndex = -1
+
+            let currentSelectedElement = document.querySelector(".nav-item.selected");
+            if(currentSelectedElement != undefined){
+                if(element == currentSelectedElement){
+                    return;
+                }
+
+                currentIndex = navItems.indexOf(currentSelectedElement);            
+                sections[currentIndex].style.display = "none";
+
+                const selectedNavItems = document.querySelectorAll('.nav-item.selected');
+                selectedNavItems.forEach(item => {
+                    item.classList.remove("selected");
+                });
+            }
+
+            if(newIndex>currentIndex){
+                console.log("slide out right");
+            }
+
+            sections[newIndex].style.display = "block";
+
+
+            navItems[newIndex].classList.add("selected");
         }
 
-        document.addEventListener("DOMContentLoaded", () => {
-            showSection('account-details');
-        });
 
         function Meghosszabbitas(element){
             var action = "extend";
