@@ -23,7 +23,7 @@
 
         //returns "not found"/"inactive"/"success"/"incorrect"
         }else if(isset($_POST['uname'], $_POST['pw']) && count($_POST)==2){
-            $result = CheckCredentialForLogin($_POST['uname'], $_POST['pw']);
+            // $result = CheckCredentialForLogin($_POST['uname'], $_POST['pw']);
             
             $gotPw = CheckCredentialForLogin($_POST['uname'], $_POST['pw']);
             //var_dump(CheckCredentialForLogin($_POST['uname'], $_POST['pw']));
@@ -35,7 +35,9 @@
                 }else if($gotPw["result"] == "false"){
                     echo "incorrect";
                 }else{
+                    var_dump($gotPw);
                     $_SESSION['user_id'] = $gotPw['result'];
+                    //there is no member key
                     if($gotPw['member'] == "false"){
                         $_SESSION['inactive'] = "true";
                     }
