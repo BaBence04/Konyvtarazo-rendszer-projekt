@@ -73,6 +73,10 @@ body{
   min-height: 100vh;
 }
 
+body{
+  height: 100vh;
+}
+
 body,
 input,
 button {
@@ -812,7 +816,6 @@ input:-webkit-autofill{
 .book-author {
   font-size: 18px;
   color: #555;
-  margin-bottom: 20px;
 }
 
 .book-genres {
@@ -1475,6 +1478,11 @@ a, a:active, a:hover, a:visited, a:link{
   padding: 20px;
   overflow-y: auto;
   background-color: #ecf0f1;
+  line-height: 3rem;
+}
+
+.main-content h2, h3 {
+  padding-bottom: 2rem;
 }
 
 .section {
@@ -1492,6 +1500,9 @@ a, a:active, a:hover, a:visited, a:link{
   background-color: #ffffff;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
 .book-item a {
@@ -1501,8 +1512,11 @@ a, a:active, a:hover, a:visited, a:link{
   text-decoration: none;
 }
 
+
+
 .book-item .book-author {
   color: #7f8c8d;
+  align-self: flex-start;
 }
 
 .book-item .book_action_button {
@@ -1512,6 +1526,7 @@ a, a:active, a:hover, a:visited, a:link{
   padding: 8px 15px;
   border-radius: 5px;
   cursor: pointer;
+  align-self: flex-end;
 }
 
 .book-item .book_action_button:hover {
@@ -1538,6 +1553,8 @@ a, a:active, a:hover, a:visited, a:link{
 @media screen and (max-width: 768px) {
   .container {
       flex-direction: column;
+      width: 100%;
+      padding: 2rem;
   }
 
   .sidebar {
@@ -1555,5 +1572,6 @@ a, a:active, a:hover, a:visited, a:link{
 
   .main-content {
       padding: 10px;
+      padding: 2rem;
   }
 }
