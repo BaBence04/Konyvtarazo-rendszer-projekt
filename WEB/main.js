@@ -144,7 +144,8 @@ function CheckLogin(){
             alert("helytelen Jelszó")
         }else{
             //HA LESZ FŐOLDAL AKKOR ODA IRÁNYÍTSON
-            location.replace("index.php")
+            // location.replace("index.php")
+            
             
         }
     
