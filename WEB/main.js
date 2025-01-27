@@ -145,7 +145,7 @@ function CheckLogin(){
         }else{
             //HA LESZ FŐOLDAL AKKOR ODA IRÁNYÍTSON
             // location.replace("index.php")
-            
+            login.classList.remove("show-login");
             
         }
     
