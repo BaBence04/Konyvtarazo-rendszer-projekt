@@ -134,9 +134,9 @@ INSERT INTO system_settings (membership_fee, borrowing_time, lengthening_time, r
 
 
 INSERT INTO users (surname, first_name, username, birth_date, membership_end_date, email, phone_number, password, birth_place, address, mother_maiden_name, active) VALUES
-('Kovacs', 'Janos', '7584937648', '1985-03-15', '2025-03-15', 'janos.kovacs@example.com', '06123456789', 'password', 'Budapest', '123 Main St', 'Nagy Erzsebet', TRUE),
-('K.', 'Anna', '0123456789', '1999-10-12', '2025-10-15', 'k.anna@gmail.com', '06302166102', 'password', 'Vac', '123 Vaci St', 'Kipuf Ogo', TRUE),
-('Szabo', 'Anna', '6453957465', '1990-10-22', '2025-10-22', 'anna.szabo@example.com', '06789123456', 'password', 'Debrecen', '456 High St', 'Kiss Julia', TRUE);
+('Kovacs', 'Janos', '7584937648', '1985-03-15', '2025-03-15', 'janos.kovacs@example.com', '06123456789', PASSWORD('password'), 'Budapest', '123 Main St', 'Nagy Erzsebet', TRUE),
+('K.', 'Anna', '0123456789', '1999-10-12', '2025-10-15', 'k.anna@gmail.com', '06302166102', PASSWORD('password'), 'Vac', '123 Vaci St', 'Kipuf Ogo', TRUE),
+('Szabo', 'Anna', '6453957465', '1990-10-22', '2025-10-22', 'anna.szabo@example.com', '06789123456', PASSWORD('password'), 'Debrecen', '456 High St', 'Kiss Julia', TRUE);
 
 INSERT INTO inventory (ISBN_id, book_id,available) VALUES
 (1,1,TRUE),(2,2,TRUE),(3,3,TRUE),(4,4,TRUE),(5,5,TRUE),(6,6,TRUE),(7,7,TRUE),(8,8,TRUE),(9,9,TRUE),(10,10,TRUE),(11,11,TRUE),(12,12,TRUE),(13,13,TRUE),(14,14,TRUE),(15,15,TRUE),(16,16,TRUE),(17,17,TRUE),(18,18,TRUE),(19,19,TRUE),(20,20,TRUE),(21,21,TRUE),(22,22,TRUE),(23,23,TRUE),(24,24,TRUE),(25,25,TRUE);
