@@ -1469,8 +1469,13 @@ a, a:active, a:hover, a:visited, a:link{
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color: transparent;
   transform: translateY(-50%);
+  background-color: hsl(171, 85%, 26%);
+  visibility: hidden;
+}
+
+.nav-item.selected .indicator{
+  visibility: visible;
 }
 
 .main-content {
@@ -1569,6 +1574,20 @@ a, a:active, a:hover, a:visited, a:link{
       text-align: center;
       border-bottom: none;
   }
+
+  .nav-item.selected .indicator{
+    visibility: hidden;
+  }
+
+  .nav-item span{
+    visibility: hidden;
+  }
+
+  .nav-item.selected{
+    color: hsl(171, 85%, 26%);
+  }
+
+  .nav
 
   .main-content {
       padding: 10px;
