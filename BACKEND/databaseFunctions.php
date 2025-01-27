@@ -30,6 +30,7 @@
         $offset = 0;
         $limit = -1; //it is -1 so it will return all of the results
 
+        
         $query = "CALL listBooksFiltered(?,?,?,?,?,?,?,?);";
 
         $stmt = $conn->prepare($query); // Prepare statement
