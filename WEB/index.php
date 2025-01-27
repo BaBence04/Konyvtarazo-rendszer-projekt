@@ -52,7 +52,9 @@ if($page == "userDetailed" && !isset($_SESSION["user_id"])){
       require_once "aboutUs.php";
 
     }else if ($page === 'userDetailed') {
-      require_once "userDetailed.php";
+      if(isset($_SESSION["user_id"])){
+        require_once "userDetailed.php";
+      }
 
     }else {
         echo "<h2>Az oldal nem található</h2>";
