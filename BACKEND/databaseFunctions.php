@@ -257,7 +257,14 @@
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
         $conn->close();
-        return $results->fetch_all(MYSQLI_ASSOC)[0];
+        $data = $results->fetch_all(MYSQLI_ASSOC);
+        if(count($data) >0){
+            return $data[0];
+
+        }else{
+            throw new Exception("No user was found with the given id!");
+        }
+
     }
 
     function ExtendReturnDate($book_id, $user_id): void{
