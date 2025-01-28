@@ -1433,10 +1433,15 @@ a, a:active, a:hover, a:visited, a:link{
 }
 
 #results>.page_button_holder{
-  display: flex;
-  flex-direction: row;
-  /* margin-inline: auto; */
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr min-content 1fr;
+  width: fit-content;
+  margin-inline: auto;
+
+}
+
+#results>.page_button_holder>:first-child{
+  text-align: right;
 }
 /* /////////////////////////////////////// */
 
@@ -1554,6 +1559,9 @@ a, a:active, a:hover, a:visited, a:link{
 .logout-container button:hover {
   background-color: #2980b9;
 }
+
+
+
 
 @media screen and (max-width: 768px) {
   .container {
