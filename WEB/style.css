@@ -73,6 +73,10 @@ body{
   min-height: 100vh;
 }
 
+body{
+  height: 100vh;
+}
+
 body,
 input,
 button {
@@ -812,7 +816,6 @@ input:-webkit-autofill{
 .book-author {
   font-size: 18px;
   color: #555;
-  margin-bottom: 20px;
 }
 
 .book-genres {
@@ -1333,4 +1336,261 @@ input:-webkit-autofill{
   justify-content: center;
   align-items: center;
   margin: 0;
+}
+
+
+
+/* /////////////////USER DETAILED//////////////////// */
+
+
+a, a:active, a:hover, a:visited, a:link{
+  color: unset;
+  text-decoration: unset;
+  padding: unset;
+  margin: unset;
+}
+
+.content__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.account-details {
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.account-details h2 {
+  margin-top: 0;
+}
+
+.account-info {
+  margin-bottom: 20px;
+}
+
+.account-info label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.account-info p {
+  margin: 0 0 10px;
+}
+
+.book-section {
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.book-section h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.book-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.book-list li {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+}
+
+.book-list li:last-child {
+  margin-bottom: 0;
+}
+
+.book-title {
+  font-weight: bold;
+}
+
+.book-author {
+  color: #555;
+}
+
+.return-date-past {
+  color: red;
+}
+
+.book-section input[type="button"]{
+  float: right
+}
+
+.hidden{
+  display: none;
+}
+
+#results>.page_button_holder{
+  display: flex;
+  flex-direction: row;
+  /* margin-inline: auto; */
+  justify-content: center;
+}
+/* /////////////////////////////////////// */
+
+.container {
+  display: flex;
+  width: 80%;
+  height: 100%;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: var(--body-color);
+  color: black;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-item {
+  padding: 15px;
+  cursor: pointer;
+  text-align: left;
+  position: relative;
+}
+
+.nav-item .indicator {
+  position: absolute;
+  top: 50%;
+  left: -10px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  background-color: hsl(171, 85%, 26%);
+  visibility: hidden;
+}
+
+.nav-item.selected .indicator{
+  visibility: visible;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: #ecf0f1;
+  line-height: 3rem;
+}
+
+.main-content h2, h3 {
+  padding-bottom: 2rem;
+}
+
+.section {
+  display: none;
+}
+
+.section h3 {
+  font-size: 24px;
+  color: #2c3e50;
+}
+
+.book-item {
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.book-item a {
+  font-size: 18px;
+  font-weight: bold;
+  color: #2c3e50;
+  text-decoration: none;
+}
+
+
+
+.book-item .book-author {
+  color: #7f8c8d;
+  align-self: flex-start;
+}
+
+.book-item .book_action_button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+.book-item .book_action_button:hover {
+  background-color: #c0392b;
+}
+
+.logout-container {
+  margin-top: 20px;
+}
+
+.logout-container button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.logout-container button:hover {
+  background-color: #2980b9;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+      flex-direction: column;
+      width: 100%;
+      padding: 2rem;
+  }
+
+  .sidebar {
+      width: 100%;
+      height: auto;
+      flex-direction: row;
+      justify-content: space-around;
+  }
+
+  .nav-item {
+      padding: 10px;
+      text-align: center;
+      border-bottom: none;
+  }
+
+  .nav-item.selected .indicator{
+    visibility: hidden;
+  }
+
+  .nav-item span{
+    visibility: hidden;
+  }
+
+  .nav-item.selected{
+    color: hsl(171, 85%, 26%);
+  }
+
+  .nav
+
+  .main-content {
+      padding: 10px;
+      padding: 2rem;
+  }
 }
