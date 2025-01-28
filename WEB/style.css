@@ -77,10 +77,6 @@ body{
   min-height: 100vh;
 }
 
-body{
-  height: 100vh;
-}
-
 body,
 input,
 button {
@@ -640,6 +636,9 @@ input:-webkit-autofill{
   text-align: center;
   box-shadow: 0 -2px 16px hsla(230, 75%, 32%, 0.15);
   bottom: 0;
+  clear: both;
+  position: relative;
+  margin-top: auto;
 }
 
 .footer__container {
@@ -1478,9 +1477,13 @@ a, a:active, a:hover, a:visited, a:link{
   width: 250px;
   background-color: var(--body-color);
   color: black;
-  padding-top: 20px;
+  padding-top: 2rem;
   display: flex;
   flex-direction: column;
+  position: sticky;
+  align-self: flex-start;
+  top: 5rem;
+  /* overflow-y: auto; */
 }
 
 .nav-item {
@@ -1509,9 +1512,10 @@ a, a:active, a:hover, a:visited, a:link{
 .main-content {
   flex-grow: 1;
   padding: 20px;
-  overflow-y: auto;
   background-color: #ecf0f1;
   line-height: 3rem;
+  border-radius: 1rem;
+  min-height: 0;
 }
 
 .main-content h2, h3 {
@@ -1590,7 +1594,6 @@ a, a:active, a:hover, a:visited, a:link{
   .container {
       flex-direction: column;
       width: 100%;
-      padding: 2rem;
   }
 
   .sidebar {

@@ -3,35 +3,51 @@
   "WorkspaceRootPath": "C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|c:\\xampp\\htdocs\\konyvtarazo-rendszer-projekt\\desktop\\desktop\\userspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|solutionrelative:desktop\\userspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\desktop\\userspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|solutionrelative:desktop\\userspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|c:\\xampp\\htdocs\\konyvtarazo-rendszer-projekt\\desktop\\desktop\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|solutionrelative:desktop\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|c:\\xampp\\htdocs\\konyvtarazo-rendszer-projekt\\desktop\\desktop\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|solutionrelative:desktop\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|c:\\xampp\\htdocs\\konyvtarazo-rendszer-projekt\\desktop\\desktop\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|solutionrelative:desktop\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|c:\\xampp\\htdocs\\konyvtarazo-rendszer-projekt\\desktop\\desktop\\addbookpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|solutionrelative:desktop\\addbookpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|c:\\xampp\\htdocs\\konyvtarazo-rendszer-projekt\\desktop\\desktop\\allbookspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\desktop\\allbookspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|solutionrelative:desktop\\allbookspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|c:\\xampp\\htdocs\\konyvtarazo-rendszer-projekt\\desktop\\desktop\\allbookspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\desktop\\allbookspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|solutionrelative:desktop\\allbookspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|c:\\xampp\\htdocs\\konyvtarazo-rendszer-projekt\\desktop\\desktop\\publisherspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\desktop\\publisherspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|solutionrelative:desktop\\publisherspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|c:\\xampp\\htdocs\\konyvtarazo-rendszer-projekt\\desktop\\desktop\\userspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|solutionrelative:desktop\\userspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|c:\\xampp\\htdocs\\konyvtarazo-rendszer-projekt\\desktop\\desktop\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\desktop\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|solutionrelative:desktop\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|c:\\xampp\\htdocs\\konyvtarazo-rendszer-projekt\\desktop\\desktop\\publisherdetailedpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\desktop\\publisherdetailedpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|solutionrelative:desktop\\publisherdetailedpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|c:\\xampp\\htdocs\\konyvtarazo-rendszer-projekt\\desktop\\desktop\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\desktop\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|solutionrelative:desktop\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -47,6 +63,57 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "UsersPage.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\UsersPage.cs",
+              "RelativeDocumentMoniker": "Desktop\\UsersPage.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\UsersPage.cs*",
+              "RelativeToolTip": "Desktop\\UsersPage.cs*",
+              "ViewState": "AgIAAFYAAAAAAAAAAAAQwCAAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-28T08:20:21.369Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "LoginForm.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\LoginForm.cs",
+              "RelativeDocumentMoniker": "Desktop\\LoginForm.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\LoginForm.cs",
+              "RelativeToolTip": "Desktop\\LoginForm.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-28T08:14:07.098Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LoginForm.cs [Design]",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\LoginForm.cs",
+              "RelativeDocumentMoniker": "Desktop\\LoginForm.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\LoginForm.cs [Design]",
+              "RelativeToolTip": "Desktop\\LoginForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-28T08:14:03.283Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\Program.cs",
+              "RelativeDocumentMoniker": "Desktop\\Program.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\Program.cs",
+              "RelativeToolTip": "Desktop\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-28T08:13:06.205Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "AddBookPage.cs [Design]",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\AddBookPage.cs",
               "RelativeDocumentMoniker": "Desktop\\AddBookPage.cs",
@@ -58,89 +125,83 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "AllBooksPage.cs",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\AllBooksPage.cs",
               "RelativeDocumentMoniker": "Desktop\\AllBooksPage.cs",
               "ToolTip": "C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\AllBooksPage.cs",
               "RelativeToolTip": "Desktop\\AllBooksPage.cs",
               "ViewState": "AgIAABYAAAAAAAAAAAAAACoAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-26T14:18:03.313Z",
-              "EditorCaption": ""
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003525|",
+              "WhenOpened": "2025-01-26T14:18:03.313Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "AllBooksPage.cs [Design]",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\AllBooksPage.cs",
               "RelativeDocumentMoniker": "Desktop\\AllBooksPage.cs",
               "ToolTip": "C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\AllBooksPage.cs [Design]",
               "RelativeToolTip": "Desktop\\AllBooksPage.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-26T14:17:59.067Z",
-              "EditorCaption": " [Design]"
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003525|",
+              "WhenOpened": "2025-01-26T14:17:59.067Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "UsersPage.cs [Design]",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\UsersPage.cs",
               "RelativeDocumentMoniker": "Desktop\\UsersPage.cs",
-              "ToolTip": "C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\UsersPage.cs [Design]",
-              "RelativeToolTip": "Desktop\\UsersPage.cs [Design]",
+              "ToolTip": "C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\UsersPage.cs [Design]*",
+              "RelativeToolTip": "Desktop\\UsersPage.cs [Design]*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-26T14:11:29.269Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "MainForm.cs [Design]",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\MainForm.cs",
               "RelativeDocumentMoniker": "Desktop\\MainForm.cs",
               "ToolTip": "C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\MainForm.cs [Design]",
               "RelativeToolTip": "Desktop\\MainForm.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-26T14:08:26.295Z",
-              "EditorCaption": " [Design]"
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003525|",
+              "WhenOpened": "2025-01-26T14:08:26.295Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 10,
               "Title": "PublisherDetailedPage.cs [Design]",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\PublisherDetailedPage.cs",
               "RelativeDocumentMoniker": "Desktop\\PublisherDetailedPage.cs",
               "ToolTip": "C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\PublisherDetailedPage.cs [Design]",
               "RelativeToolTip": "Desktop\\PublisherDetailedPage.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-26T14:08:15.52Z",
-              "EditorCaption": " [Design]"
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003525|",
+              "WhenOpened": "2025-01-26T14:08:15.52Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
               "Title": "PublishersPage.cs [Design]",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\PublishersPage.cs",
               "RelativeDocumentMoniker": "Desktop\\PublishersPage.cs",
               "ToolTip": "C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\PublishersPage.cs [Design]",
               "RelativeToolTip": "Desktop\\PublishersPage.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-26T14:07:56.696Z",
-              "EditorCaption": " [Design]"
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003525|",
+              "WhenOpened": "2025-01-26T14:07:56.696Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 11,
               "Title": "MainForm.cs",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\MainForm.cs",
               "RelativeDocumentMoniker": "Desktop\\MainForm.cs",
               "ToolTip": "C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\MainForm.cs",
               "RelativeToolTip": "Desktop\\MainForm.cs",
               "ViewState": "AgIAAHIAAAAAAAAAAAApwIkAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-26T14:10:53.787Z",
-              "EditorCaption": ""
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003525|",
+              "WhenOpened": "2025-01-26T14:10:53.787Z"
             }
           ]
         }
