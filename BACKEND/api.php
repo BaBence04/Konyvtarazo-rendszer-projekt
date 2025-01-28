@@ -37,7 +37,7 @@
                 }else{
                     // var_dump($gotPw);
                     $_SESSION['user_id'] = GetUserId($_POST["uname"]);
-                    //there is no member key
+                    //if restricted isset, and true than the current users membership is due
                     if($gotPw['member'] == "false"){
                         $_SESSION['restricted'] = "true";
                     }
