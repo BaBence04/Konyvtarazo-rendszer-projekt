@@ -39,7 +39,7 @@
                     $_SESSION['user_id'] = GetUserId($_POST["uname"]);
                     //there is no member key
                     if($gotPw['member'] == "false"){
-                        $_SESSION['inactive'] = "true";
+                        $_SESSION['restricted'] = "true";
                     }
                     echo "success";
                 }
