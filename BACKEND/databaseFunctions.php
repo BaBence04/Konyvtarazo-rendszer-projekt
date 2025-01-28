@@ -332,6 +332,29 @@
         $stmt->bind_param("ss", $username, $pw); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
+        return $results->fetch_all(MYSQLI_ASSOC);
+    }
+
+    function GetUsers($search){
+        require "databaseConnect.php";
+
+        $query = "CALL getUsers(?);";
+        
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("s", $search); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        return $results->fetch_all(MYSQLI_ASSOC);
+    }
+    function GetBooks($search){
+        require "databaseConnect.php";
+
+        $query = "CALL getBooks(?);";
+        
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("s", $search); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
         $conn->close();
         return $results->fetch_all(MYSQLI_ASSOC);
     }
@@ -346,6 +369,18 @@
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
         $conn->close();
+        return $results->fetch_all(MYSQLI_ASSOC);
+    }
+
+    function ReturnInfo($book_id){
+        require "databaseConnect.php";
+
+        $query = "CALL returnInfo(?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("i", $book_id); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
         return $results->fetch_all(MYSQLI_ASSOC);
     }
 
@@ -394,6 +429,18 @@
         }else{
             return $results->fetch_all(MYSQLI_ASSOC);
         }
+    }
+
+    function DeleteLateBookings(){
+        require "databaseConnect.php";
+
+        $query = "CALL deleteLateBookings();";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        //$stmt->bind_param("ssssssssss", $surname, $firstname, $uname, $birthdate, $email, $phone, $pw, $birthplace, $address, $mmn); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        return $results->fetch_all(MYSQLI_ASSOC);
     }
 
     function AddEmployee($uname, $pw){

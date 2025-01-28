@@ -12,9 +12,11 @@ namespace Desktop
 {
 	public partial class BookLendingPage : Form
 	{
-		public BookLendingPage()
+		public BookLendingPage(string book_id)
 		{
 			InitializeComponent();
 		}
-	}
+        
+
+    }
 }

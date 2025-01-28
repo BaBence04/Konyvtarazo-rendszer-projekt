@@ -30,6 +30,7 @@ namespace Desktop
         public CustomTextbox()
         {
             InitializeComponent();
+            textBox1.KeyPress += textBox1_KeyPress;
         }
 
         private void SetPlaceholder()
@@ -355,7 +356,15 @@ namespace Desktop
         {
             isFocused = false;
             this.Invalidate();
-            SetPlaceholder();   
+            SetPlaceholder();
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                this.OnKeyPress(e);
+            }
         }
     }
 }

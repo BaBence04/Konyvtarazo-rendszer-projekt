@@ -63,8 +63,18 @@
             unset($_SESSION["user_id"]);
 
         }else if(isset($_POST["username"])&& isset($_POST["passw"]) && count($_POST)==2){
-            
             echo json_encode(LoginEmployee($_POST["username"], $_POST["passw"]));
+        }
+        else if(isset($_POST["type"]) && $_POST["type"] == "getUsers" && isset($_POST["search"]) && count($_POST) == 2){
+            echo json_encode(GetUsers($_POST["search"]));
+        }else if(isset($_POST["type"]) && $_POST["type"] == "getBooks" && isset($_POST["search"]) && count($_POST) == 2){
+            echo json_encode(getBooks($_POST["search"]));
+        }else if(isset($_POST["type"]) && $_POST["type"] == "deleteExpiredBookings" && count($_POST) == 1){
+            echo json_encode(deleteLateBookings());
+        }else if(isset($_POST["type"]) && $_POST["type"] == "returnInfo" && isset($_POST["bookID"]) && count($_POST) == 2){
+            echo json_encode(ReturnInfo($_POST["bookID"]));
+        }else if(isset($_POST["type"]) && $_POST["type"] == "returnBook" && isset($_POST["bookID"]) && isset($_POST["user_id"]) && isset($_POST["empl_id"]) && count($_POST) == 4){
+            echo json_encode(ReturnBook($_POST["user_id"], $_POST["bookID"], $_POST["empl_id"]));
 
         }else if(isset($_POST["action"], $_POST["id"], $_SESSION["user_id"]) && ($_POST["action"] == "cancelReservation" || $_POST["action"] == "cancelBooking") && count($_POST) == 2){
             if($_POST["action"] == "cancelReservation"){

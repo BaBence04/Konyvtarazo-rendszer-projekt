@@ -109,12 +109,30 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="PublisherDetailedPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PublisherDetailedPage.Designer.cs">
+      <DependentUpon>PublisherDetailedPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PublishersPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PublishersPage.Designer.cs">
+      <DependentUpon>PublishersPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="RoundedCornerPanel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ThemeManager.cs" />
     <Compile Include="ToggleButton.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserDetailedPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserDetailedPage.Designer.cs">
+      <DependentUpon>UserDetailedPage.cs</DependentUpon>
     </Compile>
     <Compile Include="UsersPage.cs">
       <SubType>Form</SubType>
@@ -150,6 +168,15 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PublisherDetailedPage.resx">
+      <DependentUpon>PublisherDetailedPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PublishersPage.resx">
+      <DependentUpon>PublishersPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDetailedPage.resx">
+      <DependentUpon>UserDetailedPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UsersPage.resx">
       <DependentUpon>UsersPage.cs</DependentUpon>

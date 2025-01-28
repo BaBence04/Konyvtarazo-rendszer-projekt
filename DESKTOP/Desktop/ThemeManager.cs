@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -11,24 +12,77 @@ namespace Desktop
 {
 	internal class ThemeManager
 	{
-        
-        public static string CurrentTheme { get; private set; } = "Dark";
 
-		public static void SetTheme(string theme)
-		{
-			CurrentTheme = theme;
-			ApplyThemeToAllForms();
-		}
+        private const string ThemeFilePath = "theme.config";
 
-		public static void ApplyThemeToAllForms()
-		{
-			foreach (Form form in Application.OpenForms)
-			{
-				ApplyTheme(form);
-			}
-		}
+        public static string CurrentTheme { get; private set; }
 
-		public static void ApplyTheme(Control control)
+        [DllImport("uxtheme.dll", CharSet = CharSet.Unicode)]
+        private static extern int GetCurrentThemeName(StringBuilder themeFileName, int maxNameChars,
+                                                      StringBuilder colorBuffer, int maxColorChars,
+                                                      StringBuilder sizeBuffer, int maxSizeChars);
+
+        public static void Initialize()
+        {
+            string savedTheme = LoadSavedTheme();
+
+            if (!string.IsNullOrEmpty(savedTheme))
+            {
+                CurrentTheme = savedTheme;
+            }
+            else
+            {
+                CurrentTheme = GetSystemTheme();
+            }
+
+            ApplyThemeToAllForms();
+        }
+
+        public static void SetTheme(string theme)
+        {
+            if (theme != "Light" && theme != "Dark")
+                throw new ArgumentException("Helytelen téma.");
+
+            CurrentTheme = theme;
+            SaveTheme(theme);
+            ApplyThemeToAllForms();
+        }
+
+        private static string LoadSavedTheme()
+        {
+            if (File.Exists(ThemeFilePath))
+            {
+                return File.ReadAllText(ThemeFilePath).Trim();
+            }
+            return null;
+        }
+
+        private static void SaveTheme(string theme)
+        {
+            File.WriteAllText(ThemeFilePath, theme);
+        }
+
+        private static string GetSystemTheme()
+        {
+            StringBuilder themeName = new StringBuilder(260);
+            StringBuilder color = new StringBuilder(260);
+            StringBuilder size = new StringBuilder(260);
+
+            GetCurrentThemeName(themeName, themeName.Capacity, color, color.Capacity, size, size.Capacity);
+
+            return color.ToString().IndexOf("dark", StringComparison.OrdinalIgnoreCase) >= 0 ? "Dark" : "Light";
+
+        }
+
+        public static void ApplyThemeToAllForms()
+        {
+            foreach (Form form in Application.OpenForms)
+            {
+                ApplyTheme(form);
+            }
+        }
+
+        public static void ApplyTheme(Control control)
 		{
             string imagePath = Path.Combine(Application.StartupPath + "\\icons\\");
 
@@ -108,7 +162,14 @@ namespace Desktop
 			{
 				label.ForeColor = CurrentTheme == "Light" ? Color.Black : Color.FromArgb(245, 245, 245);
             }
-			else if (control is PictureBox pictureBox)
+            else if (control is CheckBox toggleButton)
+            {
+                if (toggleButton.Name == "toggleButton_ThemeChanger")
+                {
+                    toggleButton.Checked = CurrentTheme == "Light" ? true : false;
+                }
+            }
+            else if (control is PictureBox pictureBox)
 			{
 				if (pictureBox.Name == "pictureBox_UserPic")
 				{

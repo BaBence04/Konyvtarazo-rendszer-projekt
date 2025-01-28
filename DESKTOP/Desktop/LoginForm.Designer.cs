@@ -100,6 +100,7 @@
             this.tbLoginPw.TabIndex = 1;
             this.tbLoginPw.Texts = "Jelszó";
             this.tbLoginPw.UnderlinedStyle = false;
+            this.tbLoginPw.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbLoginPw_KeyPress);
             // 
             // tbLoginUname
             // 
@@ -122,6 +123,7 @@
             this.tbLoginUname.TabIndex = 0;
             this.tbLoginUname.Texts = "Felhasználónév";
             this.tbLoginUname.UnderlinedStyle = false;
+            this.tbLoginUname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbLoginUname_KeyPress);
             // 
             // LoginForm
             // 
