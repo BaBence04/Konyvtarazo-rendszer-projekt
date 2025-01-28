@@ -16,6 +16,8 @@ namespace Desktop
 {
     public partial class MainForm : Form
     {
+		public UsersPage usersPage = new UsersPage();
+		public AllBooksPage allBooksPage = new AllBooksPage();
 		public MainForm()
         {
 			InitializeComponent();
@@ -76,13 +78,23 @@ namespace Desktop
 
 
 		private Form activeForm = null;
+		public Form prev = null;
 		public void OpenChildForm(Form childForm)
 		{
             
             if (activeForm != null)
 			{
-				activeForm.Close();
+				if (activeForm == usersPage || activeForm == allBooksPage)
+				{
+					activeForm.Hide();
+					Console.WriteLine("cigány");
+				}
+				else
+				{
+					activeForm.Close();
+				}
 			}
+			prev = activeForm;
 			activeForm = childForm;
 			childForm.TopLevel = false;
 			childForm.FormBorderStyle = FormBorderStyle.None;
@@ -100,7 +112,7 @@ namespace Desktop
 
 		private void button_Users_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new UsersPage());
+            OpenChildForm(usersPage);
         }
 
         private void toggleButton_ThemeChanger_CheckedChanged(object sender, EventArgs e)
@@ -128,7 +140,7 @@ namespace Desktop
 
 		private void button_AllBooks_Click(object sender, EventArgs e)
 		{
-			OpenChildForm(new AllBooksPage());
+			OpenChildForm(allBooksPage);
 		}
 
 		private void button_AddBook_Click(object sender, EventArgs e)

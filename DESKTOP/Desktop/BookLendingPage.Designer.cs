@@ -33,6 +33,17 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.pChooseBook = new System.Windows.Forms.Panel();
+            this.backBtn = new Desktop.CustomButton();
+            this.cbtnChooseBook = new Desktop.CustomButton();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.lblUname = new System.Windows.Forms.Label();
+            this.lblIsbn = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
+            this.pChooseUser = new System.Windows.Forms.Panel();
+            this.cbtnChooseUser = new Desktop.CustomButton();
+            this.pChooseBook.SuspendLayout();
+            this.pChooseUser.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -91,14 +102,132 @@
             this.label4.TabIndex = 13;
             this.label4.Text = "Felhasználónév";
             // 
+            // pChooseBook
+            // 
+            this.pChooseBook.Controls.Add(this.cbtnChooseBook);
+            this.pChooseBook.Location = new System.Drawing.Point(25, 120);
+            this.pChooseBook.Name = "pChooseBook";
+            this.pChooseBook.Size = new System.Drawing.Size(174, 128);
+            this.pChooseBook.TabIndex = 14;
+            this.pChooseBook.Visible = false;
+            // 
+            // backBtn
+            // 
+            this.backBtn.BackColor = System.Drawing.Color.Black;
+            this.backBtn.BorderColor = System.Drawing.Color.White;
+            this.backBtn.BorderRadius = 40;
+            this.backBtn.BorderSize = 0;
+            this.backBtn.FlatAppearance.BorderSize = 0;
+            this.backBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.backBtn.ForeColor = System.Drawing.Color.White;
+            this.backBtn.Location = new System.Drawing.Point(25, 507);
+            this.backBtn.Name = "backBtn";
+            this.backBtn.Size = new System.Drawing.Size(132, 40);
+            this.backBtn.TabIndex = 15;
+            this.backBtn.Text = "Vissza";
+            this.backBtn.UseVisualStyleBackColor = false;
+            this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
+            // 
+            // cbtnChooseBook
+            // 
+            this.cbtnChooseBook.BackColor = System.Drawing.Color.Black;
+            this.cbtnChooseBook.BorderColor = System.Drawing.Color.White;
+            this.cbtnChooseBook.BorderRadius = 40;
+            this.cbtnChooseBook.BorderSize = 0;
+            this.cbtnChooseBook.FlatAppearance.BorderSize = 0;
+            this.cbtnChooseBook.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbtnChooseBook.ForeColor = System.Drawing.Color.White;
+            this.cbtnChooseBook.Location = new System.Drawing.Point(24, 23);
+            this.cbtnChooseBook.Name = "cbtnChooseBook";
+            this.cbtnChooseBook.Size = new System.Drawing.Size(132, 86);
+            this.cbtnChooseBook.TabIndex = 16;
+            this.cbtnChooseBook.Text = "Konyv kiválasztása";
+            this.cbtnChooseBook.UseVisualStyleBackColor = false;
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblTitle.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblTitle.Location = new System.Drawing.Point(84, 155);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(63, 20);
+            this.lblTitle.TabIndex = 16;
+            this.lblTitle.Text = "notSet";
+            // 
+            // lblUname
+            // 
+            this.lblUname.AutoSize = true;
+            this.lblUname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblUname.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblUname.Location = new System.Drawing.Point(339, 228);
+            this.lblUname.Name = "lblUname";
+            this.lblUname.Size = new System.Drawing.Size(63, 20);
+            this.lblUname.TabIndex = 17;
+            this.lblUname.Text = "notSet";
+            // 
+            // lblIsbn
+            // 
+            this.lblIsbn.AutoSize = true;
+            this.lblIsbn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblIsbn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblIsbn.Location = new System.Drawing.Point(84, 228);
+            this.lblIsbn.Name = "lblIsbn";
+            this.lblIsbn.Size = new System.Drawing.Size(63, 20);
+            this.lblIsbn.TabIndex = 18;
+            this.lblIsbn.Text = "notSet";
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblName.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblName.Location = new System.Drawing.Point(339, 155);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(63, 20);
+            this.lblName.TabIndex = 19;
+            this.lblName.Text = "notSet";
+            // 
+            // pChooseUser
+            // 
+            this.pChooseUser.Controls.Add(this.cbtnChooseUser);
+            this.pChooseUser.Location = new System.Drawing.Point(277, 120);
+            this.pChooseUser.Name = "pChooseUser";
+            this.pChooseUser.Size = new System.Drawing.Size(174, 128);
+            this.pChooseUser.TabIndex = 17;
+            this.pChooseUser.Visible = false;
+            // 
+            // cbtnChooseUser
+            // 
+            this.cbtnChooseUser.BackColor = System.Drawing.Color.Black;
+            this.cbtnChooseUser.BorderColor = System.Drawing.Color.White;
+            this.cbtnChooseUser.BorderRadius = 40;
+            this.cbtnChooseUser.BorderSize = 0;
+            this.cbtnChooseUser.FlatAppearance.BorderSize = 0;
+            this.cbtnChooseUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbtnChooseUser.ForeColor = System.Drawing.Color.White;
+            this.cbtnChooseUser.Location = new System.Drawing.Point(24, 23);
+            this.cbtnChooseUser.Name = "cbtnChooseUser";
+            this.cbtnChooseUser.Size = new System.Drawing.Size(132, 86);
+            this.cbtnChooseUser.TabIndex = 16;
+            this.cbtnChooseUser.Text = "Konyv kiválasztása";
+            this.cbtnChooseUser.UseVisualStyleBackColor = false;
+            // 
             // BookLendingPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
             this.ClientSize = new System.Drawing.Size(740, 559);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.pChooseUser);
+            this.Controls.Add(this.backBtn);
+            this.Controls.Add(this.pChooseBook);
+            this.Controls.Add(this.lblName);
+            this.Controls.Add(this.lblIsbn);
+            this.Controls.Add(this.lblUname);
+            this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label1);
@@ -106,6 +235,8 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "BookLendingPage";
             this.Text = "BookLendingPage";
+            this.pChooseBook.ResumeLayout(false);
+            this.pChooseUser.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -118,5 +249,14 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel pChooseBook;
+        private CustomButton backBtn;
+        private CustomButton cbtnChooseBook;
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Label lblUname;
+        private System.Windows.Forms.Label lblIsbn;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Panel pChooseUser;
+        private CustomButton cbtnChooseUser;
     }
 }

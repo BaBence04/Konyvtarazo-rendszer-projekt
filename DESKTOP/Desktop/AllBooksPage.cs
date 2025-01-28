@@ -21,7 +21,7 @@ namespace Desktop
         private void AllBooksPage_Load(object sender, EventArgs e)
         {
 			updateBooksDgv("");
-
+            ctbSearch.KeyPress += ctbSearch_KeyPress;
 		}
 
 		private async void updateBooksDgv(string search)
@@ -85,9 +85,7 @@ namespace Desktop
                 }
                 else
                 {
-					//row.Cells[5].Value = "Kiadás";
-					// Nekem itt hibát dobott, úgyohgy kikommenteltem, hogy tudjam a többi részét csinálni. Error: System.ArgumentOutOfRangeException: 'Index was out of range. Must be non-negative and less than the size of the collection.
-					//Parameter name: index'
+					row.Cells[5].Value = "Kiadás";
 
 				}
                 
@@ -106,11 +104,16 @@ namespace Desktop
                 {
                     LoginForm.main.OpenChildForm(new BookTakebackPage((string)cdgvBooks.Rows[e.RowIndex].Cells[0].Value));
                 }
-                else 
+                else if((string)cdgvBooks.Rows[e.RowIndex].Cells[3].Value == "booked")
                 {
-                    LoginForm.main.OpenChildForm(new BookLendingPage((string)cdgvBooks.Rows[e.RowIndex].Cells[0].Value, true));
+                    LoginForm.main.OpenChildForm(new BookLendingPage((string)cdgvBooks.Rows[e.RowIndex].Cells[0].Value, "booking"));
                 }
-               
+                else
+                {
+                    LoginForm.main.OpenChildForm(new BookLendingPage((string)cdgvBooks.Rows[e.RowIndex].Cells[0].Value, "book_id"));
+
+                }
+
             }
         }
 
