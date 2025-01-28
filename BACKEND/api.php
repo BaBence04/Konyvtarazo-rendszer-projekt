@@ -75,9 +75,10 @@
             echo json_encode(deleteLateReservations());
         }else if(isset($_POST["type"]) && $_POST["type"] == "returnInfo" && isset($_POST["bookID"]) && count($_POST) == 2){
             echo json_encode(ReturnInfo($_POST["bookID"]));
+        }else if(isset($_POST["type"]) && $_POST["type"] == "borrowInfo" && isset($_POST["id"]) && isset($_POST["state"]) && count($_POST) == 3){
+            echo json_encode(BorrowInfo($_POST["id"], $_POST["state"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "returnBook" && isset($_POST["bookID"]) && isset($_POST["user_id"]) && isset($_POST["empl_id"]) && count($_POST) == 4){
             echo json_encode(ReturnBook($_POST["user_id"], $_POST["bookID"], $_POST["empl_id"]));
-
         }else if(isset($_POST["action"], $_POST["id"], $_SESSION["user_id"]) && ($_POST["action"] == "cancelReservation" || $_POST["action"] == "cancelBooking") && count($_POST) == 2){
             if($_POST["action"] == "cancelReservation"){
                 cancel_reservation($_POST["id"], $_SESSION["user_id"]);
