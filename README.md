@@ -23,17 +23,15 @@ Mesterremek projekt, könyvtárazó rendszer
 
 #WEB:
     KINÉZET:
-        -a könyvek kilistázásánál legyen középre rendezve a jelenlegi oldal kiírása
-        -miért írjuk ki a könyv elérési útvonalát???
+        -a könyv részletesen a gomb nagyon rá van csúszva a felette levő részre
+        -a könyvek kilistázásánál legyen hely a lapozós gombok és a footer között
         -nem hiszem hogy akarjuk, hogy a userDetailed-on legyen overflow-scroll, de ha csinálja, akkor a kijelentkezés továbbra sem kéne hogy csinálja
         -a userDetailed oldalon a "meghosszabbítás"(a lemondás is ugyanez) gombokat vállalhatóan kinézővé varázsolni -> class-e: "book_action_button"
         -túl kicsi szerintem a kontraszt a user_detailed oldalon a book-list-eken belül a book-author-náls
         -a könyvek kilistázásánál is kicsit kicsi a kontraszt
-        -kell a userDetailed-re is a footer 
         
 
     PHP/JS:
-        -olyankor is ki van írva hogy meghosszabbítás amikor nem is lehet
         -frissítsen rá az oldalra miután kivesz egy könyvet pl
         -a könyv részletesen konstans "Elérhető" van kiírva, ami nem igazán jó
         -tároljuk a taggság lejártát session-ben amit a login ad majd vissza
