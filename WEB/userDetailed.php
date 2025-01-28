@@ -26,7 +26,7 @@
 
 <body>
 
-    <div class="container">
+    <main class="container">
         <div class="sidebar">
             <div class="nav-item selected" id="nav-account-details" onclick="showSection(this);">
                 Fiók <span>adatai</span> <span class="indicator"></span>
@@ -118,7 +118,7 @@
                 <button id="logoutButton" onclick="Kijelentkezés();">Kijelentkezés</button>
             </div>
         </div>
-    </div>
+    </main>
 
     <script>
 
