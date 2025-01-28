@@ -4,7 +4,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 :root {
-  --header-height: 2.5rem;
+  --header-height: 100px;
+  --margin-after-header: 30px;
+
   /*HSL(hue, saturation, lightness)*/
   --first-color: hsl(171, 85%, 26%);
   --second-color: rgb(152, 205, 198);
@@ -36,6 +38,8 @@
 
   --z-fixed: 100;
   --z-modal: 1000;
+
+  /* --navbar_max_height: 100px; */
 }
 
 input:-webkit-autofill,
@@ -87,7 +91,8 @@ button {
 body {
   background-color: var(--body-color);
 /*   color: var(--text-color); */
-  padding-top: 4rem;
+  /* padding-top: 4rem; */
+  padding-top: calc(var(--header-height) + var(--margin-after-header));
 
   display: flex;
   flex-direction: column;
@@ -210,8 +215,13 @@ a {
   z-index: var(--z-fixed);
 }
 
+main.container{
+  /* margin-top: calc(); */
+  min-height: calc(100dvh - (var(--header-height) + var(--margin-after-header)));
+}
+
 .nav {
-  height: var(--header-height);
+  height: var(--header-height)!important;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -587,7 +597,8 @@ input:-webkit-autofill{
 /* nagy */
 @media screen and (min-width: 1023px) {
   .nav {
-    height: calc(var(--header-height) + 1.5rem);
+    /* height: calc(var(--header-height) + 1.5rem); */
+    /* height: var(--header-height); */
     -moz-column-gap: 3rem;
     column-gap: 3rem;
   }
@@ -606,6 +617,8 @@ input:-webkit-autofill{
   .login__form {
     padding: 3rem 2rem 3.5rem;
   }
+
+  
 
 
 }
@@ -913,7 +926,8 @@ input:-webkit-autofill{
   }
 
   body{
-    padding-top: 2rem;
+    /* padding-top: 2rem; */
+
   }
 }
 
@@ -1178,6 +1192,15 @@ input:-webkit-autofill{
   .hero .cta-button {
     font-size: 1rem;
     padding: 0.8rem 1.5rem;
+  }
+
+  :root{
+    --margin-after-header: 10px;
+  }
+
+  main.container{
+    /* margin-top: calc(var(--header-height) + var(--margin-after-header)); */
+    padding-top: 0;
   }
 }
 
