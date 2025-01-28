@@ -1,18 +1,49 @@
 <?php
     require "sql.php";
 
-    function GetBooksFiltered($title, $genre, $author, $release_date, $lang, $isbn){
+    $results_per_page = 5;
+    function get_books_filtered($title, $genre, $author, $release_date, $lang, $isbn, $page){
         require "databaseConnect.php";
 
-        //temporary fix page offset and limit not dealt with yet
-        $query = "CALL listBooksFiltered(?,?,?,?,?,?,0,10);";
+        global $results_per_page;
+
+        $offset = ($page-1) * $results_per_page;
+        $limit = $results_per_page;
+        
+
+        $query = "CALL listBooksFiltered(?,?,?,?,?,?,?,?);";
 
         $stmt = $conn->prepare($query); // Prepare statement
-        $stmt->bind_param("ssssss", $title, $genre, $author, $release_date, $lang, $isbn); // Bind parameter to SQL query
+        $stmt->bind_param("ssssssii", $title, $genre, $author, $release_date, $lang, $isbn, $offset ,$limit); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
+        $conn->close();
+
+        
+
         return $results->fetch_all(MYSQLI_ASSOC);
     }
+
+    function get_books_filtered_number_of_results($title, $genre, $author, $release_date, $lang, $isbn):int{
+        require "databaseConnect.php";
+
+        $offset = 0;
+        $limit = -1; //it is -1 so it will return all of the results
+
+        
+        $query = "CALL listBooksFiltered(?,?,?,?,?,?,?,?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("ssssssii", $title, $genre, $author, $release_date, $lang, $isbn, $offset ,$limit); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        $conn->close();
+
+        $number_of_results = $results->num_rows;
+        return $number_of_results;
+    }
+
+    
 
     function GetGenres(){
         require "databaseConnect.php";
@@ -22,6 +53,7 @@
         $stmt = $conn->prepare($query); // Prepare statement
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
+        $conn->close();
         return $results->fetch_all(MYSQLI_ASSOC);
 
     }
@@ -34,6 +66,7 @@
         $stmt = $conn->prepare($query); // Prepare statement
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
+        $conn->close();
         return $results->fetch_all(MYSQLI_ASSOC);
 
     }
@@ -47,6 +80,7 @@
         $stmt->bind_param("s", $id); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
+        $conn->close();
         $data = $results->fetch_all(MYSQLI_ASSOC);
 
         if(count($data)>1){
@@ -69,6 +103,7 @@
         $stmt->bind_param("s", $isbn); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
+        $conn->close();
         $data = $results->fetch_all(MYSQLI_ASSOC);
 
         if(count($data)>1){
@@ -91,6 +126,7 @@
         $stmt->bind_param("i", $user_id); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
+        $conn->close();
         return $results->fetch_all(MYSQLI_ASSOC);
 
     }
@@ -104,6 +140,7 @@
         $stmt->bind_param("i", $user_id); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
+        $conn->close();
         return $results->fetch_all(MYSQLI_ASSOC);
 
     }
@@ -117,6 +154,7 @@
         $stmt->bind_param("i", $user_id); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
+        $conn->close();
         return $results->fetch_all(MYSQLI_ASSOC);
 
     }
@@ -131,6 +169,7 @@
         $stmt->bind_param("ii", $isbn_id,$user_id); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
+        $conn->close();
         return $results->fetch_all(MYSQLI_ASSOC)[0];
         //we may wanto do something with it though not only return "reservation" or "booking"
     }
@@ -144,6 +183,7 @@
         $stmt->bind_param("s", $isbn); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
+        $conn->close();
         if($results->num_rows>1){
             throw new Exception(("A következő ISBN-hez többször van az adatbázisban ISBN: $isbn."));
         }elseif($results->num_rows==0){
@@ -165,20 +205,37 @@
         $stmt->bind_param("ii", $isbn_id,$user_id); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
+        $conn->close();
         return $results->fetch_all(MYSQLI_ASSOC)[0]['status'];
     }
-
-    function GetPassword($username) : string {
+    //returns "not found" if there is no user with the given username, returns "false" if the password doesn't match, and returns true for successful logging in
+    function CheckCredentialForLogin($username, $pw) {
         require "databaseConnect.php";
 
-        $query = "CALL sendPassword(?);";
+        $query = "CALL loginUser(?,?);";
 
         $stmt = $conn->prepare($query); // Prepare statement
-        $stmt->bind_param("s", $username); // Bind parameter to SQL query
+        $stmt->bind_param("ss", $username, $pw); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
+        $conn->close();
+        return $results->fetch_all(MYSQLI_ASSOC)[0];
+    }
+
+    //not tested hopefully works
+    function AutoDeleteLateBookings() : string {
+        require "databaseConnect.php";
+
+        $query = "CALL deleteLateBookings();";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        //$stmt->bind_param("ss", $username, $pw); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        $conn->close();
         return $results->fetch_all(MYSQLI_ASSOC)[0]['result'];
     }
+
     function GetUserId($username) : string {
         require "databaseConnect.php";
 
@@ -188,6 +245,7 @@
         $stmt->bind_param("s", $username); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
+        $conn->close();
         return $results->fetch_all(MYSQLI_ASSOC)[0]['user_id'];
     }
     function GetUser($user_id) : array {
@@ -199,7 +257,15 @@
         $stmt->bind_param("i", $user_id); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
-        return $results->fetch_all(MYSQLI_ASSOC)[0];
+        $conn->close();
+        $data = $results->fetch_all(MYSQLI_ASSOC);
+        if(count($data) >0){
+            return $data[0];
+
+        }else{
+            throw new Exception("No user was found with the given id!");
+        }
+
     }
 
     function ExtendReturnDate($book_id, $user_id): void{
@@ -222,6 +288,7 @@
         $stmt->bind_param("sii", $searchTerm,$offseter, $limiter); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
+        $conn->close();
         return $results->fetch_all(MYSQLI_ASSOC);
     }
 
@@ -234,6 +301,7 @@
         $stmt->bind_param("ssssissss", $isbn,$title,$allGenres, $allAuthors, $publisherId, $releaseDate, $lang, $descritp, $picture); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
+        $conn->close();
         if($results->fetch_all(MYSQLI_NUM)[0][0] == "Already exists"){
             return -1;
         }
@@ -251,6 +319,7 @@
         $stmt->bind_param("s", $isbn); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
+        $conn->close();
         return $results->fetch_all(MYSQLI_ASSOC);
     }
 
@@ -286,6 +355,7 @@
         $stmt->bind_param("s", $search); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
+        $conn->close();
         return $results->fetch_all(MYSQLI_ASSOC);
     }
 
@@ -298,6 +368,7 @@
         $stmt->bind_param("iii", $user_id, $book_id, $empl_id); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
+        $conn->close();
         return $results->fetch_all(MYSQLI_ASSOC);
     }
 
@@ -322,6 +393,7 @@
         $stmt->bind_param("iii", $user_id, $book_id, $empl_id); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
+        $conn->close();
         return $results->fetch_all(MYSQLI_ASSOC);
     }
 
@@ -334,6 +406,7 @@
         $stmt->bind_param("ssss", $pubname, $phone, $email, $webpage); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
+        $conn->close();
         if($results->fetch_all(MYSQLI_NUM)[0][0] == "ilyen név már létezik"){
             return -1;
         }else{
@@ -350,6 +423,7 @@
         $stmt->bind_param("ssssssssss", $surname, $firstname, $uname, $birthdate, $email, $phone, $pw, $birthplace, $address, $mmn); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
+        $conn->close();
         if($results->fetch_all(MYSQLI_NUM)[0][0] == "a személy már egyszer beregisztrált"){
             return -1;
         }else{
@@ -378,6 +452,7 @@
         $stmt->bind_param("ss", $uname, $pw); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
+        $conn->close();
         if($results->fetch_all(MYSQLI_NUM)[0][0] == "az alkalmazott már egyszer beregisztrált"){
             return -1;
         }else{
@@ -395,6 +470,7 @@
         $stmt->bind_param("s", $uname); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
+        $conn->close();
         return $results->fetch_all(MYSQLI_ASSOC);
 
     }
@@ -405,16 +481,42 @@
      * @param int $book_id The id of the book which would be extended
      * @return bool Return true or false depending if the end date of borrowing the given book is extendable.
      */
-    function IsItExtendable($user_id, $book_id){
+    function IsItExtendable($user_id, $book_id): bool{    
         require "databaseConnect.php";
 
         $query = "CALL extendable(?, ?);";
 
         $stmt = $conn->prepare($query); // Prepare statement
-        $stmt->bind_param("ii", $user_id, $book_id); // Bind parameter to SQL query
+        $stmt->bind_param("ii", $book_id, $user_id); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
+        $conn->close();
         return $results->fetch_row()[0] == "true";
     }
+
+    function cancel_reservation($reservation_id, $user_id){
+        require "databaseConnect.php";
+
+        $query = "CALL cancelReservation(?, ?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("ii", $reservation_id, $user_id); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $conn->close();
+        return $results->fetch_row()[0];
+    }
+
+    function cancel_booking($booking_id, $user_id){
+        require "databaseConnect.php";
+
+        $query = "CALL cancelBooking(?, ?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("ii", $booking_id, $user_id); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $conn->close();
+        return $results->fetch_row()[0];
+    }
+
 
 ?>
