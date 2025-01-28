@@ -2,7 +2,7 @@
 Mesterremek projekt, könyvtárazó rendszer
 
 
-ASZTALI:
+#ASZTALI:
     KINÉZET:
         -
         -legyen lehetőség meghosszabítani a felhasználó tagságát
@@ -21,8 +21,9 @@ ASZTALI:
         -return book módosítva nekem működött, de nem minden case-t néztem meg (- Bence)
         -automatikus törlős dolog implementálása (- Bence DONE)
 
-WEB:
+#WEB:
     KINÉZET:
+        -a könyvek kilistázásánál legyen középre rendezve a jelenlegi oldal kiírása
         -miért írjuk ki a könyv elérési útvonalát???
         -nem hiszem hogy akarjuk, hogy a userDetailed-on legyen overflow-scroll, de ha csinálja, akkor a kijelentkezés továbbra sem kéne hogy csinálja
         -a userDetailed oldalon a "meghosszabbítás"(a lemondás is ugyanez) gombokat vállalhatóan kinézővé varázsolni -> class-e: "book_action_button"
