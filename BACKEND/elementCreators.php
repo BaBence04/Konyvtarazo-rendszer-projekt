@@ -12,25 +12,37 @@
         return $result;
     }
 
-    function CreateDetailedBookElement($id) : string {
-        $result = "";
-        $data = GetBookByIsbnId($id)[0];
-        //create the html for detailed book
-
-        return $result;
-    }
-
-    function CreateListedBooksElements($title,$genre,$author,$release_date,$lang,$isbn) : string {
+    function create_listed_books_elements($title, $genre, $author, $release_date, $lang, $isbn, $page) : string {
+        global $results_per_page;
         $resultHTML="";
         // $data = GetBooksFiltered($_GET["title"],$_GET["genre"],$_GET["author"],$_GET["release_date"],$_GET["lang"],$_GET["isbn"]);
-        $data = GetBooksFiltered($title,$genre,$author,$release_date,$lang,$isbn);
+        $data = get_books_filtered($title,$genre,$author,$release_date,$lang,$isbn, $page);
+        $number_of_results = get_books_filtered_number_of_results($title,$genre,$author,$release_date,$lang,$isbn);
+        
+        $last_possible_page = ceil($number_of_results/$results_per_page);
+
         $resultHTML.="<div class='content_container grid-container'>";
         for ($i=0; $i < count($data); $i++) { 
             $resultHTML.=CreateBookElement($data[$i]);
         }
         if(count($data)==0){
-            //feel free to modify this
-            $resultHTML.= "<h3>Ilyen feltételekkel nem találtunk könyvet</h3>";
+            if($last_possible_page<$page && $page != 1){
+                $resultHTML.= "<h3>Nincs ennyi oldalnyi találat!</h3>";
+            }else{
+                $resultHTML.= "<h3>Ilyen feltételekkel nem találtunk könyvet</h3>";
+            }
+        }
+
+        $resultHTML.="</div>";
+        $resultHTML.="<div class='page_button_holder'>";
+        if($page>1){
+            $resultHTML.= "<input type='button' value='Előző' onclick='NavigateToNextOrPreviousPage(-1);'>";
+
+        }
+        $resultHTML.="<p id='currentPage' class='page_button'>$page</p>";
+
+        if($page<$last_possible_page){
+            $resultHTML.= "<input type='button' value='Következő' onclick='NavigateToNextOrPreviousPage(1);'>";
         }
 
         $resultHTML.="</div>";
@@ -106,6 +118,8 @@
         </div>';
         return $resultHTML;
     }
+
+    
     
     
 
