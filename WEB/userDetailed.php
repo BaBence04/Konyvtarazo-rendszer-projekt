@@ -95,7 +95,9 @@
                             <a href="./bookDetailed.php?ISBN=<?= $borrowed_book_data['ISBN'] ?>"><?= $borrowed_book_data['title'] ?></a>
                             <span class="book-author"><?= str_replace(",", ", ", $borrowed_book_data['authors']) ?></span>
                             <span class="return-date"><?= $borrowed_book_data['end_date'] ?></span>
-                            <button class="book_action_button" data-book-id="<?= $borrowed_book_data['book_id'] ?>" onclick="Meghosszabbitas(this)">Meghosszabbítás</button>
+                            <?php if(IsItExtendable($_SESSION["user_id"], $borrowed_book_data["book_id"])):?>
+                                <button class="book_action_button" data-book-id="<?= $borrowed_book_data['book_id'] ?>" onclick="Meghosszabbitas(this)">Meghosszabbítás</button>
+                            <?php endif; ?>
                         </div>
                     <?php endforeach; ?>
                 <?php endif; ?>
