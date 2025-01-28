@@ -30,7 +30,7 @@ namespace Desktop
         private void UsersPage_Load(object sender, EventArgs e)
         {
             updateUsersDgw("");
-            //ctbSearch.KeyPress += ctbSearch_KeyPress;
+            ctbSearch.KeyPress += ctbSearch_KeyPress;
         }
         private async void updateUsersDgw(string search)
         {

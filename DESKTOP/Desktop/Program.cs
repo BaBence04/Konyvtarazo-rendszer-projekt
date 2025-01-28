@@ -17,6 +17,7 @@ namespace Desktop
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //REMOVE THIS WHEN ITS PROD TIME THIS JUST FOR TESTING
+            LoginForm start = new LoginForm();
             LoginForm.main = new MainForm();
             LoginForm.employee = "1";
             Application.Run(LoginForm.main);
