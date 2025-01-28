@@ -38,11 +38,15 @@
         if($page>1){
             $resultHTML.= "<input type='button' value='Előző' onclick='NavigateToNextOrPreviousPage(-1);'>";
 
+        }else{
+            $resultHTML.="<p></p>";
         }
         $resultHTML.="<p id='currentPage' class='page_button'>$page</p>";
 
         if($page<$last_possible_page){
             $resultHTML.= "<input type='button' value='Következő' onclick='NavigateToNextOrPreviousPage(1);'>";
+        }else{
+            $resultHTML.="<p></p>";
         }
 
         $resultHTML.="</div>";
