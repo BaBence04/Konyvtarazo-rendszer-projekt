@@ -9,11 +9,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Desktop
-{
+{ 
 	public partial class BookLendingPage : Form
 	{
-		public BookLendingPage(string book_id)
+        static string book_id, user_id;
+        public BookLendingPage(string id, bool isBook_id)
 		{
+			InitializeComponent();
+		}
+		//when it is a booking
+		public BookLendingPage(string userID, string bookID) { 
 			InitializeComponent();
 		}
         

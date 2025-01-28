@@ -41,9 +41,9 @@ Mesterremek projekt, könyvtárazó rendszer
         -ha a bookDetailed page-en jelentkezik be a user, akkor nem frissül rá az oldal, és nem jelenik meg a kivétel gomb amíg nem frissít rá
         -mindenben keresés a navbar keresővel - megvárjuk vele Wiezl
         -gyorsítani a backendet, azzal, hogy lehessen odaadni connectiont a databaseFunction-öknek hogy ne kelljen mindig újra csatlakozni
-
+s
 SQL:
--BENCE MI A FASZT CSINÁLSZ?? A DEKSTOPNÁL NINCS A PROCEDURE-ÖK KÖZÖTT A LOGIN USER, AZ APIBAN A RESULT-OT AKAROD BEÍRNI A USER_ID-BA ÉS EGY "MEMBER" OSZLOPOT KERESEL, AMIT A PROCEDURE NEM AD VISSZA, ÉS KÉTSZER EGYMÁS UTÁN VOLT MEGHÍVVA A CHECKCREDENTIALS!!!!!?!?!?!??!?
+
 -loginUser küldje vissza azt, hogy a user tagsága aktív-e
 -a deleteLateBookings procedure-el együtt fusson le egy másik is, ami azon felhasználóknak akiknek a taggsága lejárt, törli a foglalásait, és az előjegyzéseit
 

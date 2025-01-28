@@ -108,7 +108,7 @@ namespace Desktop
                 }
                 else 
                 {
-                    LoginForm.main.OpenChildForm(new BookLendingPage((string)cdgvBooks.Rows[e.RowIndex].Cells[0].Value));
+                    LoginForm.main.OpenChildForm(new BookLendingPage((string)cdgvBooks.Rows[e.RowIndex].Cells[0].Value, true));
                 }
                
             }
