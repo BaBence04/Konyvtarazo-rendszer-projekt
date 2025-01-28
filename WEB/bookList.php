@@ -136,6 +136,8 @@
                 document.getElementById("results").innerHTML = response; 
             }
             });
+
+            window.scroll(0,0);
         }
         
         function SearchOnEnter(event){
