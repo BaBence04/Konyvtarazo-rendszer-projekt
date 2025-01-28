@@ -172,13 +172,13 @@ GROUP BY borrowings.borrowing_id;
 END;//
 DELIMITER ;
 
--- automatically deletes bookings that are not picked up and notifies next (kinézet: egy concated string ami [bookid], [deletedUserid], [newUserid -1 ha nincs ilyen könyvre igény];[next row of things])
+-- automatically deletes bookings that are not picked up or users membership expired and notifies next (kinézet: egy concated string ami [bookid], [deletedUserid], [newUserid -1 ha nincs ilyen könyvre igény], [expmember-ha a membership expired, notpicked-ha nem vették át];[next row of things])
 DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS deleteLateBookings()
 BEGIN
 DECLARE output VARCHAR(255) DEFAULT "";
 -- delete lates
-FOR bookID IN (SELECT booking.book_id FROM booking WHERE booking.end_date<CURRENT_DATE())
+FOR bookID IN (SELECT booking.book_id, IF(users.membership_end_date<CURRENT_DATE(), 'expmember', 'notpicked') AS 'status' FROM booking INNER JOIN users ON users.user_id  = booking.user_id WHERE booking.end_date<CURRENT_DATE() OR users.membership_end_date<CURRENT_DATE())
 DO
 SET output = CONCAT(output, bookID.book_id, ',', (SELECT booking.user_id FROM booking WHERE booking.book_id = bookID.book_id));
 DELETE FROM booking WHERE booking.book_id = bookID.book_id;
@@ -192,33 +192,22 @@ SET output = CONCAT(output, ',', (SELECT booking.user_id FROM booking WHERE book
 ELSE
 SET output = CONCAT(output, ',', '-1');
 END IF;
-SET output = CONCAT(output, ';');
+SET output = CONCAT(output, ',', bookID.status, ';');
 END FOR;
 SELECT output;
 END;//
 DELIMITER ;
 
--- checks if username is valid and sends password
+-- automatically deletes reservations where users membership expired and notifies next (kinézet: egy concated string ami [ISBN], [deletedUserid];[next row of things])
 DELIMITER //
-CREATE PROCEDURE IF NOT EXISTS deleteLateBookings()
+CREATE PROCEDURE IF NOT EXISTS deleteLateReservations()
 BEGIN
 DECLARE output VARCHAR(255) DEFAULT "";
--- delete lates
-FOR bookID IN (SELECT booking.book_id FROM booking WHERE booking.end_date<CURRENT_DATE())
+-- delete late reservations
+FOR resID IN (SELECT reservation.reservation_id FROM reservation INNER JOIN users ON users.user_id = reservation.user_id WHERE users.membership_end_date<CURRENT_DATE())
 DO
-SET output = CONCAT(output, bookID.book_id, ',', (SELECT booking.user_id FROM booking WHERE booking.book_id = bookID.book_id));
-DELETE FROM booking WHERE booking.book_id = bookID.book_id;
-IF ((SELECT COUNT(reservation.reservation_id) FROM reservation WHERE reservation.ISBN_id = (SELECT inventory.ISBN_id FROM inventory WHERE inventory.book_id = bookID.book_id AND inventory.available))>0) THEN
--- insert if there is reservation for the book
-INSERT INTO booking(booking.book_id, booking.user_id, booking.end_date) VALUES(bookID.book_id, (SELECT reservation.user_id FROM reservation WHERE reservation.ISBN_id = (SELECT inventory.ISBN_id FROM inventory WHERE inventory.book_id = bookID.book_id) ORDER BY reservation.reservation_id ASC LIMIT 1), CURRENT_DATE()+INTERVAL (SELECT system_settings.reservation_time FROM system_settings) DAY);
--- delete the shifted reservation
-DELETE FROM reservation WHERE reservation.reservation_id = (SELECT reservation.reservation_id FROM reservation WHERE reservation.ISBN_id = (SELECT inventory.ISBN_id FROM inventory WHERE inventory.book_id = bookID.book_id) ORDER BY reservation.reservation_id ASC LIMIT 1);
--- notify which user is now booked
-SET output = CONCAT(output, ',', (SELECT booking.user_id FROM booking WHERE booking.book_id = bookID.book_id));
-ELSE
-SET output = CONCAT(output, ',', '-1');
-END IF;
-SET output = CONCAT(output, ';');
+SET output = CONCAT(output, (SELECT reservation.ISBN_id FROM reservation WHERE reservation.reservation_id = resID.reservation_id), ',', (SELECT reservation.user_id FROM reservation WHERE reservation.reservation_id = resID.reservation_id), ';');
+DELETE FROM reservation WHERE reservation.reservation_id = resID.reservation_id;
 END FOR;
 SELECT output;
 END;//
