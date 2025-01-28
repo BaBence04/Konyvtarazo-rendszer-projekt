@@ -6,36 +6,42 @@
     //listBooksFiltered
 
     if($_SERVER['REQUEST_METHOD'] === 'GET'){
-        if(isset($_GET["title"],$_GET["genre"],$_GET["author"],$_GET["release_date"],$_GET["lang"],$_GET["ISBN"]) && count($_GET)==6){
-            print_r(CreateListedBooksElements($_GET["title"],$_GET["genre"],$_GET["author"],$_GET["release_date"],$_GET["lang"],$_GET["ISBN"]));
+        if(isset($_GET["title"],$_GET["genre"],$_GET["author"],$_GET["release_date"],$_GET["lang"],$_GET["ISBN"]) && (count($_GET)==6 || (count($_GET) == 7 && isset($_GET["page_number"])))){
+            $page_number = 1;
+            if(isset($_GET["page_number"])){
+                $page_number = $_GET["page_number"];
+            }
+
+            print_r(create_listed_books_elements($_GET["title"],$_GET["genre"],$_GET["author"],$_GET["release_date"],$_GET["lang"],$_GET["ISBN"], $page_number));
     
         }
 
     }else if($_SERVER['REQUEST_METHOD'] === "POST"){
-        if(isset($_POST["username"],$_POST["password"]) && count($_POST)==2){
-            $hashedPasswordFromDb = GetPassword($_POST["username"])[0]["password"];
-            if(password_verify($_POST["password"],$hashedPasswordFromDb)){
-                print "valid";
-            }else{
-                print "invalid";
-            }
-
-        }else if(isset($_POST['user_id'], $_POST['isbn_id']) && count($_POST)==2){
-            echo AddReservationOrBooking($_POST['isbn_id'], $_POST['user_id']);
+        if(isset($_POST['isbn_id'], $_SESSION["user_id"]) && count($_POST)==1){
+            echo AddReservationOrBooking($_POST['isbn_id'], $_SESSION["user_id"]);
 
 
-            //PASSWORD CHECK IS NOT FINAL IT IS NOT HASHING
+        //returns "not found"/"inactive"/"success"/"incorrect"
         }else if(isset($_POST['uname'], $_POST['pw']) && count($_POST)==2){
-            $gotPw = GetPassword($_POST['uname']);
-            if($gotPw == "not found" || $gotPw == "inactive user"){
-                echo $gotPw;
+            // $result = CheckCredentialForLogin($_POST['uname'], $_POST['pw']);
+            
+            $gotPw = CheckCredentialForLogin($_POST['uname'], $_POST['pw']);
+            //var_dump(CheckCredentialForLogin($_POST['uname'], $_POST['pw']));
+            if($gotPw["result"] == "not found"){
+                echo $gotPw["result"];
             }else{
-                if($gotPw == $_POST['pw']){
-                    session_start();
-                    $_SESSION['user_id'] = GetUserId($_POST['uname']);
-                    echo "success";
-                }else{
+                if($gotPw["result"] == NULL){
+                    echo "inactive user";
+                }else if($gotPw["result"] == "false"){
                     echo "incorrect";
+                }else{
+                    // var_dump($gotPw);
+                    $_SESSION['user_id'] = GetUserId($_POST["uname"]);
+                    //there is no member key
+                    if($gotPw['member'] == "false"){
+                        $_SESSION['inactive'] = "true";
+                    }
+                    echo "success";
                 }
             }
 
@@ -69,6 +75,14 @@
             echo json_encode(ReturnInfo($_POST["bookID"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "returnBook" && isset($_POST["bookID"]) && isset($_POST["user_id"]) && isset($_POST["empl_id"]) && count($_POST) == 4){
             echo json_encode(ReturnBook($_POST["user_id"], $_POST["bookID"], $_POST["empl_id"]));
+
+        }else if(isset($_POST["action"], $_POST["id"], $_SESSION["user_id"]) && ($_POST["action"] == "cancelReservation" || $_POST["action"] == "cancelBooking") && count($_POST) == 2){
+            if($_POST["action"] == "cancelReservation"){
+                cancel_reservation($_POST["id"], $_SESSION["user_id"]);
+            }else{
+                cancel_booking($_POST["id"], $_SESSION["user_id"]);
+            }
+        
         }else if(isset($_POST['test']) && $_POST['test'] == "ping"){
             echo "pong";
         }else{
