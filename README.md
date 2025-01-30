@@ -33,7 +33,6 @@ Mesterremek projekt, könyvtárazó rendszer
         
 
     PHP/JS:
-        -minden bejelentkezésnél állítsuk be a session "restricted"-et true/false-ra
         -írjuk ki a foglalás lejárati idejét is
         -legyen egy algoritmus ami intézi az elfelejtett jelszó kezelését:
             -kell egy api endpoint ahol van egy reset_token GET param, and if the token is active in the database than it will give the option to change password
@@ -48,6 +47,7 @@ Mesterremek projekt, könyvtárazó rendszer
         -gyorsítani a backendet, azzal, hogy lehessen odaadni connectiont a databaseFunction-öknek hogy ne kelljen mindig újra csatlakozni
 
 SQL:
+-a loginUser adja vissza a user_id-t is hogy ne kelljen külön lekérni
 
 
 ADDITIONAL STUFF TO DO:
