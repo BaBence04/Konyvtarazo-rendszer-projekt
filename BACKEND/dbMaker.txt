@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS users_votes_conn(
     FOREIGN KEY(user_id) REFERENCES users(user_id),
     FOREIGN KEY(vote_id) REFERENCES votes(vote_id) 
 );
-CREATE TABLE IF NOT EXISTS  system_settings (
+CREATE TABLE IF NOT EXISTS system_settings (
     membership_fee INT,
     borrowing_time INT,
     lengthening_time INT,
@@ -116,11 +116,13 @@ CREATE TABLE IF NOT EXISTS  system_settings (
     max_reservations INT,
     max_lengthenings INT,
     latency_fee INT,
-    reset_token_expiration INT
+    reset_token_expiration INT,
+    login_token_expiration INT
 );
-CREATE TABLE IF NOT EXISTS  reset_tokens(
-    token VARCHAR(255) PRIMARY KEY,
-    username VARCHAR(7),
+CREATE TABLE IF NOT EXISTS tokens(
+    token INT PRIMARY KEY,
+    user_id INT NOT NULL,
     expiry_date DATETIME,
-    FOREIGN KEY(username) REFERENCES users(username)
+    type VARCHAR(255),
+    FOREIGN KEY(user_id) REFERENCES users(user_id)
 );
