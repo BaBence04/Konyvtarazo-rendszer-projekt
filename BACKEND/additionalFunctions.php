@@ -1,0 +1,15 @@
+<?php
+    function GenerateToken($number_to_put_to_end){
+        $token = "";
+
+        for ($i=0; $i < 11; $i++) { 
+            $token .= rand(0,9);
+        }
+
+        return $token .= $number_to_put_to_end;
+    }
+
+
+
+
+?>
