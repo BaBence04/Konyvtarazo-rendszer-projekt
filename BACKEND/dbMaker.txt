@@ -115,7 +115,8 @@ CREATE TABLE IF NOT EXISTS  system_settings (
     reservation_time INT,
     max_reservations INT,
     max_lengthenings INT,
-    latency_fee INT
+    latency_fee INT,
+    reset_token_expiration INT
 );
 CREATE TABLE IF NOT EXISTS  reset_tokens(
     token VARCHAR(255) PRIMARY KEY,
