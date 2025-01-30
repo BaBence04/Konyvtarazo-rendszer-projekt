@@ -25,20 +25,20 @@
         }else if(isset($_POST['uname'], $_POST['pw']) && count($_POST)==2){
             // $result = CheckCredentialForLogin($_POST['uname'], $_POST['pw']);
             
-            $gotPw = CheckCredentialForLogin($_POST['uname'], $_POST['pw']);
+            $result = CheckCredentialForLogin($_POST['uname'], $_POST['pw']);
             //var_dump(CheckCredentialForLogin($_POST['uname'], $_POST['pw']));
-            if($gotPw["result"] == "not found"){
-                echo $gotPw["result"];
+            if($result["result"] == "not found"){
+                echo $result["result"];
             }else{
-                if($gotPw["result"] == NULL){
+                if($result["result"] == NULL){
                     echo "inactive user";
-                }else if($gotPw["result"] == "false"){
+                }else if($result["result"] == "false"){
                     echo "incorrect";
                 }else{
                     // var_dump($gotPw);
-                    $_SESSION['user_id'] = GetUserId($_POST["uname"]);
+                    $_SESSION['user_id'] = $result["user_id"];
                     //if restricted isset, and true than the current users membership is due
-                    if($gotPw['member'] == "false"){
+                    if($result['member'] == "false"){
                         $_SESSION["restricted"] = "true";
                     }else{
                         $_SESSION["restricted"] = "false";
