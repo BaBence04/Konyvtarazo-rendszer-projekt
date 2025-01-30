@@ -62,6 +62,6 @@ INSERT INTO users_votes_conn (user_id, vote_id) VALUES
 (1, 1),
 (2, 2);
 
-INSERT INTO system_settings (membership_fee, borrowing_time, lengthening_time, reservation_time, max_reservations, max_lengthenings, latency_fee) VALUES
-(1000, 30, 15, 10, 5, 2, 500, 24);
+INSERT INTO system_settings (membership_fee, borrowing_time, lengthening_time, reservation_time, max_reservations, max_lengthenings, latency_fee, reset_token_expiration, login_token_expiration) VALUES
+(1000, 30, 15, 10, 5, 2, 500, 24, 30);
 
