@@ -104,9 +104,9 @@ DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS getBookedAndReservedBooks(
   IN ID INT
 ) BEGIN
-(SELECT book.title AS 'title', GROUP_CONCAT(DISTINCT authors.author) AS 'authors', 'booking' AS 'status', book.ISBN, booking.booking_id as `id` FROM booking INNER JOIN (inventory INNER JOIN (book INNER JOIN (books_authors_conn INNER JOIN authors ON books_authors_conn.author_id = authors.author_id) ON books_authors_conn.ISBN_id = book.ISBN_id) ON book.ISBN_id = inventory.ISBN_id) ON booking.book_id = inventory.book_id WHERE booking.user_id = ID GROUP BY booking.booking_id ORDER BY booking.booking_id DESC)
+(SELECT book.title AS 'title', GROUP_CONCAT(DISTINCT authors.author) AS 'authors', 'booking' AS 'status', book.ISBN, booking.booking_id as `id`, booking.`end_date` FROM booking INNER JOIN (inventory INNER JOIN (book INNER JOIN (books_authors_conn INNER JOIN authors ON books_authors_conn.author_id = authors.author_id) ON books_authors_conn.ISBN_id = book.ISBN_id) ON book.ISBN_id = inventory.ISBN_id) ON booking.book_id = inventory.book_id WHERE booking.user_id = ID GROUP BY booking.booking_id ORDER BY booking.booking_id DESC)
 UNION ALL
-(SELECT book.title, GROUP_CONCAT(DISTINCT authors.author), 'reservation', book.ISBN, reservation.reservation_id FROM reservation INNER JOIN (inventory INNER JOIN (book INNER JOIN (books_authors_conn INNER JOIN authors ON books_authors_conn.author_id = authors.author_id) ON books_authors_conn.ISBN_id = book.ISBN_id) ON inventory.ISBN_id = book.ISBN_id)ON reservation.ISBN_id = inventory.ISBN_id WHERE reservation.user_id = ID GROUP BY reservation.reservation_id ORDER BY reservation.reservation_id DESC);
+(SELECT book.title, GROUP_CONCAT(DISTINCT authors.author), 'reservation', book.ISBN, reservation.reservation_id, "" FROM reservation INNER JOIN (inventory INNER JOIN (book INNER JOIN (books_authors_conn INNER JOIN authors ON books_authors_conn.author_id = authors.author_id) ON books_authors_conn.ISBN_id = book.ISBN_id) ON inventory.ISBN_id = book.ISBN_id)ON reservation.ISBN_id = inventory.ISBN_id WHERE reservation.user_id = ID GROUP BY reservation.reservation_id ORDER BY reservation.reservation_id DESC);
 END;//
 DELIMITER ;
 
