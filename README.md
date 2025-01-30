@@ -46,11 +46,8 @@ Mesterremek projekt, könyvtárazó rendszer
         -ha a bookDetailed page-en jelentkezik be a user, akkor nem frissül rá az oldal, és nem jelenik meg a kivétel gomb amíg nem frissít rá
         -mindenben keresés a navbar keresővel - megvárjuk vele Wiezl
         -gyorsítani a backendet, azzal, hogy lehessen odaadni connectiont a databaseFunction-öknek hogy ne kelljen mindig újra csatlakozni
-s
+
 SQL:
--procedure ami 
--loginUser küldje vissza azt, hogy a user tagsága aktív-e
--a deleteLateBookings procedure-el együtt fusson le egy másik is, ami azon felhasználóknak akiknek a taggsága lejárt, törli a foglalásait, és az előjegyzéseit
 
 
 ADDITIONAL STUFF TO DO:
