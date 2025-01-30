@@ -87,7 +87,7 @@ namespace Desktop
 				if (activeForm == usersPage || activeForm == allBooksPage)
 				{
 					activeForm.Hide();
-					Console.WriteLine("cigány");
+					
 				}
 				else
 				{

@@ -12,6 +12,7 @@ namespace Desktop
 {
     public partial class UsersPage : Form
     {
+        private List<string> ids = new List<string>();
         public UsersPage()
         {
             InitializeComponent();
@@ -36,6 +37,7 @@ namespace Desktop
         {
             cdgwUsers.DataSource = null;
             cdgwUsers.Columns.Clear();
+            ids.Clear();
             List<Dictionary<string, string>> response = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "getUsers" }, { "search", search } });
             if (response.Count >0)
             {
@@ -45,12 +47,16 @@ namespace Desktop
                 //make the dataset columns
                 foreach (KeyValuePair<string, string> item in response[0])
                 {
-                    col = new DataColumn();
-                    col.DataType = typeof(string);
-                    col.ReadOnly = true;
-                    col.ColumnName = item.Key;
-                    col.Caption = item.Key;
-                    dt.Columns.Add(col);
+                    if (item.Key != "user_id")
+                    {
+                        col = new DataColumn();
+                        col.DataType = typeof(string);
+                        col.ReadOnly = true;
+                        col.ColumnName = item.Key;
+                        col.Caption = item.Key;
+                        dt.Columns.Add(col);
+                    }
+                    
                 }
                 //add button row for detailed page
                 DataGridViewButtonColumn btns = new DataGridViewButtonColumn();
@@ -65,7 +71,14 @@ namespace Desktop
                     row = dt.NewRow();
                     foreach (KeyValuePair<string, string> item in response[i])
                     {
-                        row[item.Key] = item.Value;
+                        if (item.Key == "user_id")
+                        {
+                            ids.Add(item.Value);
+                        }
+                        else
+                        {
+                            row[item.Key] = item.Value;
+                        }
                     }
                     dt.Rows.Add(row);
                 }

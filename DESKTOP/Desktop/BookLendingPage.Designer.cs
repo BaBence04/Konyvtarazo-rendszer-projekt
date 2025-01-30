@@ -34,14 +34,15 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.pChooseBook = new System.Windows.Forms.Panel();
-            this.backBtn = new Desktop.CustomButton();
-            this.cbtnChooseBook = new Desktop.CustomButton();
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblUname = new System.Windows.Forms.Label();
             this.lblIsbn = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.pChooseUser = new System.Windows.Forms.Panel();
+            this.cbtnKiad = new Desktop.CustomButton();
             this.cbtnChooseUser = new Desktop.CustomButton();
+            this.backBtn = new Desktop.CustomButton();
+            this.cbtnChooseBook = new Desktop.CustomButton();
             this.pChooseBook.SuspendLayout();
             this.pChooseUser.SuspendLayout();
             this.SuspendLayout();
@@ -111,39 +112,6 @@
             this.pChooseBook.TabIndex = 14;
             this.pChooseBook.Visible = false;
             // 
-            // backBtn
-            // 
-            this.backBtn.BackColor = System.Drawing.Color.Black;
-            this.backBtn.BorderColor = System.Drawing.Color.White;
-            this.backBtn.BorderRadius = 40;
-            this.backBtn.BorderSize = 0;
-            this.backBtn.FlatAppearance.BorderSize = 0;
-            this.backBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.backBtn.ForeColor = System.Drawing.Color.White;
-            this.backBtn.Location = new System.Drawing.Point(25, 507);
-            this.backBtn.Name = "backBtn";
-            this.backBtn.Size = new System.Drawing.Size(132, 40);
-            this.backBtn.TabIndex = 15;
-            this.backBtn.Text = "Vissza";
-            this.backBtn.UseVisualStyleBackColor = false;
-            this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
-            // 
-            // cbtnChooseBook
-            // 
-            this.cbtnChooseBook.BackColor = System.Drawing.Color.Black;
-            this.cbtnChooseBook.BorderColor = System.Drawing.Color.White;
-            this.cbtnChooseBook.BorderRadius = 40;
-            this.cbtnChooseBook.BorderSize = 0;
-            this.cbtnChooseBook.FlatAppearance.BorderSize = 0;
-            this.cbtnChooseBook.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbtnChooseBook.ForeColor = System.Drawing.Color.White;
-            this.cbtnChooseBook.Location = new System.Drawing.Point(24, 23);
-            this.cbtnChooseBook.Name = "cbtnChooseBook";
-            this.cbtnChooseBook.Size = new System.Drawing.Size(132, 86);
-            this.cbtnChooseBook.TabIndex = 16;
-            this.cbtnChooseBook.Text = "Konyv kiválasztása";
-            this.cbtnChooseBook.UseVisualStyleBackColor = false;
-            // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
@@ -197,6 +165,23 @@
             this.pChooseUser.TabIndex = 17;
             this.pChooseUser.Visible = false;
             // 
+            // cbtnKiad
+            // 
+            this.cbtnKiad.BackColor = System.Drawing.Color.Black;
+            this.cbtnKiad.BorderColor = System.Drawing.Color.White;
+            this.cbtnKiad.BorderRadius = 40;
+            this.cbtnKiad.BorderSize = 0;
+            this.cbtnKiad.FlatAppearance.BorderSize = 0;
+            this.cbtnKiad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbtnKiad.ForeColor = System.Drawing.Color.White;
+            this.cbtnKiad.Location = new System.Drawing.Point(455, 507);
+            this.cbtnKiad.Name = "cbtnKiad";
+            this.cbtnKiad.Size = new System.Drawing.Size(132, 40);
+            this.cbtnKiad.TabIndex = 20;
+            this.cbtnKiad.Text = "Kiadás";
+            this.cbtnKiad.UseVisualStyleBackColor = false;
+            this.cbtnKiad.Click += new System.EventHandler(this.cbtnKiad_Click);
+            // 
             // cbtnChooseUser
             // 
             this.cbtnChooseUser.BackColor = System.Drawing.Color.Black;
@@ -210,8 +195,43 @@
             this.cbtnChooseUser.Name = "cbtnChooseUser";
             this.cbtnChooseUser.Size = new System.Drawing.Size(132, 86);
             this.cbtnChooseUser.TabIndex = 16;
-            this.cbtnChooseUser.Text = "Konyv kiválasztása";
+            this.cbtnChooseUser.Text = "Felhasználó kiválasztása";
             this.cbtnChooseUser.UseVisualStyleBackColor = false;
+            this.cbtnChooseUser.Click += new System.EventHandler(this.cbtnChooseUser_Click);
+            // 
+            // backBtn
+            // 
+            this.backBtn.BackColor = System.Drawing.Color.Black;
+            this.backBtn.BorderColor = System.Drawing.Color.White;
+            this.backBtn.BorderRadius = 40;
+            this.backBtn.BorderSize = 0;
+            this.backBtn.FlatAppearance.BorderSize = 0;
+            this.backBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.backBtn.ForeColor = System.Drawing.Color.White;
+            this.backBtn.Location = new System.Drawing.Point(25, 507);
+            this.backBtn.Name = "backBtn";
+            this.backBtn.Size = new System.Drawing.Size(132, 40);
+            this.backBtn.TabIndex = 15;
+            this.backBtn.Text = "Vissza";
+            this.backBtn.UseVisualStyleBackColor = false;
+            this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
+            // 
+            // cbtnChooseBook
+            // 
+            this.cbtnChooseBook.BackColor = System.Drawing.Color.Black;
+            this.cbtnChooseBook.BorderColor = System.Drawing.Color.White;
+            this.cbtnChooseBook.BorderRadius = 40;
+            this.cbtnChooseBook.BorderSize = 0;
+            this.cbtnChooseBook.FlatAppearance.BorderSize = 0;
+            this.cbtnChooseBook.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbtnChooseBook.ForeColor = System.Drawing.Color.White;
+            this.cbtnChooseBook.Location = new System.Drawing.Point(24, 23);
+            this.cbtnChooseBook.Name = "cbtnChooseBook";
+            this.cbtnChooseBook.Size = new System.Drawing.Size(132, 86);
+            this.cbtnChooseBook.TabIndex = 16;
+            this.cbtnChooseBook.Text = "Konyv kiválasztása";
+            this.cbtnChooseBook.UseVisualStyleBackColor = false;
+            this.cbtnChooseBook.Click += new System.EventHandler(this.cbtnChooseBook_Click);
             // 
             // BookLendingPage
             // 
@@ -219,6 +239,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
             this.ClientSize = new System.Drawing.Size(740, 559);
+            this.Controls.Add(this.cbtnKiad);
             this.Controls.Add(this.pChooseUser);
             this.Controls.Add(this.backBtn);
             this.Controls.Add(this.pChooseBook);
@@ -258,5 +279,6 @@
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Panel pChooseUser;
         private CustomButton cbtnChooseUser;
+        private CustomButton cbtnKiad;
     }
 }

@@ -10,6 +10,7 @@ Mesterremek projekt, könyvtárazó rendszer
         -a könyvrészletesen lehessen a kiadóra lehessen rákattintani, és megnyitni annak a részleteit
         -automatikus törlős dologhoz valami frontend, popup window szerűség
         -userDetailed form módosításhoz/törléshez (- Bence)
+        -popupSelect form kinézet (- Bence)
 
 
     BACKEND:
@@ -17,9 +18,10 @@ Mesterremek projekt, könyvtárazó rendszer
         -a könyvkiadásnál írjuk ki, hogy mikor olvasta az illető legutóbb a könyvet
         -a book részletesen lehessen előjegyezni/foglalni egy adott user számára
         -kell lehetőség arra is, hogy lehessen egy user-t inaktívvá tenni
-        -az asztali program indításakor fusson le a lejárt foglalás törlő procedure, és küldje ki az értesítéseket
+        -az asztali program indításakor fusson le a lejárt foglalás törlő procedure, és küldje ki az értesítéseket (- Partly done)
         -return book módosítva nekem működött, de nem minden case-t néztem meg (- Bence)
         -automatikus törlős dolog implementálása (- Bence DONE)
+        -kiadás/visszavételnél frissítse az aktuális formot ez inkább az allbooksnál fontos
 
 #WEB:
     KINÉZET:
