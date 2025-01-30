@@ -17,7 +17,7 @@
         }
 
     }else if($_SERVER['REQUEST_METHOD'] === "POST"){
-        if(isset($_POST['isbn_id'], $_SESSION["user_id"]) && count($_POST)==1){
+        if(isset($_POST['isbn_id'], $_SESSION["user_id"], $_SESSION["restricted"]) && count($_POST)==1 && $_SESSION["restricted"] == "false"){
             echo AddReservationOrBooking($_POST['isbn_id'], $_SESSION["user_id"]);
 
 
@@ -39,17 +39,19 @@
                     $_SESSION['user_id'] = GetUserId($_POST["uname"]);
                     //if restricted isset, and true than the current users membership is due
                     if($gotPw['member'] == "false"){
-                        $_SESSION['restricted'] = "true";
+                        $_SESSION["restricted"] = "true";
+                    }else{
+                        $_SESSION["restricted"] = "false";
                     }
                     echo "success";
                 }
             }
 
-        }else if(count($_POST)==3 && isset($_POST["user_id"], $_POST["book_id"], $_POST["action"]) && $_POST["action"] == "extend" ){
+        }else if(count($_POST)==2 && isset($_SESSION["user_id"], $_SESSION["restricted"], $_POST["book_id"], $_POST["action"]) && $_POST["action"] == "extend" && $_SESSION["restricted"] == "false" ){
             $result = [];
             
-            if(IsItExtendable($_POST["user_id"], $_POST["book_id"])){
-                ExtendReturnDate($_POST["book_id"], $_POST["user_id"]);
+            if(IsItExtendable($_SESSION["user_id"], $_POST["book_id"])){
+                ExtendReturnDate($_POST["book_id"], $_SESSION["user_id"]);
                 $result["message"] = "Sikeres hosszabbítás!";
             }else{
                 $result["message"] = "Nem lehet hosszabítani! Feltehetőleg valaki előjegyezte a könyvet mióta megnyitotta az oldalt!";
@@ -60,7 +62,9 @@
             echo isset($_SESSION['user_id']) ? $_SESSION["user_id"] : "";
 
         }else if(isset($_SESSION["user_id"], $_POST["action"]) && $_POST["action"] == "logout"){
-            unset($_SESSION["user_id"]);
+            // unset($_SESSION["user_id"]); 
+            session_destroy();
+            //if the user had remember me on than we should remove the cookie and the token from the database 
 
         }else if(isset($_POST["username"])&& isset($_POST["passw"]) && count($_POST)==2){
             echo json_encode(LoginEmployee($_POST["username"], $_POST["passw"]));
@@ -69,10 +73,8 @@
             echo json_encode(GetUsers($_POST["search"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "getBooks" && isset($_POST["search"]) && count($_POST) == 2){
             echo json_encode(getBooks($_POST["search"]));
-        }else if(isset($_POST["type"]) && $_POST["type"] == "deleteExpiredBookings" && count($_POST) == 1){
-            echo json_encode(deleteLateBookings());
-        }else if(isset($_POST["type"]) && $_POST["type"] == "deleteExpiredReservations" && count($_POST) == 1){
-            echo json_encode(deleteLateReservations());
+        }else if(isset($_POST["type"]) && $_POST["type"] == "autoDeleteBookingsAndReservations" && count($_POST) == 1){
+            echo json_encode(AutoDeleteLateBookings());
         }else if(isset($_POST["type"]) && $_POST["type"] == "returnInfo" && isset($_POST["bookID"]) && count($_POST) == 2){
             echo json_encode(ReturnInfo($_POST["bookID"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "borrowInfo" && isset($_POST["id"]) && isset($_POST["state"]) && count($_POST) == 3){

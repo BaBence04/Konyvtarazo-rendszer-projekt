@@ -160,11 +160,9 @@
         function Meghosszabbitas(element){
             var action = "extend";
             var bookId = element.getAttribute("data-book-id");
-            var userId = <?=$_SESSION["user_id"]?>;
 
             var params = {
                 book_id: bookId,
-                user_id: userId,
                 action: action
             }
 

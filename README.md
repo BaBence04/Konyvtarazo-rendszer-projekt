@@ -23,6 +23,7 @@ Mesterremek projekt, könyvtárazó rendszer
 
 #WEB:
     KINÉZET:
+        -írjuk ki a foglalás lejárati idejét is
         -a könyv részletesen a gomb nagyon rá van csúszva a felette levő részre
         -a könyvek kilistázásánál legyen hely a lapozós gombok és a footer között
         -nem hiszem hogy akarjuk, hogy a userDetailed-on legyen overflow-scroll, de ha csinálja, akkor a kijelentkezés továbbra sem kéne hogy csinálja
@@ -32,8 +33,12 @@ Mesterremek projekt, könyvtárazó rendszer
         
 
     PHP/JS:
-        -frissítsen rá az oldalra miután kivesz egy könyvet pl
-        -a könyv részletesen konstans "Elérhető" van kiírva, ami nem igazán jó
+        -minden bejelentkezésnél állítsuk be a session "restricted"-et true/false-ra
+        -írjuk ki a foglalás lejárati idejét is
+        -legyen egy algoritmus ami intézi az elfelejtett jelszó kezelését:
+            -kell egy api endpoint ahol van egy reset_token GET param, and if the token is active in the database than it will give the option to change password
+        -remember me feature
+        -username generáló algoritmus ami paraméterként megkapja a kereszt és a családnevet, veszi mindkettő első kettő betűjét, hozzátesz 3 számot és visszaadja (pl.: hobá666)
         -tároljuk a taggság lejártát session-ben amit a login ad majd vissza
         -ha valakinek lejárt a taggsága, akkor ne tudjon foglalni, se előjegyezni
         -az összes könyv kilistázásánál ki kell írni, hogy kivehető/foglalható, előjegyezhető
@@ -43,13 +48,13 @@ Mesterremek projekt, könyvtárazó rendszer
         -gyorsítani a backendet, azzal, hogy lehessen odaadni connectiont a databaseFunction-öknek hogy ne kelljen mindig újra csatlakozni
 s
 SQL:
-
+-procedure ami 
 -loginUser küldje vissza azt, hogy a user tagsága aktív-e
 -a deleteLateBookings procedure-el együtt fusson le egy másik is, ami azon felhasználóknak akiknek a taggsága lejárt, törli a foglalásait, és az előjegyzéseit
 
 
 ADDITIONAL STUFF TO DO:
--
+-kell majd még egy algoritmus ami ellenőrzi egy jelszó erősségét
 
 KÉRDÉSEK A KÖNYVTÁROSOKHOZ:
 -ha valaki lefoglal egy könyvet, de valaki nézegeti azt a könyvet a könyvtárban, akkor olyankor mivan(feltételezzük, hogy nincs több az adott könyből a könyvtárban)?
