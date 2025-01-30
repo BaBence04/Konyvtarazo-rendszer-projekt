@@ -35,8 +35,8 @@ INSERT INTO inventory (ISBN_id, available) VALUES
 (2, TRUE);
 
 INSERT INTO users (surname, first_name, username, birth_date, membership_end_date, email, phone_number, password, birth_place, address, mother_maiden_name, active) VALUES
-('Kovács', 'János', '7584937648', '1985-03-15', '2025-03-15', 'janos.kovacs@example.com', '06123456789', '*2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19', 'Budapest', '123 Main St', 'Nagy Erzsébet', TRUE),
-('Szabó', 'Anna', '6453957465', '1990-10-22', '2025-10-22', 'anna.szabo@example.com', '06789123456', '*2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19', 'Debrecen', '456 High St', 'Kiss Júlia', TRUE);
+('Kovács', 'János', 'kojá123', '1985-03-15', '2025-03-15', 'janos.kovacs@example.com', '06123456789', '*2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19', 'Budapest', '123 Main St', 'Nagy Erzsébet', TRUE),
+('Szabó', 'Anna', 'szan420', '1990-10-22', '2025-10-22', 'anna.szabo@example.com', '06789123456', '*2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19', 'Debrecen', '456 High St', 'Kiss Júlia', TRUE);
 
 INSERT INTO reservation (ISBN_id, user_id) VALUES
 (1, 1),
@@ -63,5 +63,5 @@ INSERT INTO users_votes_conn (user_id, vote_id) VALUES
 (2, 2);
 
 INSERT INTO system_settings (membership_fee, borrowing_time, lengthening_time, reservation_time, max_reservations, max_lengthenings, latency_fee) VALUES
-(1000, 30, 15, 10, 5, 2, 500);
+(1000, 30, 15, 10, 5, 2, 500, 24);
 
