@@ -236,18 +236,7 @@
         return $results->fetch_all(MYSQLI_ASSOC)[0]['output'];
     }
 
-    function AutoDeleteLateReservations() : string {
-        require "databaseConnect.php";
-
-        $query = "CALL deleteLateReservations();";
-
-        $stmt = $conn->prepare($query); // Prepare statement
-        //$stmt->bind_param("ss", $username, $pw); // Bind parameter to SQL query
-        $stmt->execute(); // Execute the SQL query
-        $results = $stmt->get_result();
-        $conn->close();
-        return $results->fetch_all(MYSQLI_ASSOC)[0]['output'];
-    }
+    
 
     function GetUserId($username) : string {
         require "databaseConnect.php";
@@ -456,17 +445,7 @@
         }
     }
 
-    function DeleteLateBookings(){
-        require "databaseConnect.php";
-
-        $query = "CALL deleteLateBookings();";
-
-        $stmt = $conn->prepare($query); // Prepare statement
-        //$stmt->bind_param("ssssssssss", $surname, $firstname, $uname, $birthdate, $email, $phone, $pw, $birthplace, $address, $mmn); // Bind parameter to SQL query
-        $stmt->execute(); // Execute the SQL query
-        $results = $stmt->get_result();
-        return $results->fetch_all(MYSQLI_ASSOC);
-    }
+    
 
     function AddEmployee($uname, $pw){
         require "databaseConnect.php";
