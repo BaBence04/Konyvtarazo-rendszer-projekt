@@ -58,7 +58,6 @@
         <script src="jquery.js"></script>
         <script>
             function reserveOrBook(){
-                if(<?=(isset($_SESSION['user_id']) && (!isset( $_SESSION["restricted"]) || (isset( $_SESSION["restricted"]) && $_SESSION["restricted"] == "false")))?>){
                 $.ajax({
                     url: "../BACKEND/api.php",
                     type: "POST", //send it through get method
@@ -66,19 +65,20 @@
                         isbn_id: <?=$book_data['ISBN_id']?> 
                     },
                     success: function(response)  {
-                        //Ezt is szép fancyre meg kell csinálni
-                    if(response != '<?=$availability_data["status"]?>'){
-                        alert("A könyv állapota menetközben megváltozott, úgyhogy "+((response=="reservation")?"elő lett jegyezve":"le lett foglalva"));
-                        
-                    }else if(response == "reservation"){
-                        alert("Sikeres előjegyzés!");
+                            //Ezt is szép fancyre meg kell csinálni
+                        if(response != '<?=$availability_data["status"]?>'){
+                            alert("A könyv állapota menetközben megváltozott, úgyhogy "+((response=="reservation")?"elő lett jegyezve":"le lett foglalva"));
+                            
+                        }else if(response == "reservation"){
+                            alert("Sikeres előjegyzés!");
 
-                    }else if(response == "booking"){
-                        alert("Sikeres foglalás!");
+                        }else if(response == "booking"){
+                            alert("Sikeres foglalás!");
+                        }
+                        // document.getElementById("reserve-button").disabled = true;
+                        location.reload();
                     }
-                    document.getElementById("reserve-button").disabled = true;
-                    }
-                    }); 
-                }
+                }); 
+                
             }
         </script>
