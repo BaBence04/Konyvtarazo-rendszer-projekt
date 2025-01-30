@@ -50,11 +50,14 @@ Mesterremek projekt, könyvtárazó rendszer
         -vissza lehessen őket mondani, menő lenne ha ki lenne írva az is, hogy a max X-ből hány darab van már kivéve pl.: 2/3
 
 SQL:
+-changePassword procedure, kap 1 jelszót és egy user_id-t és cserélje ki a jelszót (ne felejtsd el hashelni!)
+-deleteToken, kap egy tokent és törölje
 -amikor van már a generateToken procedure-ben olyan token(vagyis amikor false-t ad vissza), akkor adja vissza ugyanazt, amit a loginUser (legalábbis olyankor amikor login/remember me a type), mert ezzel van validálva a cookie-ban tárolt token a usernél, és be kell tudni léptetni
 -a generateToken-ben ne "login" legyen a type, hanem "remember_me", mert arra használjuk
 
 
 ADDITIONAL STUFF TO DO:
+-api endpoint dokkumentáció, mert kezd nehéz lenni követni hogy mi történik
 -kell majd még egy algoritmus ami ellenőrzi egy jelszó erősségét
 
 KÉRDÉSEK A KÖNYVTÁROSOKHOZ:
