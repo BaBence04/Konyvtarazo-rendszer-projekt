@@ -4,7 +4,7 @@ Mesterremek projekt, könyvtárazó rendszer
 
 #ASZTALI:
     KINÉZET:
-        -
+        -amikor a gombok felett van a cursor, olyankor legyen pointer
         -legyen lehetőség meghosszabítani a felhasználó tagságát
         -a book részletesen lehessen előjegyezni/foglalni egy adott user számára
         -a könyvrészletesen lehessen a kiadóra lehessen rákattintani, és megnyitni annak a részleteit
@@ -23,6 +23,7 @@ Mesterremek projekt, könyvtárazó rendszer
 
 #WEB:
     KINÉZET:
+        -legyen valami hover effect a userDetailed-on amikor az <a>, a könyv címe felé viszi az egeret
         -írjuk ki a foglalás lejárati idejét is
         -a könyv részletesen a gomb nagyon rá van csúszva a felette levő részre
         -a könyvek kilistázásánál legyen hely a lapozós gombok és a footer között
