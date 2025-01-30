@@ -82,7 +82,12 @@
                 setcookie('remember_me', '', time() - 3600, '/');
             }
 
-        }else if(isset($_POST["username"])&& isset($_POST["passw"]) && count($_POST)==2){
+        //reset pasword
+        }else if(isset($_POST["username"]) && count($_POST)==1){
+            
+        
+
+        }else if(isset($_POST["username"], $_POST["passw"]) && count($_POST)==2){
             echo json_encode(LoginEmployee($_POST["username"], $_POST["passw"]));
         }
         else if(isset($_POST["type"]) && $_POST["type"] == "getUsers" && isset($_POST["search"]) && count($_POST) == 2){
