@@ -47,7 +47,6 @@ Mesterremek projekt, könyvtárazó rendszer
         -gyorsítani a backendet, azzal, hogy lehessen odaadni connectiont a databaseFunction-öknek hogy ne kelljen mindig újra csatlakozni
 
 SQL:
--a loginUser adja vissza a user_id-t is hogy ne kelljen külön lekérni
 
 
 ADDITIONAL STUFF TO DO:
