@@ -353,20 +353,43 @@ IF((SELECT COUNT(tokens.token) FROM tokens WHERE tokens.token = token)=0)THEN
   IF((SELECT COUNT(tokens.token) FROM tokens WHERE tokens.type = type AND tokens.user_id  = user_id)=0) THEN
     IF (type = "reset") THEN 
       INSERT INTO tokens(tokens.token, tokens.user_id, tokens.type, tokens.expiry_date) VALUES(token, user_id, type, (SELECT DATE_ADD(NOW(), INTERVAL (SELECT system_settings.reset_token_expiration FROM system_settings) HOUR)));
-    ELSEIF (type = "login") THEN
+    ELSEIF (type = "remember_me") THEN
       INSERT INTO tokens(tokens.token, tokens.user_id, tokens.type, tokens.expiry_date) VALUES(token, user_id, type, (SELECT DATE_ADD(NOW(), INTERVAL (SELECT system_settings.login_token_expiration FROM system_settings) DAY)));
     END IF;
   ELSE
     IF (type = "reset") THEN 
       UPDATE tokens SET tokens.token = token, tokens.expiry_date = (SELECT DATE_ADD(NOW(), INTERVAL (SELECT system_settings.reset_token_expiration FROM system_settings) HOUR)) WHERE tokens.type = type AND tokens.user_id  = user_id;
-    ELSEIF (type = "login") THEN
+    ELSEIF (type = "remember_me") THEN
       UPDATE tokens SET tokens.token = token, tokens.expiry_date = (SELECT DATE_ADD(NOW(), INTERVAL (SELECT system_settings.login_token_expiration FROM system_settings) DAY)) WHERE tokens.type = type AND tokens.user_id  = user_id;
     END IF;
   END IF;
   SELECT "true" AS result;
 ELSE
-  SELECT "false" AS result;
+  IF (type = "remember_me") THEN
+    SELECT "loginFound" AS result, CASE WHEN users.membership_end_date<CURRENT_DATE() THEN "false" ELSE "true" END AS member, tokens.user_id FROM tokens INNER JOIN users ON tokens.user_id = users.user_id WHERE tokens.token = token; 
+  ELSE
+    SELECT "false" AS result;
+  END IF;
 END IF;
+END;//
+DELIMITER ;
+
+-- changes password 
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS changePassword(
+  IN password VARCHAR(255),
+  IN user_id INT
+) BEGIN
+UPDATE users SET users.password = PASSWORD(password) WHERE users.user_id = user_id;
+END;//
+DELIMITER ;
+
+-- deletes a token
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS deleteToken(
+  IN token INT
+) BEGIN
+DELETE FROM tokens WHERE tokens.token = token;
 END;//
 DELIMITER ;
 
