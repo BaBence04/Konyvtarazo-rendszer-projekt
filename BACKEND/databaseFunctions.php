@@ -522,5 +522,24 @@
         return $results->fetch_row()[0];
     }
 
+    function create_token($token, $user_id, $type, $conn=null) : array {
+        $conn_was_not_given = $conn == null;
+
+        if($conn_was_not_given){
+            require "databaseConnect.php";
+        }
+
+        $query = "CALL generateToken(?, ?, ?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("iis", $user_id, $token, $type); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        if($conn_was_not_given){
+            $conn->close();
+        }
+        return $results->fetch_all(MYSQLI_ASSOC);
+    }
+
 
 ?>
