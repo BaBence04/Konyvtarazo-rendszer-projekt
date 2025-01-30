@@ -222,7 +222,46 @@ CREATE PROCEDURE IF NOT EXISTS loginUser(
 IF((SELECT COUNT(users.user_id) FROM users WHERE users.username = username)=0) THEN
   SELECT 'not found' AS result;
 ELSE
-  SELECT CASE WHEN (users.active) THEN CASE WHEN (users.password = PASSWORD(pw)) THEN 'true' ELSE 'false' END END AS 'result', CASE WHEN users.membership_end_date<CURRENT_DATE() THEN 'false' ELSE 'true' END AS 'member', user_id FROM users WHERE users.username = username;
+  SELECT CASE WHEN (users.active) THEN CASE WHEN (users.password = PASSWORD(pw)) THEN 'true' ELSE 'false' END END AS 'result', CASE WHEN users.membership_end_date<CURRENT_DATE() THEN 'false' ELSE 'true' END AS '' FROM users WHERE users.username = username;
+END IF;
+END;//
+DELIMITER ;
+
+-- deletes expired tokens
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS deleteExpiredTokens() 
+BEGIN
+DELETE FROM tokens WHERE tokens.expiry_date < NOW();
+END;//
+DELIMITER ;
+
+-- generates reset token and deletes expired ones
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS generateToken(
+  IN user_id INT,
+  IN token INT,
+  IN type VARCHAR(255)
+) BEGIN
+-- delete expired tokens
+CALL deleteExpiredTokens();
+-- add token
+IF((SELECT COUNT(tokens.token) FROM tokens WHERE tokens.token = token)=0)THEN
+  IF((SELECT COUNT(tokens.token) FROM tokens WHERE tokens.type = type AND tokens.user_id  = user_id)=0) THEN
+    IF (type = "reset") THEN 
+      INSERT INTO tokens(tokens.token, tokens.user_id, tokens.type, tokens.expiry_date) VALUES(token, user_id, type, (SELECT DATE_ADD(NOW(), INTERVAL (SELECT system_settings.reset_token_expiration FROM system_settings) HOUR)));
+    ELSEIF (type = "login") THEN
+      INSERT INTO tokens(tokens.token, tokens.user_id, tokens.type, tokens.expiry_date) VALUES(token, user_id, type, (SELECT DATE_ADD(NOW(), INTERVAL (SELECT system_settings.login_token_expiration FROM system_settings) DAY)));
+    END IF;
+  ELSE
+    IF (type = "reset") THEN 
+      UPDATE tokens SET tokens.token = token, tokens.expiry_date = (SELECT DATE_ADD(NOW(), INTERVAL (SELECT system_settings.reset_token_expiration FROM system_settings) HOUR)) WHERE tokens.type = type AND tokens.user_id  = user_id;
+    ELSEIF (type = "login") THEN
+      UPDATE tokens SET tokens.token = token, tokens.expiry_date = (SELECT DATE_ADD(NOW(), INTERVAL (SELECT system_settings.login_token_expiration FROM system_settings) DAY)) WHERE tokens.type = type AND tokens.user_id  = user_id;
+    END IF;
+  END IF;
+  SELECT "true" AS result;
+ELSE
+  SELECT "false" AS result;
 END IF;
 END;//
 DELIMITER ;
@@ -484,7 +523,7 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS borrowInfo(
   IN id INT,
-  IN state VARCHAR(255)
+  IN status VARCHAR(255)
 ) BEGIN
 IF (state = "booking") THEN 
 	SELECT book.title, book.ISBN, CONCAT(users.first_name, users.surname) AS 'name', users.username FROM book INNER JOIN (inventory INNER JOIN (booking INNER JOIN users ON users.user_id = booking.user_id) ON inventory.book_id = booking.book_id) ON book.ISBN_id = inventory.ISBN_id WHERE booking.book_id = id;
