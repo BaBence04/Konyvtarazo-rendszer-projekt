@@ -1,5 +1,5 @@
 <?php
-    function GenerateToken($number_to_put_to_end){
+    function generate_token($number_to_put_to_end){
         $token = "";
 
         for ($i=0; $i < 11; $i++) { 
