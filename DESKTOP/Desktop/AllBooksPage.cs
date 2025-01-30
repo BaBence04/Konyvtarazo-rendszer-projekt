@@ -13,6 +13,7 @@ namespace Desktop
 {
 	public partial class AllBooksPage : Form
 	{
+        private List<string> ids = new List<string>();  
 		public AllBooksPage()
 		{
 			InitializeComponent();
@@ -22,12 +23,15 @@ namespace Desktop
         {
 			updateBooksDgv("");
             ctbSearch.KeyPress += ctbSearch_KeyPress;
-		}
+            cdgvBooks.CellClick += cdgvBooks_CellClick;
+        }
+
 
 		private async void updateBooksDgv(string search)
 		{
 			cdgvBooks.DataSource = null;
             cdgvBooks.Columns.Clear();
+            ids.Clear();
             List<Dictionary<string, string>> response = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "getBooks" }, { "search", search } });
             if (response.Count>0)
             {
@@ -37,12 +41,16 @@ namespace Desktop
                 //make the dataset columns
                 foreach (KeyValuePair<string, string> item in response[0])
                 {
-                    col = new DataColumn();
-                    col.DataType = typeof(string);
-                    col.ReadOnly = true;
-                    col.ColumnName = item.Key;
-                    col.Caption = item.Key;
-                    dt.Columns.Add(col);
+                    if (item.Key != "book_id")
+                    {
+                        col = new DataColumn();
+                        col.DataType = typeof(string);
+                        col.ReadOnly = true;
+                        col.ColumnName = item.Key;
+                        col.Caption = item.Key;
+                        dt.Columns.Add(col);
+                    }
+                    
                 }
                 //add button row for detailed page
                 DataGridViewButtonColumn btns = new DataGridViewButtonColumn();
@@ -61,7 +69,15 @@ namespace Desktop
                     row = dt.NewRow();
                     foreach (KeyValuePair<string, string> item in response[i])
                     {
-                        row[item.Key] = item.Value;
+                        if (item.Key == "book_id")
+                        {
+                            ids.Add(item.Value);
+                        }
+                        else
+                        {
+                            row[item.Key] = item.Value;
+                        }
+                        
                     }
                     dt.Rows.Add(row);
                 }
@@ -70,7 +86,8 @@ namespace Desktop
                 cdgvBooks.Columns.Add(btns);
                 cdgvBooks.Columns.Add(btncol);
 
-                cdgvBooks.CellClick += cdgvBooks_CellClick;
+                
+                
                 addBtnTextsManual();
             }
             
@@ -79,13 +96,13 @@ namespace Desktop
         {
             foreach (DataGridViewRow row in cdgvBooks.Rows)
             {
-                if ((string)row.Cells[3].Value == "borrowed")
+                if ((string)row.Cells[2].Value == "borrowed")
                 {
-                    row.Cells[5].Value = "Visszavétel";
+                    row.Cells[4].Value = "Visszavétel";
                 }
                 else
                 {
-					row.Cells[5].Value = "Kiadás";
+					row.Cells[4].Value = "Kiadás";
 
 				}
                 
@@ -100,18 +117,17 @@ namespace Desktop
             }
             else if(e.ColumnIndex == cdgvBooks.Columns["Műveletek"].Index)
             {
-                if ((string)cdgvBooks.Rows[e.RowIndex].Cells[3].Value == "borrowed")
+                if ((string)cdgvBooks.Rows[e.RowIndex].Cells[2].Value == "borrowed")
                 {
-                    LoginForm.main.OpenChildForm(new BookTakebackPage((string)cdgvBooks.Rows[e.RowIndex].Cells[0].Value));
+                    LoginForm.main.OpenChildForm(new BookTakebackPage(ids[e.RowIndex]));
                 }
-                else if((string)cdgvBooks.Rows[e.RowIndex].Cells[3].Value == "booked")
+                else if((string)cdgvBooks.Rows[e.RowIndex].Cells[2].Value == "booked")
                 {
-                    LoginForm.main.OpenChildForm(new BookLendingPage((string)cdgvBooks.Rows[e.RowIndex].Cells[0].Value, "booking"));
+                    LoginForm.main.OpenChildForm(new BookLendingPage(ids[e.RowIndex], "booking"));
                 }
                 else
                 {
-                    LoginForm.main.OpenChildForm(new BookLendingPage((string)cdgvBooks.Rows[e.RowIndex].Cells[0].Value, "book_id"));
-
+                    LoginForm.main.OpenChildForm(new BookLendingPage(ids[e.RowIndex], "book_id"));
                 }
 
             }

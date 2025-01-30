@@ -45,6 +45,7 @@ namespace Desktop
 			var output = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { {"type", "returnBook" }, {"user_id",  userID}, {"bookID", bookID }, {"empl_id", LoginForm.employee} });
 			//DO THIS PROPERLY WHEN PROD
 			Console.WriteLine($"new user that is assigned to this book {output.First()["new"]}");
+			LoginForm.main.OpenChildForm(LoginForm.main.prev);
 		}
     }
 }
