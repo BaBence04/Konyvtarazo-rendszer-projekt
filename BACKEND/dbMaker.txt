@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     surname VARCHAR(255),
     first_name VARCHAR(255),
-    username VARCHAR(10),
+    username VARCHAR(7),
     birth_date DATE,
     membership_end_date DATE,
     email VARCHAR(255),
@@ -116,4 +116,10 @@ CREATE TABLE IF NOT EXISTS  system_settings (
     max_reservations INT,
     max_lengthenings INT,
     latency_fee INT
+);
+CREATE TABLE IF NOT EXISTS  reset_tokens(
+    token VARCHAR(255) PRIMARY KEY,
+    username VARCHAR(7),
+    expiry_date DATETIME,
+    FOREIGN KEY(username) REFERENCES users(username)
 );
