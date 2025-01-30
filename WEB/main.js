@@ -151,6 +151,22 @@ function CheckLogin(){
     }}); 
 }
 
+function ForgotPassword(){
+  $.ajax({
+    url: "../BACKEND/api.php",
+    type: "POST", //send it through get method
+    data: { 
+        username: document.getElementById("username").value
+    },
+    success: function(response)  {
+        //ALERTEKET VALAMI MÁS LESZ MAJD EZ CSAK ÁTMENETI
+        console.log(response);
+            
+        
+    
+    }}); 
+}
+
 
 // window.addEventListener('popstate', function (event) {
 //   // Code to refresh or reload content when the back button is clicked
