@@ -924,10 +924,6 @@ input:-webkit-autofill{
     font-size: 14px;
   }
 
-  body{
-    /* padding-top: 2rem; */
-
-  }
 }
 
 @media screen and (max-width: 800px) {
@@ -1483,8 +1479,18 @@ a, a:active, a:hover, a:visited, a:link{
   position: sticky;
   align-self: flex-start;
   top: 5rem;
+  /* overflow-x: scroll; */
   /* overflow-y: auto; */
 }
+/*HIDES SCROLL BAR*/
+  .sidebar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sidebar{
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
 
 .nav-item {
   padding: 15px;
@@ -1601,6 +1607,7 @@ a, a:active, a:hover, a:visited, a:link{
       height: auto;
       flex-direction: row;
       justify-content: space-around;
+      overflow-x: scroll;
   }
 
   .nav-item {

@@ -25,6 +25,8 @@ Mesterremek projekt, könyvtárazó rendszer
 
 #WEB:
     KINÉZET:
+        -férjen ki rendesen a userDeailed oldalon a menüpontok felül, ha sehogy nem fog akkor lehet az is, hogy arrébb gördül ahogy átnyomunk másikra
+        -kell lehetőség jelszó módosításra a userDetailed-oldalon (jelenlegi jelszó, új jelszó, új jelszó mégegszer)
         -legyen valami hover effect a userDetailed-on amikor az <a>, a könyv címe felé viszi az egeret
         -írjuk ki a foglalás lejárati idejét is
         -a könyv részletesen a gomb nagyon rá van csúszva a felette levő részre
@@ -34,22 +36,24 @@ Mesterremek projekt, könyvtárazó rendszer
         -túl kicsi szerintem a kontraszt a user_detailed oldalon a book-list-eken belül a book-author-náls
         -a könyvek kilistázásánál is kicsit kicsi a kontraszt
         
+        
 
     PHP/JS:
-        -írjuk ki a foglalás lejárati idejét is
+        -kell a databaseFunction a generateToken és a deleteExpiredTokens procedure-höz
+        -minden oldal az indexről legyen megnyitva, és ne GET-ben legyen tárolva hanem az URIből olvassuk ki
         -legyen egy algoritmus ami intézi az elfelejtett jelszó kezelését:
             -kell egy api endpoint ahol van egy reset_token GET param, and if the token is active in the database than it will give the option to change password
         -remember me feature
         -username generáló algoritmus ami paraméterként megkapja a kereszt és a családnevet, veszi mindkettő első kettő betűjét, hozzátesz 3 számot és visszaadja (pl.: hobá666)
-        -tároljuk a taggság lejártát session-ben amit a login ad majd vissza
-        -ha valakinek lejárt a taggsága, akkor ne tudjon foglalni, se előjegyezni
         -az összes könyv kilistázásánál ki kell írni, hogy kivehető/foglalható, előjegyezhető
-        -vissza lehessen őket mondani, menő lenne ha ki lenne írva az is, hogy a max X-ből hány darab van már kivéve pl.: 2/3
         -ha a bookDetailed page-en jelentkezik be a user, akkor nem frissül rá az oldal, és nem jelenik meg a kivétel gomb amíg nem frissít rá
         -mindenben keresés a navbar keresővel - megvárjuk vele Wiezl
         -gyorsítani a backendet, azzal, hogy lehessen odaadni connectiont a databaseFunction-öknek hogy ne kelljen mindig újra csatlakozni
+        -vissza lehessen őket mondani, menő lenne ha ki lenne írva az is, hogy a max X-ből hány darab van már kivéve pl.: 2/3
 
 SQL:
+-amikor van már a generateToken procedure-ben olyan token(vagyis amikor false-t ad vissza), akkor adja vissza ugyanazt, amit a loginUser (legalábbis olyankor amikor login/remember me a type), mert ezzel van validálva a cookie-ban tárolt token a usernél, és be kell tudni léptetni
+-a generateToken-ben ne "login" legyen a type, hanem "remember_me", mert arra használjuk
 
 
 ADDITIONAL STUFF TO DO:

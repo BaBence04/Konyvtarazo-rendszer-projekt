@@ -1,5 +1,34 @@
 <?php
 session_start();
+
+// If the user is not logged in, check for the "remember me" cookie
+// if (!isset($_SESSION['user_id']) && isset($_COOKIE['remember_me'])) {
+//   $token = $_COOKIE['remember_me'];
+
+  
+
+//   if ($row && strtotime($row['expires_at']) > time()) {
+//       // Token is valid, log the user in
+//       $_SESSION['user_id'] = $row['user_id'];
+
+//       // Optionally, regenerate the session ID for security
+//       session_regenerate_id(true);
+
+//       // Optionally, refresh the token and update the cookie
+//       $newToken = bin2hex(random_bytes(64));
+//       $newExpires = time() + (30 * 24 * 60 * 60);
+
+//       $stmt = $pdo->prepare("UPDATE persistent_logins SET token = ?, expires_at = ? WHERE token = ?");
+//       $stmt->execute([$newToken, date('Y-m-d H:i:s', $newExpires), $token]);
+
+//       setcookie('remember_me', $newToken, $newExpires, '/', '', true, true);
+//   } else {
+//       // Token is invalid or expired, delete the cookie
+//       setcookie('remember_me', '', time() - 3600, '/');
+//   }
+// }
+
+
 $page = isset($_GET['page']) ? $_GET['page'] : 'mainPage';
 
 if($page == "userDetailed" && !isset($_SESSION["user_id"])){

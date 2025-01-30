@@ -131,7 +131,8 @@ function CheckLogin(){
     type: "POST", //send it through get method
     data: { 
         uname: document.getElementById("username").value, 
-        pw: document.getElementById("password").value 
+        pw: document.getElementById("password").value,
+        remember_me: document.getElementById("remember_me_checkbox").checked
     },
     success: function(response)  {
         //ALERTEKET VALAMI MÁS LESZ MAJD EZ CSAK ÁTMENETI
@@ -143,9 +144,7 @@ function CheckLogin(){
         }else if(response == "incorrect"){
             alert("helytelen Jelszó")
         }else{
-            //HA LESZ FŐOLDAL AKKOR ODA IRÁNYÍTSON
-            // location.replace("index.php")
-            login.classList.remove("show-login");
+          location.reload();
             
         }
     

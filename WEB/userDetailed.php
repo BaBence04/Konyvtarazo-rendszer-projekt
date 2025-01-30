@@ -81,6 +81,7 @@
                         <div class="book-item">
                             <a href="./bookDetailed.php?ISBN=<?= $booked_books_data['ISBN'] ?>"><?= $booked_books_data['title'] ?></a>
                             <span class="book-author"><?= str_replace(",", ", ", $booked_books_data['authors']) ?></span>
+                            <span class="return-date"><?= $booked_books_data['end_date'] ?></span>
                             <button class="book_action_button" onclick="CancelReservationOrBooking('cancelBooking', this)" data-id="<?= $booked_books_data['id'] ?>">Lemondás</button>
                         </div>
                     <?php endforeach; ?>
@@ -127,6 +128,7 @@
         function showSection(element) {
             let navItems = Array.from(document.querySelectorAll(".sidebar>.nav-item"));
             const sections = Array.from(document.querySelectorAll('.section'));
+            
 
             let newIndex = navItems.indexOf(element);
             let currentIndex = -1

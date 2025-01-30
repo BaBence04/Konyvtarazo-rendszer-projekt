@@ -1,6 +1,7 @@
 <?php
     require_once "databaseFunctions.php";
     require "elementCreators.php";
+    require_once "additionalFunctions.php";
 
     session_start();
     //listBooksFiltered
@@ -21,8 +22,8 @@
             echo AddReservationOrBooking($_POST['isbn_id'], $_SESSION["user_id"]);
 
 
-        //returns "not found"/"inactive"/"success"/"incorrect"
-        }else if(isset($_POST['uname'], $_POST['pw']) && count($_POST)==2){
+        //returns "not found"/"inactive"/"success"/"incorrect"/"inactive user"
+        }else if(isset($_POST['uname'], $_POST['pw'], $_POST["remember_me"]) && count($_POST)==3){
             // $result = CheckCredentialForLogin($_POST['uname'], $_POST['pw']);
             
             $result = CheckCredentialForLogin($_POST['uname'], $_POST['pw']);
@@ -43,6 +44,8 @@
                     }else{
                         $_SESSION["restricted"] = "false";
                     }
+                    //remember me is needed
+                    
                     echo "success";
                 }
             }
@@ -61,10 +64,23 @@
         }else if(isset($_POST["action"]) && count($_POST) == 1 && $_POST["action"] == "isLoggedIn"){
             echo isset($_SESSION['user_id']) ? $_SESSION["user_id"] : "";
 
+
+        //logout
         }else if(isset($_SESSION["user_id"], $_POST["action"]) && $_POST["action"] == "logout"){
-            // unset($_SESSION["user_id"]); 
+            unset($_SESSION['user_id']);
             session_destroy();
-            //if the user had remember me on than we should remove the cookie and the token from the database 
+
+            // Delete the "remember me" cookie
+            if (isset($_COOKIE['remember_me'])) {
+                $token = $_COOKIE['remember_me'];
+
+                // Remove the token from the database
+                $stmt = $pdo->prepare("DELETE FROM persistent_logins WHERE token = ?");
+                $stmt->execute([$token]);
+
+                // Delete the cookie
+                setcookie('remember_me', '', time() - 3600, '/');
+            }
 
         }else if(isset($_POST["username"])&& isset($_POST["passw"]) && count($_POST)==2){
             echo json_encode(LoginEmployee($_POST["username"], $_POST["passw"]));
