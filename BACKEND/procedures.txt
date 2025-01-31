@@ -570,6 +570,20 @@ END IF;
 END;//
 DELIMITER ;
 
+-- gets all publishers with search term
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS getPublishers(
+IN searchTerm VARCHAR(255)
+)
+BEGIN
+IF(searchTerm = "") THEN
+SELECT * FROM publishers WHERE;
+ELSE
+SELECT * FROM publishers WHERE publishers.name LIKE CONCAT("%", searchTerm, "%") OR publishers.phone LIKE CONCAT("%", searchTerm, "%") OR publishers.email LIKE CONCAT("%", searchTerm, "%") OR publishers.webpage LIKE CONCAT("%", searchTerm, "%"); 
+END IF;
+END;//
+DELIMITER ;
+
 -- get info for borrowing page
 DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS borrowInfo(

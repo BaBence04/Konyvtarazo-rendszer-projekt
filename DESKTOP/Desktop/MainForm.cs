@@ -104,6 +104,7 @@ namespace Desktop
             ThemeManager.ApplyThemeToAllForms();
             childForm.BringToFront();
 			childForm.Show();
+			childForm.Visible = true;
 			panel_BooksSubMenu.Visible = false;
             
         }

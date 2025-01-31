@@ -21,9 +21,9 @@ namespace Desktop
 
         private void AllBooksPage_Load(object sender, EventArgs e)
         {
-			updateBooksDgv("");
             ctbSearch.KeyPress += ctbSearch_KeyPress;
             cdgvBooks.CellClick += cdgvBooks_CellClick;
+           
         }
 
 
@@ -157,5 +157,20 @@ namespace Desktop
                 updateBooksDgv("");
             }
         }
-	}
+
+        private void AllBooksPage_VisibleChanged(object sender, EventArgs e)
+        {
+            if(this.Visible == true)
+            {
+                if (ctbSearch.Texts != ctbSearch.PlaceholderText)
+                {
+                    updateBooksDgv(ctbSearch.Texts);
+                }
+                else
+                {
+                    updateBooksDgv("");
+                }
+            }
+        }
+    }
 }
