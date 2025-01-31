@@ -1,5 +1,5 @@
 <?php
-    require "../BACKEND/databaseFunctions.php";
+    require_once "../BACKEND/databaseFunctions.php";
 
     $data = GetUser($_SESSION['user_id']);
     $borrowedBooks = GetBorrowedBooks($_SESSION["user_id"]);
@@ -189,7 +189,7 @@
                 action: "logout"
             },
             success: function(response)  {
-            
+                
             // window.open("./userDetailed.php", "_self");
             const currentUrl = new URL(window.location);
             currentUrl.searchParams.set("page", "mainPage");
