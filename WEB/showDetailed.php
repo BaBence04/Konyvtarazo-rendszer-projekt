@@ -31,7 +31,7 @@
                 <!-- <button class="wishlist-button">Kívánságlistához adás</button> -->
 
                 <?php
-                    //if te user is logged in
+                    //if the user is logged in
                     if(isset($_SESSION["user_id"])){
                         //returns "reservation" | "booking"
                         $availability_data = CheckBookAvailability(GetIsbnIdByIsbn($_GET["ISBN"]),$_SESSION["user_id"]);
