@@ -582,7 +582,7 @@ IN searchTerm VARCHAR(255)
 )
 BEGIN
 IF(searchTerm = "") THEN
-SELECT * FROM publishers WHERE;
+SELECT * FROM publishers;
 ELSE
 SELECT * FROM publishers WHERE publishers.name LIKE CONCAT("%", searchTerm, "%") OR publishers.phone LIKE CONCAT("%", searchTerm, "%") OR publishers.email LIKE CONCAT("%", searchTerm, "%") OR publishers.webpage LIKE CONCAT("%", searchTerm, "%"); 
 END IF;
