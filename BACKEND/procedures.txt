@@ -373,7 +373,7 @@ CREATE PROCEDURE IF NOT EXISTS generateToken(
 CALL deleteExpiredTokens();
 -- add token
 IF((SELECT COUNT(tokens.token) FROM tokens WHERE tokens.token = token)=0)THEN
-  IF(user_id is NULL) THEN
+  IF(user_id = -1) THEN
     SELECT "false" AS result;
   ELSE
     IF (type = "reset") THEN 
@@ -385,7 +385,7 @@ IF((SELECT COUNT(tokens.token) FROM tokens WHERE tokens.token = token)=0)THEN
   END IF;
   
 ELSE
-  IF(user_id is null) THEN
+  IF(user_id = -1) THEN
     IF (type = "remember_me") THEN
       SELECT "loginFound" AS result, CASE WHEN users.membership_end_date<CURRENT_DATE() THEN "false" ELSE "true" END AS member, tokens.user_id FROM tokens INNER JOIN users ON tokens.user_id = users.user_id WHERE tokens.token = token; 
     ELSEIF(type = "reset") THEN
