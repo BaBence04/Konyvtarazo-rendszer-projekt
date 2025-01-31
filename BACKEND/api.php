@@ -120,7 +120,7 @@
             $token_data = create_token($_POST["reset_token"],-1, "reset");
             if($token_data["result"] == "resetPossible"){
                 if(change_password($_POST["password"], $token_data["user_id"])){
-                    $response = ["status" => "successfull"];
+                    $response = ["status" => "success"];
                     delete_token($_POST["reset_token"]);
                 }else{
                     $response = ["status" => "failed"];
