@@ -1,8 +1,15 @@
 <?php
     require_once "databaseFunctions.php";
-    require "elementCreators.php";
+    require_once "elementCreators.php";
     require_once "additionalFunctions.php";
 
+    session_set_cookie_params([
+        'lifetime' => 0, // Expire when browser closes
+        'path' => '/',
+        'domain' => '',
+        'httponly' => true, // Prevent JS access
+        'samesite' => 'Strict' // Prevent CSRF
+      ]);
     session_start();
     //listBooksFiltered
 
@@ -25,7 +32,6 @@
         //returns "not found"/"inactive"/"success"/"incorrect"/"inactive user"
         }else if(isset($_POST['uname'], $_POST['pw'], $_POST["remember_me"]) && count($_POST)==3){
             // $result = CheckCredentialForLogin($_POST['uname'], $_POST['pw']);
-            
             $result = CheckCredentialForLogin($_POST['uname'], $_POST['pw']);
             //var_dump(CheckCredentialForLogin($_POST['uname'], $_POST['pw']));
             if($result["result"] == "not found"){
@@ -36,6 +42,9 @@
                 }else if($result["result"] == "false"){
                     echo "incorrect";
                 }else{
+                     // Regenerate session ID for security
+                    session_regenerate_id(true);
+
                     // var_dump($gotPw);
                     $_SESSION['user_id'] = $result["user_id"];
                     
@@ -43,7 +52,19 @@
                     $_SESSION["restricted"] = $result["member"];
                     
                     //remember me is needed
-                    
+                    if($_POST["remember_me"] == "true"){
+                        $_SESSION["remember_me"] = true;
+                        echo "here";
+
+                        do{
+                            $token = generate_token(1);
+                        }while(create_token($token, $_SESSION["user_id"], "remember_me")["result"] == "false");
+                        
+                        $expires = time() + (30 * 24 * 60 * 60); // 30 days from now
+                        // Set a long-lived cookie
+                        setcookie('remember_me', $token, $expires, '/', '', true, true); // Secure and HTTP-only
+                        
+                    }
                     
                     echo "success";
                 }
@@ -72,18 +93,45 @@
             // Delete the "remember me" cookie
             if (isset($_COOKIE['remember_me'])) {
                 $token = $_COOKIE['remember_me'];
-
-                // Remove the token from the database
-                $stmt = $pdo->prepare("DELETE FROM persistent_logins WHERE token = ?");
-                $stmt->execute([$token]);
+                
+               delete_token($token);
 
                 // Delete the cookie
                 setcookie('remember_me', '', time() - 3600, '/');
             }
 
-        //reset pasword
-        }else if(isset($_POST["username"]) && count($_POST)==1){
+        //ask for link to reset pasword
+        }else if(isset($_POST["username"], $_POST["action"]) && $_POST["action"] == "resetPassword" && count($_POST)==2){
+            $user_id = GetUserId($_POST["username"]);
+            if($user_id == -1){
+                $response = ["status"=>"invalid"];
+            }else{
+                do{
+                    $token = generate_token(1);
+                }while(create_token($token, $user_id, "reset")["result"] == "false");
+                $response = ["link"=>"localhost:8000/web/resetPassword.php?reset_token=$token", "status"=>"success"];
+            }
+
+            echo json_encode($response);
+        
+        //reset password
+        }else if(isset($_POST["reset_token"], $_POST["password"]) && count($_POST)==2){
             
+            $token_data = create_token($_POST["reset_token"],-1, "reset");
+            if($token_data["result"] == "resetPossible"){
+                if(change_password($_POST["password"], $token_data["user_id"])){
+                    $response = ["status" => "successfull"];
+                    delete_token($_POST["reset_token"]);
+                }else{
+                    $response = ["status" => "failed"];
+                }
+
+            }else{
+                $response = ["status"=>"expired"];
+            }
+            
+
+            echo json_encode($response);
         
 
         }else if(isset($_POST["username"], $_POST["passw"]) && count($_POST)==2){
