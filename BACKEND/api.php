@@ -38,13 +38,12 @@
                 }else{
                     // var_dump($gotPw);
                     $_SESSION['user_id'] = $result["user_id"];
+                    
                     //if restricted isset, and true than the current users membership is due
-                    if($result['member'] == "false"){
-                        $_SESSION["restricted"] = "true";
-                    }else{
-                        $_SESSION["restricted"] = "false";
-                    }
+                    $_SESSION["restricted"] = $result["member"];
+                    
                     //remember me is needed
+                    
                     
                     echo "success";
                 }
