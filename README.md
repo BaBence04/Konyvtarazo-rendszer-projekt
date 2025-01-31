@@ -39,6 +39,8 @@ Mesterremek projekt, könyvtárazó rendszer
         
 
     PHP/JS:
+        -remove remember_me cookie on logout
+        -create cookie on login if remember_me is checked in
         -kell a databaseFunction a generateToken és a deleteExpiredTokens procedure-höz
         -minden oldal az indexről legyen megnyitva, és ne GET-ben legyen tárolva hanem az URIből olvassuk ki
         -legyen egy algoritmus ami intézi az elfelejtett jelszó kezelését:
@@ -53,8 +55,8 @@ Mesterremek projekt, könyvtárazó rendszer
 
 SQL:
 NOTHING IS TESTED BUT EVERYTHING SHOULD WORK I WAS IN A HURRY SRY
--changePassword procedure, kap 1 jelszót és egy user_id-t és cserélje ki a jelszót (ne felejtsd el hashelni!) (DONE -Bence)
--deleteToken, kap egy tokent és törölje (DONE -Bence)
+-changePassword procedure, kap 1 jelszót és egy user_id-t és cserélje ki a jelszót (ne felejtsd el hashelni!) (DONE -Bence) -works
+-deleteToken, kap egy tokent és törölje (DONE -Bence)-works
 -amikor van már a generateToken procedure-ben olyan token(vagyis amikor false-t ad vissza), akkor adja vissza ugyanazt, amit a loginUser (legalábbis olyankor amikor login/remember me a type), mert ezzel van validálva a cookie-ban tárolt token a usernél, és be kell tudni léptetni (DONE annyi a különbség loginUserhez képest hogy a state az loginFound és nem true)
 -a generateToken-ben ne "login" legyen a type, hanem "remember_me", mert arra használjuk (DONE -Bence)
 
