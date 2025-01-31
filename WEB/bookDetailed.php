@@ -1,59 +1,85 @@
-<?php
-    session_set_cookie_params([
-        'lifetime' => 0, // Expire when browser closes
-        'path' => '/',
-        'domain' => '',
-        'httponly' => true, // Prevent JS access
-        'samesite' => 'Strict' // Prevent CSRF
-      ]);
-    session_start();
+<div class="book-details">
+    <div class="book-image">
+        <img src="<?=$book_data["picture_base64"]?>" alt="Book Image">
+    </div>
 
-    if(isset($_GET["ISBN"]) && count($_GET)==1){
-        require_once "../BACKEND/databaseFunctions.php";
+    <div class="book-info">
+        <div class="book-title"><?=$book_data["title"]?></div>
+        <div class="book-author"><?=implode(", ", explode(",",$book_data["authors"]))?></div>
 
-        $book_data = GetBookByIsbn($_GET["ISBN"]);
-        
-    }else{
-        header("Location: ./");
-    }
-?>
+        <div class="book-genres">
+        <?php
+            $genres = explode(",", $book_data["genres"]);
+            foreach ($genres as $genre) {
+                echo "<span>#$genre</span>";
+            }
+        ?>
+        </div>
 
-<!DOCTYPE html>
-<html lang="hu">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php 
-        if($book_data == []){
-            echo "Nincs ilyen könyvünk!";
-        }else{
-            echo $book_data["title"];
-        }
-    ?></title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+        <div class="book-description">
+            <?= $book_data["description"]?>
+        </div>
+        <div class="release_date"><?=$book_data["release_date"]?></div>
+        <div class="isbn"><?=$book_data["ISBN"]?></div>
 
-<div class="content__container">
+        <?php if(!isset($_SESSION["user_id"])): ?>
+        <div class="availability">Elérhető</div>
+        <?php endif;?>
 
-    <?php
-        if($book_data == []){
-            echo "404 Nincs ilyen könyvünk!";
-            return;
-        }else{
-            /* print "<pre>";
-            var_dump($book_data);
-            print "</pre>"; */
-            require "navbar.html";
-            require "showDetailed.php";
 
-        }
+        <div class="buttons">
+            <!-- <button class="wishlist-button">Kívánságlistához adás</button> -->
 
-        //it's not done, there are still data to be placed in, and it should check every time if the $book_data is empty or not, or we should do something else
-    ?>
-    
+            <?php
+                //if the user is logged in
+                if(isset($_SESSION["user_id"])){
+                    //returns "reservation" | "booking"
+                    $availability_data = CheckBookAvailability(GetIsbnIdByIsbn($book_data["ISBN"]),$_SESSION["user_id"]);
+                    
+                    //EZEKRE A GOMBOKRA KELL EGY DISABLED STÍLUS
+                    if($availability_data["available"] == "true"){
+                        $buttonHtml = '<button class="reserve-button" id="reserve-button" onclick="reserveOrBook();"';
+
+                        $buttonHtml .= '>';
+                        if($availability_data["status"] == "reservation"){
+                            $buttonHtml .= "Előjegyzés";
+                        }else{
+                            $buttonHtml .= "Foglalás";
+                        }
+                        $buttonHtml .= "</button>";
+                        echo $buttonHtml;
+                    }
+                }
+
+            ?>
+        </div>
     </div>
 </div>
 
-</body>
-</html>
+    <script src="jquery.js"></script>
+    <script>
+        function reserveOrBook(){
+            $.ajax({
+                url: "../BACKEND/api.php",
+                type: "POST", //send it through get method
+                data: { 
+                    isbn_id: <?=$book_data['ISBN_id']?> 
+                },
+                success: function(response)  {
+                        //Ezt is szép fancyre meg kell csinálni
+                    if(response != '<?=$availability_data["status"]?>'){
+                        alert("A könyv állapota menetközben megváltozott, úgyhogy "+((response=="reservation")?"elő lett jegyezve":"le lett foglalva"));
+                        
+                    }else if(response == "reservation"){
+                        alert("Sikeres előjegyzés!");
+
+                    }else if(response == "booking"){
+                        alert("Sikeres foglalás!");
+                    }
+                    // document.getElementById("reserve-button").disabled = true;
+                    location.reload();
+                }
+            }); 
+            
+        }
+    </script>

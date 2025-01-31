@@ -66,7 +66,7 @@ loginBtn.addEventListener("click", () => {
         waitingforServer = false;
 
       }else{
-        window.open("./?page=userDetailed", "_self");
+        window.open("./fiok", "_self");
         // const currentUrl = new URL("./");
         // currentUrl.searchParams.set("page", "userDetailed");
         // // console.log(currentUrl)
@@ -171,6 +171,11 @@ function ForgotPassword(){
         
     
   }}); 
+}
+
+function OpenBookDetailed(element){
+  let isbn = element.getAttribute("data-isbn");
+  open("./konyveink/"+isbn, "_self");
 }
 
 

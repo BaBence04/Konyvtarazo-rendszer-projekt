@@ -2,7 +2,7 @@
     // require_once "databaseFunctions.php";
     function CreateBookElement($data):string{
         $result = "
-            <div class='grid-item' onclick=window.location='bookDetailed.php?ISBN=".$data['ISBN']."'; data-isbn='".$data["ISBN_id"]."'>
+            <div class='grid-item' data-isbn='$data[ISBN]' onclick='OpenBookDetailed(this);'>
                 <img src='".$data["picture_base64"]."' alt='".$data["title"]." könyv borítóképe'>
                 <div class='book-title'>".$data["title"]."</div>
                 <div class='book-author'>".str_replace(",",", ",$data["authors"])."</div>
