@@ -1,16 +1,27 @@
 <?php
+require_once "../BACKEND/databaseFunctions.php";
+
+session_set_cookie_params([
+  'lifetime' => 0, // Expire when browser closes
+  'path' => '/',
+  'domain' => '',
+  'httponly' => true, // Prevent JS access
+  'samesite' => 'Strict' // Prevent CSRF
+]);
+
 session_start();
 
 // If the user is not logged in, check for the "remember me" cookie
 if (!isset($_SESSION['user_id']) && isset($_COOKIE['remember_me'])) {
   $token = $_COOKIE['remember_me'];
   
+  
   $data = create_token($token, -1, "remember_me");
 
   if ($data["result"] == "loginFound") {
       // Token is valid, log the user in
       $_SESSION['user_id'] = $data['user_id'];
-      $_SESSION["restricted"] = $data["member"];
+      $_SESSION["restricted"] = $data["member"]=="false"?"true":"false";
 
       //we may want to update the token 
 
