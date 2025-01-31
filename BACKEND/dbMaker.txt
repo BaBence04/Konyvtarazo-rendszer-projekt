@@ -120,7 +120,7 @@ CREATE TABLE IF NOT EXISTS system_settings (
     login_token_expiration INT
 );
 CREATE TABLE IF NOT EXISTS tokens(
-    token INT PRIMARY KEY,
+    token VARCHAR(11) PRIMARY KEY,
     user_id INT NOT NULL,
     expiry_date DATETIME,
     type VARCHAR(255),
