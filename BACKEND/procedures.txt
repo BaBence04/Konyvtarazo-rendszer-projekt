@@ -339,7 +339,30 @@ DELETE FROM tokens WHERE tokens.expiry_date < NOW();
 END;//
 DELIMITER ;
 
--- generates reset token and deletes expired ones
+-- updates tokens
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS updateToken(
+  IN user_id INT,
+  IN newToken INT,
+  IN oldToken INT,
+  IN type VARCHAR(255)
+) BEGIN
+
+IF (type = "reset") THEN 
+  UPDATE tokens SET tokens.token = newToken, tokens.expiry_date = (SELECT DATE_ADD(NOW(), INTERVAL (SELECT system_settings.reset_token_expiration FROM system_settings) HOUR)) WHERE tokens.type = type AND tokens.user_id  = user_id AND tokens.token = oldToken;
+  SELECT "true" as result;
+ELSEIF (type = "remember_me") THEN
+  UPDATE tokens SET tokens.token = newToken, tokens.expiry_date = (SELECT DATE_ADD(NOW(), INTERVAL (SELECT system_settings.login_token_expiration FROM system_settings) DAY)) WHERE tokens.type = type AND tokens.user_id  = user_id AND tokens.token = oldToken;
+  SELECT "true" as result;
+ELSE
+  SELECT "unhandled type given" as result;
+
+END IF;
+
+END;//
+DELIMITER ;
+
+-- generates token and deletes expired ones
 DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS generateToken(
   IN user_id INT,
@@ -350,25 +373,29 @@ CREATE PROCEDURE IF NOT EXISTS generateToken(
 CALL deleteExpiredTokens();
 -- add token
 IF((SELECT COUNT(tokens.token) FROM tokens WHERE tokens.token = token)=0)THEN
-  IF((SELECT COUNT(tokens.token) FROM tokens WHERE tokens.type = type AND tokens.user_id  = user_id)=0) THEN
+  IF(user_id is NULL) THEN
+    SELECT "false" AS result;
+  ELSE
     IF (type = "reset") THEN 
       INSERT INTO tokens(tokens.token, tokens.user_id, tokens.type, tokens.expiry_date) VALUES(token, user_id, type, (SELECT DATE_ADD(NOW(), INTERVAL (SELECT system_settings.reset_token_expiration FROM system_settings) HOUR)));
     ELSEIF (type = "remember_me") THEN
       INSERT INTO tokens(tokens.token, tokens.user_id, tokens.type, tokens.expiry_date) VALUES(token, user_id, type, (SELECT DATE_ADD(NOW(), INTERVAL (SELECT system_settings.login_token_expiration FROM system_settings) DAY)));
     END IF;
-  ELSE
-    IF (type = "reset") THEN 
-      UPDATE tokens SET tokens.token = token, tokens.expiry_date = (SELECT DATE_ADD(NOW(), INTERVAL (SELECT system_settings.reset_token_expiration FROM system_settings) HOUR)) WHERE tokens.type = type AND tokens.user_id  = user_id;
-    ELSEIF (type = "remember_me") THEN
-      UPDATE tokens SET tokens.token = token, tokens.expiry_date = (SELECT DATE_ADD(NOW(), INTERVAL (SELECT system_settings.login_token_expiration FROM system_settings) DAY)) WHERE tokens.type = type AND tokens.user_id  = user_id;
-    END IF;
+    SELECT "true" as result;
   END IF;
-  SELECT "true" AS result;
+  
 ELSE
-  IF (type = "remember_me") THEN
-    SELECT "loginFound" AS result, CASE WHEN users.membership_end_date<CURRENT_DATE() THEN "false" ELSE "true" END AS member, tokens.user_id FROM tokens INNER JOIN users ON tokens.user_id = users.user_id WHERE tokens.token = token; 
+  IF(user_id is null) THEN
+    IF (type = "remember_me") THEN
+      SELECT "loginFound" AS result, CASE WHEN users.membership_end_date<CURRENT_DATE() THEN "false" ELSE "true" END AS member, tokens.user_id FROM tokens INNER JOIN users ON tokens.user_id = users.user_id WHERE tokens.token = token; 
+    ELSEIF(type = "reset") THEN
+      SELECT "resetPossible" AS result, tokens.user_id FROM tokens where tokens.token = token;
+    ELSE
+      SELECT "unhandled type given" AS result;
+    END IF;
   ELSE
-    SELECT "false" AS result;
+    SELECT "false" as result;
+
   END IF;
 END IF;
 END;//
