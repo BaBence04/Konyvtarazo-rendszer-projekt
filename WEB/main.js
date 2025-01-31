@@ -55,7 +55,7 @@ loginBtn.addEventListener("click", () => {
 
   $.ajax({
     url: "../BACKEND/api.php",
-    type: "post", //send it through get method
+    type: "post", //send it through post method
     data: { 
         action: "isLoggedIn"
     },
@@ -128,7 +128,7 @@ function CheckLogin(){
    //console.log(document.getElementById("username").value, document.getElementById("password").value )
    $.ajax({
     url: "../BACKEND/api.php",
-    type: "POST", //send it through get method
+    type: "POST", //send it through post method
     data: { 
         uname: document.getElementById("username").value, 
         pw: document.getElementById("password").value,
@@ -136,7 +136,6 @@ function CheckLogin(){
     },
     success: function(response)  {
         //ALERTEKET VALAMI MÁS LESZ MAJD EZ CSAK ÁTMENETI
-        console.log(response, "asédlfkj");
         if(response == "not found"){
             alert("helytelen felhasználónév")
         }else if(response == "inactive user"){
@@ -144,8 +143,7 @@ function CheckLogin(){
         }else if(response == "incorrect"){
             alert("helytelen Jelszó")
         }else{
-          location.reload();
-            
+          location.reload();            
         }
     
     }}); 
@@ -154,17 +152,18 @@ function CheckLogin(){
 function ForgotPassword(){
   $.ajax({
     url: "../BACKEND/api.php",
-    type: "POST", //send it through get method
+    type: "POST", //send it through post method
     data: { 
-        username: document.getElementById("username").value
+        username: document.getElementById("username").value,
+        action: "resetPassword"
     },
     success: function(response)  {
         //ALERTEKET VALAMI MÁS LESZ MAJD EZ CSAK ÁTMENETI
-        console.log(response);
+        console.log(JSON.parse(response));
             
         
     
-    }}); 
+  }}); 
 }
 
 
