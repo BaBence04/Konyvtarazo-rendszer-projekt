@@ -372,14 +372,11 @@ CREATE PROCEDURE IF NOT EXISTS generateToken(
 -- delete expired tokens
 CALL deleteExpiredTokens();
 
---if the given token doesn't exists
 IF((SELECT COUNT(tokens.token) FROM tokens WHERE tokens.token = token)=0)THEN
 
-  --if no user_id was given
   IF(user_id = -1) THEN
     SELECT "false" AS result;
 
-  --if user_id was given
   ELSE
     IF (type = "reset") THEN 
       INSERT INTO tokens(tokens.token, tokens.user_id, tokens.type, tokens.expiry_date) VALUES(token, user_id, type, (SELECT DATE_ADD(NOW(), INTERVAL (SELECT system_settings.reset_token_expiration FROM system_settings) HOUR)));
@@ -390,10 +387,8 @@ IF((SELECT COUNT(tokens.token) FROM tokens WHERE tokens.token = token)=0)THEN
     SELECT "true" as result;
   END IF;
 
---if the token already exists
 ELSE
 
-  --user_id was not given
   IF(user_id = -1) THEN
     IF (type = "remember_me") THEN
       SELECT "loginFound" AS result, CASE WHEN users.membership_end_date<CURRENT_DATE() THEN "false" ELSE "true" END AS member, tokens.user_id FROM tokens INNER JOIN users ON tokens.user_id = users.user_id WHERE tokens.token = token; 
@@ -403,7 +398,6 @@ ELSE
       SELECT "unhandled type given" AS result;
     END IF;
 
-  --user_id was given, this happens (most likely) when you want to add a new token, but it already exists
   ELSE
     SELECT "false" as result;
 
