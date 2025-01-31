@@ -1,5 +1,5 @@
 <?php
-    require "sql.php";
+    // require "sql.php";
 
     $results_per_page = 5;
     function get_books_filtered($title, $genre, $author, $release_date, $lang, $isbn, $page){
@@ -19,7 +19,6 @@
         $results = $stmt->get_result();
         $conn->close();
 
-        
 
         return $results->fetch_all(MYSQLI_ASSOC);
     }
@@ -248,7 +247,14 @@
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
         $conn->close();
-        return $results->fetch_all(MYSQLI_ASSOC)[0]['user_id'];
+        $data = $results->fetch_all(MYSQLI_ASSOC); 
+        if(count($data) == 1){
+            return $data[0]['user_id'];
+        }else if(count($data) >1){
+            throw new Exception("There are more than one users with the same username!");
+        }else{
+            return -1;
+        }
     }
     function GetUser($user_id) : array {
         require "databaseConnect.php";
@@ -532,13 +538,59 @@
         $query = "CALL generateToken(?, ?, ?);";
 
         $stmt = $conn->prepare($query); // Prepare statement
-        $stmt->bind_param("iis", $user_id, $token, $type); // Bind parameter to SQL query
+        $stmt->bind_param("iss", $user_id, $token, $type); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
         if($conn_was_not_given){
             $conn->close();
         }
-        return $results->fetch_all(MYSQLI_ASSOC);
+
+        $data = $results->fetch_all(MYSQLI_ASSOC);
+        if(count($data) == 1){
+            return $data[0];
+        }else{
+            throw new Exception("The data returned by generateToken was not 1 record long!! It was ".count($data));
+
+        }
+    }
+
+    function delete_token($token, $conn=null) : void {
+        $conn_was_not_given = $conn == null;
+
+        if($conn_was_not_given){
+            require "databaseConnect.php";
+        }
+
+        $query = "CALL deleteToken(?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("s", $token); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        if($conn_was_not_given){
+            $conn->close();
+        }
+    }
+
+    function change_password(string $password, int $user_id, mysqli $conn=null) : bool {
+        $conn_was_not_given = $conn == null;
+
+        if($conn_was_not_given){
+            require "databaseConnect.php";
+        }
+
+        $query = "CALL changePassword(?, ?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("si", $password, $user_id); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $affected_rows = mysqli_affected_rows($conn);
+
+        if($conn_was_not_given){
+            $conn->close();
+        }
+
+        return $affected_rows==1;
     }
 
 
