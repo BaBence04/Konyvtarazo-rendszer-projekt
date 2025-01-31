@@ -1,8 +1,15 @@
 <?php
+    session_set_cookie_params([
+        'lifetime' => 0, // Expire when browser closes
+        'path' => '/',
+        'domain' => '',
+        'httponly' => true, // Prevent JS access
+        'samesite' => 'Strict' // Prevent CSRF
+      ]);
     session_start();
 
     if(isset($_GET["ISBN"]) && count($_GET)==1){
-        require "../BACKEND/databaseFunctions.php";
+        require_once "../BACKEND/databaseFunctions.php";
 
         $book_data = GetBookByIsbn($_GET["ISBN"]);
         
