@@ -99,7 +99,7 @@ togglePassword.addEventListener("click", function () {
 });
 
 function KeyUpInUsernameInputForLogin(event){
-  console.log('event :>> ', event);
+  // console.log('event :>> ', event);
   if(event.key == "Enter" && document.getElementById("username")?.value != ""){
     event.target.blur();
     CheckLogin();
@@ -158,8 +158,15 @@ function ForgotPassword(){
         action: "resetPassword"
     },
     success: function(response)  {
-        //ALERTEKET VALAMI MÁS LESZ MAJD EZ CSAK ÁTMENETI
-        console.log(JSON.parse(response));
+      let data = JSON.parse(response);        
+      console.log(data);
+      if(data.status == "success"){
+        open(data.link, "_blank");
+      }else{
+        alert(data.status);
+      }
+
+        
             
         
     
