@@ -129,9 +129,6 @@ INSERT INTO books_authors_conn (ISBN_id, author_id) VALUES
 (25, 2); -- George R.R. Martin
 
 
-INSERT INTO system_settings (membership_fee, borrowing_time, lengthening_time, reservation_time, max_reservations, max_lengthenings, latency_fee) VALUES
-(1000, 30, 15, 10, 5, 2, 500);
-
 
 INSERT INTO users (surname, first_name, username, birth_date, membership_end_date, email, phone_number, password, birth_place, address, mother_maiden_name, active) VALUES
 ('Kovacs', 'Janos', 'koja123', '1985-03-15', '2025-03-15', 'janos.kovacs@example.com', '06123456789', PASSWORD('password'), 'Budapest', '123 Main St', 'Nagy Erzsebet', TRUE),
@@ -177,4 +174,6 @@ INSERT INTO borrowings (book_id, user_id, empl_e, start_date, end_date, returned
 
 (2, 2, 2, '2024-02-01', '2024-02-16', 1);
 
+INSERT INTO system_settings (membership_fee, borrowing_time, lengthening_time, reservation_time, max_reservations, max_lengthenings, latency_fee, reset_token_expiration, login_token_expiration) VALUES
+(1000, 30, 15, 10, 5, 2, 500, 24, 30);
 -- a 3-as könyv-ön lehet tesztelni azt, hogy visszahozaskor atteszi-e a program a booking-ba a 2-es ember reservation-ét(, és értesíti-e)
