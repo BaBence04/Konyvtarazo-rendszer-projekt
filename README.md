@@ -25,6 +25,7 @@ Mesterremek projekt, könyvtárazó rendszer
 
 #WEB:
     KINÉZET:
+        -perpillanat az elfelejtettem a jelszónál a login-nak a username mezőjét használja, meg kell csinálni rendesre, és az oldalt is ahol lehet reset-elni a jelszót
         -jó lenne ha mellé kattint a felhasználó a login-nak akkor bezáródna
         -férjen ki rendesen a userDeailed oldalon a menüpontok felül, ha sehogy nem fog akkor lehet az is, hogy arrébb gördül ahogy átnyomunk másikra
         -kell lehetőség jelszó módosításra a userDetailed-oldalon (jelenlegi jelszó, új jelszó, új jelszó mégegszer)
@@ -40,10 +41,9 @@ Mesterremek projekt, könyvtárazó rendszer
         
 
     PHP/JS:
+        -perpillanat az elfelejtettem a jelszónál a login-nak a username mezőjét használja, meg kell majd csinálni rendesre
+        -működik az elfelejtettem a jelszót, perpillanat megnyitja a linket új oldalon, de az nem igazán tölt be, de ki van írva a konzolra a link
         -minden oldal az indexről legyen megnyitva, és ne GET-ben legyen tárolva hanem az URIből olvassuk ki
-        -legyen egy algoritmus ami intézi az elfelejtett jelszó kezelését:
-            -kell egy api endpoint ahol van egy reset_token GET param, and if the token is active in the database than it will give the option to change password
-        -remember me feature
         -username generáló algoritmus ami paraméterként megkapja a kereszt és a családnevet, veszi mindkettő első kettő betűjét, hozzátesz 3 számot és visszaadja (pl.: hobá666)
         -az összes könyv kilistázásánál ki kell írni, hogy kivehető/foglalható, előjegyezhető
         -ha a bookDetailed page-en jelentkezik be a user, akkor nem frissül rá az oldal, és nem jelenik meg a kivétel gomb amíg nem frissít rá
