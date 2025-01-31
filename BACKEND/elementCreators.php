@@ -1,5 +1,5 @@
 <?php
-    require_once "databaseFunctions.php";
+    // require_once "databaseFunctions.php";
     function CreateBookElement($data):string{
         $result = "
             <div class='grid-item' onclick=window.location='bookDetailed.php?ISBN=".$data['ISBN']."'; data-isbn='".$data["ISBN_id"]."'>
