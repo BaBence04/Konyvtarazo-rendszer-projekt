@@ -40,7 +40,7 @@ if (!isset($_SESSION['user_id']) && isset($_COOKIE['remember_me'])) {
   }
 }
 
-$path = explode("?",trim($_SERVER['REQUEST_URI'], "web/"))[0];
+$path = explode("web/",$_SERVER['REQUEST_URI'])[1];
 $parts_of_path = explode("/", $path);
 $page_to_load = "mainPage";
 $page_title = "Főoldal";
