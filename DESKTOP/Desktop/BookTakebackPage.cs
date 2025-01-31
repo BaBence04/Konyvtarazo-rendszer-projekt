@@ -39,7 +39,6 @@ namespace Desktop
             }
 			userID = info["user"];
         }
-
         private async void btn_Click(object sender, EventArgs e)
         {
 			var output = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { {"type", "returnBook" }, {"user_id",  userID}, {"bookID", bookID }, {"empl_id", LoginForm.employee} });

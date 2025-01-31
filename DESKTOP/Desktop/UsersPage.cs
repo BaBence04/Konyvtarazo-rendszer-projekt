@@ -30,7 +30,7 @@ namespace Desktop
 
         private void UsersPage_Load(object sender, EventArgs e)
         {
-            updateUsersDgw("");
+            //updateUsersDgw("");
             ctbSearch.KeyPress += ctbSearch_KeyPress;
         }
         private async void updateUsersDgw(string search)
@@ -121,5 +121,21 @@ namespace Desktop
                 updateUsersDgw("");
             }
         }
-	}
+
+        private void UsersPage_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible == true)
+            {
+                if (ctbSearch.Texts != ctbSearch.PlaceholderText)
+                {
+                    updateUsersDgw(ctbSearch.Texts);
+                }
+                else
+                {
+                    updateUsersDgw("");
+                }
+            }
+            
+        }
+    }
 }

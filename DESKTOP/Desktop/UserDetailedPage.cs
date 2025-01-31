@@ -12,7 +12,7 @@ namespace Desktop
 {
 	public partial class UserDetailedPage : Form
 	{
-		public UserDetailedPage()
+        public UserDetailedPage()
 		{
 			InitializeComponent();
 		}
