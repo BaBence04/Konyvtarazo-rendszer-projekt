@@ -25,6 +25,7 @@ Mesterremek projekt, könyvtárazó rendszer
 
 #WEB:
     KINÉZET:
+        -jó lenne ha mellé kattint a felhasználó a login-nak akkor bezáródna
         -férjen ki rendesen a userDeailed oldalon a menüpontok felül, ha sehogy nem fog akkor lehet az is, hogy arrébb gördül ahogy átnyomunk másikra
         -kell lehetőség jelszó módosításra a userDetailed-oldalon (jelenlegi jelszó, új jelszó, új jelszó mégegszer)
         -legyen valami hover effect a userDetailed-on amikor az <a>, a könyv címe felé viszi az egeret
@@ -39,9 +40,6 @@ Mesterremek projekt, könyvtárazó rendszer
         
 
     PHP/JS:
-        -remove remember_me cookie on logout
-        -create cookie on login if remember_me is checked in
-        -kell a databaseFunction a generateToken és a deleteExpiredTokens procedure-höz
         -minden oldal az indexről legyen megnyitva, és ne GET-ben legyen tárolva hanem az URIből olvassuk ki
         -legyen egy algoritmus ami intézi az elfelejtett jelszó kezelését:
             -kell egy api endpoint ahol van egy reset_token GET param, and if the token is active in the database than it will give the option to change password
@@ -49,16 +47,13 @@ Mesterremek projekt, könyvtárazó rendszer
         -username generáló algoritmus ami paraméterként megkapja a kereszt és a családnevet, veszi mindkettő első kettő betűjét, hozzátesz 3 számot és visszaadja (pl.: hobá666)
         -az összes könyv kilistázásánál ki kell írni, hogy kivehető/foglalható, előjegyezhető
         -ha a bookDetailed page-en jelentkezik be a user, akkor nem frissül rá az oldal, és nem jelenik meg a kivétel gomb amíg nem frissít rá
-        -mindenben keresés a navbar keresővel - megvárjuk vele Wiezl
         -gyorsítani a backendet, azzal, hogy lehessen odaadni connectiont a databaseFunction-öknek hogy ne kelljen mindig újra csatlakozni
-        -vissza lehessen őket mondani, menő lenne ha ki lenne írva az is, hogy a max X-ből hány darab van már kivéve pl.: 2/3
+        -for now php-ből van generálva a cookie-ideje de valszeg jobb lenne ha ez is a system settings-ből nézné
+        -menő lenne ha ki lenne írva az is, hogy a max X-ből hány darab van már foglalva/előjegyezve pl.: 2/3
+        -mindenben keresés a navbar keresővel - megvárjuk vele Wiezl
 
 SQL:
-NOTHING IS TESTED BUT EVERYTHING SHOULD WORK I WAS IN A HURRY SRY
--changePassword procedure, kap 1 jelszót és egy user_id-t és cserélje ki a jelszót (ne felejtsd el hashelni!) (DONE -Bence) -works
--deleteToken, kap egy tokent és törölje (DONE -Bence)-works
--amikor van már a generateToken procedure-ben olyan token(vagyis amikor false-t ad vissza), akkor adja vissza ugyanazt, amit a loginUser (legalábbis olyankor amikor login/remember me a type), mert ezzel van validálva a cookie-ban tárolt token a usernél, és be kell tudni léptetni (DONE annyi a különbség loginUserhez képest hogy a state az loginFound és nem true)
--a generateToken-ben ne "login" legyen a type, hanem "remember_me", mert arra használjuk (DONE -Bence)
+-nem lehet feltölteni a procedure-öket mert hiba van a getPublishers-ben
 
 
 ADDITIONAL STUFF TO DO:
