@@ -23,6 +23,7 @@
     <script src="jquery.js"></script>
 </head>
 <body>
+    <h1>Majd email-ben fog jönni a link</h1>
     <label for="newPassword">Új jelszó:</label>
     <input required type="password" name="newPassword" id="newPassword"><br>
     <label for="newPasswordAgain">Új jelszó újra:</label>
