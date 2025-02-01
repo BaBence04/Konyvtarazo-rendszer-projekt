@@ -53,7 +53,7 @@ Mesterremek projekt, könyvtárazó rendszer
         -mindenben keresés a navbar keresővel - megvárjuk vele Wiezl
 
 SQL:
--nem lehet feltölteni a procedure-öket mert hiba van a getPublishers-ben
+-vagy kell egy procedure ami visszaadja a user_name-et user_id alapján, és vagy egy olyan, ami ha kap egy jelszót, és egy user_id-t akkor visszaadja, hogy egyezik-e a jelenlegi jelszóval - a profil oldalon való jelszó módosításhoz kell
 
 
 ADDITIONAL STUFF TO DO:
