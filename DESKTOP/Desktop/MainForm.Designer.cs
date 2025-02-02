@@ -31,6 +31,7 @@
 			this.tableLayoutPanel_Main = new System.Windows.Forms.TableLayoutPanel();
 			this.panel_Menu = new System.Windows.Forms.Panel();
 			this.panel_Links = new System.Windows.Forms.Panel();
+			this.button_Publishers = new System.Windows.Forms.Button();
 			this.button4 = new System.Windows.Forms.Button();
 			this.button3 = new System.Windows.Forms.Button();
 			this.button_Users = new System.Windows.Forms.Button();
@@ -49,7 +50,6 @@
 			this.panel_Container = new System.Windows.Forms.Panel();
 			this.toggleButton_ThemeChanger = new Desktop.ToggleButton();
 			this.roundedCornerPanel_PageContainer = new Desktop.RoundedCornerPanel();
-			this.button_Publishers = new System.Windows.Forms.Button();
 			this.tableLayoutPanel_Main.SuspendLayout();
 			this.panel_Menu.SuspendLayout();
 			this.panel_Links.SuspendLayout();
@@ -103,6 +103,27 @@
 			this.panel_Links.Name = "panel_Links";
 			this.panel_Links.Size = new System.Drawing.Size(234, 480);
 			this.panel_Links.TabIndex = 0;
+			// 
+			// button_Publishers
+			// 
+			this.button_Publishers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(39)))));
+			this.button_Publishers.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.button_Publishers.Dock = System.Windows.Forms.DockStyle.Top;
+			this.button_Publishers.FlatAppearance.BorderSize = 0;
+			this.button_Publishers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.button_Publishers.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			this.button_Publishers.ForeColor = System.Drawing.SystemColors.ButtonFace;
+			this.button_Publishers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.button_Publishers.Location = new System.Drawing.Point(0, 428);
+			this.button_Publishers.Name = "button_Publishers";
+			this.button_Publishers.Padding = new System.Windows.Forms.Padding(21, 0, 0, 0);
+			this.button_Publishers.Size = new System.Drawing.Size(234, 48);
+			this.button_Publishers.TabIndex = 7;
+			this.button_Publishers.Text = "  Kiadók";
+			this.button_Publishers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.button_Publishers.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			this.button_Publishers.UseVisualStyleBackColor = false;
+			this.button_Publishers.Click += new System.EventHandler(this.button_Publishers_Click);
 			// 
 			// button4
 			// 
@@ -364,6 +385,7 @@
 			// 
 			// toggleButton_ThemeChanger
 			// 
+			this.toggleButton_ThemeChanger.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.toggleButton_ThemeChanger.Location = new System.Drawing.Point(90, 44);
 			this.toggleButton_ThemeChanger.Name = "toggleButton_ThemeChanger";
 			this.toggleButton_ThemeChanger.OffBackColor = System.Drawing.Color.Gray;
@@ -388,27 +410,6 @@
 			this.roundedCornerPanel_PageContainer.Name = "roundedCornerPanel_PageContainer";
 			this.roundedCornerPanel_PageContainer.Size = new System.Drawing.Size(744, 744);
 			this.roundedCornerPanel_PageContainer.TabIndex = 0;
-			// 
-			// button_Publishers
-			// 
-			this.button_Publishers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(39)))));
-			this.button_Publishers.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.button_Publishers.Dock = System.Windows.Forms.DockStyle.Top;
-			this.button_Publishers.FlatAppearance.BorderSize = 0;
-			this.button_Publishers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.button_Publishers.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-			this.button_Publishers.ForeColor = System.Drawing.SystemColors.ButtonFace;
-			this.button_Publishers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.button_Publishers.Location = new System.Drawing.Point(0, 428);
-			this.button_Publishers.Name = "button_Publishers";
-			this.button_Publishers.Padding = new System.Windows.Forms.Padding(21, 0, 0, 0);
-			this.button_Publishers.Size = new System.Drawing.Size(234, 48);
-			this.button_Publishers.TabIndex = 7;
-			this.button_Publishers.Text = "  Kiadók";
-			this.button_Publishers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.button_Publishers.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-			this.button_Publishers.UseVisualStyleBackColor = false;
-			this.button_Publishers.Click += new System.EventHandler(this.button_Publishers_Click);
 			// 
 			// MainForm
 			// 

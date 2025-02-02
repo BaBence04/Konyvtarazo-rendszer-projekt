@@ -20,7 +20,6 @@ namespace Desktop
         {
             InitializeComponent();
             ThemeManager.ApplyTheme(this);
-            ThemeManager.SetTheme("Dark");
 
             
         }

@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Win32;
 
 namespace Desktop
 {
@@ -26,16 +27,16 @@ namespace Desktop
         {
             string savedTheme = LoadSavedTheme();
 
-            if (!string.IsNullOrEmpty(savedTheme))
+			if (!string.IsNullOrEmpty(savedTheme))
             {
                 CurrentTheme = savedTheme;
             }
-            else
+			else
             {
                 CurrentTheme = GetSystemTheme();
             }
 
-            ApplyThemeToAllForms();
+			ApplyThemeToAllForms();
         }
 
         public static void SetTheme(string theme)
@@ -62,19 +63,28 @@ namespace Desktop
             File.WriteAllText(ThemeFilePath, theme);
         }
 
-        private static string GetSystemTheme()
-        {
-            StringBuilder themeName = new StringBuilder(260);
-            StringBuilder color = new StringBuilder(260);
-            StringBuilder size = new StringBuilder(260);
+		private static string GetSystemTheme()
+		{
+			const string registryPath = @"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize";
+			const string appsThemeKey = "AppsUseLightTheme";
+				int appsThemeValue = (int)Registry.GetValue(registryPath, appsThemeKey, -1);
 
-            GetCurrentThemeName(themeName, themeName.Capacity, color, color.Capacity, size, size.Capacity);
 
-            return color.ToString().IndexOf("dark", StringComparison.OrdinalIgnoreCase) >= 0 ? "Dark" : "Light";
+			if (appsThemeValue == 0)
+			{
+				return "Dark";
+			}
+			else if (appsThemeValue == 1)
+			{
+				return "Light";
+			}
+			else
+			{
+				return "Dark";
+			}
+		}
 
-        }
-
-        public static void ApplyThemeToAllForms()
+		public static void ApplyThemeToAllForms()
         {
             foreach (Form form in Application.OpenForms)
             {
@@ -162,14 +172,14 @@ namespace Desktop
 			{
 				label.ForeColor = CurrentTheme == "Light" ? Color.Black : Color.FromArgb(245, 245, 245);
             }
-            else if (control is CheckBox toggleButton)
-            {
-                if (toggleButton.Name == "toggleButton_ThemeChanger")
-                {
-                    toggleButton.Checked = CurrentTheme == "Light" ? true : false;
-                }
-            }
-            else if (control is PictureBox pictureBox)
+			else if (control is CheckBox toggleButton)
+			{
+				if (toggleButton.Name == "toggleButton_ThemeChanger")
+				{
+					toggleButton.Checked = CurrentTheme == "Light";
+				}
+			}
+			else if (control is PictureBox pictureBox)
 			{
 				if (pictureBox.Name == "pictureBox_UserPic")
 				{
@@ -183,10 +193,6 @@ namespace Desktop
 				dataGrid.CellBackColor = CurrentTheme == "Light" ? Color.FromArgb(245, 245, 245) : Color.FromArgb(51, 51, 68);
 				dataGrid.AlternatingRowBackColor = CurrentTheme == "Light" ? Color.FromArgb(220, 220, 220) : Color.FromArgb(71, 71, 88);
             }
-
-
-
-            // Gyermek vezérlők rekurzív kezelése
             foreach (Control childControl in control.Controls)
 			{
 				ApplyTheme(childControl);
