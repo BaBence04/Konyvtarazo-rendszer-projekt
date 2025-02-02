@@ -29,47 +29,71 @@
             echo AddReservationOrBooking($_POST['isbn_id'], $_SESSION["user_id"]);
 
 
-        //returns "not found"/"inactive"/"success"/"incorrect"/"inactive user"
+        //returns "not found"/"inactive"/"success"/"incorrect"/"inactive user", login
         }else if(isset($_POST['uname'], $_POST['pw'], $_POST["remember_me"]) && count($_POST)==3){
-            // $result = CheckCredentialForLogin($_POST['uname'], $_POST['pw']);
             $result = CheckCredentialForLogin($_POST['uname'], $_POST['pw']);
-            //var_dump(CheckCredentialForLogin($_POST['uname'], $_POST['pw']));
             if($result["result"] == "not found"){
                 echo $result["result"];
-            }else{
-                if($result["result"] == NULL){
-                    echo "inactive user";
-                }else if($result["result"] == "false"){
-                    echo "incorrect";
-                }else{
-                     // Regenerate session ID for security
-                    session_regenerate_id(true);
+            }else if($result["result"] == NULL){
+                echo "inactive user";
+            }else if($result["result"] == "false"){
+                echo "incorrect";
+            }else if($result["result"]== "true"){
+                    // Regenerate session ID for security
+                session_regenerate_id(true);
 
-                    // var_dump($gotPw);
-                    $_SESSION['user_id'] = $result["user_id"];
-                    
-                    //if restricted isset, and true than the current users membership is due
-                    $_SESSION["restricted"] = $result["member"];
-                    
-                    //remember me is needed
-                    if($_POST["remember_me"] == "true"){
-                        $_SESSION["remember_me"] = true;
-                        echo "here";
+                // var_dump($gotPw);
+                $_SESSION['user_id'] = $result["user_id"];
+                $_SESSION['username'] = $_POST["uname"];
+                
+                //if restricted isset, and true than the current users membership is due
+                $_SESSION["restricted"] = $result["member"];
+                
+                //remember me is needed
+                if($_POST["remember_me"] == "true"){
+                    $_SESSION["remember_me"] = true;
 
-                        do{
-                            $token = generate_token(1);
-                        }while(create_token($token, $_SESSION["user_id"], "remember_me")["result"] == "false");
-                        
-                        $expires = time() + (30 * 24 * 60 * 60); // 30 days from now
-                        // Set a long-lived cookie
-                        setcookie('remember_me', $token, $expires, '/', '', true, true); // Secure and HTTP-only
-                        
-                    }
+                    do{
+                        $token = generate_token(1);
+                    }while(create_token($token, $_SESSION["user_id"], "remember_me")["result"] == "false");
                     
-                    echo "success";
+                    $expires = time() + (30 * 24 * 60 * 60); // 30 days from now
+                    // Set a long-lived cookie
+                    setcookie('remember_me', $token, $expires, '/', '', true, true); // Secure and HTTP-only
+                    
                 }
+                
+                echo "success";
+            }
+            
+        //change password from userDetailed page
+        }else if(isset($_POST["currentPassword"], $_POST["newPassword"], $_SESSION["user_id"], $_SESSION["username"]) && count($_POST) == 2){
+            //authenticates the given current password
+            $login_result = CheckCredentialForLogin($_SESSION["username"], $_POST["currentPassword"]);
+
+            if($login_result["result"] == "true"){
+                
+                if(change_password($_POST["newPassword"], $_SESSION["user_id"])){
+                    //checks if it is possible to login with the new password
+                    $login_result = CheckCredentialForLogin($_SESSION["username"], $_POST["newPassword"]);
+                    if($login_result["result"] == "true"){
+                        $result = ["status" => "successful"];        
+
+                    }else{
+                        $result = ["status" => "error", "message"=>"Couldn't log in with the new password, seek help! The result given back: $login_result[result]"];        
+                    }                    
+
+                }else{
+                    $result = ["status" => "failed", "message"=>"Change password didn't have only one changed line!"];
+                }
+
+            }else{
+                $result = ["status" => $login_result["result"]];
             }
 
+            echo json_encode($result);
+            
+            
         }else if(count($_POST)==2 && isset($_SESSION["user_id"], $_SESSION["restricted"], $_POST["book_id"], $_POST["action"]) && $_POST["action"] == "extend" && $_SESSION["restricted"] == "false" ){
             $result = [];
             
@@ -88,7 +112,9 @@
         //logout
         }else if(isset($_SESSION["user_id"], $_POST["action"]) && $_POST["action"] == "logout"){
             unset($_SESSION['user_id']);
+            unset($_SESSION['username']);
             session_destroy();
+            
 
             // Delete the "remember me" cookie
             if (isset($_COOKIE['remember_me'])) {
@@ -110,6 +136,7 @@
                     $token = generate_token(1);
                 }while(create_token($token, $user_id, "reset")["result"] == "false");
                 $response = ["link"=>"localhost:8000/web/resetPassword.php?reset_token=$token", "status"=>"success"];
+            
             }
 
             echo json_encode($response);

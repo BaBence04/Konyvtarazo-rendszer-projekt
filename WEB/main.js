@@ -166,9 +166,6 @@ function ForgotPassword(){
         alert(data.status);
       }
 
-        
-            
-        
     
   }}); 
 }
@@ -178,6 +175,38 @@ function OpenBookDetailed(element){
   open("./konyveink/"+isbn, "_self");
 }
 
+function ChangePassword(){
+  let currentPassword = document.getElementById("currentPassword").value;
+  let newPassword = document.getElementById("newPassword").value;
+  let newPasswordAgain = document.getElementById("newPasswordAgain").value;
+  
+  if(newPassword === newPasswordAgain){
+    $.ajax({
+      url: "../BACKEND/api.php",
+      type: "POST", //send it through post method
+      data: { 
+          currentPassword: currentPassword,
+          newPassword: newPassword
+      },
+      success: function(response)  {
+        let data = JSON.parse(response);   
+        if(data.status == "successful"){
+          alert("Sikeres jelszó csere");
+        }else if(data.status == "false"){
+          alert("A megadott jelszó helyetelen");
+        }else{
+          alert(`Error: Status: ${data.status} | Message if given: ${data.message}`);
+          console.error(`Error: Status: ${data.status} | Message if given: ${data.message}`);
+        }  
+      
+    }}); 
+
+  }else{
+    alert("Nem ugyanazt írta az új jelszó, és az új jelszó megerősítéséhez!");
+  }
+
+}
+
 document.querySelector("body").addEventListener("keydown",(e)=>{
   if(e.key == "Escape"){
     if(login.classList.contains("show-login")){
@@ -185,6 +214,7 @@ document.querySelector("body").addEventListener("keydown",(e)=>{
     }
   }
 });
+
 
 // window.addEventListener('popstate', function (event) {
 //   // Code to refresh or reload content when the back button is clicked
