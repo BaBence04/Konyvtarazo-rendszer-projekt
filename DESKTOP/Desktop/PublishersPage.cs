@@ -10,15 +10,15 @@ using System.Windows.Forms;
 
 namespace Desktop
 {
-	public partial class PublishersPage : Form
-	{
-		List<string> ids = new List<string>();
-		public PublishersPage()
-		{
-			InitializeComponent();
-		}
-		private async void updatePublishersCdgw(string search)
-		{
+    public partial class PublishersPage : Form
+    {
+        List<string> ids = new List<string>();
+        public PublishersPage()
+        {
+            InitializeComponent();
+        }
+        private async void updatePublishersCdgw(string search)
+        {
             cdgvPublishers.DataSource = null;
             cdgvPublishers.Columns.Clear();
             ids.Clear();
@@ -68,5 +68,6 @@ namespace Desktop
                 }
                 cdgvPublishers.DataSource = dt;
             }
-	}
+        }
+    }
 }

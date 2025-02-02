@@ -158,6 +158,9 @@
     <EmbeddedResource Include="BookTakebackPage.resx">
       <DependentUpon>BookTakebackPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CustomButton.resx">
+      <DependentUpon>CustomButton.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomTextbox.resx">
       <DependentUpon>CustomTextbox.cs</DependentUpon>
     </EmbeddedResource>

@@ -131,5 +131,16 @@ namespace Desktop
                 this.Invalidate();
             }
         }
-    }
+
+		private void InitializeComponent()
+		{
+			this.SuspendLayout();
+			// 
+			// CustomButton
+			// 
+			this.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.ResumeLayout(false);
+
+		}
+	}
 }
