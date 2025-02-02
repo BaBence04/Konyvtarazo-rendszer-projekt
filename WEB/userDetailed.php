@@ -58,6 +58,15 @@
                     <div><strong>Telefonszám:</strong> <?=$data['phone_number']?></div>
                     <div><strong>Tagság érvényessége:</strong> <?=$data["membership_end_date"]?></div>
                     <div><strong>Anyja születéskori neve:</strong> <?=$data["mother_maiden_name"]?></div>
+                    <div class="change-password-holder">
+                        <label for="currentPassword">Jelenlegi jelszó:</label>
+                        <input type="password" id="currentPassword">
+                        <label for="newPassword">Új jelszó:</label>
+                        <input type="password" id="newPassword">
+                        <label for="newPasswordAgain">Új jelszó újra:</label>
+                        <input type="password" id="newPasswordAgain">
+                        <input type="button" value="Módosítás" onclick="ChangePassword();">
+                    </div>
                 </div>
             </div>
 
