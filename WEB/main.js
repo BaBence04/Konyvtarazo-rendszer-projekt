@@ -178,6 +178,13 @@ function OpenBookDetailed(element){
   open("./konyveink/"+isbn, "_self");
 }
 
+document.querySelector("body").addEventListener("keydown",(e)=>{
+  if(e.key == "Escape"){
+    if(login.classList.contains("show-login")){
+      login.classList.remove("show-login");
+    }
+  }
+});
 
 // window.addEventListener('popstate', function (event) {
 //   // Code to refresh or reload content when the back button is clicked
