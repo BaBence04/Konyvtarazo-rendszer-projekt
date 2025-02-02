@@ -4,13 +4,11 @@ Mesterremek projekt, könyvtárazó rendszer
 
 #ASZTALI:
     KINÉZET:
-        -amikor a gombok felett van a cursor, olyankor legyen pointer
         -legyen lehetőség meghosszabítani a felhasználó tagságát
         -a book részletesen lehessen előjegyezni/foglalni egy adott user számára
         -a könyvrészletesen lehessen a kiadóra lehessen rákattintani, és megnyitni annak a részleteit
         -automatikus törlős dologhoz valami frontend, popup window szerűség
         -userDetailed form módosításhoz/törléshez (- Bence)
-        -popupSelect form kinézet (- Bence)
 
 
     BACKEND:
