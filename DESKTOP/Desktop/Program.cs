@@ -21,7 +21,7 @@ namespace Desktop
             LoginForm.main = new MainForm();
             LoginForm.employee = "1";
             Application.Run(LoginForm.main);
-            
+
             
         }
     }
