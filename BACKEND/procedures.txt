@@ -589,6 +589,35 @@ END IF;
 END;//
 DELIMITER ;
 
+-- updates 1 line in publishers table
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS updatePublishers(
+  IN id INT,
+  IN pub_name VARCHAR(255),
+  IN pub_phone VARCHAR(255),
+  IN pub_email VARCHAR(255),
+  IN pub_webpage VARCHAR(255)
+)
+BEGIN
+UPDATE publishers SET publishers.name = pub_name, publishers.phone = pub_phone, publishers.email = pub_email, publishers.webpage = pub_webpage WHERE publishers.publisher_id = id;
+END;//
+DELIMITER ;
+
+-- deletes a publisher (whole row)
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS deletePublisher(
+ IN id INT 
+)
+BEGIN
+IF((SELECT COUNT(book.ISBN_id) FROM book WHERE book.publisher_id = id) = 0) THEN 
+  DELETE FROM publishers WHERE publishers.publisher_id = id;
+  SELECT "success" AS "state";
+ELSE
+  SELECT "fail" AS "state";
+END IF;
+END;//
+DELIMITER ;
+
 -- get info for borrowing page
 DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS borrowInfo(
@@ -678,8 +707,9 @@ CREATE PROCEDURE IF NOT EXISTS addPublisher(
 ) BEGIN
 IF ((SELECT publishers.name FROM publishers WHERE publishers.name = pubname) IS NULL) THEN 
 	INSERT INTO publishers(publishers.name, publishers.phone, publishers.email, publishers.webpage) VALUES(pubname, phone, email, webpage); 
+  SELECT "success" AS state;
 ELSE 
-	SELECT "ilyen név már létezik"; 
+	SELECT "fail" AS state; 
 END IF; 
 END;//
 DELIMITER ;
