@@ -168,6 +168,14 @@
             echo json_encode(GetUsers($_POST["search"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "getBooks" && isset($_POST["search"]) && count($_POST) == 2){
             echo json_encode(getBooks($_POST["search"]));
+        }else if(isset($_POST["type"]) && $_POST["type"] == "getPublishers" && isset($_POST["search"]) && count($_POST) == 2){
+            echo json_encode(GetPublishers($_POST["search"]));
+        }else if(isset($_POST["type"]) && $_POST["type"] == "updatePublishers" && isset($_POST["id"], $_POST["name"], $_POST["phone"], $_POST["email"], $_POST["webpage"]) && count($_POST) == 6){
+            UpdatePublishers($_POST["id"], $_POST["name"], $_POST["phone"], $_POST["email"], $_POST["webpage"]);
+        }else if(isset($_POST["type"]) && $_POST["type"] == "deletePublisher" && isset($_POST["id"]) && count($_POST) == 2){
+            echo json_encode(DeletePublisher($_POST["id"]));
+        }else if(isset($_POST["type"]) && $_POST["type"] == "addPublisher" && isset($_POST["name"], $_POST["phone"], $_POST["email"], $_POST["webpage"])  && count($_POST) == 5){
+            echo json_encode(addPublisher($_POST["name"], $_POST["phone"], $_POST["email"], $_POST["webpage"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "autoDeleteBookingsAndReservations" && count($_POST) == 1){
             echo json_encode(AutoDeleteLateBookings());
         }else if(isset($_POST["type"]) && $_POST["type"] == "returnInfo" && isset($_POST["bookID"]) && count($_POST) == 2){
