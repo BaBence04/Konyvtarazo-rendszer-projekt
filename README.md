@@ -20,6 +20,7 @@ Mesterremek projekt, könyvtárazó rendszer
         -return book módosítva nekem működött, de nem minden case-t néztem meg (- Bence)
         -automatikus törlős dolog implementálása (- Bence DONE)
         -kiadás/visszavételnél frissítse az aktuális formot ez inkább az allbooksnál fontos
+        -nézni kell, pl 5 percenként, hogy jött-e új foglalás(az előzőket fájlban tároljuk pl), és olyankor kell egy popup, hogy új foglalás jött, hogy félre tudja majd tenni a polcra a könyvtáros
 
 #WEB:
     KINÉZET:
@@ -41,18 +42,13 @@ Mesterremek projekt, könyvtárazó rendszer
     PHP/JS:
         -perpillanat az elfelejtettem a jelszónál a login-nak a username mezőjét használja, meg kell majd csinálni rendesre
         -működik az elfelejtettem a jelszót, perpillanat megnyitja a linket új oldalon, de az nem igazán tölt be, de ki van írva a konzolra a link
-        -minden oldal az indexről legyen megnyitva, és ne GET-ben legyen tárolva hanem az URIből olvassuk ki
         -username generáló algoritmus ami paraméterként megkapja a kereszt és a családnevet, veszi mindkettő első kettő betűjét, hozzátesz 3 számot és visszaadja (pl.: hobá666)
-        -az összes könyv kilistázásánál ki kell írni, hogy kivehető/foglalható, előjegyezhető
-        -ha a bookDetailed page-en jelentkezik be a user, akkor nem frissül rá az oldal, és nem jelenik meg a kivétel gomb amíg nem frissít rá
-        -gyorsítani a backendet, azzal, hogy lehessen odaadni connectiont a databaseFunction-öknek hogy ne kelljen mindig újra csatlakozni
         -for now php-ből van generálva a cookie-ideje de valszeg jobb lenne ha ez is a system settings-ből nézné
         -menő lenne ha ki lenne írva az is, hogy a max X-ből hány darab van már foglalva/előjegyezve pl.: 2/3
-        -mindenben keresés a navbar keresővel - megvárjuk vele Wiezl
+        -gyorsítani a backendet, azzal, hogy lehessen odaadni connectiont a databaseFunction-öknek hogy ne kelljen mindig újra csatlakozni
+        -az összes könyv kilistázásánál ki kell írni, hogy kivehető/foglalható, előjegyezhető
 
 SQL:
--vagy kell egy procedure ami visszaadja a user_name-et user_id alapján, és vagy egy olyan, ami ha kap egy jelszót, és egy user_id-t akkor visszaadja, hogy egyezik-e a jelenlegi jelszóval - a profil oldalon való jelszó módosításhoz kell
-
 
 ADDITIONAL STUFF TO DO:
 -api endpoint dokkumentáció, mert kezd nehéz lenni követni hogy mi történik
