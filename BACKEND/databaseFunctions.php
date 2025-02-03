@@ -367,6 +367,45 @@
         return $results->fetch_all(MYSQLI_ASSOC);
     }
 
+    function GetPublishers($search){
+        require "databaseConnect.php";
+
+        $query = "CALL getPublishers(?);";
+        
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("s", $search); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        $conn->close();
+        return $results->fetch_all(MYSQLI_ASSOC);
+    }
+    
+    function UpdatePublishers($id, $name, $phone, $email, $webpage){
+        require "databaseConnect.php";
+
+        $query = "CALL updatePublishers(?,?,?,?,?);";
+        
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("issss", $id, $name, $phone, $email, $webpage); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        $conn->close();
+        //return $results->fetch_all(MYSQLI_ASSOC);
+    }
+    
+    function DeletePublisher($id){
+        require "databaseConnect.php";
+
+        $query = "CALL deletePublisher(?);";
+        
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("i", $id); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        $conn->close();
+        return $results->fetch_all(MYSQLI_ASSOC);
+    }
+
     function BorrowInfo($id, $state){
         require "databaseConnect.php";
 
@@ -427,11 +466,7 @@
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
         $conn->close();
-        if($results->fetch_all(MYSQLI_NUM)[0][0] == "ilyen név már létezik"){
-            return -1;
-        }else{
-            return $results->fetch_all(MYSQLI_ASSOC);
-        }
+        return $results->fetch_all(MYSQLI_ASSOC);
     }
 
     function AddUser($surname, $firstname, $uname, $birthdate, $email, $phone, $pw, $birthplace, $address, $mmn){
