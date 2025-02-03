@@ -25,9 +25,7 @@ Mesterremek projekt, könyvtárazó rendszer
 #WEB:
     KINÉZET:
         -perpillanat az elfelejtettem a jelszónál a login-nak a username mezőjét használja, meg kell csinálni rendesre, és az oldalt is ahol lehet reset-elni a jelszót
-        -jó lenne ha mellé kattint a felhasználó a login-nak akkor bezáródna
         -férjen ki rendesen a userDeailed oldalon a menüpontok felül, ha sehogy nem fog akkor lehet az is, hogy arrébb gördül ahogy átnyomunk másikra
-        -kell lehetőség jelszó módosításra a userDetailed-oldalon (jelenlegi jelszó, új jelszó, új jelszó mégegszer)
         -legyen valami hover effect a userDetailed-on amikor az <a>, a könyv címe felé viszi az egeret
         -írjuk ki a foglalás lejárati idejét is
         -a könyv részletesen a gomb nagyon rá van csúszva a felette levő részre
