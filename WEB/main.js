@@ -12,24 +12,6 @@ navClose.addEventListener("click", () => {
   navMenu.classList.remove("show-menu");
 });
 
-const search = document.getElementById("search"),
-  searchBtn = document.getElementById("search-btn"),
-  searchClose = document.getElementById("search-close");
-
-searchBtn.addEventListener("click", () => {
-  search.classList.add("show-search");
-});
-
-searchClose.addEventListener("click", () => {
-  search.classList.remove("show-search");
-});
-
-/* window.onclick = function(event) {
-    if (event.target == search) {
-        search.classList.remove("show-search");
-        document.body.style.overflow = "auto";
-    }
-} */
 
 const login = document.getElementById("login"),
   loginBtn = document.getElementById("login-btn"),
@@ -37,12 +19,27 @@ const login = document.getElementById("login"),
 
 
 
-/* window.onclick = function(event) {
+login.onclick = function(event) {
+  event.stopPropagation();
+
+  if(login.classList.contains("show-login")){
     if (event.target == login) {
+      const selection = window.getSelection();
+      const isSelectingText = selection.toString().length > 0;
+
+      const activeElement = document.activeElement;
+        const isSelectingInInput =
+        (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA') &&
+        activeElement.selectionStart !== activeElement.selectionEnd;
+
+      if(!isSelectingText && !isSelectingInInput){
         login.classList.remove("show-login");
-        document.body.style.overflow = "auto";
+
+      }
     }
-} */
+
+  }
+} 
 let waitingforServer = false;
 
 /* LOGIN SCRIPT */
@@ -54,7 +51,7 @@ loginBtn.addEventListener("click", () => {
   waitingforServer = true;
 
   $.ajax({
-    url: "../BACKEND/api.php",
+    url: "/BACKEND/api.php",
     type: "post", //send it through post method
     data: { 
         action: "isLoggedIn"
@@ -66,16 +63,10 @@ loginBtn.addEventListener("click", () => {
         waitingforServer = false;
 
       }else{
-        window.open("./fiok", "_self");
-        // const currentUrl = new URL("./");
-        // currentUrl.searchParams.set("page", "userDetailed");
-        // // console.log(currentUrl)
-        // window.history.pushState({}, '', currentUrl);
-        // location.reload();
+        window.open("/web/fiok", "_self");
       }
     }
     });
-
 
 
 });
@@ -127,7 +118,7 @@ function HideAndShowFilters(){
 function CheckLogin(){
    //console.log(document.getElementById("username").value, document.getElementById("password").value )
    $.ajax({
-    url: "../BACKEND/api.php",
+    url: "/BACKEND/api.php",
     type: "POST", //send it through post method
     data: { 
         uname: document.getElementById("username").value, 
@@ -151,7 +142,7 @@ function CheckLogin(){
 
 function ForgotPassword(){
   $.ajax({
-    url: "../BACKEND/api.php",
+    url: "/BACKEND/api.php",
     type: "POST", //send it through post method
     data: { 
         username: document.getElementById("username").value,
@@ -180,9 +171,9 @@ function ChangePassword(){
   let newPassword = document.getElementById("newPassword").value;
   let newPasswordAgain = document.getElementById("newPasswordAgain").value;
   
-  if(newPassword === newPasswordAgain){
+  if(newPassword === newPasswordAgain && currentPassword != newPassword){
     $.ajax({
-      url: "../BACKEND/api.php",
+      url: "/BACKEND/api.php",
       type: "POST", //send it through post method
       data: { 
           currentPassword: currentPassword,
@@ -191,6 +182,10 @@ function ChangePassword(){
       success: function(response)  {
         let data = JSON.parse(response);   
         if(data.status == "successful"){
+          document.getElementById("currentPassword").value = "";
+          document.getElementById("newPassword").value = "";
+          document.getElementById("newPasswordAgain").value = "";
+
           alert("Sikeres jelszó csere");
         }else if(data.status == "false"){
           alert("A megadott jelszó helyetelen");
@@ -200,6 +195,9 @@ function ChangePassword(){
         }  
       
     }}); 
+
+  }else if(newPassword === currentPassword){
+    alert("Az új és a mostani jelszó nem egyezhet meg!");
 
   }else{
     alert("Nem ugyanazt írta az új jelszó, és az új jelszó megerősítéséhez!");
