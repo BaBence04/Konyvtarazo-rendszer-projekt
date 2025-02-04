@@ -38,6 +38,9 @@
                 echo "inactive user";
             }else if($result["result"] == "false"){
                 echo "incorrect";
+            }else if($result["result"] == "not registered"){
+                echo "not registered";
+
             }else if($result["result"]== "true"){
                     // Regenerate session ID for security
                 session_regenerate_id(true);
