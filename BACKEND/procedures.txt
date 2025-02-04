@@ -755,8 +755,21 @@ DELIMITER ;
 -- renew membership (member for a year)
 DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS renewMembership(
-  IN uname VARCHAR(255)
+  IN user_id INT
 ) BEGIN
-	UPDATE users SET users.membership_end_date = CURRENT_DATE() + INTERVAL 1 YEAR WHERE users.username = uname;
+IF((SELECT users.membership_end_date FROM users WHERE users.user_id = user_id)<CURRENT_DATE()) THEN
+	UPDATE users SET users.membership_end_date = CURRENT_DATE() + INTERVAL 1 YEAR WHERE users.user_id = user_id;
+ELSE
+	UPDATE users SET users.membership_end_date = DATE_ADD(users.membership_end_date, INTERVAL 1 YEAR) WHERE users.user_id = user_id;
+END IF;
+SELECT users.membership_end_date FROM users WHERE users.user_id = user_id;
+END;//
+DELIMITER ;
+
+-- gets system settings for desktop
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS getSystemSettings() 
+BEGIN
+SELECT * FROM system_settings;
 END;//
 DELIMITER ;
