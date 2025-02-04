@@ -40,7 +40,7 @@ if (!isset($_SESSION['user_id']) && isset($_COOKIE['remember_me'])) {
   }
 }
 
-$path = explode("web/",$_SERVER['REQUEST_URI'])[1];
+$path = explode("?",explode("web/",$_SERVER['REQUEST_URI'])[1])[0];
 $parts_of_path = explode("/", $path);
 $page_to_load = "mainPage";
 $page_title = "Főoldal";
@@ -95,11 +95,9 @@ if(count($parts_of_path) == 1){
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 </head>
 <body>
-  
+  <?php require_once "navbar.html"; ?>
+  <div class="space-after-nav"></div>
   <?php
-    require_once "navbar.html";
-    // var_dump($_SESSION);
-
     if ($page_to_load === 'mainPage') {
       require_once "mainPage.php";
 
