@@ -221,6 +221,8 @@ CREATE PROCEDURE IF NOT EXISTS loginUser(
 ) BEGIN
 IF((SELECT COUNT(users.user_id) FROM users WHERE users.username = username)=0) THEN
   SELECT 'not found' AS result;
+ELSEIF((SELECT COUNT(users.user_id) FROM users WHERE users.username = username AND users.password = NULL AND NOT users.active) > 0) THEN
+  SELECT 'not registered' AS result;
 ELSE
   SELECT CASE WHEN (users.active) THEN CASE WHEN (users.password = PASSWORD(pw)) THEN 'true' ELSE 'false' END END AS 'result', CASE WHEN users.membership_end_date<CURRENT_DATE() THEN 'false' ELSE 'true' END AS 'member', user_id FROM users WHERE users.username = username;
 END IF;
