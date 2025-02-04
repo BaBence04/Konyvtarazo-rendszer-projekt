@@ -14,19 +14,21 @@ Mesterremek projekt, könyvtárazó rendszer
         -új form addPublisher nem fog működni nagy eséllyel mert így sikerült feltölteni FIX: hozzáaddolsz egy formot és átmásolod a dolgokat az addPublisher form-ból abba(- Bence)
         -addPublisher széppé varázsolása (- Bence)
         -addPublishernél is van egy MessageBox.Show amit meg lehetne styleolni(- Bence)
-        -custom dateTimePicker
+        -readOnly property customTextBoxhoz (- Bence)
+        -customDateTimePicker (- Bence)
 
 
     BACKEND:
         -legyen lehetőség meghosszabítani a felhasználó tagságát, és a taggság lejárati dátuma ne aznaphoz egy évre járjon le, hanem a mostani tagság lejárati dátum + 1év
-        -a könyvkiadásnál írjuk ki, hogy mikor olvasta az illető legutóbb a könyvet
-        -a book részletesen lehessen előjegyezni/foglalni egy adott user számára
-        -kell lehetőség arra is, hogy lehessen egy user-t inaktívvá tenni
+        -a könyvkiadásnál írjuk ki, hogy mikor olvasta az illető legutóbb a könyvet 
+        -a book részletesen lehessen előjegyezni/foglalni egy adott user számára (- Bence DONE)
+        -kell lehetőség arra is, hogy lehessen egy user-t inaktívvá tenni 
         -az asztali program indításakor fusson le a lejárt foglalás törlő procedure, és küldje ki az értesítéseket (- Partly done)
-        -return book módosítva nekem működött, de nem minden case-t néztem meg (- Bence)
+        -return book módosítva nekem működött, de nem minden case-t néztem meg (- Bence DONE)
         -automatikus törlős dolog implementálása (- Bence DONE)
-        -kiadás/visszavételnél frissítse az aktuális formot ez inkább az allbooksnál fontos
+        -kiadás/visszavételnél frissítse az aktuális formot ez inkább az allbooksnál fontos (- Bence DONE)
         -nézni kell, pl 5 percenként, hogy jött-e új foglalás(az előzőket fájlban tároljuk pl), és olyankor kell egy popup, hogy új foglalás jött, hogy félre tudja majd tenni a polcra a könyvtáros
+        -Ha a user inactive akkor az összes input mező legyen readOnly(- Bence)
 
 #WEB:
     KINÉZET:

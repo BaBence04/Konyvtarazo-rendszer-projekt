@@ -1,7 +1,7 @@
 <?php
     require_once "../BACKEND/databaseFunctions.php";
 
-    $data = GetUser($_SESSION['user_id']);
+    $data = GetUser($_SESSION['user_id'])[0];
     $borrowedBooks = GetBorrowedBooks($_SESSION["user_id"]);
     $previouslyBorrowedBooks = GetPreviouslyBorrowedBooks($_SESSION["user_id"]);  
     
