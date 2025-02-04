@@ -810,10 +810,7 @@ input:-webkit-autofill{
 
 .book-details {
   display: flex;
-  align-items: flex-start;
   padding: 20px;
-/*   border: 1px solid #ddd; */
-/*   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
 }
 
 .book-image {
@@ -907,7 +904,6 @@ input:-webkit-autofill{
   }
   .book-details {
     flex-direction: column;
-    align-items: center;
   }
 
   .book-image {
@@ -917,6 +913,7 @@ input:-webkit-autofill{
 
   .book-info {
     max-width: 100%;
+    align-self: flex-start;
   }
 }
 
