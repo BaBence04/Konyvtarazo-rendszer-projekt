@@ -35,7 +35,6 @@ Mesterremek projekt, könyvtárazó rendszer
         -írjuk ki a foglalás lejárati idejét is
         -a könyv részletesen a gomb nagyon rá van csúszva a felette levő részre
         -a könyvek kilistázásánál legyen hely a lapozós gombok és a footer között
-        -nem hiszem hogy akarjuk, hogy a userDetailed-on legyen overflow-scroll, de ha csinálja, akkor a kijelentkezés továbbra sem kéne hogy csinálja
         
         
 
