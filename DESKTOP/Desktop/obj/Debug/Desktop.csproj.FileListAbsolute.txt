@@ -111,3 +111,4 @@ C:\xampp\htdocs\Konyvtarazo-rendszer-projekt\DESKTOP\Desktop\obj\Debug\Desktop.P
 C:\xampp\htdocs\Konyvtarazo-rendszer-projekt\DESKTOP\Desktop\obj\Debug\Desktop.PublishersPage.resources
 C:\xampp\htdocs\Konyvtarazo-rendszer-projekt\DESKTOP\Desktop\obj\Debug\Desktop.PopupSelect.resources
 C:\xampp\htdocs\Konyvtarazo-rendszer-projekt\DESKTOP\Desktop\obj\Debug\Desktop.CustomButton.resources
+C:\xampp\htdocs\Konyvtarazo-rendszer-projekt\DESKTOP\Desktop\obj\Debug\Desktop.addPublisher.resources

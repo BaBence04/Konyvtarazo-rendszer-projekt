@@ -35,7 +35,7 @@ namespace Desktop
                     {
                         col = new DataColumn();
                         col.DataType = typeof(string);
-                        col.ReadOnly = true;
+                        //col.ReadOnly = true;
                         col.ColumnName = item.Key;
                         col.Caption = item.Key;
                         dt.Columns.Add(col);
@@ -55,7 +55,7 @@ namespace Desktop
                     row = dt.NewRow();
                     foreach (KeyValuePair<string, string> item in response[i])
                     {
-                        if (item.Key == "user_id")
+                        if (item.Key == "publisher_id")
                         {
                             ids.Add(item.Value);
                         }
@@ -67,7 +67,81 @@ namespace Desktop
                     dt.Rows.Add(row);
                 }
                 cdgvPublishers.DataSource = dt;
+                //disable sorting just so it works
+                foreach (DataGridViewColumn column in cdgvPublishers.Columns)
+                {
+                    column.SortMode = DataGridViewColumnSortMode.NotSortable;
+                }
+                cdgvPublishers.MultiSelect = false;
             }
+        }
+
+        private void PublishersPage_Load(object sender, EventArgs e)
+        {
+            updatePublishersCdgw("");
+            ctbSearch.KeyPress += ctbSearch_KeyPress;
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (ctbSearch.Texts != ctbSearch.PlaceholderText)
+            {
+                updatePublishersCdgw(ctbSearch.Texts);
+            }
+            else
+            {
+                updatePublishersCdgw("");
+            }
+        }
+        private void ctbSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (ctbSearch.Texts != ctbSearch.PlaceholderText)
+            {
+                updatePublishersCdgw(ctbSearch.Texts);
+            }
+            else
+            {
+                updatePublishersCdgw("");
+            }
+        }
+
+        private async void cdgvPublishers_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            Dictionary<string,string> update  = new Dictionary<string,string>();
+            update["type"] = "updatePublishers";
+            update["id"] = ids[e.RowIndex];
+            for (int i = 0;i<cdgvPublishers.Columns.Count;i++)
+            {
+                update[cdgvPublishers.Columns[i].Name] = (string)cdgvPublishers.Rows[e.RowIndex].Cells[i].Value;
+            }
+            await ApiComm.SendPost(update);
+        }
+
+        private async void cdgvPublishers_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            List<Dictionary<string, string>> result = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string>() { { "type", "deletePublisher" }, { "id", ids[e.Row.Index] } });
+            if (result.First()["state"] == "fail")
+            {
+                e.Cancel = true;
+                MessageBox.Show("A kiadóhoz hozzá van rendelve legalább 1 könyv nem lehet törölni");
+            }
+        }
+
+        private void customButton1_Click(object sender, EventArgs e)
+        {
+            addPublisher add = new addPublisher();
+            if (add.ShowDialog() == DialogResult.OK)
+            {
+                if (ctbSearch.Texts != ctbSearch.PlaceholderText)
+                {
+                    updatePublishersCdgw(ctbSearch.Texts);
+                }
+                else
+                {
+                    updatePublishersCdgw("");
+                }
+            }
+            
         }
     }
 }

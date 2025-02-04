@@ -86,8 +86,12 @@ namespace Desktop
                 cdgvBooks.Columns.Add(btns);
                 cdgvBooks.Columns.Add(btncol);
 
-                
-                
+
+                //disable sorting just so it works
+                foreach (DataGridViewColumn column in cdgvBooks.Columns)
+                {
+                    column.SortMode = DataGridViewColumnSortMode.NotSortable;
+                }
                 addBtnTextsManual();
             }
             
