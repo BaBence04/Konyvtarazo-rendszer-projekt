@@ -1053,7 +1053,7 @@ input:-webkit-autofill{
 
 #toggleFilters:hover{
   cursor: pointer;
-  background-color: rgb(152, 205, 198, 0.9);;
+  background-color: rgb(152, 205, 198, 0.9);
 
 }
 
@@ -1134,6 +1134,29 @@ input:-webkit-autofill{
     width: 100%;
   }
 }
+
+#currentPage {
+  padding: 0 2rem 0 2rem;
+  align-items: center;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+}
+
+
+.page_button_holder input[type="button"] {
+  padding: 10px 15px;
+  text-align: center;
+  border-radius: 1rem;
+  display: inline-block;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+
+}
+
+.page_button_holder input[type="button"]:hover {
+  background-color: var(--second-color);
+}
+
 
 
 /* ///////////////////// MAIN PAGE STYLE//////////////////////// */
@@ -1455,11 +1478,11 @@ a, a:active, a:hover, a:visited, a:link{
   grid-template-columns: 1fr min-content 1fr;
   width: fit-content;
   margin-inline: auto;
-
+  margin: 3rem auto 3rem;
 }
 
 #results>.page_button_holder>:first-child{
-  text-align: right;
+  text-align: center;
 }
 /* /////////////////////////////////////// */
 
