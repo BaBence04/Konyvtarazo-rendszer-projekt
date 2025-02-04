@@ -65,13 +65,15 @@ function showSection(element) {
         
     }
 
-    // document.querySelector("html").scrollTo({top:0, left:0});
-
+    
     const animationDuration = 200;
     var animation = AnimateSliding(sections[currentIndex], "slideOut", direction, animationDuration, true);
     animation.onfinish = ()=>{
         sections[currentIndex].style.display = "none";
-        AnimateSliding(sections[newIndex], "slideIn", direction, animationDuration, true);
+        AnimateSliding(sections[newIndex], "slideIn", direction, animationDuration, true).onfinish =()=>{
+            document.querySelector("html").scrollTo({top:0, left:0, behavior:"smooth"});
+
+        }
         
     }
         
@@ -91,7 +93,7 @@ function Meghosszabbitas(element){
         action: action
     }
 
-    $.post("../BACKEND/api.php", params,(data, status)=>{
+    $.post("/BACKEND/api.php", params,(data, status)=>{
         // console.log((data));
         if(data.message == "Sikeres hosszabbítás!"){
             location.reload();
@@ -106,7 +108,7 @@ function Meghosszabbitas(element){
 
 function Kijelentkezés(){
     $.ajax({
-    url: "../BACKEND/api.php",
+    url: "/BACKEND/api.php",
     type: "post", //send it through get method
     data: { 
         action: "logout"
@@ -130,7 +132,7 @@ function CancelReservationOrBooking(which, element){
 
     // console.log(document.getElementById("username").value, document.getElementById("password").value );
     $.ajax({
-        url: "../BACKEND/api.php",
+        url: "/BACKEND/api.php",
         type: "POST", //send it through post method
         data: { 
             action: which, 
