@@ -38,6 +38,9 @@ Mesterremek projekt, könyvtárazó rendszer
         
 
     PHP/JS:
+        -a book detailed-on nem lehet megnyitni a fiókot
+        -a book detailed-on nem működik az api call, rossz link
+        -a userdetailed-on a book-title-ök a régi linket kapják, ezért nem működik
         -perpillanat az elfelejtettem a jelszónál a login-nak a username mezőjét használja, meg kell majd csinálni rendesre
         -működik az elfelejtettem a jelszót, perpillanat megnyitja a linket új oldalon, de az nem igazán tölt be, de ki van írva a konzolra a link
         -username generáló algoritmus ami paraméterként megkapja a kereszt és a családnevet, veszi mindkettő első kettő betűjét, hozzátesz 3 számot és visszaadja (pl.: hobá666)
