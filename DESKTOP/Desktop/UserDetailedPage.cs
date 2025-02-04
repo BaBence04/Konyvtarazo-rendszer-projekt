@@ -90,5 +90,14 @@ namespace Desktop
 			}
 			return changed;
 		}
+
+        private async void ctbExtendMembership_Click(object sender, EventArgs e)
+        {
+			if (MessageBox.Show($"Biztosan meg szeretné hosszabbítani a tagságot 1 évvel?\r\n Ár:{LoginForm.main.system_settings["membership_fee"]} Ft", "Tagság hosszabbítása", MessageBoxButtons.YesNo) == DialogResult.Yes)
+			{
+				List<Dictionary<string, string>> res = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "renewMembership" }, { "id", user_id } });
+				lblTagsag.Text = res.First()["membership_end_date"];
+			}
+        }
     }
 }

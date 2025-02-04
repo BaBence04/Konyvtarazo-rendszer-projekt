@@ -31,6 +31,8 @@
             this.ctbSurname = new Desktop.CustomTextbox();
             this.btnDeactivateUser = new Desktop.CustomButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.lblState = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.lblUname = new System.Windows.Forms.Label();
@@ -55,8 +57,6 @@
             this.cbtnBack = new Desktop.CustomButton();
             this.label10 = new System.Windows.Forms.Label();
             this.ctbFirstname = new Desktop.CustomTextbox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -114,6 +114,28 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(727, 167);
             this.panel1.TabIndex = 3;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label12.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label12.Location = new System.Drawing.Point(23, 28);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(39, 20);
+            this.label12.TabIndex = 18;
+            this.label12.Text = "Név";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label11.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label11.Location = new System.Drawing.Point(23, 91);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(134, 20);
+            this.label11.TabIndex = 17;
+            this.label11.Text = "Felhasználónév";
             // 
             // lblState
             // 
@@ -407,6 +429,7 @@
             this.ctbExtendMembership.TabIndex = 22;
             this.ctbExtendMembership.Text = "Tagság meghosszabbítása";
             this.ctbExtendMembership.UseVisualStyleBackColor = false;
+            this.ctbExtendMembership.Click += new System.EventHandler(this.ctbExtendMembership_Click);
             // 
             // cbtnBack
             // 
@@ -457,28 +480,6 @@
             this.ctbFirstname.TabIndex = 24;
             this.ctbFirstname.Texts = "";
             this.ctbFirstname.UnderlinedStyle = false;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label11.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label11.Location = new System.Drawing.Point(23, 91);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(134, 20);
-            this.label11.TabIndex = 17;
-            this.label11.Text = "Felhasználónév";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label12.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label12.Location = new System.Drawing.Point(23, 28);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(39, 20);
-            this.label12.TabIndex = 18;
-            this.label12.Text = "Név";
             // 
             // UserDetailedPage
             // 

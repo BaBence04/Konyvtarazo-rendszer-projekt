@@ -200,8 +200,10 @@
                 cancel_booking($_POST["id"], $_SESSION["user_id"]);
             }
         
-        }else if(isset($_POST['test']) && $_POST['test'] == "ping"){
-            echo "pong";
+        }else if(isset($_POST["type"]) && $_POST["type"] == "getSystemSettings" && count($_POST) == 1){
+            echo json_encode(GetSystemSettings());
+        }else if(isset($_POST["type"]) && $_POST["type"] == "renewMembership"  && isset($_POST["id"]) && count($_POST) == 2){
+            echo json_encode(RenewMembership($_POST["id"]));
         }else{
             throw new Exception("Nincs ilyen");
         }
