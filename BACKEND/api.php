@@ -50,7 +50,7 @@
                 $_SESSION['username'] = $_POST["uname"];
                 
                 //if restricted isset, and true than the current users membership is due
-                $_SESSION["restricted"] = $result["member"];
+                $_SESSION["restricted"] = $result["member"]=="false"?"true":"false";
                 
                 //remember me is needed
                 if($_POST["remember_me"] == "true"){
