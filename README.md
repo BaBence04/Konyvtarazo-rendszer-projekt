@@ -37,8 +37,6 @@ Mesterremek projekt, könyvtárazó rendszer
         -a könyvek kilistázásánál legyen hely a lapozós gombok és a footer között
         -nem hiszem hogy akarjuk, hogy a userDetailed-on legyen overflow-scroll, de ha csinálja, akkor a kijelentkezés továbbra sem kéne hogy csinálja
         -a userDetailed oldalon a "meghosszabbítás"(a lemondás is ugyanez) gombokat vállalhatóan kinézővé varázsolni -> class-e: "book_action_button"
-        -túl kicsi szerintem a kontraszt a user_detailed oldalon a book-list-eken belül a book-author-náls
-        -a könyvek kilistázásánál is kicsit kicsi a kontraszt
         
         
 
