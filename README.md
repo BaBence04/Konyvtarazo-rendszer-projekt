@@ -14,6 +14,7 @@ Mesterremek projekt, könyvtárazó rendszer
         -új form addPublisher nem fog működni nagy eséllyel mert így sikerült feltölteni FIX: hozzáaddolsz egy formot és átmásolod a dolgokat az addPublisher form-ból abba(- Bence)
         -addPublisher széppé varázsolása (- Bence)
         -addPublishernél is van egy MessageBox.Show amit meg lehetne styleolni(- Bence)
+        -custom dateTimePicker
 
 
     BACKEND:
