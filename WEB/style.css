@@ -1553,6 +1553,10 @@ a, a:active, a:hover, a:visited, a:link{
   justify-content: left;
 }
 
+.book-details_container a:hover {
+  color: var(--first-color);
+}
+
 .book-item a {
   font-size: 18px;
   font-weight: bold;
