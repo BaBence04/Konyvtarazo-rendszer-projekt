@@ -282,3 +282,68 @@ function AnimateSliding(element, type, direction = "right", duration, mobileView
 
     return animation;
 }
+
+
+
+
+var xStart = null;                                                        
+var yStart = null;
+
+function GetTouches(evt) {
+  return evt.touches ||             // browser API
+         evt.originalEvent.touches; // jQuery
+}                                                     
+                                                                         
+function HandleTouchStart(evt) {
+    const firstTouch = GetTouches(evt)[0];                                      
+    xStart = firstTouch.clientX;                                      
+    yStart = firstTouch.clientY;                                      
+};  
+
+
+                                                                         
+function HandleTouchMove(evt) {
+    if ( ! xStart || ! yStart  || !IsItInMobileView()) {
+        return;
+    }
+
+
+    var xUp = evt.touches[0].clientX;                                    
+    var yUp = evt.touches[0].clientY;
+
+    var xDiff = xStart - xUp;
+    var yDiff = yStart - yUp;
+                                                                         
+    if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
+        if ( xDiff > 0 ) {
+            /* right swipe */ 
+            ShowNextOrPreviousSection(1);
+        } else {
+            /* left swipe */
+            ShowNextOrPreviousSection(-1);
+        }                       
+    } 
+    /* reset values */
+    xStart = null;
+    yStart = null;                                             
+}
+
+function ShowNextOrPreviousSection(direction){
+    if(direction == 1 || direction == -1){
+        const navItems = Array.from(document.querySelectorAll(".sidebar>.nav-item"));
+        const selectedElement = document.querySelector(".nav-item.selected");
+        const currentIndex = navItems.indexOf(selectedElement);
+
+        let newIndex = Math.max(0, currentIndex + direction);
+        if(newIndex > navItems.length){
+            newIndex = 0;
+        }
+        showSection(navItems[newIndex]);
+
+    }
+}
+
+
+document.querySelector("main").addEventListener('touchmove', HandleTouchMove, false);
+document.querySelector("main").addEventListener('touchstart', HandleTouchStart, false);    
+
