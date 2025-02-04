@@ -18,6 +18,7 @@ namespace Desktop
     {
 		public UsersPage usersPage = new UsersPage();
 		public AllBooksPage allBooksPage = new AllBooksPage();
+		public Dictionary<string, string> system_settings = new Dictionary<string, string>();
 		public MainForm()
         {
 			InitializeComponent();
@@ -28,6 +29,8 @@ namespace Desktop
 		private async void Form1_Load(object sender, EventArgs e)
 		{
             OpenChildForm(new HomePage());
+			List<Dictionary<string, string>> temp = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "getSystemSettings" } });
+			system_settings = temp.First();
             //WHEN FINAL VERSION UNCOMMENT THIS ALSO NOT REALLY TESTED
             /*
 			List<Dictionary<string, string>> reservationResult = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string>() { { "type", "deleteExpiredReservations" } });
