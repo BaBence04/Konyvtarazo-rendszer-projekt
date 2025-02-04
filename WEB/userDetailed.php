@@ -67,6 +67,9 @@
                         <input type="password" id="newPasswordAgain">
                         <input type="button" value="Módosítás" onclick="ChangePassword();">
                     </div>
+                    <div class="logout-container">
+                        <button id="logoutButton" onclick="Kijelentkezés();">Kijelentkezés</button>
+                    </div>
                 </div>
             </div>
 
@@ -146,112 +149,11 @@
                 <?php endif; ?>
             </div>
 
-            <div class="logout-container">
-                <button id="logoutButton" onclick="Kijelentkezés();">Kijelentkezés</button>
-            </div>
+            
         </div>
     </main>
 
-    <script>
-
-        function showSection(element) {
-            let navItems = Array.from(document.querySelectorAll(".sidebar>.nav-item"));
-            const sections = Array.from(document.querySelectorAll('.section'));
-            
-
-            let newIndex = navItems.indexOf(element);
-            let currentIndex = -1
-
-            let currentSelectedElement = document.querySelector(".nav-item.selected");
-            if(currentSelectedElement != undefined){
-                if(element == currentSelectedElement){
-                    return;
-                }
-
-                currentIndex = navItems.indexOf(currentSelectedElement);            
-                sections[currentIndex].style.display = "none";
-
-                const selectedNavItems = document.querySelectorAll('.nav-item.selected');
-                selectedNavItems.forEach(item => {
-                    item.classList.remove("selected");
-                });
-            }
-
-            if(newIndex>currentIndex){
-                console.log("slide out right");
-            }
-
-            sections[newIndex].style.display = "block";
-
-
-            navItems[newIndex].classList.add("selected");
-        }
-
-
-        function Meghosszabbitas(element){
-            var action = "extend";
-            var bookId = element.getAttribute("data-book-id");
-
-            var params = {
-                book_id: bookId,
-                action: action
-            }
-
-            $.post("../BACKEND/api.php", params,(data, status)=>{
-                // console.log((data));
-                if(data.message == "Sikeres hosszabbítás!"){
-                    location.reload();
-                }else{
-                    alert(data.message);
-                }
-            },"json").fail((data, status)=>{
-                console.log(data);
-                console.log(status);
-            })
-        }
-
-        function Kijelentkezés(){
-            $.ajax({
-            url: "../BACKEND/api.php",
-            type: "post", //send it through get method
-            data: { 
-                action: "logout"
-            },
-            success: function(response)  {
-                
-            // window.open("./userDetailed.php", "_self");
-            const currentUrl = new URL(window.location);
-            currentUrl.searchParams.set("page", "mainPage");
-            // console.log(currentUrl)
-            window.history.pushState({}, '', currentUrl);
-            location.reload();
-            
-            }
-            });
-        }
-
-        function CancelReservationOrBooking(which, element){
-            if((which != "cancelReservation" && which != "cancelBooking") || parseInt(element.getAttribute("data-id")) != element.getAttribute("data-id")) return;
-
-
-            // console.log(document.getElementById("username").value, document.getElementById("password").value );
-            $.ajax({
-                url: "../BACKEND/api.php",
-                type: "POST", //send it through post method
-                data: { 
-                    action: which, 
-                    id: element.getAttribute("data-id") 
-                },
-                success: function(response)  {
-                    //remove the element or reload site
-                    location.reload();
-                }
-            }); 
-        }
-
-        
-
-    </script>
+    <script src="/web/userDetailed.js"></script>
 
 </body>
 
