@@ -75,9 +75,15 @@
                     <h3>Előjegyzett könyvek</h3>
                     <?php foreach ($reserved_books as $reserved_books_data): ?>
                         <div class="book-item">
-                            <a href="./bookDetailed.php?ISBN=<?= $reserved_books_data['ISBN'] ?>"><?= $reserved_books_data['title'] ?></a>
-                            <span class="book-author"><?= str_replace(",", ", ", $reserved_books_data['authors']) ?></span>
-                            <button class="book_action_button" onclick="CancelReservationOrBooking('cancelReservation', this)" data-id="<?= $reserved_books_data['id'] ?>">Lemondás</button>
+                            <div class="book-details_container">
+                                <a href="./bookDetailed.php?ISBN=<?= $reserved_books_data['ISBN'] ?>"><?= $reserved_books_data['title'] ?></a>
+                                <span class="book-author"><?= str_replace(",", ", ", $reserved_books_data['authors']) ?></span>
+                            </div>
+
+                            <div class="button_container">
+                                <button class="book_action_button" onclick="CancelReservationOrBooking('cancelReservation', this)" data-id="<?= $reserved_books_data['id'] ?>">Lemondás</button>
+                            </div>
+                            
                         </div>
                     <?php endforeach; ?>
                 <?php endif; ?>
@@ -88,10 +94,16 @@
                     <h3>Lefoglalt könyvek</h3>
                     <?php foreach ($booked_books as $booked_books_data): ?>
                         <div class="book-item">
-                            <a href="./bookDetailed.php?ISBN=<?= $booked_books_data['ISBN'] ?>"><?= $booked_books_data['title'] ?></a>
-                            <span class="book-author"><?= str_replace(",", ", ", $booked_books_data['authors']) ?></span>
-                            <span class="return-date"><?= $booked_books_data['end_date'] ?></span>
-                            <button class="book_action_button" onclick="CancelReservationOrBooking('cancelBooking', this)" data-id="<?= $booked_books_data['id'] ?>">Lemondás</button>
+                            <div class="book-details_container">
+                                <a href="./bookDetailed.php?ISBN=<?= $booked_books_data['ISBN'] ?>"><?= $booked_books_data['title'] ?></a>
+                                <span class="book-author"><?= str_replace(",", ", ", $booked_books_data['authors']) ?></span>
+                                <span class="return-date"><?= $booked_books_data['end_date'] ?></span>
+                            </div>
+
+                            <div class="button_container">
+                                <button class="book_action_button" onclick="CancelReservationOrBooking('cancelBooking', this)" data-id="<?= $booked_books_data['id'] ?>">Lemondás</button>
+                            </div>
+                            
                         </div>
                     <?php endforeach; ?>
                 <?php endif; ?>
@@ -102,11 +114,16 @@
                     <h3>Jelenlegi kivett könyvek</h3>
                     <?php foreach ($borrowedBooks as $borrowed_book_data): ?>
                         <div class="book-item">
-                            <a href="./bookDetailed.php?ISBN=<?= $borrowed_book_data['ISBN'] ?>"><?= $borrowed_book_data['title'] ?></a>
-                            <span class="book-author"><?= str_replace(",", ", ", $borrowed_book_data['authors']) ?></span>
-                            <span class="return-date"><?= $borrowed_book_data['end_date'] ?></span>
+                            <div class="book-details_container">
+                                <a href="./bookDetailed.php?ISBN=<?= $borrowed_book_data['ISBN'] ?>"><?= $borrowed_book_data['title'] ?></a>
+                                <span class="book-author"><?= str_replace(",", ", ", $borrowed_book_data['authors']) ?></span>
+                                <span class="return-date"><?= $borrowed_book_data['end_date'] ?></span>
+                            </div>
+
                             <?php if(IsItExtendable($_SESSION["user_id"], $borrowed_book_data["book_id"])):?>
-                                <button class="book_action_button" data-book-id="<?= $borrowed_book_data['book_id'] ?>" onclick="Meghosszabbitas(this)">Meghosszabbítás</button>
+                                <div class="button_container">
+                                    <button class="book_action_button" data-book-id="<?= $borrowed_book_data['book_id'] ?>" onclick="Meghosszabbitas(this)">Meghosszabbítás</button>
+                                </div>
                             <?php endif; ?>
                         </div>
                     <?php endforeach; ?>
@@ -118,9 +135,12 @@
                     <h3>Korábban kivett könyvek</h3>
                     <?php foreach ($previouslyBorrowedBooks as $previously_borrowed_book_data): ?>
                         <div class="book-item">
-                            <a href="./bookDetailed.php?ISBN=<?= $previously_borrowed_book_data['ISBN'] ?>"><?= $previously_borrowed_book_data['title'] ?></a>
-                            <span class="book-author"><?= str_replace(",", ", ", $previously_borrowed_book_data['authors']) ?></span>
-                            <span class="return-date"><?= $previously_borrowed_book_data['end_date'] ?></span>
+                            <div class="book-details_container">
+                                <a href="./bookDetailed.php?ISBN=<?= $previously_borrowed_book_data['ISBN'] ?>"><?= $previously_borrowed_book_data['title'] ?></a>
+                                <span class="book-author"><?= str_replace(",", ", ", $previously_borrowed_book_data['authors']) ?></span>
+                                <span class="return-date"><?= $previously_borrowed_book_data['end_date'] ?></span>
+                            </div>
+
                         </div>
                     <?php endforeach; ?>
                 <?php endif; ?>

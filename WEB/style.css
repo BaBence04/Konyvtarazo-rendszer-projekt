@@ -1543,9 +1543,14 @@ a, a:active, a:hover, a:visited, a:link{
   background-color: #ffffff;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
+  display: grid; 
+  grid-template-columns: 1fr 1fr;  
+  align-items: center;
+}
+
+.book-item .book-details_container {
+  display: grid;
+  justify-content: left;
 }
 
 .book-item a {
@@ -1555,6 +1560,11 @@ a, a:active, a:hover, a:visited, a:link{
   text-decoration: none;
 }
 
+.book-item .button_container{
+  display: grid;
+  justify-content: right;
+  align-items: center;
+}
 
 
 .book-item .book-author {
@@ -1574,6 +1584,16 @@ a, a:active, a:hover, a:visited, a:link{
 
 .book-item .book_action_button:hover {
   background-color: #c0392b;
+}
+
+@media (max-width: 768px) {
+  .book-item {
+    grid-template-columns: 1fr;
+  }
+
+  .book-item .button_container {
+    justify-content: center;
+  }
 }
 
 .logout-container {
