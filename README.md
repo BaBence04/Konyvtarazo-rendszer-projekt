@@ -32,7 +32,6 @@ Mesterremek projekt, könyvtárazó rendszer
     KINÉZET:
         -perpillanat az elfelejtettem a jelszónál a login-nak a username mezőjét használja, meg kell csinálni rendesre, és az oldalt is ahol lehet reset-elni a jelszót
         -férjen ki rendesen a userDeailed oldalon a menüpontok felül, ha sehogy nem fog akkor lehet az is, hogy arrébb gördül ahogy átnyomunk másikra
-        -legyen valami hover effect a userDetailed-on amikor az <a>, a könyv címe felé viszi az egeret
         -írjuk ki a foglalás lejárati idejét is
         -a könyv részletesen a gomb nagyon rá van csúszva a felette levő részre
         -a könyvek kilistázásánál legyen hely a lapozós gombok és a footer között
