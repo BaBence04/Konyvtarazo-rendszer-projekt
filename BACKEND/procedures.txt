@@ -251,7 +251,7 @@ CREATE PROCEDURE IF NOT EXISTS updateUserDetails(
   IN phone_num VARCHAR(255),
   IN mmn VARCHAR(255)
 ) BEGIN
-UPDATE users SET users.surname = surname, users.first_name = first_name, users.birth_place = birth_place, users.birth_date = birth_date, users.address = address, users.email = email, users.phone_number = phone_num, users.membership_end_date = mmn WHERE users.user_id = userID;
+UPDATE users SET users.surname = surname, users.first_name = first_name, users.birth_place = birth_place, users.birth_date = birth_date, users.address = address, users.email = email, users.phone_number = phone_num, users.mother_maiden_name = mmn WHERE users.user_id = userID;
 END;//
 DELIMITER ;
 
@@ -260,7 +260,7 @@ DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS getUser(
   IN userid INT
 ) BEGIN
-SELECT users.surname, users.first_name, users.username, users.birth_date, users.birth_place, users.email, users.phone_number, users.address, users.mother_maiden_name, users.membership_end_date FROM users WHERE users.user_id = userid;
+SELECT users.surname, users.first_name, users.username, users.birth_date, users.birth_place, users.email, users.phone_number, users.address, users.mother_maiden_name, users.membership_end_date, users.active FROM users WHERE users.user_id = userid;
 END;//
 DELIMITER ;
 

@@ -256,23 +256,23 @@
             return -1;
         }
     }
-    function GetUser($user_id) : array {
+    function GetUser($user_id){
         require "databaseConnect.php";
 
         $query = "CALL getUser(?);";
 
         $stmt = $conn->prepare($query); // Prepare statement
-        $stmt->bind_param("i", $user_id); // Bind parameter to SQL query
+        $stmt->bind_param("s", $user_id); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
         $conn->close();
-        $data = $results->fetch_all(MYSQLI_ASSOC);
-        if(count($data) >0){
-            return $data[0];
-
+        return $results->fetch_all(MYSQLI_ASSOC);
+        /* $data = $results->fetch_all(MYSQLI_ASSOC);
+        if(count($data) == 1){
+            return $data;
         }else{
             throw new Exception("No user was found with the given id!");
-        }
+        } */
 
     }
 
@@ -387,6 +387,19 @@
         
         $stmt = $conn->prepare($query); // Prepare statement
         $stmt->bind_param("issss", $id, $name, $phone, $email, $webpage); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        $conn->close();
+        //return $results->fetch_all(MYSQLI_ASSOC);
+    }
+
+    function UpdateUser($id, $firstname, $surname, $birthplace, $birthdate, $address, $email, $phone, $mmn){
+        require "databaseConnect.php";
+
+        $query = "CALL updateUserDetails(?,?,?,?,?,?,?,?,?);";
+        
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("issssssss", $id, $surname, $firstname, $birthplace, $birthdate, $address, $email, $phone, $mmn); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
         $conn->close();

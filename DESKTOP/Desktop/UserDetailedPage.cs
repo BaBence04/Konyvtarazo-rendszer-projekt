@@ -12,9 +12,83 @@ namespace Desktop
 {
 	public partial class UserDetailedPage : Form
 	{
-        public UserDetailedPage()
+		private string user_id;
+		private Dictionary<string, string> user_data;
+        public UserDetailedPage(string userId)
 		{
 			InitializeComponent();
+			user_id = userId;
 		}
-	}
+
+        private async void UserDetailedPage_Load(object sender, EventArgs e)
+        {
+			List<Dictionary<string, string>> temp = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { {"type", "getUserDetailed" }, {"id", user_id} });
+			user_data = temp.First();
+			lblName.Text = user_data["surname"] + " " + user_data["first_name"];
+			lblUname.Text = user_data["username"];
+			if (user_data["active"] == "1")
+			{
+                lblState.Text = "active";
+			}
+			else
+			{
+                lblState.Text = "inactive";
+				
+            }
+			
+			lblTagsag.Text = user_data["membership_end_date"];
+			ctbSurname.Texts = user_data["surname"];
+			ctbFirstname.Texts = user_data["first_name"];
+			dtpBirthDate.Value = DateTime.Parse(user_data["birth_date"]);
+			ctbEmail.Texts = user_data["email"];
+			ctbPhone.Texts = user_data["phone_number"];
+			ctbBirthplace.Texts = user_data["birth_place"];
+			ctbAddress.Texts = user_data["address"];
+			ctbMmn.Texts = user_data["mother_maiden_name"];
+
+		}
+
+		private async void cbtnBack_Click(object sender, EventArgs e)
+		{
+			if (checkChanges())
+			{
+				Console.WriteLine("changed");
+				DialogResult res = MessageBox.Show("Menteni szeretné a változtatásokat?", "Váltotatás", MessageBoxButtons.YesNoCancel);
+				if (res == DialogResult.Yes)
+				{
+					Dictionary<string, string> data = new Dictionary<string, string>();
+					data["type"] = "updateUser";
+					data["id"] = user_id;
+					data["firstname"] = ctbFirstname.Texts;
+					data["surname"] = ctbSurname.Texts;
+					data["birthplace"] = ctbBirthplace.Texts;
+					data["birthdate"] = dtpBirthDate.Value.ToString("yyyy-MM-dd");
+					data["address"] = ctbAddress.Texts;
+					data["email"] = ctbEmail.Texts;
+					data["phone"] = ctbPhone.Texts;
+					data["mmn"]  = ctbMmn.Texts;
+					await ApiComm.SendPost(data);
+					LoginForm.main.OpenChildForm(LoginForm.main.usersPage);
+				}
+				else if (res == DialogResult.No)
+				{
+					
+					LoginForm.main.OpenChildForm(LoginForm.main.usersPage);
+					
+				}
+				
+			}else
+				{
+					LoginForm.main.OpenChildForm(LoginForm.main.usersPage);
+				}
+        }
+		private bool checkChanges() {
+			bool changed = false;
+			if (ctbSurname.Texts != user_data["surname"] || ctbFirstname.Texts != user_data["first_name"] || dtpBirthDate.Value != DateTime.Parse(user_data["birth_date"]) || ctbEmail.Texts != user_data["email"] || ctbPhone.Texts != user_data["phone_number"] || ctbBirthplace.Texts != user_data["birth_place"] || ctbAddress.Texts != user_data["address"] || ctbMmn.Texts != user_data["mother_maiden_name"])
+			{
+				changed = true;
+			}
+			return changed;
+		}
+    }
 }

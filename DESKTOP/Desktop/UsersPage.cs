@@ -94,7 +94,8 @@ namespace Desktop
         {
             if (e.ColumnIndex == cdgwUsers.Columns["Részletesen"].Index)
             {
-                //ide meghívní a jó részletes formot ha lesz !!!
+                UserDetailedPage detailed = new UserDetailedPage(ids[e.RowIndex]);
+                LoginForm.main.OpenChildForm(detailed);
             }
         }
 
