@@ -34,7 +34,6 @@ Mesterremek projekt, könyvtárazó rendszer
         -férjen ki rendesen a userDeailed oldalon a menüpontok felül, ha sehogy nem fog akkor lehet az is, hogy arrébb gördül ahogy átnyomunk másikra
         -írjuk ki a foglalás lejárati idejét is
         -a könyv részletesen a gomb nagyon rá van csúszva a felette levő részre
-        -a könyvek kilistázásánál legyen hely a lapozós gombok és a footer között
         
         
 
