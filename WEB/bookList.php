@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bookstore Grid Layout</title>
     <link rel="stylesheet" href="./style.css">
-    <script defer src="main.js"></script>
+    <script  defer src="/web/bookList.js"></script>
 </head>
 <body>
     <h1>Összes könyvünk</h1>
