@@ -60,7 +60,7 @@
     <script>
         function reserveOrBook(){
             $.ajax({
-                url: "../BACKEND/api.php",
+                url: "/BACKEND/api.php",
                 type: "POST", //send it through get method
                 data: { 
                     isbn_id: <?=$book_data['ISBN_id']?> 
