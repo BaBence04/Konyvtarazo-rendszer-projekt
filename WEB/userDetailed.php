@@ -67,7 +67,9 @@
                         <label for="currentPassword">Jelenlegi jelszó:</label>
                         <input type="password" id="currentPassword">
                         <label for="newPassword">Új jelszó:</label>
-                        <input type="password" id="newPassword">
+                        <input type="password" id="newPassword" oninput="ValidatePassword(this.value);">
+                        <div id="errors_with_password"></div>
+
                         <label for="newPasswordAgain">Új jelszó újra:</label>
                         <input type="password" id="newPasswordAgain">
                         <input type="button" value="Módosítás" onclick="ChangePassword();">
@@ -169,6 +171,7 @@
     </main>
 
     <script src="/web/userDetailed.js"></script>
+    <script src="/web/passwordValidation.js"></script>
 
 </body>
 
