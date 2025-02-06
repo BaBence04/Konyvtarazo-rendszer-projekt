@@ -13,7 +13,6 @@ Mesterremek projekt, könyvtárazó rendszer
         -publishers tabnál van egy MessageBox.Show amit meg lehetne styleolni(- Bence)
         -új form addPublisher nem fog működni nagy eséllyel mert így sikerült feltölteni FIX: hozzáaddolsz egy formot és átmásolod a dolgokat az addPublisher form-ból abba(- Bence)
         -addPublishernél is van egy MessageBox.Show amit meg lehetne styleolni(- Bence)
-        -readOnly property customTextBoxhoz (- Bence)
         -customDateTimePicker (- Bence)
 
 
