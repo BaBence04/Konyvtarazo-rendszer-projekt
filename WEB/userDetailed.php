@@ -29,19 +29,24 @@
     <main class="container">
         <div class="sidebar">
             <div class="nav-item selected" id="nav-account-details" onclick="showSection(this);">
-                Fiók <span>adatai</span> <span class="indicator"></span>
+                Fiók <span>adatai</span> 
+                <!-- <span class="indicator"></span> -->
             </div>
             <div class="nav-item" id="nav-reserved-books" onclick="showSection(this);">
-                Előjegyzett <span>könyvek</span> <span class="indicator"></span>
+                Előjegyzett <span>könyvek</span> 
+                <!-- <span class="indicator"></span> -->
             </div>
             <div class="nav-item" id="nav-booked-books" onclick="showSection(this);">
-                Lefoglalt <span>könyvek</span> <span class="indicator"></span>
+                Lefoglalt <span>könyvek</span> 
+                <!-- <span class="indicator"></span> -->
             </div>
             <div class="nav-item" id="nav-borrowed-books" onclick="showSection(this);">
-                Jelenleg kivett <span>könyvek</span> <span class="indicator"></span>
+                Jelenleg kivett <span>könyvek</span> 
+                <!-- <span class="indicator"></span> -->
             </div>
             <div class="nav-item" id="nav-previously-borrowed-books" onclick="showSection(this);">
-                Korábban kivett <span>könyvek</span> <span class="indicator"></span>
+                Korábban kivett <span>könyvek</span> 
+                <!-- <span class="indicator"></span> -->
             </div>
         </div>
 
