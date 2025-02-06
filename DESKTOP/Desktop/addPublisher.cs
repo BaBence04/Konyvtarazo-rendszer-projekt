@@ -31,5 +31,10 @@ namespace Desktop
             }
         
         }
+
+        private void button_CloseLoginForm_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
