@@ -93,6 +93,14 @@ if(count($parts_of_path) == 1){
   <link rel="stylesheet" href="/web/style.css">
   <script src="/web/jquery.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+  
+  <link rel="android-chrome" sizes="192x192" href="/web/icons/android-chrome-192x192.png">
+  <link rel="android-chrome" sizes="512x512" href="/web/icons/android-chrome-512x512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/web/icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/web/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/web/icons/favicon-16x16.png">
+  <link rel="manifest" href="/web/site.webmanifest">
+    <link rel="shortcut icon" href="/web/icons/favicon.ico" type="image/x-icon">
 </head>
 <body>
   <?php require_once "navbar.html"; ?>
