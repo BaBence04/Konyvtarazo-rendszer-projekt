@@ -12,7 +12,6 @@ Mesterremek projekt, könyvtárazó rendszer
         -publishers tabnál a customDataGridView-hoz hozzá kell adni a userDeletingRow functiont(- Bence)
         -publishers tabnál van egy MessageBox.Show amit meg lehetne styleolni(- Bence)
         -új form addPublisher nem fog működni nagy eséllyel mert így sikerült feltölteni FIX: hozzáaddolsz egy formot és átmásolod a dolgokat az addPublisher form-ból abba(- Bence)
-        -addPublisher széppé varázsolása (- Bence)
         -addPublishernél is van egy MessageBox.Show amit meg lehetne styleolni(- Bence)
         -readOnly property customTextBoxhoz (- Bence)
         -customDateTimePicker (- Bence)
