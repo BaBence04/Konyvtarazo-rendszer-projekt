@@ -1499,21 +1499,39 @@ a, a:active, a:hover, a:visited, a:link{
   height: 100%;
 }
 
-.sidebar {
-  
+.sidebar {  
   width: 250px;
   min-width: 250px;
   background-color: var(--body-color);
   color: black;
-  padding-top: 2rem;
+  padding-top: 0rem;
   display: flex;
   flex-direction: column;
   position: sticky;
   align-self: flex-start;
-  top: 5rem;
+  top: var(--header-height); /*ez legyen megnövelve ha lejjebb akarod csúsztati, ne paddinget kapjon*/
   /* overflow-x: scroll; */
   /* overflow-y: auto; */
 }
+
+.sidebar::after{
+  will-change: height;
+
+  content: "";
+  background-color: hsl(171, 85%, 26%);
+  border-radius: 10px;
+  width: 10px;
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  height: var(--_height, 10px);
+
+  translate: 0 var(--_top, 22.5px);
+  transition: height ease-in-out 200ms, translate ease-in-out 200ms;
+}
+
+
 /*HIDES SCROLL BAR*/
   .sidebar::-webkit-scrollbar {
     display: none;
@@ -1532,13 +1550,14 @@ a, a:active, a:hover, a:visited, a:link{
 }
 
 .nav-item .indicator {
+  --indicator-size: 10px;
+
   position: absolute;
-  top: 50%;
-  left: -10px;
-  width: 10px;
-  height: 10px;
+  top: calc(50% - var(--indicator-size) / 2);
+  left: calc(var(--indicator-size) * -1);
+  width: var(--indicator-size);
+  height: var(--indicator-size);
   border-radius: 50%;
-  transform: translateY(-50%);
   background-color: hsl(171, 85%, 26%);
   visibility: hidden;
 }
@@ -1672,7 +1691,7 @@ a, a:active, a:hover, a:visited, a:link{
       border-bottom: none;
   }
 
-  .nav-item.selected .indicator{
+  .nav-item.selected .indicator, .sidebar::after{
     visibility: hidden;
   }
 
