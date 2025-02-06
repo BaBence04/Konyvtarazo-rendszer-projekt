@@ -9,7 +9,6 @@ function showSection(element) {
 
     if(element.classList.contains("selected")){
         document.querySelector("html").scrollTo({top:0, left:0, behavior:"smooth"});
-        console.log("scrol")
         return;
     
     }
@@ -42,29 +41,28 @@ function showSection(element) {
         
     }
 
-
-
+    
     // sections[newIndex].style.display = "block";
-
-
+    
+    
     navItems[newIndex].classList.add("selected");
-
+    
     if(element.offsetLeft + element.offsetWidth>element.parentElement.clientWidth){
         element.parentElement.scrollTo({
-        top: 0,
-        left: element.offsetLeft,
-        behavior: "smooth",
+            top: 0,
+            left: element.offsetLeft,
+            behavior: "smooth",
         })
 
     }else{
         element.parentElement.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: "smooth",
+            top: 0,
+            left: 0,
+            behavior: "smooth",
         })
         
     }
-
+    MoveIndicator(currentIndex, newIndex, navItems[currentIndex].offsetHeight, navItems);
     
     const animationDuration = 200;
     var animation = AnimateSliding(sections[currentIndex], "slideOut", direction, animationDuration, true);
@@ -79,6 +77,30 @@ function showSection(element) {
         
 }
 
+function MoveIndicator(startIndex, endIndex, navHeight, navs){
+    const sidebar = document.querySelector(".sidebar");
+    const indicatorHeight = 10;
+    const height = Math.abs(endIndex-startIndex)*navHeight + indicatorHeight;
+
+    sidebar.style.setProperty("--_height", height + "px");
+    if(endIndex<startIndex){
+        let currentTop = sidebar.style.getPropertyValue("--_top").replace("px", "");
+        sidebar.style.setProperty("--_top", currentTop-(height-indicatorHeight) + "px");
+    }
+    
+    const newPositionTop = navs[endIndex].offsetTop + (navs[endIndex].offsetHeight - indicatorHeight) / 2;
+
+    
+    setTimeout(() => {
+        sidebar.style.setProperty("--_height", indicatorHeight + "px");
+
+
+        sidebar.style.setProperty("--_top", newPositionTop + "px");
+        
+    }, 220);
+
+
+}
 
 function IsItInMobileView(){
     return document.getElementById("nav-toggle").checkVisibility();
@@ -348,4 +370,17 @@ function ShowNextOrPreviousSection(direction){
 
 document.querySelector("main").addEventListener('touchmove', HandleTouchMove, false);
 document.querySelector("main").addEventListener('touchstart', HandleTouchStart, false);    
+
+
+let resizeTimeout;
+window.onresize = (e)=>{
+    let navItems = Array.from(document.querySelectorAll(".sidebar>.nav-item"));
+    let currentSelectedElement = document.querySelector(".nav-item.selected");
+    let currentIndex = navItems.indexOf(currentSelectedElement);
+
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(()=>{
+        MoveIndicator(currentIndex, currentIndex, navItems[currentIndex].offsetHeight, navItems);
+    }, 300)
+}
 
