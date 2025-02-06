@@ -98,7 +98,8 @@ namespace Desktop
 				}
 			}
 			prev = activeForm;
-			activeForm = childForm;
+            roundedCornerPanel_PageContainer.Controls.Remove(activeForm);
+            activeForm = childForm;
 			childForm.TopLevel = false;
 			childForm.FormBorderStyle = FormBorderStyle.None;
 			childForm.Dock = DockStyle.Fill;

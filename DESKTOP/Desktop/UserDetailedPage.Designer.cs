@@ -28,8 +28,6 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-            this.ctbSurname = new Desktop.CustomTextbox();
-            this.btnDeactivateUser = new Desktop.CustomButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -43,62 +41,24 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lblTagsag = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.ctbEmail = new Desktop.CustomTextbox();
             this.label5 = new System.Windows.Forms.Label();
-            this.ctbPhone = new Desktop.CustomTextbox();
             this.label6 = new System.Windows.Forms.Label();
-            this.ctbBirthplace = new Desktop.CustomTextbox();
             this.label7 = new System.Windows.Forms.Label();
-            this.ctbAddress = new Desktop.CustomTextbox();
             this.label8 = new System.Windows.Forms.Label();
-            this.ctbMmn = new Desktop.CustomTextbox();
-            this.cbtnBorrow = new Desktop.CustomButton();
-            this.ctbExtendMembership = new Desktop.CustomButton();
-            this.cbtnBack = new Desktop.CustomButton();
             this.label10 = new System.Windows.Forms.Label();
             this.ctbFirstname = new Desktop.CustomTextbox();
+            this.cbtnBack = new Desktop.CustomButton();
+            this.ctbExtendMembership = new Desktop.CustomButton();
+            this.cbtnBook = new Desktop.CustomButton();
+            this.ctbMmn = new Desktop.CustomTextbox();
+            this.ctbAddress = new Desktop.CustomTextbox();
+            this.ctbBirthplace = new Desktop.CustomTextbox();
+            this.ctbPhone = new Desktop.CustomTextbox();
+            this.ctbEmail = new Desktop.CustomTextbox();
+            this.ctbSurname = new Desktop.CustomTextbox();
+            this.btnDeactivateUser = new Desktop.CustomButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // ctbSurname
-            // 
-            this.ctbSurname.BackColor = System.Drawing.SystemColors.Window;
-            this.ctbSurname.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.ctbSurname.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.ctbSurname.BorderRadius = 0;
-            this.ctbSurname.BorderSize = 2;
-            this.ctbSurname.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.ctbSurname.ForeColor = System.Drawing.Color.DimGray;
-            this.ctbSurname.Location = new System.Drawing.Point(13, 195);
-            this.ctbSurname.Margin = new System.Windows.Forms.Padding(4);
-            this.ctbSurname.Multiline = false;
-            this.ctbSurname.Name = "ctbSurname";
-            this.ctbSurname.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.ctbSurname.PasswordChar = false;
-            this.ctbSurname.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.ctbSurname.PlaceholderText = "";
-            this.ctbSurname.Size = new System.Drawing.Size(169, 31);
-            this.ctbSurname.TabIndex = 1;
-            this.ctbSurname.Texts = "";
-            this.ctbSurname.UnderlinedStyle = false;
-            // 
-            // btnDeactivateUser
-            // 
-            this.btnDeactivateUser.BackColor = System.Drawing.Color.Black;
-            this.btnDeactivateUser.BorderColor = System.Drawing.Color.White;
-            this.btnDeactivateUser.BorderRadius = 40;
-            this.btnDeactivateUser.BorderSize = 0;
-            this.btnDeactivateUser.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDeactivateUser.FlatAppearance.BorderSize = 0;
-            this.btnDeactivateUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeactivateUser.ForeColor = System.Drawing.Color.White;
-            this.btnDeactivateUser.Location = new System.Drawing.Point(541, 91);
-            this.btnDeactivateUser.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDeactivateUser.Name = "btnDeactivateUser";
-            this.btnDeactivateUser.Size = new System.Drawing.Size(160, 32);
-            this.btnDeactivateUser.TabIndex = 0;
-            this.btnDeactivateUser.Text = "Felhasználó deaktiválása";
-            this.btnDeactivateUser.UseVisualStyleBackColor = false;
             // 
             // panel1
             // 
@@ -244,28 +204,6 @@
             this.label4.TabIndex = 12;
             this.label4.Text = "Email";
             // 
-            // ctbEmail
-            // 
-            this.ctbEmail.BackColor = System.Drawing.SystemColors.Window;
-            this.ctbEmail.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.ctbEmail.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.ctbEmail.BorderRadius = 0;
-            this.ctbEmail.BorderSize = 2;
-            this.ctbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.ctbEmail.ForeColor = System.Drawing.Color.DimGray;
-            this.ctbEmail.Location = new System.Drawing.Point(16, 447);
-            this.ctbEmail.Margin = new System.Windows.Forms.Padding(4);
-            this.ctbEmail.Multiline = false;
-            this.ctbEmail.Name = "ctbEmail";
-            this.ctbEmail.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.ctbEmail.PasswordChar = false;
-            this.ctbEmail.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.ctbEmail.PlaceholderText = "";
-            this.ctbEmail.Size = new System.Drawing.Size(166, 31);
-            this.ctbEmail.TabIndex = 11;
-            this.ctbEmail.Texts = "";
-            this.ctbEmail.UnderlinedStyle = false;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -276,28 +214,6 @@
             this.label5.Size = new System.Drawing.Size(69, 20);
             this.label5.TabIndex = 14;
             this.label5.Text = "Telefon";
-            // 
-            // ctbPhone
-            // 
-            this.ctbPhone.BackColor = System.Drawing.SystemColors.Window;
-            this.ctbPhone.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.ctbPhone.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.ctbPhone.BorderRadius = 0;
-            this.ctbPhone.BorderSize = 2;
-            this.ctbPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.ctbPhone.ForeColor = System.Drawing.Color.DimGray;
-            this.ctbPhone.Location = new System.Drawing.Point(272, 195);
-            this.ctbPhone.Margin = new System.Windows.Forms.Padding(4);
-            this.ctbPhone.Multiline = false;
-            this.ctbPhone.Name = "ctbPhone";
-            this.ctbPhone.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.ctbPhone.PasswordChar = false;
-            this.ctbPhone.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.ctbPhone.PlaceholderText = "";
-            this.ctbPhone.Size = new System.Drawing.Size(169, 31);
-            this.ctbPhone.TabIndex = 13;
-            this.ctbPhone.Texts = "";
-            this.ctbPhone.UnderlinedStyle = false;
             // 
             // label6
             // 
@@ -310,28 +226,6 @@
             this.label6.TabIndex = 16;
             this.label6.Text = "Születési hely";
             // 
-            // ctbBirthplace
-            // 
-            this.ctbBirthplace.BackColor = System.Drawing.SystemColors.Window;
-            this.ctbBirthplace.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.ctbBirthplace.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.ctbBirthplace.BorderRadius = 0;
-            this.ctbBirthplace.BorderSize = 2;
-            this.ctbBirthplace.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.ctbBirthplace.ForeColor = System.Drawing.Color.DimGray;
-            this.ctbBirthplace.Location = new System.Drawing.Point(275, 271);
-            this.ctbBirthplace.Margin = new System.Windows.Forms.Padding(4);
-            this.ctbBirthplace.Multiline = false;
-            this.ctbBirthplace.Name = "ctbBirthplace";
-            this.ctbBirthplace.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.ctbBirthplace.PasswordChar = false;
-            this.ctbBirthplace.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.ctbBirthplace.PlaceholderText = "";
-            this.ctbBirthplace.Size = new System.Drawing.Size(169, 31);
-            this.ctbBirthplace.TabIndex = 15;
-            this.ctbBirthplace.Texts = "";
-            this.ctbBirthplace.UnderlinedStyle = false;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -343,28 +237,6 @@
             this.label7.TabIndex = 18;
             this.label7.Text = "Lakhely címe";
             // 
-            // ctbAddress
-            // 
-            this.ctbAddress.BackColor = System.Drawing.SystemColors.Window;
-            this.ctbAddress.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.ctbAddress.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.ctbAddress.BorderRadius = 0;
-            this.ctbAddress.BorderSize = 2;
-            this.ctbAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.ctbAddress.ForeColor = System.Drawing.Color.DimGray;
-            this.ctbAddress.Location = new System.Drawing.Point(272, 363);
-            this.ctbAddress.Margin = new System.Windows.Forms.Padding(4);
-            this.ctbAddress.Multiline = false;
-            this.ctbAddress.Name = "ctbAddress";
-            this.ctbAddress.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.ctbAddress.PasswordChar = false;
-            this.ctbAddress.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.ctbAddress.PlaceholderText = "";
-            this.ctbAddress.Size = new System.Drawing.Size(169, 31);
-            this.ctbAddress.TabIndex = 17;
-            this.ctbAddress.Texts = "";
-            this.ctbAddress.UnderlinedStyle = false;
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -375,78 +247,6 @@
             this.label8.Size = new System.Drawing.Size(162, 20);
             this.label8.TabIndex = 20;
             this.label8.Text = "Anyja lánykori neve";
-            // 
-            // ctbMmn
-            // 
-            this.ctbMmn.BackColor = System.Drawing.SystemColors.Window;
-            this.ctbMmn.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.ctbMmn.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.ctbMmn.BorderRadius = 0;
-            this.ctbMmn.BorderSize = 2;
-            this.ctbMmn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.ctbMmn.ForeColor = System.Drawing.Color.DimGray;
-            this.ctbMmn.Location = new System.Drawing.Point(272, 447);
-            this.ctbMmn.Margin = new System.Windows.Forms.Padding(4);
-            this.ctbMmn.Multiline = false;
-            this.ctbMmn.Name = "ctbMmn";
-            this.ctbMmn.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.ctbMmn.PasswordChar = false;
-            this.ctbMmn.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.ctbMmn.PlaceholderText = "";
-            this.ctbMmn.Size = new System.Drawing.Size(169, 31);
-            this.ctbMmn.TabIndex = 19;
-            this.ctbMmn.Texts = "";
-            this.ctbMmn.UnderlinedStyle = false;
-            // 
-            // cbtnBorrow
-            // 
-            this.cbtnBorrow.BackColor = System.Drawing.Color.Black;
-            this.cbtnBorrow.BorderColor = System.Drawing.Color.White;
-            this.cbtnBorrow.BorderRadius = 40;
-            this.cbtnBorrow.BorderSize = 0;
-            this.cbtnBorrow.FlatAppearance.BorderSize = 0;
-            this.cbtnBorrow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbtnBorrow.ForeColor = System.Drawing.Color.White;
-            this.cbtnBorrow.Location = new System.Drawing.Point(551, 185);
-            this.cbtnBorrow.Name = "cbtnBorrow";
-            this.cbtnBorrow.Size = new System.Drawing.Size(150, 41);
-            this.cbtnBorrow.TabIndex = 21;
-            this.cbtnBorrow.Text = "Kivétel/Előjegyzés";
-            this.cbtnBorrow.UseVisualStyleBackColor = false;
-            // 
-            // ctbExtendMembership
-            // 
-            this.ctbExtendMembership.BackColor = System.Drawing.Color.Black;
-            this.ctbExtendMembership.BorderColor = System.Drawing.Color.White;
-            this.ctbExtendMembership.BorderRadius = 40;
-            this.ctbExtendMembership.BorderSize = 0;
-            this.ctbExtendMembership.FlatAppearance.BorderSize = 0;
-            this.ctbExtendMembership.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ctbExtendMembership.ForeColor = System.Drawing.Color.White;
-            this.ctbExtendMembership.Location = new System.Drawing.Point(551, 318);
-            this.ctbExtendMembership.Name = "ctbExtendMembership";
-            this.ctbExtendMembership.Size = new System.Drawing.Size(150, 41);
-            this.ctbExtendMembership.TabIndex = 22;
-            this.ctbExtendMembership.Text = "Tagság meghosszabbítása";
-            this.ctbExtendMembership.UseVisualStyleBackColor = false;
-            this.ctbExtendMembership.Click += new System.EventHandler(this.ctbExtendMembership_Click);
-            // 
-            // cbtnBack
-            // 
-            this.cbtnBack.BackColor = System.Drawing.Color.Black;
-            this.cbtnBack.BorderColor = System.Drawing.Color.White;
-            this.cbtnBack.BorderRadius = 40;
-            this.cbtnBack.BorderSize = 0;
-            this.cbtnBack.FlatAppearance.BorderSize = 0;
-            this.cbtnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbtnBack.ForeColor = System.Drawing.Color.White;
-            this.cbtnBack.Location = new System.Drawing.Point(551, 447);
-            this.cbtnBack.Name = "cbtnBack";
-            this.cbtnBack.Size = new System.Drawing.Size(150, 41);
-            this.cbtnBack.TabIndex = 23;
-            this.cbtnBack.Text = "Vissza";
-            this.cbtnBack.UseVisualStyleBackColor = false;
-            this.cbtnBack.Click += new System.EventHandler(this.cbtnBack_Click);
             // 
             // label10
             // 
@@ -481,6 +281,208 @@
             this.ctbFirstname.Texts = "";
             this.ctbFirstname.UnderlinedStyle = false;
             // 
+            // cbtnBack
+            // 
+            this.cbtnBack.BackColor = System.Drawing.Color.Black;
+            this.cbtnBack.BorderColor = System.Drawing.Color.White;
+            this.cbtnBack.BorderRadius = 40;
+            this.cbtnBack.BorderSize = 0;
+            this.cbtnBack.FlatAppearance.BorderSize = 0;
+            this.cbtnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbtnBack.ForeColor = System.Drawing.Color.White;
+            this.cbtnBack.Location = new System.Drawing.Point(551, 447);
+            this.cbtnBack.Name = "cbtnBack";
+            this.cbtnBack.Size = new System.Drawing.Size(150, 41);
+            this.cbtnBack.TabIndex = 23;
+            this.cbtnBack.Text = "Vissza";
+            this.cbtnBack.UseVisualStyleBackColor = false;
+            this.cbtnBack.Click += new System.EventHandler(this.cbtnBack_Click);
+            // 
+            // ctbExtendMembership
+            // 
+            this.ctbExtendMembership.BackColor = System.Drawing.Color.Black;
+            this.ctbExtendMembership.BorderColor = System.Drawing.Color.White;
+            this.ctbExtendMembership.BorderRadius = 40;
+            this.ctbExtendMembership.BorderSize = 0;
+            this.ctbExtendMembership.FlatAppearance.BorderSize = 0;
+            this.ctbExtendMembership.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ctbExtendMembership.ForeColor = System.Drawing.Color.White;
+            this.ctbExtendMembership.Location = new System.Drawing.Point(551, 318);
+            this.ctbExtendMembership.Name = "ctbExtendMembership";
+            this.ctbExtendMembership.Size = new System.Drawing.Size(150, 41);
+            this.ctbExtendMembership.TabIndex = 22;
+            this.ctbExtendMembership.Text = "Tagság meghosszabbítása";
+            this.ctbExtendMembership.UseVisualStyleBackColor = false;
+            this.ctbExtendMembership.Click += new System.EventHandler(this.ctbExtendMembership_Click);
+            // 
+            // cbtnBook
+            // 
+            this.cbtnBook.BackColor = System.Drawing.Color.Black;
+            this.cbtnBook.BorderColor = System.Drawing.Color.White;
+            this.cbtnBook.BorderRadius = 40;
+            this.cbtnBook.BorderSize = 0;
+            this.cbtnBook.FlatAppearance.BorderSize = 0;
+            this.cbtnBook.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbtnBook.ForeColor = System.Drawing.Color.White;
+            this.cbtnBook.Location = new System.Drawing.Point(551, 185);
+            this.cbtnBook.Name = "cbtnBook";
+            this.cbtnBook.Size = new System.Drawing.Size(150, 41);
+            this.cbtnBook.TabIndex = 21;
+            this.cbtnBook.Text = "Foglalás/Előjegyszés";
+            this.cbtnBook.UseVisualStyleBackColor = false;
+            this.cbtnBook.Click += new System.EventHandler(this.cbtnBorrow_Click);
+            // 
+            // ctbMmn
+            // 
+            this.ctbMmn.BackColor = System.Drawing.SystemColors.Window;
+            this.ctbMmn.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.ctbMmn.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.ctbMmn.BorderRadius = 0;
+            this.ctbMmn.BorderSize = 2;
+            this.ctbMmn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.ctbMmn.ForeColor = System.Drawing.Color.DimGray;
+            this.ctbMmn.Location = new System.Drawing.Point(272, 447);
+            this.ctbMmn.Margin = new System.Windows.Forms.Padding(4);
+            this.ctbMmn.Multiline = false;
+            this.ctbMmn.Name = "ctbMmn";
+            this.ctbMmn.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.ctbMmn.PasswordChar = false;
+            this.ctbMmn.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.ctbMmn.PlaceholderText = "";
+            this.ctbMmn.Size = new System.Drawing.Size(169, 31);
+            this.ctbMmn.TabIndex = 19;
+            this.ctbMmn.Texts = "";
+            this.ctbMmn.UnderlinedStyle = false;
+            // 
+            // ctbAddress
+            // 
+            this.ctbAddress.BackColor = System.Drawing.SystemColors.Window;
+            this.ctbAddress.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.ctbAddress.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.ctbAddress.BorderRadius = 0;
+            this.ctbAddress.BorderSize = 2;
+            this.ctbAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.ctbAddress.ForeColor = System.Drawing.Color.DimGray;
+            this.ctbAddress.Location = new System.Drawing.Point(272, 363);
+            this.ctbAddress.Margin = new System.Windows.Forms.Padding(4);
+            this.ctbAddress.Multiline = false;
+            this.ctbAddress.Name = "ctbAddress";
+            this.ctbAddress.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.ctbAddress.PasswordChar = false;
+            this.ctbAddress.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.ctbAddress.PlaceholderText = "";
+            this.ctbAddress.Size = new System.Drawing.Size(169, 31);
+            this.ctbAddress.TabIndex = 17;
+            this.ctbAddress.Texts = "";
+            this.ctbAddress.UnderlinedStyle = false;
+            // 
+            // ctbBirthplace
+            // 
+            this.ctbBirthplace.BackColor = System.Drawing.SystemColors.Window;
+            this.ctbBirthplace.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.ctbBirthplace.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.ctbBirthplace.BorderRadius = 0;
+            this.ctbBirthplace.BorderSize = 2;
+            this.ctbBirthplace.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.ctbBirthplace.ForeColor = System.Drawing.Color.DimGray;
+            this.ctbBirthplace.Location = new System.Drawing.Point(275, 271);
+            this.ctbBirthplace.Margin = new System.Windows.Forms.Padding(4);
+            this.ctbBirthplace.Multiline = false;
+            this.ctbBirthplace.Name = "ctbBirthplace";
+            this.ctbBirthplace.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.ctbBirthplace.PasswordChar = false;
+            this.ctbBirthplace.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.ctbBirthplace.PlaceholderText = "";
+            this.ctbBirthplace.Size = new System.Drawing.Size(169, 31);
+            this.ctbBirthplace.TabIndex = 15;
+            this.ctbBirthplace.Texts = "";
+            this.ctbBirthplace.UnderlinedStyle = false;
+            // 
+            // ctbPhone
+            // 
+            this.ctbPhone.BackColor = System.Drawing.SystemColors.Window;
+            this.ctbPhone.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.ctbPhone.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.ctbPhone.BorderRadius = 0;
+            this.ctbPhone.BorderSize = 2;
+            this.ctbPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.ctbPhone.ForeColor = System.Drawing.Color.DimGray;
+            this.ctbPhone.Location = new System.Drawing.Point(272, 195);
+            this.ctbPhone.Margin = new System.Windows.Forms.Padding(4);
+            this.ctbPhone.Multiline = false;
+            this.ctbPhone.Name = "ctbPhone";
+            this.ctbPhone.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.ctbPhone.PasswordChar = false;
+            this.ctbPhone.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.ctbPhone.PlaceholderText = "";
+            this.ctbPhone.Size = new System.Drawing.Size(169, 31);
+            this.ctbPhone.TabIndex = 13;
+            this.ctbPhone.Texts = "";
+            this.ctbPhone.UnderlinedStyle = false;
+            // 
+            // ctbEmail
+            // 
+            this.ctbEmail.BackColor = System.Drawing.SystemColors.Window;
+            this.ctbEmail.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.ctbEmail.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.ctbEmail.BorderRadius = 0;
+            this.ctbEmail.BorderSize = 2;
+            this.ctbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.ctbEmail.ForeColor = System.Drawing.Color.DimGray;
+            this.ctbEmail.Location = new System.Drawing.Point(16, 447);
+            this.ctbEmail.Margin = new System.Windows.Forms.Padding(4);
+            this.ctbEmail.Multiline = false;
+            this.ctbEmail.Name = "ctbEmail";
+            this.ctbEmail.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.ctbEmail.PasswordChar = false;
+            this.ctbEmail.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.ctbEmail.PlaceholderText = "";
+            this.ctbEmail.Size = new System.Drawing.Size(166, 31);
+            this.ctbEmail.TabIndex = 11;
+            this.ctbEmail.Texts = "";
+            this.ctbEmail.UnderlinedStyle = false;
+            // 
+            // ctbSurname
+            // 
+            this.ctbSurname.BackColor = System.Drawing.SystemColors.Window;
+            this.ctbSurname.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.ctbSurname.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.ctbSurname.BorderRadius = 0;
+            this.ctbSurname.BorderSize = 2;
+            this.ctbSurname.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.ctbSurname.ForeColor = System.Drawing.Color.DimGray;
+            this.ctbSurname.Location = new System.Drawing.Point(13, 195);
+            this.ctbSurname.Margin = new System.Windows.Forms.Padding(4);
+            this.ctbSurname.Multiline = false;
+            this.ctbSurname.Name = "ctbSurname";
+            this.ctbSurname.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.ctbSurname.PasswordChar = false;
+            this.ctbSurname.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.ctbSurname.PlaceholderText = "";
+            this.ctbSurname.Size = new System.Drawing.Size(169, 31);
+            this.ctbSurname.TabIndex = 1;
+            this.ctbSurname.Texts = "";
+            this.ctbSurname.UnderlinedStyle = false;
+            // 
+            // btnDeactivateUser
+            // 
+            this.btnDeactivateUser.BackColor = System.Drawing.Color.Black;
+            this.btnDeactivateUser.BorderColor = System.Drawing.Color.White;
+            this.btnDeactivateUser.BorderRadius = 40;
+            this.btnDeactivateUser.BorderSize = 0;
+            this.btnDeactivateUser.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDeactivateUser.FlatAppearance.BorderSize = 0;
+            this.btnDeactivateUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeactivateUser.ForeColor = System.Drawing.Color.White;
+            this.btnDeactivateUser.Location = new System.Drawing.Point(541, 91);
+            this.btnDeactivateUser.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDeactivateUser.Name = "btnDeactivateUser";
+            this.btnDeactivateUser.Size = new System.Drawing.Size(160, 32);
+            this.btnDeactivateUser.TabIndex = 0;
+            this.btnDeactivateUser.Text = "Felhasználó deaktiválása";
+            this.btnDeactivateUser.UseVisualStyleBackColor = false;
+            this.btnDeactivateUser.Click += new System.EventHandler(this.btnDeactivateUser_Click);
+            // 
             // UserDetailedPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -491,7 +493,7 @@
             this.Controls.Add(this.ctbFirstname);
             this.Controls.Add(this.cbtnBack);
             this.Controls.Add(this.ctbExtendMembership);
-            this.Controls.Add(this.cbtnBorrow);
+            this.Controls.Add(this.cbtnBook);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.ctbMmn);
             this.Controls.Add(this.label7);
@@ -544,7 +546,7 @@
         private CustomTextbox ctbMmn;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lblState;
-        private CustomButton cbtnBorrow;
+        private CustomButton cbtnBook;
         private CustomButton ctbExtendMembership;
         private CustomButton cbtnBack;
         private System.Windows.Forms.Label label10;

@@ -222,7 +222,7 @@
     }
 
     //not tested hopefully works
-    function AutoDeleteLateBookings() : string {
+    function AutoDeleteLateBookings() {
         require "databaseConnect.php";
 
         $query = "CALL deleteLateBookings();";
@@ -232,7 +232,19 @@
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
         $conn->close();
-        return $results->fetch_all(MYSQLI_ASSOC)[0]['output'];
+        return $results->fetch_all(MYSQLI_ASSOC);
+    }
+    function AutoDeleteLateReservations() {
+        require "databaseConnect.php";
+
+        $query = "CALL deleteLateReservations();";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        //$stmt->bind_param("ss", $username, $pw); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        $conn->close();
+        return $results->fetch_all(MYSQLI_ASSOC);
     }
 
     function GetSystemSettings(){
@@ -399,7 +411,7 @@
         
         $stmt = $conn->prepare($query); // Prepare statement
         $stmt->bind_param("issss", $id, $name, $phone, $email, $webpage); // Bind parameter to SQL query
-        $stmt->execute(); // Execute the SQL query
+        $stmt->execute(); // Execute the SQL
         $results = $stmt->get_result();
         $conn->close();
         //return $results->fetch_all(MYSQLI_ASSOC);
@@ -543,6 +555,19 @@
         $conn->close();
         return $results->fetch_all(MYSQLI_ASSOC);
 
+    }
+    
+    function DeactivateUser($user_id){
+        require "databaseConnect.php";
+
+        $query = "CALL deactivateUser(?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("i", $user_id); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        $conn->close();
+        //return $results->fetch_all(MYSQLI_ASSOC);
     }
     /**
      * Return true or false depending if the end date of borrowing the given book is extendable.

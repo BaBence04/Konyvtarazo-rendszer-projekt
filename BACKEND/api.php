@@ -171,6 +171,8 @@
             echo json_encode(GetUsers($_POST["search"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "getBooks" && isset($_POST["search"]) && count($_POST) == 2){
             echo json_encode(GetBooks($_POST["search"]));
+        }else if(isset($_POST["type"]) && $_POST["type"] == "getBorrowedBooks" && isset($_POST["search"]) && count($_POST) == 2){
+            echo json_encode(GetBorrowedBooks($_POST["search"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "getPublishers" && isset($_POST["search"]) && count($_POST) == 2){
             echo json_encode(GetPublishers($_POST["search"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "getUserDetailed" && isset($_POST["id"]) && count($_POST) == 2){
@@ -183,8 +185,10 @@
             echo json_encode(DeletePublisher($_POST["id"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "addPublisher" && isset($_POST["name"], $_POST["phone"], $_POST["email"], $_POST["webpage"])  && count($_POST) == 5){
             echo json_encode(addPublisher($_POST["name"], $_POST["phone"], $_POST["email"], $_POST["webpage"]));
-        }else if(isset($_POST["type"]) && $_POST["type"] == "autoDeleteBookingsAndReservations" && count($_POST) == 1){
+        }else if(isset($_POST["type"]) && $_POST["type"] == "deleteExpiredReservations" && count($_POST) == 1){
             echo json_encode(AutoDeleteLateBookings());
+        }else if(isset($_POST["type"]) && $_POST["type"] == "deleteExpiredBookings" && count($_POST) == 1){
+            echo json_encode(AutoDeleteLateReservations());
         }else if(isset($_POST["type"]) && $_POST["type"] == "returnInfo" && isset($_POST["bookID"]) && count($_POST) == 2){
             echo json_encode(ReturnInfo($_POST["bookID"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "borrowInfo" && isset($_POST["id"]) && isset($_POST["state"]) && count($_POST) == 3){
@@ -204,6 +208,8 @@
             echo json_encode(GetSystemSettings());
         }else if(isset($_POST["type"]) && $_POST["type"] == "renewMembership"  && isset($_POST["id"]) && count($_POST) == 2){
             echo json_encode(RenewMembership($_POST["id"]));
+        }else if(isset($_POST["type"]) && $_POST["type"] == "deactivateUser"  && isset($_POST["id"]) && count($_POST) == 2){
+            DeactivateUser($_POST["id"]);
         }else{
             throw new Exception("Nincs ilyen");
         }

@@ -99,5 +99,34 @@ namespace Desktop
 				lblTagsag.Text = res.First()["membership_end_date"];
 			}
         }
+
+        private async void btnDeactivateUser_Click(object sender, EventArgs e)
+        {
+            if(MessageBox.Show($"Biztosan véglegesen deaktiválni szeretné ezt a felhasználót?", "Felhasználó deaktiválása", MessageBoxButtons.YesNo) == DialogResult.Yes)
+
+            {
+				List<Dictionary<string, string>> res = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "deactivateUser" }, { "id", user_id } });
+				//deactivate user sets membershipdate back by 1 day and runs auto delete so it deletes them 
+				List<Dictionary<string, string>> reservationResult = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string>() { { "type", "deleteExpiredReservations" } });
+				string reservationChanges = reservationResult.First()["output"];
+				List<Dictionary<string, string>> bookingResult = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string>() { { "type", "deleteExpiredBookings" } });
+				string outputChanges = bookingResult.First()["output"];
+				if (outputChanges.Length > 0 || reservationChanges.Length > 0)
+				{
+					//write it out changes once it is implemented
+				}
+				Deactivated();
+			}
+        }
+
+		private void Deactivated()
+		{
+			//HA LESZ READONLY RÉSZE A CTB-knek AKKOR LEHET IMPLEMENTÁLNI
+		}
+
+        private void cbtnBorrow_Click(object sender, EventArgs e)
+        {
+			PopupSelect pop = new PopupSelect("bookOrReserve", user_id);
+        }
     }
 }

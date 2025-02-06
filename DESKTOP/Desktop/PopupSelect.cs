@@ -12,14 +12,42 @@ namespace Desktop
 {
     public partial class PopupSelect : Form
     {
-        private string searchMode;
+        private string searchMode, startMode, optionalId;
         public string res1, res2, res3, id;
+        private bool canReserve, canBook;
         private List<string> ids = new List<string>();
+        public PopupSelect(string mode, string id)
+        {
+            startMode = mode;
+            optionalId = id;
+            switch (mode)
+            {
+                case "userTakeback":
+                    searchMode = "getBorrowedBooks";
+                    break;
+                case "bookOrReserve":
+                    searchMode = "getBookStates";
+                    getUserStatus();
+                    break;
+            }
+            InitializeComponent();
+            
+        }
         public PopupSelect(string mode)
         {
-            searchMode = mode;
+            startMode = mode;
+            switch (mode)
+            {
+                case "getUsers":
+                    searchMode = mode;
+                    break;
+                case "userBorrow":
+                    searchMode = "getBooks";
+                    break ;
+            }
             InitializeComponent();
         }
+        
 
         private async void updateSelectDgv(string search)
         {
@@ -33,19 +61,45 @@ namespace Desktop
                 DataColumn col;
                 DataRow row;
                 //make the dataset columns
-                foreach (KeyValuePair<string, string> item in response[0])
+                if (startMode != "userTakeback")
                 {
-                    if (item.Key != "user_id" && item.Key != "book_id")
+                    foreach (KeyValuePair<string, string> item in response[0])
                     {
-                        col = new DataColumn();
-                        col.DataType = typeof(string);
-                        col.ReadOnly = true;
-                        col.ColumnName = item.Key;
-                        col.Caption = item.Key;
-                        dt.Columns.Add(col);
+                        if (item.Key != "user_id" && item.Key != "book_id")
+                        {
+                            col = new DataColumn();
+                            col.DataType = typeof(string);
+                            col.ReadOnly = true;
+                            col.ColumnName = item.Key;
+                            col.Caption = item.Key;
+                            dt.Columns.Add(col);
+                        }
+
                     }
-                    
                 }
+                else
+                {
+                    ctbSearch.Visible = false;
+                    cbtnSearch.Visible = false;
+                    col = new DataColumn();
+                    col.DataType = typeof(string);
+                    col.ReadOnly = true;
+                    col.ColumnName = "ISBN";
+                    col.Caption = "ISBN";
+                    dt.Columns.Add(col);
+                    col = new DataColumn();
+                    col.DataType = typeof(string);
+                    col.ReadOnly = true;
+                    col.ColumnName = "title";
+                    col.Caption = "title";
+                    dt.Columns.Add(col); col = new DataColumn();
+                    col.DataType = typeof(string);
+                    col.ReadOnly = true;
+                    col.ColumnName = "fizetendo";
+                    col.Caption = "fizetendo";
+                    dt.Columns.Add(col);
+                }
+                
                 //add button row for detailed page
                 DataGridViewButtonColumn btns = new DataGridViewButtonColumn();
                 btns.Name = "Választás";
@@ -53,7 +107,7 @@ namespace Desktop
                 btns.UseColumnTextForButtonValue = true;
 
                 //search for only available books if we want books
-                if (searchMode == "getBooks")
+                if (startMode == "userBorrow")
                 {
                     response = response.Where(x => x["status"] == "available").ToList();
                 }
@@ -61,17 +115,30 @@ namespace Desktop
                 for (int i = 0; i < response.Count(); i++)
                 {
                     row = dt.NewRow();
-                    foreach (KeyValuePair<string, string> item in response[i])
+                    if (startMode != "userTakeback")
                     {
-                        if (item.Key == "user_id" || item.Key == "book_id")
+                        foreach (KeyValuePair<string, string> item in response[i])
                         {
-                            ids.Add(item.Value);
-                        }
-                        else
-                        {
-                            row[item.Key] = item.Value;
+
+                            if (item.Key == "user_id" || item.Key == "book_id")
+                            {
+                                ids.Add(item.Value);
+                            }
+                            else
+                            {
+                                row[item.Key] = item.Value;
+                            }
                         }
                     }
+                    else
+                    {
+                        ids.Add(response[i]["book_id"]);
+                        for (int j = 0; j < 3; j++)
+                        {
+                            row[dt.Columns[j].ColumnName] = response[i][dt.Columns[j].ColumnName];
+                        }
+                    }
+                    
                     dt.Rows.Add(row);
                 }
 
@@ -82,9 +149,21 @@ namespace Desktop
 
         private void PopupSelect_Load(object sender, EventArgs e)
         {
-            updateSelectDgv("");
+            if (startMode == "userTakeback")
+            {
+                updateSelectDgv(optionalId);
+            }
+            else
+            {
+                updateSelectDgv("");
+            }
             ctbSearch.KeyPress += ctbSearch_KeyPress;
             cdgwSelect.CellClick += cdgwSelect_CellClick;
+        }
+
+        private void cbtnBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void cbtnSearch_Click(object sender, EventArgs e)
@@ -101,28 +180,43 @@ namespace Desktop
 
         private void ctbSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (ctbSearch.Texts != ctbSearch.PlaceholderText)
+            if (startMode != "userTakeback")
             {
-                updateSelectDgv(ctbSearch.Texts);
+                if (ctbSearch.Texts != ctbSearch.PlaceholderText)
+                {
+                    updateSelectDgv(ctbSearch.Texts);
+                }
+                else
+                {
+                    updateSelectDgv("");
+                }
             }
-            else
-            {
-                updateSelectDgv("");
-            }
+            
         }
         private void cdgwSelect_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == cdgwSelect.Columns["Választás"].Index)
             {
-                res1 = (string)cdgwSelect.Rows[e.RowIndex].Cells[0].Value;
-                res2 = (string)cdgwSelect.Rows[e.RowIndex].Cells[1].Value;
-                res3 = (string)cdgwSelect.Rows[e.RowIndex].Cells[2].Value;
-                id = ids[e.RowIndex];
+                if (startMode != "userTakeback")
+                {
+                    res1 = (string)cdgwSelect.Rows[e.RowIndex].Cells[0].Value;
+                    res2 = (string)cdgwSelect.Rows[e.RowIndex].Cells[1].Value;
+                    res3 = (string)cdgwSelect.Rows[e.RowIndex].Cells[2].Value;
+                    id = ids[e.RowIndex];
                 
-                this.DialogResult =  DialogResult.OK;
+                    this.DialogResult =  DialogResult.OK;
+                }
+                else
+                {
+                    LoginForm.main.OpenChildForm(new BookTakebackPage(ids[e.RowIndex]));
+                }
                 this.Close();
+            } 
+        }
+        private async void getUserStatus()
+        {
+            List<Dictionary<string, string>> resp = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "checkPermissions" }, { "id", optionalId } });
 
-            }
         }
     }
     }

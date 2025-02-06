@@ -148,7 +148,7 @@ CREATE PROCEDURE IF NOT EXISTS getBorrowedBooks(
   IN ID INT
 ) BEGIN
 SELECT 
-  inventory.book_id, GROUP_CONCAT(DISTINCT authors.author) AS `authors`,  book.ISBN, book.title, book.picture_base64, borrowings.end_date, borrowings.start_date, ( SELECT CASE WHEN COUNT(reservation.ISBN_id) > 0 THEN 'True' ELSE 'False' END FROM reservation WHERE reservation.ISBN_id = inventory.ISBN_id ) AS `meghosszabbithato`, ((CURRENT_DATE()- borrowings.end_date)*(SELECT system_settings.latency_fee FROM system_settings)) AS `fizetendo`
+  inventory.book_id, GROUP_CONCAT(DISTINCT authors.author) AS `authors`,  book.ISBN, book.title, book.picture_base64, borrowings.end_date, borrowings.start_date, ( SELECT CASE WHEN COUNT(reservation.ISBN_id) > 0 THEN 'True' ELSE 'False' END FROM reservation WHERE reservation.ISBN_id = inventory.ISBN_id ) AS `meghosszabbithato`, (CASE WHEN (CURRENT_DATE()- borrowings.end_date)*(SELECT system_settings.latency_fee FROM system_settings)<0 THEN 0 ELSE (CURRENT_DATE()- borrowings.end_date)*(SELECT system_settings.latency_fee FROM system_settings)END) AS `fizetendo`
 FROM 
   users INNER JOIN( borrowings INNER JOIN( ((inventory INNER JOIN book ON book.ISBN_id = inventory.ISBN_id) INNER JOIN books_authors_conn on books_authors_conn.ISBN_id = book.ISBN_id) INNER JOIN authors on authors.author_id = books_authors_conn.author_id ) ON inventory.book_id = borrowings.book_id ) ON users.user_id = borrowings.user_id 
 WHERE 
@@ -565,9 +565,9 @@ IN searchTerm VARCHAR(255)
 )
 BEGIN
 IF(searchTerm = "") THEN
-SELECT users.user_id, users.surname, users.first_name, users.username FROM users;
+SELECT users.user_id, users.surname, users.first_name, users.username FROM users WHERE users.active;
 ELSE
-SELECT users.user_id,users.surname, users.first_name, users.username FROM users WHERE users.surname LIKE CONCAT("%", searchTerm, "%") OR users.first_name LIKE CONCAT("%", searchTerm, "%") OR users.username LIKE CONCAT("%", searchTerm, "%"); 
+SELECT users.user_id,users.surname, users.first_name, users.username FROM users WHERE users.surname LIKE CONCAT("%", searchTerm, "%") OR users.first_name LIKE CONCAT("%", searchTerm, "%") OR users.username LIKE CONCAT("%", searchTerm, "%") AND users.active; 
 END IF;
 END;//
 DELIMITER ;
@@ -640,7 +640,7 @@ IF (state = "booking") THEN
 ELSEIF (state = "book_id") THEN
 	SELECT book.title, book.ISBN FROM book INNER JOIN inventory ON inventory.ISBN_id = book.ISBN_id WHERE inventory.book_id = id;
 ELSE
-SELECT CONCAT(users.first_name, users.surname) AS "name", users.username FROM users WHERE users.user_id = id;
+SELECT CONCAT(users.surname, " ", users.first_name) AS "name", users.username FROM users WHERE users.user_id = id;
 END IF;
 END;//
 DELIMITER ;
@@ -780,5 +780,25 @@ DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS getSystemSettings() 
 BEGIN
 SELECT * FROM system_settings;
+END;//
+DELIMITER ;
+
+-- deactivates a user and deletes his/her bookings and reservation
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS deactivateUser(
+  IN ID INT
+) 
+BEGIN
+UPDATE users SET users.active = 0, users.membership_end_date = DATE_ADD(CURRENT_DATE(), INTERVAL -1 DAY) WHERE users.user_id = ID;
+END;//
+DELIMITER ;
+
+-- checks if a user can book or reserve
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS checkPermissions(
+  IN ID INT
+) 
+BEGIN
+SELECT CASE WHEN (SELECT COUNT(reservation.reservation_id) FROM reservation WHERE reservation.user_id = ID)=(SELECT system_settings.max_reservations FROM system_settings) THEN "false" ELSE "true" END AS 'reservation',  CASE WHEN (SELECT COUNT(booking.booking_id) FROM booking WHERE booking.user_id = ID)=(SELECT system_settings.max_reservations FROM system_settings) THEN "false" ELSE "true" END AS 'booking';
 END;//
 DELIMITER ;

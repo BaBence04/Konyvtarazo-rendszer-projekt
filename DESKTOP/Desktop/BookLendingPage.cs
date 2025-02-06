@@ -37,9 +37,11 @@ namespace Desktop
                     lblName.Text = form.res1+" "+form.res2;
                     lblUname.Text = form.res3;
                     user_id = form.id;
+                    pChooseUser.Visible = false;
+                    cbtnKiad.Enabled = true;
                 }
             }
-            pChooseUser.Visible = false;
+            
         }
 
         private async void cbtnKiad_Click(object sender, EventArgs e)
@@ -57,7 +59,7 @@ namespace Desktop
 
         private void cbtnChooseBook_Click(object sender, EventArgs e)
         {
-            using (var form = new PopupSelect("getBooks"))
+            using (var form = new PopupSelect("userBorrow"))
             {
                 var result = form.ShowDialog();
                 if (result == DialogResult.OK)
@@ -65,9 +67,10 @@ namespace Desktop
                     lblIsbn.Text = form.res1;
                     lblTitle.Text = form.res2;
                     book_id = form.id;
+                    pChooseBook.Visible = false;
+                    cbtnKiad.Enabled = true;
                 }
             }
-            pChooseUser.Visible = false;
         }
 
         private async void setInfo(string id, string status)

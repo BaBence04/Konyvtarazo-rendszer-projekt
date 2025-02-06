@@ -39,6 +39,12 @@ namespace Desktop
             }
 			userID = info["user"];
         }
+
+        private void cbtnBack_Click(object sender, EventArgs e)
+        {
+			LoginForm.main.OpenChildForm(LoginForm.main.prev);
+        }
+
         private async void btn_Click(object sender, EventArgs e)
         {
 			var output = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { {"type", "returnBook" }, {"user_id",  userID}, {"bookID", bookID }, {"empl_id", LoginForm.employee} });

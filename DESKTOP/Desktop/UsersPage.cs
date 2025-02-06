@@ -32,6 +32,7 @@ namespace Desktop
         {
             //updateUsersDgw("");
             ctbSearch.KeyPress += ctbSearch_KeyPress;
+            cdgwUsers.CellClick += cdgwUsers_CellClick;
         }
         private async void updateUsersDgw(string search)
         {
@@ -63,8 +64,16 @@ namespace Desktop
                 btns.Name = "Részletesen";
                 btns.Text = "Részletes";
                 btns.UseColumnTextForButtonValue = true;
-
-
+                //takeback button row
+                DataGridViewButtonColumn takebackbtns = new DataGridViewButtonColumn();
+                takebackbtns.Name = "Visszavétel";
+                takebackbtns.Text = "Visszavesz";
+                takebackbtns.UseColumnTextForButtonValue = true;
+                //borrowing button row
+                DataGridViewButtonColumn borrowbtns = new DataGridViewButtonColumn();
+                borrowbtns.Name = "Kiadás";
+                borrowbtns.Text = "Kiad";
+                borrowbtns.UseColumnTextForButtonValue = true;
                 //make rows
                 for (int i = 0; i < response.Count(); i++)
                 {
@@ -84,7 +93,9 @@ namespace Desktop
                 }
                 cdgwUsers.DataSource = dt;
                 cdgwUsers.Columns.Add(btns);
-                cdgwUsers.CellClick += cdgwUsers_CellClick;
+                cdgwUsers.Columns.Add(takebackbtns); 
+                cdgwUsers.Columns.Add(borrowbtns);
+
             }
             
             
@@ -96,6 +107,13 @@ namespace Desktop
             {
                 UserDetailedPage detailed = new UserDetailedPage(ids[e.RowIndex]);
                 LoginForm.main.OpenChildForm(detailed);
+            }else if (e.ColumnIndex == cdgwUsers.Columns["Visszavétel"].Index)
+            {
+                PopupSelect pop = new PopupSelect("userTakeback", ids[e.RowIndex]);
+                pop.ShowDialog();
+            }else if (e.ColumnIndex == cdgwUsers.Columns["Kiadás"].Index)
+            {
+                LoginForm.main.OpenChildForm(new BookLendingPage(ids[e.RowIndex], "user_id"));
             }
         }
 
