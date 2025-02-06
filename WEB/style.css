@@ -1387,10 +1387,6 @@ input:-webkit-autofill{
 }
 
 
-
-/* /////////////////USER DETAILED//////////////////// */
-
-
 a, a:active, a:hover, a:visited, a:link{
   color: unset;
   text-decoration: unset;
@@ -1490,6 +1486,27 @@ a, a:active, a:hover, a:visited, a:link{
 
 #results>.page_button_holder>:first-child{
   text-align: center;
+}
+
+.change-password-holder{
+  display: flex;
+  flex-direction: column;
+}
+
+.change-password-holder>input{
+  width: min(300px, 100%);
+  margin-bottom: 10px;
+
+}
+
+#errors_with_password{
+  color: red;
+
+
+}
+
+#errors_with_password>p{
+  line-height: var(--normal-font-size);
 }
 /* /////////////////////////////////////// */
 
