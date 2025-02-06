@@ -93,8 +93,6 @@ function MoveIndicator(startIndex, endIndex, navHeight, navs){
     
     setTimeout(() => {
         sidebar.style.setProperty("--_height", indicatorHeight + "px");
-
-
         sidebar.style.setProperty("--_top", newPositionTop + "px");
         
     }, 220);
@@ -381,6 +379,6 @@ window.onresize = (e)=>{
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(()=>{
         MoveIndicator(currentIndex, currentIndex, navItems[currentIndex].offsetHeight, navItems);
-    }, 300)
+    }, 350)
 }
 
