@@ -333,6 +333,29 @@ namespace Desktop
             }
         }
 
+        [Category("Custom Properties")]
+        public bool IsReadOnly
+        {
+            get
+            {
+                return textBox1.ReadOnly;
+            }
+            set
+            {
+                textBox1.ReadOnly = value;
+                if (value)
+                {
+                    textBox1.Enabled = false;
+                }
+                else
+                {
+                    textBox1.Enabled = true;
+                }
+            }
+        }
+
+
+
         //EVENTS
 
         public event EventHandler _TextChanged;
@@ -366,5 +389,8 @@ namespace Desktop
                 this.OnKeyPress(e);
             }
         }
+
+
+
     }
 }
