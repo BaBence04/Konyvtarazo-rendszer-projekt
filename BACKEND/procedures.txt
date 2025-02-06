@@ -238,6 +238,15 @@ SELECT users.user_id FROM users WHERE users.username = username;
 END;//
 DELIMITER ;
 
+-- get email by user id
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS getEmail(
+  IN ID INT
+) BEGIN
+SELECT users.email FROM users WHERE users.user_id = ID;
+END;//
+DELIMITER ;
+
 -- update user details
 DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS updateUserDetails(
