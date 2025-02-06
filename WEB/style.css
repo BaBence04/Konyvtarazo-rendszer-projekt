@@ -1532,7 +1532,7 @@ a, a:active, a:hover, a:visited, a:link{
 }
 
 .sidebar::after{
-  will-change: height;
+  will-change: height, translate;
 
   content: "";
   background-color: hsl(171, 85%, 26%);
@@ -1545,7 +1545,7 @@ a, a:active, a:hover, a:visited, a:link{
   height: var(--_height, 10px);
 
   translate: 0 var(--_top, 22.5px);
-  transition: height ease-in-out 200ms, translate ease-in-out 200ms;
+  transition: height ease-in-out 300ms, translate ease-in-out 300ms;
 }
 
 
