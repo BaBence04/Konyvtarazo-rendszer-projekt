@@ -12,7 +12,7 @@
 
     
     
-    function SendEmail($recipient_name, $recipient_address, $email_subject, $email_html_body, $email_plain_text_body): void{
+    function send_email($recipient_name, $recipient_address, $email_subject, $email_html_body, $email_plain_text_body): void{
         // Create an instance of PHPMailer
         $mail = new PHPMailer(true);
         
