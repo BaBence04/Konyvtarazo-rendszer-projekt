@@ -1531,10 +1531,9 @@ a, a:active, a:hover, a:visited, a:link{
   /* overflow-y: auto; */
 }
 
-.sidebar::after{
+.indicator{
   will-change: height, translate;
 
-  content: "";
   background-color: hsl(171, 85%, 26%);
   border-radius: 10px;
   width: 10px;
@@ -1545,7 +1544,7 @@ a, a:active, a:hover, a:visited, a:link{
   height: var(--_height, 10px);
 
   translate: 0 var(--_top, 22.5px);
-  transition: height ease-in-out 300ms, translate ease-in-out 300ms;
+  /* transition: height ease-in-out 300ms, translate ease-in-out 300ms; */
 }
 
 
@@ -1566,22 +1565,6 @@ a, a:active, a:hover, a:visited, a:link{
   position: relative;
 }
 
-.nav-item .indicator {
-  --indicator-size: 10px;
-
-  position: absolute;
-  top: calc(50% - var(--indicator-size) / 2);
-  left: calc(var(--indicator-size) * -1);
-  width: var(--indicator-size);
-  height: var(--indicator-size);
-  border-radius: 50%;
-  background-color: hsl(171, 85%, 26%);
-  visibility: hidden;
-}
-
-.nav-item.selected .indicator{
-  visibility: visible;
-}
 
 .main-content {
   flex-grow: 1;
@@ -1708,8 +1691,8 @@ a, a:active, a:hover, a:visited, a:link{
       border-bottom: none;
   }
 
-  .nav-item.selected .indicator, .sidebar::after{
-    visibility: hidden;
+  .indicator{
+    display: none;
   }
 
   .nav-item span{
