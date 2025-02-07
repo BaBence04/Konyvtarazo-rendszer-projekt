@@ -131,15 +131,15 @@ INSERT INTO books_authors_conn (ISBN_id, author_id) VALUES
 
 
 INSERT INTO users (surname, first_name, username, birth_date, membership_end_date, email, phone_number, password, birth_place, address, mother_maiden_name, active) VALUES
-('Kovacs', 'Janos', 'koja123', '1985-03-15', '2025-03-15', 'janos.kovacs@example.com', '06123456789', PASSWORD('password'), 'Budapest', '123 Main St', 'Nagy Erzsebet', TRUE),
-('Ko.', 'Anna', 'koka123', '1999-10-12', '2025-10-15', 'k.anna@gmail.com', '06302166102', PASSWORD('password'), 'Vac', '123 Vaci St', 'Kipuf Ogo', TRUE),
-('Szabo', 'Anna', 'szan123', '1990-10-22', '2025-10-22', 'anna.szabo@example.com', '06789123456', PASSWORD('password'), 'Debrecen', '456 High St', 'Kiss Julia', TRUE);
+('Horti-Nagy', 'Bálint', 'hoba123', '1985-03-15', '2025-03-15', 'hortibalint@gmail.com', '06123456789', PASSWORD('Boronkay01?'), 'Budapest', '123 Main St', 'Nagy Erzsebet', TRUE),
+('Bátyi', 'Bence', 'babe123', '1999-10-12', '2025-10-15', 'babence04@gmail.com', '06302166102', PASSWORD('Boronkay01?'), 'Vac', '123 Vaci St', 'Kipuf Ogo', TRUE),
+('Szabo', 'Anna', 'szan123', '1990-10-22', '2025-10-22', 'anna.szabo@example.com', '06789123456', PASSWORD('Boronkay01?'), 'Debrecen', '456 High St', 'Kiss Julia', TRUE);
 
 INSERT INTO inventory (ISBN_id, book_id,available) VALUES
 (1,1,TRUE),(2,2,TRUE),(3,3,TRUE),(4,4,TRUE),(5,5,TRUE),(6,6,TRUE),(7,7,TRUE),(8,8,TRUE),(9,9,TRUE),(10,10,TRUE),(11,11,TRUE),(12,12,TRUE),(13,13,TRUE),(14,14,TRUE),(15,15,TRUE),(16,16,TRUE),(17,17,TRUE),(18,18,TRUE),(19,19,TRUE),(20,20,TRUE),(21,21,TRUE),(22,22,TRUE),(23,23,TRUE),(24,24,TRUE),(25,25,TRUE);
 
 INSERT INTO employees (empl_name, empl_uname, password) VALUES
-('Toth Peter', 'AABBC', '*2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19'),
+('Bátyi Bence', 'AABBC', '*2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19'),
 ('Nagy Laszlo', 'BBCCD', '*2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19');
 
 INSERT INTO reservation (ISBN_id, user_id) VALUES
