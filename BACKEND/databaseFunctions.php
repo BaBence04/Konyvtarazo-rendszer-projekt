@@ -684,7 +684,6 @@
         $stmt = $conn->prepare($query); // Prepare statement
         $stmt->bind_param("s", $token); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
-        $results = $stmt->get_result();
         if($conn_was_not_given){
             $conn->close();
         }
@@ -709,6 +708,26 @@
         }
 
         return $affected_rows==1;
+    }
+
+    function get_user_email_data($user_id, $conn=null) : array {
+        $conn_was_not_given = $conn == null;
+
+        if($conn_was_not_given){
+            require "databaseConnect.php";
+        }
+
+        $query = "CALL getEmailData(?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("s", $user_id); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        if($conn_was_not_given){
+            $conn->close();
+        }
+
+        return $results->fetch_all(MYSQLI_ASSOC)[0];
     }
 
 
