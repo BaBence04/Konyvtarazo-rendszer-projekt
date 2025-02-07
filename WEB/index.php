@@ -1,15 +1,20 @@
 <?php
 require_once "../BACKEND/databaseFunctions.php";
-
-session_set_cookie_params([
-  'lifetime' => 0, // Expire when browser closes
-  'path' => '/',
-  'domain' => '',
-  'httponly' => true, // Prevent JS access
-  'samesite' => 'Strict' // Prevent CSRF
-]);
+require_once "../BACKEND/additionalFunctions.php";
 
 session_start();
+
+$session_lifetime = 1800; // 30 minutes of inactivity before logout
+
+if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > $session_lifetime)) {
+    session_unset();
+    session_destroy();
+    setcookie(session_name(), '', time() - 3600, '/'); // Expire session cookie
+    header("Location: /web/");
+    exit();
+}
+
+$_SESSION['last_activity'] = time(); // Update activity time
 
 // If the user is not logged in, check for the "remember me" cookie
 if (!isset($_SESSION['user_id']) && isset($_COOKIE['remember_me'])) {
@@ -50,7 +55,9 @@ if(count($parts_of_path) == 1){
     if(isset($_SESSION["user_id"])){
       $page_to_load = "userDetailed";
       $page_title = "Fiók";
-    }     
+    }else{
+      header("Location: /web/");
+    }
     
   }elseif($path == ""){
     $page_to_load = "mainPage";
