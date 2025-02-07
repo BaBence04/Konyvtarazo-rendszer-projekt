@@ -28,6 +28,7 @@
 
     <main class="container">
         <div class="sidebar">
+            <div class="indicator"></div>
             <div class="nav-item selected" id="nav-account-details" onclick="showSection(this);">
                 Fiók <span>adatai</span> 
                 <!-- <span class="indicator"></span> -->
