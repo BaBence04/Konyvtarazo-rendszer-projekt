@@ -78,30 +78,73 @@ function showSection(element) {
 }
 
 function MoveIndicator(startIndex, endIndex, navHeight, navs){
-    const sidebar = document.querySelector(".sidebar");
-    const indicatorHeight = 10;
-    const height = Math.abs(endIndex-startIndex)*navHeight + indicatorHeight;
+    const duration = 400;
 
-    sidebar.style.setProperty("--_height", height + "px");
+    const easingCurves = [
+        "cubic-bezier(0.32, 0, 0.67, 0)",
+        "cubic-bezier(0.33, 1, 0.68, 1)"
+    ]
+
+    const indicator = document.querySelector(".indicator");
+    const indicatorHeight = 10;
+    const heightToGrowTo = Math.abs(endIndex-startIndex)*navHeight + indicatorHeight;
+
+    let currentHeight = indicatorHeight;
+
+    let currentTop = indicator.style.translate.split(" ")[1]?.replace("px", "");
+    if(currentTop == undefined){
+        currentTop = (navs[startIndex].offsetHeight-indicatorHeight)/2;
+    }
+
+    console.log('currentHeight :>> ', currentHeight);
+    let keyframes = 
+        {
+            "height": [currentHeight+"px", heightToGrowTo+"px"]
+        };
+
+    // sidebar.style.setProperty("--_height", heightToGrowTo + "px");
+
     if(endIndex<startIndex){
-        let currentTop = sidebar.style.getPropertyValue("--_top").replace("px", "");
-        sidebar.style.setProperty("--_top", currentTop-(height-indicatorHeight) + "px");
+        console.log("backwards");
+        // sidebar.style.setProperty("--_top", currentTop-(heightToGrowTo-indicatorHeight) + "px");
+        keyframes["translate"] = [`0 ${currentTop}px`, `0 ${currentTop-(heightToGrowTo-indicatorHeight)}px`];
+        currentTop = currentTop-(heightToGrowTo-indicatorHeight);
     }
     
     const newPositionTop = navs[endIndex].offsetTop + (navs[endIndex].offsetHeight - indicatorHeight) / 2;
 
+    console.log("first animation");
+    let animation = indicator.animate(keyframes, {
+        duration: duration/2,
+        easing: easingCurves[0]
+    });
+    // sidebar.style.setProperty("--_height", heightToGrowTo + "px");
+
+    animation.onfinish = ()=>{
+        console.log('currentTop after first anim :>> ', currentTop);
+
+        keyframes = 
+        {
+            "height": [heightToGrowTo+"px", indicatorHeight+"px"],
+            "translate": [`0 ${currentTop}px`, `0 ${newPositionTop}px`]
+        };
+
+        console.log("second animation");
+        indicator.animate(keyframes, {
+            duration: duration/2,
+            easing: easingCurves[1]//Ease out quart
+        });
+        indicator.style.setProperty("height", indicatorHeight + "px");
+        indicator.style.setProperty("translate", `0 ${newPositionTop}px`);
+    }
+
     
-    setTimeout(() => {
-        sidebar.style.setProperty("--_height", indicatorHeight + "px");
-        sidebar.style.setProperty("--_top", newPositionTop + "px");
-        
-    }, 220);
 
 
 }
 
 function IsItInMobileView(){
-    return document.getElementById("nav-toggle").checkVisibility();
+    return !document.querySelector(".indicator").checkVisibility();
 }
 
 function Meghosszabbitas(element){
@@ -135,12 +178,12 @@ function Kijelentkezés(){
     },
     success: function(response)  {
         
-    // window.open("./userDetailed.php", "_self");
-    const currentUrl = new URL(window.location);
-    currentUrl.searchParams.set("page", "mainPage");
+        window.open("/web/", "_self");
+    // const currentUrl = new URL("/");
+    // currentUrl.searchParams.set("page", "mainPage");
     // console.log(currentUrl)
-    window.history.pushState({}, '', currentUrl);
-    location.reload();
+    // window.history.pushState({}, '', currentUrl);
+    // location.reload();
     
     }
     });
