@@ -224,6 +224,8 @@
             echo json_encode(AddReservationOrBooking($_POST["ISBN"], $_POST["userid"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "getUsernames"  && isset($_POST["name"]) && count($_POST) == 2){
             echo json_encode(GetUsernames($_POST["name"]));
+        }else if(isset($_POST["type"]) && $_POST["type"] == "getHistory"  && isset($_POST["book_id"], $_POST["user_id"]) && count($_POST) == 3){
+            echo json_encode(GetHistory($_POST["book_id"], $_POST["user_id"]));
         }else{
             throw new Exception("Nincs ilyen");
         }

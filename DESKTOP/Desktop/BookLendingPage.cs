@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -39,6 +40,7 @@ namespace Desktop
                     user_id = form.id;
                     pChooseUser.Visible = false;
                     cbtnKiad.Enabled = true;
+                    GetHistory();
                 }
             }
             
@@ -69,6 +71,7 @@ namespace Desktop
                     book_id = form.id;
                     pChooseBook.Visible = false;
                     cbtnKiad.Enabled = true;
+                    GetHistory();
                 }
             }
         }
@@ -100,6 +103,18 @@ namespace Desktop
                 pChooseBook.Visible = true;
                 lblName.Text = data["name"];
                 lblUname.Text = data["username"];
+            }
+        }
+        private async void GetHistory()
+        {
+            List<Dictionary<string, string>> resp = (List<Dictionary<string, string>>) await ApiComm.SendPost(new Dictionary<string, string> { {"type", "getHistory" }, {"book_id", book_id }, {"user_id", user_id } });
+            if (resp.First()["result"]!="not")
+            {
+                lblHistory.Text = $"Ezt a könyvet a felhasználó már olvasta {resp.First()["result"]} napja";
+            }
+            else
+            {
+                lblHistory.Text = "Ezt a könyvet a felhasználó még nem olvasta";
             }
         }
     }

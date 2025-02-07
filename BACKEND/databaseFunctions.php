@@ -602,6 +602,19 @@
         $conn->close();
         return $results->fetch_all(MYSQLI_ASSOC);
     }
+
+    function GetHistory($book_id, $user_id){
+        require "databaseConnect.php";
+
+        $query = "CALL getHistory(?,?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("ii", $book_id, $user_id); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        $conn->close();
+        return $results->fetch_all(MYSQLI_ASSOC);
+    }
     /**
      * Return true or false depending if the end date of borrowing the given book is extendable.
      *

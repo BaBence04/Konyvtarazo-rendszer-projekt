@@ -34,16 +34,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.pChooseBook = new System.Windows.Forms.Panel();
-            this.cbtnChooseBook = new Desktop.CustomButton();
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblUname = new System.Windows.Forms.Label();
             this.lblIsbn = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.pChooseUser = new System.Windows.Forms.Panel();
-            this.cbtnChooseUser = new Desktop.CustomButton();
+            this.lblHistory = new System.Windows.Forms.Label();
             this.cbtnKiad = new Desktop.CustomButton();
+            this.cbtnChooseUser = new Desktop.CustomButton();
             this.backBtn = new Desktop.CustomButton();
-            this.label6 = new System.Windows.Forms.Label();
+            this.cbtnChooseBook = new Desktop.CustomButton();
             this.pChooseBook.SuspendLayout();
             this.pChooseUser.SuspendLayout();
             this.SuspendLayout();
@@ -113,24 +113,6 @@
             this.pChooseBook.TabIndex = 14;
             this.pChooseBook.Visible = false;
             // 
-            // cbtnChooseBook
-            // 
-            this.cbtnChooseBook.BackColor = System.Drawing.Color.Black;
-            this.cbtnChooseBook.BorderColor = System.Drawing.Color.White;
-            this.cbtnChooseBook.BorderRadius = 40;
-            this.cbtnChooseBook.BorderSize = 0;
-            this.cbtnChooseBook.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cbtnChooseBook.FlatAppearance.BorderSize = 0;
-            this.cbtnChooseBook.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbtnChooseBook.ForeColor = System.Drawing.Color.White;
-            this.cbtnChooseBook.Location = new System.Drawing.Point(24, 23);
-            this.cbtnChooseBook.Name = "cbtnChooseBook";
-            this.cbtnChooseBook.Size = new System.Drawing.Size(132, 86);
-            this.cbtnChooseBook.TabIndex = 16;
-            this.cbtnChooseBook.Text = "Konyv kiválasztása";
-            this.cbtnChooseBook.UseVisualStyleBackColor = false;
-            this.cbtnChooseBook.Click += new System.EventHandler(this.cbtnChooseBook_Click);
-            // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
@@ -184,23 +166,17 @@
             this.pChooseUser.TabIndex = 17;
             this.pChooseUser.Visible = false;
             // 
-            // cbtnChooseUser
+            // lblHistory
             // 
-            this.cbtnChooseUser.BackColor = System.Drawing.Color.Black;
-            this.cbtnChooseUser.BorderColor = System.Drawing.Color.White;
-            this.cbtnChooseUser.BorderRadius = 40;
-            this.cbtnChooseUser.BorderSize = 0;
-            this.cbtnChooseUser.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cbtnChooseUser.FlatAppearance.BorderSize = 0;
-            this.cbtnChooseUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbtnChooseUser.ForeColor = System.Drawing.Color.White;
-            this.cbtnChooseUser.Location = new System.Drawing.Point(24, 23);
-            this.cbtnChooseUser.Name = "cbtnChooseUser";
-            this.cbtnChooseUser.Size = new System.Drawing.Size(132, 86);
-            this.cbtnChooseUser.TabIndex = 16;
-            this.cbtnChooseUser.Text = "Felhasználó kiválasztása";
-            this.cbtnChooseUser.UseVisualStyleBackColor = false;
-            this.cbtnChooseUser.Click += new System.EventHandler(this.cbtnChooseUser_Click);
+            this.lblHistory.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblHistory.AutoSize = true;
+            this.lblHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.75F);
+            this.lblHistory.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblHistory.Location = new System.Drawing.Point(156, 364);
+            this.lblHistory.Name = "lblHistory";
+            this.lblHistory.Size = new System.Drawing.Size(175, 29);
+            this.lblHistory.TabIndex = 21;
+            this.lblHistory.Text = "Olvasas history";
             // 
             // cbtnKiad
             // 
@@ -220,6 +196,24 @@
             this.cbtnKiad.UseVisualStyleBackColor = false;
             this.cbtnKiad.Click += new System.EventHandler(this.cbtnKiad_Click);
             // 
+            // cbtnChooseUser
+            // 
+            this.cbtnChooseUser.BackColor = System.Drawing.Color.Black;
+            this.cbtnChooseUser.BorderColor = System.Drawing.Color.White;
+            this.cbtnChooseUser.BorderRadius = 40;
+            this.cbtnChooseUser.BorderSize = 0;
+            this.cbtnChooseUser.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbtnChooseUser.FlatAppearance.BorderSize = 0;
+            this.cbtnChooseUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbtnChooseUser.ForeColor = System.Drawing.Color.White;
+            this.cbtnChooseUser.Location = new System.Drawing.Point(24, 23);
+            this.cbtnChooseUser.Name = "cbtnChooseUser";
+            this.cbtnChooseUser.Size = new System.Drawing.Size(132, 86);
+            this.cbtnChooseUser.TabIndex = 16;
+            this.cbtnChooseUser.Text = "Felhasználó kiválasztása";
+            this.cbtnChooseUser.UseVisualStyleBackColor = false;
+            this.cbtnChooseUser.Click += new System.EventHandler(this.cbtnChooseUser_Click);
+            // 
             // backBtn
             // 
             this.backBtn.BackColor = System.Drawing.Color.Black;
@@ -238,16 +232,23 @@
             this.backBtn.UseVisualStyleBackColor = false;
             this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
             // 
-            // label6
+            // cbtnChooseBook
             // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label6.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label6.Location = new System.Drawing.Point(32, 362);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(0, 42);
-            this.label6.TabIndex = 21;
+            this.cbtnChooseBook.BackColor = System.Drawing.Color.Black;
+            this.cbtnChooseBook.BorderColor = System.Drawing.Color.White;
+            this.cbtnChooseBook.BorderRadius = 40;
+            this.cbtnChooseBook.BorderSize = 0;
+            this.cbtnChooseBook.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbtnChooseBook.FlatAppearance.BorderSize = 0;
+            this.cbtnChooseBook.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbtnChooseBook.ForeColor = System.Drawing.Color.White;
+            this.cbtnChooseBook.Location = new System.Drawing.Point(24, 23);
+            this.cbtnChooseBook.Name = "cbtnChooseBook";
+            this.cbtnChooseBook.Size = new System.Drawing.Size(132, 86);
+            this.cbtnChooseBook.TabIndex = 16;
+            this.cbtnChooseBook.Text = "Konyv kiválasztása";
+            this.cbtnChooseBook.UseVisualStyleBackColor = false;
+            this.cbtnChooseBook.Click += new System.EventHandler(this.cbtnChooseBook_Click);
             // 
             // BookLendingPage
             // 
@@ -255,7 +256,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
             this.ClientSize = new System.Drawing.Size(740, 559);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.lblHistory);
             this.Controls.Add(this.cbtnKiad);
             this.Controls.Add(this.pChooseUser);
             this.Controls.Add(this.backBtn);
@@ -297,6 +298,6 @@
         private System.Windows.Forms.Panel pChooseUser;
         private CustomButton cbtnChooseUser;
         private CustomButton cbtnKiad;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblHistory;
     }
 }
