@@ -33,7 +33,7 @@
         
         $recipient_name = "$user_email_data[surname] $user_email_data[first_name]";
         $recipient_address = $user_email_data["email"];
-        $subject = "Sikeres regisztráció";
+        $subject = "Sikeresen regisztrált könyvtárunknál!";
         $email_html_body = "
             <div style='font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;'>
                 <table style='width: 100%; background-color: #f9f9f9; border-collapse: collapse;'>
@@ -44,14 +44,15 @@
                     </tr>
                     <tr>
                         <td style='padding: 20px;'>
-                            <p>Köszönjük, hogy regisztráltál könyvtárunknál! Reméljük elégedett leszel szolgáltatásainkkal!</p>
-                            
+                            <p>Köszönjük, hogy regisztráltál könyvtárunknál!</p>
+                            <p>Reméljük elégedett leszel szolgáltatásainkkal!</p>
                             
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <p>A legjobb felhasználói élmény érdekében ajánljuk, hogy adj meg egy jelszót <a href="+$link." style='display: inline-block; padding: 10px 20px; background-color: #007BFF; color: #FFFFFF; text-decoration: none; border-radius: 5px;'>ezen a linken</a>, miután ez megtörtént utána a felhasználói neveddel ($user_name, az olvasó kártyádon is megtalálod), és az általad megadott jelszóval tudsz a honlapunkon bejelentkezni.</p>
+                            <p>A legjobb felhasználói élmény érdekében ajánljuk, hogy adj meg egy jelszót ezen a linken: <br><i>$link</i><br>
+                            Miután ez megtörtént utána a felhasználói neveddel ($user_name, az olvasó kártyádon is megtalálod), és az általad megadott jelszóval tudsz a honlapunkon bejelentkezni.</p>
                              <p>Oldalunkon való bejelentkezés előnyei:</p>
                             <ul>
                                 <li>Tudsz lefoglalni és előjegyezni könyvet, és ezeket bármikor vissza is tudod mondani
