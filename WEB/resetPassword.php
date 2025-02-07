@@ -1,19 +1,3 @@
-<?php
-    session_set_cookie_params([
-        'lifetime' => 0, // Expire when browser closes
-        'path' => '/',
-        'domain' => '',
-        'httponly' => true, // Prevent JS access
-        'samesite' => 'Strict' // Prevent CSRF
-    ]);
-
-    session_start();
-
-    if(!isset($_GET["reset_token"])){
-        header("Location: /web/");
-    }
-?>
-
 <!DOCTYPE html>
 <html lang="hu">
 <head>
