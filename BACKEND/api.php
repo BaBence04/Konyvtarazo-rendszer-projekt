@@ -2,15 +2,22 @@
     require_once "databaseFunctions.php";
     require_once "elementCreators.php";
     require_once "additionalFunctions.php";
+    require_once "mailer.php";
 
-    session_set_cookie_params([
-        'lifetime' => 0, // Expire when browser closes
-        'path' => '/',
-        'domain' => '',
-        'httponly' => true, // Prevent JS access
-        'samesite' => 'Strict' // Prevent CSRF
-      ]);
+    setup_session_cookie();
     session_start();
+
+    $session_lifetime = 1800; // 10s of inactivity before logout
+
+    if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > $session_lifetime)) {
+        session_unset();
+        session_destroy();
+        setcookie(session_name(), '', time() - 3600, '/'); // Expire session cookie
+        session_start();
+    }
+
+    $_SESSION['last_activity'] = time(); // Update activity time
+
     //listBooksFiltered
 
     if($_SERVER['REQUEST_METHOD'] === 'GET'){
@@ -116,6 +123,8 @@
         }else if(isset($_SESSION["user_id"], $_POST["action"]) && $_POST["action"] == "logout"){
             unset($_SESSION['user_id']);
             unset($_SESSION['username']);
+            unset($_SESSION['restricted']);
+            unset($_SESSION["last_activity"]);
             session_destroy();
             
 
@@ -135,10 +144,7 @@
             if($user_id == -1){
                 $response = ["status"=>"invalid"];
             }else{
-                do{
-                    $token = generate_token(1);
-                }while(create_token($token, $user_id, "reset")["result"] == "false");
-                $response = ["link"=>"localhost:8000/web/resetPassword.php?reset_token=$token", "status"=>"success"];
+                reset_password($user_id);
             
             }
 
@@ -189,7 +195,7 @@
             $result = addUser($_POST["surname"], $_POST["first_name"], $_POST["uname"], $_POST["birthdate"], $_POST["email"], $_POST["phone"], $_POST["birthplace"], $_POST["address"], $_POST["mmn"]);
             echo json_encode($result);
             if($result[0]["state"] == "Sikeres"){
-                send_reset_email(GetUserId($_POST["uname"]));
+                reset_password(GetUserId($_POST["uname"]));
             }
         }else if(isset($_POST["type"]) && $_POST["type"] == "deleteExpiredReservations" && count($_POST) == 1){
             echo json_encode(AutoDeleteLateBookings());
