@@ -26,7 +26,7 @@
 
     }else if($_SERVER['REQUEST_METHOD'] === "POST"){
         if(isset($_POST['isbn_id'], $_SESSION["user_id"], $_SESSION["restricted"]) && count($_POST)==1 && $_SESSION["restricted"] == "false"){
-            echo AddReservationOrBooking($_POST['isbn_id'], $_SESSION["user_id"]);
+            echo AddReservationOrBooking($_POST['isbn_id'], $_SESSION["user_id"])[0]["status"];
 
 
         //returns "not found"/"inactive"/"success"/"incorrect"/"inactive user", login
@@ -185,6 +185,12 @@
             echo json_encode(DeletePublisher($_POST["id"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "addPublisher" && isset($_POST["name"], $_POST["phone"], $_POST["email"], $_POST["webpage"])  && count($_POST) == 5){
             echo json_encode(addPublisher($_POST["name"], $_POST["phone"], $_POST["email"], $_POST["webpage"]));
+        }else if(isset($_POST["type"]) && $_POST["type"] == "addUser" && isset($_POST["surname"], $_POST["first_name"], $_POST["uname"], $_POST["birthdate"], $_POST["email"], $_POST["phone"], $_POST["birthplace"], $_POST["address"], $_POST["mmn"])  && count($_POST) == 10){
+            $result = addUser($_POST["surname"], $_POST["first_name"], $_POST["uname"], $_POST["birthdate"], $_POST["email"], $_POST["phone"], $_POST["birthplace"], $_POST["address"], $_POST["mmn"]);
+            echo json_encode($result);
+            if($result[0]["state"] == "Sikeres"){
+                send_reset_email(GetUserId($_POST["uname"]));
+            }
         }else if(isset($_POST["type"]) && $_POST["type"] == "deleteExpiredReservations" && count($_POST) == 1){
             echo json_encode(AutoDeleteLateBookings());
         }else if(isset($_POST["type"]) && $_POST["type"] == "deleteExpiredBookings" && count($_POST) == 1){
@@ -210,6 +216,14 @@
             echo json_encode(RenewMembership($_POST["id"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "deactivateUser"  && isset($_POST["id"]) && count($_POST) == 2){
             DeactivateUser($_POST["id"]);
+        }else if(isset($_POST["type"]) && $_POST["type"] == "checkPermissions"  && isset($_POST["id"]) && count($_POST) == 2){
+            echo json_encode(CheckPermissions($_POST["id"]));
+        }else if(isset($_POST["type"]) && $_POST["type"] == "getBookStates"  && isset($_POST["search"]) && count($_POST) == 2){
+            echo json_encode(GetBookStates($_POST["search"]));
+        }else if(isset($_POST["type"]) && $_POST["type"] == "addReservationOrBooking"  && isset($_POST["ISBN"], $_POST["userid"]) && count($_POST) == 3){
+            echo json_encode(AddReservationOrBooking($_POST["ISBN"], $_POST["userid"]));
+        }else if(isset($_POST["type"]) && $_POST["type"] == "getUsernames"  && isset($_POST["name"]) && count($_POST) == 2){
+            echo json_encode(GetUsernames($_POST["name"]));
         }else{
             throw new Exception("Nincs ilyen");
         }
