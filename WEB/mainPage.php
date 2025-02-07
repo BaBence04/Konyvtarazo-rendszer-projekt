@@ -5,7 +5,7 @@
         <div class="service">
             <h1>Üdvözöljük az online könytárunkban!</h1>
             <p>Ide valami szlogen</p>
-            <a href="?page=bookList" class="cta-button">Könyvek böngészése</a>
+            <a href="./konyveink" class="cta-button">Könyvek böngészése</a>
         </div>
 
     </section>
@@ -15,7 +15,7 @@
 
         <section class="borrowing_section main_section">
             <div class="service">
-                <img src="imgs/borrow-icon.png" alt="Borrow">
+                <img src="/web/imgs/borrow-icon.png" alt="Borrow">
                 <h3>Könyvek lefoglalása</h3>
                 <p>Foglalja le bármelyik elérhető könyvet és mi 24 órára félretesszük Önnek</p> 
             </div>
@@ -23,7 +23,7 @@
 
         <section class="collection_section main_section">
             <div class="service">
-                <img src="imgs/book-icon.png" alt="Events">
+                <img src="/web/imgs/book-icon.png" alt="Events">
                 <h3>Hatalmas könyvgyűjtemény</h3>
                 <p>Weboldalunkon megtalálja könyvtárunk összes, több mint [ide a könyvek számát, amennyivel feltöltjük] könyvét</p>
             </div>
@@ -31,7 +31,7 @@
 
         <secton class="asdf main_section">
             <div class="service">
-                <img src="digital-icon.png" alt="Digital">
+                <img src="/web/imgs/digital-icon.png" alt="Digital">
                 <h3>Digital Library</h3>
                 <p>Access e-books, audiobooks, and digital resources online.</p>
             </div>
