@@ -190,12 +190,9 @@
         }else{
             return $results->fetch_all(MYSQLI_ASSOC)[0]["ISBN_id"];
         }
-
-        
-    
     }
 
-    function AddReservationOrBooking($isbn_id, $user_id):string {
+    function AddReservationOrBooking($isbn_id, $user_id){
         require "databaseConnect.php";
 
         $query = "CALL addReservationOrBooking(?,?);";
@@ -205,8 +202,9 @@
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
         $conn->close();
-        return $results->fetch_all(MYSQLI_ASSOC)[0]['status'];
+        return $results->fetch_all(MYSQLI_ASSOC);
     }
+    
     //returns "not found" if there is no user with the given username, returns "false" if the password doesn't match, and returns true for successful logging in
     function CheckCredentialForLogin($username, $pw) {
         require "databaseConnect.php";
@@ -506,21 +504,17 @@
         return $results->fetch_all(MYSQLI_ASSOC);
     }
 
-    function AddUser($surname, $firstname, $uname, $birthdate, $email, $phone, $pw, $birthplace, $address, $mmn){
+    function AddUser($surname, $firstname, $uname, $birthdate, $email, $phone, $birthplace, $address, $mmn){
         require "databaseConnect.php";
 
-        $query = "CALL addUser(?,?,?,?,?,?,?,?,?,?);";
+        $query = "CALL addUser(?,?,?,?,?,?,?,?,?);";
 
         $stmt = $conn->prepare($query); // Prepare statement
-        $stmt->bind_param("ssssssssss", $surname, $firstname, $uname, $birthdate, $email, $phone, $pw, $birthplace, $address, $mmn); // Bind parameter to SQL query
+        $stmt->bind_param("sssssssss", $surname, $firstname, $uname, $birthdate, $email, $phone,  $birthplace, $address, $mmn); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
         $conn->close();
-        if($results->fetch_all(MYSQLI_NUM)[0][0] == "a személy már egyszer beregisztrált"){
-            return -1;
-        }else{
-            return $results->fetch_all(MYSQLI_ASSOC);
-        }
+        return $results->fetch_all(MYSQLI_ASSOC);
     }
 
     
@@ -568,6 +562,45 @@
         $results = $stmt->get_result();
         $conn->close();
         //return $results->fetch_all(MYSQLI_ASSOC);
+    }
+
+    function CheckPermissions($user_id){
+        require "databaseConnect.php";
+
+        $query = "CALL checkPermissions(?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("i", $user_id); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        $conn->close();
+        return $results->fetch_all(MYSQLI_ASSOC);
+    }
+
+    function GetBookStates($search){
+        require "databaseConnect.php";
+
+        $query = "CALL getBookStates(?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("s", $search); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        $conn->close();
+        return $results->fetch_all(MYSQLI_ASSOC);
+    }
+
+    function GetUsernames($name){
+        require "databaseConnect.php";
+
+        $query = "CALL getUsernames(?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("s", $name); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        $conn->close();
+        return $results->fetch_all(MYSQLI_ASSOC);
     }
     /**
      * Return true or false depending if the end date of borrowing the given book is extendable.

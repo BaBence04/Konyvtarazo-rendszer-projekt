@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Script.Services;
 using System.Windows.Forms;
 
 namespace Desktop
@@ -65,7 +66,7 @@ namespace Desktop
                 {
                     foreach (KeyValuePair<string, string> item in response[0])
                     {
-                        if (item.Key != "user_id" && item.Key != "book_id")
+                        if (item.Key != "user_id" && item.Key != "book_id" && item.Key != "id")
                         {
                             col = new DataColumn();
                             col.DataType = typeof(string);
@@ -111,6 +112,21 @@ namespace Desktop
                 {
                     response = response.Where(x => x["status"] == "available").ToList();
                 }
+                if (startMode == "bookOrReserve")
+                {
+                    if (!canBook && !canReserve)
+                    {
+                        MessageBox.Show("Ez a felhasználó nem tud se foglalni sem előjegyezni, mert már a maximális van mind a kettőből");
+                        this.Close();
+                    }
+                    if (!canBook)
+                    {
+                        response = response.Where(x => x["state"] != "booking").ToList();
+                    }if (!canReserve)
+                    {
+                        response = response.Where(x => x["state"] != "reservation").ToList();
+                    }
+                }
                 //make rows
                 for (int i = 0; i < response.Count(); i++)
                 {
@@ -120,7 +136,7 @@ namespace Desktop
                         foreach (KeyValuePair<string, string> item in response[i])
                         {
 
-                            if (item.Key == "user_id" || item.Key == "book_id")
+                            if (item.Key == "user_id" || item.Key == "book_id" || item.Key == "id")
                             {
                                 ids.Add(item.Value);
                             }
@@ -141,7 +157,11 @@ namespace Desktop
                     
                     dt.Rows.Add(row);
                 }
-
+                //disable ordering
+                foreach (DataGridViewColumn column in cdgwSelect.Columns)
+                {
+                    column.SortMode = DataGridViewColumnSortMode.NotSortable;
+                }
                 cdgwSelect.DataSource = dt;
                 cdgwSelect.Columns.Add(btns);
             }
@@ -193,18 +213,26 @@ namespace Desktop
             }
             
         }
-        private void cdgwSelect_CellClick(object sender, DataGridViewCellEventArgs e)
+        private async void cdgwSelect_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == cdgwSelect.Columns["Választás"].Index)
             {
-                if (startMode != "userTakeback")
+                if (startMode == "bookOrReserve")
+                {
+                    MessageBox.Show("Biztosan végre szeretné hajtani a műveletet");
+                    List<Dictionary<string, string>> resp = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "addReservationOrBooking" }, { "ISBN", ids[e.RowIndex] }, { "userid", optionalId } });
+                    if (resp.First()["status"] != (string)cdgwSelect.Rows[e.RowIndex].Cells[2].Value)
+                    {
+                        MessageBox.Show("Közben megváltozott a foglalás");
+                    }
+                } else if (startMode != "userTakeback")
                 {
                     res1 = (string)cdgwSelect.Rows[e.RowIndex].Cells[0].Value;
                     res2 = (string)cdgwSelect.Rows[e.RowIndex].Cells[1].Value;
                     res3 = (string)cdgwSelect.Rows[e.RowIndex].Cells[2].Value;
                     id = ids[e.RowIndex];
-                
-                    this.DialogResult =  DialogResult.OK;
+
+                    this.DialogResult = DialogResult.OK;
                 }
                 else
                 {
@@ -216,7 +244,8 @@ namespace Desktop
         private async void getUserStatus()
         {
             List<Dictionary<string, string>> resp = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "checkPermissions" }, { "id", optionalId } });
-
+            canReserve = bool.Parse(resp.First()["reservation"]);
+            canBook = bool.Parse(resp.First()["booking"]);
         }
     }
     }

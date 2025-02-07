@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Desktop
 {
-    public partial class addPublisher : Form
+    public partial class AddPublisher : Form
     {
-        public addPublisher()
+        public AddPublisher()
         {
             InitializeComponent();
         }

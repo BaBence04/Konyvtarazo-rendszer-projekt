@@ -240,10 +240,10 @@ DELIMITER ;
 
 -- get email by user id
 DELIMITER //
-CREATE PROCEDURE IF NOT EXISTS getEmail(
+CREATE PROCEDURE IF NOT EXISTS getEmailData(
   IN ID INT
 ) BEGIN
-SELECT users.email FROM users WHERE users.user_id = ID;
+SELECT users.email, users.surname, users.first_name FROM users WHERE users.user_id = ID;
 END;//
 DELIMITER ;
 
@@ -734,15 +734,15 @@ CREATE PROCEDURE IF NOT EXISTS addUser(
   IN birthdate DATE, 
   IN email VARCHAR(255),
   IN phone VARCHAR(255),
-  IN pw VARBINARY(16),
   IN birthplace VARCHAR(255), 
   IN address VARCHAR(255),
-  IN mmn VARBINARY(16) 
+  IN mmn VARCHAR(255) 
 ) BEGIN
 IF ((SELECT users.user_id FROM users WHERE users.surname = surname AND users.first_name = firstname AND users.birth_date = birthdate AND users.birth_place = birthplace AND users.mother_maiden_name  = mmn) IS NULL) THEN 
-	INSERT INTO users(users.surname, users.first_name, users.username, users.birth_date, users.membership_end_date, users.email, users.phone_number, users.password, users.birth_place, users.address, users.mother_maiden_name, users.active) VALUES(surname, firstname, uname ,birthdate, (SELECT CURRENT_DATE() - INTERVAL 1 DAY), email, phone, pw, birthplace, address, mmn, 1);
+	INSERT INTO users(users.surname, users.first_name, users.username, users.birth_date, users.membership_end_date, users.email, users.phone_number, users.birth_place, users.address, users.mother_maiden_name, users.active) VALUES(surname, firstname, uname ,birthdate, (SELECT CURRENT_DATE() - INTERVAL 1 DAY), email, phone, birthplace, address, mmn, 1);
+  SELECT "Siker" AS state;
 ELSE 
-	SELECT "a személy már egyszer beregisztrált"; 
+	SELECT "A személy már egyszer beregisztrált" AS state; 
 END IF; 
 END;//
 DELIMITER ;
@@ -799,6 +799,28 @@ CREATE PROCEDURE IF NOT EXISTS checkPermissions(
   IN ID INT
 ) 
 BEGIN
-SELECT CASE WHEN (SELECT COUNT(reservation.reservation_id) FROM reservation WHERE reservation.user_id = ID)=(SELECT system_settings.max_reservations FROM system_settings) THEN "false" ELSE "true" END AS 'reservation',  CASE WHEN (SELECT COUNT(booking.booking_id) FROM booking WHERE booking.user_id = ID)=(SELECT system_settings.max_reservations FROM system_settings) THEN "false" ELSE "true" END AS 'booking';
+SELECT CASE WHEN (SELECT COUNT(reservation.reservation_id) FROM reservation WHERE reservation.user_id = ID)=(SELECT system_settings.max_reservations FROM system_settings) THEN "false" ELSE "true" END AS 'reservation',  CASE WHEN (SELECT COUNT(booking.booking_id) FROM booking WHERE booking.user_id = ID)>=(SELECT system_settings.max_reservations FROM system_settings) THEN "false" ELSE "true" END AS 'booking';
+END;//
+DELIMITER ;
+
+-- gets state of books types with search
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS getBookStates(
+  IN search VARCHAR(255)
+) 
+BEGIN
+-- túl büszke vagyok erre a lekérdezésre nem fogom eltűntetni
+-- SELECT CASE WHEN (COUNT(DISTINCT inventory.book_id) > COUNT(j.booking_id)+COUNT(i.borrowing_id)) THEN k.book_id ELSE inventory.ISBN_id END AS id, book.ISBN, book.title, CASE WHEN (COUNT(DISTINCT inventory.book_id) > COUNT(j.booking_id)+COUNT(i.borrowing_id)) THEN "booking" ELSE "reservation" END AS state FROM (((book INNER JOIN inventory ON inventory.ISBN_id = book.ISBN_id) LEFT JOIN (SELECT booking.booking_id, booking.book_id FROM booking) j ON j.book_id = inventory.book_id) LEFT JOIN (SELECT borrowings.borrowing_id, borrowings.book_id FROM borrowings WHERE NOT borrowings.returned) i ON i.book_id = inventory.book_id) LEFT JOIN (SELECT inventory.book_id FROM inventory WHERE inventory.book_id NOT IN (SELECT borrowings.book_id FROM borrowings WHERE NOT borrowings.returned) AND inventory.book_id NOT IN (SELECT booking.book_id FROM booking)) k ON k.book_id = inventory.book_id WHERE (book.title LIKE CONCAT("%",search,"%") OR book.ISBN LIKE CONCAT("%",search,"%")) GROUP BY inventory.ISBN_id;
+SELECT inventory.ISBN_id AS id, book.ISBN, book.title, CASE WHEN (COUNT(DISTINCT inventory.book_id) > COUNT(j.booking_id)+COUNT(i.borrowing_id)) THEN "booking" ELSE "reservation" END AS state FROM (((book INNER JOIN inventory ON inventory.ISBN_id = book.ISBN_id) LEFT JOIN (SELECT booking.booking_id, booking.book_id FROM booking) j ON j.book_id = inventory.book_id) LEFT JOIN (SELECT borrowings.borrowing_id, borrowings.book_id FROM borrowings WHERE NOT borrowings.returned) i ON i.book_id = inventory.book_id) WHERE (book.title LIKE CONCAT("%",search,"%") OR book.ISBN LIKE CONCAT("%",search,"%")) GROUP BY inventory.ISBN_id;
+END;//
+DELIMITER ;
+
+-- gets all usernames that starts with the sent one for username generation
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS getUsernames(
+  IN name VARCHAR(255)
+) 
+BEGIN
+  SELECT users.username FROM users WHERE users.username LIKE CONCAT(name, "%");
 END;//
 DELIMITER ;

@@ -4,29 +4,23 @@ Mesterremek projekt, könyvtárazó rendszer
 
 #ASZTALI:
     KINÉZET:
-        -legyen lehetőség meghosszabítani a felhasználó tagságát
-        -a book részletesen lehessen előjegyezni/foglalni egy adott user számára
         -a könyvrészletesen lehessen a kiadóra lehessen rákattintani, és megnyitni annak a részleteit
         -automatikus törlős dologhoz valami frontend, popup window szerűség
-        -userDetailed form módosításhoz/törléshez (- Bence)
         -publishers tabnál a customDataGridView-hoz hozzá kell adni a userDeletingRow functiont(- Bence)
         -publishers tabnál van egy MessageBox.Show amit meg lehetne styleolni(- Bence)
-        -új form addPublisher nem fog működni nagy eséllyel mert így sikerült feltölteni FIX: hozzáaddolsz egy formot és átmásolod a dolgokat az addPublisher form-ból abba(- Bence)
         -addPublishernél is van egy MessageBox.Show amit meg lehetne styleolni(- Bence)
+        -a legtöbb user-el kapcsolatos formon is van egy pár MessageBox.Show amit meg lehetne styleolni(- Bence)
+        -minden ami a UsersPage-el kapcsolatos (alias onnan nyílik meg) szabadon style-olható mert minden készen van nem fogok már hozzányúlni nagy eséllel
         -customDateTimePicker (- Bence)
+        -addPublishers formon a vissza gombot megtaláltam, csak nem látszódik(- Bence)
 
 
     BACKEND:
-        -legyen lehetőség meghosszabítani a felhasználó tagságát, és a taggság lejárati dátuma ne aznaphoz egy évre járjon le, hanem a mostani tagság lejárati dátum + 1év
         -a könyvkiadásnál írjuk ki, hogy mikor olvasta az illető legutóbb a könyvet 
-        -a book részletesen lehessen előjegyezni/foglalni egy adott user számára (- Bence DONE)
-        -kell lehetőség arra is, hogy lehessen egy user-t inaktívvá tenni 
         -az asztali program indításakor fusson le a lejárt foglalás törlő procedure, és küldje ki az értesítéseket (- Partly done)
-        -return book módosítva nekem működött, de nem minden case-t néztem meg (- Bence DONE)
-        -automatikus törlős dolog implementálása (- Bence DONE)
-        -kiadás/visszavételnél frissítse az aktuális formot ez inkább az allbooksnál fontos (- Bence DONE)
         -nézni kell, pl 5 percenként, hogy jött-e új foglalás(az előzőket fájlban tároljuk pl), és olyankor kell egy popup, hogy új foglalás jött, hogy félre tudja majd tenni a polcra a könyvtáros
-        -Ha a user inactive akkor az összes input mező legyen readOnly(- Bence)
+        -employeesnál is úgy kell majd működnie hogy lesz egy active flag és csak deaktiválni lehet fiókot
+        -employees táblánál mindenki csak a saját adatait módosíthatja
 
 #WEB:
     KINÉZET:

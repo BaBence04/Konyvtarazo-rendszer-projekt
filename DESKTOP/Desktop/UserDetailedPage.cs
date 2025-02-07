@@ -32,7 +32,8 @@ namespace Desktop
 			}
 			else
 			{
-                lblState.Text = "inactive";
+                
+				Deactivated();
 				
             }
 			
@@ -121,12 +122,21 @@ namespace Desktop
 
 		private void Deactivated()
 		{
-			//HA LESZ READONLY RÉSZE A CTB-knek AKKOR LEHET IMPLEMENTÁLNI
+            lblState.Text = "inactive";
+            ctbBirthplace.IsReadOnly = true;
+			ctbAddress.IsReadOnly = true;
+			ctbEmail.IsReadOnly = true;
+			ctbPhone.IsReadOnly = true;
+			ctbMmn.IsReadOnly = true;
+			ctbFirstname.IsReadOnly = true;
+			ctbSurname.IsReadOnly = true;
+			dtpBirthDate.Enabled = false;
 		}
 
         private void cbtnBorrow_Click(object sender, EventArgs e)
         {
 			PopupSelect pop = new PopupSelect("bookOrReserve", user_id);
+			pop.ShowDialog();
         }
     }
 }

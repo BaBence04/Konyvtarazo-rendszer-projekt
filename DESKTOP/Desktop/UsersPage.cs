@@ -156,5 +156,20 @@ namespace Desktop
             }
             
         }
+
+        private void AddUser_Click(object sender, EventArgs e)
+        {
+            AddUser add = new AddUser();
+            if (add.ShowDialog() == DialogResult.OK) {
+                if (ctbSearch.Texts != ctbSearch.PlaceholderText)
+                {
+                    updateUsersDgw(ctbSearch.Texts);
+                }
+                else
+                {
+                    updateUsersDgw("");
+                }
+            }
+        }
     }
 }

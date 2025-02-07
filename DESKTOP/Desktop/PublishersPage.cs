@@ -129,7 +129,7 @@ namespace Desktop
 
         private void customButton1_Click(object sender, EventArgs e)
         {
-            addPublisher add = new addPublisher();
+            AddPublisher add = new AddPublisher();
             if (add.ShowDialog() == DialogResult.OK)
             {
                 if (ctbSearch.Texts != ctbSearch.PlaceholderText)

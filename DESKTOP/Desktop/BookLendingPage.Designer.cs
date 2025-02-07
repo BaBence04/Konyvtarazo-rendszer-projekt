@@ -43,6 +43,7 @@
             this.cbtnChooseUser = new Desktop.CustomButton();
             this.cbtnKiad = new Desktop.CustomButton();
             this.backBtn = new Desktop.CustomButton();
+            this.label6 = new System.Windows.Forms.Label();
             this.pChooseBook.SuspendLayout();
             this.pChooseUser.SuspendLayout();
             this.SuspendLayout();
@@ -237,12 +238,24 @@
             this.backBtn.UseVisualStyleBackColor = false;
             this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
             // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label6.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label6.Location = new System.Drawing.Point(32, 362);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(0, 42);
+            this.label6.TabIndex = 21;
+            // 
             // BookLendingPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
             this.ClientSize = new System.Drawing.Size(740, 559);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.cbtnKiad);
             this.Controls.Add(this.pChooseUser);
             this.Controls.Add(this.backBtn);
@@ -257,7 +270,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "BookLendingPage";
             this.Text = "BookLendingPage";
             this.pChooseBook.ResumeLayout(false);
@@ -284,5 +297,6 @@
         private System.Windows.Forms.Panel pChooseUser;
         private CustomButton cbtnChooseUser;
         private CustomButton cbtnKiad;
+        private System.Windows.Forms.Label label6;
     }
 }

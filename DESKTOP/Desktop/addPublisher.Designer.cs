@@ -1,6 +1,6 @@
 ﻿namespace Desktop
 {
-    partial class addPublisher
+    partial class AddPublisher
     {
         /// <summary>
         /// Required designer variable.
@@ -45,6 +45,7 @@
             this.ctbTel.BorderSize = 2;
             this.ctbTel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ctbTel.ForeColor = System.Drawing.Color.DimGray;
+            this.ctbTel.IsReadOnly = false;
             this.ctbTel.Location = new System.Drawing.Point(26, 175);
             this.ctbTel.Margin = new System.Windows.Forms.Padding(4);
             this.ctbTel.Multiline = false;
@@ -67,6 +68,7 @@
             this.ctbName.BorderSize = 2;
             this.ctbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ctbName.ForeColor = System.Drawing.Color.DimGray;
+            this.ctbName.IsReadOnly = false;
             this.ctbName.Location = new System.Drawing.Point(26, 103);
             this.ctbName.Margin = new System.Windows.Forms.Padding(4);
             this.ctbName.Multiline = false;
@@ -89,6 +91,7 @@
             this.ctbEmail.BorderSize = 2;
             this.ctbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ctbEmail.ForeColor = System.Drawing.Color.DimGray;
+            this.ctbEmail.IsReadOnly = false;
             this.ctbEmail.Location = new System.Drawing.Point(26, 241);
             this.ctbEmail.Margin = new System.Windows.Forms.Padding(4);
             this.ctbEmail.Multiline = false;
@@ -111,6 +114,7 @@
             this.ctbWeb.BorderSize = 2;
             this.ctbWeb.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ctbWeb.ForeColor = System.Drawing.Color.DimGray;
+            this.ctbWeb.IsReadOnly = false;
             this.ctbWeb.Location = new System.Drawing.Point(26, 312);
             this.ctbWeb.Margin = new System.Windows.Forms.Padding(4);
             this.ctbWeb.Multiline = false;
@@ -158,7 +162,7 @@
             this.button_CloseLoginForm.UseVisualStyleBackColor = false;
             this.button_CloseLoginForm.Click += new System.EventHandler(this.button_CloseLoginForm_Click);
             // 
-            // addPublisher
+            // AddPublisher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -172,7 +176,7 @@
             this.Controls.Add(this.ctbTel);
             this.ForeColor = System.Drawing.SystemColors.Control;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "addPublisher";
+            this.Name = "AddPublisher";
             this.Text = "addPublisher";
             this.ResumeLayout(false);
 
