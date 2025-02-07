@@ -16,11 +16,14 @@ Mesterremek projekt, könyvtárazó rendszer
 
 
     BACKEND:
+        -legyen lehetőségük a dolgozóknak megváltoztatni a jelszavukat, és törölni a felhasználójukat
+        -a popup form-ok a megnyitott form közepére nyíljanak meg
+        -legyen lehetőség meghosszabítani a felhasználó tagságát, és a taggság lejárati dátuma ne aznaphoz egy évre járjon le, hanem a mostani tagság lejárati dátum + 1év
         -a könyvkiadásnál írjuk ki, hogy mikor olvasta az illető legutóbb a könyvet 
         -az asztali program indításakor fusson le a lejárt foglalás törlő procedure, és küldje ki az értesítéseket (- Partly done)
         -nézni kell, pl 5 percenként, hogy jött-e új foglalás(az előzőket fájlban tároljuk pl), és olyankor kell egy popup, hogy új foglalás jött, hogy félre tudja majd tenni a polcra a könyvtáros
         -employeesnál is úgy kell majd működnie hogy lesz egy active flag és csak deaktiválni lehet fiókot
-        -employees táblánál mindenki csak a saját adatait módosíthatja
+        -employees táblánál mindenki csak a saját adatait módosíthatja 
 
 #WEB:
     KINÉZET:
@@ -40,6 +43,8 @@ Mesterremek projekt, könyvtárazó rendszer
         -az összes könyv kilistázásánál ki kell írni, hogy kivehető/foglalható, előjegyezhető
 
 SQL:
+    -legyen az employee-k táblának is egy active flag-je
+
 
 ADDITIONAL STUFF TO DO:
 -api endpoint dokkumentáció, mert kezd nehéz lenni követni hogy mi történik
@@ -49,4 +54,5 @@ KÉRDÉSEK A KÖNYVTÁROSOKHOZ:
 -lehet-e kivételkor azonnal meghosszabbítani a könyvet
 -ha lejár a határidő vagyis tartozna valamennyivel a felhasználó, de meghosszabbítja, akkor kell-e fizetni-e valamit, ha utána visszahozza időre?
 -ha lejár a taggság, akkor az előjegyzései is törlődnek?
+
 
