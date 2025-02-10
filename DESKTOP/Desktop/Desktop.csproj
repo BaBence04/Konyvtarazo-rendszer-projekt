@@ -90,6 +90,9 @@
     <Compile Include="CustomDataGridView.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="CustomDateTimePicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="CustomTextbox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -319,6 +322,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\icons\add-line_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calendarBlack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calendarWhite.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
