@@ -11,7 +11,7 @@
     <h1>Majd email-ben fog jönni a link</h1>
     <label for="newPassword">Új jelszó:</label>
     <input type="password" id="newPassword" oninput="ValidatePassword(this.value);">
-    <div id="errors_with_password"></div>
+    <?php require("new_password_error_messages.html");?>
     <label for="newPasswordAgain">Új jelszó újra:</label>
     <input required type="password" id="newPasswordAgain">
     <button onclick="ChangePassword();" type="button">Cserélés</button>
@@ -20,7 +20,7 @@
 
 <script>
     function ChangePassword(){
-        let password =document.getElementById("newPassword").value;
+        let password = document.getElementById("newPassword").value;
         let passwordAgain =document.getElementById("newPasswordAgain").value;
         ValidatePassword(password);
         if(document.getElementById("errors_with_password").innerHTML == ""){
