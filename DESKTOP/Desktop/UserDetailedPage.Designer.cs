@@ -268,6 +268,7 @@
             this.ctbFirstname.BorderSize = 2;
             this.ctbFirstname.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ctbFirstname.ForeColor = System.Drawing.Color.DimGray;
+            this.ctbFirstname.IsReadOnly = false;
             this.ctbFirstname.Location = new System.Drawing.Point(13, 271);
             this.ctbFirstname.Margin = new System.Windows.Forms.Padding(4);
             this.ctbFirstname.Multiline = false;
@@ -341,6 +342,7 @@
             this.ctbMmn.BorderSize = 2;
             this.ctbMmn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ctbMmn.ForeColor = System.Drawing.Color.DimGray;
+            this.ctbMmn.IsReadOnly = false;
             this.ctbMmn.Location = new System.Drawing.Point(272, 447);
             this.ctbMmn.Margin = new System.Windows.Forms.Padding(4);
             this.ctbMmn.Multiline = false;
@@ -363,6 +365,7 @@
             this.ctbAddress.BorderSize = 2;
             this.ctbAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ctbAddress.ForeColor = System.Drawing.Color.DimGray;
+            this.ctbAddress.IsReadOnly = false;
             this.ctbAddress.Location = new System.Drawing.Point(272, 363);
             this.ctbAddress.Margin = new System.Windows.Forms.Padding(4);
             this.ctbAddress.Multiline = false;
@@ -385,6 +388,7 @@
             this.ctbBirthplace.BorderSize = 2;
             this.ctbBirthplace.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ctbBirthplace.ForeColor = System.Drawing.Color.DimGray;
+            this.ctbBirthplace.IsReadOnly = false;
             this.ctbBirthplace.Location = new System.Drawing.Point(275, 271);
             this.ctbBirthplace.Margin = new System.Windows.Forms.Padding(4);
             this.ctbBirthplace.Multiline = false;
@@ -407,6 +411,7 @@
             this.ctbPhone.BorderSize = 2;
             this.ctbPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ctbPhone.ForeColor = System.Drawing.Color.DimGray;
+            this.ctbPhone.IsReadOnly = false;
             this.ctbPhone.Location = new System.Drawing.Point(272, 195);
             this.ctbPhone.Margin = new System.Windows.Forms.Padding(4);
             this.ctbPhone.Multiline = false;
@@ -429,6 +434,7 @@
             this.ctbEmail.BorderSize = 2;
             this.ctbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ctbEmail.ForeColor = System.Drawing.Color.DimGray;
+            this.ctbEmail.IsReadOnly = false;
             this.ctbEmail.Location = new System.Drawing.Point(16, 447);
             this.ctbEmail.Margin = new System.Windows.Forms.Padding(4);
             this.ctbEmail.Multiline = false;
@@ -451,6 +457,7 @@
             this.ctbSurname.BorderSize = 2;
             this.ctbSurname.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ctbSurname.ForeColor = System.Drawing.Color.DimGray;
+            this.ctbSurname.IsReadOnly = false;
             this.ctbSurname.Location = new System.Drawing.Point(13, 195);
             this.ctbSurname.Margin = new System.Windows.Forms.Padding(4);
             this.ctbSurname.Multiline = false;

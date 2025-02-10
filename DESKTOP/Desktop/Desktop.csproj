@@ -90,14 +90,17 @@
     <Compile Include="CustomDataGridView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="CustomDateTimePicker.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="CustomTextbox.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="CustomTextbox.Designer.cs">
       <DependentUpon>CustomTextbox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeDetailedPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployeeDetailedPage.Designer.cs">
+      <DependentUpon>EmployeeDetailedPage.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -184,6 +187,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CustomTextbox.resx">
       <DependentUpon>CustomTextbox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeDetailedPage.resx">
+      <DependentUpon>EmployeeDetailedPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -322,12 +328,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\icons\add-line_white.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\calendarBlack.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\calendarWhite.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

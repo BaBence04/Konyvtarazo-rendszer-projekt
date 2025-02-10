@@ -157,5 +157,10 @@ namespace Desktop
 		{
 			OpenChildForm(new PublishersPage());
 		}
-	}
+
+        private void pictureBox_UserPic_Click(object sender, EventArgs e)
+        {
+			OpenChildForm(new EmployeeDetailedPage());
+        }
+    }
 }
