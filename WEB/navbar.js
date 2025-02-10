@@ -144,10 +144,10 @@ loginClose.addEventListener("click", () => {
   togglePassword.addEventListener("click", function () {
       if (passwordField.type === "password") {
           passwordField.type = "text";
-          togglePassword.src = "./imgs/eye-line.png";
+          togglePassword.src = "/web/imgs/eye-line.png";
       } else {
           passwordField.type = "password";
-          togglePassword.src = "imgs/eye-off-line.png";
+          togglePassword.src = "/web/imgs/eye-off-line.png";
       }
 });
 
