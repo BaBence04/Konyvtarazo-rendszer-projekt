@@ -1,4 +1,4 @@
-<div class="book-details">
+<main class="book-details">
     <div class="book-image">
         <img src="<?=$book_data["picture_base64"]?>" alt="Book Image">
     </div>
@@ -54,7 +54,7 @@
             ?>
         </div>
     </div>
-</div>
+</main>
 
     <script src="jquery.js"></script>
     <script>
