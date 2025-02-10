@@ -297,6 +297,19 @@
         } */
 
     }
+    
+    function GetEmployee($empl_id){
+        require "databaseConnect.php";
+
+        $query = "CALL getEmployee(?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("s", $empl_id); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        $conn->close();
+        return $results->fetch_all(MYSQLI_ASSOC);
+   }
 
     function ExtendReturnDate($book_id, $user_id): void{
         require "databaseConnect.php";
