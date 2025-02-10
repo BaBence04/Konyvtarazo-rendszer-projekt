@@ -273,6 +273,15 @@ SELECT users.surname, users.first_name, users.username, users.birth_date, users.
 END;//
 DELIMITER ;
 
+-- gets employee data
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS getEmployee(
+  IN empl_id INT
+) BEGIN
+SELECT employees.empl_name, employees.empl_uname FROM employees WHERE employees.empl_id = empl_id;
+END;//
+DELIMITER ;
+
 -- returns if the book can be reserved or booked
 DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS checkAvailability(
@@ -554,7 +563,7 @@ CREATE PROCEDURE IF NOT EXISTS loginEmployee(
   IN username VARCHAR(255), 
   IN pw VARCHAR(255)
 ) BEGIN
-SELECT CASE WHEN (SELECT employees.password FROM employees WHERE employees.empl_uname = username) = PASSWORD(pw) THEN 'true' ELSE 'false' END AS 'info';
+SELECT CASE WHEN (SELECT employees.password FROM employees WHERE employees.empl_uname = username AND employee.active) = PASSWORD(pw) THEN 'true' ELSE 'false' END AS 'info';
 END;//
 DELIMITER ;
 

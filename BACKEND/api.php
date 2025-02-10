@@ -175,6 +175,8 @@
         }
         else if(isset($_POST["type"]) && $_POST["type"] == "getUsers" && isset($_POST["search"]) && count($_POST) == 2){
             echo json_encode(GetUsers($_POST["search"]));
+        }else if(isset($_POST["type"]) && $_POST["type"] == "getEmployee" && isset($_POST["empl_id"]) && count($_POST) == 2){
+            echo json_encode(GetEmployee($_POST["empl_id"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "getBooks" && isset($_POST["search"]) && count($_POST) == 2){
             echo json_encode(GetBooks($_POST["search"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "getBorrowedBooks" && isset($_POST["search"]) && count($_POST) == 2){
@@ -215,7 +217,6 @@
             }else{
                 cancel_booking($_POST["id"], $_SESSION["user_id"]);
             }
-        
         }else if(isset($_POST["type"]) && $_POST["type"] == "getSystemSettings" && count($_POST) == 1){
             echo json_encode(GetSystemSettings());
         }else if(isset($_POST["type"]) && $_POST["type"] == "renewMembership"  && isset($_POST["id"]) && count($_POST) == 2){

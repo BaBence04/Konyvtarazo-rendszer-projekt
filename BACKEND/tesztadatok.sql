@@ -42,9 +42,9 @@ INSERT INTO reservation (ISBN_id, user_id) VALUES
 (1, 1),
 (2, 2);
 
-INSERT INTO employees (empl_name, empl_uname, password) VALUES
-('Tóth Péter', 'AABBC', '*2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19'),
-('Nagy László', 'BBCCD', '*2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19');
+INSERT INTO employees (empl_name, empl_uname, password, active) VALUES
+('Tóth Péter', 'AABBC', '*2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19', 1),
+('Nagy László', 'BBCCD', '*2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19', 1);
 
 INSERT INTO borrowings (book_id, user_id, empl_e, start_date, end_date, returned) VALUES
 (1, 1, 1, '2024-01-01', '2024-01-15', 1),
