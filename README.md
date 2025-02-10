@@ -11,7 +11,6 @@ Mesterremek projekt, könyvtárazó rendszer
         -addPublishernél is van egy MessageBox.Show amit meg lehetne styleolni(- Bence)
         -a legtöbb user-el kapcsolatos formon is van egy pár MessageBox.Show amit meg lehetne styleolni(- Bence)
         -minden ami a UsersPage-el kapcsolatos (alias onnan nyílik meg) szabadon style-olható mert minden készen van nem fogok már hozzányúlni nagy eséllel
-        -customDateTimePicker (- Bence)
         -addPublishers formon a vissza gombot megtaláltam, csak nem látszódik(- Bence)
 
 
