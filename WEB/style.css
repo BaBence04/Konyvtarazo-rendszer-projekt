@@ -1507,6 +1507,7 @@ a, a:active, a:hover, a:visited, a:link{
 
 #errors_with_password>p{
   line-height: var(--normal-font-size);
+  display: none;
 }
 /* /////////////////////////////////////// */
 
