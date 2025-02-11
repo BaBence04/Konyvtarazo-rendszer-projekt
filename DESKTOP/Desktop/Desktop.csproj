@@ -53,6 +53,12 @@
     <Compile Include="AddBookPage.Designer.cs">
       <DependentUpon>AddBookPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddEmployee.Designer.cs">
+      <DependentUpon>AddEmployee.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddPublisher.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +172,9 @@
     </Compile>
     <EmbeddedResource Include="AddBookPage.resx">
       <DependentUpon>AddBookPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddEmployee.resx">
+      <DependentUpon>AddEmployee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddPublisher.resx">
       <DependentUpon>AddPublisher.cs</DependentUpon>

@@ -29,6 +29,7 @@ namespace Desktop
 		private async void Form1_Load(object sender, EventArgs e)
 		{
             OpenChildForm(new HomePage());
+			lblEmplUname.Text = LoginForm.empl_uname;
 			List<Dictionary<string, string>> temp = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "getSystemSettings" } });
 			system_settings = temp.First();
             //WHEN FINAL VERSION UNCOMMENT THIS ALSO NOT REALLY TESTED

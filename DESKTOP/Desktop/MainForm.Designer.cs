@@ -44,11 +44,11 @@
             this.button_HomePage = new System.Windows.Forms.Button();
             this.panel_Theme = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.toggleButton_ThemeChanger = new Desktop.ToggleButton();
             this.panel_User = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblEmplUname = new System.Windows.Forms.Label();
             this.pictureBox_UserPic = new System.Windows.Forms.PictureBox();
             this.panel_Container = new System.Windows.Forms.Panel();
-            this.toggleButton_ThemeChanger = new Desktop.ToggleButton();
             this.roundedCornerPanel_PageContainer = new Desktop.RoundedCornerPanel();
             this.tableLayoutPanel_Main.SuspendLayout();
             this.panel_Menu.SuspendLayout();
@@ -343,9 +343,24 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "TÉMA";
             // 
+            // toggleButton_ThemeChanger
+            // 
+            this.toggleButton_ThemeChanger.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.toggleButton_ThemeChanger.Location = new System.Drawing.Point(90, 44);
+            this.toggleButton_ThemeChanger.Name = "toggleButton_ThemeChanger";
+            this.toggleButton_ThemeChanger.OffBackColor = System.Drawing.Color.Gray;
+            this.toggleButton_ThemeChanger.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.toggleButton_ThemeChanger.OnBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(205)))), ((int)(((byte)(198)))));
+            this.toggleButton_ThemeChanger.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.toggleButton_ThemeChanger.Size = new System.Drawing.Size(45, 22);
+            this.toggleButton_ThemeChanger.TabIndex = 0;
+            this.toggleButton_ThemeChanger.Text = "toggleButton1";
+            this.toggleButton_ThemeChanger.UseVisualStyleBackColor = true;
+            this.toggleButton_ThemeChanger.CheckedChanged += new System.EventHandler(this.toggleButton_ThemeChanger_CheckedChanged);
+            // 
             // panel_User
             // 
-            this.panel_User.Controls.Add(this.label2);
+            this.panel_User.Controls.Add(this.lblEmplUname);
             this.panel_User.Controls.Add(this.pictureBox_UserPic);
             this.panel_User.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_User.Location = new System.Drawing.Point(0, 0);
@@ -353,15 +368,15 @@
             this.panel_User.Size = new System.Drawing.Size(234, 111);
             this.panel_User.TabIndex = 0;
             // 
-            // label2
+            // lblEmplUname
             // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label2.Location = new System.Drawing.Point(78, 64);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 17);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Username";
+            this.lblEmplUname.AutoSize = true;
+            this.lblEmplUname.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblEmplUname.Location = new System.Drawing.Point(78, 64);
+            this.lblEmplUname.Name = "lblEmplUname";
+            this.lblEmplUname.Size = new System.Drawing.Size(73, 17);
+            this.lblEmplUname.TabIndex = 1;
+            this.lblEmplUname.Text = "Username";
             // 
             // pictureBox_UserPic
             // 
@@ -383,21 +398,6 @@
             this.panel_Container.Name = "panel_Container";
             this.panel_Container.Size = new System.Drawing.Size(746, 744);
             this.panel_Container.TabIndex = 2;
-            // 
-            // toggleButton_ThemeChanger
-            // 
-            this.toggleButton_ThemeChanger.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.toggleButton_ThemeChanger.Location = new System.Drawing.Point(90, 44);
-            this.toggleButton_ThemeChanger.Name = "toggleButton_ThemeChanger";
-            this.toggleButton_ThemeChanger.OffBackColor = System.Drawing.Color.Gray;
-            this.toggleButton_ThemeChanger.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.toggleButton_ThemeChanger.OnBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(205)))), ((int)(((byte)(198)))));
-            this.toggleButton_ThemeChanger.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.toggleButton_ThemeChanger.Size = new System.Drawing.Size(45, 22);
-            this.toggleButton_ThemeChanger.TabIndex = 0;
-            this.toggleButton_ThemeChanger.Text = "toggleButton1";
-            this.toggleButton_ThemeChanger.UseVisualStyleBackColor = true;
-            this.toggleButton_ThemeChanger.CheckedChanged += new System.EventHandler(this.toggleButton_ThemeChanger_CheckedChanged);
             // 
             // roundedCornerPanel_PageContainer
             // 
@@ -459,7 +459,7 @@
         private System.Windows.Forms.Panel panel_Theme;
         private ToggleButton toggleButton_ThemeChanger;
         private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.Label lblEmplUname;
 		private System.Windows.Forms.PictureBox pictureBox_UserPic;
 		private System.Windows.Forms.Panel panel_Links;
 		private System.Windows.Forms.Button button_Publishers;

@@ -13,7 +13,7 @@ namespace Desktop
     public partial class LoginForm : Form
     {
 
-        public static string employee;
+        public static string employee, empl_uname;
         public static MainForm main;
 
         public LoginForm()
@@ -53,7 +53,7 @@ namespace Desktop
                     main = new MainForm();
                     employee = result.First()["info"];
                     main.Closed += (s, args) => this.Close();
-
+                    empl_uname = tbLoginUname.Texts;
                     main.Show();
                 }
                 else

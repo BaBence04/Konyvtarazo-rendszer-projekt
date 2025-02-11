@@ -20,6 +20,7 @@ namespace Desktop
             LoginForm start = new LoginForm();
             LoginForm.main = new MainForm();
             LoginForm.employee = "1";
+            LoginForm.empl_uname = "AABBC";
             Application.Run(LoginForm.main);
 
             

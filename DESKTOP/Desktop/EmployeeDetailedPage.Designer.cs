@@ -28,20 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lbName = new System.Windows.Forms.Label();
             this.lbUname = new System.Windows.Forms.Label();
-            this.cbtnChangePass = new Desktop.CustomButton();
-            this.ctbOldPass = new Desktop.CustomTextbox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.ctbNewPass = new Desktop.CustomTextbox();
             this.label8 = new System.Windows.Forms.Label();
-            this.ctbNewPassAgain = new Desktop.CustomTextbox();
-            this.cbtnDeleteEmpl = new Desktop.CustomButton();
+            this.pEmpolyees = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cdgvEmployees = new Desktop.CustomDataGridView();
             this.cbtnLogout = new Desktop.CustomButton();
+            this.cbtnDeleteEmpl = new Desktop.CustomButton();
+            this.ctbNewPassAgain = new Desktop.CustomTextbox();
+            this.ctbNewPass = new Desktop.CustomTextbox();
+            this.ctbOldPass = new Desktop.CustomTextbox();
+            this.cbtnChangePass = new Desktop.CustomButton();
+            this.pEmpolyees.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cdgvEmployees)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -80,46 +89,6 @@
             this.lbUname.TabIndex = 3;
             this.lbUname.Text = "label";
             // 
-            // cbtnChangePass
-            // 
-            this.cbtnChangePass.BackColor = System.Drawing.Color.Black;
-            this.cbtnChangePass.BorderColor = System.Drawing.Color.White;
-            this.cbtnChangePass.BorderRadius = 40;
-            this.cbtnChangePass.BorderSize = 0;
-            this.cbtnChangePass.FlatAppearance.BorderSize = 0;
-            this.cbtnChangePass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbtnChangePass.ForeColor = System.Drawing.Color.White;
-            this.cbtnChangePass.Location = new System.Drawing.Point(33, 379);
-            this.cbtnChangePass.Name = "cbtnChangePass";
-            this.cbtnChangePass.Size = new System.Drawing.Size(150, 40);
-            this.cbtnChangePass.TabIndex = 4;
-            this.cbtnChangePass.Text = "Változtat";
-            this.cbtnChangePass.UseVisualStyleBackColor = false;
-            this.cbtnChangePass.Click += new System.EventHandler(this.cbtnChangePass_Click);
-            // 
-            // ctbOldPass
-            // 
-            this.ctbOldPass.BackColor = System.Drawing.SystemColors.Window;
-            this.ctbOldPass.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.ctbOldPass.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.ctbOldPass.BorderRadius = 0;
-            this.ctbOldPass.BorderSize = 2;
-            this.ctbOldPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.ctbOldPass.ForeColor = System.Drawing.Color.DimGray;
-            this.ctbOldPass.IsReadOnly = false;
-            this.ctbOldPass.Location = new System.Drawing.Point(33, 205);
-            this.ctbOldPass.Margin = new System.Windows.Forms.Padding(4);
-            this.ctbOldPass.Multiline = false;
-            this.ctbOldPass.Name = "ctbOldPass";
-            this.ctbOldPass.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.ctbOldPass.PasswordChar = true;
-            this.ctbOldPass.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.ctbOldPass.PlaceholderText = "";
-            this.ctbOldPass.Size = new System.Drawing.Size(157, 31);
-            this.ctbOldPass.TabIndex = 5;
-            this.ctbOldPass.Texts = "";
-            this.ctbOldPass.UnderlinedStyle = false;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -147,29 +116,6 @@
             this.label7.TabIndex = 9;
             this.label7.Text = "Új jelszó";
             // 
-            // ctbNewPass
-            // 
-            this.ctbNewPass.BackColor = System.Drawing.SystemColors.Window;
-            this.ctbNewPass.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.ctbNewPass.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.ctbNewPass.BorderRadius = 0;
-            this.ctbNewPass.BorderSize = 2;
-            this.ctbNewPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.ctbNewPass.ForeColor = System.Drawing.Color.DimGray;
-            this.ctbNewPass.IsReadOnly = false;
-            this.ctbNewPass.Location = new System.Drawing.Point(33, 271);
-            this.ctbNewPass.Margin = new System.Windows.Forms.Padding(4);
-            this.ctbNewPass.Multiline = false;
-            this.ctbNewPass.Name = "ctbNewPass";
-            this.ctbNewPass.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.ctbNewPass.PasswordChar = true;
-            this.ctbNewPass.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.ctbNewPass.PlaceholderText = "";
-            this.ctbNewPass.Size = new System.Drawing.Size(157, 31);
-            this.ctbNewPass.TabIndex = 8;
-            this.ctbNewPass.Texts = "";
-            this.ctbNewPass.UnderlinedStyle = false;
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -178,6 +124,116 @@
             this.label8.Size = new System.Drawing.Size(92, 13);
             this.label8.TabIndex = 11;
             this.label8.Text = "Új jelszó ismétlése";
+            // 
+            // pEmpolyees
+            // 
+            this.pEmpolyees.Controls.Add(this.label3);
+            this.pEmpolyees.Controls.Add(this.cdgvEmployees);
+            this.pEmpolyees.Location = new System.Drawing.Point(355, 117);
+            this.pEmpolyees.Name = "pEmpolyees";
+            this.pEmpolyees.Size = new System.Drawing.Size(339, 245);
+            this.pEmpolyees.TabIndex = 14;
+            this.pEmpolyees.Visible = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 14);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(101, 13);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Aktív alkalmazottak";
+            // 
+            // cdgvEmployees
+            // 
+            this.cdgvEmployees.AllowUserToAddRows = false;
+            this.cdgvEmployees.AllowUserToDeleteRows = false;
+            this.cdgvEmployees.AlternatingRowBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(88)))));
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(88)))));
+            this.cdgvEmployees.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.cdgvEmployees.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.cdgvEmployees.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.cdgvEmployees.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.cdgvEmployees.BorderThickness = 2;
+            this.cdgvEmployees.CellBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.cdgvEmployees.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.cdgvEmployees.CellForeColor = System.Drawing.Color.WhiteSmoke;
+            this.cdgvEmployees.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(55)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.cdgvEmployees.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.cdgvEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.cdgvEmployees.CornerRadius = 8;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.cdgvEmployees.DefaultCellStyle = dataGridViewCellStyle3;
+            this.cdgvEmployees.EnableBorder = false;
+            this.cdgvEmployees.EnableHeadersVisualStyles = false;
+            this.cdgvEmployees.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.cdgvEmployees.HeaderBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(55)))));
+            this.cdgvEmployees.HeaderForeColor = System.Drawing.Color.WhiteSmoke;
+            this.cdgvEmployees.HeaderGradientColor = System.Drawing.Color.SlateBlue;
+            this.cdgvEmployees.HoverRowColor = System.Drawing.Color.LightSteelBlue;
+            this.cdgvEmployees.Location = new System.Drawing.Point(3, 44);
+            this.cdgvEmployees.Name = "cdgvEmployees";
+            this.cdgvEmployees.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(55)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.cdgvEmployees.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.cdgvEmployees.SelectedRowColor = System.Drawing.Color.CornflowerBlue;
+            this.cdgvEmployees.Size = new System.Drawing.Size(333, 201);
+            this.cdgvEmployees.TabIndex = 0;
+            this.cdgvEmployees.UseHeaderGradient = false;
+            this.cdgvEmployees.UseRoundedCorners = false;
+            // 
+            // cbtnLogout
+            // 
+            this.cbtnLogout.BackColor = System.Drawing.Color.Black;
+            this.cbtnLogout.BorderColor = System.Drawing.Color.White;
+            this.cbtnLogout.BorderRadius = 40;
+            this.cbtnLogout.BorderSize = 0;
+            this.cbtnLogout.FlatAppearance.BorderSize = 0;
+            this.cbtnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbtnLogout.ForeColor = System.Drawing.Color.White;
+            this.cbtnLogout.Location = new System.Drawing.Point(355, 379);
+            this.cbtnLogout.Name = "cbtnLogout";
+            this.cbtnLogout.Size = new System.Drawing.Size(150, 40);
+            this.cbtnLogout.TabIndex = 13;
+            this.cbtnLogout.Text = "Kijelentkezés";
+            this.cbtnLogout.UseVisualStyleBackColor = false;
+            this.cbtnLogout.Click += new System.EventHandler(this.cbtnLogout_Click);
+            // 
+            // cbtnDeleteEmpl
+            // 
+            this.cbtnDeleteEmpl.BackColor = System.Drawing.Color.Black;
+            this.cbtnDeleteEmpl.BorderColor = System.Drawing.Color.White;
+            this.cbtnDeleteEmpl.BorderRadius = 40;
+            this.cbtnDeleteEmpl.BorderSize = 0;
+            this.cbtnDeleteEmpl.FlatAppearance.BorderSize = 0;
+            this.cbtnDeleteEmpl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbtnDeleteEmpl.ForeColor = System.Drawing.Color.White;
+            this.cbtnDeleteEmpl.Location = new System.Drawing.Point(355, 27);
+            this.cbtnDeleteEmpl.Name = "cbtnDeleteEmpl";
+            this.cbtnDeleteEmpl.Size = new System.Drawing.Size(150, 52);
+            this.cbtnDeleteEmpl.TabIndex = 12;
+            this.cbtnDeleteEmpl.Text = "Alkalmazott végleges deaktiválása";
+            this.cbtnDeleteEmpl.UseVisualStyleBackColor = false;
+            this.cbtnDeleteEmpl.Click += new System.EventHandler(this.cbtnDeleteEmpl_Click);
             // 
             // ctbNewPassAgain
             // 
@@ -202,45 +258,75 @@
             this.ctbNewPassAgain.Texts = "";
             this.ctbNewPassAgain.UnderlinedStyle = false;
             // 
-            // cbtnDeleteEmpl
+            // ctbNewPass
             // 
-            this.cbtnDeleteEmpl.BackColor = System.Drawing.Color.Black;
-            this.cbtnDeleteEmpl.BorderColor = System.Drawing.Color.White;
-            this.cbtnDeleteEmpl.BorderRadius = 40;
-            this.cbtnDeleteEmpl.BorderSize = 0;
-            this.cbtnDeleteEmpl.FlatAppearance.BorderSize = 0;
-            this.cbtnDeleteEmpl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbtnDeleteEmpl.ForeColor = System.Drawing.Color.White;
-            this.cbtnDeleteEmpl.Location = new System.Drawing.Point(355, 27);
-            this.cbtnDeleteEmpl.Name = "cbtnDeleteEmpl";
-            this.cbtnDeleteEmpl.Size = new System.Drawing.Size(150, 52);
-            this.cbtnDeleteEmpl.TabIndex = 12;
-            this.cbtnDeleteEmpl.Text = "Alkalmazott végleges deaktiválása";
-            this.cbtnDeleteEmpl.UseVisualStyleBackColor = false;
-            this.cbtnDeleteEmpl.Click += new System.EventHandler(this.cbtnDeleteEmpl_Click);
+            this.ctbNewPass.BackColor = System.Drawing.SystemColors.Window;
+            this.ctbNewPass.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.ctbNewPass.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.ctbNewPass.BorderRadius = 0;
+            this.ctbNewPass.BorderSize = 2;
+            this.ctbNewPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.ctbNewPass.ForeColor = System.Drawing.Color.DimGray;
+            this.ctbNewPass.IsReadOnly = false;
+            this.ctbNewPass.Location = new System.Drawing.Point(33, 271);
+            this.ctbNewPass.Margin = new System.Windows.Forms.Padding(4);
+            this.ctbNewPass.Multiline = false;
+            this.ctbNewPass.Name = "ctbNewPass";
+            this.ctbNewPass.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.ctbNewPass.PasswordChar = true;
+            this.ctbNewPass.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.ctbNewPass.PlaceholderText = "";
+            this.ctbNewPass.Size = new System.Drawing.Size(157, 31);
+            this.ctbNewPass.TabIndex = 8;
+            this.ctbNewPass.Texts = "";
+            this.ctbNewPass.UnderlinedStyle = false;
             // 
-            // cbtnLogout
+            // ctbOldPass
             // 
-            this.cbtnLogout.BackColor = System.Drawing.Color.Black;
-            this.cbtnLogout.BorderColor = System.Drawing.Color.White;
-            this.cbtnLogout.BorderRadius = 40;
-            this.cbtnLogout.BorderSize = 0;
-            this.cbtnLogout.FlatAppearance.BorderSize = 0;
-            this.cbtnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbtnLogout.ForeColor = System.Drawing.Color.White;
-            this.cbtnLogout.Location = new System.Drawing.Point(355, 379);
-            this.cbtnLogout.Name = "cbtnLogout";
-            this.cbtnLogout.Size = new System.Drawing.Size(150, 40);
-            this.cbtnLogout.TabIndex = 13;
-            this.cbtnLogout.Text = "Kijelentkezés";
-            this.cbtnLogout.UseVisualStyleBackColor = false;
-            this.cbtnLogout.Click += new System.EventHandler(this.cbtnLogout_Click);
+            this.ctbOldPass.BackColor = System.Drawing.SystemColors.Window;
+            this.ctbOldPass.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.ctbOldPass.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.ctbOldPass.BorderRadius = 0;
+            this.ctbOldPass.BorderSize = 2;
+            this.ctbOldPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.ctbOldPass.ForeColor = System.Drawing.Color.DimGray;
+            this.ctbOldPass.IsReadOnly = false;
+            this.ctbOldPass.Location = new System.Drawing.Point(33, 205);
+            this.ctbOldPass.Margin = new System.Windows.Forms.Padding(4);
+            this.ctbOldPass.Multiline = false;
+            this.ctbOldPass.Name = "ctbOldPass";
+            this.ctbOldPass.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.ctbOldPass.PasswordChar = true;
+            this.ctbOldPass.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.ctbOldPass.PlaceholderText = "";
+            this.ctbOldPass.Size = new System.Drawing.Size(157, 31);
+            this.ctbOldPass.TabIndex = 5;
+            this.ctbOldPass.Texts = "";
+            this.ctbOldPass.UnderlinedStyle = false;
+            // 
+            // cbtnChangePass
+            // 
+            this.cbtnChangePass.BackColor = System.Drawing.Color.Black;
+            this.cbtnChangePass.BorderColor = System.Drawing.Color.White;
+            this.cbtnChangePass.BorderRadius = 40;
+            this.cbtnChangePass.BorderSize = 0;
+            this.cbtnChangePass.FlatAppearance.BorderSize = 0;
+            this.cbtnChangePass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbtnChangePass.ForeColor = System.Drawing.Color.White;
+            this.cbtnChangePass.Location = new System.Drawing.Point(33, 379);
+            this.cbtnChangePass.Name = "cbtnChangePass";
+            this.cbtnChangePass.Size = new System.Drawing.Size(150, 40);
+            this.cbtnChangePass.TabIndex = 4;
+            this.cbtnChangePass.Text = "Változtat";
+            this.cbtnChangePass.UseVisualStyleBackColor = false;
+            this.cbtnChangePass.Click += new System.EventHandler(this.cbtnChangePass_Click);
             // 
             // EmployeeDetailedPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(706, 450);
+            this.Controls.Add(this.pEmpolyees);
             this.Controls.Add(this.cbtnLogout);
             this.Controls.Add(this.cbtnDeleteEmpl);
             this.Controls.Add(this.label8);
@@ -258,6 +344,9 @@
             this.Name = "EmployeeDetailedPage";
             this.Text = "EmployeeDetailedPage";
             this.Load += new System.EventHandler(this.EmployeeDetailedPage_Load);
+            this.pEmpolyees.ResumeLayout(false);
+            this.pEmpolyees.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cdgvEmployees)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -279,5 +368,8 @@
         private CustomTextbox ctbNewPassAgain;
         private CustomButton cbtnDeleteEmpl;
         private CustomButton cbtnLogout;
+        private System.Windows.Forms.Panel pEmpolyees;
+        private CustomDataGridView cdgvEmployees;
+        private System.Windows.Forms.Label label3;
     }
 }
