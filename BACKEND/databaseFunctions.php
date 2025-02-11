@@ -389,6 +389,19 @@
         $results = $stmt->get_result();
         return $results->fetch_all(MYSQLI_ASSOC);
     }
+
+    function GetEmployees(){
+        require "databaseConnect.php";
+
+        $query = "CALL getEmployees();";
+        
+        $stmt = $conn->prepare($query); // Prepare statement
+        //$stmt->bind_param("s", $search); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        return $results->fetch_all(MYSQLI_ASSOC);
+    }
+
     function GetBooks($search){
         require "databaseConnect.php";
 
@@ -532,21 +545,16 @@
 
     
 
-    function AddEmployee($uname, $pw){
+    function AddEmployee($name, $uname, $pw){
         require "databaseConnect.php";
 
-        $query = "CALL addEmployee(?,?);";
+        $query = "CALL addEmployee(?,?,?);";
 
         $stmt = $conn->prepare($query); // Prepare statement
-        $stmt->bind_param("ss", $uname, $pw); // Bind parameter to SQL query
+        $stmt->bind_param("sss", $name, $uname, $pw); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
         $conn->close();
-        if($results->fetch_all(MYSQLI_NUM)[0][0] == "az alkalmazott már egyszer beregisztrált"){
-            return -1;
-        }else{
-            return $results->fetch_all(MYSQLI_ASSOC);
-        }
 
     }
 
@@ -620,6 +628,19 @@
         require "databaseConnect.php";
 
         $query = "CALL getUsernames(?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("s", $name); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        $conn->close();
+        return $results->fetch_all(MYSQLI_ASSOC);
+    }
+
+    function GetEmplUsernames($name){
+        require "databaseConnect.php";
+
+        $query = "CALL getEmplUsernames(?);";
 
         $stmt = $conn->prepare($query); // Prepare statement
         $stmt->bind_param("s", $name); // Bind parameter to SQL query

@@ -175,6 +175,8 @@
         }
         else if(isset($_POST["type"]) && $_POST["type"] == "getUsers" && isset($_POST["search"]) && count($_POST) == 2){
             echo json_encode(GetUsers($_POST["search"]));
+        }else if(isset($_POST["type"]) && $_POST["type"] == "getEmployees"  && count($_POST) == 1){
+            echo json_encode(GetEmployees());
         }else if(isset($_POST["type"]) && $_POST["type"] == "getEmployee" && isset($_POST["empl_id"]) && count($_POST) == 2){
             echo json_encode(GetEmployee($_POST["empl_id"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "getBooks" && isset($_POST["search"]) && count($_POST) == 2){
@@ -233,10 +235,14 @@
             echo json_encode(AddReservationOrBooking($_POST["ISBN"], $_POST["userid"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "getUsernames"  && isset($_POST["name"]) && count($_POST) == 2){
             echo json_encode(GetUsernames($_POST["name"]));
+        }else if(isset($_POST["type"]) && $_POST["type"] == "getEmplUsernames"  && isset($_POST["name"]) && count($_POST) == 2){
+            echo json_encode(GetEmplUsernames($_POST["name"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "getHistory"  && isset($_POST["book_id"], $_POST["user_id"]) && count($_POST) == 3){
             echo json_encode(GetHistory($_POST["book_id"], $_POST["user_id"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "changeEmplPass"  && isset($_POST["empl_id"], $_POST["oldPass"], $_POST["newPass"]) && count($_POST) == 4){
             echo json_encode(ChangeEmplPass($_POST["empl_id"], $_POST["oldPass"], $_POST["newPass"]));
+        }else if(isset($_POST["type"]) && $_POST["type"] == "addEmployee"  && isset($_POST["empl_name"], $_POST["empl_uname"], $_POST["pw"]) && count($_POST) == 4){
+            echo AddEmployee($_POST["empl_name"], $_POST["empl_uname"], $_POST["pw"]);
         }else{
             throw new Exception("Nincs ilyen");
         }

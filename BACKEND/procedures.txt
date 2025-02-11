@@ -278,7 +278,7 @@ DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS getEmployee(
   IN empl_id INT
 ) BEGIN
-SELECT employees.empl_name, employees.empl_uname FROM employees WHERE employees.empl_id = empl_id;
+SELECT employees.empl_name, employees.empl_uname, employees.admin FROM employees WHERE employees.empl_id = empl_id;
 END;//
 DELIMITER ;
 
@@ -597,6 +597,14 @@ END IF;
 END;//
 DELIMITER ;
 
+-- gets all active employees
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS getEmployees(
+) BEGIN
+SELECT employees.empl_id, employees.empl_name, employees.empl_uname FROM employees WHERE employees.active;
+END;//
+DELIMITER ;
+
 -- gets all books with search term for database
 DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS getBooks(
@@ -775,14 +783,11 @@ DELIMITER ;
 -- adds an employee
 DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS addEmployee(
+  IN name VARCHAR(255),
   IN uname VARCHAR(255),
   IN pw VARCHAR(255)
 ) BEGIN
-IF ((SELECT employees.empl_id FROM employees WHERE employees.empl_name = uname AND employees.password = pw) IS NULL) THEN 
-	INSERT INTO employees(employees.empl_name, employees.password) VALUES(uname, pw);
-ELSE 
-	SELECT "az alkalmazott már egyszer beregisztrált"; 
-END IF; 
+  INSERT INTO employees(employees.empl_name, employees.empl_uname, employees.password, employees.active, employees.admin) VALUES(name, uname, PASSWORD(pw), '1', '0');
 END;//
 DELIMITER ;
 
@@ -857,6 +862,16 @@ CREATE PROCEDURE IF NOT EXISTS getUsernames(
 ) 
 BEGIN
   SELECT users.username FROM users WHERE users.username LIKE CONCAT(name, "%");
+END;//
+DELIMITER ;
+
+-- gets all employee usernames that starts with the sent one for employee username generation
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS getEmplUsernames(
+  IN name VARCHAR(255)
+) 
+BEGIN
+  SELECT employees.empl_uname FROM employees WHERE employees.empl_uname LIKE CONCAT(name, "%");
 END;//
 DELIMITER ;
 
