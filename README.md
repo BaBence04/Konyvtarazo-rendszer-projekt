@@ -41,6 +41,7 @@ Mesterremek projekt, könyvtárazó rendszer
         
 
     PHP/JS:
+        -a userDetailed-on és a resetPassword.php-oldalon is kell hogy úgy működjön a password input mint a login-nál
         -mikor rányom majd az elfelejtettem a jelszavam, jelszó küldés gombra, olyankor írjuk ki, hogy meliyk email-re küldtük, de mondjuk csak az első 4 karaktert, aztán legyen ki csillagozva a @-ig
         -csak év ként kéne tárolni a megjelenés dátumát a könyvnek
         -a bookList filternél csak évszám legyen kiírva
