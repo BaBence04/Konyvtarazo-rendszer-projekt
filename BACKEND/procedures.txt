@@ -436,6 +436,22 @@ UPDATE users SET users.password = PASSWORD(password) WHERE users.user_id = user_
 END;//
 DELIMITER ;
 
+-- changes employee password
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS changeEmplPass(
+  IN empl_id INT,
+  IN oldPass VARCHAR(255),
+  IN newPass VARCHAR(255)
+) BEGIN
+IF(SELECT employees.password FROM employees WHERE employees.empl_id = empl_id) = (SELECT PASSWORD(oldPass))THEN
+  UPDATE employees SET employees.password = PASSWORD(newPass);
+  SELECT "siker" AS result;
+ELSE
+  SELECT "sikertelen" AS result;
+END IF;
+END;//
+DELIMITER ;
+
 -- deletes a token
 DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS deleteToken(
@@ -563,7 +579,7 @@ CREATE PROCEDURE IF NOT EXISTS loginEmployee(
   IN username VARCHAR(255), 
   IN pw VARCHAR(255)
 ) BEGIN
-SELECT CASE WHEN (SELECT employees.password FROM employees WHERE employees.empl_uname = username AND employee.active) = PASSWORD(pw) THEN 'true' ELSE 'false' END AS 'info';
+SELECT CASE WHEN employees.password = PASSWORD(pw) AND employees.active THEN employees.empl_id ELSE 'false' END AS 'info' FROM employees WHERE employees.empl_uname = username;
 END;//
 DELIMITER ;
 
@@ -760,7 +776,7 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS addEmployee(
   IN uname VARCHAR(255),
-  IN pw VARBINARY(16)
+  IN pw VARCHAR(255)
 ) BEGIN
 IF ((SELECT employees.empl_id FROM employees WHERE employees.empl_name = uname AND employees.password = pw) IS NULL) THEN 
 	INSERT INTO employees(employees.empl_name, employees.password) VALUES(uname, pw);
@@ -799,6 +815,16 @@ CREATE PROCEDURE IF NOT EXISTS deactivateUser(
 ) 
 BEGIN
 UPDATE users SET users.active = 0, users.membership_end_date = DATE_ADD(CURRENT_DATE(), INTERVAL -1 DAY) WHERE users.user_id = ID;
+END;//
+DELIMITER ;
+
+-- deactivates an employee
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS deactivateEmpl(
+  IN empl_id INT
+) 
+BEGIN
+  UPDATE employees SET employees.active = 0 WHERE employees.empl_id = empl_id;
 END;//
 DELIMITER ;
 
@@ -844,3 +870,4 @@ BEGIN
   SELECT CASE WHEN (SELECT COUNT(borrowings.borrowing_id) FROM borrowings INNER JOIN inventory ON inventory.book_id = borrowings.book_id WHERE inventory.ISBN_id = (SELECT inventory.ISBN_id FROM inventory WHERE inventory.book_id = bookID) AND borrowings.user_id = userID AND borrowings.returned) = 0 THEN "not" ELSE (SELECT DATEDIFF(start_date, CURRENT_DATE()) as Days FROM borrowings INNER JOIN inventory ON inventory.book_id = borrowings.book_id WHERE inventory.ISBN_id = (SELECT inventory.ISBN_id FROM inventory WHERE inventory.book_id = bookID ORDER BY 1 DESC LIMIT 1) AND borrowings.user_id = userID AND borrowings.returned) END AS result;
 END;//
 DELIMITER ;
+

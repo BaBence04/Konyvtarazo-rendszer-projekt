@@ -223,6 +223,8 @@
             echo json_encode(RenewMembership($_POST["id"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "deactivateUser"  && isset($_POST["id"]) && count($_POST) == 2){
             DeactivateUser($_POST["id"]);
+        }else if(isset($_POST["type"]) && $_POST["type"] == "deactivateEmpl"  && isset($_POST["empl_id"]) && count($_POST) == 2){
+            DeactivateEmpl($_POST["empl_id"]);
         }else if(isset($_POST["type"]) && $_POST["type"] == "checkPermissions"  && isset($_POST["id"]) && count($_POST) == 2){
             echo json_encode(CheckPermissions($_POST["id"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "getBookStates"  && isset($_POST["search"]) && count($_POST) == 2){
@@ -233,6 +235,8 @@
             echo json_encode(GetUsernames($_POST["name"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "getHistory"  && isset($_POST["book_id"], $_POST["user_id"]) && count($_POST) == 3){
             echo json_encode(GetHistory($_POST["book_id"], $_POST["user_id"]));
+        }else if(isset($_POST["type"]) && $_POST["type"] == "changeEmplPass"  && isset($_POST["empl_id"], $_POST["oldPass"], $_POST["newPass"]) && count($_POST) == 4){
+            echo json_encode(ChangeEmplPass($_POST["empl_id"], $_POST["oldPass"], $_POST["newPass"]));
         }else{
             throw new Exception("Nincs ilyen");
         }

@@ -217,6 +217,7 @@
             this.cbtnDeleteEmpl.TabIndex = 12;
             this.cbtnDeleteEmpl.Text = "Alkalmazott végleges deaktiválása";
             this.cbtnDeleteEmpl.UseVisualStyleBackColor = false;
+            this.cbtnDeleteEmpl.Click += new System.EventHandler(this.cbtnDeleteEmpl_Click);
             // 
             // cbtnLogout
             // 

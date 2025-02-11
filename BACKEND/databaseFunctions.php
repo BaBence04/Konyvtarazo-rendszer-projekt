@@ -304,7 +304,7 @@
         $query = "CALL getEmployee(?);";
 
         $stmt = $conn->prepare($query); // Prepare statement
-        $stmt->bind_param("s", $empl_id); // Bind parameter to SQL query
+        $stmt->bind_param("i", $empl_id); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
         $conn->close();
@@ -577,6 +577,19 @@
         //return $results->fetch_all(MYSQLI_ASSOC);
     }
 
+    function DeactivateEmpl($empl_id){
+        require "databaseConnect.php";
+
+        $query = "CALL deactivateEmpl(?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("i", $empl_id); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        $conn->close();
+        //return $results->fetch_all(MYSQLI_ASSOC);
+    }
+
     function CheckPermissions($user_id){
         require "databaseConnect.php";
 
@@ -623,6 +636,19 @@
 
         $stmt = $conn->prepare($query); // Prepare statement
         $stmt->bind_param("ii", $book_id, $user_id); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        $conn->close();
+        return $results->fetch_all(MYSQLI_ASSOC);
+    }
+
+    function ChangeEmplPass($empl_id, $oldPass, $newPass){
+        require "databaseConnect.php";
+
+        $query = "CALL changeEmplPass(?,?,?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("iss", $empl_id, $oldPass, $newPass); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
         $conn->close();

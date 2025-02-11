@@ -30,7 +30,18 @@ namespace Desktop
                 {
                     if (ctbNewPass.Texts != ctbOldPass.Texts)
                     {
-                        List<Dictionary<string, string>> resp = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "changeEmplPass" }, { "oldPass", ctbOldPass.Texts }, { "newPass", ctbNewPass.Texts } });
+                        List<Dictionary<string, string>> resp = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "changeEmplPass" }, {"empl_id", LoginForm.employee },{ "oldPass", ctbOldPass.Texts }, { "newPass", ctbNewPass.Texts } });
+                        if (resp.First()["result"] == "siker")
+                        {
+                            MessageBox.Show("Sikeresen megváltoztatta a jelszavát");
+                            ctbNewPass.Texts = "";
+                            ctbNewPassAgain.Texts = "";
+                            ctbOldPass.Texts = "";
+                        }
+                        else
+                        {
+                            MessageBox.Show("Hibás a régi jelszó");
+                        }
                     }
                     else
                     {
@@ -53,6 +64,15 @@ namespace Desktop
             List<Dictionary<string, string>> resp = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { {"type", "getEmployee" }, {"empl_id", LoginForm.employee } });
             lbName.Text = resp.First()["empl_name"];
             lbUname.Text = resp.First()["empl_uname"];
+        }
+
+        private async void cbtnDeleteEmpl_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Biztosan véglegesen deaktiválni szeretné ezt az alkalmazottat?", "Alkalmazott deaktiválása", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                await ApiComm.SendPost(new Dictionary<string, string> { { "type", "deactivateEmpl" }, { "empl_id", LoginForm.employee } });
+                LoginForm.main.Close();
+            }
         }
     }
 }
