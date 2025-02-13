@@ -674,6 +674,33 @@
         $conn->close();
         return $results->fetch_all(MYSQLI_ASSOC);
     }
+
+    function GetAuthors($ISBN_id, $inverse){
+        require "databaseConnect.php";
+
+        $query = "CALL getAuthors(?,?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("ib", $ISBN_id, $inverse); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        $conn->close();
+        return $results->fetch_all(MYSQLI_ASSOC);
+    }
+
+    function GetCategories($ISBN_id, $inverse){
+        require "databaseConnect.php";
+
+        $query = "CALL getCategories(?,?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("ib", $ISBN_id, $inverse); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        $conn->close();
+        return $results->fetch_all(MYSQLI_ASSOC);
+    }
+
     /**
      * Return true or false depending if the end date of borrowing the given book is extendable.
      *

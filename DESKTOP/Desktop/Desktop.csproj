@@ -78,6 +78,12 @@
       <DependentUpon>AllBooksPage.cs</DependentUpon>
     </Compile>
     <Compile Include="ApiComm.cs" />
+    <Compile Include="BookDetailedPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BookDetailedPage.Designer.cs">
+      <DependentUpon>BookDetailedPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="BookLendingPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -190,6 +196,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AllBooksPage.resx">
       <DependentUpon>AllBooksPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BookDetailedPage.resx">
+      <DependentUpon>BookDetailedPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BookLendingPage.resx">
       <DependentUpon>BookLendingPage.cs</DependentUpon>

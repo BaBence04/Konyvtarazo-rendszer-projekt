@@ -45,6 +45,12 @@ namespace Desktop
                 case "userBorrow":
                     searchMode = "getBooks";
                     break ;
+                case "getPublishers":
+                    searchMode= mode;
+                    break ;
+                case "getLangs":
+                    searchMode= mode;
+                    break ;
             }
             InitializeComponent();
         }
@@ -66,7 +72,7 @@ namespace Desktop
                 {
                     foreach (KeyValuePair<string, string> item in response[0])
                     {
-                        if (item.Key != "user_id" && item.Key != "book_id" && item.Key != "id")
+                        if (item.Key != "user_id" && item.Key != "book_id" && item.Key != "id" && item.Key != "publisher_id" && item.Key != "lang_id")
                         {
                             col = new DataColumn();
                             col.DataType = typeof(string);
@@ -136,7 +142,7 @@ namespace Desktop
                         foreach (KeyValuePair<string, string> item in response[i])
                         {
 
-                            if (item.Key == "user_id" || item.Key == "book_id" || item.Key == "id")
+                            if (item.Key == "user_id" || item.Key == "book_id" || item.Key == "id" || item.Key == "publisher_id" || item.Key == "lang_id")
                             {
                                 ids.Add(item.Value);
                             }
@@ -225,7 +231,11 @@ namespace Desktop
                     {
                         MessageBox.Show("Közben megváltozott a foglalás");
                     }
-                } else if (startMode != "userTakeback")
+                }else if(startMode == "getLangs")
+                {
+
+                }
+                else if (startMode != "userTakeback")
                 {
                     res1 = (string)cdgwSelect.Rows[e.RowIndex].Cells[0].Value;
                     res2 = (string)cdgwSelect.Rows[e.RowIndex].Cells[1].Value;

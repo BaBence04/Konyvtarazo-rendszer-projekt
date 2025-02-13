@@ -117,7 +117,7 @@ namespace Desktop
         {
             if (e.ColumnIndex == cdgvBooks.Columns["Részletesen"].Index)
             {
-                //ide meghívní a jó részletes formot ha lesz !!!
+                LoginForm.main.OpenChildForm(new BookDetailedPage((string)cdgvBooks.Rows[e.RowIndex].Cells["isbn"].Value));
             }
             else if(e.ColumnIndex == cdgvBooks.Columns["Műveletek"].Index)
             {

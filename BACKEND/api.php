@@ -187,6 +187,8 @@
             echo json_encode(GetPublishers($_POST["search"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "getUserDetailed" && isset($_POST["id"]) && count($_POST) == 2){
             echo json_encode(GetUser($_POST["id"]));
+        }else if(isset($_POST["type"]) && $_POST["type"] == "getBookDetailed" && isset($_POST["ISBN"]) && count($_POST) == 2){
+            echo json_encode(GetBookByIsbn($_POST["ISBN"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "updatePublishers" && isset($_POST["id"], $_POST["name"], $_POST["phone"], $_POST["email"], $_POST["webpage"]) && count($_POST) == 6){
             UpdatePublishers($_POST["id"], $_POST["name"], $_POST["phone"], $_POST["email"], $_POST["webpage"]);
         }else if(isset($_POST["type"]) && $_POST["type"] == "updateUser" && isset($_POST["id"], $_POST["firstname"], $_POST["surname"], $_POST["birthplace"], $_POST["birthdate"], $_POST["address"], $_POST["email"], $_POST["phone"], $_POST["mmn"]) && count($_POST) == 10){
@@ -243,6 +245,10 @@
             echo json_encode(ChangeEmplPass($_POST["empl_id"], $_POST["oldPass"], $_POST["newPass"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "addEmployee"  && isset($_POST["empl_name"], $_POST["empl_uname"], $_POST["pw"]) && count($_POST) == 4){
             echo AddEmployee($_POST["empl_name"], $_POST["empl_uname"], $_POST["pw"]);
+        }else if(isset($_POST["type"]) && $_POST["type"] == "getAuthors"  && isset($_POST["ISBN_id"], $_POST["inverse"]) && count($_POST) == 3){
+            echo json_encode(GetAuthors($_POST["ISBN_id"], $_POST["inverse"]));
+        }else if(isset($_POST["type"]) && $_POST["type"] == "getCategories"  && isset($_POST["ISBN_id"], $_POST["inverse"]) && count($_POST) == 3){
+            echo json_encode(GetCategories($_POST["ISBN_id"], $_POST["inverse"]));
         }else{
             throw new Exception("Nincs ilyen");
         }

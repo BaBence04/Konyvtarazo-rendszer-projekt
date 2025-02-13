@@ -79,7 +79,7 @@ CREATE PROCEDURE IF NOT EXISTS getBookById(
   IN ID VARCHAR(255)
 ) BEGIN
 SELECT
-  book.ISBN_id, book.title, book.picture_base64, GROUP_CONCAT(DISTINCT genres.genre) AS `genres`, GROUP_CONCAT(DISTINCT authors.author) AS `authors`, publishers.publisher_id, book.release_date, languages.lang, book.ISBN, book.description
+  book.ISBN_id, book.title, book.picture_base64, GROUP_CONCAT(DISTINCT genres.genre) AS `genres`, GROUP_CONCAT(DISTINCT authors.author) AS `authors`, publishers.name, book.release_date, languages.lang, book.ISBN, book.description
 FROM
   book
   INNER JOIN (
@@ -886,3 +886,32 @@ BEGIN
 END;//
 DELIMITER ;
 
+-- gets all authors that is connected to an ISBN or its inverse
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS getAuthors(
+  IN ISBN_id INT,
+  IN inverse BOOLEAN
+) 
+BEGIN
+  IF NOT inverse THEN
+    SELECT DISTINCT authors.author_id, authors.author FROM authors INNER JOIN books_authors_conn ON books_authors_conn.author_id = authors.author_id WHERE books_authors_conn.ISBN_id = ISBN_id; 
+  ELSE
+    SELECT DISTINCT authors.author_id, authors.author FROM authors INNER JOIN books_authors_conn ON books_authors_conn.author_id = authors.author_id WHERE books_authors_conn.ISBN_id NOT LIKE ISBN_id; 
+  END IF;
+END;//
+DELIMITER ;
+
+-- gets all genres that is connected to an ISBN or its inverse
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS getCategories(
+  IN ISBN_id INT,
+  IN inverse BOOLEAN
+) 
+BEGIN
+  IF NOT inverse THEN
+    SELECT DISTINCT genres.genre_id, genres.genre FROM genres INNER JOIN books_genres_conn ON books_genres_conn.genre_id = genres.genre_id WHERE books_genres_conn.ISBN_id = ISBN_id; 
+  ELSE
+    SELECT DISTINCT genres.genre_id, genres.genre FROM genres INNER JOIN books_genres_conn ON books_genres_conn.genre_id = genres.genre_id WHERE books_genres_conn.ISBN_id NOT LIKE ISBN_id; 
+  END IF;
+END;//
+DELIMITER ;
