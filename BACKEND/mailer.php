@@ -12,7 +12,7 @@
 
     
     
-    function send_email($recipient_name, $recipient_address, $email_subject, $email_html_body, $email_plain_text_body): void{
+    function send_email($recipient_name, $recipient_address, $email_subject, $email_html_body, $email_plain_text_body): array{
         // Create an instance of PHPMailer
         $mail = new PHPMailer(true);
         
@@ -43,9 +43,13 @@
 
             // Send the email
             $mail->send();
-            echo 'Message has been sent';
+            // echo 'Message has been sent';
+            return ["status" => "success"];
         } catch (Exception $e) {
-            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            // echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            $response = ["status" => "failed", "error" => "Message could not be sent. Mailer Error: {$mail->ErrorInfo}"];
+            return $response;
+
         }
     }
 ?>
