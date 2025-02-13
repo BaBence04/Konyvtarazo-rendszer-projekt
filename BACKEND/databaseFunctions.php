@@ -104,14 +104,13 @@
         $results = $stmt->get_result();
         $conn->close();
         $data = $results->fetch_all(MYSQLI_ASSOC);
-
+        return $data;
         if(count($data)>1){
             throw new Exception("HIBA! több mint egy könyv van ugyanazzal az ISBN-el az adatbázisban!");
         }elseif(count($data)==0){
             return [];
         }elseif(count($data)==1){
-            return $data[0];
-
+            return $data;
         }
 
     }
