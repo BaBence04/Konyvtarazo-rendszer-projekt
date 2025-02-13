@@ -11,12 +11,88 @@
         return $token .= $number_to_put_to_end;
     }
 
-    function reset_password($user_id, $conn=null){
+    function reset_password($user_id, $conn=null): array{
         $link = create_reset_token_and_link($user_id);
         
         $user_email_data = get_user_email_data($user_id, $conn);
-        // send_email("$user_email_data[surname] $user_email_data[first_name]", $user_email_data["email"],"Elfelejtettem a jelszavamat/jelszó megadás");
+
+        $response = [];
+
+        $email_status = send_reset_password_email($user_id, $link, $conn);
+
+        if($email_status["status"] == "success"){
+            $response["status"] = "success";
+
+            $hidden_email = "";
+            $email_split = explode("@" ,$user_email_data["email"]);
+
+            for ($i=0; $i < strlen($email_split[0]); $i++) { 
+                if($i<4){
+                    $hidden_email .= $email_split[0][$i];
+                }else{
+                    $hidden_email .= "*";
+                }
+            }
+
+            $response["email"] = $hidden_email . "@" .$email_split[1];
+
+        }else{
+            $response["status"] = "failed_to_send_email";
+            $response["error"] = $email_status["error"];
+        }
+
+        return $response;
+
         
+    }
+
+    function send_reset_password_email($user_id, $reset_link, $conn = null): array{
+        $user_email_data = get_user_email_data($user_id, $conn);
+        
+        $recipient_name = "$user_email_data[surname] $user_email_data[first_name]";
+        $recipient_address = $user_email_data["email"];
+        $subject = "Elfelejtett jelszó!";
+
+        $email_html_body = "
+            <div style='font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;'>
+                <table style='width: 100%; background-color: #f9f9f9; border-collapse: collapse;'>
+                    <tr>
+                        <td style='padding: 20px; text-align: center; background-color: #007BFF; color: #FFFFFF;'>
+                            <h1>Elfelejtett jelszó</h1>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='padding: 20px;'>
+                            <p>Kedves $recipient_name,</p>
+                            <p>Úgy tűnik, hogy elfelejtetted a jelszavad. Ne aggódj, segítünk visszaállítani!</p>
+                            <p>A jelszó visszaállításához kattints az alábbi linkre:</p>
+                            <p style='text-align: center;'>
+                                <a href='$reset_link' style='display: inline-block; padding: 10px 20px; color: #fff; background-color: #007BFF; text-decoration: none; border-radius: 5px;'>
+                                    Jelszó visszaállítása
+                                </a>
+                                <p>Link: $reset_link</p>
+                            </p>
+                            <p>Ha nem te kérted a jelszó visszaállítását, kérlek hagyd figyelmen kívül ezt az üzenetet.</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        ";
+
+        $email_alt_body = "
+            Elfelejtett jelszó
+
+            Kedves $recipient_name,
+
+            Úgy tűnik, hogy elfelejtetted a jelszavad. Ne aggódj, segítünk visszaállítani!
+
+            A jelszó visszaállításához kattints az alábbi linkre:
+            $reset_link
+
+            Ha nem te kérted a jelszó visszaállítását, kérlek hagyd figyelmen kívül ezt az üzenetet.
+        ";
+
+        return send_email($recipient_name, $recipient_address, $subject, $email_html_body, $email_alt_body);
     }
 
     function create_reset_token_and_link($user_id) : string {
@@ -27,7 +103,7 @@
         return $link;
     }
 
-    function send_user_registration_email($user_id, $user_name, $link, $conn=null){
+    function send_user_registration_email($user_id, $user_name, $link, $conn=null):array{
         echo $link;
         $user_email_data = get_user_email_data($user_id, $conn);
         
@@ -35,7 +111,7 @@
         $recipient_address = $user_email_data["email"];
         $subject = "Sikeresen regisztrált könyvtárunknál!";
         $email_html_body = "
-            <div style='font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;'>
+            <div style='font-f amily: Arial, sans-serif; max-width: 600px; margin: 0 auto;'>
                 <table style='width: 100%; background-color: #f9f9f9; border-collapse: collapse;'>
                     <tr>
                         <td style='padding: 20px; text-align: center; background-color: #007BFF; color: #FFFFFF;'>
@@ -81,8 +157,7 @@
             -Bármikor megnézheted, hogy mikor jár le a taggságod
         ";
 
-        send_email($recipient_name, $recipient_address, $subject, $email_html_body, $email_alt_body);
-        
+        return send_email($recipient_name, $recipient_address, $subject, $email_html_body, $email_alt_body);
     }
 
     function setup_session_cookie() : void {
