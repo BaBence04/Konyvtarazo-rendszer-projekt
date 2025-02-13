@@ -249,6 +249,8 @@
             echo json_encode(GetAuthors($_POST["ISBN_id"], $_POST["inverse"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "getCategories"  && isset($_POST["ISBN_id"], $_POST["inverse"]) && count($_POST) == 3){
             echo json_encode(GetCategories($_POST["ISBN_id"], $_POST["inverse"]));
+        }else if(isset($_POST["type"]) && $_POST["type"] == "getLangs" && count($_POST) == 1){
+            echo json_encode(GetLangs());
         }else{
             throw new Exception("Nincs ilyen");
         }

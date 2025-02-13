@@ -55,11 +55,11 @@ CREATE PROCEDURE IF NOT EXISTS getGenres(
 END;//
 DELIMITER ;
 
--- gets all genres
+-- gets all languages
 DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS getLangs(
 ) BEGIN
-	SELECT languages.lang FROM languages;
+	SELECT * FROM languages;
 END;//
 DELIMITER ;
 

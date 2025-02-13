@@ -233,7 +233,7 @@ namespace Desktop
                     }
                 }else if(startMode == "getLangs")
                 {
-
+                    res1 = (string)cdgwSelect.Rows[e.RowIndex].Cells[0].Value;
                 }
                 else if (startMode != "userTakeback")
                 {
