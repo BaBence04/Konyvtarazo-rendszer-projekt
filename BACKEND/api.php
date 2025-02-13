@@ -144,7 +144,7 @@
             if($user_id == -1){
                 $response = ["status"=>"invalid"];
             }else{
-                reset_password($user_id);
+                $response = reset_password($user_id);
             
             }
 
