@@ -81,6 +81,14 @@ if(count($parts_of_path) == 1){
   if($parts_of_path[0] == "konyveink"){
     $isbn = $parts_of_path[1];
     $book_data = GetBookByIsbn($isbn);
+    if(count($book_data) == 1){
+      $book_data = $book_data[0];
+    }else if(count($book_data) == 0){
+      $book_data = [];
+    }else{
+      throw new Exception("HIBA! több mint egy könyv van ugyanazzal az ISBN-el az adatbázisban!");
+    }
+    
     if($book_data != []){
       $page_to_load = "bookDetailed";
       $page_title = $book_data["title"];
