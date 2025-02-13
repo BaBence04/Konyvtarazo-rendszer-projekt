@@ -68,6 +68,7 @@
                         <label for="currentPassword">Jelenlegi jelszó:</label>
                         <input type="password" id="currentPassword">
                         <label for="newPassword">Új jelszó:</label>
+                        
                         <input type="password" id="newPassword" oninput="ValidatePassword(this.value);">
                         <?php require("new_password_error_messages.html");?>
 
