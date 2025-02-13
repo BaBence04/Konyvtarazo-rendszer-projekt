@@ -376,13 +376,13 @@ div.space-after-nav{
 
 }
 
-.login_box form .inputbox{
+.inputbox{
   position: relative;
   width: 100%;
   margin-top: 25px;
 }
 
-.login_box form .inputbox input {
+.inputbox input {
   position: relative;
   width: 100%;
   padding: 15px 15px 10px 10px;
@@ -407,7 +407,7 @@ input:-webkit-autofill{
     transition: background-color 5000s ease-in-out 0s; /* Prevent flashing */
 }
 
-.login_box form .inputbox span{
+.inputbox span{
   z-index: 10;
   position: absolute;
   left: 0;
@@ -427,8 +427,8 @@ input:-webkit-autofill{
   cursor: pointer;
 }
 
-.login_box form .inputbox input:not(:placeholder-shown) ~ span,
-.login_box form .inputbox input:focus ~ span {
+.inputbox input:not(:placeholder-shown) ~ span,
+.inputbox input:focus ~ span {
   color: var(--blk-col);
   font-weight: 400;
   font-size: 1em;
@@ -450,6 +450,11 @@ input:-webkit-autofill{
   border-radius: .5rem;
   background-color: var(--body-color);
   box-shadow: 0 8px 32px hsla(230, 75%, 15%, 0.2);
+  overflow-x: hidden;
+}
+
+.login_box input[type="button"]{
+  width: 100%;
 }
 
 
@@ -464,6 +469,10 @@ input:-webkit-autofill{
 .login_box form .links a:hover{
   color: var(--blk-col);
   text-decoration: underline;
+}
+
+label:hover, input[type="checkbox"]:hover, a:hover{
+  cursor: pointer;
 }
 
 .login_box form input[type="submit"]{
@@ -506,7 +515,7 @@ input:-webkit-autofill{
 }
 
 
-.login_box form .inputbox select:valid{
+.inputbox select:valid{
   color: #000;
 }
 
@@ -518,12 +527,12 @@ input:-webkit-autofill{
 .login_box form{
   padding: 20px;
 }
-.login_box form .inputbox{
+.inputbox{
   position: relative;
   margin-top: 35px;
 }
 
-.login_box form .inputbox img{
+.inputbox img{
   position: absolute;
   right: 10px;
   top: 50%;
