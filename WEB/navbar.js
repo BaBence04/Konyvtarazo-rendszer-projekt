@@ -55,12 +55,27 @@ function CheckLogin(){
      }}); 
 }
 
-function KeyUpInUsernameInputForLogin(event){
-    if(event.key == "Enter" && document.getElementById("username")?.value != ""){
-        event.target.blur();
-        CheckLogin();
-    }
+function CheckForEnterPressedAndClickGivenButton(event, buttonId){
+  if(event.key == "Enter" && event.target.value != ""){
+      event.target.blur();
+      document.getElementById(buttonId).click();
+  }
 }
+
+function ToggleForgotPassword_Login(){
+  let showLogin = document.getElementById("forgot_password_form").checkVisibility();
+
+  if(showLogin){
+    document.getElementById("forgot_password_form").style.display = "none";
+    document.getElementById("login_form").style.display = "block";
+
+  }else{
+    document.getElementById("forgot_password_form").style.display = "block";
+    document.getElementById("login_form").style.display = "none";
+  }
+}
+
+
 
 document.querySelector("body").addEventListener("keydown",(e)=>{
     if(e.key == "Escape"){
@@ -110,48 +125,63 @@ function ChangePassword(){
   
 }
 
+let waitingforServer = false;
 
 function ForgotPassword(){
+  if(!waitingforServer){
+    waitingforServer = true;
     $.ajax({
       url: "/BACKEND/api.php",
       type: "POST", //send it through post method
       data: { 
-          username: document.getElementById("username").value,
+          username: document.getElementById("forgotPasswordUsername").value,
           action: "resetPassword"
       },
       success: function(response)  {
         let data = JSON.parse(response);        
         console.log(data);
         if(data.status == "success"){
-          open(data.link, "_blank");
+          alert(`Email sikeresen elküldve "${data.email}" címre!`);
+          // open(data.link, "_blank");
+
+
+        }else if(data.status == "invalid"){
+          alert("A megadott felhasználó név nem létezik!");
+
+        }else if(data.status["failed_to_send_email"]){
+          alert("Hiba történt az email küldése során!");
+          console.error(data.error);
+
         }else{
-          alert(data.status);
+          throw new Error("Nem kezelt státusz");
         }
+        waitingforServer = false;
   
       
     }}); 
+  }
 }
 
 
 loginClose.addEventListener("click", () => {
     login.classList.remove("show-login");
-  });
+});
   
   
-  const passwordField = document.getElementById("password");
-  const togglePassword = document.getElementById("eyeicon");
-  
-  togglePassword.addEventListener("click", function () {
-      if (passwordField.type === "password") {
-          passwordField.type = "text";
-          togglePassword.src = "/web/imgs/eye-line.png";
-      } else {
-          passwordField.type = "password";
-          togglePassword.src = "/web/imgs/eye-off-line.png";
+const passwordField = document.getElementById("password");
+const togglePassword = document.getElementById("eyeicon");
+
+togglePassword.addEventListener("click", function () {
+    if (passwordField.type === "password") {
+        passwordField.type = "text";
+        togglePassword.src = "/web/imgs/eye-line.png";
+    } else {
+        passwordField.type = "password";
+        togglePassword.src = "/web/imgs/eye-off-line.png";
       }
 });
 
-let waitingforServer = false;
+// let waitingforServer = false;
 
 /* LOGIN SCRIPT */
 loginBtn.addEventListener("click", () => {

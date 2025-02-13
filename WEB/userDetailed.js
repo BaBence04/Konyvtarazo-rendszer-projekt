@@ -177,14 +177,7 @@ function Kijelentkezés(){
         action: "logout"
     },
     success: function(response)  {
-        
         window.open("/web/", "_self");
-    // const currentUrl = new URL("/");
-    // currentUrl.searchParams.set("page", "mainPage");
-    // console.log(currentUrl)
-    // window.history.pushState({}, '', currentUrl);
-    // location.reload();
-    
     }
     });
 }

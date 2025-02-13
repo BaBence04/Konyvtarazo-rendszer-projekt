@@ -42,7 +42,9 @@
 <div class="login" id="login">
   <div class="login_box">
     <span class="borderline"></span>
-    <form action="" method="post">
+    
+
+    <form action="" method="post" id="login_form">
       <span class="close" id="login-close"><img src="/web/imgs/icons/close-line.png" alt=""></span>
       <h2>Bejelentkezés</h2>
   
@@ -54,23 +56,38 @@
   
           <div class="inputbox">
             <img src="/web/imgs/eye-off-line.png" id="eyeicon" alt="Toggle Password Visibility">
-            <input onkeyup="KeyUpInUsernameInputForLogin(event);" type="password" id="password" name="password" required="required" placeholder=" ">
+            <input onkeyup="CheckForEnterPressedAndClickGivenButton(event, 'loginButton');" type="password" id="password" name="password" required="required" placeholder=" ">
             <span>Jelszó</span>
             <i></i>
           </div>
-        
-        
-        
-          
+
           <div class="links">
-              <a href="#" onclick="ForgotPassword();">Elfelejtettem a jelszavamat</a>
+              <a onclick="ToggleForgotPassword_Login();">Elfelejtettem a jelszavamat</a>
           </div>
           <div id="remember_me_holder">
-            <label for="remember_me_checkbox">Emlékezz rám</label>
             <input type="checkbox" name="remember_me" id="remember_me_checkbox">
+            <label for="remember_me_checkbox">Emlékezz rám</label>
 
           </div>
-          <input type="button" onclick="CheckLogin();" value="Bejelentkezés" name="submit">
+          <input type="button" onclick="CheckLogin();" id="loginButton" value="Bejelentkezés" name="submit">
+    </form>
+
+    <form action="" method="post" id="forgot_password_form" style="display: none;">
+      <span class="close" id="login-close"><img src="/web/imgs/icons/close-line.png" alt=""></span>
+      <h2>Elfelejtettem a jelszavamat</h2>
+  
+        <div class="inputbox">
+          <input type="text" name="username" id="forgotPasswordUsername" required="required" placeholder=" ">
+          <span>Felhasználó név</span>
+          <i></i>
+        </div>
+        
+      
+        <div class="links">
+            <a onclick="ToggleForgotPassword_Login();">Mégis emlékszem a jelszavamra</a>
+        </div>
+        
+        <input type="button" onclick="ForgotPassword();" id="loginButton" value="Email küldése" name="submit">
     </form>
   </div>
 </div>
