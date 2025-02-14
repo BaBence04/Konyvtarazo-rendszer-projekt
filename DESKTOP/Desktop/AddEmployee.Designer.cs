@@ -146,6 +146,7 @@
             this.Controls.Add(this.ctbEmplName);
             this.Controls.Add(this.label1);
             this.Name = "AddEmployee";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Alkalmazott hozzáadása";
             this.ResumeLayout(false);
             this.PerformLayout();

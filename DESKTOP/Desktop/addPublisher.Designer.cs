@@ -177,6 +177,7 @@
             this.ForeColor = System.Drawing.SystemColors.Control;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AddPublisher";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "addPublisher";
             this.ResumeLayout(false);
 

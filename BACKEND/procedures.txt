@@ -896,7 +896,7 @@ BEGIN
   IF NOT inverse THEN
     SELECT DISTINCT authors.author_id, authors.author FROM authors INNER JOIN books_authors_conn ON books_authors_conn.author_id = authors.author_id WHERE books_authors_conn.ISBN_id = ISBN_id; 
   ELSE
-    SELECT DISTINCT authors.author_id, authors.author FROM authors INNER JOIN books_authors_conn ON books_authors_conn.author_id = authors.author_id WHERE books_authors_conn.ISBN_id NOT LIKE ISBN_id; 
+    SELECT DISTINCT authors.author_id, authors.author FROM authors INNER JOIN books_authors_conn ON books_authors_conn.author_id = authors.author_id; 
   END IF;
 END;//
 DELIMITER ;
@@ -911,7 +911,7 @@ BEGIN
   IF NOT inverse THEN
     SELECT DISTINCT genres.genre_id, genres.genre FROM genres INNER JOIN books_genres_conn ON books_genres_conn.genre_id = genres.genre_id WHERE books_genres_conn.ISBN_id = ISBN_id; 
   ELSE
-    SELECT DISTINCT genres.genre_id, genres.genre FROM genres INNER JOIN books_genres_conn ON books_genres_conn.genre_id = genres.genre_id WHERE books_genres_conn.ISBN_id NOT LIKE ISBN_id; 
+    SELECT DISTINCT genres.genre_id, genres.genre FROM genres INNER JOIN books_genres_conn ON books_genres_conn.genre_id = genres.genre_id ; 
   END IF;
 END;//
 DELIMITER ;

@@ -19,14 +19,9 @@ Mesterremek projekt, könyvtárazó rendszer
     BACKEND:
         -legyen középen a regisztráció form
         -az employeeDetailed-en legyen a jelszó változtatásnál is csillag a textbox-okban
-        -legyen lehetőségük a dolgozóknak megváltoztatni a jelszavukat, és törölni a felhasználójukat
         -a popup form-ok a megnyitott form közepére nyíljanak meg
-        -legyen lehetőség meghosszabítani a felhasználó tagságát, és a taggság lejárati dátuma ne aznaphoz egy évre járjon le, hanem a mostani tagság lejárati dátum + 1év
-        -a könyvkiadásnál írjuk ki, hogy mikor olvasta az illető legutóbb a könyvet 
         -az asztali program indításakor fusson le a lejárt foglalás törlő procedure, és küldje ki az értesítéseket (- Partly done)
         -nézni kell, pl 5 percenként, hogy jött-e új foglalás(az előzőket fájlban tároljuk pl), és olyankor kell egy popup, hogy új foglalás jött, hogy félre tudja majd tenni a polcra a könyvtáros
-        -employeesnál is úgy kell majd működnie hogy lesz egy active flag és csak deaktiválni lehet fiókot
-        -employees táblánál mindenki csak a saját adatait módosíthatja 
         -GETLANGS MÉG NEM MŰKÖDIK POPUP SELECTNÉL
 
 #WEB:
