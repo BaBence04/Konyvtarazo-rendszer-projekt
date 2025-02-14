@@ -3,30 +3,30 @@
 
     <div class="title-filter">
         <label for="title">Cím</label>
-        <input type="text" id="title" value="" name="title" placeholder="pl.:  Állatfarm" onkeypress="SearchOnEnter(event);">
+        <input type="text" id="title" value="<?=$title?>" name="title" placeholder="pl.:  Állatfarm" onkeyup="CheckForEnterPressedAndClickGivenButton(event, 'searchButton')" >
     </div>
     
     <button id="toggleFilters" type="button" onclick="HideAndShowFilters();">További szűrők</button>
 </div>
 
 <div id="additional-filters" data-open="0" style="display: none;">
-    <?=CreateGenreFilter()?>
+    <?=CreateGenreFilter($genre)?>
     
     <div class="author-filter">
         <label for="author">Szerző</label>
-        <input type="text" id="author" name="author" placeholder="pl.:  George Orwell">
+        <input type="text" value="<?=$author ?>" id="author" name="author" placeholder="pl.:  George Orwell">
     </div>
     
     <div class="releaseDate-filter">
         <label for="date">Megjelenési dátum</label>
-        <input type="date" id="date" name="date">
+        <input type="date" value="<?=$release_date ?>" id="date" name="date">
     </div>
     
-    <?=CreateLanguageFilter()?>
+    <?=CreateLanguageFilter($lang)?>
     
     <div class="ISBN-filter">
         <label for="ISBN">ISBN-kód</label>
-        <input type="text" id="ISBN" name="ISBN">
+        <input type="text" value="<?=$isbn ?>" id="ISBN" name="ISBN">
     </div>
     
     
@@ -35,7 +35,7 @@
 
 
 
-<input id="searchButton" type="button" onclick="applyFilters()" value="Keresés">
+<input id="searchButton" type="button" onclick="applyFilters();" value="Keresés">
 
 
 </div>

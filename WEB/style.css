@@ -575,7 +575,11 @@ label:hover, input[type="checkbox"]:hover, a:hover{
 
 /* .show-login .login_box{
   transform: translateY(0);
+
 } */
+#forgot_password_form>.links{
+  float: right;
+}
 
 
 /* @media SETTINGS */

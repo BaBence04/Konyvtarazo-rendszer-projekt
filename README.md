@@ -41,6 +41,7 @@ Mesterremek projekt, könyvtárazó rendszer
         
 
     PHP/JS:
+        -a bookfilters töltse fel a filtereket
         -ahol nézve van hogy van-e még probléma az új jelszóval, ott nem lett frissítve, hogy ne az innerhtml-t nézze, hogy üres-e (pl a forgotpassword-ön nem működik)
         -advanced search
         -majd kéne valami ami jelzi, hogy az email küldése folyamatban van az elfelejtettem a jelszót funkciónál

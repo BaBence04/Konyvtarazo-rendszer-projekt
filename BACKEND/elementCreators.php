@@ -53,78 +53,33 @@
         return $resultHTML;
     }
 
-    function CreateGenreFilter(): string{
+    function CreateGenreFilter($selected_genre): string{
         $resultHTML = '<div class="genre-filter">
         <label for="genre-select" class="filter-label">Szűrés műfaj szerint</label>
         <select id="genre-select" class="genre-select">
             <option value="">Összes műfaj</option>';
         $data = GetGenres();
-        for ($i=0; $i < count($data); $i++) { 
-            $resultHTML .= '<option value="'.$data[$i]['genre'].'">'.$data[$i]['genre'].'</option>';
+        for ($i=0; $i < count($data); $i++) {
+            $selected = $data[$i]['genre'] == $selected_genre?"selected":"";
+            $resultHTML .= '<option value="'.$data[$i]['genre'].'" '.$selected.'>'.$data[$i]['genre'].'</option>';
         }
         $resultHTML .= '</select>
         </div>';
         return $resultHTML;
     }
 
-    function CreateLanguageFilter(): string{
+    function CreateLanguageFilter($selected_lang): string{
         $resultHTML = '<div class="lang-filter">
         <label for="lang-select" class="filter-label">Megjelenési nyelv</label>
         <select id="lang-select" class="lang-select">
             <option value="">Összes nyelv</option>';
         $data = GetLangs();
         for ($i=0; $i < count($data); $i++) { 
-            $resultHTML .= '<option value="'.$data[$i]['lang'].'">'.$data[$i]['lang'].'</option>';
+            $selected = ($data[$i]['lang'] == $selected_lang)?"selected":"";
+            $resultHTML .= '<option value="'.$data[$i]['lang'].'"'.$selected.'>'.$data[$i]['lang'].'</option>';
         }
         $resultHTML .= '</select>
         </div>';
         return $resultHTML;
     }
-
-    function CreateFilter(): string {
-        $resultHTML = '<div id="filters">
-            <div class="title-filter">
-                <label for="title">Cím</label>
-                <input type="text" id="title" value="" name="title" placeholder="pl.:  Állatfarm">
-            </div>
-            
-            <button id="toggleFilters" type="button" onclick="HideAndShowFilters();">További szűrők</button>
-            
-            <div id="additional-filters" data-open="0" style="display: none;">
-                ' . CreateGenreFilter() . '
-                
-                <div class="author-filter">
-                    <label for="author">Szerző</label>
-                    <input type="text" id="author" name="author" placeholder="pl.:  George Orwell">
-                </div>
-                
-                <div class="releaseDate-filter">
-                    <label for="date">Megjelenési dátum</label>
-                    <input type="date" id="date" name="date">
-                </div>
-                
-                ' . CreateLanguageFilter() . '
-                
-                <div class="ISBN-filter">
-                    <label for="ISBN">ISBN-kód</label>
-                    <input type="text" id="ISBN" name="ISBN">
-                </div>
-                
-                
-            </div>
-
-
-            
-            
-            <input id="searchButton" type="button" onclick="applyFilters()" value="Keresés">
-
-
-        </div>';
-        return $resultHTML;
-    }
-
-    
-    
-    
-
 ?>

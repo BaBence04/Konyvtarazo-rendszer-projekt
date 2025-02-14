@@ -49,7 +49,7 @@
       <h2>Bejelentkezés</h2>
   
           <div class="inputbox">
-              <input type="text" name="username" id="username" required="required" placeholder=" ">
+              <input type="text" name="username" id="username" required="required" placeholder=" " onkeyup="CheckForEnterPressedAndClickGivenButton(event, 'loginButton');">
               <span>Felhasználó név</span>
               <i></i>
           </div>
@@ -77,7 +77,7 @@
       <h2>Elfelejtettem a jelszavamat</h2>
   
         <div class="inputbox">
-          <input type="text" name="username" id="forgotPasswordUsername" required="required" placeholder=" ">
+          <input type="text" name="username" id="forgotPasswordUsername" required="required" placeholder=" " onkeyup="CheckForEnterPressedAndClickGivenButton(event, 'forgotPasswordButton');">
           <span>Felhasználó név</span>
           <i></i>
         </div>
@@ -87,7 +87,7 @@
             <a onclick="ToggleForgotPassword_Login();">Mégis emlékszem a jelszavamra</a>
         </div>
         
-        <input type="button" onclick="ForgotPassword();" id="loginButton" value="Email küldése" name="submit">
+        <input type="button" onclick="ForgotPassword();" id="forgotPasswordButton" value="Email küldése" name="submit">
     </form>
   </div>
 </div>

@@ -64,12 +64,14 @@ function showSection(element) {
     }
     MoveIndicator(currentIndex, newIndex, navItems[currentIndex].offsetHeight, navItems);
     
+    animationIsRunning = true;
     const animationDuration = 200;
     var animation = AnimateSliding(sections[currentIndex], "slideOut", direction, animationDuration, true);
     animation.onfinish = ()=>{
         sections[currentIndex].style.display = "none";
         AnimateSliding(sections[newIndex], "slideIn", direction, animationDuration, true).onfinish =()=>{
             document.querySelector("html").scrollTo({top:0, left:0, behavior:"smooth"});
+            animationIsRunning = false;
 
         }
         
@@ -143,6 +145,48 @@ function MoveIndicator(startIndex, endIndex, navHeight, navs){
 
 }
 
+
+function ChangePassword(){
+    let currentPassword = document.getElementById("currentPassword").value;
+    let newPassword = document.getElementById("newPassword").value;
+    let newPasswordAgain = document.getElementById("newPasswordAgain").value;
+    
+    if(newPassword === newPasswordAgain && currentPassword != newPassword && !(currentPassword=="" || newPassword == "" || newPasswordAgain == "")){
+      $.ajax({
+        url: "/BACKEND/api.php",
+        type: "POST", //send it through post method
+        data: { 
+            currentPassword: currentPassword,
+            newPassword: newPassword
+        },
+        success: function(response)  {
+          let data = JSON.parse(response);   
+          if(data.status == "successful"){
+            document.getElementById("currentPassword").value = "";
+            document.getElementById("newPassword").value = "";
+            document.getElementById("newPasswordAgain").value = "";
+  
+            alert("Sikeres jelszó csere");
+          }else if(data.status == "false"){
+            alert("A megadott jelszó helyetelen");
+          }else{
+            alert(`Error: Status: ${data.status} | Message if given: ${data.message}`);
+            console.error(`Error: Status: ${data.status} | Message if given: ${data.message}`);
+          }  
+        
+      }}); 
+  
+    }else if(newPassword === currentPassword){
+      alert("Az új és a mostani jelszó nem egyezhet meg!");
+  
+    }else if(currentPassword=="" || newPassword == "" || newPasswordAgain == ""){
+      alert("Kérem töltse ki mindhárom mezőt!")
+    }else{
+      alert("Nem ugyanazt írta az új jelszó, és az új jelszó megerősítéséhez!");
+    }
+  
+}
+
 function IsItInMobileView(){
     return !document.querySelector(".indicator").checkVisibility();
 }
@@ -203,145 +247,6 @@ function CancelReservationOrBooking(which, element){
 
 
 
-/**
-* Runs a sliding animation on the given element
-*
-* @function AnimateSlidingOfColumn
-* @param {DOM element} element - the element to animate
-* @param {string} type - slideOut | slideIn
-* @return {animation} - returns the animation
-*/
-function AnimateSliding(element, type, direction = "right", duration, mobileView){
-    let transformStartPos;
-    let transformEndPos;
-    let opacityStart;
-    let opacityEnd;
-
-    
-    // element.style.display = "block";
-
-
-    if(type=="slideOut"){
-        if(mobileView){
-            if(direction == "left"){
-                transformStartPos = "0";
-                transformEndPos = "-60%";
-            }else if(direction == "right"){
-                transformStartPos = "0";
-                transformEndPos = "60%";
-
-            }else if(direction == "down"){
-                transformStartPos = "0";
-                transformEndPos = "60%";
-
-            }else if(direction == "up"){
-                transformStartPos = "0";
-                transformEndPos = "-60%";
-            }
-
-        }else{
-            if(direction == "left"){
-                transformStartPos = "0";
-                transformEndPos = "-60%";
-            }else if(direction == "right"){
-                transformStartPos = "0";
-                transformEndPos = "110%";
-            }
-        }
-        
-
-        opacityStart = 1;
-        opacityEnd = 0;
-
-    }else if(type=="slideIn"){
-        if(mobileView){
-            if(direction == "right"){
-                transformStartPos = "-60%";
-                transformEndPos = "0";
-
-            }else if(direction == "left"){
-                transformStartPos = "60%";
-                transformEndPos = "0";
-
-            }else if(direction == "down"){
-                transformStartPos = "-60%";
-                transformEndPos = "0";
-
-            }else if(direction == "up"){
-                transformStartPos = "60%";
-                transformEndPos = "0";
-            }
-
-
-        }else{
-            if(direction == "right"){
-                transformStartPos = "-60%";
-                transformEndPos = "0";
-            }else if(direction == "left"){
-                transformStartPos = "110%";
-                transformEndPos = "0";
-            }
-    
-            
-        }     
-        opacityStart = 0;
-        opacityEnd = 1;
-
-
-    }else{
-        throw new Error("Unsupported type given ("+type+")!");
-    } 
-
-    var keyframes;
-    if(direction == "left" || direction == "right"){
-        keyframes = 
-        [
-            {
-                zIndex: -1,
-                transform: `translateX(${transformStartPos})`,
-                opacity: opacityStart,
-                display: "block"
-            },
-            {
-                zIndex: -1,
-                transform: `translateX(${transformEndPos})`,
-                opacity: opacityEnd,
-                display: "block"
-            }
-        ];
-
-    }else{
-        keyframes = 
-        [
-            {
-                zIndex: -1,
-                transform: `translateY(${transformStartPos})`,
-                opacity: opacityStart,
-                maxHeight: "100dvh",
-                overflowY: "hidden"
-            },
-            {
-                zIndex: -1,
-                transform: `translateY(${transformEndPos})`,
-                opacity: opacityEnd,
-                maxHeight: "100dvh",
-                overflowY: "hidden"
-            }
-        ];
-    }
-
-    let animation = element.animate(keyframes, duration);
-    element.style.opacity = opacityEnd;
-    element.style.display = "block";
-    // setTimeout(() => {
-    //     EmptyAllElementsWithClassnameToEmpty();
-    //     RemoveAllElementsWithClassnameToRemove();
-    // }, duration*1.1);//just to be safe, it is a little more than the duration
-
-    return animation;
-}
-
-
 
 
 var xStart = null;                                                        
@@ -358,10 +263,10 @@ function HandleTouchStart(evt) {
     yStart = firstTouch.clientY;                                      
 };  
 
-
+let animationIsRunning = false;
                                                                          
 function HandleTouchMove(evt) {
-    if ( ! xStart || ! yStart  || !IsItInMobileView()) {
+    if ( ! xStart || ! yStart  || !IsItInMobileView() || animationIsRunning) {
         return;
     }
 
@@ -393,7 +298,7 @@ function ShowNextOrPreviousSection(direction){
         const currentIndex = navItems.indexOf(selectedElement);
 
         let newIndex = Math.max(0, currentIndex + direction);
-        if(newIndex > navItems.length){
+        if(newIndex >= navItems.length){
             newIndex = 0;
         }
         showSection(navItems[newIndex]);
@@ -402,8 +307,8 @@ function ShowNextOrPreviousSection(direction){
 }
 
 
-document.querySelector("main").addEventListener('touchmove', HandleTouchMove, false);
-document.querySelector("main").addEventListener('touchstart', HandleTouchStart, false);    
+document.querySelector(".main-content").addEventListener('touchmove', HandleTouchMove, false);
+document.querySelector(".main-content").addEventListener('touchstart', HandleTouchStart, false);    
 
 
 let resizeTimeout;
