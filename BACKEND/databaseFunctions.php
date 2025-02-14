@@ -681,7 +681,7 @@
         $query = "CALL getAuthors(?,?);";
 
         $stmt = $conn->prepare($query); // Prepare statement
-        $stmt->bind_param("ib", $ISBN_id, $inverse); // Bind parameter to SQL query
+        $stmt->bind_param("ii", $ISBN_id, $inverse); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
         $conn->close();
@@ -694,7 +694,7 @@
         $query = "CALL getCategories(?,?);";
 
         $stmt = $conn->prepare($query); // Prepare statement
-        $stmt->bind_param("ib", $ISBN_id, $inverse); // Bind parameter to SQL query
+        $stmt->bind_param("ii", $ISBN_id, $inverse); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
         $conn->close();

@@ -347,6 +347,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ctbSurname);
             this.Name = "AddUser";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Felhasználó hozzáadása";
             this.ResumeLayout(false);
             this.PerformLayout();

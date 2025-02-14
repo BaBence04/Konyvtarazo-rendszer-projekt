@@ -42,11 +42,45 @@ namespace Desktop
 
         private void cbtnAddAuthor_Click(object sender, EventArgs e)
         {
-
+            PopupSelect pop = new PopupSelect("getAuthors", String.Join(";", authors.Select(x=>x.Text).ToArray()));
+            if (pop.ShowDialog() == DialogResult.OK)
+            {
+                Label lbl = new Label();
+                lbl.Name = "lblAuthor" + pop.id;
+                lbl.AutoSize = true;
+                lbl.Text = pop.res1;
+                if (authorNextLocationX + lbl.Size.Width + distBtwCardsX > pAuthors.Size.Width)
+                {
+                    authorNextLocationX = 0;
+                    authorNextLocationY += lbl.Size.Height + distBtwCardsY;
+                }
+                lbl.Location = new Point(authorNextLocationX, authorNextLocationY);
+                authorNextLocationX += lbl.Size.Width + distBtwCardsX;
+                lbl.Click += lbl_Click;
+                pAuthors.Controls.Add(lbl);
+                authors.Add(lbl);
+            }
         }
         private void cbtnAddCategory_Click(object sender, EventArgs e)
         {
-            
+            PopupSelect pop = new PopupSelect("getCategories", String.Join(";", categories.Select(x => x.Text).ToArray()));
+            if (pop.ShowDialog() == DialogResult.OK)
+            {
+                Label lbl = new Label();
+                lbl.Name = "lblCategory" + pop.id;
+                lbl.AutoSize = true;
+                lbl.Text = pop.res1;
+                if (categoryNextLocationX + lbl.Size.Width + distBtwCardsX > pCategories.Size.Width)
+                {
+                    categoryNextLocationX = 0;
+                    categoryNextLocationY += lbl.Size.Height + distBtwCardsY;
+                }
+                lbl.Location = new Point(categoryNextLocationX, categoryNextLocationY);
+                categoryNextLocationX += lbl.Size.Width + distBtwCardsX;
+                lbl.Click += lbl_Click;
+                pCategories.Controls.Add(lbl);
+                categories.Add(lbl);
+            }
         }
 
         private void lblPublisher_Click(object sender, EventArgs e)
@@ -60,10 +94,10 @@ namespace Desktop
 
         private void lblLang_Click(object sender, EventArgs e)
         {
-            PopupSelect pub = new PopupSelect("getLangs");
-            if (pub.ShowDialog() == DialogResult.OK)
+            PopupSelect lang = new PopupSelect("getLangs");
+            if (lang.ShowDialog() == DialogResult.OK)
             {
-                lblPublisher.Text = pub.res1;
+                lblLang.Text = lang.res1;
             }
         }
 
@@ -133,12 +167,38 @@ namespace Desktop
             if ((sender as Label).Name.Contains("Author") && lblAuthorDeleteMode.Visible)
             {
                 authors.Remove(sender as Label);
-                pAuthors.Controls.Remove(sender as Label);
+                pAuthors.Controls.Clear();
+                authorNextLocationX = 0;
+                authorNextLocationY = 0;
+                foreach (var item in authors)
+                {
+                    if (authorNextLocationX + item.Size.Width + distBtwCardsX > pAuthors.Size.Width)
+                    {
+                        authorNextLocationX = 0;
+                        authorNextLocationY += item.Size.Height + distBtwCardsY;
+                    }
+                    item.Location = new Point(authorNextLocationX, authorNextLocationY);
+                    authorNextLocationX += item.Size.Width + distBtwCardsX;
+                    pAuthors.Controls.Add (item);
+                }
             }
             else if((sender as Label).Name.Contains("Category") && lblCategoryDeleteMode.Visible)
             {
                 categories.Remove(sender as Label);
-                pCategories.Controls.Remove(sender as Label);   
+                pCategories.Controls.Clear();
+                categoryNextLocationX = 0;
+                categoryNextLocationY = 0;
+                foreach (var item in categories)
+                {
+                    if (categoryNextLocationX + item.Size.Width + distBtwCardsX > pCategories.Size.Width)
+                    {
+                        categoryNextLocationX = 0;
+                        categoryNextLocationY += item.Size.Height + distBtwCardsY;
+                    }
+                    item.Location = new Point(categoryNextLocationX, categoryNextLocationY);
+                    categoryNextLocationX += item.Size.Width + distBtwCardsX;
+                    pCategories.Controls.Add(item);
+                }
             }
         }
     }

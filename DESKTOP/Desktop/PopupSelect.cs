@@ -30,6 +30,12 @@ namespace Desktop
                     searchMode = "getBookStates";
                     getUserStatus();
                     break;
+                case "getAuthors":
+                    searchMode = mode;
+                    break;
+                case "getCategories":
+                    searchMode = mode;
+                    break;
             }
             InitializeComponent();
             
@@ -61,18 +67,35 @@ namespace Desktop
             cdgwSelect.DataSource = null;
             cdgwSelect.Columns.Clear();
             ids.Clear();
-            List<Dictionary<string, string>> response = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", searchMode }, { "search", search } });
+            List<Dictionary<string, string>> response;
+            if (searchMode == "getLangs")
+            {
+                response = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", searchMode } });
+            }
+            else if (searchMode == "getAuthors" || searchMode == "getCategories")
+            {
+                response = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", searchMode }, { "ISBN_id", "-1" }, { "inverse", "1" } });
+            }
+            else
+            {
+                response = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", searchMode }, { "search", search } });
+            }
             if (response.Count > 0)
             {
                 DataTable dt = new DataTable();
                 DataColumn col;
                 DataRow row;
                 //make the dataset columns
+                if (startMode == "getLangs")
+                {
+                    ctbSearch.Visible = false;
+                    cbtnSearch.Visible = false;
+                }
                 if (startMode != "userTakeback")
                 {
                     foreach (KeyValuePair<string, string> item in response[0])
                     {
-                        if (item.Key != "user_id" && item.Key != "book_id" && item.Key != "id" && item.Key != "publisher_id" && item.Key != "lang_id")
+                        if (item.Key != "user_id" && item.Key != "book_id" && item.Key != "id" && item.Key != "publisher_id" && item.Key != "lang_id" && item.Key != "author_id" && item.Key != "genre_id")
                         {
                             col = new DataColumn();
                             col.DataType = typeof(string);
@@ -133,6 +156,11 @@ namespace Desktop
                         response = response.Where(x => x["state"] != "reservation").ToList();
                     }
                 }
+                if (startMode == "getAuthors" || startMode == "getCategories")
+                {
+                    string key = startMode == "getAuthors" ? "author" : "genre";
+                    response = response.Where(x => !optionalId.Split(';').Contains(x[key])).ToList();
+                }
                 //make rows
                 for (int i = 0; i < response.Count(); i++)
                 {
@@ -142,12 +170,13 @@ namespace Desktop
                         foreach (KeyValuePair<string, string> item in response[i])
                         {
 
-                            if (item.Key == "user_id" || item.Key == "book_id" || item.Key == "id" || item.Key == "publisher_id" || item.Key == "lang_id")
+                            if (item.Key == "user_id" || item.Key == "book_id" || item.Key == "id" || item.Key == "publisher_id" || item.Key == "lang_id" || item.Key == "author_id" || item.Key == "genre_id")
                             {
                                 ids.Add(item.Value);
                             }
                             else
                             {
+                            
                                 row[item.Key] = item.Value;
                             }
                         }
@@ -231,9 +260,11 @@ namespace Desktop
                     {
                         MessageBox.Show("Közben megváltozott a foglalás");
                     }
-                }else if(startMode == "getLangs")
+                }else if(startMode == "getLangs" || startMode == "getAuthors" || startMode  == "getCategories")
                 {
                     res1 = (string)cdgwSelect.Rows[e.RowIndex].Cells[0].Value;
+                    id = ids[e.RowIndex];
+                    this.DialogResult = DialogResult.OK;
                 }
                 else if (startMode != "userTakeback")
                 {
