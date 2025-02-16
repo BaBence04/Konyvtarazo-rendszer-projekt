@@ -16,7 +16,9 @@ namespace Desktop
         public AddUser()
         {
             InitializeComponent();
-        }
+			this.BorderColor = Color.FromArgb(10, 123, 106);
+			this.BorderWidth = 2;
+		}
 
         private async void cbtnAdd_Click(object sender, EventArgs e)
         {
@@ -52,5 +54,29 @@ namespace Desktop
         {
             this.Close();
         }
-    }
+
+		[Category("Border")]
+		[Browsable(true)]
+		public float BorderWidth { get; set; } = 1.0f;
+		[Category("Border")]
+		[Browsable(true)]
+		public Color BorderColor { get; set; } = Color.Black;
+
+
+		protected override void OnPaint(PaintEventArgs e)
+		{
+			base.OnPaint(e);
+			using (Pen pen = new Pen(BorderColor, BorderWidth))
+			{
+				Rectangle borderRect = new Rectangle(
+					(int)(BorderWidth / 2),
+					(int)(BorderWidth / 2),
+					(int)(this.ClientSize.Width - BorderWidth),
+					(int)(this.ClientSize.Height - BorderWidth)
+				);
+
+				e.Graphics.DrawRectangle(pen, borderRect);
+			}
+		}
+	}
 }

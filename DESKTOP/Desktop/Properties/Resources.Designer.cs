@@ -123,6 +123,16 @@ namespace Desktop.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap close_line_white {
+            get {
+                object obj = ResourceManager.GetObject("close_line_white", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap girReading_upscaled {
             get {
                 object obj = ResourceManager.GetObject("girReading_upscaled", resourceCulture);

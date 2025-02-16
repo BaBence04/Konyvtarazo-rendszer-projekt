@@ -20,9 +20,9 @@ namespace Desktop
         {
             InitializeComponent();
             ThemeManager.ApplyTheme(this);
+			FormDragger.MakeDraggable(this);
 
-            
-        }
+		}
 
         private void button_CloseLoginForm_Click(object sender, EventArgs e)
         {

@@ -120,6 +120,7 @@
     <Compile Include="EmployeeDetailedPage.Designer.cs">
       <DependentUpon>EmployeeDetailedPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormDragger.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -355,6 +356,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\icons\add-line_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close-line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close-line_white.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

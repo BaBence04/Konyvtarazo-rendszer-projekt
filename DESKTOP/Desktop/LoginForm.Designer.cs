@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
 			this.label1 = new System.Windows.Forms.Label();
 			this.button_CloseLoginForm = new Desktop.CustomButton();
 			this.customButton1 = new Desktop.CustomButton();
@@ -57,8 +58,9 @@
 			this.button_CloseLoginForm.FlatAppearance.BorderSize = 0;
 			this.button_CloseLoginForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.button_CloseLoginForm.ForeColor = System.Drawing.Color.White;
+			this.button_CloseLoginForm.Image = ((System.Drawing.Image)(resources.GetObject("button_CloseLoginForm.Image")));
 			this.button_CloseLoginForm.Location = new System.Drawing.Point(345, 1);
-			this.button_CloseLoginForm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.button_CloseLoginForm.Margin = new System.Windows.Forms.Padding(4);
 			this.button_CloseLoginForm.Name = "button_CloseLoginForm";
 			this.button_CloseLoginForm.Size = new System.Drawing.Size(53, 49);
 			this.button_CloseLoginForm.TabIndex = 3;
@@ -76,7 +78,7 @@
 			this.customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.customButton1.ForeColor = System.Drawing.Color.White;
 			this.customButton1.Location = new System.Drawing.Point(97, 453);
-			this.customButton1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.customButton1.Margin = new System.Windows.Forms.Padding(4);
 			this.customButton1.Name = "customButton1";
 			this.customButton1.Size = new System.Drawing.Size(200, 38);
 			this.customButton1.TabIndex = 2;
@@ -93,8 +95,9 @@
 			this.tbLoginPw.BorderSize = 2;
 			this.tbLoginPw.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.tbLoginPw.ForeColor = System.Drawing.Color.WhiteSmoke;
+			this.tbLoginPw.IsReadOnly = false;
 			this.tbLoginPw.Location = new System.Drawing.Point(33, 295);
-			this.tbLoginPw.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+			this.tbLoginPw.Margin = new System.Windows.Forms.Padding(5);
 			this.tbLoginPw.Multiline = false;
 			this.tbLoginPw.Name = "tbLoginPw";
 			this.tbLoginPw.Padding = new System.Windows.Forms.Padding(13, 9, 13, 9);
@@ -116,8 +119,9 @@
 			this.tbLoginUname.BorderSize = 2;
 			this.tbLoginUname.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.tbLoginUname.ForeColor = System.Drawing.Color.WhiteSmoke;
+			this.tbLoginUname.IsReadOnly = false;
 			this.tbLoginUname.Location = new System.Drawing.Point(33, 208);
-			this.tbLoginUname.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+			this.tbLoginUname.Margin = new System.Windows.Forms.Padding(5);
 			this.tbLoginUname.Multiline = false;
 			this.tbLoginUname.Name = "tbLoginUname";
 			this.tbLoginUname.Padding = new System.Windows.Forms.Padding(13, 9, 13, 9);
@@ -142,7 +146,7 @@
 			this.Controls.Add(this.tbLoginPw);
 			this.Controls.Add(this.tbLoginUname);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-			this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Margin = new System.Windows.Forms.Padding(4);
 			this.Name = "LoginForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "LoginForm";
