@@ -265,5 +265,28 @@ namespace Desktop
 			path.CloseFigure();
 			return path;
 		}
+
+
+
+		// Custom function(s)
+
+		// UserDeletingRow (ha nem jó, if-else)
+		protected override void OnUserDeletingRow(DataGridViewRowCancelEventArgs e)
+		{
+			var customMessageBox = new CustomMessageBoxForm(
+				"Biztosan törölni szeretné a sort?",
+				"Sor törlése",
+				MessageBoxButtons.YesNo,
+				MessageBoxIcon.Warning);
+
+			DialogResult result = customMessageBox.ShowDialog();
+
+			if (result == DialogResult.No)
+			{
+				e.Cancel = true;
+			}
+
+			base.OnUserDeletingRow(e);
+		}
 	}
 }

@@ -7,7 +7,6 @@ Mesterremek projekt, könyvtárazó rendszer
         -a datagrid-view-oknál a scroll nem illik az overall dizájnhoz
         -a könyvrészletesen lehessen a kiadóra lehessen rákattintani, és megnyitni annak a részleteit
         -automatikus törlős dologhoz valami frontend, popup window szerűség
-        -publishers tabnál a customDataGridView-hoz hozzá kell adni a userDeletingRow functiont(- Bence)
         -minden ami a UsersPage-el kapcsolatos (alias onnan nyílik meg) szabadon style-olható mert minden készen van nem fogok már hozzányúlni nagy eséllel
         -message box-okat kicserélni az újra
         -customDateTimePicker hozzáadása (ezt egyszer már hozzáadtam, nem tudom mi történt)
