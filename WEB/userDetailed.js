@@ -150,41 +150,45 @@ function ChangePassword(){
     let currentPassword = document.getElementById("currentPassword").value;
     let newPassword = document.getElementById("newPassword").value;
     let newPasswordAgain = document.getElementById("newPasswordAgain").value;
-    
-    if(newPassword === newPasswordAgain && currentPassword != newPassword && !(currentPassword=="" || newPassword == "" || newPasswordAgain == "")){
-      $.ajax({
-        url: "/BACKEND/api.php",
-        type: "POST", //send it through post method
-        data: { 
-            currentPassword: currentPassword,
-            newPassword: newPassword
-        },
-        success: function(response)  {
-          let data = JSON.parse(response);   
-          if(data.status == "successful"){
-            document.getElementById("currentPassword").value = "";
-            document.getElementById("newPassword").value = "";
-            document.getElementById("newPasswordAgain").value = "";
-  
-            alert("Sikeres jelszó csere");
-          }else if(data.status == "false"){
-            alert("A megadott jelszó helyetelen");
-          }else{
-            alert(`Error: Status: ${data.status} | Message if given: ${data.message}`);
-            console.error(`Error: Status: ${data.status} | Message if given: ${data.message}`);
-          }  
-        
-      }}); 
-  
-    }else if(newPassword === currentPassword){
-      alert("Az új és a mostani jelszó nem egyezhet meg!");
-  
-    }else if(currentPassword=="" || newPassword == "" || newPasswordAgain == ""){
-      alert("Kérem töltse ki mindhárom mezőt!")
+
+    if(Array.from(document.getElementById("errors_with_password").children).every(e=> !e.checkVisibility())){
+        if(newPassword === newPasswordAgain && currentPassword != newPassword && !(currentPassword=="" || newPassword == "" || newPasswordAgain == "")){
+            $.ajax({
+            url: "/BACKEND/api.php",
+            type: "POST", //send it through post method
+            data: { 
+                currentPassword: currentPassword,
+                newPassword: newPassword
+            },
+            success: function(response)  {
+                let data = JSON.parse(response);   
+                if(data.status == "successful"){
+                document.getElementById("currentPassword").value = "";
+                document.getElementById("newPassword").value = "";
+                document.getElementById("newPasswordAgain").value = "";
+
+                alert("Sikeres jelszó csere");
+                }else if(data.status == "false"){
+                alert("A megadott jelszó helyetelen");
+                }else{
+                alert(`Error: Status: ${data.status} | Message if given: ${data.message}`);
+                console.error(`Error: Status: ${data.status} | Message if given: ${data.message}`);
+                }  
+            
+            }}); 
+
+        }else if(newPassword === currentPassword){
+            alert("Az új és a mostani jelszó nem egyezhet meg!");
+
+        }else if(currentPassword=="" || newPassword == "" || newPasswordAgain == ""){
+            alert("Kérem töltse ki mindhárom mezőt!")
+        }else{
+            alert("Nem ugyanazt írta az új jelszó, és az új jelszó megerősítéséhez!");
+        }
+
     }else{
-      alert("Nem ugyanazt írta az új jelszó, és az új jelszó megerősítéséhez!");
+        alert("Még a megadott jelszó nem teljesíti az összes követelményt!");
     }
-  
 }
 
 function IsItInMobileView(){

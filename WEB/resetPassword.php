@@ -24,7 +24,7 @@
         let password = document.getElementById("newPassword").value;
         let passwordAgain =document.getElementById("newPasswordAgain").value;
         ValidatePassword(password);
-        if(document.getElementById("errors_with_password").innerHTML == ""){
+        if(Array.from(document.getElementById("errors_with_password").children).every(e=> !e.checkVisibility())){
             if(password != passwordAgain){
                 alert("Nem egyezik a kettő jelszó!");
                 return;
@@ -47,9 +47,8 @@
             }
 
         }else{
-            alert("Még vannak hibák a jelszóval!")
+            alert("Még a megadott jelszó nem teljesíti az összes követelményt!");
         }
-
     }
 </script>
 </html>
