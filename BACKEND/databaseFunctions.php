@@ -700,7 +700,32 @@
         $conn->close();
         return $results->fetch_all(MYSQLI_ASSOC);
     }
+    
+    function DeactivateBook($book_id){
+        require "databaseConnect.php";
 
+        $query = "CALL deactivateBook(?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("i", $book_id); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        $conn->close();
+        //return $results->fetch_all(MYSQLI_ASSOC);
+    }
+
+    function AddToInventory($ISBN_id){
+        require "databaseConnect.php";
+
+        $query = "CALL addToInventory(?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("i", $ISBN_id); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        $conn->close();
+        return $results->fetch_all(MYSQLI_ASSOC);
+    }
     /**
      * Return true or false depending if the end date of borrowing the given book is extendable.
      *

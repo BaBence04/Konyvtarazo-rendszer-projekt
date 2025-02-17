@@ -612,9 +612,9 @@ IN searchTerm VARCHAR(255)
 )
 BEGIN
 IF(searchTerm = "") THEN
-SELECT inventory.book_id, book.ISBN, book.title, IF(j.borrowing_id IS NULL, IF(k.booking_id IS NULL, "available", "booked"),"borrowed") AS "status" FROM ((inventory LEFT JOIN (SELECT booking.booking_id, booking.book_id FROM booking) k ON k.book_id = inventory.book_id) LEFT JOIN (SELECT borrowings.borrowing_id, borrowings.book_id FROM borrowings WHERE borrowings.returned = 0 GROUP BY borrowings.book_id) j ON inventory.book_id = j.book_id) INNER JOIN book ON book.ISBN_id = inventory.ISBN_id;
+SELECT inventory.book_id, book.ISBN, book.title, inventory.available, IF(j.borrowing_id IS NULL, IF(k.booking_id IS NULL, "available", "booked"),"borrowed") AS "status" FROM ((inventory LEFT JOIN (SELECT booking.booking_id, booking.book_id FROM booking) k ON k.book_id = inventory.book_id) LEFT JOIN (SELECT borrowings.borrowing_id, borrowings.book_id FROM borrowings WHERE borrowings.returned = 0 GROUP BY borrowings.book_id) j ON inventory.book_id = j.book_id) INNER JOIN book ON book.ISBN_id = inventory.ISBN_id WHERE inventory.available OR (NOT inventory.available AND j.book_id IS NOT NULL);
 ELSE
-SELECT inventory.book_id, book.ISBN, book.title, IF(j.borrowing_id IS NULL, IF(k.booking_id IS NULL, "available", "booked"),"borrowed") AS "status" FROM ((inventory LEFT JOIN (SELECT booking.booking_id, booking.book_id FROM booking) k ON k.book_id = inventory.book_id) LEFT JOIN (SELECT borrowings.borrowing_id, borrowings.book_id FROM borrowings WHERE borrowings.returned = 0 GROUP BY borrowings.book_id) j ON inventory.book_id = j.book_id) INNER JOIN book ON book.ISBN_id = inventory.ISBN_id WHERE inventory.ISBN_id LIKE CONCAT("%", searchTerm, "%") OR book.title LIKE CONCAT("%", searchTerm, "%"); 
+SELECT inventory.book_id, book.ISBN, book.title, inventory.available, IF(j.borrowing_id IS NULL, IF(k.booking_id IS NULL, "available", "booked"),"borrowed") AS "status" FROM ((inventory LEFT JOIN (SELECT booking.booking_id, booking.book_id FROM booking) k ON k.book_id = inventory.book_id) LEFT JOIN (SELECT borrowings.borrowing_id, borrowings.book_id FROM borrowings WHERE borrowings.returned = 0 GROUP BY borrowings.book_id) j ON inventory.book_id = j.book_id) INNER JOIN book ON book.ISBN_id = inventory.ISBN_id WHERE (inventory.available OR (NOT inventory.available AND j.book_id IS NOT NULL)) AND inventory.ISBN_id LIKE CONCAT("%", searchTerm, "%") OR book.title LIKE CONCAT("%", searchTerm, "%"); 
 END IF;
 END;//
 DELIMITER ;
@@ -913,5 +913,26 @@ BEGIN
   ELSE
     SELECT DISTINCT genres.genre_id, genres.genre FROM genres INNER JOIN books_genres_conn ON books_genres_conn.genre_id = genres.genre_id ; 
   END IF;
+END;//
+DELIMITER ;
+
+-- deactivates a book
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS deactivateBook(
+  IN book_id INT
+) 
+BEGIN
+  UPDATE inventory SET inventory.available = 0 WHERE inventory.book_id = book_id;
+END;//
+DELIMITER;
+
+-- inserts a book to invetnory
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS addToInventory(
+  IN ISBN_id INT
+) 
+BEGIN
+  INSERT INTO inventory(inventory.ISBN_id, inventory.available) VALUES(ISBN_id, 1);
+  SELECT LAST_INSERT_ID() AS book_id;
 END;//
 DELIMITER ;
