@@ -5,7 +5,7 @@
 
 :root {
   --header-height: 100px;
-  --margin-after-header: 30px;
+  /* --margin-after-header: 30px; */
 
   /*HSL(hue, saturation, lightness)*/
   --first-color: hsl(171, 85%, 26%);

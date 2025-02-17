@@ -3,6 +3,72 @@
 @import url('https://fonts.googleapis.com/css2?family=Gloock&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
+:root {
+  --header-height: 100px;
+  /* --margin-after-header: 30px; */
+
+  /*HSL(hue, saturation, lightness)*/
+  --first-color: hsl(171, 85%, 26%);
+  --second-color: rgb(152, 205, 198);
+  --title-color: hsl(230, 75%, 15%);
+  --text-color: hsl(0, 0%, 0%);
+  --body-color: 	hsl(0, 0%, 96%);
+  --container-color: hsl(230, 100%, 97%);
+  --border-color: hsl(230, 25%, 80%);
+  --white-color: hsl(180, 0%, 100%);
+
+  --bg-col:#874e40;
+  --box-col:transparent;
+  --form-col:#fff;
+  --blk-col:#000;
+  --whi-col:#fff;
+  --inp-col:#8f8f8f;
+  --blu-col:#244855;
+  --trans-col: rgba(0,0,0,0.5);
+  --pro-col: rgb(255, 246, 204);
+
+
+  --body-font: 'Playfair Display', sans-serif;
+  --h2-font-size: 1.25rem;
+  --normal-font-size: 1rem;
+
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semi-bold: 600;
+
+  --z-fixed: 100;
+  --z-modal: 1000;
+
+  /* --navbar_max_height: 100px; */
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+    --color: rgba(245,245,245,255);
+
+    -webkit-box-shadow: 0 0 0 50px var(--color) inset !important;
+
+}
+
+body,
+input,
+button {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+}
+
+@media screen and (min-width: 1023px) {
+  :root {
+    --h2-font-size: 1.5rem;
+    --normal-font-size: 1.15rem;
+  }
+}
+
+input[type=button]:hover, button:hover{
+  cursor: pointer;
+}
 
 div.space-after-nav{
     margin-top: var(--header-height);
@@ -27,7 +93,6 @@ div.space-after-nav{
     vertical-align: middle;
   }
   .nav__menu {
-    /* Navigation for mobile devices */
     background-color: var(--body-color);
   }
   @media screen and (max-width: 1022px) {
@@ -426,7 +491,7 @@ div.space-after-nav{
   }
 
 #header {
-    z-index: 999999999999999999999999;
+    z-index: calc((--z-modal)-1);
 }
 
 
@@ -453,4 +518,12 @@ li{
 
 a {
   text-decoration: none;
+}
+
+.nav.container {
+  display: flex;
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 20px;
 }

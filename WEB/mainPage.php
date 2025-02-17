@@ -11,7 +11,7 @@
                 <div class="img"></div>
             </div>
             <div class="col side-2">
-                <div class="img"><img src="" loading="lazy" alt=""></div>
+                <div class="img"><img src="/web/imgs/img4.jpg" loading="lazy" alt=""></div>
                 <div class="img"><img src="/web/imgs/img5.jpg" loading="lazy" alt=""></div>
                 <div class="img"><img src="/web/imgs/img6.jpg" loading="lazy" alt=""></div>
             </div>
@@ -40,7 +40,7 @@
             <div class="hero-img">
                 <img src="/web/imgs/hero-image_dark(25).png" alt="">
             </div>
-            <div class="header">
+            <div class="header-main">
                 <h1 class="header-left">BOOK</h1>
                 <h1 class="header-right">HIVE</h1>
             </div>
@@ -64,11 +64,11 @@
             <h1 class="text-toLeft">MY FRIEND</h1>
             <h1 class="text-toRight">OF MISERY</h1>
         </section>
-        <section class="footer">
+<!--         <section class="footer">
             <div class="footer-bg">
                 
             </div>
-        </section>
+        </section> -->
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>

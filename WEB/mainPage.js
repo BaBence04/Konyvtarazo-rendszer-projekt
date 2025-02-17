@@ -143,7 +143,7 @@ window.addEventListener("load", () => {
 // NAVBAR TEXT COLOR CHANGER
 
 
-document.addEventListener("DOMContentLoaded", function() {
+/* document.addEventListener("DOMContentLoaded", function() {
   const navbarLinks = document.querySelectorAll('a.nav__link');
   
 
@@ -183,7 +183,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
   window.addEventListener('scroll', updateNavbarTextColor);
   updateNavbarTextColor();
-});
+}); */
 
 
 
