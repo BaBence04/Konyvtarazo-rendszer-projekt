@@ -8,6 +8,8 @@ Mesterremek projekt, könyvtárazó rendszer
         -automatikus törlős dologhoz valami frontend, popup window szerűség
         -minden ami a UsersPage-el kapcsolatos (alias onnan nyílik meg) szabadon style-olható mert minden készen van nem fogok már hozzányúlni nagy eséllel
         -message box-okat kicserélni az újra
+        -CustomDataGridView nek egy allowUserToAddRows kéne hogy tudjunk hozzáadni nyelvet/kategóriát/szerzőt
+  
 
 
     BACKEND:
