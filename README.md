@@ -60,6 +60,7 @@ KÉRDÉSEK A KÖNYVTÁROSOKHOZ:
 -lehet-e kivételkor azonnal meghosszabbítani a könyvet
 -ha lejár a határidő vagyis tartozna valamennyivel a felhasználó, de meghosszabbítja, akkor kell-e fizetni-e valamit, ha utána visszahozza időre?
 -ha lejár a taggság, akkor az előjegyzései is törlődnek?
+-hogy működik egy könyv leselejtezése? (mi van ha éppen valaki lefoglalta, előjegyezte... akkor törlődik vagy megvárják, míg nem lesz)
 
 
 DONE THIS WEEK:
