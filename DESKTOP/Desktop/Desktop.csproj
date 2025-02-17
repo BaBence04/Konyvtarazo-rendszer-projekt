@@ -102,6 +102,9 @@
     <Compile Include="CustomDataGridView.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="CustomDateTimePicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="CustomMessageBoxForm.cs">
       <SubType>Form</SubType>
     </Compile>
