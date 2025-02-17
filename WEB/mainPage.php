@@ -1,53 +1,82 @@
-
 <body>
-
-    <section class="hero main_section">
-        <div class="service">
-            <h1>Üdvözöljük az online könytárunkban!</h1>
-            <p>Ide valami szlogen</p>
-            <a href="./konyveink" class="cta-button">Könyvek böngészése</a>
-        </div>
-
-    </section>
-
-    <section class="services">
-
-
-        <section class="borrowing_section main_section">
-            <div class="service">
-                <img src="/web/imgs/borrow-icon.png" alt="Borrow">
-                <h3>Könyvek lefoglalása</h3>
-                <p>Foglalja le bármelyik elérhető könyvet és mi 24 órára félretesszük Önnek</p> 
+    <div class="loading-screen">
+        <div class="loader"></div>
+    </div>
+    
+    <section class="sticky">
+        <div class="gallery-wrapper">
+            <div class="col side-1">
+                <div class="img"></div>
+                <div class="img"></div>
+                <div class="img"></div>
             </div>
-        </section>
-
-        <section class="collection_section main_section">
-            <div class="service">
-                <img src="/web/imgs/book-icon.png" alt="Events">
-                <h3>Hatalmas könyvgyűjtemény</h3>
-                <p>Weboldalunkon megtalálja könyvtárunk összes, több mint [ide a könyvek számát, amennyivel feltöltjük] könyvét</p>
+            <div class="col side-2">
+                <div class="img"><img src="" loading="lazy" alt=""></div>
+                <div class="img"><img src="/web/imgs/img5.jpg" loading="lazy" alt=""></div>
+                <div class="img"><img src="/web/imgs/img6.jpg" loading="lazy" alt=""></div>
             </div>
-        </section>
-
-        <secton class="asdf main_section">
-            <div class="service">
-                <img src="/web/imgs/digital-icon.png" alt="Digital">
-                <h3>Digital Library</h3>
-                <p>Access e-books, audiobooks, and digital resources online.</p>
+            <div class="col main">
+                <div class="img"><img src="/web/imgs/img7.jpg" loading="lazy" alt=""></div>
+                    <div class="image-wrapper">
+                        <img src="/web/imgs/img9.jpg" alt="Revealed Image">
+                    </div>
+                <div class="img"><img src="/web/imgs/img8.jpg" loading="lazy"alt=""></div>
             </div>
-        </section>
-    </section>
+            <div class="col side-3">
+                <div class="img"><img src="/web/imgs/img10.jpg" loading="lazy" alt=""></div>
+                <div class="img"><img src="/web/imgs/img11.jpg" loading="lazy" alt=""></div>
+                <div class="img"><img src="/web/imgs/img12.jpg" loading="lazy" alt=""></div>
+            </div>
+            <div class="col side-4">
+                <div class="img"></div>
+                <div class="img"></div>
+                <div class="img"></div>
+            </div>
 
-
-
-
-    <section class="membership">
-        <div class="servic">
-            <h2>Legyen tagja könyvtárunknak</h2>
-            <p>asdf</p>
         </div>
     </section>
+    <div class="container">
+        <section class="hero section">
+            <div class="hero-img">
+                <img src="/web/imgs/hero-image_dark(25).png" alt="">
+            </div>
+            <div class="header">
+                <h1 class="header-left">BOOK</h1>
+                <h1 class="header-right">HIVE</h1>
+            </div>
+        </section>
+        <section class="intro section">
+            <div class="tagline">
+                <p>Üdvözöljük az online könytárunkban!</p>
+            </div>
+            <div class="divider"></div>
+            <div class="intro-header">
+                <h1>JUSTICE</h1>
+                <h1>FOR ALL</h1>
+            </div>
+        </section>
+        <section class="ws section"></section>
+        <section class="trans-bg-content section">
+            <h1 class="overlay">MY FRIEND</h1>
+            <h1 class="overlay">OF MISERY</h1>
+        </section>
+        <section class="outro section">
+            <h1 class="text-toLeft">MY FRIEND</h1>
+            <h1 class="text-toRight">OF MISERY</h1>
+        </section>
+        <section class="footer">
+            <div class="footer-bg">
+                
+            </div>
+        </section>
+    </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.19/dist/lenis.min.js"></script>
+    
+    <script src="mainPage.js"></script>
+    
 
-
+    
 </body>

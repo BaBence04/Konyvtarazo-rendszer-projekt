@@ -105,9 +105,23 @@ if(count($parts_of_path) == 1){
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?=$page_title?></title>
-  <link rel="stylesheet" href="/web/style.css">
+  
+
   <script src="/web/jquery.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+  <?php if($page_to_load == "mainPage"): ?>
+    
+    <link rel="stylesheet" href="/web/mainPage.css">
+    <link rel="stylesheet" href="/web/navbar.css">
+  
+  <?php endif; ?>
+
+  <?php if($page_to_load != "mainPage"): ?>
+    
+    <link rel="stylesheet" href="/web/style.css">
+  
+  <?php endif; ?>
   
   <link rel="android-chrome" sizes="192x192" href="/web/icons/android-chrome-192x192.png">
   <link rel="android-chrome" sizes="512x512" href="/web/icons/android-chrome-512x512.png">
