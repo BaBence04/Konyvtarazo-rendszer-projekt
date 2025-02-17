@@ -31,7 +31,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblISBN = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.dtpReleaseDate = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.lblPublisher = new System.Windows.Forms.Label();
@@ -52,6 +51,9 @@
             this.cbtnDeleteAuthor = new Desktop.CustomButton();
             this.cbtnAddAuthor = new Desktop.CustomButton();
             this.ctbTitle = new Desktop.CustomTextbox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cbtnAddBook = new Desktop.CustomButton();
+            this.cdtpReleaseDate = new Desktop.CustomDateTimePicker();
             this.SuspendLayout();
             // 
             // label1
@@ -80,14 +82,6 @@
             this.label3.Size = new System.Drawing.Size(58, 13);
             this.label3.TabIndex = 2;
             this.label3.Text = "Könyv cím";
-            // 
-            // dtpReleaseDate
-            // 
-            this.dtpReleaseDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpReleaseDate.Location = new System.Drawing.Point(45, 181);
-            this.dtpReleaseDate.Name = "dtpReleaseDate";
-            this.dtpReleaseDate.Size = new System.Drawing.Size(124, 20);
-            this.dtpReleaseDate.TabIndex = 4;
             // 
             // label4
             // 
@@ -214,6 +208,7 @@
             this.cbtnDeactivate.TabIndex = 17;
             this.cbtnDeactivate.Text = "Leselejtez";
             this.cbtnDeactivate.UseVisualStyleBackColor = false;
+            this.cbtnDeactivate.Click += new System.EventHandler(this.cbtnDeactivate_Click);
             // 
             // cbtnBack
             // 
@@ -322,11 +317,55 @@
             this.ctbTitle.Texts = "";
             this.ctbTitle.UnderlinedStyle = false;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(492, 325);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(80, 13);
+            this.label8.TabIndex = 23;
+            this.label8.Text = "Könyv felvétele";
+            // 
+            // cbtnAddBook
+            // 
+            this.cbtnAddBook.BackColor = System.Drawing.Color.Black;
+            this.cbtnAddBook.BorderColor = System.Drawing.Color.White;
+            this.cbtnAddBook.BorderRadius = 40;
+            this.cbtnAddBook.BorderSize = 0;
+            this.cbtnAddBook.FlatAppearance.BorderSize = 0;
+            this.cbtnAddBook.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbtnAddBook.ForeColor = System.Drawing.Color.White;
+            this.cbtnAddBook.Location = new System.Drawing.Point(495, 351);
+            this.cbtnAddBook.Name = "cbtnAddBook";
+            this.cbtnAddBook.Size = new System.Drawing.Size(146, 35);
+            this.cbtnAddBook.TabIndex = 22;
+            this.cbtnAddBook.Text = "Felvesz";
+            this.cbtnAddBook.UseVisualStyleBackColor = false;
+            this.cbtnAddBook.Click += new System.EventHandler(this.cbtnAddBook_Click);
+            // 
+            // cdtpReleaseDate
+            // 
+            this.cdtpReleaseDate.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.cdtpReleaseDate.BorderRadius = 10;
+            this.cdtpReleaseDate.BorderSize = 0;
+            this.cdtpReleaseDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.cdtpReleaseDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.cdtpReleaseDate.Location = new System.Drawing.Point(24, 178);
+            this.cdtpReleaseDate.MinimumSize = new System.Drawing.Size(4, 35);
+            this.cdtpReleaseDate.Name = "cdtpReleaseDate";
+            this.cdtpReleaseDate.Size = new System.Drawing.Size(178, 35);
+            this.cdtpReleaseDate.SkinColor = System.Drawing.Color.MediumSlateBlue;
+            this.cdtpReleaseDate.TabIndex = 24;
+            this.cdtpReleaseDate.TextColor = System.Drawing.Color.White;
+            // 
             // BookDetailedPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(707, 450);
+            this.Controls.Add(this.cdtpReleaseDate);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.cbtnAddBook);
             this.Controls.Add(this.lblCategoryDeleteMode);
             this.Controls.Add(this.lblAuthorDeleteMode);
             this.Controls.Add(this.pCategories);
@@ -345,7 +384,6 @@
             this.Controls.Add(this.lblPublisher);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.dtpReleaseDate);
             this.Controls.Add(this.ctbTitle);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblISBN);
@@ -363,7 +401,6 @@
         private System.Windows.Forms.Label lblISBN;
         private System.Windows.Forms.Label label3;
         private CustomTextbox ctbTitle;
-        private System.Windows.Forms.DateTimePicker dtpReleaseDate;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblPublisher;
@@ -383,5 +420,8 @@
         private System.Windows.Forms.Panel pCategories;
         private System.Windows.Forms.Label lblAuthorDeleteMode;
         private System.Windows.Forms.Label lblCategoryDeleteMode;
+        private System.Windows.Forms.Label label8;
+        private CustomButton cbtnAddBook;
+        private CustomDateTimePicker cdtpReleaseDate;
     }
 }

@@ -36,6 +36,9 @@ namespace Desktop
                 case "getCategories":
                     searchMode = mode;
                     break;
+                case "deactivateBook":
+                    searchMode = "getBooks";
+                    break;
             }
             InitializeComponent();
             
@@ -57,6 +60,7 @@ namespace Desktop
                 case "getLangs":
                     searchMode= mode;
                     break ;
+                
             }
             InitializeComponent();
         }
@@ -95,7 +99,7 @@ namespace Desktop
                 {
                     foreach (KeyValuePair<string, string> item in response[0])
                     {
-                        if (item.Key != "user_id" && item.Key != "book_id" && item.Key != "id" && item.Key != "publisher_id" && item.Key != "lang_id" && item.Key != "author_id" && item.Key != "genre_id")
+                        if (item.Key != "user_id" && item.Key != "book_id" && item.Key != "id" && item.Key != "publisher_id" && item.Key != "lang_id" && item.Key != "author_id" && item.Key != "genre_id" && item.Key != "available")
                         {
                             col = new DataColumn();
                             col.DataType = typeof(string);
@@ -139,7 +143,7 @@ namespace Desktop
                 //search for only available books if we want books
                 if (startMode == "userBorrow")
                 {
-                    response = response.Where(x => x["status"] == "available").ToList();
+                    response = response.Where(x => x["status"] == "available" && x["available"] == "1").ToList();
                 }
                 if (startMode == "bookOrReserve")
                 {
@@ -155,6 +159,10 @@ namespace Desktop
                     {
                         response = response.Where(x => x["state"] != "reservation").ToList();
                     }
+                }
+                if (startMode == "deactivateBook")
+                {
+                    response = response.Where(x => x["status"] != "booked" && x["available"] == "1" && x["ISBN"] == optionalId).ToList();
                 }
                 if (startMode == "getAuthors" || startMode == "getCategories")
                 {
@@ -174,7 +182,7 @@ namespace Desktop
                             {
                                 ids.Add(item.Value);
                             }
-                            else
+                            else if(item.Key != "available")
                             {
                             
                                 row[item.Key] = item.Value;
@@ -260,11 +268,19 @@ namespace Desktop
                     {
                         MessageBox.Show("Közben megváltozott a foglalás");
                     }
-                }else if(startMode == "getLangs" || startMode == "getAuthors" || startMode  == "getCategories")
+                    this.Close();
+                }
+                else if (startMode == "getLangs" || startMode == "getAuthors" || startMode == "getCategories")
                 {
                     res1 = (string)cdgwSelect.Rows[e.RowIndex].Cells[0].Value;
                     id = ids[e.RowIndex];
                     this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }else if (startMode == "deactivateBook")
+                {
+                    await ApiComm.SendPost(new Dictionary<string, string> { { "type", "deactivateBook" }, { "book_id", ids[e.RowIndex] } });
+                    cdgwSelect.Rows.RemoveAt(e.RowIndex);
+                    ids.RemoveAt(e.RowIndex);
                 }
                 else if (startMode != "userTakeback")
                 {
@@ -274,12 +290,13 @@ namespace Desktop
                     id = ids[e.RowIndex];
 
                     this.DialogResult = DialogResult.OK;
+                    this.Close();
                 }
                 else
                 {
                     LoginForm.main.OpenChildForm(new BookTakebackPage(ids[e.RowIndex]));
+                    this.Close();
                 }
-                this.Close();
             } 
         }
         private async void getUserStatus()

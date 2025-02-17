@@ -101,6 +101,18 @@ namespace Desktop
             }
         }
 
+        private void cbtnDeactivate_Click(object sender, EventArgs e)
+        {
+            PopupSelect deactivate = new PopupSelect("deactivateBook", lblISBN.Text);
+            deactivate.ShowDialog();
+        }
+
+        private async void cbtnAddBook_Click(object sender, EventArgs e)
+        {
+            List<Dictionary<string, string>> resp = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "addToInventory" }, { "ISBN_id", original["ISBN_id"] } });
+            MessageBox.Show($"A hozzáadott könyv kódja: {resp.First()["book_id"]}");
+        }
+
         private List<Label> categories  = new List<Label>();
         public BookDetailedPage(string ISBN)
         {
@@ -118,7 +130,7 @@ namespace Desktop
             original = resp.First();
             lblISBN.Text = isbn;
             ctbTitle.Texts = original["title"];
-            dtpReleaseDate.Value = DateTime.Parse(original["release_date"]);
+            cdtpReleaseDate.Value = DateTime.Parse(original["release_date"]);
             lblPublisher.Text = original["name"];
             lblLang.Text = original["lang"];
             resp = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "getAuthors" }, { "ISBN_id", original["ISBN_id"] }, {"inverse", "0" } });

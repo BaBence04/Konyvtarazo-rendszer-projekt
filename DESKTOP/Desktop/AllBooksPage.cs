@@ -41,7 +41,7 @@ namespace Desktop
                 //make the dataset columns
                 foreach (KeyValuePair<string, string> item in response[0])
                 {
-                    if (item.Key != "book_id")
+                    if (item.Key != "book_id" && item.Key != "available")
                     {
                         col = new DataColumn();
                         col.DataType = typeof(string);
@@ -73,7 +73,7 @@ namespace Desktop
                         {
                             ids.Add(item.Value);
                         }
-                        else
+                        else if(item.Key != "available")
                         {
                             row[item.Key] = item.Value;
                         }
