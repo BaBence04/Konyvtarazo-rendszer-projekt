@@ -32,21 +32,15 @@ Mesterremek projekt, könyvtárazó rendszer
         
 
     PHP/JS:
-        -a bookfilters töltse fel a filtereket
-        -ahol nézve van hogy van-e még probléma az új jelszóval, ott nem lett frissítve, hogy ne az innerhtml-t nézze, hogy üres-e (pl a forgotpassword-ön nem működik)
+        -kell még az animáció az elfelejtettem a jelszót és a login között
         -advanced search
         -majd kéne valami ami jelzi, hogy az email küldése folyamatban van az elfelejtettem a jelszót funkciónál
-        -a userDetailed-on és a resetPassword.php-oldalon is kell hogy úgy működjön a password input mint a login-nál
-        -mikor rányom majd az elfelejtettem a jelszavam, jelszó küldés gombra, olyankor írjuk ki, hogy meliyk email-re küldtük, de mondjuk csak az első 4 karaktert, aztán legyen ki csillagozva a @-ig
+        -a userDetailed-on és a resetPassword.php-oldalon is kell hogy úgy működjön a password input mint a login-nál, vagyis legyen a kis szemecske
         -csak év ként kéne tárolni a megjelenés dátumát a könyvnek
-        -a bookList filternél csak évszám legyen kiírva
-        -perpillanat az elfelejtettem a jelszónál a login-nak a username mezőjét használja, meg kell majd csinálni rendesre
-        -működik az elfelejtettem a jelszót, perpillanat megnyitja a linket új oldalon, de az nem igazán tölt be, de ki van írva a konzolra a link
-        -username generáló algoritmus ami paraméterként megkapja a kereszt és a családnevet, veszi mindkettő első kettő betűjét, hozzátesz 3 számot és visszaadja (pl.: hobá666)
-        -for now php-ből van generálva a cookie-ideje de valszeg jobb lenne ha ez is a system settings-ből nézné
         -menő lenne ha ki lenne írva az is, hogy a max X-ből hány darab van már foglalva/előjegyezve pl.: 2/3
+        -az összes könyv kilistázásánál ki kell írni, hogy kivehető/foglalható, előjegyezhető posibbly felesleges
+        -for now php-ből van generálva a cookie-ideje de valszeg jobb lenne ha ez is a system settings-ből nézné
         -gyorsítani a backendet, azzal, hogy lehessen odaadni connectiont a databaseFunction-öknek hogy ne kelljen mindig újra csatlakozni
-        -az összes könyv kilistázásánál ki kell írni, hogy kivehető/foglalható, előjegyezhető
 
 SQL:
     -legyen az employee-k táblának is egy active flag-je
