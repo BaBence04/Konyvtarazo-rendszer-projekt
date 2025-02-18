@@ -32,6 +32,7 @@ namespace Desktop
                     break;
                 case "getAuthors":
                     searchMode = mode;
+                    
                     break;
                 case "getCategories":
                     searchMode = mode;
@@ -103,7 +104,14 @@ namespace Desktop
                         {
                             col = new DataColumn();
                             col.DataType = typeof(string);
-                            col.ReadOnly = true;
+                            if (startMode == "getLangs" || startMode == "getAuthors" || startMode == "getCategories")
+                            {
+                                col.ReadOnly = false;
+                            }
+                            else
+                            {
+                                col.ReadOnly = true;
+                            }
                             col.ColumnName = item.Key;
                             col.Caption = item.Key;
                             dt.Columns.Add(col);
@@ -210,6 +218,23 @@ namespace Desktop
             }
         }
 
+        private void cdgwSelect_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            cdgwSelect.Rows[e.RowIndex].Cells[0].ReadOnly = false;
+        }
+
+        private void cdgwSelect_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (cdgwSelect.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() != "")
+            {
+                cdgwSelect.Rows[e.RowIndex].Cells[e.ColumnIndex].ReadOnly = true;
+            }
+            else
+            {
+                cdgwSelect.Rows[e.RowIndex].Cells[e.ColumnIndex].ReadOnly = false;
+            }
+        }
+
         private void PopupSelect_Load(object sender, EventArgs e)
         {
             if (startMode == "userTakeback")
@@ -219,6 +244,11 @@ namespace Desktop
             else
             {
                 updateSelectDgv("");
+            }
+            if (startMode == "getLangs" || startMode == "getAuthors" || startMode == "getCategories")
+            {
+                cdgwSelect.AllowUserToAddRows = true;
+                
             }
             ctbSearch.KeyPress += ctbSearch_KeyPress;
             cdgwSelect.CellClick += cdgwSelect_CellClick;
@@ -273,7 +303,7 @@ namespace Desktop
                 else if (startMode == "getLangs" || startMode == "getAuthors" || startMode == "getCategories")
                 {
                     res1 = (string)cdgwSelect.Rows[e.RowIndex].Cells[0].Value;
-                    id = ids[e.RowIndex];
+                    //id = ids[e.RowIndex];
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }else if (startMode == "deactivateBook")

@@ -117,6 +117,8 @@ namespace Desktop
             await ApiComm.SendPost(update);
         }
 
+
+
         private async void cdgvPublishers_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
             List<Dictionary<string, string>> result = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string>() { { "type", "deletePublisher" }, { "id", ids[e.Row.Index] } });
@@ -143,5 +145,6 @@ namespace Desktop
             }
             
         }
+       
     }
 }

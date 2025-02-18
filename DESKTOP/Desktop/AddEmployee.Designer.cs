@@ -123,7 +123,7 @@
             this.button_CloseForm.FlatAppearance.BorderSize = 0;
             this.button_CloseForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_CloseForm.ForeColor = System.Drawing.Color.White;
-            this.button_CloseForm.Image = ((System.Drawing.Image)(resources.GetObject("button_CloseForm.Image")));
+            //this.button_CloseForm.Image = ((System.Drawing.Image)(resources.GetObject("button_CloseForm.Image")));
             this.button_CloseForm.Location = new System.Drawing.Point(248, 2);
             this.button_CloseForm.Name = "button_CloseForm";
             this.button_CloseForm.Size = new System.Drawing.Size(40, 40);

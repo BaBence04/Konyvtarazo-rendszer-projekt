@@ -8,6 +8,7 @@ using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using System.ComponentModel;
 using System.Security.Policy;
+using System.Runtime.CompilerServices;
 
 namespace Desktop
 {
@@ -59,6 +60,8 @@ namespace Desktop
 			set { headerGradientColor = value; this.Invalidate(); }
 		}
 
+		
+
 		// Cell customization properties
 		public Color CellBackColor
 		{
@@ -75,7 +78,6 @@ namespace Desktop
 			get => alternatingRowBackColor;
 			set { alternatingRowBackColor = value; this.Invalidate(); }
 		}
-
 		// Border customization properties
 		public bool EnableBorder
 		{
@@ -271,7 +273,7 @@ namespace Desktop
 		// Custom function(s)
 
 		// UserDeletingRow (ha nem jó, if-else)
-		protected override void OnUserDeletingRow(DataGridViewRowCancelEventArgs e)
+		protected async override void OnUserDeletingRow(DataGridViewRowCancelEventArgs e)
 		{
 			var customMessageBox = new CustomMessageBoxForm(
 				"Biztosan törölni szeretné a sort?",

@@ -18,6 +18,7 @@ Mesterremek projekt, könyvtárazó rendszer
         -a popup form-ok a megnyitott form közepére nyíljanak meg
         -az asztali program indításakor fusson le a lejárt foglalás törlő procedure, és küldje ki az értesítéseket (- Partly done)
         -nézni kell, pl 5 percenként, hogy jött-e új foglalás(az előzőket fájlban tároljuk pl), és olyankor kell egy popup, hogy új foglalás jött, hogy félre tudja majd tenni a polcra a könyvtáros
+        -e.Cancel bajos ha async function után van meghívva, ami nagyon szomorú VALAMI WORKAROUND KELL NEKI
 
 #WEB:
     KINÉZET:

@@ -32,12 +32,29 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.cbtnBack = new Desktop.CustomButton();
             this.ctbSearch = new Desktop.CustomTextbox();
             this.cdgwSelect = new Desktop.CustomDataGridView();
             this.cbtnSearch = new Desktop.CustomButton();
-            this.cbtnBack = new Desktop.CustomButton();
             ((System.ComponentModel.ISupportInitialize)(this.cdgwSelect)).BeginInit();
             this.SuspendLayout();
+            // 
+            // cbtnBack
+            // 
+            this.cbtnBack.BackColor = System.Drawing.Color.Black;
+            this.cbtnBack.BorderColor = System.Drawing.Color.White;
+            this.cbtnBack.BorderRadius = 40;
+            this.cbtnBack.BorderSize = 0;
+            this.cbtnBack.FlatAppearance.BorderSize = 0;
+            this.cbtnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbtnBack.ForeColor = System.Drawing.Color.White;
+            this.cbtnBack.Location = new System.Drawing.Point(378, 45);
+            this.cbtnBack.Name = "cbtnBack";
+            this.cbtnBack.Size = new System.Drawing.Size(109, 31);
+            this.cbtnBack.TabIndex = 3;
+            this.cbtnBack.Text = "Vissza";
+            this.cbtnBack.UseVisualStyleBackColor = false;
+            this.cbtnBack.Click += new System.EventHandler(this.cbtnBack_Click);
             // 
             // ctbSearch
             // 
@@ -121,6 +138,8 @@
             this.cdgwSelect.TabIndex = 1;
             this.cdgwSelect.UseHeaderGradient = false;
             this.cdgwSelect.UseRoundedCorners = false;
+            this.cdgwSelect.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.cdgwSelect_CellEnter);
+            this.cdgwSelect.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.cdgwSelect_RowsAdded);
             // 
             // cbtnSearch
             // 
@@ -139,23 +158,6 @@
             this.cbtnSearch.Text = "Keresés";
             this.cbtnSearch.UseVisualStyleBackColor = false;
             this.cbtnSearch.Click += new System.EventHandler(this.cbtnSearch_Click);
-            // 
-            // cbtnBack
-            // 
-            this.cbtnBack.BackColor = System.Drawing.Color.Black;
-            this.cbtnBack.BorderColor = System.Drawing.Color.White;
-            this.cbtnBack.BorderRadius = 40;
-            this.cbtnBack.BorderSize = 0;
-            this.cbtnBack.FlatAppearance.BorderSize = 0;
-            this.cbtnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbtnBack.ForeColor = System.Drawing.Color.White;
-            this.cbtnBack.Location = new System.Drawing.Point(378, 45);
-            this.cbtnBack.Name = "cbtnBack";
-            this.cbtnBack.Size = new System.Drawing.Size(109, 31);
-            this.cbtnBack.TabIndex = 3;
-            this.cbtnBack.Text = "Vissza";
-            this.cbtnBack.UseVisualStyleBackColor = false;
-            this.cbtnBack.Click += new System.EventHandler(this.cbtnBack_Click);
             // 
             // PopupSelect
             // 
