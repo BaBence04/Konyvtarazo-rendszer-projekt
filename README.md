@@ -34,7 +34,6 @@ Mesterremek projekt, könyvtárazó rendszer
         
 
     PHP/JS:
-        -kell még az animáció az elfelejtettem a jelszót és a login között
         -advanced search
         -majd kéne valami ami jelzi, hogy az email küldése folyamatban van az elfelejtettem a jelszót funkciónál
         -a userDetailed-on és a resetPassword.php-oldalon is kell hogy úgy működjön a password input mint a login-nál, vagyis legyen a kis szemecske
