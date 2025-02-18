@@ -22,12 +22,15 @@ Mesterremek projekt, könyvtárazó rendszer
 
 #WEB:
     KINÉZET:
-        -ne legyen form a login a navbárban, mert felesleges
+        -miért volt kikommentelve a --margin-after-header?? a style.css-ben?
+        -nem tudom, hogy működik az, hogy a login-nál felcsúsznak a span-ek ha be van kattintva a felhasználó, vagy írt bele valamit, nem találtam meg, viszont a userdetailed-on is odatettem az icont, és azt megcsináltam működőre
+        -valószínűleg ki kellene szedni a navbar.css-ben levő dolgokat a style.css-ből, mert így nem tudjuk egységesen módosítani a navbar stílusát
         -még kell finomítani a kinézetén a bookDetailed-nek, legalább legyen középen szerintem
         -a könyv részletes oldalon legyen kiírva az isbn-hez és a dátum-hoz, hogy mik azok
         -kapott a userDetailed-en a sidebar, egy min-width:250px-t és így már nem ugrál amikor az utolsót, nyitjuk meg -just sayin'
         -perpillanat az elfelejtettem a jelszónál a login-nak a username mezőjét használja, meg kell csinálni rendesre, és az oldalt is ahol lehet reset-elni a jelszót
         -a könyv részletesen a gomb nagyon rá van csúszva a felette levő részre
+        -a töltő képernyő nem takarja ki teljesen a képernyőt a főoldalon
         
         
 
