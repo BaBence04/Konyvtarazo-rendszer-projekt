@@ -1,7 +1,7 @@
 <!-- <link rel="stylesheet" href="style.css"> -->
 <!-- <link rel="stylesheet" href="login.css"> -->
 <head>
-  <link rel="stylesheet" href="/web/navbar.css">
+  <!-- <link rel="stylesheet" href="/web/navbar.css"> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
 </head>
 
@@ -56,7 +56,7 @@
           </div>
   
           <div class="inputbox">
-            <img src="/web/imgs/eye-off-line.png" id="eyeicon" alt="Toggle Password Visibility">
+            <img src="/web/imgs/eye-off-line.png" id="eyeicon" onclick="TogglePasswordVisibility(this, 'password');" alt="Toggle Password Visibility">
             <input onkeyup="CheckForEnterPressedAndClickGivenButton(event, 'loginButton');" type="password" id="password" name="password" required="required" placeholder=" ">
             <span>Jelszó</span>
             <i></i>
