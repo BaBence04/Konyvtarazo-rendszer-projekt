@@ -4,7 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 :root {
-  --header-height: 100px;
+  --header-height: 75px;
   /* --margin-after-header: 30px; */
 
   /*HSL(hue, saturation, lightness)*/
@@ -70,13 +70,13 @@ input[type=button]:hover, button:hover{
   cursor: pointer;
 }
 
-div.space-after-nav{
+/* div.space-after-nav{
     margin-top: var(--header-height);
     height: var(--margin-after-header);
     width: 100%;
     background-color: var(--body-color);
     z-index: 1;
-  }
+  } */
   
   .nav {
     height: var(--header-height)!important;
@@ -84,17 +84,17 @@ div.space-after-nav{
     justify-content: space-between;
     align-items: center;
     /* background: linear-gradient(135deg, hsl(20, 100%, 70%), hsl(15, 100%, 85%)); */
-  
+    background: none;
   }
   .nav__logo {
-    color: var(--title-color);
+    color: white;
     font-weight: var(--font-regular);
     transition: color 0.4s;
     vertical-align: middle;
   }
-  .nav__menu {
+/*   .nav__menu {
     background-color: var(--body-color);
-  }
+  } */
   @media screen and (max-width: 1022px) {
     .nav__menu {
       position: fixed;
@@ -115,7 +115,7 @@ div.space-after-nav{
     padding: 0;
   }
   .nav__link {
-    color: var(--title-color);
+    color: white;
     font-weight: var(--font-re);
     transition: color 0.4s;
   }
@@ -191,8 +191,6 @@ div.space-after-nav{
     top: 0;
     left: 0;
     width: 100dvw;
-    background-color: var(--body-color);
-  /*   background-color: #A0B2B6; */
     box-shadow: 0 2px 16px hsla(230, 75%, 32%, 0.15);
     z-index: var(--z-fixed);
   }
@@ -228,7 +226,7 @@ div.space-after-nav{
   
   }
   
-  .inputbox{
+  .login_box form .inputbox{
     position: relative;
     width: 100%;
     margin-top: 25px;
@@ -259,7 +257,7 @@ div.space-after-nav{
       transition: background-color 5000s ease-in-out 0s; /* Prevent flashing */
   }
   
-  .inputbox span{
+  .login_box form .inputbox span{
     z-index: 10;
     position: absolute;
     left: 0;
@@ -495,11 +493,10 @@ div.space-after-nav{
 }
 
 
-main.container, main{
-    /* margin-top: calc(); */
+/* main.container, main{
     min-height: calc(100dvh - (var(--header-height) + var(--margin-after-header)));
     padding-top: 0;
-  }
+} */
 
 
 input,

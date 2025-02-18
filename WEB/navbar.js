@@ -371,5 +371,48 @@ navClose.addEventListener("click", () => {
 
 
 
+// NAVBAR TEXT COLOR CHANGER
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  const navbarLinks = document.querySelectorAll('a.nav__link');
   
+
+  function getBackgroundBrightness(element) {
+    const bgColor = window.getComputedStyle(element).backgroundColor;
+    const rgb = bgColor.match(/\d+/g).map(Number);
+
+    const brightness = 0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2];
+    return brightness;
+  }
+
+
+  function updateNavbarTextColor() {
+    const sections = document.querySelectorAll('.section');
+    const navLinkRect = navbarLinks[0].getBoundingClientRect();
+    let currentSection = null;
+
+    sections.forEach((section) => {
+      const sectionRect = section.getBoundingClientRect();
+
+      if (
+        (sectionRect.top <= navLinkRect.top && sectionRect.bottom >= navLinkRect.top) ||
+        (sectionRect.top <= navLinkRect.bottom && sectionRect.bottom >= navLinkRect.bottom)
+      ) {
+        currentSection = section;
+      }
+    });
+
+    if (currentSection) {
+      const brightness = getBackgroundBrightness(currentSection);
+      if (brightness < 128) { 
+        navbarLinks.forEach(link => link.style.color = 'white');
+      } else { 
+        navbarLinks.forEach(link => link.style.color = 'black');
+      }
+    }
+  }
+  window.addEventListener('scroll', updateNavbarTextColor);
+  updateNavbarTextColor();
+});
   
