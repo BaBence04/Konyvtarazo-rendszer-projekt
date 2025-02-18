@@ -1506,7 +1506,7 @@ a, a:active, a:hover, a:visited, a:link{
   flex-direction: column;
 }
 
-.change-password-holder>input{
+.change-password-holder>.inputbox{
   width: min(300px, 100%);
   margin-bottom: 10px;
 
