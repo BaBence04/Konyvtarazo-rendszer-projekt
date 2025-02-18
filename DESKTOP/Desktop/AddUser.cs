@@ -16,9 +16,10 @@ namespace Desktop
         public AddUser()
         {
             InitializeComponent();
-			this.BorderColor = Color.FromArgb(10, 123, 106);
-			this.BorderWidth = 2;
-		}
+            FormDragger.MakeDraggable(this);
+            this.BorderColor = Color.FromArgb(10, 123, 106);
+            this.BorderWidth = 2;
+        }
 
         private async void cbtnAdd_Click(object sender, EventArgs e)
         {
@@ -78,5 +79,10 @@ namespace Desktop
 				e.Graphics.DrawRectangle(pen, borderRect);
 			}
 		}
-	}
+
+        private void button_CloseForm_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+    }
 }

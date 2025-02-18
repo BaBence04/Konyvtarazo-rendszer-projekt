@@ -343,6 +343,26 @@ namespace Desktop.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap publisher_line_black {
+            get {
+                object obj = ResourceManager.GetObject("publisher_line_black", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap publisher_line_white {
+            get {
+                object obj = ResourceManager.GetObject("publisher_line_white", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap rb_3489 {
             get {
                 object obj = ResourceManager.GetObject("rb_3489", resourceCulture);

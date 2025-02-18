@@ -16,7 +16,8 @@ namespace Desktop
         public AddEmployee()
         {
             InitializeComponent();
-			this.BorderColor = Color.FromArgb(10, 123, 106);
+            FormDragger.MakeDraggable(this);
+            this.BorderColor = Color.FromArgb(10, 123, 106);
 			this.BorderWidth = 2;
 		}
 
@@ -74,5 +75,10 @@ namespace Desktop
 				e.Graphics.DrawRectangle(pen, borderRect);
 			}
 		}
-	}
+
+        private void button_CloseForm_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+    }
 }

@@ -108,6 +108,8 @@ namespace Desktop
 
                 { "button4", CurrentTheme == "Light" ? Image.FromFile(imagePath + "bookmark-line_black.png") : Image.FromFile(imagePath + "bookmark-line_white.png") },
 
+                { "button_Publishers", CurrentTheme == "Light" ? Image.FromFile(imagePath + "publisher-line_black.png") : Image.FromFile(imagePath + "publisher-line_white.png") },
+
                 { "button_CloseLoginForm", CurrentTheme == "Light" ? Image.FromFile(imagePath + "close-line_black.png") : Image.FromFile(imagePath + "close-line_white.png") }
             };
 
