@@ -264,6 +264,100 @@ UPDATE users SET users.surname = surname, users.first_name = first_name, users.b
 END;//
 DELIMITER ;
 
+-- update book data
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS updateBookDetails(
+  IN ISBN_id INT,
+  IN title VARCHAR(255),
+  IN release_date DATE,
+  IN lang VARCHAR(255),
+  IN publisher_id INT,
+  IN authors VARCHAR(255),
+  IN genres VARCHAR(255),
+  IN description TEXT,
+  IN picture_base64 TEXT
+) BEGIN
+DECLARE _next TEXT DEFAULT NULL;
+DECLARE _nextlen INT DEFAULT NULL;
+DECLARE _value TEXT DEFAULT NULL;
+-- check if that language exists
+IF (SELECT languages.lang_id FROM languages WHERE languages.lang = lang) IS NULL THEN 
+INSERT INTO languages(languages.lang) VALUES(lang);
+END IF;
+-- delete from conn table -> check if all authors exists in db -> if not make them and then insert to conn table too
+DELETE FROM books_authors_conn WHERE books_authors_conn.ISBN_id = ISBN_id;
+iterator1:
+        LOOP
+          -- exit the loop if the list seems empty or was null;
+          -- this extra caution is necessary to avoid an endless loop in the proc.
+          IF CHAR_LENGTH(TRIM(authors)) = 0 OR authors IS NULL THEN
+            LEAVE iterator1;
+          END IF;
+
+          -- capture the next value from the list
+          SET _next = SUBSTRING_INDEX(authors,',',1);
+
+          -- save the length of the captured value; we will need to remove this
+          -- many characters + 1 from the beginning of the string 
+          -- before the next iteration
+          SET _nextlen = CHAR_LENGTH(_next);
+
+          -- trim the value of leading and trailing spaces, in case of sloppy CSV strings
+          SET _value = TRIM(_next);
+
+          -- insert the extracted value into the target table
+          IF (SELECT COUNT(authors.author_id) FROM authors WHERE authors.author = _value) = 0 THEN
+        	BEGIN
+            	INSERT INTO authors(authors.author) VALUES(_value);
+             END;
+          END IF;
+          INSERT INTO books_authors_conn(books_authors_conn.ISBN_id, books_authors_conn.author_id) VALUES(ISBN_id, (SELECT authors.author_id FROM authors WHERE authors.author = _value));
+
+          -- rewrite the original string using the `INSERT()` string function,
+          -- args are original string, start position, how many characters to remove, 
+          -- and what to "insert" in their place (in this case, we "insert"
+          -- an empty string, which removes _nextlen + 1 characters)
+          SET authors = INSERT(authors,1,_nextlen + 1,'');
+        END LOOP;
+
+	-- sambe but for genres
+	 iterator2:
+        LOOP
+          -- exit the loop if the list seems empty or was null;
+          -- this extra caution is necessary to avoid an endless loop in the proc.
+          IF CHAR_LENGTH(TRIM(genres)) = 0 OR genres IS NULL THEN
+            LEAVE iterator2;
+          END IF;
+
+          -- capture the next value from the list
+          SET _next = SUBSTRING_INDEX(genres,',',1);
+
+          -- save the length of the captured value; we will need to remove this
+          -- many characters + 1 from the beginning of the string 
+          -- before the next iteration
+          SET _nextlen = CHAR_LENGTH(_next);
+
+          -- trim the value of leading and trailing spaces, in case of sloppy CSV strings
+          SET _value = TRIM(_next);
+
+          -- insert the extracted value into the target table
+          IF (SELECT COUNT(genres.genre_id) FROM genres WHERE genres.genre = _value) = 0 THEN
+        	BEGIN
+            	INSERT INTO genres(genres.genre) VALUES(_value);
+             END;
+          END IF;
+		  INSERT INTO books_genres_conn(books_genres_conn.ISBN_id, books_genres_conn.genre_id) VALUES((SELECT book.ISBN_id FROM book WHERE book.ISBN = ISBN), (SELECT genres.genre_id FROM genres WHERE genres.genre = _value));
+
+          -- rewrite the original string using the `INSERT()` string function,
+          -- args are original string, start position, how many characters to remove, 
+          -- and what to "insert" in their place (in this case, we "insert"
+          -- an empty string, which removes _nextlen + 1 characters)
+          SET genres = INSERT(genres,1,_nextlen + 1,'');
+        END LOOP;
+  UPDATE book SET book.title = title, book.release_date = release_date, book.lang_id = (SELECT languages.lang_id FROM languages WHERE languages.lang = lang), book.publisher_id = publisher_id, book.description = description, book.picture_base64 = picture_base64 WHERE book.ISBN_id = ISBN_id;
+END;//
+DELIMITER ;
+
 -- gets user data
 DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS getUser(
