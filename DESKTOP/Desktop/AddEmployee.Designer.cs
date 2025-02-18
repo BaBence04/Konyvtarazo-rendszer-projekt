@@ -28,12 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddEmployee));
             this.ctbEmplName = new Desktop.CustomTextbox();
             this.cbtnAdd = new Desktop.CustomButton();
             this.ctbEmplPass = new Desktop.CustomTextbox();
             this.cbtnBack = new Desktop.CustomButton();
-            this.button_CloseForm = new Desktop.CustomButton();
             this.SuspendLayout();
             // 
             // ctbEmplName
@@ -46,7 +44,7 @@
             this.ctbEmplName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ctbEmplName.ForeColor = System.Drawing.Color.DimGray;
             this.ctbEmplName.IsReadOnly = false;
-            this.ctbEmplName.Location = new System.Drawing.Point(26, 66);
+            this.ctbEmplName.Location = new System.Drawing.Point(26, 44);
             this.ctbEmplName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ctbEmplName.Multiline = false;
             this.ctbEmplName.Name = "ctbEmplName";
@@ -86,7 +84,7 @@
             this.ctbEmplPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ctbEmplPass.ForeColor = System.Drawing.Color.DimGray;
             this.ctbEmplPass.IsReadOnly = false;
-            this.ctbEmplPass.Location = new System.Drawing.Point(26, 153);
+            this.ctbEmplPass.Location = new System.Drawing.Point(26, 131);
             this.ctbEmplPass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ctbEmplPass.Multiline = false;
             this.ctbEmplPass.Name = "ctbEmplPass";

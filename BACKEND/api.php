@@ -193,6 +193,8 @@
             UpdatePublishers($_POST["id"], $_POST["name"], $_POST["phone"], $_POST["email"], $_POST["webpage"]);
         }else if(isset($_POST["type"]) && $_POST["type"] == "updateUser" && isset($_POST["id"], $_POST["firstname"], $_POST["surname"], $_POST["birthplace"], $_POST["birthdate"], $_POST["address"], $_POST["email"], $_POST["phone"], $_POST["mmn"]) && count($_POST) == 10){
             UpdateUser($_POST["id"], $_POST["firstname"], $_POST["surname"], $_POST["birthplace"], $_POST["birthdate"], $_POST["address"], $_POST["email"], $_POST["phone"], $_POST["mmn"]);
+        }else if(isset($_POST["type"]) && $_POST["type"] == "updateBook" && isset($_POST["id"], $_POST["title"], $_POST["release_date"], $_POST["lang"], $_POST["publisher_id"], $_POST["authors"], $_POST["genres"], $_POST["description"], $_POST["picture_base64"]) && count($_POST) == 10){
+            UpdateBook($_POST["id"], $_POST["title"], $_POST["release_date"], $_POST["lang"], $_POST["publisher_id"], $_POST["authors"], $_POST["genres"], $_POST["description"], $_POST["picture_base64"]);
         }else if(isset($_POST["type"]) && $_POST["type"] == "deletePublisher" && isset($_POST["id"]) && count($_POST) == 2){
             echo json_encode(DeletePublisher($_POST["id"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "addPublisher" && isset($_POST["name"], $_POST["phone"], $_POST["email"], $_POST["webpage"])  && count($_POST) == 5){
