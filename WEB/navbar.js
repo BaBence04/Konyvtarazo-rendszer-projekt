@@ -4,7 +4,7 @@ loginBtn = document.getElementById("login-btn"),
 loginClose = document.getElementById("login-close");
 
 
-
+//closes the login form when clicked outside of it
 login.onclick = function(event) {
   event.stopPropagation();
 
@@ -24,6 +24,16 @@ login.onclick = function(event) {
     }
   }
 } 
+
+//closes the login on escape
+document.querySelector("body").addEventListener("keydown",(e)=>{
+  if(e.key == "Escape"){
+      if(login.classList.contains("show-login")){
+      login.classList.remove("show-login");
+      }
+  }
+});
+
 
 
 
@@ -64,26 +74,42 @@ function CheckForEnterPressedAndClickGivenButton(event, buttonId){
 
 function ToggleForgotPassword_Login(){
   let showLogin = document.getElementById("forgot_password_form").checkVisibility();
+  let elementToSlideIn;
+  let elementToSlideOut;
 
   if(showLogin){
-    document.getElementById("forgot_password_form").style.display = "none";
-    document.getElementById("login_form").style.display = "block";
+    // document.getElementById("forgot_password_form").style.display = "none";
+    elementToSlideOut = document.getElementById("forgot_password_form");
+
+    // document.getElementById("login_form").style.display = "block";
+    elementToSlideIn = document.getElementById("login_form");
+
+    direction = "left"
 
   }else{
-    document.getElementById("forgot_password_form").style.display = "block";
-    document.getElementById("login_form").style.display = "none";
+    // document.getElementById("forgot_password_form").style.display = "block";
+    elementToSlideIn = document.getElementById("forgot_password_form");
+
+    // document.getElementById("login_form").style.display = "none";
+    elementToSlideOut = document.getElementById("login_form");
+    direction = "right";
+  }
+
+  animationIsRunning = true;
+  const animationDuration = 200;
+  var animation = AnimateSliding(elementToSlideOut, "slideOut", direction, animationDuration, true, false);
+  animation.onfinish = ()=>{
+      elementToSlideOut.style.display = "none";
+      AnimateSliding(elementToSlideIn, "slideIn", direction, animationDuration, true, false).onfinish =()=>{
+          animationIsRunning = false;
+
+      }
+      
   }
 }
 
 
 
-document.querySelector("body").addEventListener("keydown",(e)=>{
-    if(e.key == "Escape"){
-        if(login.classList.contains("show-login")){
-        login.classList.remove("show-login");
-        }
-    }
-});
 
 
 
@@ -95,7 +121,7 @@ document.querySelector("body").addEventListener("keydown",(e)=>{
 * @param {string} type - slideOut | slideIn
 * @return {animation} - returns the animation
 */
-function AnimateSliding(element, type, direction = "right", duration, mobileView){
+function AnimateSliding(element, type, direction = "right", duration, mobileView, setZindex = true){
   let transformStartPos;
   let transformEndPos;
   let opacityStart;
@@ -181,13 +207,13 @@ function AnimateSliding(element, type, direction = "right", duration, mobileView
       keyframes = 
       [
           {
-              zIndex: -1,
+              // zIndex: -1,
               transform: `translateX(${transformStartPos})`,
               opacity: opacityStart,
               display: "block"
           },
           {
-              zIndex: -1,
+              // zIndex: -1,
               transform: `translateX(${transformEndPos})`,
               opacity: opacityEnd,
               display: "block"
@@ -198,29 +224,31 @@ function AnimateSliding(element, type, direction = "right", duration, mobileView
       keyframes = 
       [
           {
-              zIndex: -1,
+              // zIndex: -1,
               transform: `translateY(${transformStartPos})`,
               opacity: opacityStart,
               maxHeight: "100dvh",
-              overflowY: "hidden"
+              overflowY: "hidden",
+              display: "block"
           },
           {
-              zIndex: -1,
+              // zIndex: -1,
               transform: `translateY(${transformEndPos})`,
               opacity: opacityEnd,
               maxHeight: "100dvh",
-              overflowY: "hidden"
+              overflowY: "hidden",
+              display: "block"
           }
       ];
   }
-
+  if(setZindex){
+    keyframes[0].zIndex=-1;
+    keyframes[1].zIndex=-1;
+  }
+  console.log('keyframes :>> ', keyframes);
   let animation = element.animate(keyframes, duration);
-  element.style.opacity = opacityEnd;
+  // element.style.opacity = opacityEnd;
   element.style.display = "block";
-  // setTimeout(() => {
-  //     EmptyAllElementsWithClassnameToEmpty();
-  //     RemoveAllElementsWithClassnameToRemove();
-  // }, duration*1.1);//just to be safe, it is a little more than the duration
 
   return animation;
 }
@@ -271,18 +299,29 @@ loginClose.addEventListener("click", () => {
 });
   
   
-const passwordField = document.getElementById("password");
-const togglePassword = document.getElementById("eyeicon");
+// const passwordField = document.getElementById("password");
+// const togglePassword = document.getElementById("eyeicon");
 
-togglePassword.addEventListener("click", function () {
-    if (passwordField.type === "password") {
-        passwordField.type = "text";
-        togglePassword.src = "/web/imgs/eye-line.png";
-    } else {
-        passwordField.type = "password";
-        togglePassword.src = "/web/imgs/eye-off-line.png";
-      }
-});
+// togglePassword.addEventListener("click", function () {
+//     if (passwordField.type === "password") {
+//         passwordField.type = "text";
+//         togglePassword.src = "/web/imgs/eye-line.png";
+//     } else {
+//         passwordField.type = "password";
+//         togglePassword.src = "/web/imgs/eye-off-line.png";
+//       }
+// });
+
+function TogglePasswordVisibility(imgElement, inputId){
+  const passwordField = document.getElementById(inputId);
+  if(passwordField.type === "password"){
+    passwordField.type = "text";
+    imgElement.src = "/web/imgs/eye-line.png";
+  }else{
+    passwordField.type = "password";
+    imgElement.src = "/web/imgs/eye-off-line.png";
+  }
+}
 
 // let waitingforServer = false;
 
@@ -332,5 +371,48 @@ navClose.addEventListener("click", () => {
 
 
 
+// NAVBAR TEXT COLOR CHANGER
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  const navbarLinks = document.querySelectorAll('a.nav__link');
   
+
+  function getBackgroundBrightness(element) {
+    const bgColor = window.getComputedStyle(element).backgroundColor;
+    const rgb = bgColor.match(/\d+/g).map(Number);
+
+    const brightness = 0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2];
+    return brightness;
+  }
+
+
+  function updateNavbarTextColor() {
+    const sections = document.querySelectorAll('.section');
+    const navLinkRect = navbarLinks[0].getBoundingClientRect();
+    let currentSection = null;
+
+    sections.forEach((section) => {
+      const sectionRect = section.getBoundingClientRect();
+
+      if (
+        (sectionRect.top <= navLinkRect.top && sectionRect.bottom >= navLinkRect.top) ||
+        (sectionRect.top <= navLinkRect.bottom && sectionRect.bottom >= navLinkRect.bottom)
+      ) {
+        currentSection = section;
+      }
+    });
+
+    if (currentSection) {
+      const brightness = getBackgroundBrightness(currentSection);
+      if (brightness < 128) { 
+        navbarLinks.forEach(link => link.style.color = 'white');
+      } else { 
+        navbarLinks.forEach(link => link.style.color = 'black');
+      }
+    }
+  }
+  window.addEventListener('scroll', updateNavbarTextColor);
+  updateNavbarTextColor();
+});
   

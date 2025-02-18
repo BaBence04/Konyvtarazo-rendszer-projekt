@@ -10,12 +10,14 @@
 </head>
 <body>
     <?php require("navbar.html");?>
-    <h1>Majd email-ben fog jönni a link</h1>
-    <label for="newPassword">Új jelszó:</label>
-    <input type="password" id="newPassword" oninput="ValidatePassword(this.value);" onkeyup="CheckForEnterPressedAndClickGivenButton(event, 'changePasswordButton');">
-    <?php require("new_password_error_messages.html");?>
-    <label for="newPasswordAgain" >Új jelszó újra:</label>
-    <input required type="password" id="newPasswordAgain" onkeyup="CheckForEnterPressedAndClickGivenButton(event, 'changePasswordButton');">
+    <div class="change-password-holder">
+        <label for="newPassword">Új jelszó:</label>
+        <input type="password" id="newPassword" oninput="ValidatePassword(this.value);" onkeyup="CheckForEnterPressedAndClickGivenButton(event, 'changePasswordButton');">
+        <?php require("new_password_error_messages.html");?>
+        <label for="newPasswordAgain" >Új jelszó újra:</label>
+        <input required type="password" id="newPasswordAgain" onkeyup="CheckForEnterPressedAndClickGivenButton(event, 'changePasswordButton');">
+
+    </div>
     <button onclick="ChangePassword();" id="changePasswordButton" type="button">Cserélés</button>
 </body>
 

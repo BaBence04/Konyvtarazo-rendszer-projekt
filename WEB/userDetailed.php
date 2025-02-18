@@ -65,16 +65,27 @@
                     <div><strong>Tagság érvényessége:</strong> <?=$data["membership_end_date"]?></div>
                     <div><strong>Anyja születéskori neve:</strong> <?=$data["mother_maiden_name"]?></div>
                     <div class="change-password-holder">
-                        <label for="currentPassword">Jelenlegi jelszó:</label>
-                        <input type="password" id="currentPassword" onkeyup="CheckForEnterPressedAndClickGivenButton(event, 'changePasswordButton');">
-                        <label for="newPassword">Új jelszó:</label>
-                        
-                        <input type="password" id="newPassword" oninput="ValidatePassword(this.value);" onkeyup="CheckForEnterPressedAndClickGivenButton(event, 'changePasswordButton');">
+                        <div class="inputbox">
+                            <img src="/web/imgs/eye-off-line.png" id="eyeicon" onclick="TogglePasswordVisibility(this, 'currentPassword');" alt="Toggle Password Visibility">
+                            <input type="password" id="currentPassword" onkeyup="CheckForEnterPressedAndClickGivenButton(event, 'changePasswordButton');">
+                            <span for="currentPassword">Jelenlegi jelszó:</span>
+                            <i></i>
+                        </div>
+                        <div class="inputbox">
+                            <img src="/web/imgs/eye-off-line.png" id="eyeicon" onclick="TogglePasswordVisibility(this, 'newPassword');" alt="Toggle Password Visibility">
+                            <input type="password" id="newPassword" oninput="ValidatePassword(this.value);" onkeyup="CheckForEnterPressedAndClickGivenButton(event, 'changePasswordButton');">
+                            <span for="newPassword">Új jelszó:</span>
+                            <i></i>
+                        </div>
                         <?php require("new_password_error_messages.html");?>
 
-                        <label for="newPasswordAgain">Új jelszó újra:</label>
-                        <input type="password" id="newPasswordAgain" onkeyup="CheckForEnterPressedAndClickGivenButton(event, 'changePasswordButton');">
+                        <div class="inputbox">
+                            <input type="password" id="newPasswordAgain" onkeyup="CheckForEnterPressedAndClickGivenButton(event, 'changePasswordButton');">
+                            <span for="newPasswordAgain">Új jelszó újra:</span>
+                            <i></i>
+                        </div>
                         <input type="button" id="changePasswordButton" value="Módosítás" onclick="ChangePassword();">
+                        
                     </div>
                     <div class="logout-container">
                         <button id="logoutButton" onclick="Kijelentkezés();">Kijelentkezés</button>

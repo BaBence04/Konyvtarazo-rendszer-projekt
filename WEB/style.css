@@ -5,7 +5,7 @@
 
 :root {
   --header-height: 100px;
-  /* --margin-after-header: 30px; */
+  --margin-after-header: 30px;
 
   /*HSL(hue, saturation, lightness)*/
   --first-color: hsl(171, 85%, 26%);
@@ -1506,7 +1506,7 @@ a, a:active, a:hover, a:visited, a:link{
   flex-direction: column;
 }
 
-.change-password-holder>input{
+.change-password-holder>.inputbox{
   width: min(300px, 100%);
   margin-bottom: 10px;
 

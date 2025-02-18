@@ -8,7 +8,6 @@ Mesterremek projekt, könyvtárazó rendszer
         -automatikus törlős dologhoz valami frontend, popup window szerűség
         -minden ami a UsersPage-el kapcsolatos (alias onnan nyílik meg) szabadon style-olható mert minden készen van nem fogok már hozzányúlni nagy eséllel
         -message box-okat kicserélni az újra
-        -CustomDataGridView nek egy allowUserToAddRows kéne hogy tudjunk hozzáadni nyelvet/kategóriát/szerzőt
   
 
 
@@ -22,7 +21,8 @@ Mesterremek projekt, könyvtárazó rendszer
 
 #WEB:
     KINÉZET:
-        -ne legyen form a login a navbárban, mert felesleges
+        -nem tudom, hogy működik az, hogy a login-nál felcsúsznak a span-ek ha be van kattintva a felhasználó, vagy írt bele valamit, nem találtam meg, viszont a userdetailed-on is odatettem az icont, és azt megcsináltam működőre
+        -valószínűleg ki kellene szedni a navbar.css-ben levő dolgokat a style.css-ből, mert így nem tudjuk egységesen módosítani a navbar stílusát
         -még kell finomítani a kinézetén a bookDetailed-nek, legalább legyen középen szerintem
         -a könyv részletes oldalon legyen kiírva az isbn-hez és a dátum-hoz, hogy mik azok
         -kapott a userDetailed-en a sidebar, egy min-width:250px-t és így már nem ugrál amikor az utolsót, nyitjuk meg -just sayin'
@@ -32,7 +32,6 @@ Mesterremek projekt, könyvtárazó rendszer
         
 
     PHP/JS:
-        -kell még az animáció az elfelejtettem a jelszót és a login között
         -advanced search
         -majd kéne valami ami jelzi, hogy az email küldése folyamatban van az elfelejtettem a jelszót funkciónál
         -a userDetailed-on és a resetPassword.php-oldalon is kell hogy úgy működjön a password input mint a login-nál, vagyis legyen a kis szemecske

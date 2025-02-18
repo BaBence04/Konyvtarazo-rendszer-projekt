@@ -1,5 +1,5 @@
 
-function showSection(element) {
+function showSection(element, oppositeDir) {
     let navItems = Array.from(document.querySelectorAll(".sidebar>.nav-item"));
     const sections = Array.from(document.querySelectorAll('.section'));
     
@@ -39,6 +39,10 @@ function showSection(element) {
         console.log("slide out left");
         direction = mobileView? "left" : "up";
         
+    }
+
+    if(oppositeDir && mobileView){
+        direction = direction=="left"?"right":"left";
     }
 
     
@@ -300,12 +304,17 @@ function ShowNextOrPreviousSection(direction){
         const navItems = Array.from(document.querySelectorAll(".sidebar>.nav-item"));
         const selectedElement = document.querySelector(".nav-item.selected");
         const currentIndex = navItems.indexOf(selectedElement);
+        let oppositeDir = false;
 
-        let newIndex = Math.max(0, currentIndex + direction);
+        let newIndex = currentIndex + direction;
         if(newIndex >= navItems.length){
             newIndex = 0;
+            oppositeDir = true;
+        }else if(newIndex<0){
+            newIndex = navItems.length-1;
+            oppositeDir = true;
         }
-        showSection(navItems[newIndex]);
+        showSection(navItems[newIndex], oppositeDir);
 
     }
 }
