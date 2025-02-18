@@ -288,5 +288,10 @@ namespace Desktop
 
 			base.OnUserDeletingRow(e);
 		}
-	}
+
+        protected override void OnAllowUserToAddRowsChanged(EventArgs e)
+        {
+            base.OnAllowUserToAddRowsChanged(e);
+        }
+    }
 }

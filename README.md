@@ -18,7 +18,6 @@ Mesterremek projekt, könyvtárazó rendszer
         -a popup form-ok a megnyitott form közepére nyíljanak meg
         -az asztali program indításakor fusson le a lejárt foglalás törlő procedure, és küldje ki az értesítéseket (- Partly done)
         -nézni kell, pl 5 percenként, hogy jött-e új foglalás(az előzőket fájlban tároljuk pl), és olyankor kell egy popup, hogy új foglalás jött, hogy félre tudja majd tenni a polcra a könyvtáros
-        -GETLANGS MÉG NEM MŰKÖDIK POPUP SELECTNÉL
 
 #WEB:
     KINÉZET:
@@ -46,7 +45,6 @@ Mesterremek projekt, könyvtárazó rendszer
         -gyorsítani a backendet, azzal, hogy lehessen odaadni connectiont a databaseFunction-öknek hogy ne kelljen mindig újra csatlakozni
 
 SQL:
-    -legyen az employee-k táblának is egy active flag-je
 
 
 ADDITIONAL STUFF TO DO:

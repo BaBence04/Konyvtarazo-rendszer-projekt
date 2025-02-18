@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 using System.Runtime.InteropServices;
 using System.IO;
+using System.Drawing.Text;
 
 
 namespace Desktop
@@ -19,11 +20,18 @@ namespace Desktop
 		public UsersPage usersPage = new UsersPage();
 		public AllBooksPage allBooksPage = new AllBooksPage();
 		public Dictionary<string, string> system_settings = new Dictionary<string, string>();
-		public MainForm()
+
+		// currentPage indicator
+        private Button _currentActiveButton;
+        private readonly Color customBorderColor = Color.FromArgb(10, 123, 106);
+        public MainForm()
         {
 			InitializeComponent();
 			CustomizeDesign();
             ThemeManager.Initialize();
+
+
+            InitializeMenu();
         }
 
 		private async void Form1_Load(object sender, EventArgs e)
@@ -55,26 +63,78 @@ namespace Desktop
         }
 
 
+        //CurrentPAga indicator
+
+        private void InitializeMenu()
+        {
+            Button[] menuButtons = { button_HomePage, button_Books, button_Users, button_Publishers, button3, button4 };
+
+            _currentActiveButton = button_HomePage;
+            SetActiveButtonStyle(_currentActiveButton);
+
+            foreach (var button in menuButtons)
+            {
+                button.Click += MenuButton_Click;
+            }
+        }
+
+        private void MenuButton_Click(object sender, EventArgs e)
+        {
+            SetInactiveButtonStyle(_currentActiveButton);
+
+            _currentActiveButton = (Button)sender;
+            SetActiveButtonStyle(_currentActiveButton);
+        }
+
+        private void SetActiveButtonStyle(Button button)
+        {
+            button.FlatAppearance.BorderSize = 0;
+
+            button.Paint += Button_Paint;
+        }
+
+        private void SetInactiveButtonStyle(Button button)
+        {
+            button.FlatAppearance.BorderSize = 0;
+
+            button.Paint -= Button_Paint;
+        }
+
+		
+
+        private void Button_Paint(object sender, PaintEventArgs e)
+        {
+            Button button = (Button)sender;
+			
+            if (button == _currentActiveButton)
+            {
+                e.Graphics.FillRectangle(new SolidBrush(customBorderColor), 0, 0, 5, button.Height);
+            }
+        }
+
+
 
         private void CustomizeDesign()
 		{
-			panel_BooksSubMenu.Visible = false;
+			//panel_BooksSubMenu.Visible = false;
 		}
 
 		private void button_HomePage_Click(object sender, EventArgs e)
 		{
 			OpenChildForm(new HomePage());
+			CustomizeDesign();
         }
 		private void button_Books_Click(object sender, EventArgs e)
 		{
-			HideAndShowSubmenu();
-		}
+            //HideAndShowSubmenu();
+            OpenChildForm(allBooksPage);
+        }
 
 
-		private void HideAndShowSubmenu()
+		/*private void HideAndShowSubmenu()
 		{
 			panel_BooksSubMenu.Visible = !panel_BooksSubMenu.Visible;
-		}
+		}*/
 
 
 
@@ -110,7 +170,7 @@ namespace Desktop
             childForm.BringToFront();
 			childForm.Show();
 			childForm.Visible = true;
-			panel_BooksSubMenu.Visible = false;
+			//panel_BooksSubMenu.Visible = false;
             
         }
 
@@ -119,6 +179,7 @@ namespace Desktop
 		private void button_Users_Click(object sender, EventArgs e)
         {
             OpenChildForm(usersPage);
+            CustomizeDesign();
         }
 
         private void toggleButton_ThemeChanger_CheckedChanged(object sender, EventArgs e)
@@ -146,18 +207,19 @@ namespace Desktop
 
 		private void button_AllBooks_Click(object sender, EventArgs e)
 		{
-			OpenChildForm(allBooksPage);
+			//OpenChildForm(allBooksPage);
 		}
 
 		private void button_AddBook_Click(object sender, EventArgs e)
 		{
-			OpenChildForm(new AddBookPage());
+			//OpenChildForm(new AddBookPage());
 		}
 
 		private void button_Publishers_Click(object sender, EventArgs e)
 		{
 			OpenChildForm(new PublishersPage());
-		}
+            CustomizeDesign();
+        }
 
         private void pictureBox_UserPic_Click(object sender, EventArgs e)
         {

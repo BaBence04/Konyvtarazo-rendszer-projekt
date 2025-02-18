@@ -452,6 +452,19 @@
         $conn->close();
         //return $results->fetch_all(MYSQLI_ASSOC);
     }
+
+    function UpdateBook($id, $title, $release_date, $lang, $publisher_id, $authors, $genres, $description, $picture_base64){
+        require "databaseConnect.php";
+
+        $query = "CALL updateBookDetails(?,?,?,?,?,?,?,?,?);";
+        
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("isssissss", $id, $title, $release_date, $lang, $publisher_id, $authors, $genres, $description, $picture_base64); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        $conn->close();
+        //return $results->fetch_all(MYSQLI_ASSOC);
+    }
     
     function DeletePublisher($id){
         require "databaseConnect.php";

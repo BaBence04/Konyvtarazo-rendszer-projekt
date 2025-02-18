@@ -35,11 +35,6 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button_Users = new System.Windows.Forms.Button();
-            this.panel_BooksSubMenu = new System.Windows.Forms.Panel();
-            this.button_BookLending = new System.Windows.Forms.Button();
-            this.button_AddBook = new System.Windows.Forms.Button();
-            this.button_AllBooks = new System.Windows.Forms.Button();
-            this.button_BookTakeback = new System.Windows.Forms.Button();
             this.button_Books = new System.Windows.Forms.Button();
             this.button_HomePage = new System.Windows.Forms.Button();
             this.panel_Theme = new System.Windows.Forms.Panel();
@@ -53,7 +48,6 @@
             this.tableLayoutPanel_Main.SuspendLayout();
             this.panel_Menu.SuspendLayout();
             this.panel_Links.SuspendLayout();
-            this.panel_BooksSubMenu.SuspendLayout();
             this.panel_Theme.SuspendLayout();
             this.panel_User.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_UserPic)).BeginInit();
@@ -95,7 +89,6 @@
             this.panel_Links.Controls.Add(this.button4);
             this.panel_Links.Controls.Add(this.button3);
             this.panel_Links.Controls.Add(this.button_Users);
-            this.panel_Links.Controls.Add(this.panel_BooksSubMenu);
             this.panel_Links.Controls.Add(this.button_Books);
             this.panel_Links.Controls.Add(this.button_HomePage);
             this.panel_Links.Dock = System.Windows.Forms.DockStyle.Top;
@@ -114,7 +107,7 @@
             this.button_Publishers.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button_Publishers.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.button_Publishers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_Publishers.Location = new System.Drawing.Point(0, 428);
+            this.button_Publishers.Location = new System.Drawing.Point(0, 240);
             this.button_Publishers.Name = "button_Publishers";
             this.button_Publishers.Padding = new System.Windows.Forms.Padding(21, 0, 0, 0);
             this.button_Publishers.Size = new System.Drawing.Size(234, 48);
@@ -135,7 +128,7 @@
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button4.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(0, 380);
+            this.button4.Location = new System.Drawing.Point(0, 192);
             this.button4.Name = "button4";
             this.button4.Padding = new System.Windows.Forms.Padding(21, 0, 0, 0);
             this.button4.Size = new System.Drawing.Size(234, 48);
@@ -155,7 +148,7 @@
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button3.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(0, 332);
+            this.button3.Location = new System.Drawing.Point(0, 144);
             this.button3.Name = "button3";
             this.button3.Padding = new System.Windows.Forms.Padding(21, 0, 0, 0);
             this.button3.Size = new System.Drawing.Size(234, 48);
@@ -175,7 +168,7 @@
             this.button_Users.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button_Users.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.button_Users.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_Users.Location = new System.Drawing.Point(0, 284);
+            this.button_Users.Location = new System.Drawing.Point(0, 96);
             this.button_Users.Name = "button_Users";
             this.button_Users.Padding = new System.Windows.Forms.Padding(21, 0, 0, 0);
             this.button_Users.Size = new System.Drawing.Size(234, 48);
@@ -185,99 +178,6 @@
             this.button_Users.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button_Users.UseVisualStyleBackColor = false;
             this.button_Users.Click += new System.EventHandler(this.button_Users_Click);
-            // 
-            // panel_BooksSubMenu
-            // 
-            this.panel_BooksSubMenu.Controls.Add(this.button_BookLending);
-            this.panel_BooksSubMenu.Controls.Add(this.button_AddBook);
-            this.panel_BooksSubMenu.Controls.Add(this.button_AllBooks);
-            this.panel_BooksSubMenu.Controls.Add(this.button_BookTakeback);
-            this.panel_BooksSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_BooksSubMenu.Location = new System.Drawing.Point(0, 96);
-            this.panel_BooksSubMenu.Margin = new System.Windows.Forms.Padding(0);
-            this.panel_BooksSubMenu.Name = "panel_BooksSubMenu";
-            this.panel_BooksSubMenu.Size = new System.Drawing.Size(234, 188);
-            this.panel_BooksSubMenu.TabIndex = 0;
-            // 
-            // button_BookLending
-            // 
-            this.button_BookLending.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(48)))));
-            this.button_BookLending.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_BookLending.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button_BookLending.FlatAppearance.BorderSize = 0;
-            this.button_BookLending.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_BookLending.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button_BookLending.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button_BookLending.Location = new System.Drawing.Point(0, 144);
-            this.button_BookLending.Name = "button_BookLending";
-            this.button_BookLending.Padding = new System.Windows.Forms.Padding(55, 0, 0, 0);
-            this.button_BookLending.Size = new System.Drawing.Size(234, 48);
-            this.button_BookLending.TabIndex = 0;
-            this.button_BookLending.Tag = "DropdownMenu";
-            this.button_BookLending.Text = "Könyv kiadása";
-            this.button_BookLending.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_BookLending.UseVisualStyleBackColor = false;
-            this.button_BookLending.Click += new System.EventHandler(this.button_BookLending_Click);
-            // 
-            // button_AddBook
-            // 
-            this.button_AddBook.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(48)))));
-            this.button_AddBook.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_AddBook.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button_AddBook.FlatAppearance.BorderSize = 0;
-            this.button_AddBook.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_AddBook.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button_AddBook.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button_AddBook.Location = new System.Drawing.Point(0, 96);
-            this.button_AddBook.Name = "button_AddBook";
-            this.button_AddBook.Padding = new System.Windows.Forms.Padding(55, 0, 0, 0);
-            this.button_AddBook.Size = new System.Drawing.Size(234, 48);
-            this.button_AddBook.TabIndex = 3;
-            this.button_AddBook.Tag = "DropdownMenu";
-            this.button_AddBook.Text = "Új könyv felvétele";
-            this.button_AddBook.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_AddBook.UseVisualStyleBackColor = false;
-            this.button_AddBook.Click += new System.EventHandler(this.button_AddBook_Click);
-            // 
-            // button_AllBooks
-            // 
-            this.button_AllBooks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(48)))));
-            this.button_AllBooks.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_AllBooks.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button_AllBooks.FlatAppearance.BorderSize = 0;
-            this.button_AllBooks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_AllBooks.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button_AllBooks.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button_AllBooks.Location = new System.Drawing.Point(0, 48);
-            this.button_AllBooks.Name = "button_AllBooks";
-            this.button_AllBooks.Padding = new System.Windows.Forms.Padding(55, 0, 0, 0);
-            this.button_AllBooks.Size = new System.Drawing.Size(234, 48);
-            this.button_AllBooks.TabIndex = 2;
-            this.button_AllBooks.Tag = "DropdownMenu";
-            this.button_AllBooks.Text = "Összes könyv";
-            this.button_AllBooks.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_AllBooks.UseVisualStyleBackColor = false;
-            this.button_AllBooks.Click += new System.EventHandler(this.button_AllBooks_Click);
-            // 
-            // button_BookTakeback
-            // 
-            this.button_BookTakeback.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(48)))));
-            this.button_BookTakeback.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_BookTakeback.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button_BookTakeback.FlatAppearance.BorderSize = 0;
-            this.button_BookTakeback.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_BookTakeback.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button_BookTakeback.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button_BookTakeback.Location = new System.Drawing.Point(0, 0);
-            this.button_BookTakeback.Name = "button_BookTakeback";
-            this.button_BookTakeback.Padding = new System.Windows.Forms.Padding(55, 0, 0, 0);
-            this.button_BookTakeback.Size = new System.Drawing.Size(234, 48);
-            this.button_BookTakeback.TabIndex = 1;
-            this.button_BookTakeback.Tag = "DropdownMenu";
-            this.button_BookTakeback.Text = "Könyv visszavétele";
-            this.button_BookTakeback.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_BookTakeback.UseVisualStyleBackColor = false;
-            this.button_BookTakeback.Click += new System.EventHandler(this.button_BookTakeback_Click);
             // 
             // button_Books
             // 
@@ -429,7 +329,6 @@
             this.tableLayoutPanel_Main.ResumeLayout(false);
             this.panel_Menu.ResumeLayout(false);
             this.panel_Links.ResumeLayout(false);
-            this.panel_BooksSubMenu.ResumeLayout(false);
             this.panel_Theme.ResumeLayout(false);
             this.panel_Theme.PerformLayout();
             this.panel_User.ResumeLayout(false);
@@ -446,11 +345,6 @@
 		private System.Windows.Forms.Button button3;
 		private System.Windows.Forms.Button button4;
 		private System.Windows.Forms.Button button_Users;
-		private System.Windows.Forms.Panel panel_BooksSubMenu;
-		private System.Windows.Forms.Button button_AddBook;
-		private System.Windows.Forms.Button button_AllBooks;
-		private System.Windows.Forms.Button button_BookTakeback;
-		private System.Windows.Forms.Button button_BookLending;
 		private System.Windows.Forms.Button button_Books;
 		private System.Windows.Forms.Button button_HomePage;
 		private System.Windows.Forms.Panel panel_User;
