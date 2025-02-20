@@ -19,8 +19,8 @@
         <div class="book-description">
             <?= $book_data["description"]?>
         </div>
-        <div class="release_date"><?=$book_data["release_date"]?></div>
-        <div class="isbn"><?=$book_data["ISBN"]?></div>
+        <div class="release_date">Kiadás éve: <?=$book_data["release_date"]?></div>
+        <div class="isbn">ISBN: <?=$book_data["ISBN"]?></div>
 
         <?php if(!isset($_SESSION["user_id"])): ?>
         <div class="availability">Elérhető</div>
