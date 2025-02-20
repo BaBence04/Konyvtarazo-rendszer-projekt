@@ -67,20 +67,20 @@
                     <div class="change-password-holder">
                         <div class="inputbox">
                             <img src="/web/imgs/eye-off-line.png" id="eyeicon" onclick="TogglePasswordVisibility(this, 'currentPassword');" alt="Toggle Password Visibility">
-                            <input type="password" id="currentPassword" onkeyup="CheckForEnterPressedAndClickGivenButton(event, 'changePasswordButton');">
+                            <input type="password" placeholder=" " id="currentPassword" onkeyup="CheckForEnterPressedAndClickGivenButton(event, 'changePasswordButton');">
                             <span for="currentPassword">Jelenlegi jelszó:</span>
                             <i></i>
                         </div>
                         <div class="inputbox">
                             <img src="/web/imgs/eye-off-line.png" id="eyeicon" onclick="TogglePasswordVisibility(this, 'newPassword');" alt="Toggle Password Visibility">
-                            <input type="password" id="newPassword" oninput="ValidatePassword(this.value);" onkeyup="CheckForEnterPressedAndClickGivenButton(event, 'changePasswordButton');">
+                            <input type="password" placeholder=" " id="newPassword" oninput="ValidatePassword(this.value);" onkeyup="CheckForEnterPressedAndClickGivenButton(event, 'changePasswordButton');">
                             <span for="newPassword">Új jelszó:</span>
                             <i></i>
                         </div>
                         <?php require("new_password_error_messages.html");?>
 
                         <div class="inputbox">
-                            <input type="password" id="newPasswordAgain" onkeyup="CheckForEnterPressedAndClickGivenButton(event, 'changePasswordButton');">
+                            <input type="password" placeholder=" " id="newPasswordAgain" onkeyup="CheckForEnterPressedAndClickGivenButton(event, 'changePasswordButton');">
                             <span for="newPasswordAgain">Új jelszó újra:</span>
                             <i></i>
                         </div>
