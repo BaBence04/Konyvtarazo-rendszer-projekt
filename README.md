@@ -10,7 +10,6 @@ Mesterremek projekt, könyvtárazó rendszer
         -message box-okat kicserélni az újra
   
 
-
     BACKEND:
         -legyen középen a regisztráció form
         -az employeeDetailed-en legyen a jelszó változtatásnál is csillag a textbox-okban
@@ -21,7 +20,6 @@ Mesterremek projekt, könyvtárazó rendszer
 
 #WEB:
     KINÉZET:
-        -nem tudom, hogy működik az, hogy a login-nál felcsúsznak a span-ek ha be van kattintva a felhasználó, vagy írt bele valamit, nem találtam meg, viszont a userdetailed-on is odatettem az icont, és azt megcsináltam működőre
         -valószínűleg ki kellene szedni a navbar.css-ben levő dolgokat a style.css-ből, mert így nem tudjuk egységesen módosítani a navbar stílusát
         -még kell finomítani a kinézetén a bookDetailed-nek, legalább legyen középen szerintem
         -kapott a userDetailed-en a sidebar, egy min-width:250px-t és így már nem ugrál amikor az utolsót, nyitjuk meg -just sayin'
@@ -56,6 +54,4 @@ KÉRDÉSEK A KÖNYVTÁROSOKHOZ:
 
 DONE THIS WEEK:
 -kész a custom datetimepicker
--a jelszó hiba kiírás szebb, mert nem egyben nyílik és csúkódik 
--rosszul volt még 2 url beállítva
--mostmár nem látszódik azonnal a footer a bookDetailed-en
+-kész az animáció a forgotPassword és a bejelentkezés közötti
