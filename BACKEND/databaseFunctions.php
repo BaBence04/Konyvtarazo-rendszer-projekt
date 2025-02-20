@@ -1,7 +1,7 @@
 <?php
     // require "sql.php";
 
-    $results_per_page = 5;
+    $results_per_page = 8;
     function get_books_filtered($title, $genre, $author, $release_date, $lang, $isbn, $page){
         require "databaseConnect.php";
 
@@ -277,8 +277,12 @@
             return -1;
         }
     }
-    function GetUser($user_id){
-        require "databaseConnect.php";
+    function GetUser($user_id, $conn=null){
+        $conn_was_not_given = $conn == null;
+
+        if($conn_was_not_given){
+            require "databaseConnect.php";
+        }
 
         $query = "CALL getUser(?);";
 
@@ -286,8 +290,14 @@
         $stmt->bind_param("s", $user_id); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
-        $conn->close();
+
+        if($conn_was_not_given){
+            $conn->close();
+        }
+
         return $results->fetch_all(MYSQLI_ASSOC);
+
+
         /* $data = $results->fetch_all(MYSQLI_ASSOC);
         if(count($data) == 1){
             return $data;
@@ -836,11 +846,15 @@
         $stmt->execute(); // Execute the SQL query
         $affected_rows = mysqli_affected_rows($conn);
 
+
+        $user_data = GetUser($user_id, $conn)[0];
+        $login_result = CheckCredentialForLogin($user_data["username"], $password);
+
         if($conn_was_not_given){
             $conn->close();
         }
 
-        return $affected_rows==1;
+        return $login_result["result"] == "true";
     }
 
     function get_user_email_data($user_id, $conn=null) : array {

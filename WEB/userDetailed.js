@@ -102,7 +102,6 @@ function MoveIndicator(startIndex, endIndex, navHeight, navs){
         currentTop = (navs[startIndex].offsetHeight-indicatorHeight)/2;
     }
 
-    console.log('currentHeight :>> ', currentHeight);
     let keyframes = 
         {
             "height": [currentHeight+"px", heightToGrowTo+"px"]
@@ -111,15 +110,12 @@ function MoveIndicator(startIndex, endIndex, navHeight, navs){
     // sidebar.style.setProperty("--_height", heightToGrowTo + "px");
 
     if(endIndex<startIndex){
-        console.log("backwards");
-        // sidebar.style.setProperty("--_top", currentTop-(heightToGrowTo-indicatorHeight) + "px");
         keyframes["translate"] = [`0 ${currentTop}px`, `0 ${currentTop-(heightToGrowTo-indicatorHeight)}px`];
         currentTop = currentTop-(heightToGrowTo-indicatorHeight);
     }
     
     const newPositionTop = navs[endIndex].offsetTop + (navs[endIndex].offsetHeight - indicatorHeight) / 2;
 
-    console.log("first animation");
     let animation = indicator.animate(keyframes, {
         duration: duration/2,
         easing: easingCurves[0]
@@ -127,7 +123,6 @@ function MoveIndicator(startIndex, endIndex, navHeight, navs){
     // sidebar.style.setProperty("--_height", heightToGrowTo + "px");
 
     animation.onfinish = ()=>{
-        console.log('currentTop after first anim :>> ', currentTop);
 
         keyframes = 
         {
@@ -135,7 +130,6 @@ function MoveIndicator(startIndex, endIndex, navHeight, navs){
             "translate": [`0 ${currentTop}px`, `0 ${newPositionTop}px`]
         };
 
-        console.log("second animation");
         indicator.animate(keyframes, {
             duration: duration/2,
             easing: easingCurves[1]//Ease out quart

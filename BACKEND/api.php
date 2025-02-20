@@ -84,17 +84,10 @@
             if($login_result["result"] == "true"){
                 
                 if(change_password($_POST["newPassword"], $_SESSION["user_id"])){
-                    //checks if it is possible to login with the new password
-                    $login_result = CheckCredentialForLogin($_SESSION["username"], $_POST["newPassword"]);
-                    if($login_result["result"] == "true"){
-                        $result = ["status" => "successful"];        
-
-                    }else{
-                        $result = ["status" => "error", "message"=>"Couldn't log in with the new password, seek help! The result given back: $login_result[result]"];        
-                    }                    
-
+                    $result = ["status" => "successful"];        
+                    
                 }else{
-                    $result = ["status" => "failed", "message"=>"Change password didn't have only one changed line!"];
+                    $result = ["status" => "error", "message"=>"Couldn't log in with the new password, seek help! The result given back: $login_result[result]"];        
                 }
 
             }else{

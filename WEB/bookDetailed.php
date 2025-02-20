@@ -1,57 +1,61 @@
-<main class="book-details">
-    <div class="book-image">
-        <img src="<?=$book_data["picture_base64"]?>" alt="Book Image">
-    </div>
-
-    <div class="book-info">
-        <div class="book-title"><?=$book_data["title"]?></div>
-        <div class="book-author"><?=implode(", ", explode(",",$book_data["authors"]))?></div>
-
-        <div class="book-genres">
-        <?php
-            $genres = explode(",", $book_data["genres"]);
-            foreach ($genres as $genre) {
-                echo "<span>#$genre</span>";
-            }
-        ?>
+<main>
+    <div class="book-details">
+        <div class="book-image">
+            <img src="<?=$book_data["picture_base64"]?>" alt="Book Image">
         </div>
 
-        <div class="book-description">
-            <?= $book_data["description"]?>
-        </div>
-        <div class="release_date"><?=$book_data["release_date"]?></div>
-        <div class="isbn"><?=$book_data["ISBN"]?></div>
 
-        <?php if(!isset($_SESSION["user_id"])): ?>
-        <div class="availability">Elérhető</div>
-        <?php endif;?>
-
-
-        <div class="buttons">
-            <!-- <button class="wishlist-button">Kívánságlistához adás</button> -->
-
+    
+        <div class="book-info">
+            <div class="book-title"><?=$book_data["title"]?></div>
+            <div class="book-author"><?=implode(", ", explode(",",$book_data["authors"]))?></div>
+    
+            <div class="book-genres">
             <?php
-                //if the user is logged in
-                if(isset($_SESSION["user_id"])){
-                    //returns "reservation" | "booking"
-                    $availability_data = CheckBookAvailability(GetIsbnIdByIsbn($book_data["ISBN"]),$_SESSION["user_id"]);
-                    
-                    //EZEKRE A GOMBOKRA KELL EGY DISABLED STÍLUS
-                    if($availability_data["available"] == "true"){
-                        $buttonHtml = '<button class="reserve-button" id="reserve-button" onclick="reserveOrBook();"';
-
-                        $buttonHtml .= '>';
-                        if($availability_data["status"] == "reservation"){
-                            $buttonHtml .= "Előjegyzés";
-                        }else{
-                            $buttonHtml .= "Foglalás";
-                        }
-                        $buttonHtml .= "</button>";
-                        echo $buttonHtml;
-                    }
+                $genres = explode(",", $book_data["genres"]);
+                foreach ($genres as $genre) {
+                    echo "<span>#$genre</span>";
                 }
-
             ?>
+            </div>
+    
+            <div class="book-description">
+                <?= $book_data["description"]?>
+            </div>
+            <div class="release_date">Kiadás éve: <?=$book_data["release_date"]?></div>
+            <div class="isbn" title="Az ISBN számok olyan egyedi azonosítók amikkel be lehet azonosítani könyveket">ISBN: <?=$book_data["ISBN"]?></div>
+    
+            <?php if(!isset($_SESSION["user_id"])): ?>
+            <div class="availability">Elérhető</div>
+            <?php endif;?>
+    
+    
+            <div class="buttons">
+                <!-- <button class="wishlist-button">Kívánságlistához adás</button> -->
+    
+                <?php
+                    //if the user is logged in
+                    if(isset($_SESSION["user_id"])){
+                        //returns "reservation" | "booking"
+                        $availability_data = CheckBookAvailability(GetIsbnIdByIsbn($book_data["ISBN"]),$_SESSION["user_id"]);
+                        
+                        //EZEKRE A GOMBOKRA KELL EGY DISABLED STÍLUS
+                        if($availability_data["available"] == "true"){
+                            $buttonHtml = '<button class="reserve-button" id="reserve-button" onclick="reserveOrBook();"';
+    
+                            $buttonHtml .= '>';
+                            if($availability_data["status"] == "reservation"){
+                                $buttonHtml .= "Előjegyzés";
+                            }else{
+                                $buttonHtml .= "Foglalás";
+                            }
+                            $buttonHtml .= "</button>";
+                            echo $buttonHtml;
+                        }
+                    }
+    
+                ?>
+            </div>
         </div>
     </div>
 </main>

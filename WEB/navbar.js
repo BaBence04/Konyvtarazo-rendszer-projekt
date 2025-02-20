@@ -1,7 +1,6 @@
 
 const login = document.getElementById("login"),
-loginBtn = document.getElementById("login-btn"),
-loginClose = document.getElementById("login-close");
+loginBtn = document.getElementById("login-btn")
 
 
 //closes the login form when clicked outside of it
@@ -245,7 +244,7 @@ function AnimateSliding(element, type, direction = "right", duration, mobileView
     keyframes[0].zIndex=-1;
     keyframes[1].zIndex=-1;
   }
-  console.log('keyframes :>> ', keyframes);
+
   let animation = element.animate(keyframes, duration);
   // element.style.opacity = opacityEnd;
   element.style.display = "block";
@@ -260,6 +259,7 @@ let waitingforServer = false;
 
 function ForgotPassword(){
   if(!waitingforServer){
+    document.getElementById("forgotPasswordButton").disabled = true;
     waitingforServer = true;
     $.ajax({
       url: "/BACKEND/api.php",
@@ -287,6 +287,7 @@ function ForgotPassword(){
           throw new Error("Nem kezelt státusz");
         }
         waitingforServer = false;
+        document.getElementById("forgotPasswordButton").disabled = false;
   
       
     }}); 
@@ -294,9 +295,9 @@ function ForgotPassword(){
 }
 
 
-loginClose.addEventListener("click", () => {
-    login.classList.remove("show-login");
-});
+// loginClose.addEventListener("click", () => {
+//     login.classList.remove("show-login");
+// });
   
   
 // const passwordField = document.getElementById("password");
@@ -377,7 +378,6 @@ navClose.addEventListener("click", () => {
 document.addEventListener("DOMContentLoaded", function() {
   const navbarLinks = document.querySelectorAll('a.nav__link');
   
-
   function getBackgroundBrightness(element) {
     const bgColor = window.getComputedStyle(element).backgroundColor;
     const rgb = bgColor.match(/\d+/g).map(Number);
@@ -386,11 +386,18 @@ document.addEventListener("DOMContentLoaded", function() {
     return brightness;
   }
 
-
   function updateNavbarTextColor() {
+    const width = window.innerWidth;
+
     const sections = document.querySelectorAll('.section');
     const navLinkRect = navbarLinks[0].getBoundingClientRect();
     let currentSection = null;
+
+    const userIcon = document.getElementById("user_icon");
+    const menuIcon = document.getElementById("menu_icon");
+
+
+    
 
     sections.forEach((section) => {
       const sectionRect = section.getBoundingClientRect();
@@ -405,18 +412,32 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if (currentSection) {
       const brightness = getBackgroundBrightness(currentSection);
-      if (brightness < 128) { 
-        navbarLinks.forEach(link => link.style.color = 'white');
-        document.getElementById("user_icon").src = "/web/imgs/icons/user-line_white.png";
-        document.getElementById("menu_icon").src = "/web/imgs/icons/menu-line_white.png";
-      } else { 
+      if (width <= 1022) {
         navbarLinks.forEach(link => link.style.color = 'black');
-        document.getElementById("user_icon").src = "/web/imgs/icons/user-line.png";
-        document.getElementById("menu_icon").src = "/web/imgs/icons/menu-line.png";
+        if (brightness < 128) { 
+          userIcon.setAttribute('fill', 'white');
+          menuIcon.setAttribute('fill', 'white');
+        } else { 
+          userIcon.setAttribute('fill', 'black');
+          menuIcon.setAttribute('fill', 'black');
+        }
+      } else {
+        if (brightness < 128) { 
+          navbarLinks.forEach(link => link.style.color = 'white');
+          userIcon.setAttribute('fill', 'white');
+          menuIcon.setAttribute('fill', 'white');
+        } else { 
+          navbarLinks.forEach(link => link.style.color = 'black');
+          userIcon.setAttribute('fill', 'black');
+          menuIcon.setAttribute('fill', 'black');
+        }
       }
+
     }
   }
+
   window.addEventListener('scroll', updateNavbarTextColor);
   updateNavbarTextColor();
 });
+
   

@@ -10,7 +10,6 @@ Mesterremek projekt, könyvtárazó rendszer
         -message box-okat kicserélni az újra
   
 
-
     BACKEND:
         -legyen középen a regisztráció form
         -az employeeDetailed-en legyen a jelszó változtatásnál is csillag a textbox-okban
@@ -23,25 +22,20 @@ Mesterremek projekt, könyvtárazó rendszer
 
 #WEB:
     KINÉZET:
-        -nem tudom, hogy működik az, hogy a login-nál felcsúsznak a span-ek ha be van kattintva a felhasználó, vagy írt bele valamit, nem találtam meg, viszont a userdetailed-on is odatettem az icont, és azt megcsináltam működőre
         -valószínűleg ki kellene szedni a navbar.css-ben levő dolgokat a style.css-ből, mert így nem tudjuk egységesen módosítani a navbar stílusát
         -még kell finomítani a kinézetén a bookDetailed-nek, legalább legyen középen szerintem
-        -a könyv részletes oldalon legyen kiírva az isbn-hez és a dátum-hoz, hogy mik azok
         -kapott a userDetailed-en a sidebar, egy min-width:250px-t és így már nem ugrál amikor az utolsót, nyitjuk meg -just sayin'
         -perpillanat az elfelejtettem a jelszónál a login-nak a username mezőjét használja, meg kell csinálni rendesre, és az oldalt is ahol lehet reset-elni a jelszót
-        -a könyv részletesen a gomb nagyon rá van csúszva a felette levő részre
         
         
 
     PHP/JS:
         -advanced search
         -majd kéne valami ami jelzi, hogy az email küldése folyamatban van az elfelejtettem a jelszót funkciónál
-        -a userDetailed-on és a resetPassword.php-oldalon is kell hogy úgy működjön a password input mint a login-nál, vagyis legyen a kis szemecske
         -csak év ként kéne tárolni a megjelenés dátumát a könyvnek
         -menő lenne ha ki lenne írva az is, hogy a max X-ből hány darab van már foglalva/előjegyezve pl.: 2/3
-        -az összes könyv kilistázásánál ki kell írni, hogy kivehető/foglalható, előjegyezhető posibbly felesleges
+        -az összes könyv kilistázásánál ki kell írni, hogy kivehető/foglalható, előjegyezhető --- posibbly felesleges
         -for now php-ből van generálva a cookie-ideje de valszeg jobb lenne ha ez is a system settings-ből nézné
-        -gyorsítani a backendet, azzal, hogy lehessen odaadni connectiont a databaseFunction-öknek hogy ne kelljen mindig újra csatlakozni
 
 SQL:
 
@@ -59,6 +53,4 @@ KÉRDÉSEK A KÖNYVTÁROSOKHOZ:
 
 DONE THIS WEEK:
 -kész a custom datetimepicker
--a jelszó hiba kiírás szebb, mert nem egyben nyílik és csúkódik 
--rosszul volt még 2 url beállítva
--mostmár nem látszódik azonnal a footer a bookDetailed-en
+-kész az animáció a forgotPassword és a bejelentkezés közötti

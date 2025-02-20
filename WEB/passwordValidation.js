@@ -33,6 +33,6 @@ function ValidatePassword(password){
             $("#errors_with_password>p").hide(duration);
         }
 
-    }, 300);
+    }, 100);
 }
 

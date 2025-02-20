@@ -36,7 +36,7 @@
         </div>
     </section>
     <div class="container">
-        <section class="hero section">
+        <section class="hero section" id="hero_section">
             <div class="hero-img">
                 <img src="/web/imgs/hero-image_dark(25).png" alt="">
             </div>
@@ -45,7 +45,7 @@
                 <h1 class="header-right">HIVE</h1>
             </div>
         </section>
-        <section class="intro section">
+        <section class="intro section" id="into_section">
             <div class="tagline">
                 <p>Üdvözöljük az online könytárunkban!</p>
             </div>
@@ -55,12 +55,12 @@
                 <h1>FOR ALL</h1>
             </div>
         </section>
-        <section class="ws section"></section>
-        <section class="trans-bg-content section">
+        <section class="ws section" id="ws_section"></section>
+        <section class="trans-bg-content section" id="tbg_section">
             <h1 class="overlay">MY FRIEND</h1>
             <h1 class="overlay">OF MISERY</h1>
         </section>
-        <section class="outro section">
+        <section class="outro section" id="outro_section">
             <h1 class="text-toLeft">MY FRIEND</h1>
             <h1 class="text-toRight">OF MISERY</h1>
         </section>
