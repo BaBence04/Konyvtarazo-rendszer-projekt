@@ -407,8 +407,12 @@ document.addEventListener("DOMContentLoaded", function() {
       const brightness = getBackgroundBrightness(currentSection);
       if (brightness < 128) { 
         navbarLinks.forEach(link => link.style.color = 'white');
+        document.getElementById("user_icon").src = "/web/imgs/icons/user-line_white.png";
+        document.getElementById("menu_icon").src = "/web/imgs/icons/menu-line_white.png";
       } else { 
         navbarLinks.forEach(link => link.style.color = 'black');
+        document.getElementById("user_icon").src = "/web/imgs/icons/user-line.png";
+        document.getElementById("menu_icon").src = "/web/imgs/icons/menu-line.png";
       }
     }
   }
