@@ -24,7 +24,6 @@ Mesterremek projekt, könyvtárazó rendszer
         -még kell finomítani a kinézetén a bookDetailed-nek, legalább legyen középen szerintem
         -kapott a userDetailed-en a sidebar, egy min-width:250px-t és így már nem ugrál amikor az utolsót, nyitjuk meg -just sayin'
         -perpillanat az elfelejtettem a jelszónál a login-nak a username mezőjét használja, meg kell csinálni rendesre, és az oldalt is ahol lehet reset-elni a jelszót
-        -a könyv részletesen a gomb nagyon rá van csúszva a felette levő részre
         
         
 
