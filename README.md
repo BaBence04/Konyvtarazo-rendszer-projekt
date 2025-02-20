@@ -30,12 +30,10 @@ Mesterremek projekt, könyvtárazó rendszer
     PHP/JS:
         -advanced search
         -majd kéne valami ami jelzi, hogy az email küldése folyamatban van az elfelejtettem a jelszót funkciónál
-        -a userDetailed-on és a resetPassword.php-oldalon is kell hogy úgy működjön a password input mint a login-nál, vagyis legyen a kis szemecske
         -csak év ként kéne tárolni a megjelenés dátumát a könyvnek
         -menő lenne ha ki lenne írva az is, hogy a max X-ből hány darab van már foglalva/előjegyezve pl.: 2/3
-        -az összes könyv kilistázásánál ki kell írni, hogy kivehető/foglalható, előjegyezhető posibbly felesleges
+        -az összes könyv kilistázásánál ki kell írni, hogy kivehető/foglalható, előjegyezhető --- posibbly felesleges
         -for now php-ből van generálva a cookie-ideje de valszeg jobb lenne ha ez is a system settings-ből nézné
-        -gyorsítani a backendet, azzal, hogy lehessen odaadni connectiont a databaseFunction-öknek hogy ne kelljen mindig újra csatlakozni
 
 SQL:
 
