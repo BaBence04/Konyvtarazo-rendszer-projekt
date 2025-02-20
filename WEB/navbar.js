@@ -1,7 +1,6 @@
 
 const login = document.getElementById("login"),
-loginBtn = document.getElementById("login-btn"),
-loginClose = document.getElementById("login-close");
+loginBtn = document.getElementById("login-btn")
 
 
 //closes the login form when clicked outside of it
@@ -245,7 +244,7 @@ function AnimateSliding(element, type, direction = "right", duration, mobileView
     keyframes[0].zIndex=-1;
     keyframes[1].zIndex=-1;
   }
-  console.log('keyframes :>> ', keyframes);
+
   let animation = element.animate(keyframes, duration);
   // element.style.opacity = opacityEnd;
   element.style.display = "block";
@@ -260,6 +259,7 @@ let waitingforServer = false;
 
 function ForgotPassword(){
   if(!waitingforServer){
+    document.getElementById("forgotPasswordButton").disabled = true;
     waitingforServer = true;
     $.ajax({
       url: "/BACKEND/api.php",
@@ -287,6 +287,7 @@ function ForgotPassword(){
           throw new Error("Nem kezelt státusz");
         }
         waitingforServer = false;
+        document.getElementById("forgotPasswordButton").disabled = false;
   
       
     }}); 
@@ -294,9 +295,9 @@ function ForgotPassword(){
 }
 
 
-loginClose.addEventListener("click", () => {
-    login.classList.remove("show-login");
-});
+// loginClose.addEventListener("click", () => {
+//     login.classList.remove("show-login");
+// });
   
   
 // const passwordField = document.getElementById("password");
