@@ -384,10 +384,11 @@ namespace Desktop
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Enter)
+            this.OnKeyPress(e);
+            /*if (e.KeyChar == (char)Keys.Enter)
             {
-                this.OnKeyPress(e);
-            }
+                
+            }*/
         }
 
 

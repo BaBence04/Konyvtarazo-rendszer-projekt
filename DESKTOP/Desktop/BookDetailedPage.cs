@@ -7,12 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Threading;
 
 namespace Desktop
 {
     public partial class BookDetailedPage : Form
     {
-        private string isbn;
+        private string isbn, picBase64;
+        private bool addMode = false;
         private Dictionary<string, string> original;
         private int distBtwCardsX = 1, distBtwCardsY = 1, authorNextLocationX, authorNextLocationY, categoryNextLocationX, categoryNextLocationY;
         private List<Label> authors = new List<Label>();
@@ -46,7 +49,16 @@ namespace Desktop
             if (pop.ShowDialog() == DialogResult.OK)
             {
                 Label lbl = new Label();
-                lbl.Name = "lblAuthor" + pop.id;
+                int num;
+                if (authors.Count == 0)
+                {
+                    num = 0;
+                }
+                else
+                {
+                    num = int.Parse(authors.OrderBy(x => x.Name).Last().Name.Replace("lblAuthor", "")) + 1;
+                }
+                lbl.Name = "lblAuthor" + num;
                 lbl.AutoSize = true;
                 lbl.Text = pop.res1;
                 if (authorNextLocationX + lbl.Size.Width + distBtwCardsX > pAuthors.Size.Width)
@@ -67,7 +79,16 @@ namespace Desktop
             if (pop.ShowDialog() == DialogResult.OK)
             {
                 Label lbl = new Label();
-                lbl.Name = "lblCategory" + pop.id;
+                int num;
+                if (categories.Count == 0)
+                {
+                    num = 0;
+                }
+                else
+                {
+                    num = int.Parse(categories.OrderBy(x => x.Name).Last().Name.Replace("lblCategory", "")) + 1;
+                }
+                lbl.Name = "lblCategory" + num;
                 lbl.AutoSize = true;
                 lbl.Text = pop.res1;
                 if (categoryNextLocationX + lbl.Size.Width + distBtwCardsX > pCategories.Size.Width)
@@ -113,16 +134,152 @@ namespace Desktop
             MessageBox.Show($"A hozzáadott könyv kódja: {resp.First()["book_id"]}");
         }
 
-        private List<Label> categories  = new List<Label>();
-        public BookDetailedPage(string ISBN)
+        private void cbtnBack_Click(object sender, EventArgs e)
         {
-            isbn = ISBN;
+            LoginForm.main.OpenChildForm(LoginForm.main.allBooksPage);
+        }
+
+        private void cbtnAddPicture_Click(object sender, EventArgs e)
+        {
+            if (ofdPic.ShowDialog() == DialogResult.OK)
+            {
+                lblPicName.Text = ofdPic.FileName;
+                picBase64 = "data:image/png;charset=utf-8;base64," + Convert.ToBase64String(File.ReadAllBytes(ofdPic.FileName));
+            }
+        }
+
+        private void BookDetailedPage_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Save();
+        }
+
+        private async void Save()
+        {
+            if (ctbDescription.Texts.Length>0 && ctbTitle.Texts.Length>0)
+            {
+                if (checkChanges())
+                {
+                    DialogResult res = MessageBox.Show("Menteni szeretné a változtatásokat?", "Váltotatás", MessageBoxButtons.YesNo);
+                    if (res == DialogResult.Yes)
+                    {
+                        Dictionary<string, string> data = new Dictionary<string, string>();
+                        data["type"] = "updateBook";
+                        data["id"] = original["ISBN_id"];
+                        data["title"] = ctbTitle.Texts;
+                        data["release_date"] = cdtpReleaseDate.Value.ToString("yyyy-MM-dd");
+                        data["lang"] = lblLang.Text;
+                        data["publisher"] = lblPublisher.Text;
+                        data["authors"] = String.Join(",", authors.Select(x => x.Text));
+                        data["genres"] = String.Join(",", categories.Select(x => x.Text));
+                        data["description"] = ctbDescription.Texts;
+                        data["picture_base64"] = picBase64;
+                        await ApiComm.SendPost(data);
+                    
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Ne hagyjon egy mezőt sem üresen");
+            }
+            
+        }
+
+        private bool checkChanges()
+        {
+            bool changed = false;
+            if (ctbTitle.Texts != original["title"] || cdtpReleaseDate.Value != DateTime.Parse(original["release_date"]) || lblLang.Text != original["lang"] || lblPublisher.Text != original["name"] || String.Join(",", authors.Select(x => x.Text)) != original["authors"] || String.Join(",", categories.Select(x => x.Text)) != original["genres"] || ctbDescription.Texts != original["description"] || original["picture_base64"] != picBase64)
+            {
+                changed = true;
+            }
+            return changed;
+        }
+
+
+        private void ctbISBN_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(e.KeyChar >= 48 && e.KeyChar <= 57 || e.KeyChar == (char)Keys.Back))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private List<Label> categories  = new List<Label>();
+        public BookDetailedPage(string mode)
+        {
+            if (mode == "add")
+            {
+                addMode = true;
+            }
+            else
+            {
+                isbn = mode;
+            }
+            
+            
             InitializeComponent();
         }
 
         private void BookDetailedPage_Load(object sender, EventArgs e)
         {
-            LoadData();
+            if (addMode)
+            {
+                pManage.Visible = false;
+                ctbISBN.Visible = true;
+                cbtnBack.Text = "Hozzáad";
+                cbtnBack.Click -= cbtnBack_Click;
+                cbtnBack.Click += cbtnAdd_Click;
+                this.FormClosing -= BookDetailedPage_FormClosing;
+            }
+            else
+            {
+                LoadData();
+            }
+            
+        }
+
+        private async void cbtnAdd_Click(object sender, EventArgs e)
+        {
+            if ((cdtpReleaseDate.Value < DateTime.Parse("2007.01.01.") && ctbISBN.Texts.Length == 11) || (cdtpReleaseDate.Value >= DateTime.Parse("2007.01.01.") && ctbISBN.Texts.Length == 13))
+            {
+                if (lblLang.Text != "Nyelv" && lblPublisher.Text != "Kiadó" && authors.Count>0 && categories.Count>0 && ctbTitle.Texts.Length>0 && ctbDescription.Texts.Length>0 && lblPicName.Text.Length>0)
+                {
+                    Dictionary<string, string> data = new Dictionary<string, string>();
+                    data["type"] = "addBookType";
+                    data["isbn"] = ctbISBN.Texts;
+                    data["title"] = ctbTitle.Texts;
+                    data["release_date"] = cdtpReleaseDate.Value.ToString("yyyy-MM-dd");
+                    data["lang"] = lblLang.Text;
+                    data["publisher"] = lblPublisher.Text;
+                    data["allAuthors"] = String.Join(",", authors.Select(x => x.Text));
+                    data["allGenres"] = String.Join(",", categories.Select(x => x.Text));
+                    data["descript"] = ctbDescription.Texts;
+                    data["picture"] = picBase64;
+                    List<Dictionary<string, string>> resp = (List<Dictionary<string, string>>)await ApiComm.SendPost(data);
+                    if (resp.First()["state"] != "Already exists")
+                    {
+                        if(MessageBox.Show("Szeretne egyből ennek a könyvnek a részletes oldalára kerülni", "Sikeres hozzáadás!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            List<Dictionary<string, string>> resp2 = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "addToInventory" }, { "ISBN_id", resp.First()["state"] } });
+                            MessageBox.Show($"A hozzáadott könyv kódja: {resp2.First()["book_id"]}");
+                            LoginForm.main.OpenChildForm(new BookDetailedPage(resp.First()["state"]));
+                        }
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ilyen könyv típus már fent van az adatbázisban");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Ne hagyjon egy mezőt sem üresen");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Nem megfelelő hosszú az ISBN kód");
+            }
         }
 
         private async void LoadData() { 
@@ -132,13 +289,25 @@ namespace Desktop
             ctbTitle.Texts = original["title"];
             cdtpReleaseDate.Value = DateTime.Parse(original["release_date"]);
             lblPublisher.Text = original["name"];
+            ctbDescription.Texts = original["description"];
+            picBase64 = original["picture_base64"];
             lblLang.Text = original["lang"];
             resp = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "getAuthors" }, { "ISBN_id", original["ISBN_id"] }, {"inverse", "0" } });
             authorNextLocationX = 0;
             authorNextLocationY = 0;
             for (int i = 0; i < resp.Count; i++) {
                 Label lbl = new Label();
-                lbl.Name = "lblAuthor" + resp[i]["author_id"];
+                int num;
+                if (authors.Count == 0)
+                {
+                    num = 0;
+                }
+                else
+                {
+                    num = int.Parse(authors.OrderBy(x => x.Name).Last().Name.Replace("lblAuthor", "")) + 1;
+                }
+                lbl.Name = "lblAuthor" +num;
+
                 lbl.AutoSize = true;
                 lbl.Text = resp[i]["author"];
                 if (authorNextLocationX+lbl.Size.Width+distBtwCardsX>pAuthors.Size.Width)
@@ -158,7 +327,16 @@ namespace Desktop
             for (int i = 0; i < resp.Count; i++)
             {
                 Label lbl = new Label();
-                lbl.Name = "lblCategory" + resp[i]["genre_id"];
+                int num;
+                if (categories.Count == 0)
+                {
+                    num = 0;
+                }
+                else
+                {
+                    num = int.Parse(categories.OrderBy(x => x.Name).Last().Name.Replace("lblCategory", "")) + 1;
+                }
+                lbl.Name = "lblCategory" +num;
                 lbl.AutoSize = true;
                 lbl.Text = resp[i]["genre"];
                 if (categoryNextLocationX + lbl.Size.Width + distBtwCardsX > pCategories.Size.Width)

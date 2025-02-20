@@ -37,7 +37,10 @@ namespace Desktop
 
         private void tbLoginPw_KeyPress(object sender, KeyPressEventArgs e)
         {
-            loginUser();
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                loginUser();
+            }
         }
         private async void loginUser()
         {
@@ -68,7 +71,11 @@ namespace Desktop
         }
         private void tbLoginUname_KeyPress(object sender, KeyPressEventArgs e)
         {
-            loginUser();
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                loginUser();
+            }
+            
         }
     }
 }

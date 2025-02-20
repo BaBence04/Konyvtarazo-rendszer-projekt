@@ -193,8 +193,8 @@
             UpdatePublishers($_POST["id"], $_POST["name"], $_POST["phone"], $_POST["email"], $_POST["webpage"]);
         }else if(isset($_POST["type"]) && $_POST["type"] == "updateUser" && isset($_POST["id"], $_POST["firstname"], $_POST["surname"], $_POST["birthplace"], $_POST["birthdate"], $_POST["address"], $_POST["email"], $_POST["phone"], $_POST["mmn"]) && count($_POST) == 10){
             UpdateUser($_POST["id"], $_POST["firstname"], $_POST["surname"], $_POST["birthplace"], $_POST["birthdate"], $_POST["address"], $_POST["email"], $_POST["phone"], $_POST["mmn"]);
-        }else if(isset($_POST["type"]) && $_POST["type"] == "updateBook" && isset($_POST["id"], $_POST["title"], $_POST["release_date"], $_POST["lang"], $_POST["publisher_id"], $_POST["authors"], $_POST["genres"], $_POST["description"], $_POST["picture_base64"]) && count($_POST) == 10){
-            UpdateBook($_POST["id"], $_POST["title"], $_POST["release_date"], $_POST["lang"], $_POST["publisher_id"], $_POST["authors"], $_POST["genres"], $_POST["description"], $_POST["picture_base64"]);
+        }else if(isset($_POST["type"]) && $_POST["type"] == "updateBook" && isset($_POST["id"], $_POST["title"], $_POST["release_date"], $_POST["lang"], $_POST["publisher"], $_POST["authors"], $_POST["genres"], $_POST["description"], $_POST["picture_base64"]) && count($_POST) == 10){
+            echo json_encode(UpdateBook($_POST["id"], $_POST["title"], $_POST["release_date"], $_POST["lang"], $_POST["publisher"], $_POST["authors"], $_POST["genres"], $_POST["description"], $_POST["picture_base64"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "deletePublisher" && isset($_POST["id"]) && count($_POST) == 2){
             echo json_encode(DeletePublisher($_POST["id"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "addPublisher" && isset($_POST["name"], $_POST["phone"], $_POST["email"], $_POST["webpage"])  && count($_POST) == 5){
@@ -205,6 +205,8 @@
             if($result[0]["state"] == "Sikeres"){
                 reset_password(GetUserId($_POST["uname"]));
             }
+        }else if(isset($_POST["type"]) && $_POST["type"] == "addBookType" && isset($_POST["isbn"], $_POST["title"], $_POST["allGenres"], $_POST["allAuthors"], $_POST["publisher"], $_POST["release_date"], $_POST["lang"], $_POST["descript"], $_POST["picture"])  && count($_POST) == 10){
+            echo json_encode( AddBookType($_POST["isbn"], $_POST["title"], $_POST["allGenres"], $_POST["allAuthors"], $_POST["publisher"], $_POST["release_date"], $_POST["lang"], $_POST["descript"], $_POST["picture"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "deleteExpiredReservations" && count($_POST) == 1){
             echo json_encode(AutoDeleteLateBookings());
         }else if(isset($_POST["type"]) && $_POST["type"] == "deleteExpiredBookings" && count($_POST) == 1){
@@ -231,6 +233,8 @@
             DeactivateUser($_POST["id"]);
         }else if(isset($_POST["type"]) && $_POST["type"] == "deactivateEmpl"  && isset($_POST["empl_id"]) && count($_POST) == 2){
             DeactivateEmpl($_POST["empl_id"]);
+        }else if(isset($_POST["type"]) && $_POST["type"] == "deactivateBook"  && isset($_POST["book_id"]) && count($_POST) == 2){
+            DeactivateBook($_POST["book_id"]);
         }else if(isset($_POST["type"]) && $_POST["type"] == "checkPermissions"  && isset($_POST["id"]) && count($_POST) == 2){
             echo json_encode(CheckPermissions($_POST["id"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "getBookStates"  && isset($_POST["search"]) && count($_POST) == 2){
@@ -253,6 +257,8 @@
             echo json_encode(GetCategories($_POST["ISBN_id"], $_POST["inverse"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "getLangs" && count($_POST) == 1){
             echo json_encode(GetLangs());
+        }else if(isset($_POST["type"]) && $_POST["type"] == "addToInventory" && isset($_POST["ISBN_id"]) && count($_POST) == 2){
+            echo json_encode(AddToInventory($_POST["ISBN_id"]));
         }else{
             throw new Exception("Nincs ilyen");
         }

@@ -334,22 +334,18 @@
         return $results->fetch_all(MYSQLI_ASSOC);
     }
 
-    function AddBookType($isbn, $title, $allGenres, $allAuthors, $publisherId, $releaseDate, $lang, $descript, $picture){
+    function AddBookType($isbn, $title, $allGenres, $allAuthors, $publisher, $releaseDate, $lang, $descript, $picture){
         require "databaseConnect.php";
 
         $query = "CALL addBookType(?,?,?,?,?,?,?,?,?);";
 
         $stmt = $conn->prepare($query); // Prepare statement
-        $stmt->bind_param("ssssissss", $isbn,$title,$allGenres, $allAuthors, $publisherId, $releaseDate, $lang, $descritp, $picture); // Bind parameter to SQL query
+        $stmt->bind_param("sssssssss", $isbn,$title,$allGenres, $allAuthors, $publisher, $releaseDate, $lang, $descript, $picture); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
         $conn->close();
-        if($results->fetch_all(MYSQLI_NUM)[0][0] == "Already exists"){
-            return -1;
-        }
-        else{
-            return $results->fetch_all(MYSQLI_ASSOC);
-        }
+        return $results->fetch_all(MYSQLI_ASSOC);
+        
     }
 
     function AddBook($isbn){
@@ -453,13 +449,13 @@
         //return $results->fetch_all(MYSQLI_ASSOC);
     }
 
-    function UpdateBook($id, $title, $release_date, $lang, $publisher_id, $authors, $genres, $description, $picture_base64){
+    function UpdateBook($id, $title, $release_date, $lang, $publisher, $authors, $genres, $description, $picture_base64){
         require "databaseConnect.php";
 
         $query = "CALL updateBookDetails(?,?,?,?,?,?,?,?,?);";
         
         $stmt = $conn->prepare($query); // Prepare statement
-        $stmt->bind_param("isssissss", $id, $title, $release_date, $lang, $publisher_id, $authors, $genres, $description, $picture_base64); // Bind parameter to SQL query
+        $stmt->bind_param("issssssss", $id, $title, $release_date, $lang, $publisher, $authors, $genres, $description, $picture_base64); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
         $conn->close();

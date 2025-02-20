@@ -49,39 +49,35 @@ namespace Desktop
 
 		}
 
-		private async void cbtnBack_Click(object sender, EventArgs e)
+		private void cbtnBack_Click(object sender, EventArgs e)
 		{
-			if (checkChanges())
-			{
-				Console.WriteLine("changed");
-				DialogResult res = MessageBox.Show("Menteni szeretné a változtatásokat?", "Váltotatás", MessageBoxButtons.YesNoCancel);
-				if (res == DialogResult.Yes)
-				{
-					Dictionary<string, string> data = new Dictionary<string, string>();
-					data["type"] = "updateUser";
-					data["id"] = user_id;
-					data["firstname"] = ctbFirstname.Texts;
-					data["surname"] = ctbSurname.Texts;
-					data["birthplace"] = ctbBirthplace.Texts;
-					data["birthdate"] = dtpBirthDate.Value.ToString("yyyy-MM-dd");
-					data["address"] = ctbAddress.Texts;
-					data["email"] = ctbEmail.Texts;
-					data["phone"] = ctbPhone.Texts;
-					data["mmn"]  = ctbMmn.Texts;
-					await ApiComm.SendPost(data);
-					LoginForm.main.OpenChildForm(LoginForm.main.usersPage);
-				}
-				else if (res == DialogResult.No)
-				{
-					
-					LoginForm.main.OpenChildForm(LoginForm.main.usersPage);
-					
-				}
-				
-			}else
-				{
-					LoginForm.main.OpenChildForm(LoginForm.main.usersPage);
-				}
+			LoginForm.main.OpenChildForm(LoginForm.main.usersPage);
+			
+        }
+		private async void Save()
+		{
+            if (checkChanges())
+            {
+                DialogResult res = MessageBox.Show("Menteni szeretné a változtatásokat?", "Váltotatás", MessageBoxButtons.YesNo);
+                if (res == DialogResult.Yes)
+                {
+                    Dictionary<string, string> data = new Dictionary<string, string>();
+                    data["type"] = "updateUser";
+                    data["id"] = user_id;
+                    data["firstname"] = ctbFirstname.Texts;
+                    data["surname"] = ctbSurname.Texts;
+                    data["birthplace"] = ctbBirthplace.Texts;
+                    data["birthdate"] = dtpBirthDate.Value.ToString("yyyy-MM-dd");
+                    data["address"] = ctbAddress.Texts;
+                    data["email"] = ctbEmail.Texts;
+                    data["phone"] = ctbPhone.Texts;
+                    data["mmn"] = ctbMmn.Texts;
+                    await ApiComm.SendPost(data);
+                    
+                }
+                
+
+            }
         }
 		private bool checkChanges() {
 			bool changed = false;
@@ -137,6 +133,11 @@ namespace Desktop
         {
 			PopupSelect pop = new PopupSelect("bookOrReserve", user_id);
 			pop.ShowDialog();
+        }
+
+        private void UserDetailedPage_FormClosing(object sender, FormClosingEventArgs e)
+        {
+			Save();
         }
     }
 }

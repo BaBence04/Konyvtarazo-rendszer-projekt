@@ -115,26 +115,31 @@ namespace Desktop
         }
         private void cdgvBooks_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == cdgvBooks.Columns["Részletesen"].Index)
+            if (e.RowIndex>=0)
             {
-                LoginForm.main.OpenChildForm(new BookDetailedPage((string)cdgvBooks.Rows[e.RowIndex].Cells["isbn"].Value));
-            }
-            else if(e.ColumnIndex == cdgvBooks.Columns["Műveletek"].Index)
-            {
-                if ((string)cdgvBooks.Rows[e.RowIndex].Cells[2].Value == "borrowed")
+                if (e.ColumnIndex == cdgvBooks.Columns["Részletesen"].Index)
                 {
-                    LoginForm.main.OpenChildForm(new BookTakebackPage(ids[e.RowIndex]));
+                    LoginForm.main.OpenChildForm(new BookDetailedPage((string)cdgvBooks.Rows[e.RowIndex].Cells["isbn"].Value));
                 }
-                else if((string)cdgvBooks.Rows[e.RowIndex].Cells[2].Value == "booked")
+                else if(e.ColumnIndex == cdgvBooks.Columns["Műveletek"].Index)
                 {
-                    LoginForm.main.OpenChildForm(new BookLendingPage(ids[e.RowIndex], "booking"));
-                }
-                else
-                {
-                    LoginForm.main.OpenChildForm(new BookLendingPage(ids[e.RowIndex], "book_id"));
+                    if ((string)cdgvBooks.Rows[e.RowIndex].Cells[2].Value == "borrowed")
+                    {
+                        LoginForm.main.OpenChildForm(new BookTakebackPage(ids[e.RowIndex]));
+                    }
+                    else if((string)cdgvBooks.Rows[e.RowIndex].Cells[2].Value == "booked")
+                    {
+                        LoginForm.main.OpenChildForm(new BookLendingPage(ids[e.RowIndex], "booking"));
+                    }
+                    else
+                    {
+                        LoginForm.main.OpenChildForm(new BookLendingPage(ids[e.RowIndex], "book_id"));
+                    }
+
                 }
 
             }
+            
         }
 
 		private void btnSearch_Click(object sender, EventArgs e)
@@ -175,6 +180,12 @@ namespace Desktop
                     updateBooksDgv("");
                 }
             }
+        }
+
+        private void cbtnAdd_Click(object sender, EventArgs e)
+        {
+            BookDetailedPage add = new BookDetailedPage("add");
+            add.ShowDialog();
         }
     }
 }

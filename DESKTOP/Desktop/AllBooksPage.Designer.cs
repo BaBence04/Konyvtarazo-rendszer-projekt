@@ -28,16 +28,16 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel_Books = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSearch = new Desktop.CustomButton();
             this.ctbSearch = new Desktop.CustomTextbox();
-            this.customButton1 = new Desktop.CustomButton();
+            this.cbtnAdd = new Desktop.CustomButton();
             this.cdgvBooks = new Desktop.CustomDataGridView();
             this.tableLayoutPanel_Books.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -64,7 +64,7 @@
             // 
             this.panel1.Controls.Add(this.btnSearch);
             this.panel1.Controls.Add(this.ctbSearch);
-            this.panel1.Controls.Add(this.customButton1);
+            this.panel1.Controls.Add(this.cbtnAdd);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
@@ -114,32 +114,33 @@
             this.ctbSearch.Texts = "Keresés";
             this.ctbSearch.UnderlinedStyle = false;
             // 
-            // customButton1
+            // cbtnAdd
             // 
-            this.customButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.customButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(88)))));
-            this.customButton1.BorderColor = System.Drawing.Color.White;
-            this.customButton1.BorderRadius = 40;
-            this.customButton1.BorderSize = 0;
-            this.customButton1.FlatAppearance.BorderSize = 0;
-            this.customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customButton1.ForeColor = System.Drawing.Color.White;
-            this.customButton1.Image = global::Desktop.Properties.Resources.add_line_white;
-            this.customButton1.Location = new System.Drawing.Point(680, 9);
-            this.customButton1.Name = "customButton1";
-            this.customButton1.Size = new System.Drawing.Size(45, 45);
-            this.customButton1.TabIndex = 0;
-            this.customButton1.UseVisualStyleBackColor = false;
+            this.cbtnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbtnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(88)))));
+            this.cbtnAdd.BorderColor = System.Drawing.Color.White;
+            this.cbtnAdd.BorderRadius = 40;
+            this.cbtnAdd.BorderSize = 0;
+            this.cbtnAdd.FlatAppearance.BorderSize = 0;
+            this.cbtnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbtnAdd.ForeColor = System.Drawing.Color.White;
+            this.cbtnAdd.Image = global::Desktop.Properties.Resources.add_line_white;
+            this.cbtnAdd.Location = new System.Drawing.Point(680, 9);
+            this.cbtnAdd.Name = "cbtnAdd";
+            this.cbtnAdd.Size = new System.Drawing.Size(45, 45);
+            this.cbtnAdd.TabIndex = 0;
+            this.cbtnAdd.UseVisualStyleBackColor = false;
+            this.cbtnAdd.Click += new System.EventHandler(this.cbtnAdd_Click);
             // 
             // cdgvBooks
             // 
             this.cdgvBooks.AllowUserToAddRows = false;
             this.cdgvBooks.AllowUserToDeleteRows = false;
             this.cdgvBooks.AlternatingRowBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(88)))));
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(88)))));
-            dataGridViewCellStyle11.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.cdgvBooks.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(88)))));
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.cdgvBooks.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.cdgvBooks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.cdgvBooks.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
             this.cdgvBooks.BorderColor = System.Drawing.Color.MediumSlateBlue;
@@ -149,26 +150,26 @@
             this.cdgvBooks.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.cdgvBooks.CellForeColor = System.Drawing.Color.WhiteSmoke;
             this.cdgvBooks.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(55)))));
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle12.Padding = new System.Windows.Forms.Padding(15);
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.cdgvBooks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(55)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(15);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.cdgvBooks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.cdgvBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.cdgvBooks.CornerRadius = 8;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle13.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.cdgvBooks.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.cdgvBooks.DefaultCellStyle = dataGridViewCellStyle3;
             this.cdgvBooks.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cdgvBooks.EnableBorder = false;
             this.cdgvBooks.EnableHeadersVisualStyles = false;
@@ -181,20 +182,20 @@
             this.cdgvBooks.Margin = new System.Windows.Forms.Padding(0);
             this.cdgvBooks.Name = "cdgvBooks";
             this.cdgvBooks.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(55)))));
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle14.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.cdgvBooks.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(55)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.cdgvBooks.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.cdgvBooks.RowHeadersWidth = 51;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.cdgvBooks.RowsDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.cdgvBooks.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.cdgvBooks.RowTemplate.Height = 40;
             this.cdgvBooks.SelectedRowColor = System.Drawing.Color.CornflowerBlue;
             this.cdgvBooks.Size = new System.Drawing.Size(740, 374);
@@ -230,6 +231,6 @@
 		private System.Windows.Forms.Panel panel1;
 		private CustomButton btnSearch;
 		private CustomTextbox ctbSearch;
-		private CustomButton customButton1;
+		private CustomButton cbtnAdd;
     }
 }

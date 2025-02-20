@@ -92,7 +92,6 @@ FROM
   ) ON book.ISBN_id = books_authors_conn.ISBN_id
   INNER JOIN publishers ON publishers.publisher_id = book.publisher_id
   INNER JOIN languages ON languages.lang_id = book.lang_id
-  INNER JOIN inventory ON inventory.ISBN_id = book.ISBN_id
 WHERE
   FIND_IN_SET(CAST(book.ISBN_id AS VARCHAR(255)), ID)
 GROUP BY 1;
@@ -271,7 +270,7 @@ CREATE PROCEDURE IF NOT EXISTS updateBookDetails(
   IN title VARCHAR(255),
   IN release_date DATE,
   IN lang VARCHAR(255),
-  IN publisher_id INT,
+  IN publisher VARCHAR(255),
   IN authors VARCHAR(255),
   IN genres VARCHAR(255),
   IN description TEXT,
@@ -319,9 +318,9 @@ iterator1:
           -- an empty string, which removes _nextlen + 1 characters)
           SET authors = INSERT(authors,1,_nextlen + 1,'');
         END LOOP;
-
+    DELETE FROM books_genres_conn WHERE books_genres_conn.ISBN_id = ISBN_id;
 	-- sambe but for genres
-	 iterator2:
+	iterator2:
         LOOP
           -- exit the loop if the list seems empty or was null;
           -- this extra caution is necessary to avoid an endless loop in the proc.
@@ -346,7 +345,7 @@ iterator1:
             	INSERT INTO genres(genres.genre) VALUES(_value);
              END;
           END IF;
-		  INSERT INTO books_genres_conn(books_genres_conn.ISBN_id, books_genres_conn.genre_id) VALUES((SELECT book.ISBN_id FROM book WHERE book.ISBN = ISBN), (SELECT genres.genre_id FROM genres WHERE genres.genre = _value));
+		  INSERT INTO books_genres_conn(books_genres_conn.ISBN_id, books_genres_conn.genre_id) VALUES(ISBN_id, (SELECT genres.genre_id FROM genres WHERE genres.genre = _value));
 
           -- rewrite the original string using the `INSERT()` string function,
           -- args are original string, start position, how many characters to remove, 
@@ -354,7 +353,11 @@ iterator1:
           -- an empty string, which removes _nextlen + 1 characters)
           SET genres = INSERT(genres,1,_nextlen + 1,'');
         END LOOP;
-  UPDATE book SET book.title = title, book.release_date = release_date, book.lang_id = (SELECT languages.lang_id FROM languages WHERE languages.lang = lang), book.publisher_id = publisher_id, book.description = description, book.picture_base64 = picture_base64 WHERE book.ISBN_id = ISBN_id;
+  UPDATE book SET book.title = title, book.release_date = release_date, book.lang_id = (SELECT languages.lang_id FROM languages WHERE languages.lang = lang), book.publisher_id = (SELECT publishers.publisher_id FROM publishers WHERE publishers.name = publisher), book.description = description, book.picture_base64 = picture_base64 WHERE book.ISBN_id = ISBN_id;
+  -- delete langs/authors/genres that are not in any of the books
+  DELETE FROM languages WHERE languages.lang_id NOT IN (SELECT book.lang_id FROM book);
+  DELETE FROM authors WHERE authors.author_id NOT IN (SELECT books_authors_conn.author_id FROM books_authors_conn);
+  DELETE FROM genres WHERE genres.genre_id NOT IN (SELECT books_genres_conn.genre_id FROM books_genres_conn);
 END;//
 DELIMITER ;
 
@@ -562,7 +565,7 @@ CREATE PROCEDURE IF NOT EXISTS addBookType(
   IN title VARCHAR(255),
   IN allGenres VARCHAR(255),
   IN allAuthors VARCHAR(255),
-  IN publisherID INT,
+  IN publisher VARCHAR(255),
   IN releaseDate DATE,
   IN lang VARCHAR(255),
   IN descript TEXT,
@@ -579,7 +582,7 @@ IF (SELECT COUNT(book.ISBN_id) FROM book WHERE book.ISBN = ISBN) = 0 THEN
             	INSERT INTO languages(languages.lang) VALUES(lang);
              END;
         END IF;
-        INSERT INTO book(book.ISBN, book.title, book.publisher_id, book.release_date, book.lang_id, book.description, book.picture_base64) VALUES(ISBN, title, pulisherID, releaseDate, (SELECT languages.lang_id FROM languages WHERE languages.lang = lang), descript, picture);
+        INSERT INTO book(book.ISBN, book.title, book.publisher_id, book.release_date, book.lang_id, book.description, book.picture_base64) VALUES(ISBN, title, (SELECT publishers.publisher_id FROM publishers WHERE publishers.name = publisher), releaseDate, (SELECT languages.lang_id FROM languages WHERE languages.lang = lang), descript, picture);
 		
         -- ADD AUTHORS
         
@@ -652,8 +655,9 @@ IF (SELECT COUNT(book.ISBN_id) FROM book WHERE book.ISBN = ISBN) = 0 THEN
           SET allGenres = INSERT(allGenres,1,_nextlen + 1,'');
         END LOOP;
     END;
+    SELECT book.ISBN_id AS state FROM book WHERE book.ISBN = ISBN;
 ELSE
-	SELECT 'Already exists';
+	SELECT 'Already exists' AS state;
 END IF;
 END;//
 DELIMITER ;

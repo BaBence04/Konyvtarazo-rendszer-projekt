@@ -18,6 +18,8 @@ Mesterremek projekt, könyvtárazó rendszer
         -az asztali program indításakor fusson le a lejárt foglalás törlő procedure, és küldje ki az értesítéseket (- Partly done)
         -nézni kell, pl 5 percenként, hogy jött-e új foglalás(az előzőket fájlban tároljuk pl), és olyankor kell egy popup, hogy új foglalás jött, hogy félre tudja majd tenni a polcra a könyvtáros
         -e.Cancel bajos ha async function után van meghívva, ami nagyon szomorú VALAMI WORKAROUND KELL NEKI
+        -Kiírni hogy adott típusú könyvből hány darab van
+        -valahogy azoknak a típusoknak is meg kéne jelenni amikhez nem tartoznak könyvek jelenleg
 
 #WEB:
     KINÉZET:
