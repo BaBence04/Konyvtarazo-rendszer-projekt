@@ -128,3 +128,12 @@ CREATE TABLE IF NOT EXISTS tokens(
     type VARCHAR(255),
     FOREIGN KEY(user_id) REFERENCES users(user_id)
 );
+
+CREATE TABLE IF NOT EXISTS shelf(
+    user_id INT ,
+    ISBN_id INT ,
+    PRIMARY KEY(user_id, ISBN_id),
+    FOREIGN KEY(user_id) REFERENCES users(user_id),
+    FOREIGN KEY(ISBN_id) REFERENCES book(ISBN_id)
+    
+);
