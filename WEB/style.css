@@ -4,7 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 :root {
-  --header-height: 100px;
+  --header-height: 75px;
   --margin-after-header: 30px;
 
   /*HSL(hue, saturation, lightness)*/
@@ -47,9 +47,21 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus, 
 input:-webkit-autofill:active {
     --color: rgba(245,245,245,255);
+    border-bottom: #000 2px solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
 
-    -webkit-box-shadow: 0 0 0 50px var(--color) inset !important;
-
+input:-webkit-autofill,
+input:hover:not(:-webkit-autofill), 
+input:focus:not(:-webkit-autofill), 
+input:active:not(:-webkit-autofill) {
+  --color: rgba(245,245,245,255);
+  border-bottom: #000 2px solid;
+  border-top: none;
+  border-left: none;
+  border-right: none;
 }
 
 input[type=button]:hover, button:hover{
@@ -150,24 +162,6 @@ a {
   object-position: center;
   z-index: -1;
 }
-.login{
-  position: fixed;
-  display: flex;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: var(--z-modal);
-  background-color: hsla(0, 0%, 96%, 0.01);
-  -webkit-backdrop-filter: blur(24px);
-  backdrop-filter: blur(24px);
-  padding: 8rem 1.5rem 0;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.4s;
-  justify-content: center;
-
-}
 
 .header,
 .search,
@@ -201,23 +195,16 @@ a {
   cursor: pointer;
 }
 
+/* /////////////FONTOS///////////////// */
+
 .header {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100dvw;
+  width: 100vw;
   background-color: var(--body-color);
-/*   background-color: #A0B2B6; */
   box-shadow: 0 2px 16px hsla(230, 75%, 32%, 0.15);
   z-index: var(--z-fixed);
-}
-
-main.container, main{
-  /* margin-top: calc(); */
-  min-height: calc(100dvh - (var(--header-height) + var(--margin-after-header)));
-  padding-top: 0;
-  max-width: 1200px;
-  margin-inline: auto;
 }
 
 div.space-after-nav{
@@ -228,428 +215,19 @@ div.space-after-nav{
   z-index: 1;
 }
 
-.nav {
-  height: var(--header-height)!important;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  /* background: linear-gradient(135deg, hsl(20, 100%, 70%), hsl(15, 100%, 85%)); */
+/* //////////////////////////////////////// */
 
-}
-.nav__logo {
-  color: var(--title-color);
-  font-weight: var(--font-regular);
-  transition: color 0.4s;
-  vertical-align: middle;
-}
-.nav__menu {
-  /* Navigation for mobile devices */
-  background-color: var(--body-color);
-}
-@media screen and (max-width: 1022px) {
-  .nav__menu {
-    position: fixed;
-    top: -100%;
-    left: 0;
-    background-color: var(--body-color);
-    box-shadow: 0 8px 16px hsla(230, 75%, 32%, 0.15);
-    width: 100%;
-    padding-block: 4.5rem 4rem;
-    transition: top 0.4s;
-  }
-}
-.nav__list {
-  display: flex;
-  flex-direction: column;
-  row-gap: 2.5rem;
-  text-align: center;
-  padding: 0;
-}
-.nav__link {
-  color: var(--title-color);
-  font-weight: var(--font-re);
-  transition: color 0.4s;
-}
-.nav__close {
-  position: absolute;
-  top: 1.15rem;
-  right: 1.5rem;
-}
-.nav__actions {
-  display: flex;
-  align-items: center;
-  -moz-column-gap: 1rem;
-  column-gap: 2rem;
-  padding: 0;
-  list-style: none;
-}
-
-.nav__actions .ri{
-  vertical-align: middle;
-  margin-left: 0.5rem;
-}
-.nav__search,
-.nav__login,
-.nav__toggle,
-.nav__close {
-  font-size: 1.25rem;
-  color: var(--title-color);
-  cursor: pointer;
-  transition: color 0.4s;
-}
-
-:is(.nav__logo, .nav__search, .nav__login, .nav__toggle, .nav__link):hover {
-  color: var(--first-color);
-}
-
-.show-menu {
-  top: 0;
-  z-index: 1000000000;
-  height: 100%;
-  transition: 0.3s ease-in-out;
-}
-
-/* KERESÉS RÉSZ */
-.search__form {
-  display: flex;
-  align-items: center;
-  -moz-column-gap: 0.5rem;
-  column-gap: 0.5rem;
-  background-color: var(--body-color);
-  box-shadow: 0 8px 32px hsla(230, 75%, 15%, 0.2);
-  padding-inline: 1rem;
-  border-radius: 0.5rem;
-/*   transform: translateY(-1rem);
-  transition: transform 0.4s; */
-}
-.search__input {
-  width: 100%;
-  padding-block: 1rem;
-  background-color: var(--body-color);
-  color: var(--text-color);
-}
-.search__input::-moz-placeholder {
-  color: var(--text-color);
-}
-.search__input::placeholder {
-  color: var(--text-color);
-}
-
-
-.show-search {
-  opacity: 1;
-  pointer-events: initial;
-}
-
-/* .show-search .search__form {
-  transform: translateY(0);
-} */
-
-/* LOGIN RÉSZ */
-
-.login_box{
-  position: relative;
-  width: 450px;
-  height: 600px;
-  border-radius: .3rem;
-}
-
-.borderline{
-  position: absolute;
-  top: 0;
-  inset: 0;
-}
-
-.login_box form{
-  position: absolute;
-  inset: 4px;
-  padding: 20px 40px;
-  border-radius: .5rem;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-}
-
-.login_box form h2{
-  color: var(--blk-col);
-  font-weight: 500;
-  text-align: center;
-  letter-spacing: 0.1rem;
-
-}
-
-.inputbox{
-  position: relative;
-  width: 100%;
-  margin-top: 25px;
-}
-
-.inputbox input {
-  position: relative;
-  width: 100%;
-  padding: 15px 15px 10px 10px;
-  background: transparent;
-  border: none;
-  outline: none;
-  box-shadow: none;
-  color: var(--blc-col);
-  font-size: 1rem;
-  letter-spacing: 0.05rem;
-  transition: 0.5s;
-  z-index: 10;
-  border-bottom: #000 2px solid;
-  display: inline-block;
-  vertical-align: middle;
-}
-input:-webkit-autofill{
-    background-color: pink !important; /* Your desired background color */
-    color: #000 !important; /* Your desired text color */
-    font-style: normal; /* Reset styles */
-    border: 1px solid #ccc; /* Custom border */
-    transition: background-color 5000s ease-in-out 0s; /* Prevent flashing */
-}
-
-.inputbox span{
-  z-index: 10;
-  position: absolute;
-  left: 0;
-  padding: 2.5px 0px;
-  pointer-events: none;
-  color: var(--inp-col);
-  font-size: 1rem;
-  letter-spacing: 0.05rem;
-  transition: 0.3s;
+main.container, main{
+  /* margin-top: calc(); */
+  min-height: calc(100dvh - (var(--header-height) + var(--margin-after-header)));
+  padding-top: 0;
+  max-width: 1200px;
+  margin-inline: auto;
 }
 
 
 
-#loginBtn{
-  padding: 10px 20px;
-  border-radius: .3rem;
-  cursor: pointer;
-}
 
-.inputbox input:not(:placeholder-shown) ~ span,
-.inputbox input:focus ~ span {
-  color: var(--blk-col);
-  font-weight: 400;
-  font-size: 1em;
-  transform: translateY(-1.5rem);
-}
-
-.login_box form .links{
-  display: flex;
-  justify-content: space-between;
-}
-
-.modal.show {
-  opacity: 1;
-  visibility: visible;
-}
-
-.login_box{
-  width: 300px;
-  border-radius: .5rem;
-  background-color: var(--body-color);
-  box-shadow: 0 8px 32px hsla(230, 75%, 15%, 0.2);
-  overflow-x: hidden;
-}
-
-.login_box input[type="button"]{
-  width: 100%;
-}
-
-
-
-.login_box form .links a{
-  margin: 20px 0;
-  font-size: 0.9em;
-  color: var(--inp-col);
-  text-decoration: none;
-}
-
-.login_box form .links a:hover{
-  color: var(--blk-col);
-  text-decoration: underline;
-}
-
-label:hover, input[type="checkbox"]:hover, a:hover{
-  cursor: pointer;
-}
-
-.login_box form input[type="submit"]{
-  border: none;
-  outline: none;
-  padding: 9px 25px;
-  background: var(--second-color);
-  cursor: pointer;
-  font-size: 1em;
-  border-radius: 70px 35px 70px 35px;
-  font-weight: 600;
-  width: 70%;
-  justify-content: center;
-  color: black;
-  letter-spacing: 1px;
-  margin: 0 auto;
-  margin-top: 15px;
-}
-
-.login_box form input[type="submit"]:active{
-  opacity: 0.8;
-}
-
-.login_box form input[type="submit"]:hover{
-  background-color:var(--first-color);
-  color: grey;
-}
-
-
-.login_box form select{
-  width: 100%;
-  padding: 20px 0px 10px;
-  background: transparent;
-  border: none;
-  outline: none;
-  box-shadow: none;
-  color: var(--inp-col);
-  font-size: 1rem;
-  letter-spacing: 0.05rem;
-}
-
-
-.inputbox select:valid{
-  color: #000;
-}
-
-
-.login_box{
-  width: 450px;
-  height: 420px;
-}
-.login_box form{
-  padding: 20px;
-}
-.inputbox{
-  position: relative;
-  margin-top: 35px;
-}
-
-.inputbox img{
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-40%);
-  width: 25px;
-  cursor: pointer;
-  z-index: 100000000000000;
-}
-
-.close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  color: #aaa;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-}
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-}
-
-#forgot_password_form input[type="button"]:disabled:hover, #forgot_password_form button:disabled:hover{
-  cursor: wait;
-}
-
-
-#remember_me_holder{
-  margin-bottom: 20px;
-}
-
-.field-icon {
-  float: right;
-  margin-left: -25px;
-  margin-top: -25px;
-  position: relative;
-  z-index: 2;
-}
-
-
-.show-login {
-  opacity: 1;
-  pointer-events: initial;
-}
-
-/* .show-login .login_box{
-  transform: translateY(0);
-
-} */
-#forgot_password_form>.links{
-  float: right;
-}
-
-
-/* @media SETTINGS */
-/* közepes */
-@media screen and (min-width: 576px) {
-  .search,
-  .login {
-    padding-top: 10rem;
-  }
-  .search__form {
-    max-width: 450px;
-    margin-inline: auto;
-  }
-  .search__close{
-    width: -moz-max-content;
-    width: max-content;
-    top: 5rem;
-    left: 0;
-    right: 0;
-    margin-inline: auto;
-    font-size: 2rem;
-  }
-  .login__form {
-    max-width: 400px;
-    margin-inline: auto;
-  }
-
-  .login_box{
-    width: 90%;
-    max-width: 450px;
-    font-size: 12px;
-}
-}
-/* nagy */
-@media screen and (min-width: 1023px) {
-  .nav {
-    /* height: calc(var(--header-height) + 1.5rem); */
-    /* height: var(--header-height); */
-    -moz-column-gap: 3rem;
-    column-gap: 3rem;
-  }
-  .nav__close,
-  .nav__toggle {
-    display: none;
-  }
-  .nav__menu {
-    margin-left: auto;
-  }
-  .nav__list {
-    flex-direction: row;
-    -moz-column-gap: 3rem;
-    column-gap: 3rem;
-  }
-  .login__form {
-    padding: 3rem 2rem 3.5rem;
-  }
-
-  
-
-
-}
 @media screen and (min-width: 1150px) {
   .container {
     margin-inline: auto;
