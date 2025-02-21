@@ -921,5 +921,46 @@
         return $results->fetch_all(MYSQLI_ASSOC);
     }
 
+    function add_books_to_users_shelf(int $user_id, int $ISBN_id, mysqli $conn=null) : array {
+        $conn_was_not_given = $conn == null;
+
+        if($conn_was_not_given){
+            require "databaseConnect.php";
+        }
+
+        $query = "CALL addBooksToShelf(?,?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("ii", $user_id, $ISBN_id); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+
+        if($conn_was_not_given){
+            $conn->close();
+        }
+
+        return $results->fetch_all(MYSQLI_ASSOC);
+    }
+
+    function delete_books_from_users_shelf(int $user_id, int $ISBN_id, mysqli $conn=null) : array {
+        $conn_was_not_given = $conn == null;
+
+        if($conn_was_not_given){
+            require "databaseConnect.php";
+        }
+
+        $query = "CALL deleteBooksFromShelf(?,?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("ii", $user_id, $ISBN_id); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+
+        if($conn_was_not_given){
+            $conn->close();
+        }
+
+        return $results->fetch_all(MYSQLI_ASSOC);
+    }
 
 ?>
