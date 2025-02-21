@@ -377,6 +377,7 @@ navClose.addEventListener("click", () => {
 
 document.addEventListener("DOMContentLoaded", function() {
   const navbarLinks = document.querySelectorAll('a.nav__link');
+  const logoLink = document.getElementById("logo_text");
   
   function getBackgroundBrightness(element) {
     const bgColor = window.getComputedStyle(element).backgroundColor;
@@ -415,19 +416,23 @@ document.addEventListener("DOMContentLoaded", function() {
       if (width <= 1022) {
         navbarLinks.forEach(link => link.style.color = 'black');
         if (brightness < 128) { 
+          logoLink.style.color = 'white';
           userIcon.setAttribute('fill', 'white');
           menuIcon.setAttribute('fill', 'white');
         } else { 
+          logoLink.style.color = 'black';
           userIcon.setAttribute('fill', 'black');
           menuIcon.setAttribute('fill', 'black');
         }
       } else {
         if (brightness < 128) { 
           navbarLinks.forEach(link => link.style.color = 'white');
+          logoLink.style.color = 'white';
           userIcon.setAttribute('fill', 'white');
           menuIcon.setAttribute('fill', 'white');
         } else { 
           navbarLinks.forEach(link => link.style.color = 'black');
+          logoLink.style.color = 'black';
           userIcon.setAttribute('fill', 'black');
           menuIcon.setAttribute('fill', 'black');
         }
