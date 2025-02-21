@@ -21,9 +21,6 @@ function showSection(element, oppositeDir) {
 
         currentIndex = navItems.indexOf(currentSelectedElement);   
         
-        
-        // sections[currentIndex].style.display = "none";
-
         const selectedNavItems = document.querySelectorAll('.nav-item.selected');
         selectedNavItems.forEach(item => {
             item.classList.remove("selected");
