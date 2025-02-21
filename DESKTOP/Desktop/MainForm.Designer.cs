@@ -32,8 +32,8 @@
             this.panel_Menu = new System.Windows.Forms.Panel();
             this.panel_Links = new System.Windows.Forms.Panel();
             this.button_Publishers = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnReservations = new System.Windows.Forms.Button();
+            this.btnBookings = new System.Windows.Forms.Button();
             this.button_Users = new System.Windows.Forms.Button();
             this.button_Books = new System.Windows.Forms.Button();
             this.button_HomePage = new System.Windows.Forms.Button();
@@ -45,6 +45,7 @@
             this.pictureBox_UserPic = new System.Windows.Forms.PictureBox();
             this.panel_Container = new System.Windows.Forms.Panel();
             this.roundedCornerPanel_PageContainer = new Desktop.RoundedCornerPanel();
+            this.btnBorrowings = new System.Windows.Forms.Button();
             this.tableLayoutPanel_Main.SuspendLayout();
             this.panel_Menu.SuspendLayout();
             this.panel_Links.SuspendLayout();
@@ -86,8 +87,9 @@
             // panel_Links
             // 
             this.panel_Links.Controls.Add(this.button_Publishers);
-            this.panel_Links.Controls.Add(this.button4);
-            this.panel_Links.Controls.Add(this.button3);
+            this.panel_Links.Controls.Add(this.btnReservations);
+            this.panel_Links.Controls.Add(this.btnBookings);
+            this.panel_Links.Controls.Add(this.btnBorrowings);
             this.panel_Links.Controls.Add(this.button_Users);
             this.panel_Links.Controls.Add(this.button_Books);
             this.panel_Links.Controls.Add(this.button_HomePage);
@@ -107,7 +109,7 @@
             this.button_Publishers.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button_Publishers.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.button_Publishers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_Publishers.Location = new System.Drawing.Point(0, 240);
+            this.button_Publishers.Location = new System.Drawing.Point(0, 288);
             this.button_Publishers.Name = "button_Publishers";
             this.button_Publishers.Padding = new System.Windows.Forms.Padding(21, 0, 0, 0);
             this.button_Publishers.Size = new System.Drawing.Size(234, 48);
@@ -118,45 +120,47 @@
             this.button_Publishers.UseVisualStyleBackColor = false;
             this.button_Publishers.Click += new System.EventHandler(this.button_Publishers_Click);
             // 
-            // button4
+            // btnReservations
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(39)))));
-            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button4.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(0, 192);
-            this.button4.Name = "button4";
-            this.button4.Padding = new System.Windows.Forms.Padding(21, 0, 0, 0);
-            this.button4.Size = new System.Drawing.Size(234, 48);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "  Előjegyzés";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button4.UseVisualStyleBackColor = false;
+            this.btnReservations.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(39)))));
+            this.btnReservations.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReservations.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnReservations.FlatAppearance.BorderSize = 0;
+            this.btnReservations.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReservations.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnReservations.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnReservations.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReservations.Location = new System.Drawing.Point(0, 240);
+            this.btnReservations.Name = "btnReservations";
+            this.btnReservations.Padding = new System.Windows.Forms.Padding(21, 0, 0, 0);
+            this.btnReservations.Size = new System.Drawing.Size(234, 48);
+            this.btnReservations.TabIndex = 5;
+            this.btnReservations.Text = "  Előjegyzés";
+            this.btnReservations.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReservations.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnReservations.UseVisualStyleBackColor = false;
+            this.btnReservations.Click += new System.EventHandler(this.btnReservations_Click);
             // 
-            // button3
+            // btnBookings
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(39)))));
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button3.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(0, 144);
-            this.button3.Name = "button3";
-            this.button3.Padding = new System.Windows.Forms.Padding(21, 0, 0, 0);
-            this.button3.Size = new System.Drawing.Size(234, 48);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "  Igénylések";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnBookings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(39)))));
+            this.btnBookings.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBookings.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnBookings.FlatAppearance.BorderSize = 0;
+            this.btnBookings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBookings.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnBookings.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnBookings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBookings.Location = new System.Drawing.Point(0, 192);
+            this.btnBookings.Name = "btnBookings";
+            this.btnBookings.Padding = new System.Windows.Forms.Padding(21, 0, 0, 0);
+            this.btnBookings.Size = new System.Drawing.Size(234, 48);
+            this.btnBookings.TabIndex = 6;
+            this.btnBookings.Text = "  Foglalások";
+            this.btnBookings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBookings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnBookings.UseVisualStyleBackColor = false;
+            this.btnBookings.Click += new System.EventHandler(this.btnBookings_Click);
             // 
             // button_Users
             // 
@@ -312,6 +316,27 @@
             this.roundedCornerPanel_PageContainer.Size = new System.Drawing.Size(746, 744);
             this.roundedCornerPanel_PageContainer.TabIndex = 0;
             // 
+            // btnBorrowings
+            // 
+            this.btnBorrowings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(39)))));
+            this.btnBorrowings.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBorrowings.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnBorrowings.FlatAppearance.BorderSize = 0;
+            this.btnBorrowings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBorrowings.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnBorrowings.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnBorrowings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBorrowings.Location = new System.Drawing.Point(0, 144);
+            this.btnBorrowings.Name = "btnBorrowings";
+            this.btnBorrowings.Padding = new System.Windows.Forms.Padding(21, 0, 0, 0);
+            this.btnBorrowings.Size = new System.Drawing.Size(234, 48);
+            this.btnBorrowings.TabIndex = 8;
+            this.btnBorrowings.Text = "  Kivett könyvek";
+            this.btnBorrowings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBorrowings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnBorrowings.UseVisualStyleBackColor = false;
+            this.btnBorrowings.Click += new System.EventHandler(this.btnBorrowings_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -342,8 +367,8 @@
         #endregion
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel_Main;
 		private System.Windows.Forms.Panel panel_Menu;
-		private System.Windows.Forms.Button button3;
-		private System.Windows.Forms.Button button4;
+		private System.Windows.Forms.Button btnBookings;
+		private System.Windows.Forms.Button btnReservations;
 		private System.Windows.Forms.Button button_Users;
 		private System.Windows.Forms.Button button_Books;
 		private System.Windows.Forms.Button button_HomePage;
@@ -357,6 +382,7 @@
 		private System.Windows.Forms.PictureBox pictureBox_UserPic;
 		private System.Windows.Forms.Panel panel_Links;
 		private System.Windows.Forms.Button button_Publishers;
-	}
+        private System.Windows.Forms.Button btnBorrowings;
+    }
 }
 

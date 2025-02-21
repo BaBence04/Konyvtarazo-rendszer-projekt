@@ -471,6 +471,18 @@
         $conn->close();
         //return $results->fetch_all(MYSQLI_ASSOC);
     }
+    function UpdateSystemSettings($membership_fee, $borrowing_time, $lengthening_time, $reservation_time, $max_reservations, $max_lengthenings, $latency_fee, $reset_token_expiration, $login_token_expiration){
+        require "databaseConnect.php";
+
+        $query = "CALL updateSystemSettings(?,?,?,?,?,?,?,?,?);";
+        
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("iiiiiiiii", $membership_fee, $borrowing_time, $lengthening_time, $reservation_time, $max_reservations, $max_lengthenings, $latency_fee, $reset_token_expiration, $login_token_expiration); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        $conn->close();
+        //return $results->fetch_all(MYSQLI_ASSOC);
+    }
     
     function DeletePublisher($id){
         require "databaseConnect.php";
@@ -740,6 +752,19 @@
 
         $stmt = $conn->prepare($query); // Prepare statement
         $stmt->bind_param("i", $ISBN_id); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        $conn->close();
+        return $results->fetch_all(MYSQLI_ASSOC);
+    }
+
+    function GetReservations($searchTerm){
+        require "databaseConnect.php";
+
+        $query = "CALL getReservations(?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("s", $searchTerm); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
         $conn->close();

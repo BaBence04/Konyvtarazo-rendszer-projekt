@@ -8,17 +8,15 @@ Mesterremek projekt, könyvtárazó rendszer
         -automatikus törlős dologhoz valami frontend, popup window szerűség
         -minden ami a UsersPage-el kapcsolatos (alias onnan nyílik meg) szabadon style-olható mert minden készen van nem fogok már hozzányúlni nagy eséllel
         -message box-okat kicserélni az újra
+        -az employeeDetailed-en legyen a jelszó változtatásnál is csillag a textbox-okban
   
 
     BACKEND:
-        -legyen középen a regisztráció form
-        -az employeeDetailed-en legyen a jelszó változtatásnál is csillag a textbox-okban
         -a popup form-ok a megnyitott form közepére nyíljanak meg
         -az asztali program indításakor fusson le a lejárt foglalás törlő procedure, és küldje ki az értesítéseket (- Partly done)
         -nézni kell, pl 5 percenként, hogy jött-e új foglalás(az előzőket fájlban tároljuk pl), és olyankor kell egy popup, hogy új foglalás jött, hogy félre tudja majd tenni a polcra a könyvtáros
-        -e.Cancel bajos ha async function után van meghívva, ami nagyon szomorú VALAMI WORKAROUND KELL NEKI
-        -Kiírni hogy adott típusú könyvből hány darab van
-        -valahogy azoknak a típusoknak is meg kéne jelenni amikhez nem tartoznak könyvek jelenleg
+        -Kiírni hogy adott típusú könyvből hány darab van (not necessary)
+        -jelenleg sehogy sem tudunk előjegyeztetni az asztalin belül
 
 #WEB:
     KINÉZET:

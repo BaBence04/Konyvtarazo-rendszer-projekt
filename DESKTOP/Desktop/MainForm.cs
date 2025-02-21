@@ -67,7 +67,7 @@ namespace Desktop
 
         private void InitializeMenu()
         {
-            Button[] menuButtons = { button_HomePage, button_Books, button_Users, button_Publishers, button3, button4 };
+            Button[] menuButtons = { button_HomePage, button_Books, button_Users, button_Publishers, btnBookings, btnReservations };
 
             _currentActiveButton = button_HomePage;
             SetActiveButtonStyle(_currentActiveButton);
@@ -224,6 +224,21 @@ namespace Desktop
         private void pictureBox_UserPic_Click(object sender, EventArgs e)
         {
 			OpenChildForm(new EmployeeDetailedPage());
+        }
+
+        private void btnBookings_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnReservations_Click(object sender, EventArgs e)
+        {
+			OpenChildForm(new ReservationsPage());
+        }
+
+        private void btnBorrowings_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

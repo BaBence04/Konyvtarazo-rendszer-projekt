@@ -188,7 +188,7 @@ namespace Desktop
         private bool checkChanges()
         {
             bool changed = false;
-            if (ctbTitle.Texts != original["title"] || cdtpReleaseDate.Value != DateTime.Parse(original["release_date"]) || lblLang.Text != original["lang"] || lblPublisher.Text != original["name"] || String.Join(",", authors.Select(x => x.Text)) != original["authors"] || String.Join(",", categories.Select(x => x.Text)) != original["genres"] || ctbDescription.Texts != original["description"] || original["picture_base64"] != picBase64)
+            if (ctbTitle.Texts != original["title"] || cdtpReleaseDate.Value != DateTime.Parse(original["release_date"]) || lblLang.Text != original["lang"] || lblPublisher.Text != original["name"] || String.Join(",", authors.Select(x => x.Text).OrderBy(x=>x)) != original["authors"] || String.Join(",", categories.Select(x => x.Text)) != original["genres"] || ctbDescription.Texts != original["description"] || original["picture_base64"] != picBase64)
             {
                 changed = true;
             }

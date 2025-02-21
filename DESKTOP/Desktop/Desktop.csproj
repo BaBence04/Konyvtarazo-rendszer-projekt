@@ -167,6 +167,12 @@
     <Compile Include="PublishersPage.Designer.cs">
       <DependentUpon>PublishersPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReservationsPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReservationsPage.Designer.cs">
+      <DependentUpon>ReservationsPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="RoundedCornerPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -244,6 +250,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PublishersPage.resx">
       <DependentUpon>PublishersPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReservationsPage.resx">
+      <DependentUpon>ReservationsPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserDetailedPage.resx">
       <DependentUpon>UserDetailedPage.cs</DependentUpon>

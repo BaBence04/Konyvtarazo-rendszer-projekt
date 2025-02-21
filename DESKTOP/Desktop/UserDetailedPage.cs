@@ -34,7 +34,6 @@ namespace Desktop
 			{
                 
 				Deactivated();
-				
             }
 			
 			lblTagsag.Text = user_data["membership_end_date"];

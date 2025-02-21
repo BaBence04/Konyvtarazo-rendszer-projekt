@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lbName = new System.Windows.Forms.Label();
@@ -41,7 +41,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.pEmpolyees = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblCdgwTitle = new System.Windows.Forms.Label();
             this.cdgvEmployees = new Desktop.CustomDataGridView();
             this.cbtnLogout = new Desktop.CustomButton();
             this.cbtnDeleteEmpl = new Desktop.CustomButton();
@@ -49,6 +49,8 @@
             this.ctbNewPass = new Desktop.CustomTextbox();
             this.ctbOldPass = new Desktop.CustomTextbox();
             this.cbtnChangePass = new Desktop.CustomButton();
+            this.cbtnEmployees = new Desktop.CustomButton();
+            this.cbtnSysSetting = new Desktop.CustomButton();
             this.pEmpolyees.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cdgvEmployees)).BeginInit();
             this.SuspendLayout();
@@ -127,30 +129,32 @@
             // 
             // pEmpolyees
             // 
-            this.pEmpolyees.Controls.Add(this.label3);
+            this.pEmpolyees.Controls.Add(this.cbtnSysSetting);
+            this.pEmpolyees.Controls.Add(this.lblCdgwTitle);
+            this.pEmpolyees.Controls.Add(this.cbtnEmployees);
             this.pEmpolyees.Controls.Add(this.cdgvEmployees);
-            this.pEmpolyees.Location = new System.Drawing.Point(355, 117);
+            this.pEmpolyees.Location = new System.Drawing.Point(217, 117);
             this.pEmpolyees.Name = "pEmpolyees";
-            this.pEmpolyees.Size = new System.Drawing.Size(339, 245);
+            this.pEmpolyees.Size = new System.Drawing.Size(477, 245);
             this.pEmpolyees.TabIndex = 14;
             this.pEmpolyees.Visible = false;
             // 
-            // label3
+            // lblCdgwTitle
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 14);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(101, 13);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Aktív alkalmazottak";
+            this.lblCdgwTitle.AutoSize = true;
+            this.lblCdgwTitle.Location = new System.Drawing.Point(138, 25);
+            this.lblCdgwTitle.Name = "lblCdgwTitle";
+            this.lblCdgwTitle.Size = new System.Drawing.Size(101, 13);
+            this.lblCdgwTitle.TabIndex = 1;
+            this.lblCdgwTitle.Text = "Aktív alkalmazottak";
             // 
             // cdgvEmployees
             // 
             this.cdgvEmployees.AllowUserToAddRows = false;
             this.cdgvEmployees.AllowUserToDeleteRows = false;
             this.cdgvEmployees.AlternatingRowBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(88)))));
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(88)))));
-            this.cdgvEmployees.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(88)))));
+            this.cdgvEmployees.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
             this.cdgvEmployees.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
             this.cdgvEmployees.BorderColor = System.Drawing.Color.MediumSlateBlue;
             this.cdgvEmployees.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -159,24 +163,24 @@
             this.cdgvEmployees.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.cdgvEmployees.CellForeColor = System.Drawing.Color.WhiteSmoke;
             this.cdgvEmployees.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(55)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.cdgvEmployees.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(55)))));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.cdgvEmployees.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.cdgvEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.cdgvEmployees.CornerRadius = 8;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.cdgvEmployees.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.cdgvEmployees.DefaultCellStyle = dataGridViewCellStyle11;
             this.cdgvEmployees.EnableBorder = false;
             this.cdgvEmployees.EnableHeadersVisualStyles = false;
             this.cdgvEmployees.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
@@ -184,17 +188,17 @@
             this.cdgvEmployees.HeaderForeColor = System.Drawing.Color.WhiteSmoke;
             this.cdgvEmployees.HeaderGradientColor = System.Drawing.Color.SlateBlue;
             this.cdgvEmployees.HoverRowColor = System.Drawing.Color.LightSteelBlue;
-            this.cdgvEmployees.Location = new System.Drawing.Point(3, 44);
+            this.cdgvEmployees.Location = new System.Drawing.Point(141, 41);
             this.cdgvEmployees.Name = "cdgvEmployees";
             this.cdgvEmployees.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(55)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.cdgvEmployees.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(55)))));
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.cdgvEmployees.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.cdgvEmployees.SelectedRowColor = System.Drawing.Color.CornflowerBlue;
             this.cdgvEmployees.Size = new System.Drawing.Size(333, 201);
             this.cdgvEmployees.TabIndex = 0;
@@ -321,6 +325,41 @@
             this.cbtnChangePass.UseVisualStyleBackColor = false;
             this.cbtnChangePass.Click += new System.EventHandler(this.cbtnChangePass_Click);
             // 
+            // cbtnEmployees
+            // 
+            this.cbtnEmployees.BackColor = System.Drawing.Color.Black;
+            this.cbtnEmployees.BorderColor = System.Drawing.Color.White;
+            this.cbtnEmployees.BorderRadius = 40;
+            this.cbtnEmployees.BorderSize = 0;
+            this.cbtnEmployees.Enabled = false;
+            this.cbtnEmployees.FlatAppearance.BorderSize = 0;
+            this.cbtnEmployees.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbtnEmployees.ForeColor = System.Drawing.Color.White;
+            this.cbtnEmployees.Location = new System.Drawing.Point(11, 79);
+            this.cbtnEmployees.Name = "cbtnEmployees";
+            this.cbtnEmployees.Size = new System.Drawing.Size(121, 40);
+            this.cbtnEmployees.TabIndex = 15;
+            this.cbtnEmployees.Text = "Alkalmazottak";
+            this.cbtnEmployees.UseVisualStyleBackColor = false;
+            this.cbtnEmployees.Click += new System.EventHandler(this.cbtnEmployees_Click);
+            // 
+            // cbtnSysSetting
+            // 
+            this.cbtnSysSetting.BackColor = System.Drawing.Color.Black;
+            this.cbtnSysSetting.BorderColor = System.Drawing.Color.White;
+            this.cbtnSysSetting.BorderRadius = 40;
+            this.cbtnSysSetting.BorderSize = 0;
+            this.cbtnSysSetting.FlatAppearance.BorderSize = 0;
+            this.cbtnSysSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbtnSysSetting.ForeColor = System.Drawing.Color.White;
+            this.cbtnSysSetting.Location = new System.Drawing.Point(11, 154);
+            this.cbtnSysSetting.Name = "cbtnSysSetting";
+            this.cbtnSysSetting.Size = new System.Drawing.Size(121, 40);
+            this.cbtnSysSetting.TabIndex = 16;
+            this.cbtnSysSetting.Text = "Rendszerbeállítások";
+            this.cbtnSysSetting.UseVisualStyleBackColor = false;
+            this.cbtnSysSetting.Click += new System.EventHandler(this.cbtnSysSetting_Click);
+            // 
             // EmployeeDetailedPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -343,6 +382,7 @@
             this.Controls.Add(this.label1);
             this.Name = "EmployeeDetailedPage";
             this.Text = "EmployeeDetailedPage";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EmployeeDetailedPage_FormClosing);
             this.Load += new System.EventHandler(this.EmployeeDetailedPage_Load);
             this.pEmpolyees.ResumeLayout(false);
             this.pEmpolyees.PerformLayout();
@@ -370,6 +410,8 @@
         private CustomButton cbtnLogout;
         private System.Windows.Forms.Panel pEmpolyees;
         private CustomDataGridView cdgvEmployees;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblCdgwTitle;
+        private CustomButton cbtnEmployees;
+        private CustomButton cbtnSysSetting;
     }
 }

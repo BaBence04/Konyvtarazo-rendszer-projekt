@@ -174,6 +174,8 @@
             echo json_encode(GetEmployee($_POST["empl_id"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "getBooks" && isset($_POST["search"]) && count($_POST) == 2){
             echo json_encode(GetBooks($_POST["search"]));
+        }else if(isset($_POST["type"]) && $_POST["type"] == "getReservations" && isset($_POST["search"]) && count($_POST) == 2){
+            echo json_encode(GetReservations($_POST["search"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "getBorrowedBooks" && isset($_POST["search"]) && count($_POST) == 2){
             echo json_encode(GetBorrowedBooks($_POST["search"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "getPublishers" && isset($_POST["search"]) && count($_POST) == 2){
@@ -188,6 +190,8 @@
             UpdateUser($_POST["id"], $_POST["firstname"], $_POST["surname"], $_POST["birthplace"], $_POST["birthdate"], $_POST["address"], $_POST["email"], $_POST["phone"], $_POST["mmn"]);
         }else if(isset($_POST["type"]) && $_POST["type"] == "updateBook" && isset($_POST["id"], $_POST["title"], $_POST["release_date"], $_POST["lang"], $_POST["publisher"], $_POST["authors"], $_POST["genres"], $_POST["description"], $_POST["picture_base64"]) && count($_POST) == 10){
             echo json_encode(UpdateBook($_POST["id"], $_POST["title"], $_POST["release_date"], $_POST["lang"], $_POST["publisher"], $_POST["authors"], $_POST["genres"], $_POST["description"], $_POST["picture_base64"]));
+        }else if(isset($_POST["type"]) && $_POST["type"] == "updateSystemSettings" && isset($_POST["membership_fee"], $_POST["borrowing_time"], $_POST["lengthening_time"], $_POST["reservation_time"], $_POST["max_reservations"], $_POST["max_lengthenings"], $_POST["latency_fee"], $_POST["reset_token_expiration"], $_POST["login_token_expiration"]) && count($_POST) == 10){
+            echo UpdateSystemSettings($_POST["membership_fee"], $_POST["borrowing_time"], $_POST["lengthening_time"], $_POST["reservation_time"], $_POST["max_reservations"], $_POST["max_lengthenings"], $_POST["latency_fee"], $_POST["reset_token_expiration"], $_POST["login_token_expiration"]);
         }else if(isset($_POST["type"]) && $_POST["type"] == "deletePublisher" && isset($_POST["id"]) && count($_POST) == 2){
             echo json_encode(DeletePublisher($_POST["id"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "addPublisher" && isset($_POST["name"], $_POST["phone"], $_POST["email"], $_POST["webpage"])  && count($_POST) == 5){

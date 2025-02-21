@@ -121,11 +121,16 @@ namespace Desktop
 
         private async void cdgvPublishers_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
+            e.Cancel = true;
+            
             List<Dictionary<string, string>> result = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string>() { { "type", "deletePublisher" }, { "id", ids[e.Row.Index] } });
             if (result.First()["state"] == "fail")
             {
-                e.Cancel = true;
                 MessageBox.Show("A kiadóhoz hozzá van rendelve legalább 1 könyv nem lehet törölni");
+            }
+            else
+            {
+                cdgvPublishers.Rows.Remove(e.Row);
             }
         }
 

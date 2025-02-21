@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,6 +14,7 @@ namespace Desktop
     public partial class EmployeeDetailedPage : Form
     {
         private bool admin = false;
+        private string mode = "employees";
         private List<string> ids = new List<string>();
         public EmployeeDetailedPage()
         {
@@ -65,7 +67,16 @@ namespace Desktop
             cdgvEmployees.Columns.Clear();
             ids.Clear();
             cdgvEmployees.DataSource = null;
-            List<Dictionary<string, string>> response = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "getEmployees" } });
+            List<Dictionary<string, string>> response;
+            if (mode == "employees")
+            {
+                response = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "getEmployees" } });
+            }
+            else
+            {
+                response = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "getSystemSettings" } });
+            }
+            
             if (response.Count > 0)
             {
                 DataTable dt = new DataTable();
@@ -77,21 +88,22 @@ namespace Desktop
                     if (item.Key != "empl_id")
                     {
                         col = new DataColumn();
-                        col.DataType = typeof(string);
-                        col.ReadOnly = true;
+                        if (mode == "employees")
+                        {
+                            col.DataType = typeof(string);
+                            col.ReadOnly = true;
+                        }
+                        else
+                        {
+                            col.DataType = typeof(int);
+                        }
                         col.ColumnName = item.Key;
                         col.Caption = item.Key;
                         dt.Columns.Add(col);
                     }
 
                 }
-                //add button row for detailed page
-                DataGridViewButtonColumn btns = new DataGridViewButtonColumn();
-                btns.Name = "Műveletek";
-                btns.Text = "Deaktivál";
-                btns.UseColumnTextForButtonValue = true;
-
-
+                
 
                 //make rows
                 for (int i = 0; i < response.Count(); i++)
@@ -113,7 +125,17 @@ namespace Desktop
                 }
 
                 cdgvEmployees.DataSource = dt;
-                cdgvEmployees.Columns.Add(btns);
+                if (mode == "employees")
+                {
+                    //add button row for detailed page
+                    DataGridViewButtonColumn btns = new DataGridViewButtonColumn();
+                    btns.Name = "Műveletek";
+                    btns.Text = "Deaktivál";
+                    btns.UseColumnTextForButtonValue = true;
+                    cdgvEmployees.Columns.Add(btns);
+                }
+
+                   
 
 
                 //disable sorting just so it works
@@ -141,21 +163,25 @@ namespace Desktop
 
         private async void cdgvEmployees_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == cdgvEmployees.Columns["Műveletek"].Index)
+            if (mode == "employees")
             {
-                if (ids[e.RowIndex] != LoginForm.employee)
+                if (e.ColumnIndex == cdgvEmployees.Columns["Műveletek"].Index)
                 {
-                    if (MessageBox.Show("Biztosan véglegesen deaktiválni szeretné ezt az alkalmazottat?", "Alkalmazott deaktiválása", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (ids[e.RowIndex] != LoginForm.employee)
                     {
-                        await ApiComm.SendPost(new Dictionary<string, string> { { "type", "deactivateEmpl" }, { "empl_id", ids[e.RowIndex] } });
-                        UpdateEmployeesCdgw();
+                        if (MessageBox.Show("Biztosan véglegesen deaktiválni szeretné ezt az alkalmazottat?", "Alkalmazott deaktiválása", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            await ApiComm.SendPost(new Dictionary<string, string> { { "type", "deactivateEmpl" }, { "empl_id", ids[e.RowIndex] } });
+                            UpdateEmployeesCdgw();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Az admin felhasználót nem lehet törölni");
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Az admin felhasználót nem lehet törölni");
-                }
             }
+            
         }
 
         private async void cbtnDeleteEmpl_Click(object sender, EventArgs e)
@@ -174,6 +200,57 @@ namespace Desktop
                 }
             }
             
+        }
+
+        private void cbtnEmployees_Click(object sender, EventArgs e)
+        {
+            SaveChanges();
+            cbtnEmployees.Enabled = false;
+            cbtnSysSetting.Enabled = true;
+            mode = "employees";
+            UpdateEmployeesCdgw();
+            lblCdgwTitle.Text = "Aktív alkalmazottak";
+        }
+
+        private void cbtnSysSetting_Click(object sender, EventArgs e)
+        {
+            cbtnEmployees.Enabled = true;
+            cbtnSysSetting.Enabled = false;
+            mode = "system_settings";
+            UpdateEmployeesCdgw();
+            lblCdgwTitle.Text = "Rendszer beállítások";
+        }
+
+        private void EmployeeDetailedPage_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SaveChanges();
+        }
+        private async void SaveChanges()
+        {
+            if (checkChanges())
+            {
+                Dictionary<string, string> data = new Dictionary<string, string>();
+                data["type"] = "updateSystemSettings";
+                for (int i = 0; i < cdgvEmployees.Rows[0].Cells.Count; i++)
+                {
+                    data[cdgvEmployees.Columns[i].Name] = cdgvEmployees.Rows[0].Cells[cdgvEmployees.Columns[i].Name].Value.ToString();
+                }
+                await ApiComm.SendPost(data);
+                data.Remove("type");
+                LoginForm.main.system_settings = new Dictionary<string, string>(data);
+            }
+        }
+
+        private bool checkChanges() { 
+            bool res = false;
+            foreach(var pair in LoginForm.main.system_settings)
+            {
+                if (cdgvEmployees.Rows[0].Cells[pair.Key].ToString() != pair.Value)
+                {
+                    res = true;
+                }
+            }
+            return res;
         }
     }
 }

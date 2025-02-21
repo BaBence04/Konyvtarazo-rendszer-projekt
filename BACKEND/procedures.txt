@@ -1034,3 +1034,45 @@ BEGIN
   SELECT LAST_INSERT_ID() AS book_id;
 END;//
 DELIMITER ;
+
+-- gets all reservations
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS getReservations(
+  IN searchTerm INT
+) 
+BEGIN
+IF(searchTerm = "") THEN
+  SELECT reservation.reservation_id, users.username, book.title FROM book INNER JOIN (reservation INNER JOIN users ON users.user_id = reservation.user_id) ON book.ISBN_id = reservation.ISBN_id;
+ELSE
+  SELECT reservation.reservation_id, users.username, book.title FROM book INNER JOIN (reservation INNER JOIN users ON users.user_id = reservation.user_id) ON book.ISBN_id = reservation.ISBN_id WHERE book.title LIKE CONCAT('%', searchTerm, '%') OR users.username LIKE CONCAT('%', searchTerm, '%');
+END IF;
+  END;//
+DELIMITER ;
+
+-- gets all reservations
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS updateSystemSettings(
+  IN membership_fee INT,
+  IN borrowing_time INT,
+  IN lengthening_time INT,
+  IN reservation_time INT,
+  IN max_reservations INT,
+  IN max_lengthenings INT,
+  IN latency_fee INT,
+  IN reset_token_expiration INT,
+  IN login_token_expiration INT
+) 
+BEGIN
+UPDATE system_settings SET system_settings.membership_fee = membership_fee, system_settings.borrowing_time = borrowing_time, system_settings.lengthening_time = lengthening_time, system_settings.reservation_time = reservation_time, system_settings.max_reservations = max_reservations, system_settings.max_lengthenings = max_lengthenings, system_settings.latency_fee = latency_fee, system_settings.reset_token_expiration = reset_token_expiration, system_settings.login_token_expiration = login_token_expiration;
+END;//
+DELIMITER ;
+
+-- gets all reservations
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS getBooksFromShelf(
+  IN user_id INT
+) 
+BEGIN
+SELECT book.title, GROUP_CONCAT(DISTINCT authors.author), book.ISBN, book.picture_base64 FROM shelf INNER JOIN (book INNER JOIN (books_authors_conn INNER JOIN authors ON authors.author_id = books_authors_conn.author_id) ON book.ISBN_id = books_authors_conn.ISBN_id) ON book.ISBN_id = shelf.ISBN_id WHERE shelf.user_id = user_id;  
+END;//
+DELIMITER ;
