@@ -19,7 +19,6 @@ Mesterremek projekt, könyvtárazó rendszer
 
 #WEB:
     KINÉZET:
-        -valószínűleg ki kellene szedni a navbar.css-ben levő dolgokat a style.css-ből, mert így nem tudjuk egységesen módosítani a navbar stílusát
         -még kell finomítani a kinézetén a bookDetailed-nek
         
         
