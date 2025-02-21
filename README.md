@@ -19,7 +19,6 @@ Mesterremek projekt, könyvtárazó rendszer
 
 #WEB:
     KINÉZET:
-        -a userdetailed oldalon az inputbox-nál(a jelszó módosításnál) a span túl lent van, és át lóg a vonalon, illetve emiatt nem is megye lég magasra
         -valószínűleg ki kellene szedni a navbar.css-ben levő dolgokat a style.css-ből, mert így nem tudjuk egységesen módosítani a navbar stílusát
         -még kell finomítani a kinézetén a bookDetailed-nek
         
