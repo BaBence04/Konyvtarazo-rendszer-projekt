@@ -5,6 +5,7 @@
 
 :root {
   --header-height: 75px;
+  /* FONTOS */
   /* --margin-after-header: 30px; */
 
   /*HSL(hue, saturation, lightness)*/
@@ -164,6 +165,11 @@ input[type=button]:hover, button:hover{
     color: var(--first-color);
   }
   
+  svg#user_icon,
+  svg#menu_icon {
+    transition: fill 0.4s;
+  }
+  
   .show-menu {
     top: 0;
     z-index: var((--z-modal) + 1);
@@ -203,10 +209,12 @@ input[type=button]:hover, button:hover{
     position: fixed;
     top: 0;
     left: 0;
-    width: 100dvw;
-    box-shadow: 0 2px 16px hsla(230, 75%, 32%, 0.15);
+    width: 100vw;
+    /* box-shadow: 0 2px 16px hsla(230, 75%, 32%, 0.15); */
     z-index: var(--z-fixed);
-  }
+    /* background-image: linear-gradient(to top, rgba(255,0,0,0), var(--body-color)); */
+    /* background-color: var(--body-color); */
+}
 
 .login_box{
     position: relative;
@@ -270,11 +278,11 @@ input[type=button]:hover, button:hover{
       transition: background-color 5000s ease-in-out 0s; /* Prevent flashing */
   }
   
-  .login_box form .inputbox span{
+  .inputbox span{
     z-index: 10;
     position: absolute;
     left: 0;
-    padding: 15px 0px 10px;
+    padding: 2,5px 0;
     pointer-events: none;
     color: var(--inp-col);
     font-size: 1rem;
