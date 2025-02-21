@@ -869,8 +869,6 @@
         $stmt = $conn->prepare($query); // Prepare statement
         $stmt->bind_param("si", $password, $user_id); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
-        $affected_rows = mysqli_affected_rows($conn);
-
 
         $user_data = GetUser($user_id, $conn)[0];
         $login_result = CheckCredentialForLogin($user_data["username"], $password);
@@ -900,6 +898,27 @@
         }
 
         return $results->fetch_all(MYSQLI_ASSOC)[0];
+    }
+
+    function get_books_from_users_shelf(int $user_id, mysqli $conn=null) : array {
+        $conn_was_not_given = $conn == null;
+
+        if($conn_was_not_given){
+            require "databaseConnect.php";
+        }
+
+        $query = "CALL getBooksFromShelf(?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("i", $user_id); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+
+        if($conn_was_not_given){
+            $conn->close();
+        }
+
+        return $results->fetch_all(MYSQLI_ASSOC);
     }
 
 
