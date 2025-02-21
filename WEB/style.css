@@ -559,9 +559,11 @@ label:hover, input[type="checkbox"]:hover, a:hover{
   text-decoration: none;
 }
 
-input[type="button"]:disabled:hover,button:disabled:hover{
-  cursor: not-allowed;
+#forgot_password_form input[type="button"]:disabled:hover, #forgot_password_form button:disabled:hover{
+  cursor: wait;
 }
+
+
 #remember_me_holder{
   margin-bottom: 20px;
 }
