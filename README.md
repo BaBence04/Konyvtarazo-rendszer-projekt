@@ -11,21 +11,17 @@ Mesterremek projekt, könyvtárazó rendszer
   
 
     BACKEND:
-        -legyen középen a regisztráció form
         -az employeeDetailed-en legyen a jelszó változtatásnál is csillag a textbox-okban
-        -a popup form-ok a megnyitott form közepére nyíljanak meg
         -az asztali program indításakor fusson le a lejárt foglalás törlő procedure, és küldje ki az értesítéseket (- Partly done)
         -nézni kell, pl 5 percenként, hogy jött-e új foglalás(az előzőket fájlban tároljuk pl), és olyankor kell egy popup, hogy új foglalás jött, hogy félre tudja majd tenni a polcra a könyvtáros
         -e.Cancel bajos ha async function után van meghívva, ami nagyon szomorú VALAMI WORKAROUND KELL NEKI
         -Kiírni hogy adott típusú könyvből hány darab van
-        -valahogy azoknak a típusoknak is meg kéne jelenni amikhez nem tartoznak könyvek jelenleg
 
 #WEB:
     KINÉZET:
+        -a userdetailed oldalon az inputbox-nál(a jelszó módosításnál) a span túl lent van, és át lóg a vonalon, illetve emiatt nem is megye lég magasra
         -valószínűleg ki kellene szedni a navbar.css-ben levő dolgokat a style.css-ből, mert így nem tudjuk egységesen módosítani a navbar stílusát
-        -még kell finomítani a kinézetén a bookDetailed-nek, legalább legyen középen szerintem
-        -kapott a userDetailed-en a sidebar, egy min-width:250px-t és így már nem ugrál amikor az utolsót, nyitjuk meg -just sayin'
-        -perpillanat az elfelejtettem a jelszónál a login-nak a username mezőjét használja, meg kell csinálni rendesre, és az oldalt is ahol lehet reset-elni a jelszót
+        -még kell finomítani a kinézetén a bookDetailed-nek
         
         
 
