@@ -1099,6 +1099,10 @@ a, a:active, a:hover, a:visited, a:link{
   margin-bottom: 10px;
 }
 
+.account-info .change-password-holder>.inputbox>span{
+  padding: 2.5px 0;
+}
+
 .change-password-holder>button, .change-password-holder>input[type="button"]{
   margin-inline: auto;
   display: block;
@@ -1107,8 +1111,6 @@ a, a:active, a:hover, a:visited, a:link{
 
 #errors_with_password{
   color: red;
-
-
 }
 
 #errors_with_password>p{
