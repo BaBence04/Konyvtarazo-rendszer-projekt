@@ -20,11 +20,16 @@ Mesterremek projekt, könyvtárazó rendszer
 
 #WEB:
     KINÉZET:
+        -lecserélni a font-ot valamire ahol a számok nem "ugrál"-nak
         -még kell finomítani a kinézetén a bookDetailed-nek
         
         
 
     PHP/JS:
+        -lehessen a polchoz hozzáadni a könyvrészletesen
+            -legyen api endpoint
+        -lehessen törölni a polcról a userDetailed-en
+            -legyen api endpoint
         -advanced search
         -majd kéne valami ami jelzi, hogy az email küldése folyamatban van az elfelejtettem a jelszót funkciónál
         -csak év ként kéne tárolni a megjelenés dátumát a könyvnek
