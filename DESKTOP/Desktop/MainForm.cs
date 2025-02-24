@@ -228,7 +228,7 @@ namespace Desktop
 
         private void btnBookings_Click(object sender, EventArgs e)
         {
-
+			OpenChildForm(new BookingsPage());
         }
 
         private void btnReservations_Click(object sender, EventArgs e)
@@ -238,7 +238,7 @@ namespace Desktop
 
         private void btnBorrowings_Click(object sender, EventArgs e)
         {
-
+			OpenChildForm(new BorrowingsPage());
         }
     }
 }

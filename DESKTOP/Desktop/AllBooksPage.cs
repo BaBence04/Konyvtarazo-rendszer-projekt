@@ -156,15 +156,18 @@ namespace Desktop
 
 		private void ctbSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
-           
-            if(ctbSearch.Texts != ctbSearch.PlaceholderText)
+            if (e.KeyChar == (char)Keys.Enter)
             {
-                updateBooksDgv(ctbSearch.Texts);
+                if(ctbSearch.Texts != ctbSearch.PlaceholderText)
+                {
+                    updateBooksDgv(ctbSearch.Texts);
+                }
+                else
+                {
+                    updateBooksDgv("");
+                }
             }
-            else
-            {
-                updateBooksDgv("");
-            }
+            
         }
 
         private void AllBooksPage_VisibleChanged(object sender, EventArgs e)

@@ -20,6 +20,7 @@ namespace Desktop
 
         private void ReservationsPage_Load(object sender, EventArgs e)
         {
+            ctbSearch.KeyPress += ctbSearch_KeyPress;
             updateReservations("");
         }
 
@@ -79,6 +80,32 @@ namespace Desktop
                 {
                     column.SortMode = DataGridViewColumnSortMode.NotSortable;
                 }
+            }
+        }
+        private void ctbSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                if (ctbSearch.Texts != ctbSearch.PlaceholderText)
+                {
+                    updateReservations(ctbSearch.Texts);
+                }
+                else
+                {
+                    updateReservations("");
+                }
+            }
+
+        }
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (ctbSearch.Texts != ctbSearch.PlaceholderText)
+            {
+                updateReservations(ctbSearch.Texts);
+            }
+            else
+            {
+                updateReservations("");
             }
         }
     }
