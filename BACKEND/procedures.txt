@@ -1101,7 +1101,7 @@ CREATE PROCEDURE IF NOT EXISTS getBooksFromShelf(
   IN user_id INT
 ) 
 BEGIN
-SELECT book.title, GROUP_CONCAT(DISTINCT authors.author) as `authors`, book.ISBN, book.picture_base64 FROM shelf INNER JOIN (book INNER JOIN (books_authors_conn INNER JOIN authors ON authors.author_id = books_authors_conn.author_id) ON book.ISBN_id = books_authors_conn.ISBN_id) ON book.ISBN_id = shelf.ISBN_id WHERE shelf.user_id = user_id GROUP BY book.ISBN_id;  
+SELECT book.title, book.ISBN_id, GROUP_CONCAT(DISTINCT authors.author) as `authors`, book.ISBN, book.picture_base64 FROM shelf INNER JOIN (book INNER JOIN (books_authors_conn INNER JOIN authors ON authors.author_id = books_authors_conn.author_id) ON book.ISBN_id = books_authors_conn.ISBN_id) ON book.ISBN_id = shelf.ISBN_id WHERE shelf.user_id = user_id GROUP BY book.ISBN_id;  
 END;//
 DELIMITER ;
 
