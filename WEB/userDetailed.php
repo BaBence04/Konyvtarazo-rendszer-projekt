@@ -2,15 +2,16 @@
     require_once "../BACKEND/databaseFunctions.php";
 
     $data = GetUser($_SESSION['user_id'])[0];
-    $borrowedBooks = GetBorrowedBooks($_SESSION["user_id"]);
-    $previouslyBorrowedBooks = GetPreviouslyBorrowedBooks($_SESSION["user_id"]);  
+    $borrowed_books = GetBorrowedBooks($_SESSION["user_id"]);
+    $previously_borrowed_books = GetPreviouslyBorrowedBooks($_SESSION["user_id"]);  
     
-    $bookedAndReservedBooks = GetBookedAndReservedBooks($_SESSION["user_id"]);
+    $booked_and_reserved_books = GetBookedAndReservedBooks($_SESSION["user_id"]);
+    $books_on_shelf = get_books_from_users_shelf($_SESSION["user_id"]);
 
     $booked_books = [];
     $reserved_books = [];
 
-    foreach ($bookedAndReservedBooks as $key => $booked_or_reserved_books_data){
+    foreach ($booked_and_reserved_books as $key => $booked_or_reserved_books_data){
         if($booked_or_reserved_books_data["status"] == "booking"){
             $booked_books[] = $booked_or_reserved_books_data;
         }else{
