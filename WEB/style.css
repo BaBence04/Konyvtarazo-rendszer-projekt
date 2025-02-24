@@ -468,9 +468,9 @@ main .book-details{
 .buttons {
   display: flex;
   gap: 15px;
+  margin: 2.5rem 0;
 }
 
-.wishlist-button,
 .reserve-button {
   padding: 15px 25px;
   border: none;
@@ -478,16 +478,28 @@ main .book-details{
   font-size: 16px;
   /* border-radius: 5px; */
   color: white;
-  margin: 2.5rem 0;
 }
 
-.wishlist-button {
-  background-color: #ffc107;
+.buttons>svg{
+  stroke: #ffc107;
+}
+
+.buttons>svg:hover{
+  stroke: #e0a800;
+  cursor: pointer;
+}
+
+.buttons>svg[data-selected = '1']{
+  stroke: var(--first-color);
+}
+
+/* .wishlist-button {
+  stroke: #ffc107;
 }
 
 .wishlist-button:hover {
-  background-color: #e0a800;
-}
+  stroke: #e0a800;
+} */
 
 .reserve-button {
   background-color: #28a745;

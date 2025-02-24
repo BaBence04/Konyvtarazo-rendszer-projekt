@@ -20,16 +20,15 @@ Mesterremek projekt, könyvtárazó rendszer
 
 #WEB:
     KINÉZET:
+        -jelenleg csak a könyv részletes oldalon lehet látni hogy az adott könyv a polcon van-e, de lehet kéne valahogy jelezni az összes könyvnél is
         -lecserélni a font-ot valamire ahol a számok nem "ugrál"-nak
         -még kell finomítani a kinézetén a bookDetailed-nek
         
         
 
     PHP/JS:
-        -lehessen a polchoz hozzáadni a könyvrészletesen
-            -legyen api endpoint
-        -lehessen törölni a polcról a userDetailed-en
-            -legyen api endpoint
+        
+        -lehet hogy kéne küldeni emailt amikor megváltozik a jelszó, hogy tudja ha esetleg valaki megváltoztatta
         -advanced search
         -majd kéne valami ami jelzi, hogy az email küldése folyamatban van az elfelejtettem a jelszót funkciónál
         -csak év ként kéne tárolni a megjelenés dátumát a könyvnek

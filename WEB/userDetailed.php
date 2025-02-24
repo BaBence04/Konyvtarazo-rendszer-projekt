@@ -185,8 +185,11 @@
                 <?php foreach ($books_on_shelf as $book_data): ?>
                     <div class="book-item">
                         <div class="book-details_container">
-                            <a href="/web/konyveink/<?= $book_data['ISBN'] ?>"><?= $book_data['title'] ?></a>
-                            <span class="book-author"><?= str_replace(",", ", ", $book_data['authors']) ?></span>
+                            <a href="/web/konyveink/<?=$book_data['ISBN']?>"><?=$book_data['title']?></a>
+                            <span class="book-author"><?= str_replace(",", ", ", $book_data['authors'])?></span>
+                        </div>
+                        <div class="button_container">
+                            <button class="book_action_button" data-isbn-id="<?= $book_data["ISBN_id"] ?>" onclick="LevetelAPolcrol(this)">Levétel a polcról</button>
                         </div>
                     </div>
                 <?php endforeach;?>

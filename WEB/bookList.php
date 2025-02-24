@@ -50,5 +50,4 @@
     <?=create_listed_books_elements($title, $genre, $author, $release_date, $lang, $isbn, $page_number)?>
 </div>
     
-<script src="jquery.js"></script>
 <script src="/web/bookList.js"></script>

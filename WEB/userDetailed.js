@@ -134,10 +134,6 @@ function MoveIndicator(startIndex, endIndex, navHeight, navs){
         indicator.style.setProperty("height", indicatorHeight + "px");
         indicator.style.setProperty("translate", `0 ${newPositionTop}px`);
     }
-
-    
-
-
 }
 
 
@@ -376,4 +372,29 @@ function SetUrlToOpenSection(section){
     window.history.pushState({},"",currentUrl);
 
 }
+
+function LevetelAPolcrol(element){
+    const isbnId = element.getAttribute("data-isbn-id");
+
+    if(parseInt(isbnId) != isbnId) return;
+
+
+
+    // console.log(document.getElementById("username").value, document.getElementById("password").value );
+    $.ajax({
+        url: "/BACKEND/api.php",
+        type: "POST", //send it through post method
+        data: { 
+            action: "removeFromShelf",
+            ISBN_id: isbnId
+        },
+        success: function(response)  {
+            //reload site
+            location.reload();
+        }
+    }); 
+}
+
+
+
 setTimeout(SetCurrentSectionByUrl, 100);

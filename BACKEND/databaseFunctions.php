@@ -947,7 +947,7 @@
         return $results->fetch_all(MYSQLI_ASSOC);
     }
 
-    function add_books_to_users_shelf(int $user_id, int $ISBN_id, mysqli $conn=null) : array {
+    function add_books_to_users_shelf(int $user_id, int $ISBN_id, mysqli $conn=null) : void {
         $conn_was_not_given = $conn == null;
 
         if($conn_was_not_given){
@@ -959,37 +959,35 @@
         $stmt = $conn->prepare($query); // Prepare statement
         $stmt->bind_param("ii", $user_id, $ISBN_id); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
-        $results = $stmt->get_result();
 
         if($conn_was_not_given){
             $conn->close();
         }
 
-        return $results->fetch_all(MYSQLI_ASSOC);
+        return;
     }
 
-    function delete_books_from_users_shelf(int $user_id, int $ISBN_id, mysqli $conn=null) : array {
+    function remove_books_from_users_shelf(int $user_id, int $ISBN_id, mysqli $conn=null) : void {
         $conn_was_not_given = $conn == null;
 
         if($conn_was_not_given){
             require "databaseConnect.php";
         }
 
-        $query = "CALL deleteBooksFromShelf(?,?);";
+        $query = "CALL removeBooksFromShelf(?,?);";
 
         $stmt = $conn->prepare($query); // Prepare statement
         $stmt->bind_param("ii", $user_id, $ISBN_id); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
-        $results = $stmt->get_result();
 
         if($conn_was_not_given){
             $conn->close();
         }
 
-        return $results->fetch_all(MYSQLI_ASSOC);
+        return;
     }
 
-    function is_book_on_shelf(int $user_id, int $ISBN_id, mysqli $conn=null) : array {
+    function is_book_on_shelf(int $user_id, int $ISBN_id, mysqli $conn=null) : bool {
         $conn_was_not_given = $conn == null;
 
         if($conn_was_not_given){
@@ -1007,7 +1005,7 @@
             $conn->close();
         }
 
-        return $results->fetch_all(MYSQLI_ASSOC);
+        return $results->fetch_assoc()["result"] == "true";
     }
 
 ?>
