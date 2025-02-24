@@ -74,11 +74,21 @@ if(count($parts_of_path) == 1){
   }elseif($path == "kapcsolat"){
     $page_to_load = "contacts";
     $page_title = "Kapcsolat";
+  }else{
+    header("Location: /web/");
   }
 
 }elseif(count($parts_of_path) == 2){
-  //book detailed
-  if($parts_of_path[0] == "konyveink"){
+  if($parts_of_path[0] == "fiok"){
+    if(isset($_SESSION["user_id"])){
+      $page_to_load = "userDetailed";
+      $page_title = "Fiók";
+    }else{
+      header("Location: /web/");
+    }
+    
+    //book detailed
+  }elseif($parts_of_path[0] == "konyveink"){
     $isbn = $parts_of_path[1];
     $book_data = GetBookByIsbn($isbn);
     if(count($book_data) == 1){

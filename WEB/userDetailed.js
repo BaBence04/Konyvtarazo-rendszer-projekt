@@ -327,3 +327,53 @@ window.onresize = (e)=>{
     }, 350)
 }
 
+
+function SetCurrentSectionByUrl(){
+    let path = window.location.pathname;
+    if(path[0] == "/"){
+        path = path.substring(1);
+    }
+
+    let lastPartOfPath = path.split("/");
+    //change this when there won't be a /web/ folder
+    if(lastPartOfPath.length == 3){
+        lastPartOfPath = lastPartOfPath[lastPartOfPath.length-1];  
+    }else{
+        lastPartOfPath = "";
+    }
+    console.log('lastPartOfPath :>> ', lastPartOfPath);
+
+    const navItems = Array.from(document.querySelectorAll(".nav-item"));
+    let currentSectionByUrl = navItems.find(section=>section.getAttribute("data-link") == lastPartOfPath);
+
+    if(currentSectionByUrl != undefined){
+        showSection(currentSectionByUrl);
+    }
+}
+
+function SetUrlToOpenSection(section){
+    let path = window.location.pathname;
+    if(path[0] == "/"){
+        path = path.substring(1);
+    }
+
+    let partsOfPath = path.split("/");
+    console.log('partsOfPath :>> ');
+    console.log(partsOfPath)
+    const currentUrl = new URL(window.location);
+
+    //change this when there won't be a /web/ folder
+    if(partsOfPath.length == 2){
+        currentUrl.pathname += "/"+ section.getAttribute("data-link");
+    }else if(partsOfPath.length == 3){
+        console.log(2)
+        currentUrl.pathname = `${partsOfPath[0]}/${partsOfPath[1]}/${section.getAttribute("data-link")}`;
+    }else{
+        currentUrl.pathname = "web/"+section.getAttribute("data-link");
+    }
+
+    console.log('currentUrl.pathname :>> ', currentUrl.pathname);
+    window.history.pushState({},"",currentUrl);
+
+}
+setTimeout(SetCurrentSectionByUrl, 100);
