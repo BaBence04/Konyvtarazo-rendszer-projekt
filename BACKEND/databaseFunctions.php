@@ -770,6 +770,32 @@
         $conn->close();
         return $results->fetch_all(MYSQLI_ASSOC);
     }
+    
+    function GetBookings($searchTerm){
+        require "databaseConnect.php";
+
+        $query = "CALL getBookings(?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("s", $searchTerm); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        $conn->close();
+        return $results->fetch_all(MYSQLI_ASSOC);
+    }
+
+    function GetBorrowings($searchTerm){
+        require "databaseConnect.php";
+
+        $query = "CALL getBorrowings(?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("s", $searchTerm); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        $conn->close();
+        return $results->fetch_all(MYSQLI_ASSOC);
+    }
     /**
      * Return true or false depending if the end date of borrowing the given book is extendable.
      *
@@ -950,6 +976,27 @@
         }
 
         $query = "CALL deleteBooksFromShelf(?,?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("ii", $user_id, $ISBN_id); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+
+        if($conn_was_not_given){
+            $conn->close();
+        }
+
+        return $results->fetch_all(MYSQLI_ASSOC);
+    }
+
+    function is_book_on_shelf(int $user_id, int $ISBN_id, mysqli $conn=null) : array {
+        $conn_was_not_given = $conn == null;
+
+        if($conn_was_not_given){
+            require "databaseConnect.php";
+        }
+
+        $query = "CALL isItOnShelf(?,?);";
 
         $stmt = $conn->prepare($query); // Prepare statement
         $stmt->bind_param("ii", $user_id, $ISBN_id); // Bind parameter to SQL query

@@ -1049,7 +1049,35 @@ END IF;
   END;//
 DELIMITER ;
 
--- gets all reservations
+-- gets all bookings
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS getBookings(
+  IN searchTerm INT
+) 
+BEGIN
+IF(searchTerm = "") THEN
+  SELECT booking.booking_id, users.username, book.title FROM book INNER JOIN( inventory INNER JOIN (booking INNER JOIN users ON users.user_id = booking.user_id) ON booking.book_id = inventory.book_id) ON book.ISBN_id = inventory.ISBN_id;
+ELSE
+  SELECT booking.booking_id, users.username, book.title FROM book INNER JOIN( inventory INNER JOIN (booking INNER JOIN users ON users.user_id = booking.user_id) ON booking.book_id = inventory.book_id) ON book.ISBN_id = inventory.ISBN_id WHERE book.title LIKE CONCAT('%', searchTerm, '%') OR users.username LIKE CONCAT('%', searchTerm, '%');
+END IF;
+  END;//
+DELIMITER ;
+
+-- gets all borrowings
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS getBorrowings(
+  IN searchTerm INT
+) 
+BEGIN
+IF(searchTerm = "") THEN
+  SELECT borrowings.borrowing_id, users.username, book.title FROM book INNER JOIN( inventory INNER JOIN (borrowings INNER JOIN users ON users.user_id = borrowings.user_id) ON borrowings.book_id = inventory.book_id) ON book.ISBN_id = inventory.ISBN_id;
+ELSE
+  SELECT borrowings.borrowing_id, users.username, book.title FROM book INNER JOIN( inventory INNER JOIN (borrowings INNER JOIN users ON users.user_id = borrowings.user_id) ON borrowings.book_id = inventory.book_id) ON book.ISBN_id = inventory.ISBN_id WHERE book.title LIKE CONCAT('%', searchTerm, '%') OR users.username LIKE CONCAT('%', searchTerm, '%');
+END IF;
+  END;//
+DELIMITER ;
+
+-- updates system_settings table
 DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS updateSystemSettings(
   IN membership_fee INT,
@@ -1099,3 +1127,13 @@ BEGIN
 END;//
 DELIMITER ;
 
+-- checks if book is on shelf
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS isItOnShelf(
+  IN user_id INT,
+  IN ISBN_id INT
+) 
+BEGIN
+  SELECT CASE WHEN (SELECT COUNT(ISBN_id) FROM shelf WHERE shelf.user_id = user_id AND shelf.ISBN_id = ISBN_id)>0 THEN "true" ELSE "false" END AS result FROM shelf;
+END;//
+DELIMITER ;
