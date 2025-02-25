@@ -1066,13 +1066,14 @@ DELIMITER ;
 -- gets all borrowings
 DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS getBorrowings(
-  IN searchTerm INT
+  IN searchTerm INT,
+  IN returnedToo BOOLEAN
 ) 
 BEGIN
 IF(searchTerm = "") THEN
-  SELECT borrowings.borrowing_id, users.username, book.title FROM book INNER JOIN( inventory INNER JOIN (borrowings INNER JOIN users ON users.user_id = borrowings.user_id) ON borrowings.book_id = inventory.book_id) ON book.ISBN_id = inventory.ISBN_id;
+  SELECT borrowings.borrowing_id, users.username, book.title FROM book INNER JOIN( inventory INNER JOIN (borrowings INNER JOIN users ON users.user_id = borrowings.user_id) ON borrowings.book_id = inventory.book_id) ON book.ISBN_id = inventory.ISBN_id WHERE CASE WHEN returnedToo THEN TRUE ELSE NOT borrowings.returned END;
 ELSE
-  SELECT borrowings.borrowing_id, users.username, book.title FROM book INNER JOIN( inventory INNER JOIN (borrowings INNER JOIN users ON users.user_id = borrowings.user_id) ON borrowings.book_id = inventory.book_id) ON book.ISBN_id = inventory.ISBN_id WHERE book.title LIKE CONCAT('%', searchTerm, '%') OR users.username LIKE CONCAT('%', searchTerm, '%');
+  SELECT borrowings.borrowing_id, users.username, book.title FROM book INNER JOIN( inventory INNER JOIN (borrowings INNER JOIN users ON users.user_id = borrowings.user_id) ON borrowings.book_id = inventory.book_id) ON book.ISBN_id = inventory.ISBN_id WHERE CASE WHEN returnedToo THEN TRUE ELSE NOT borrowings.returned END AND book.title LIKE CONCAT('%', searchTerm, '%') OR users.username LIKE CONCAT('%', searchTerm, '%');
 END IF;
   END;//
 DELIMITER ;

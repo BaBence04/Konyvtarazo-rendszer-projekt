@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddUser));
             this.ctbSurname = new Desktop.CustomTextbox();
             this.cbtnAdd = new Desktop.CustomButton();
-            this.dtpBirthDate = new System.Windows.Forms.DateTimePicker();
             this.ctbFirstName = new Desktop.CustomTextbox();
             this.label3 = new System.Windows.Forms.Label();
             this.ctbPhone = new Desktop.CustomTextbox();
@@ -41,6 +40,7 @@
             this.ctbMmn = new Desktop.CustomTextbox();
             this.cbtnBack = new Desktop.CustomButton();
             this.button_CloseForm = new Desktop.CustomButton();
+            this.cdtpBirthDate = new Desktop.CustomDateTimePicker();
             this.SuspendLayout();
             // 
             // ctbSurname
@@ -54,7 +54,7 @@
             this.ctbSurname.ForeColor = System.Drawing.Color.DimGray;
             this.ctbSurname.IsReadOnly = false;
             this.ctbSurname.Location = new System.Drawing.Point(11, 92);
-            this.ctbSurname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ctbSurname.Margin = new System.Windows.Forms.Padding(4);
             this.ctbSurname.Multiline = false;
             this.ctbSurname.Name = "ctbSurname";
             this.ctbSurname.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
@@ -83,14 +83,6 @@
             this.cbtnAdd.UseVisualStyleBackColor = false;
             this.cbtnAdd.Click += new System.EventHandler(this.cbtnAdd_Click);
             // 
-            // dtpBirthDate
-            // 
-            this.dtpBirthDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpBirthDate.Location = new System.Drawing.Point(11, 187);
-            this.dtpBirthDate.Name = "dtpBirthDate";
-            this.dtpBirthDate.Size = new System.Drawing.Size(127, 20);
-            this.dtpBirthDate.TabIndex = 3;
-            // 
             // ctbFirstName
             // 
             this.ctbFirstName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
@@ -102,7 +94,7 @@
             this.ctbFirstName.ForeColor = System.Drawing.Color.DimGray;
             this.ctbFirstName.IsReadOnly = false;
             this.ctbFirstName.Location = new System.Drawing.Point(216, 92);
-            this.ctbFirstName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ctbFirstName.Margin = new System.Windows.Forms.Padding(4);
             this.ctbFirstName.Multiline = false;
             this.ctbFirstName.Name = "ctbFirstName";
             this.ctbFirstName.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
@@ -117,7 +109,8 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 159);
+            this.label3.ForeColor = System.Drawing.SystemColors.Control;
+            this.label3.Location = new System.Drawing.Point(8, 160);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 13);
             this.label3.TabIndex = 6;
@@ -134,7 +127,7 @@
             this.ctbPhone.ForeColor = System.Drawing.Color.DimGray;
             this.ctbPhone.IsReadOnly = false;
             this.ctbPhone.Location = new System.Drawing.Point(216, 271);
-            this.ctbPhone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ctbPhone.Margin = new System.Windows.Forms.Padding(4);
             this.ctbPhone.Multiline = false;
             this.ctbPhone.Name = "ctbPhone";
             this.ctbPhone.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
@@ -157,7 +150,7 @@
             this.ctbEmail.ForeColor = System.Drawing.Color.DimGray;
             this.ctbEmail.IsReadOnly = false;
             this.ctbEmail.Location = new System.Drawing.Point(11, 271);
-            this.ctbEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ctbEmail.Margin = new System.Windows.Forms.Padding(4);
             this.ctbEmail.Multiline = false;
             this.ctbEmail.Name = "ctbEmail";
             this.ctbEmail.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
@@ -180,7 +173,7 @@
             this.ctbBirthplace.ForeColor = System.Drawing.Color.DimGray;
             this.ctbBirthplace.IsReadOnly = false;
             this.ctbBirthplace.Location = new System.Drawing.Point(216, 176);
-            this.ctbBirthplace.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ctbBirthplace.Margin = new System.Windows.Forms.Padding(4);
             this.ctbBirthplace.Multiline = false;
             this.ctbBirthplace.Name = "ctbBirthplace";
             this.ctbBirthplace.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
@@ -203,7 +196,7 @@
             this.ctbAddress.ForeColor = System.Drawing.Color.DimGray;
             this.ctbAddress.IsReadOnly = false;
             this.ctbAddress.Location = new System.Drawing.Point(11, 351);
-            this.ctbAddress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ctbAddress.Margin = new System.Windows.Forms.Padding(4);
             this.ctbAddress.Multiline = false;
             this.ctbAddress.Name = "ctbAddress";
             this.ctbAddress.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
@@ -226,7 +219,7 @@
             this.ctbMmn.ForeColor = System.Drawing.Color.DimGray;
             this.ctbMmn.IsReadOnly = false;
             this.ctbMmn.Location = new System.Drawing.Point(216, 351);
-            this.ctbMmn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ctbMmn.Margin = new System.Windows.Forms.Padding(4);
             this.ctbMmn.Multiline = false;
             this.ctbMmn.Name = "ctbMmn";
             this.ctbMmn.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
@@ -273,12 +266,28 @@
             this.button_CloseForm.UseVisualStyleBackColor = false;
             this.button_CloseForm.Click += new System.EventHandler(this.button_CloseForm_Click);
             // 
+            // cdtpBirthDate
+            // 
+            this.cdtpBirthDate.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.cdtpBirthDate.BorderRadius = 10;
+            this.cdtpBirthDate.BorderSize = 0;
+            this.cdtpBirthDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.cdtpBirthDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.cdtpBirthDate.Location = new System.Drawing.Point(11, 176);
+            this.cdtpBirthDate.MinimumSize = new System.Drawing.Size(0, 35);
+            this.cdtpBirthDate.Name = "cdtpBirthDate";
+            this.cdtpBirthDate.Size = new System.Drawing.Size(150, 35);
+            this.cdtpBirthDate.SkinColor = System.Drawing.Color.MediumSlateBlue;
+            this.cdtpBirthDate.TabIndex = 19;
+            this.cdtpBirthDate.TextColor = System.Drawing.Color.White;
+            // 
             // AddUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
             this.ClientSize = new System.Drawing.Size(379, 503);
+            this.Controls.Add(this.cdtpBirthDate);
             this.Controls.Add(this.button_CloseForm);
             this.Controls.Add(this.cbtnBack);
             this.Controls.Add(this.ctbAddress);
@@ -288,7 +297,6 @@
             this.Controls.Add(this.ctbPhone);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.ctbFirstName);
-            this.Controls.Add(this.dtpBirthDate);
             this.Controls.Add(this.cbtnAdd);
             this.Controls.Add(this.ctbSurname);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -304,7 +312,6 @@
 
         private CustomTextbox ctbSurname;
         private CustomButton cbtnAdd;
-        private System.Windows.Forms.DateTimePicker dtpBirthDate;
         private CustomTextbox ctbFirstName;
         private System.Windows.Forms.Label label3;
         private CustomTextbox ctbPhone;
@@ -314,5 +321,6 @@
         private CustomTextbox ctbMmn;
         private CustomButton cbtnBack;
         private CustomButton button_CloseForm;
+        private CustomDateTimePicker cdtpBirthDate;
     }
 }

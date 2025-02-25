@@ -37,7 +37,6 @@
             this.lblName = new System.Windows.Forms.Label();
             this.btnDeactivateUser = new Desktop.CustomButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.dtpBirthDate = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lblTagsag = new System.Windows.Forms.Label();
@@ -57,6 +56,7 @@
             this.ctbPhone = new Desktop.CustomTextbox();
             this.ctbEmail = new Desktop.CustomTextbox();
             this.ctbSurname = new Desktop.CustomTextbox();
+            this.cdtpBirthDate = new Desktop.CustomDateTimePicker();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -152,7 +152,7 @@
             this.btnDeactivateUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeactivateUser.ForeColor = System.Drawing.Color.White;
             this.btnDeactivateUser.Location = new System.Drawing.Point(541, 91);
-            this.btnDeactivateUser.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDeactivateUser.Margin = new System.Windows.Forms.Padding(2);
             this.btnDeactivateUser.Name = "btnDeactivateUser";
             this.btnDeactivateUser.Size = new System.Drawing.Size(160, 32);
             this.btnDeactivateUser.TabIndex = 0;
@@ -170,14 +170,6 @@
             this.label1.Size = new System.Drawing.Size(92, 20);
             this.label1.TabIndex = 6;
             this.label1.Text = "Családnév";
-            // 
-            // dtpBirthDate
-            // 
-            this.dtpBirthDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpBirthDate.Location = new System.Drawing.Point(16, 362);
-            this.dtpBirthDate.Name = "dtpBirthDate";
-            this.dtpBirthDate.Size = new System.Drawing.Size(118, 20);
-            this.dtpBirthDate.TabIndex = 7;
             // 
             // label2
             // 
@@ -289,7 +281,7 @@
             this.ctbFirstname.ForeColor = System.Drawing.Color.DimGray;
             this.ctbFirstname.IsReadOnly = false;
             this.ctbFirstname.Location = new System.Drawing.Point(13, 271);
-            this.ctbFirstname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ctbFirstname.Margin = new System.Windows.Forms.Padding(4);
             this.ctbFirstname.Multiline = false;
             this.ctbFirstname.Name = "ctbFirstname";
             this.ctbFirstname.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
@@ -363,7 +355,7 @@
             this.ctbMmn.ForeColor = System.Drawing.Color.DimGray;
             this.ctbMmn.IsReadOnly = false;
             this.ctbMmn.Location = new System.Drawing.Point(272, 447);
-            this.ctbMmn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ctbMmn.Margin = new System.Windows.Forms.Padding(4);
             this.ctbMmn.Multiline = false;
             this.ctbMmn.Name = "ctbMmn";
             this.ctbMmn.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
@@ -386,7 +378,7 @@
             this.ctbAddress.ForeColor = System.Drawing.Color.DimGray;
             this.ctbAddress.IsReadOnly = false;
             this.ctbAddress.Location = new System.Drawing.Point(272, 363);
-            this.ctbAddress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ctbAddress.Margin = new System.Windows.Forms.Padding(4);
             this.ctbAddress.Multiline = false;
             this.ctbAddress.Name = "ctbAddress";
             this.ctbAddress.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
@@ -409,7 +401,7 @@
             this.ctbBirthplace.ForeColor = System.Drawing.Color.DimGray;
             this.ctbBirthplace.IsReadOnly = false;
             this.ctbBirthplace.Location = new System.Drawing.Point(275, 271);
-            this.ctbBirthplace.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ctbBirthplace.Margin = new System.Windows.Forms.Padding(4);
             this.ctbBirthplace.Multiline = false;
             this.ctbBirthplace.Name = "ctbBirthplace";
             this.ctbBirthplace.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
@@ -432,7 +424,7 @@
             this.ctbPhone.ForeColor = System.Drawing.Color.DimGray;
             this.ctbPhone.IsReadOnly = false;
             this.ctbPhone.Location = new System.Drawing.Point(272, 195);
-            this.ctbPhone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ctbPhone.Margin = new System.Windows.Forms.Padding(4);
             this.ctbPhone.Multiline = false;
             this.ctbPhone.Name = "ctbPhone";
             this.ctbPhone.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
@@ -455,7 +447,7 @@
             this.ctbEmail.ForeColor = System.Drawing.Color.DimGray;
             this.ctbEmail.IsReadOnly = false;
             this.ctbEmail.Location = new System.Drawing.Point(16, 447);
-            this.ctbEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ctbEmail.Margin = new System.Windows.Forms.Padding(4);
             this.ctbEmail.Multiline = false;
             this.ctbEmail.Name = "ctbEmail";
             this.ctbEmail.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
@@ -478,7 +470,7 @@
             this.ctbSurname.ForeColor = System.Drawing.Color.DimGray;
             this.ctbSurname.IsReadOnly = false;
             this.ctbSurname.Location = new System.Drawing.Point(13, 195);
-            this.ctbSurname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ctbSurname.Margin = new System.Windows.Forms.Padding(4);
             this.ctbSurname.Multiline = false;
             this.ctbSurname.Name = "ctbSurname";
             this.ctbSurname.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
@@ -490,12 +482,28 @@
             this.ctbSurname.Texts = "";
             this.ctbSurname.UnderlinedStyle = false;
             // 
+            // cdtpBirthDate
+            // 
+            this.cdtpBirthDate.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.cdtpBirthDate.BorderRadius = 10;
+            this.cdtpBirthDate.BorderSize = 0;
+            this.cdtpBirthDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.cdtpBirthDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.cdtpBirthDate.Location = new System.Drawing.Point(16, 363);
+            this.cdtpBirthDate.MinimumSize = new System.Drawing.Size(0, 35);
+            this.cdtpBirthDate.Name = "cdtpBirthDate";
+            this.cdtpBirthDate.Size = new System.Drawing.Size(166, 35);
+            this.cdtpBirthDate.SkinColor = System.Drawing.Color.MediumSlateBlue;
+            this.cdtpBirthDate.TabIndex = 26;
+            this.cdtpBirthDate.TextColor = System.Drawing.Color.White;
+            // 
             // UserDetailedPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
             this.ClientSize = new System.Drawing.Size(727, 521);
+            this.Controls.Add(this.cdtpBirthDate);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.ctbFirstname);
             this.Controls.Add(this.cbtnBack);
@@ -514,12 +522,11 @@
             this.Controls.Add(this.lblTagsag);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dtpBirthDate);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ctbSurname);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "UserDetailedPage";
             this.Text = "UserDetailedPage";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UserDetailedPage_FormClosing);
@@ -538,7 +545,6 @@
         private System.Windows.Forms.Label lblUname;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dtpBirthDate;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblTagsag;
@@ -561,5 +567,6 @@
         private CustomTextbox ctbFirstname;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
+        private CustomDateTimePicker cdtpBirthDate;
     }
 }

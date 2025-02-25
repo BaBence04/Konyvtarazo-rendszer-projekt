@@ -22,16 +22,20 @@ namespace Desktop
 
         private async void cbtnAdd_Click(object sender, EventArgs e)
         {
-            List<Dictionary<string, string>> data = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "addPublisher" }, { "name", ctbName.Texts }, { "phone", ctbTel.Texts }, { "email", ctbEmail.Texts }, { "webpage", ctbWeb.Texts } });
-            if (data.First()["state"] == "fail")
+            if (ctbName.Texts != ctbName.PlaceholderText && ctbName.Texts != "" && ctbEmail.Texts != ctbEmail.PlaceholderText && ctbEmail.Texts != "" && ctbTel.Texts != ctbTel.PlaceholderText && ctbTel.Texts != "" && ctbWeb.Texts != ctbWeb.PlaceholderText && ctbWeb.Texts != "")
             {
-                MessageBox.Show("Ezzel a névvel már létezik kiadó");
+                List<Dictionary<string, string>> data = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "addPublisher" }, { "name", ctbName.Texts }, { "phone", ctbTel.Texts }, { "email", ctbEmail.Texts }, { "webpage", ctbWeb.Texts } });
+                if (data.First()["state"] == "fail")
+                {
+                    MessageBox.Show("Ezzel a névvel már létezik kiadó");
+                }
+                else
+                {
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
             }
-            else
-            {
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            }
+            
         
         }
 

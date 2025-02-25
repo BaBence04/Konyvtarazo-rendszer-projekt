@@ -186,8 +186,8 @@
             echo json_encode(GetReservations($_POST["search"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "getBookings" && isset($_POST["search"]) && count($_POST) == 2){
             echo json_encode(GetBookings($_POST["search"]));
-        }else if(isset($_POST["type"]) && $_POST["type"] == "getBorrowings" && isset($_POST["search"]) && count($_POST) == 2){
-            echo json_encode(GetBorrowings($_POST["search"]));
+        }else if(isset($_POST["type"]) && $_POST["type"] == "getBorrowings" && isset($_POST["search"], $_POST["returned"]) && count($_POST) == 3){
+            echo json_encode(GetBorrowings($_POST["search"], $_POST["returned"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "getBorrowedBooks" && isset($_POST["search"]) && count($_POST) == 2){
             echo json_encode(GetBorrowedBooks($_POST["search"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "getPublishers" && isset($_POST["search"]) && count($_POST) == 2){

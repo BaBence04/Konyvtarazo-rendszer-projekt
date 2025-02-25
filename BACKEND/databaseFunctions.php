@@ -784,13 +784,13 @@
         return $results->fetch_all(MYSQLI_ASSOC);
     }
 
-    function GetBorrowings($searchTerm){
+    function GetBorrowings($searchTerm,$returnedToo){
         require "databaseConnect.php";
 
-        $query = "CALL getBorrowings(?);";
+        $query = "CALL getBorrowings(?,?);";
 
         $stmt = $conn->prepare($query); // Prepare statement
-        $stmt->bind_param("s", $searchTerm); // Bind parameter to SQL query
+        $stmt->bind_param("si", $searchTerm, $returnedToo); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
         $conn->close();

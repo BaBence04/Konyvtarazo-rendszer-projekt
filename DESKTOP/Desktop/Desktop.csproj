@@ -84,6 +84,12 @@
     <Compile Include="BookDetailedPage.Designer.cs">
       <DependentUpon>BookDetailedPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="BookingsPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BookingsPage.Designer.cs">
+      <DependentUpon>BookingsPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="BookLendingPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +101,12 @@
     </Compile>
     <Compile Include="BookTakebackPage.Designer.cs">
       <DependentUpon>BookTakebackPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BorrowingsPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BorrowingsPage.Designer.cs">
+      <DependentUpon>BorrowingsPage.cs</DependentUpon>
     </Compile>
     <Compile Include="CustomButton.cs">
       <SubType>Component</SubType>
@@ -210,11 +222,17 @@
     <EmbeddedResource Include="BookDetailedPage.resx">
       <DependentUpon>BookDetailedPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BookingsPage.resx">
+      <DependentUpon>BookingsPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BookLendingPage.resx">
       <DependentUpon>BookLendingPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BookTakebackPage.resx">
       <DependentUpon>BookTakebackPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BorrowingsPage.resx">
+      <DependentUpon>BorrowingsPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomButton.resx">
       <DependentUpon>CustomButton.cs</DependentUpon>

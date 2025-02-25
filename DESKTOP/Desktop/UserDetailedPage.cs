@@ -39,7 +39,7 @@ namespace Desktop
 			lblTagsag.Text = user_data["membership_end_date"];
 			ctbSurname.Texts = user_data["surname"];
 			ctbFirstname.Texts = user_data["first_name"];
-			dtpBirthDate.Value = DateTime.Parse(user_data["birth_date"]);
+			cdtpBirthDate.Value = DateTime.Parse(user_data["birth_date"]);
 			ctbEmail.Texts = user_data["email"];
 			ctbPhone.Texts = user_data["phone_number"];
 			ctbBirthplace.Texts = user_data["birth_place"];
@@ -66,7 +66,7 @@ namespace Desktop
                     data["firstname"] = ctbFirstname.Texts;
                     data["surname"] = ctbSurname.Texts;
                     data["birthplace"] = ctbBirthplace.Texts;
-                    data["birthdate"] = dtpBirthDate.Value.ToString("yyyy-MM-dd");
+                    data["birthdate"] = cdtpBirthDate.Value.ToString("yyyy-MM-dd");
                     data["address"] = ctbAddress.Texts;
                     data["email"] = ctbEmail.Texts;
                     data["phone"] = ctbPhone.Texts;
@@ -80,7 +80,7 @@ namespace Desktop
         }
 		private bool checkChanges() {
 			bool changed = false;
-			if (ctbSurname.Texts != user_data["surname"] || ctbFirstname.Texts != user_data["first_name"] || dtpBirthDate.Value != DateTime.Parse(user_data["birth_date"]) || ctbEmail.Texts != user_data["email"] || ctbPhone.Texts != user_data["phone_number"] || ctbBirthplace.Texts != user_data["birth_place"] || ctbAddress.Texts != user_data["address"] || ctbMmn.Texts != user_data["mother_maiden_name"])
+			if (ctbSurname.Texts != user_data["surname"] || ctbFirstname.Texts != user_data["first_name"] || cdtpBirthDate.Value != DateTime.Parse(user_data["birth_date"]) || ctbEmail.Texts != user_data["email"] || ctbPhone.Texts != user_data["phone_number"] || ctbBirthplace.Texts != user_data["birth_place"] || ctbAddress.Texts != user_data["address"] || ctbMmn.Texts != user_data["mother_maiden_name"])
 			{
 				changed = true;
 			}
@@ -125,7 +125,7 @@ namespace Desktop
 			ctbMmn.IsReadOnly = true;
 			ctbFirstname.IsReadOnly = true;
 			ctbSurname.IsReadOnly = true;
-			dtpBirthDate.Enabled = false;
+			cdtpBirthDate.Enabled = false;
 		}
 
         private void cbtnBorrow_Click(object sender, EventArgs e)

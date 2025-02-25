@@ -24,7 +24,7 @@ namespace Desktop
             cdgvBorrowings.DataSource = null;
             cdgvBorrowings.Columns.Clear();
             ids.Clear();
-            List<Dictionary<string, string>> response = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "getBorrowings" }, { "search", search } });
+            List<Dictionary<string, string>> response = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "getBorrowings" }, { "search", search }, {"returned", cbReturnedToo.Checked?"1":"0" } });
             if (response.Count > 0)
             {
                 DataTable dt = new DataTable();
@@ -109,6 +109,18 @@ namespace Desktop
                 }
             }
 
+        }
+
+        private void cbReturnedToo_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ctbSearch.Texts != ctbSearch.PlaceholderText)
+            {
+                updateCdgvBorrowings(ctbSearch.Texts);
+            }
+            else
+            {
+                updateCdgvBorrowings("");
+            }
         }
     }
 }
