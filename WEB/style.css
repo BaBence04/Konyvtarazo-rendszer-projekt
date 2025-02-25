@@ -49,7 +49,7 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus, 
 input:-webkit-autofill:active {
     --color: rgba(245,245,245,255);
-    border-bottom: #000 2px solid;
+    /* border-bottom: #000 2px solid; */
     border-top: none;
     border-left: none;
     border-right: none;
@@ -60,7 +60,7 @@ input:hover:not(:-webkit-autofill),
 input:focus:not(:-webkit-autofill), 
 input:active:not(:-webkit-autofill) {
   --color: rgba(245,245,245,255);
-  border-bottom: #000 2px solid;
+  /* border-bottom: #000 2px solid; */
   border-top: none;
   border-left: none;
   border-right: none;
