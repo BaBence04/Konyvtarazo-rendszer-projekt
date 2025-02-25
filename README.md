@@ -21,7 +21,6 @@ Mesterremek projekt, könyvtárazó rendszer
 #WEB:
     KINÉZET:
         -jelenleg csak a könyv részletes oldalon lehet látni hogy az adott könyv a polcon van-e, de lehet kéne valahogy jelezni az összes könyvnél is
-        -lecserélni a font-ot valamire ahol a számok nem "ugrál"-nak
         -még kell finomítani a kinézetén a bookDetailed-nek
         
         
