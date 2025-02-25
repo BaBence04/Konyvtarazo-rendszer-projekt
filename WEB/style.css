@@ -3,6 +3,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Gloock&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+
 :root {
   --header-height: 75px;
   --margin-after-header: 30px;
@@ -28,7 +30,7 @@
   --pro-col: rgb(255, 246, 204);
 
 
-  --body-font: 'Playfair Display', sans-serif;
+  --body-font: 'Crimson Pro', sans-serif;
   --h2-font-size: 1.25rem;
   --normal-font-size: 1rem;
 
