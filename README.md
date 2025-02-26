@@ -22,6 +22,8 @@ Mesterremek projekt, könyvtárazó rendszer
     KINÉZET:
         -jelenleg csak a könyv részletes oldalon lehet látni hogy az adott könyv a polcon van-e, de lehet kéne valahogy jelezni az összes könyvnél is
         -még kell finomítani a kinézetén a bookDetailed-nek
+        -hozzáadtam egy ajánlós részt a bookDetailed-hez, hogy ne legyen olyan üres. nem szép, de működik(ha nem vagy bejelentkezve, akkor nem működik az onclick, mert a reserveOrBook functionban olyankor van egy sortörés vagy mifaszom). 
+            lehet majd az elementCreators-ból kéne ezt is meghívni
         
         
 
