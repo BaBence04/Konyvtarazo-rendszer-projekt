@@ -1138,3 +1138,43 @@ BEGIN
   SELECT CASE WHEN (SELECT COUNT(ISBN_id) FROM shelf WHERE shelf.user_id = user_id AND shelf.ISBN_id = ISBN_id)>0 THEN "true" ELSE "false" END AS result FROM shelf;
 END;//
 DELIMITER ;
+
+
+-- gets similar books for bookDetailed
+
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS GetSimilarBooks(
+  IN p_ISBN_id INT
+)
+BEGIN
+  SELECT 
+    b.ISBN,
+    b.title,
+    b.picture_base64,
+    GROUP_CONCAT(DISTINCT a.author SEPARATOR ', ') AS authors,
+    GROUP_CONCAT(DISTINCT g.genre SEPARATOR ', ') AS genres
+  FROM 
+    book b
+  JOIN 
+    books_genres_conn bgc ON b.ISBN_id = bgc.ISBN_id
+  JOIN 
+    genres g ON bgc.genre_id = g.genre_id
+  JOIN 
+    books_authors_conn bac ON b.ISBN_id = bac.ISBN_id
+  JOIN 
+    authors a ON bac.author_id = a.author_id
+  WHERE 
+    g.genre_id IN (
+      -- Subquery to get all genre IDs of the given book
+      SELECT g.genre_id
+      FROM genres g
+      JOIN books_genres_conn bgc ON g.genre_id = bgc.genre_id
+      WHERE bgc.ISBN_id = p_ISBN_id
+    )
+    AND b.ISBN_id != p_ISBN_id -- Exclude the given book
+  GROUP BY 
+    b.ISBN_id
+  LIMIT 5;
+END;//
+
+DELIMITER ;

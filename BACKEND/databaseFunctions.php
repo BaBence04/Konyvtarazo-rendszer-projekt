@@ -1008,4 +1008,33 @@
         return $results->fetch_assoc()["result"] == "true";
     }
 
+    // proba
+
+    function getSimilarBooks(int $ISBN_id, mysqli $conn = null): array {
+        $conn_was_not_given = $conn == null;
+    
+        if ($conn_was_not_given) {
+            require "databaseConnect.php";
+        }
+    
+        $query = "CALL GetSimilarBooks(?);";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("i", $ISBN_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        $similar_books = [];
+        while ($row = $result->fetch_assoc()) {
+            $similar_books[] = $row;
+        }
+
+        $stmt->close();
+    
+        if ($conn_was_not_given) {
+            $conn->close();
+        }
+    
+        return $similar_books;
+    }
+
 ?>

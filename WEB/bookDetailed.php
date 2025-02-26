@@ -62,6 +62,26 @@
             </div>
         </div>
     </div>
+
+    <div class="similar-books-section">
+        <h2>Ezek tetszhetnek még:</h2>
+        <div class="slider-container">
+            <div class="similar-books-slider">
+            <?php
+            $similar_books = getSimilarBooks($book_data["ISBN_id"]);
+            foreach ($similar_books as $similar_book) {
+                echo '<div class="book_item" data-ISBN="' . $similar_book['ISBN'] . '" onclick="OpenSimilarBookDetailed(this)">';
+                echo '<img src="' . $similar_book['picture_base64'] . '" alt="' . $similar_book['title'] . '">';
+                echo '<div class="book_info">';
+                echo '<div class="book_title">' . $similar_book['title'] . '</div>';
+                echo '<div class="book_author">' . $similar_book['authors'] . '</div>';
+                echo '</div>';
+                echo '</div>';
+            }
+            ?>
+            </div>
+        </div>
+    </div>          
 </main>
 
     <script>
@@ -110,4 +130,10 @@
             }); 
 
         }
+
+        function OpenSimilarBookDetailed(element){
+            let isbn = element.getAttribute("data-ISBN");
+            open(isbn, "_self");            
+        }
+
     </script>
