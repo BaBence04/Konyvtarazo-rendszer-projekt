@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <main>
     <div class="book-details">
         <div class="book-image">
@@ -65,21 +67,28 @@
 
     <div class="similar-books-section">
         <h2>Ezek tetszhetnek még:</h2>
-        <div class="slider-container">
-            <div class="similar-books-slider">
-            <?php
-            $similar_books = getSimilarBooks($book_data["ISBN_id"]);
-            foreach ($similar_books as $similar_book) {
-                echo '<div class="book_item" data-ISBN="' . $similar_book['ISBN'] . '" onclick="OpenSimilarBookDetailed(this)">';
-                echo '<img src="' . $similar_book['picture_base64'] . '" alt="' . $similar_book['title'] . '">';
-                echo '<div class="book_info">';
-                echo '<div class="book_title">' . $similar_book['title'] . '</div>';
-                echo '<div class="book_author">' . $similar_book['authors'] . '</div>';
-                echo '</div>';
-                echo '</div>';
-            }
-            ?>
+        <div class="slider-container swiper">
+            <div class="similar-books-slider swiper-wrapper">
+                
+                <?php
+                $similar_books = getSimilarBooks($book_data["ISBN_id"]);
+                foreach ($similar_books as $similar_book) {
+                    echo '<div class="book_item swiper-slide" data-ISBN="' . $similar_book['ISBN'] . '" onclick="OpenSimilarBookDetailed(this)">';
+                    echo '<img src="' . $similar_book['picture_base64'] . '" alt="' . $similar_book['title'] . '">';
+                    echo '<div class="book_info">';
+                    echo '<div class="book_title">' . $similar_book['title'] . '</div>';
+                    echo '<div class="book_author">' . $similar_book['authors'] . '</div>';
+                    echo '<div class="book_genre">#' . $similar_book['genres'] . '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                }
+                ?>
             </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+            
         </div>
     </div>          
 </main>
@@ -131,9 +140,62 @@
 
         }
 
-        function OpenSimilarBookDetailed(element){
-            let isbn = element.getAttribute("data-ISBN");
-            open(isbn, "_self");            
-        }
+        document.addEventListener("DOMContentLoaded", function () {
+            const swiper = new Swiper('.slider-container', {
+                direction: 'horizontal',
+                loop: true,
+                slidesPerView: 5,
+                loopAdditionalSlides: 5,
+                spaceBetween: 20,
+                watchSlidesProgress: true,
+
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+
+                scrollbar: {
+                    el: '.swiper-scrollbar',
+                },
+
+                on: {
+                    slideChange: function () {
+                        console.log("Current index:", this.activeIndex);
+                    }
+                },
+
+                breakpoints: {
+                    0: {
+                        slidesPerView: 1
+                    },
+                    768: {
+                        slidesPerView: 3
+                    },
+                    1222: {
+                        slidesPerView: 5
+                    },
+                }
+            });
+
+            window.addEventListener("resize", function () {
+            swiper.update();
+        });
+        });
+
+        console.log("Total slides: ", document.querySelectorAll('.swiper-slide').length);
+
+
+
+
+        
+
+
 
     </script>
+
+    

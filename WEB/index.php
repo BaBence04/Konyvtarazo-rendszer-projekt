@@ -152,7 +152,7 @@ if(count($parts_of_path) == 1){
       require_once "bookList.php";
 
     }else if ($page_to_load === 'aboutUs') {
-      echo "rólunk oldal";
+      require_once "aboutUs.php";
     }else if ($page_to_load === 'userDetailed') {
       require_once "userDetailed.php";      
 

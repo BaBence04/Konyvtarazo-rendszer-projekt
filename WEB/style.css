@@ -516,9 +516,10 @@ main .book-details{
 .similar-books-section {
   margin-top: 40px;
   padding: 20px;
-  background-color: #f8f8f8;
+  background-color: var(--body-color);
   border-radius: 8px;
   position: relative;
+  width: 100%;
 }
 
 .similar-books-section h2 {
@@ -527,8 +528,11 @@ main .book-details{
 }
 
 .similar-books-slider {
+  min-width: 200px;
+  /* width: calc(100% / var(--slides-per-view)); */
+
   display: flex;
-  overflow-x: auto;
+  /* overflow: hidden; */
   gap: 20px;
   padding: 10px 0;
   scroll-snap-type: x mandatory;
@@ -537,7 +541,15 @@ main .book-details{
 
   justify-content: center;
   flex: 0 0 auto;
+  margin: 20px, 20px;
 }
+
+.swiper-slide {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
 
 .similar-books-slider::-webkit-scrollbar {
   height: 8px;
@@ -559,10 +571,14 @@ main .book-details{
   text-align: center;
   scroll-snap-align: start;
   border: 1px solid #ddd;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
   background-color: white;
 
+  transition: 0.2s ease;
+  user-select: none;
+
+  max-width: 216px;
 }
 .similar-books-slider .book_item:hover {
   cursor: pointer;
@@ -574,7 +590,6 @@ main .book-details{
   width: 100%;
   height: auto;
   display: block;
-  border-bottom: 1px solid #ddd;
 }
 
 .similar-books-slider .book_info {
@@ -590,6 +605,21 @@ main .book-details{
 .similar-books-slider .book_author {
   font-size: 14px;
   color: #555;
+  
+}
+
+.similar-books-slider .book_genre {
+  font-size: 14px;
+  margin: 1rem 2.5rem 0 2.5rem;
+}
+
+.card-button {
+  border-radius: 50%;
+  margin: 30px 0 5px;
+  border: 2px solid var(--first-color);
+  color: var(--first-color);
+  background: none;
+  cursor: pointer;
 }
 
 /* Responsive Styles */

@@ -24,6 +24,7 @@ Mesterremek projekt, könyvtárazó rendszer
         -még kell finomítani a kinézetén a bookDetailed-nek
         -hozzáadtam egy ajánlós részt a bookDetailed-hez, hogy ne legyen olyan üres. nem szép, de működik(ha nem vagy bejelentkezve, akkor nem működik az onclick, mert a reserveOrBook functionban olyankor van egy sortörés vagy mifaszom). 
             lehet majd az elementCreators-ból kéne ezt is meghívni
+        -lehetne egyértelműbb, hogy mit csinál a "könyvespolcra helyezés" gomb   
         
         
 

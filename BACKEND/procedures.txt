@@ -1173,8 +1173,7 @@ BEGIN
     )
     AND b.ISBN_id != p_ISBN_id -- Exclude the given book
   GROUP BY 
-    b.ISBN_id
-  LIMIT 5;
+    b.ISBN_id;
 END;//
 
 DELIMITER ;
