@@ -110,7 +110,9 @@ namespace Desktop
 
                 { "button_Publishers", CurrentTheme == "Light" ? Image.FromFile(imagePath + "publisher-line_black.png") : Image.FromFile(imagePath + "publisher-line_white.png") },
 
-                { "button_CloseLoginForm", CurrentTheme == "Light" ? Image.FromFile(imagePath + "close-line_black.png") : Image.FromFile(imagePath + "close-line_white.png") }
+                { "button_CloseLoginForm", CurrentTheme == "Light" ? Image.FromFile(imagePath + "close-line_black.png") : Image.FromFile(imagePath + "close-line_white.png") },
+                
+                { "pbNewBookings", CurrentTheme == "Light" ? Image.FromFile(imagePath + "red_excl.png") : Image.FromFile(imagePath + "red_excl.png") }
             };
 
 			if (control is Form form)

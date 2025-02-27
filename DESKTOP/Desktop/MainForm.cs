@@ -11,6 +11,7 @@ using System.Drawing.Drawing2D;
 using System.Runtime.InteropServices;
 using System.IO;
 using System.Drawing.Text;
+using System.Threading;
 
 
 namespace Desktop
@@ -20,10 +21,13 @@ namespace Desktop
 		public UsersPage usersPage = new UsersPage();
 		public AllBooksPage allBooksPage = new AllBooksPage();
 		public Dictionary<string, string> system_settings = new Dictionary<string, string>();
+		
 
 		// currentPage indicator
         private Button _currentActiveButton;
         private readonly Color customBorderColor = Color.FromArgb(10, 123, 106);
+
+		public string latestBooking;
         public MainForm()
         {
 			InitializeComponent();
@@ -40,6 +44,8 @@ namespace Desktop
 			lblEmplUname.Text = LoginForm.empl_uname;
 			List<Dictionary<string, string>> temp = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "getSystemSettings" } });
 			system_settings = temp.First();
+			CheckForBookings();
+			
             //WHEN FINAL VERSION UNCOMMENT THIS ALSO NOT REALLY TESTED
             /*
 			List<Dictionary<string, string>> reservationResult = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string>() { { "type", "deleteExpiredReservations" } });
@@ -62,6 +68,20 @@ namespace Desktop
 
         }
 
+
+        public async Task CheckForBookings()
+        {
+            while (true)
+            {
+				//the txt file is temporary we may change if we find better solution
+				List<Dictionary<string, string>> resp = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { {"type", "checkForBookings" } });
+				if (resp.First()["result"] == "true")
+				{
+					pbNewBookings.Visible = true;
+				}
+				await Task.Delay(TimeSpan.FromMinutes(15));
+            }
+        }
 
         //CurrentPAga indicator
 

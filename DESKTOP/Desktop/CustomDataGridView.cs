@@ -273,7 +273,7 @@ namespace Desktop
 		// Custom function(s)
 
 		// UserDeletingRow (ha nem jó, if-else)
-		protected async override void OnUserDeletingRow(DataGridViewRowCancelEventArgs e)
+		/*protected async override void OnUserDeletingRow(DataGridViewRowCancelEventArgs e)
 		{
 			var customMessageBox = new CustomMessageBoxForm(
 				"Biztosan törölni szeretné a sort?",
@@ -289,7 +289,7 @@ namespace Desktop
 			}
 
 			base.OnUserDeletingRow(e);
-		}
+		}*/
 
         protected override void OnAllowUserToAddRowsChanged(EventArgs e)
         {

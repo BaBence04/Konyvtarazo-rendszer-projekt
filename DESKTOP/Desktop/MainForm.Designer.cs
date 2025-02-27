@@ -28,24 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tableLayoutPanel_Main = new System.Windows.Forms.TableLayoutPanel();
             this.panel_Menu = new System.Windows.Forms.Panel();
             this.panel_Links = new System.Windows.Forms.Panel();
             this.button_Publishers = new System.Windows.Forms.Button();
             this.btnReservations = new System.Windows.Forms.Button();
             this.btnBookings = new System.Windows.Forms.Button();
+            this.btnBorrowings = new System.Windows.Forms.Button();
             this.button_Users = new System.Windows.Forms.Button();
             this.button_Books = new System.Windows.Forms.Button();
             this.button_HomePage = new System.Windows.Forms.Button();
             this.panel_Theme = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.toggleButton_ThemeChanger = new Desktop.ToggleButton();
             this.panel_User = new System.Windows.Forms.Panel();
             this.lblEmplUname = new System.Windows.Forms.Label();
             this.pictureBox_UserPic = new System.Windows.Forms.PictureBox();
             this.panel_Container = new System.Windows.Forms.Panel();
+            this.pbNewBookings = new System.Windows.Forms.PictureBox();
+            this.toggleButton_ThemeChanger = new Desktop.ToggleButton();
             this.roundedCornerPanel_PageContainer = new Desktop.RoundedCornerPanel();
-            this.btnBorrowings = new System.Windows.Forms.Button();
             this.tableLayoutPanel_Main.SuspendLayout();
             this.panel_Menu.SuspendLayout();
             this.panel_Links.SuspendLayout();
@@ -53,6 +55,7 @@
             this.panel_User.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_UserPic)).BeginInit();
             this.panel_Container.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbNewBookings)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel_Main
@@ -66,8 +69,9 @@
             this.tableLayoutPanel_Main.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel_Main.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel_Main.Name = "tableLayoutPanel_Main";
-            this.tableLayoutPanel_Main.RowCount = 1;
+            this.tableLayoutPanel_Main.RowCount = 2;
             this.tableLayoutPanel_Main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel_Main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel_Main.Size = new System.Drawing.Size(986, 744);
             this.tableLayoutPanel_Main.TabIndex = 2;
             // 
@@ -81,11 +85,12 @@
             this.panel_Menu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel_Menu.Location = new System.Drawing.Point(3, 3);
             this.panel_Menu.Name = "panel_Menu";
-            this.panel_Menu.Size = new System.Drawing.Size(234, 738);
+            this.panel_Menu.Size = new System.Drawing.Size(234, 718);
             this.panel_Menu.TabIndex = 1;
             // 
             // panel_Links
             // 
+            this.panel_Links.Controls.Add(this.pbNewBookings);
             this.panel_Links.Controls.Add(this.button_Publishers);
             this.panel_Links.Controls.Add(this.btnReservations);
             this.panel_Links.Controls.Add(this.btnBookings);
@@ -150,7 +155,7 @@
             this.btnBookings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBookings.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnBookings.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnBookings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBookings.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnBookings.Location = new System.Drawing.Point(0, 192);
             this.btnBookings.Name = "btnBookings";
             this.btnBookings.Padding = new System.Windows.Forms.Padding(21, 0, 0, 0);
@@ -161,6 +166,27 @@
             this.btnBookings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnBookings.UseVisualStyleBackColor = false;
             this.btnBookings.Click += new System.EventHandler(this.btnBookings_Click);
+            // 
+            // btnBorrowings
+            // 
+            this.btnBorrowings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(39)))));
+            this.btnBorrowings.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBorrowings.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnBorrowings.FlatAppearance.BorderSize = 0;
+            this.btnBorrowings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBorrowings.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnBorrowings.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnBorrowings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBorrowings.Location = new System.Drawing.Point(0, 144);
+            this.btnBorrowings.Name = "btnBorrowings";
+            this.btnBorrowings.Padding = new System.Windows.Forms.Padding(21, 0, 0, 0);
+            this.btnBorrowings.Size = new System.Drawing.Size(234, 48);
+            this.btnBorrowings.TabIndex = 8;
+            this.btnBorrowings.Text = "  Kivett könyvek";
+            this.btnBorrowings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBorrowings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnBorrowings.UseVisualStyleBackColor = false;
+            this.btnBorrowings.Click += new System.EventHandler(this.btnBorrowings_Click);
             // 
             // button_Users
             // 
@@ -232,7 +258,7 @@
             this.panel_Theme.Controls.Add(this.label1);
             this.panel_Theme.Controls.Add(this.toggleButton_ThemeChanger);
             this.panel_Theme.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel_Theme.Location = new System.Drawing.Point(0, 652);
+            this.panel_Theme.Location = new System.Drawing.Point(0, 632);
             this.panel_Theme.Name = "panel_Theme";
             this.panel_Theme.Size = new System.Drawing.Size(234, 86);
             this.panel_Theme.TabIndex = 7;
@@ -246,21 +272,6 @@
             this.label1.Size = new System.Drawing.Size(46, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "TÉMA";
-            // 
-            // toggleButton_ThemeChanger
-            // 
-            this.toggleButton_ThemeChanger.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.toggleButton_ThemeChanger.Location = new System.Drawing.Point(90, 44);
-            this.toggleButton_ThemeChanger.Name = "toggleButton_ThemeChanger";
-            this.toggleButton_ThemeChanger.OffBackColor = System.Drawing.Color.Gray;
-            this.toggleButton_ThemeChanger.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.toggleButton_ThemeChanger.OnBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(205)))), ((int)(((byte)(198)))));
-            this.toggleButton_ThemeChanger.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.toggleButton_ThemeChanger.Size = new System.Drawing.Size(45, 22);
-            this.toggleButton_ThemeChanger.TabIndex = 0;
-            this.toggleButton_ThemeChanger.Text = "toggleButton1";
-            this.toggleButton_ThemeChanger.UseVisualStyleBackColor = true;
-            this.toggleButton_ThemeChanger.CheckedChanged += new System.EventHandler(this.toggleButton_ThemeChanger_CheckedChanged);
             // 
             // panel_User
             // 
@@ -300,8 +311,35 @@
             this.panel_Container.Location = new System.Drawing.Point(240, 0);
             this.panel_Container.Margin = new System.Windows.Forms.Padding(0);
             this.panel_Container.Name = "panel_Container";
-            this.panel_Container.Size = new System.Drawing.Size(746, 744);
+            this.panel_Container.Size = new System.Drawing.Size(746, 724);
             this.panel_Container.TabIndex = 2;
+            // 
+            // pbNewBookings
+            // 
+            this.pbNewBookings.BackColor = System.Drawing.Color.Transparent;
+            this.pbNewBookings.Image = ((System.Drawing.Image)(resources.GetObject("pbNewBookings.Image")));
+            this.pbNewBookings.Location = new System.Drawing.Point(161, 198);
+            this.pbNewBookings.Name = "pbNewBookings";
+            this.pbNewBookings.Size = new System.Drawing.Size(40, 36);
+            this.pbNewBookings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbNewBookings.TabIndex = 0;
+            this.pbNewBookings.TabStop = false;
+            this.pbNewBookings.Visible = false;
+            // 
+            // toggleButton_ThemeChanger
+            // 
+            this.toggleButton_ThemeChanger.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.toggleButton_ThemeChanger.Location = new System.Drawing.Point(90, 44);
+            this.toggleButton_ThemeChanger.Name = "toggleButton_ThemeChanger";
+            this.toggleButton_ThemeChanger.OffBackColor = System.Drawing.Color.Gray;
+            this.toggleButton_ThemeChanger.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.toggleButton_ThemeChanger.OnBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(205)))), ((int)(((byte)(198)))));
+            this.toggleButton_ThemeChanger.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.toggleButton_ThemeChanger.Size = new System.Drawing.Size(45, 22);
+            this.toggleButton_ThemeChanger.TabIndex = 0;
+            this.toggleButton_ThemeChanger.Text = "toggleButton1";
+            this.toggleButton_ThemeChanger.UseVisualStyleBackColor = true;
+            this.toggleButton_ThemeChanger.CheckedChanged += new System.EventHandler(this.toggleButton_ThemeChanger_CheckedChanged);
             // 
             // roundedCornerPanel_PageContainer
             // 
@@ -313,29 +351,8 @@
             this.roundedCornerPanel_PageContainer.Location = new System.Drawing.Point(0, 0);
             this.roundedCornerPanel_PageContainer.Margin = new System.Windows.Forms.Padding(0);
             this.roundedCornerPanel_PageContainer.Name = "roundedCornerPanel_PageContainer";
-            this.roundedCornerPanel_PageContainer.Size = new System.Drawing.Size(746, 744);
+            this.roundedCornerPanel_PageContainer.Size = new System.Drawing.Size(746, 724);
             this.roundedCornerPanel_PageContainer.TabIndex = 0;
-            // 
-            // btnBorrowings
-            // 
-            this.btnBorrowings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(39)))));
-            this.btnBorrowings.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBorrowings.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnBorrowings.FlatAppearance.BorderSize = 0;
-            this.btnBorrowings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBorrowings.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnBorrowings.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnBorrowings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBorrowings.Location = new System.Drawing.Point(0, 144);
-            this.btnBorrowings.Name = "btnBorrowings";
-            this.btnBorrowings.Padding = new System.Windows.Forms.Padding(21, 0, 0, 0);
-            this.btnBorrowings.Size = new System.Drawing.Size(234, 48);
-            this.btnBorrowings.TabIndex = 8;
-            this.btnBorrowings.Text = "  Kivett könyvek";
-            this.btnBorrowings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBorrowings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnBorrowings.UseVisualStyleBackColor = false;
-            this.btnBorrowings.Click += new System.EventHandler(this.btnBorrowings_Click);
             // 
             // MainForm
             // 
@@ -360,6 +377,7 @@
             this.panel_User.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_UserPic)).EndInit();
             this.panel_Container.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbNewBookings)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -383,6 +401,7 @@
 		private System.Windows.Forms.Panel panel_Links;
 		private System.Windows.Forms.Button button_Publishers;
         private System.Windows.Forms.Button btnBorrowings;
+        public System.Windows.Forms.PictureBox pbNewBookings;
     }
 }
 

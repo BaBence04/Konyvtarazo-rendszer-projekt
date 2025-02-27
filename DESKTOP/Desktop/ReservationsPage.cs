@@ -108,5 +108,11 @@ namespace Desktop
                 updateReservations("");
             }
         }
+
+        private void AddReservation_Click(object sender, EventArgs e)
+        {
+            BookLendingPage page = new BookLendingPage("-1", "reservation");
+            LoginForm.main.OpenChildForm(page);
+        }
     }
 }

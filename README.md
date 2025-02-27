@@ -9,12 +9,14 @@ Mesterremek projekt, könyvtárazó rendszer
         -minden ami a UsersPage-el kapcsolatos (alias onnan nyílik meg) szabadon style-olható mert minden készen van nem fogok már hozzányúlni nagy eséllel
         -message box-okat kicserélni az újra
         -az employeeDetailed-en legyen a jelszó változtatásnál is csillag a textbox-okban
+        -AddEmployee oldalon a vissza gomb nem működött és hibát is adott. Megcsináltam hogy ne dobjon hibát, de azt nem sikerült megoldani, hogy az X megjelenjen
+        -Főmenünél a kivett könyvek menüpontra kattintva nem jelenik meg a zöld csík oldalt
   
 
     BACKEND:
         -a popup form-ok a megnyitott form közepére nyíljanak meg
         -az asztali program indításakor fusson le a lejárt foglalás törlő procedure, és küldje ki az értesítéseket (- Partly done)
-        -nézni kell, pl 5 percenként, hogy jött-e új foglalás(az előzőket fájlban tároljuk pl), és olyankor kell egy popup, hogy új foglalás jött, hogy félre tudja majd tenni a polcra a könyvtáros
+        -nézni kell, pl 5 percenként, hogy jött-e új foglalás(az előzőket fájlban tároljuk pl), és olyankor kell egy popup, hogy új foglalás jött, hogy félre tudja majd tenni a polcra a könyvtáros (DONE)
         -Kiírni hogy adott típusú könyvből hány darab van (not necessary)
         -jelenleg sehogy sem tudunk előjegyeztetni az asztalin belül
 
@@ -41,7 +43,8 @@ SQL:
 
 
 ADDITIONAL STUFF TO DO:
--api endpoint dokkumentáció, mert kezd nehéz lenni követni hogy mi történik
+-api endpoint dokkumentáció, mert kezd nehéz lenni követni hogy mi történik 
+-hozzá lett adva egy handled oszlop a booking táblához majd a dokumentációt is frissíteni kell
 
 KÉRDÉSEK A KÖNYVTÁROSOKHOZ:
 -ha valaki lefoglal egy könyvet, de valaki nézegeti azt a könyvet a könyvtárban, akkor olyankor mivan(feltételezzük, hogy nincs több az adott könyből a könyvtárban)?

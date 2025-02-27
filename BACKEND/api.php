@@ -184,6 +184,8 @@
             echo json_encode(GetBooks($_POST["search"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "getReservations" && isset($_POST["search"]) && count($_POST) == 2){
             echo json_encode(GetReservations($_POST["search"]));
+        }else if(isset($_POST["type"]) && $_POST["type"] == "getReservables" && isset($_POST["search"]) && count($_POST) == 2){
+            echo json_encode(GetReservables($_POST["search"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "getBookings" && isset($_POST["search"]) && count($_POST) == 2){
             echo json_encode(GetBookings($_POST["search"]));
         }else if(isset($_POST["type"]) && $_POST["type"] == "getBorrowings" && isset($_POST["search"], $_POST["returned"]) && count($_POST) == 3){
@@ -268,6 +270,10 @@
             echo json_encode(GetLangs());
         }else if(isset($_POST["type"]) && $_POST["type"] == "addToInventory" && isset($_POST["ISBN_id"]) && count($_POST) == 2){
             echo json_encode(AddToInventory($_POST["ISBN_id"]));
+        }else if(isset($_POST["type"]) && $_POST["type"] == "checkForBookings" && count($_POST) == 1){
+            echo json_encode(CheckForBookings());
+        }else if(isset($_POST["type"]) && $_POST["type"] == "changeHandled" && isset($_POST["id"]) && count($_POST) == 2){
+            ChangeHandled($_POST["id"]);
         }else{
             throw new Exception("Nincs ilyen");
         }

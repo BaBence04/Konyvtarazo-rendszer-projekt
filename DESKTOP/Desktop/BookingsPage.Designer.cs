@@ -28,73 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.cdgvBookings = new Desktop.CustomDataGridView();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSearch = new Desktop.CustomButton();
             this.ctbSearch = new Desktop.CustomTextbox();
-            ((System.ComponentModel.ISupportInitialize)(this.cdgvBookings)).BeginInit();
+            this.cdgvBookings = new Desktop.CustomDataGridView();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cdgvBookings)).BeginInit();
             this.SuspendLayout();
-            // 
-            // cdgvBookings
-            // 
-            this.cdgvBookings.AlternatingRowBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(88)))));
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(88)))));
-            this.cdgvBookings.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
-            this.cdgvBookings.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.cdgvBookings.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.cdgvBookings.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.cdgvBookings.BorderThickness = 2;
-            this.cdgvBookings.CellBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.cdgvBookings.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.cdgvBookings.CellForeColor = System.Drawing.Color.WhiteSmoke;
-            this.cdgvBookings.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(55)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.cdgvBookings.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
-            this.cdgvBookings.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.cdgvBookings.CornerRadius = 8;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.cdgvBookings.DefaultCellStyle = dataGridViewCellStyle11;
-            this.cdgvBookings.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.cdgvBookings.EnableBorder = false;
-            this.cdgvBookings.EnableHeadersVisualStyles = false;
-            this.cdgvBookings.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.cdgvBookings.HeaderBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(55)))));
-            this.cdgvBookings.HeaderForeColor = System.Drawing.Color.WhiteSmoke;
-            this.cdgvBookings.HeaderGradientColor = System.Drawing.Color.SlateBlue;
-            this.cdgvBookings.HoverRowColor = System.Drawing.Color.LightSteelBlue;
-            this.cdgvBookings.Location = new System.Drawing.Point(0, 123);
-            this.cdgvBookings.Name = "cdgvBookings";
-            this.cdgvBookings.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(55)))));
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.cdgvBookings.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
-            this.cdgvBookings.SelectedRowColor = System.Drawing.Color.CornflowerBlue;
-            this.cdgvBookings.Size = new System.Drawing.Size(699, 327);
-            this.cdgvBookings.TabIndex = 1;
-            this.cdgvBookings.UseHeaderGradient = false;
-            this.cdgvBookings.UseRoundedCorners = false;
             // 
             // panel1
             // 
@@ -150,6 +94,65 @@
             this.ctbSearch.Texts = "Keresés";
             this.ctbSearch.UnderlinedStyle = false;
             // 
+            // cdgvBookings
+            // 
+            this.cdgvBookings.AllowUserToAddRows = false;
+            this.cdgvBookings.AllowUserToDeleteRows = false;
+            this.cdgvBookings.AlternatingRowBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(88)))));
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(88)))));
+            this.cdgvBookings.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.cdgvBookings.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.cdgvBookings.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.cdgvBookings.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.cdgvBookings.BorderThickness = 2;
+            this.cdgvBookings.CellBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.cdgvBookings.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.cdgvBookings.CellForeColor = System.Drawing.Color.WhiteSmoke;
+            this.cdgvBookings.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(55)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.cdgvBookings.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.cdgvBookings.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.cdgvBookings.CornerRadius = 8;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.cdgvBookings.DefaultCellStyle = dataGridViewCellStyle3;
+            this.cdgvBookings.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.cdgvBookings.EnableBorder = false;
+            this.cdgvBookings.EnableHeadersVisualStyles = false;
+            this.cdgvBookings.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.cdgvBookings.HeaderBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(55)))));
+            this.cdgvBookings.HeaderForeColor = System.Drawing.Color.WhiteSmoke;
+            this.cdgvBookings.HeaderGradientColor = System.Drawing.Color.SlateBlue;
+            this.cdgvBookings.HoverRowColor = System.Drawing.Color.LightSteelBlue;
+            this.cdgvBookings.Location = new System.Drawing.Point(0, 123);
+            this.cdgvBookings.Name = "cdgvBookings";
+            this.cdgvBookings.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(55)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.cdgvBookings.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.cdgvBookings.SelectedRowColor = System.Drawing.Color.CornflowerBlue;
+            this.cdgvBookings.Size = new System.Drawing.Size(699, 327);
+            this.cdgvBookings.TabIndex = 1;
+            this.cdgvBookings.UseHeaderGradient = false;
+            this.cdgvBookings.UseRoundedCorners = false;
+            this.cdgvBookings.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cdgvBookings_CellClick);
+            // 
             // BookingsPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -160,8 +163,8 @@
             this.Name = "BookingsPage";
             this.Text = "BookingsPage";
             this.Load += new System.EventHandler(this.BookingsPage_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.cdgvBookings)).EndInit();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cdgvBookings)).EndInit();
             this.ResumeLayout(false);
 
         }

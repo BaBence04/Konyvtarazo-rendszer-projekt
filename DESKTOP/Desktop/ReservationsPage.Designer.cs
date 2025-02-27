@@ -36,6 +36,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSearch = new Desktop.CustomButton();
             this.ctbSearch = new Desktop.CustomTextbox();
+            this.AddReservation = new Desktop.CustomButton();
             ((System.ComponentModel.ISupportInitialize)(this.cdgwReservations)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -99,6 +100,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.panel1.Controls.Add(this.AddReservation);
             this.panel1.Controls.Add(this.btnSearch);
             this.panel1.Controls.Add(this.ctbSearch);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -150,6 +152,25 @@
             this.ctbSearch.Texts = "Keresés";
             this.ctbSearch.UnderlinedStyle = false;
             // 
+            // AddReservation
+            // 
+            this.AddReservation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddReservation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(88)))));
+            this.AddReservation.BorderColor = System.Drawing.Color.White;
+            this.AddReservation.BorderRadius = 40;
+            this.AddReservation.BorderSize = 0;
+            this.AddReservation.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AddReservation.FlatAppearance.BorderSize = 0;
+            this.AddReservation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddReservation.ForeColor = System.Drawing.Color.White;
+            this.AddReservation.Image = global::Desktop.Properties.Resources.add_line_white;
+            this.AddReservation.Location = new System.Drawing.Point(685, 3);
+            this.AddReservation.Name = "AddReservation";
+            this.AddReservation.Size = new System.Drawing.Size(45, 45);
+            this.AddReservation.TabIndex = 3;
+            this.AddReservation.UseVisualStyleBackColor = false;
+            this.AddReservation.Click += new System.EventHandler(this.AddReservation_Click);
+            // 
             // ReservationsPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -172,5 +193,6 @@
         private System.Windows.Forms.Panel panel1;
         private CustomButton btnSearch;
         private CustomTextbox ctbSearch;
+        private CustomButton AddReservation;
     }
 }

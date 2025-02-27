@@ -39,7 +39,6 @@
                     <?php
                         //returns "reservation" | "booking"
                         $availability_data = CheckBookAvailability(GetIsbnIdByIsbn($book_data["ISBN"]),$_SESSION["user_id"]);
-                        
                         //EZEKRE A GOMBOKRA KELL EGY DISABLED STÍLUS
                         if($availability_data["available"] == "true"){
                             $buttonHtml = '<button class="reserve-button" id="reserve-button" onclick="reserveOrBook();"';

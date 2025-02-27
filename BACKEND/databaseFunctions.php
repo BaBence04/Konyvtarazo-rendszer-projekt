@@ -796,6 +796,46 @@
         $conn->close();
         return $results->fetch_all(MYSQLI_ASSOC);
     }
+
+    function GetReservables($searchTerm){
+        require "databaseConnect.php";
+
+        $query = "CALL getReservables(?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("s", $searchTerm); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        $conn->close();
+        return $results->fetch_all(MYSQLI_ASSOC);
+    }
+
+    function CheckForBookings(){
+        require "databaseConnect.php";
+
+        $query = "CALL checkForBookings();";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        //$stmt->bind_param("s", $searchTerm); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        $conn->close();
+        return $results->fetch_all(MYSQLI_ASSOC);
+    }
+
+    function ChangeHandled($id){
+        require "databaseConnect.php";
+
+        $query = "CALL changeHandled(?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("i", $id); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        $conn->close();
+        //return $results->fetch_all(MYSQLI_ASSOC);
+    }
+
     /**
      * Return true or false depending if the end date of borrowing the given book is extendable.
      *

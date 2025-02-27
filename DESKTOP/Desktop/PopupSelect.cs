@@ -61,7 +61,11 @@ namespace Desktop
                 case "getLangs":
                     searchMode= mode;
                     break ;
-                
+                case "getReservables":
+                    searchMode = "getReservables";
+                    break ;
+
+
             }
             InitializeComponent();
         }
@@ -100,7 +104,7 @@ namespace Desktop
                 {
                     foreach (KeyValuePair<string, string> item in response[0])
                     {
-                        if (item.Key != "user_id" && item.Key != "book_id" && item.Key != "id" && item.Key != "publisher_id" && item.Key != "lang_id" && item.Key != "author_id" && item.Key != "genre_id" && item.Key != "available")
+                        if (item.Key != "user_id" && item.Key != "book_id" && item.Key != "id" && item.Key != "ISBN_id" && item.Key != "publisher_id" && item.Key != "lang_id" && item.Key != "author_id" && item.Key != "genre_id" && item.Key != "available")
                         {
                             col = new DataColumn();
                             col.DataType = typeof(string);
@@ -177,6 +181,10 @@ namespace Desktop
                     string key = startMode == "getAuthors" ? "author" : "genre";
                     response = response.Where(x => !optionalId.Split(';').Contains(x[key])).ToList();
                 }
+                if (startMode == "getReservables")
+                {
+                    response = response.Where(x => x["state"] == "reservation").ToList();
+                }
                 //make rows
                 for (int i = 0; i < response.Count(); i++)
                 {
@@ -186,7 +194,7 @@ namespace Desktop
                         foreach (KeyValuePair<string, string> item in response[i])
                         {
 
-                            if (item.Key == "user_id" || item.Key == "book_id" || item.Key == "id" || item.Key == "publisher_id" || item.Key == "lang_id" || item.Key == "author_id" || item.Key == "genre_id")
+                            if (item.Key == "user_id" || item.Key == "book_id" || item.Key == "id" || item.Key == "ISBN_id" || item.Key == "publisher_id" || item.Key == "lang_id" || item.Key == "author_id" || item.Key == "genre_id")
                             {
                                 ids.Add(item.Value);
                             }
@@ -288,7 +296,7 @@ namespace Desktop
         }
         private async void cdgwSelect_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == cdgwSelect.Columns["Választás"].Index)
+            if (e.ColumnIndex == cdgwSelect.Columns["Választás"].Index && e.RowIndex != -1)
             {
                 if (startMode == "bookOrReserve")
                 {
