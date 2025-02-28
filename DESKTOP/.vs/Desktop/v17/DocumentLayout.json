@@ -3,39 +3,51 @@
   "WorkspaceRootPath": "C:\\xampp\\htdocs\\novak_marton\\Konyvtarazo-rendszer-projekt\\DESKTOP\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|c:\\xampp\\htdocs\\novak_marton\\konyvtarazo-rendszer-projekt\\desktop\\desktop\\employeedetailedpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|solutionrelative:desktop\\employeedetailedpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|c:\\xampp\\htdocs\\novak_marton\\konyvtarazo-rendszer-projekt\\desktop\\desktop\\employeedetailedpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|solutionrelative:desktop\\employeedetailedpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|c:\\xampp\\htdocs\\novak_marton\\konyvtarazo-rendszer-projekt\\desktop\\desktop\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|solutionrelative:desktop\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|c:\\xampp\\htdocs\\novak_marton\\konyvtarazo-rendszer-projekt\\desktop\\desktop\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|solutionrelative:desktop\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|c:\\xampp\\htdocs\\novak_marton\\konyvtarazo-rendszer-projekt\\desktop\\desktop\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|solutionrelative:desktop\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|c:\\xampp\\htdocs\\novak_marton\\konyvtarazo-rendszer-projekt\\desktop\\desktop\\booklendingpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|solutionrelative:desktop\\booklendingpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|c:\\xampp\\htdocs\\novak_marton\\konyvtarazo-rendszer-projekt\\desktop\\desktop\\customdatetimepicker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|solutionrelative:desktop\\customdatetimepicker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|c:\\xampp\\htdocs\\novak_marton\\konyvtarazo-rendszer-projekt\\desktop\\desktop\\userspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|C:\\xampp\\htdocs\\novak_marton\\Konyvtarazo-rendszer-projekt\\DESKTOP\\desktop\\userspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|solutionrelative:desktop\\userspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|c:\\xampp\\htdocs\\novak_marton\\konyvtarazo-rendszer-projekt\\desktop\\desktop\\reservationspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|C:\\xampp\\htdocs\\novak_marton\\Konyvtarazo-rendszer-projekt\\DESKTOP\\desktop\\reservationspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|solutionrelative:desktop\\reservationspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|C:\\xampp\\htdocs\\novak_marton\\Konyvtarazo-rendszer-projekt\\DESKTOP\\desktop\\booklendingpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|solutionrelative:desktop\\booklendingpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|C:\\xampp\\htdocs\\novak_marton\\Konyvtarazo-rendszer-projekt\\DESKTOP\\desktop\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|solutionrelative:desktop\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|C:\\xampp\\htdocs\\novak_marton\\Konyvtarazo-rendszer-projekt\\DESKTOP\\desktop\\customdatetimepicker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|solutionrelative:desktop\\customdatetimepicker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|C:\\xampp\\htdocs\\novak_marton\\Konyvtarazo-rendszer-projekt\\DESKTOP\\desktop\\bookingspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|solutionrelative:desktop\\bookingspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|c:\\xampp\\htdocs\\novak_marton\\konyvtarazo-rendszer-projekt\\desktop\\desktop\\bookdetailedpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|C:\\xampp\\htdocs\\novak_marton\\Konyvtarazo-rendszer-projekt\\DESKTOP\\desktop\\bookdetailedpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|solutionrelative:desktop\\bookdetailedpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|c:\\xampp\\htdocs\\novak_marton\\konyvtarazo-rendszer-projekt\\desktop\\desktop\\allbookspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|C:\\xampp\\htdocs\\novak_marton\\Konyvtarazo-rendszer-projekt\\DESKTOP\\desktop\\allbookspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|solutionrelative:desktop\\allbookspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -46,24 +58,61 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LoginForm.cs [Design]",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\novak_marton\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\LoginForm.cs",
+              "RelativeDocumentMoniker": "Desktop\\LoginForm.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\novak_marton\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\LoginForm.cs [Design]",
+              "RelativeToolTip": "Desktop\\LoginForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-28T11:43:32.633Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EmployeeDetailedPage.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\novak_marton\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\EmployeeDetailedPage.cs",
+              "RelativeDocumentMoniker": "Desktop\\EmployeeDetailedPage.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\novak_marton\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\EmployeeDetailedPage.cs",
+              "RelativeToolTip": "Desktop\\EmployeeDetailedPage.cs",
+              "ViewState": "AgIAAIkAAAAAAAAAAAArwJAAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-28T11:35:04.366Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "EmployeeDetailedPage.cs [Design]",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\novak_marton\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\EmployeeDetailedPage.cs",
+              "RelativeDocumentMoniker": "Desktop\\EmployeeDetailedPage.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\novak_marton\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\EmployeeDetailedPage.cs [Design]",
+              "RelativeToolTip": "Desktop\\EmployeeDetailedPage.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-28T11:34:42.668Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "MainForm.cs",
               "DocumentMoniker": "C:\\xampp\\htdocs\\novak_marton\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\MainForm.cs",
               "RelativeDocumentMoniker": "Desktop\\MainForm.cs",
               "ToolTip": "C:\\xampp\\htdocs\\novak_marton\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\MainForm.cs",
               "RelativeToolTip": "Desktop\\MainForm.cs",
-              "ViewState": "AgIAAFMAAAAAAAAAAAAAAF0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAFMAAAAAAAAAAAAAAFYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-28T11:29:14.258Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "BookLendingPage.cs [Design]",
               "DocumentMoniker": "C:\\xampp\\htdocs\\novak_marton\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\BookLendingPage.cs",
               "RelativeDocumentMoniker": "Desktop\\BookLendingPage.cs",
@@ -99,31 +148,29 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "AllBooksPage.cs [Design]",
               "DocumentMoniker": "C:\\xampp\\htdocs\\novak_marton\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\AllBooksPage.cs",
               "RelativeDocumentMoniker": "Desktop\\AllBooksPage.cs",
               "ToolTip": "C:\\xampp\\htdocs\\novak_marton\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\AllBooksPage.cs [Design]",
               "RelativeToolTip": "Desktop\\AllBooksPage.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-28T09:58:09.384Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-02-28T09:58:09.384Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
               "Title": "MainForm.cs [Design]",
               "DocumentMoniker": "C:\\xampp\\htdocs\\novak_marton\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\MainForm.cs",
               "RelativeDocumentMoniker": "Desktop\\MainForm.cs",
               "ToolTip": "C:\\xampp\\htdocs\\novak_marton\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\MainForm.cs [Design]",
               "RelativeToolTip": "Desktop\\MainForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T10:57:06.975Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-02-27T10:57:06.975Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
               "Title": "CustomDateTimePicker.cs",
               "DocumentMoniker": "C:\\xampp\\htdocs\\novak_marton\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\CustomDateTimePicker.cs",
               "RelativeDocumentMoniker": "Desktop\\CustomDateTimePicker.cs",
@@ -131,32 +178,29 @@
               "RelativeToolTip": "Desktop\\CustomDateTimePicker.cs",
               "ViewState": "AgIAAGAAAAAAAAAAAAAzwMAAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-28T10:16:40.228Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-28T10:16:40.228Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "BookDetailedPage.cs [Design]",
               "DocumentMoniker": "C:\\xampp\\htdocs\\novak_marton\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\BookDetailedPage.cs",
               "RelativeDocumentMoniker": "Desktop\\BookDetailedPage.cs",
               "ToolTip": "C:\\xampp\\htdocs\\novak_marton\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\BookDetailedPage.cs [Design]",
               "RelativeToolTip": "Desktop\\BookDetailedPage.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-28T09:57:45.548Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-02-28T09:57:45.548Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "BookingsPage.cs [Design]",
               "DocumentMoniker": "C:\\xampp\\htdocs\\novak_marton\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\BookingsPage.cs",
               "RelativeDocumentMoniker": "Desktop\\BookingsPage.cs",
               "ToolTip": "C:\\xampp\\htdocs\\novak_marton\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\BookingsPage.cs [Design]",
               "RelativeToolTip": "Desktop\\BookingsPage.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T11:42:52.347Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-02-27T11:42:52.347Z"
             }
           ]
         }

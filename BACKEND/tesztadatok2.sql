@@ -138,7 +138,7 @@ INSERT INTO users (surname, first_name, username, birth_date, membership_end_dat
 INSERT INTO inventory (ISBN_id, book_id,available) VALUES
 (1,1,TRUE),(2,2,TRUE),(3,3,TRUE),(4,4,TRUE),(5,5,TRUE),(6,6,TRUE),(7,7,TRUE),(8,8,TRUE),(9,9,TRUE),(10,10,TRUE),(11,11,TRUE),(12,12,TRUE),(13,13,TRUE),(14,14,TRUE),(15,15,TRUE),(16,16,TRUE),(17,17,TRUE),(18,18,TRUE),(19,19,TRUE),(20,20,TRUE),(21,21,TRUE),(22,22,TRUE),(23,23,TRUE),(24,24,TRUE),(25,25,TRUE);
 
-INSERT INTO employees (empl_name, empl_uname, password, active) VALUES
+INSERT INTO employees (empl_name, empl_uname, password, active, admin) VALUES
 ('Bátyi Bence', 'AABBC', '*2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19', 1, 1),
 ('Nagy Laszlo', 'BBCCD', '*2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19', 1, 1);
 
