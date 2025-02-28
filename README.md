@@ -8,9 +8,7 @@ Mesterremek projekt, könyvtárazó rendszer
         -automatikus törlős dologhoz valami frontend, popup window szerűség
         -minden ami a UsersPage-el kapcsolatos (alias onnan nyílik meg) szabadon style-olható mert minden készen van nem fogok már hozzányúlni nagy eséllel
         -message box-okat kicserélni az újra
-        -az employeeDetailed-en legyen a jelszó változtatásnál is csillag a textbox-okban
         -AddEmployee oldalon a vissza gomb nem működött és hibát is adott. Megcsináltam hogy ne dobjon hibát, de azt nem sikerült megoldani, hogy az X megjelenjen
-        -Főmenünél a kivett könyvek menüpontra kattintva nem jelenik meg a zöld csík oldalt
   
 
     BACKEND:
