@@ -1,5 +1,5 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> -->
 <main>
     <div class="book-details">
         <div class="book-image">
@@ -66,7 +66,6 @@
 
     <div class="similar-books-section">
         <h2>Ezek tetszhetnek még:</h2>
-        <div class="slider-container swiper">
             <div class="similar-books-slider swiper-wrapper">
                 
                 <?php
@@ -83,12 +82,11 @@
                 }
                 ?>
             </div>
-            <div class="swiper-pagination"></div>
+            <!-- <div class="swiper-pagination"></div> -->
             <div class="swiper-button-prev"></div>
             <div class="swiper-button-next"></div>
 
             
-        </div>
     </div>          
 </main>
 
@@ -102,7 +100,7 @@
                 },
                 success: function(response)  {
                         //Ezt is szép fancyre meg kell csinálni
-                    if(response != '<?=$availability_data["status"]?>'){
+                    if(response != '<?=isset($_SESSION["user_id"])? $availability_data["status"]:""?>'){
                         alert("A könyv állapota menetközben megváltozott, úgyhogy "+((response=="reservation")?"elő lett jegyezve":"le lett foglalva"));
                         
                     }else if(response == "reservation"){
@@ -115,6 +113,21 @@
                     location.reload();
                 }
             }); 
+        }
+        //if direction == 1 than it shows the next, if it is -1 than it shows the previous item
+        function ShowNextOrPreviousItem(direction){
+            let sliderElement = document.querySelector(".similar-books-slider");
+            let items = document.getElementsByClassName("book_item");
+            if(direction == 1 || direction == -1){
+                if(direction == -1 && sliderElement.scrollLeft == 0){
+                    direction = (items.length-1) * items[0].scrollWidth;
+
+                }else if(direction == 1 &&  sliderElement.scrollLeft + sliderElement.clientWidth >= sliderElement.scrollWidth){
+                    direction = -sliderElement.scrollWidth
+                }
+
+                sliderElement.scrollBy(direction, 0);
+            }
         }
 
         function addOrRemoveFromShelf(element){
@@ -139,54 +152,54 @@
 
         }
 
-        document.addEventListener("DOMContentLoaded", function () {
-            const swiper = new Swiper('.slider-container', {
-                direction: 'horizontal',
-                loop: true,
-                slidesPerView: 5,
-                loopAdditionalSlides: 5,
-                spaceBetween: 20,
-                watchSlidesProgress: true,
+        // document.addEventListener("DOMContentLoaded", function () {
+        //     const swiper = new Swiper('.slider-container', {
+        //         direction: 'horizontal',
+        //         loop: true,
+        //         slidesPerView: 5,
+        //         loopAdditionalSlides: 5,
+        //         spaceBetween: 20,
+        //         watchSlidesProgress: true,
 
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
+        //         pagination: {
+        //             el: '.swiper-pagination',
+        //             clickable: true,
+        //         },
 
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
+        //         navigation: {
+        //             nextEl: '.swiper-button-next',
+        //             prevEl: '.swiper-button-prev',
+        //         },
 
-                scrollbar: {
-                    el: '.swiper-scrollbar',
-                },
+        //         scrollbar: {
+        //             el: '.swiper-scrollbar',
+        //         },
 
-                on: {
-                    slideChange: function () {
-                        console.log("Current index:", this.activeIndex);
-                    }
-                },
+        //         on: {
+        //             slideChange: function () {
+        //                 console.log("Current index:", this.activeIndex);
+        //             }
+        //         },
 
-                breakpoints: {
-                    0: {
-                        slidesPerView: 1
-                    },
-                    768: {
-                        slidesPerView: 3
-                    },
-                    1222: {
-                        slidesPerView: 5
-                    },
-                }
-            });
+        //         breakpoints: {
+        //             0: {
+        //                 slidesPerView: 1
+        //             },
+        //             768: {
+        //                 slidesPerView: 3
+        //             },
+        //             1222: {
+        //                 slidesPerView: 5
+        //             },
+        //         }
+        //     });
 
-            window.addEventListener("resize", function () {
-            swiper.update();
-        });
-        });
+        //     window.addEventListener("resize", function () {
+        //     swiper.update();
+        // });
+        // });
 
-        console.log("Total slides: ", document.querySelectorAll('.swiper-slide').length);
+        // console.log("Total slides: ", document.querySelectorAll('.swiper-slide').length);
 
 
 
