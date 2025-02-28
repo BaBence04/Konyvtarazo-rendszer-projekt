@@ -10,7 +10,6 @@ Mesterremek projekt, könyvtárazó rendszer
         -message box-okat kicserélni az újra
         -az employeeDetailed-en legyen a jelszó változtatásnál is csillag a textbox-okban
         -AddEmployee oldalon a vissza gomb nem működött és hibát is adott. Megcsináltam hogy ne dobjon hibát, de azt nem sikerült megoldani, hogy az X megjelenjen
-        -Főmenünél a kivett könyvek menüpontra kattintva nem jelenik meg a zöld csík oldalt
   
 
     BACKEND:

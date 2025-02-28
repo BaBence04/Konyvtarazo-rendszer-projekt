@@ -131,3 +131,6 @@ C:\xampp\htdocs\novak_marton\Konyvtarazo-rendszer-projekt\DESKTOP\Desktop\obj\De
 C:\xampp\htdocs\Konyvtarazo-rendszer-projekt\DESKTOP\Desktop\obj\Debug\Desktop.ReservationsPage.resources
 C:\xampp\htdocs\Konyvtarazo-rendszer-projekt\DESKTOP\Desktop\obj\Debug\Desktop.BookingsPage.resources
 C:\xampp\htdocs\Konyvtarazo-rendszer-projekt\DESKTOP\Desktop\obj\Debug\Desktop.BorrowingsPage.resources
+C:\xampp\htdocs\novak_marton\Konyvtarazo-rendszer-projekt\DESKTOP\Desktop\obj\Debug\Desktop.BookingsPage.resources
+C:\xampp\htdocs\novak_marton\Konyvtarazo-rendszer-projekt\DESKTOP\Desktop\obj\Debug\Desktop.BorrowingsPage.resources
+C:\xampp\htdocs\novak_marton\Konyvtarazo-rendszer-projekt\DESKTOP\Desktop\obj\Debug\Desktop.ReservationsPage.resources

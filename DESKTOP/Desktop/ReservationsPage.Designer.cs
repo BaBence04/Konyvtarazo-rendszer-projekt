@@ -34,11 +34,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cdgwReservations = new Desktop.CustomDataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.AddReservation = new Desktop.CustomButton();
             this.btnSearch = new Desktop.CustomButton();
             this.ctbSearch = new Desktop.CustomTextbox();
-            this.AddReservation = new Desktop.CustomButton();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.cdgwReservations)).BeginInit();
             this.panel1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // cdgwReservations
@@ -72,7 +74,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.cdgwReservations.DefaultCellStyle = dataGridViewCellStyle3;
-            this.cdgwReservations.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.cdgwReservations.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cdgwReservations.EnableBorder = false;
             this.cdgwReservations.EnableHeadersVisualStyles = false;
             this.cdgwReservations.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
@@ -80,7 +82,7 @@
             this.cdgwReservations.HeaderForeColor = System.Drawing.Color.WhiteSmoke;
             this.cdgwReservations.HeaderGradientColor = System.Drawing.Color.SlateBlue;
             this.cdgwReservations.HoverRowColor = System.Drawing.Color.LightSteelBlue;
-            this.cdgwReservations.Location = new System.Drawing.Point(0, 127);
+            this.cdgwReservations.Location = new System.Drawing.Point(3, 188);
             this.cdgwReservations.Name = "cdgwReservations";
             this.cdgwReservations.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -92,7 +94,7 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.cdgwReservations.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.cdgwReservations.SelectedRowColor = System.Drawing.Color.CornflowerBlue;
-            this.cdgwReservations.Size = new System.Drawing.Size(742, 323);
+            this.cdgwReservations.Size = new System.Drawing.Size(734, 368);
             this.cdgwReservations.TabIndex = 0;
             this.cdgwReservations.UseHeaderGradient = false;
             this.cdgwReservations.UseRoundedCorners = false;
@@ -104,10 +106,29 @@
             this.panel1.Controls.Add(this.btnSearch);
             this.panel1.Controls.Add(this.ctbSearch);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(742, 127);
+            this.panel1.Size = new System.Drawing.Size(734, 179);
             this.panel1.TabIndex = 4;
+            // 
+            // AddReservation
+            // 
+            this.AddReservation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddReservation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(88)))));
+            this.AddReservation.BorderColor = System.Drawing.Color.White;
+            this.AddReservation.BorderRadius = 40;
+            this.AddReservation.BorderSize = 0;
+            this.AddReservation.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AddReservation.FlatAppearance.BorderSize = 0;
+            this.AddReservation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddReservation.ForeColor = System.Drawing.Color.White;
+            this.AddReservation.Image = global::Desktop.Properties.Resources.add_line_white;
+            this.AddReservation.Location = new System.Drawing.Point(677, 3);
+            this.AddReservation.Name = "AddReservation";
+            this.AddReservation.Size = new System.Drawing.Size(45, 45);
+            this.AddReservation.TabIndex = 3;
+            this.AddReservation.UseVisualStyleBackColor = false;
+            this.AddReservation.Click += new System.EventHandler(this.AddReservation_Click);
             // 
             // btnSearch
             // 
@@ -120,7 +141,7 @@
             this.btnSearch.FlatAppearance.BorderSize = 0;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Location = new System.Drawing.Point(284, 83);
+            this.btnSearch.Location = new System.Drawing.Point(284, 135);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(120, 31);
             this.btnSearch.TabIndex = 2;
@@ -139,7 +160,7 @@
             this.ctbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ctbSearch.ForeColor = System.Drawing.Color.DarkGray;
             this.ctbSearch.IsReadOnly = false;
-            this.ctbSearch.Location = new System.Drawing.Point(10, 83);
+            this.ctbSearch.Location = new System.Drawing.Point(10, 135);
             this.ctbSearch.Margin = new System.Windows.Forms.Padding(4);
             this.ctbSearch.Multiline = false;
             this.ctbSearch.Name = "ctbSearch";
@@ -152,37 +173,35 @@
             this.ctbSearch.Texts = "Keresés";
             this.ctbSearch.UnderlinedStyle = false;
             // 
-            // AddReservation
+            // tableLayoutPanel1
             // 
-            this.AddReservation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddReservation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(88)))));
-            this.AddReservation.BorderColor = System.Drawing.Color.White;
-            this.AddReservation.BorderRadius = 40;
-            this.AddReservation.BorderSize = 0;
-            this.AddReservation.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.AddReservation.FlatAppearance.BorderSize = 0;
-            this.AddReservation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddReservation.ForeColor = System.Drawing.Color.White;
-            this.AddReservation.Image = global::Desktop.Properties.Resources.add_line_white;
-            this.AddReservation.Location = new System.Drawing.Point(685, 3);
-            this.AddReservation.Name = "AddReservation";
-            this.AddReservation.Size = new System.Drawing.Size(45, 45);
-            this.AddReservation.TabIndex = 3;
-            this.AddReservation.UseVisualStyleBackColor = false;
-            this.AddReservation.Click += new System.EventHandler(this.AddReservation_Click);
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.cdgwReservations, 0, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.27F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 66.73F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(740, 559);
+            this.tableLayoutPanel1.TabIndex = 5;
             // 
             // ReservationsPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(742, 450);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.cdgwReservations);
+            this.ClientSize = new System.Drawing.Size(740, 559);
+            this.Controls.Add(this.tableLayoutPanel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ReservationsPage";
             this.Text = "ReservationsPage";
             this.Load += new System.EventHandler(this.ReservationsPage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.cdgwReservations)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -194,5 +213,6 @@
         private CustomButton btnSearch;
         private CustomTextbox ctbSearch;
         private CustomButton AddReservation;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

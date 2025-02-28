@@ -36,8 +36,10 @@
             this.btnSearch = new Desktop.CustomButton();
             this.ctbSearch = new Desktop.CustomTextbox();
             this.cdgvBookings = new Desktop.CustomDataGridView();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cdgvBookings)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -46,9 +48,9 @@
             this.panel1.Controls.Add(this.btnSearch);
             this.panel1.Controls.Add(this.ctbSearch);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(699, 123);
+            this.panel1.Size = new System.Drawing.Size(693, 143);
             this.panel1.TabIndex = 5;
             // 
             // btnSearch
@@ -62,7 +64,7 @@
             this.btnSearch.FlatAppearance.BorderSize = 0;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Location = new System.Drawing.Point(284, 79);
+            this.btnSearch.Location = new System.Drawing.Point(284, 99);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(120, 31);
             this.btnSearch.TabIndex = 2;
@@ -81,7 +83,7 @@
             this.ctbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ctbSearch.ForeColor = System.Drawing.Color.DarkGray;
             this.ctbSearch.IsReadOnly = false;
-            this.ctbSearch.Location = new System.Drawing.Point(10, 79);
+            this.ctbSearch.Location = new System.Drawing.Point(10, 99);
             this.ctbSearch.Margin = new System.Windows.Forms.Padding(4);
             this.ctbSearch.Multiline = false;
             this.ctbSearch.Name = "ctbSearch";
@@ -127,7 +129,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.cdgvBookings.DefaultCellStyle = dataGridViewCellStyle3;
-            this.cdgvBookings.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.cdgvBookings.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cdgvBookings.EnableBorder = false;
             this.cdgvBookings.EnableHeadersVisualStyles = false;
             this.cdgvBookings.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
@@ -135,7 +137,7 @@
             this.cdgvBookings.HeaderForeColor = System.Drawing.Color.WhiteSmoke;
             this.cdgvBookings.HeaderGradientColor = System.Drawing.Color.SlateBlue;
             this.cdgvBookings.HoverRowColor = System.Drawing.Color.LightSteelBlue;
-            this.cdgvBookings.Location = new System.Drawing.Point(0, 123);
+            this.cdgvBookings.Location = new System.Drawing.Point(3, 152);
             this.cdgvBookings.Name = "cdgvBookings";
             this.cdgvBookings.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -147,24 +149,40 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.cdgvBookings.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.cdgvBookings.SelectedRowColor = System.Drawing.Color.CornflowerBlue;
-            this.cdgvBookings.Size = new System.Drawing.Size(699, 327);
+            this.cdgvBookings.Size = new System.Drawing.Size(693, 295);
             this.cdgvBookings.TabIndex = 1;
             this.cdgvBookings.UseHeaderGradient = false;
             this.cdgvBookings.UseRoundedCorners = false;
             this.cdgvBookings.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cdgvBookings_CellClick);
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.cdgvBookings, 0, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.27F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 66.73F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(699, 450);
+            this.tableLayoutPanel1.TabIndex = 3;
             // 
             // BookingsPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(699, 450);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.cdgvBookings);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "BookingsPage";
             this.Text = "BookingsPage";
             this.Load += new System.EventHandler(this.BookingsPage_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cdgvBookings)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -175,5 +193,6 @@
         private System.Windows.Forms.Panel panel1;
         private CustomButton btnSearch;
         private CustomTextbox ctbSearch;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }
