@@ -111,12 +111,14 @@ namespace Desktop
                             if (startMode == "getLangs" || startMode == "getAuthors" || startMode == "getCategories")
                             {
                                 col.ReadOnly = false;
+                                col.ColumnName = item.Key;
                             }
                             else
                             {
                                 col.ReadOnly = true;
+                                col.ColumnName = item.Key;
                             }
-                            col.ColumnName = item.Key;
+                            
                             col.Caption = item.Key;
                             dt.Columns.Add(col);
                         }
@@ -176,7 +178,7 @@ namespace Desktop
                 {
                     response = response.Where(x => x["status"] != "booked" && x["available"] == "1" && x["ISBN"] == optionalId).ToList();
                 }
-                if (startMode == "getAuthors" || startMode == "getCategories")
+                if ((startMode == "getAuthors" || startMode == "getCategories") && optionalId.Length>0)
                 {
                     string key = startMode == "getAuthors" ? "author" : "genre";
                     response = response.Where(x => !optionalId.Split(';').Contains(x[key])).ToList();
@@ -186,36 +188,40 @@ namespace Desktop
                     response = response.Where(x => x["state"] == "reservation").ToList();
                 }
                 //make rows
-                for (int i = 0; i < response.Count(); i++)
+                if (!((startMode == "getLangs" || startMode == "getAuthors" || startMode == "getCategories") && response.First().Values.ToList()[0] == ""))
                 {
-                    row = dt.NewRow();
-                    if (startMode != "userTakeback")
+                    for (int i = 0; i < response.Count(); i++)
                     {
-                        foreach (KeyValuePair<string, string> item in response[i])
+                        row = dt.NewRow();
+                        if (startMode != "userTakeback")
                         {
+                            foreach (KeyValuePair<string, string> item in response[i])
+                            {
 
-                            if (item.Key == "user_id" || item.Key == "book_id" || item.Key == "id" || item.Key == "ISBN_id" || item.Key == "publisher_id" || item.Key == "lang_id" || item.Key == "author_id" || item.Key == "genre_id")
-                            {
-                                ids.Add(item.Value);
-                            }
-                            else if(item.Key != "available")
-                            {
-                            
-                                row[item.Key] = item.Value;
+                                if (item.Key == "user_id" || item.Key == "book_id" || item.Key == "id" || item.Key == "ISBN_id" || item.Key == "publisher_id" || item.Key == "lang_id" || item.Key == "author_id" || item.Key == "genre_id")
+                                {
+                                    ids.Add(item.Value);
+                                }
+                                else if (item.Key != "available")
+                                {
+
+                                    row[item.Key] = item.Value;
+                                }
                             }
                         }
-                    }
-                    else
-                    {
-                        ids.Add(response[i]["book_id"]);
-                        for (int j = 0; j < 3; j++)
+                        else
                         {
-                            row[dt.Columns[j].ColumnName] = response[i][dt.Columns[j].ColumnName];
+                            ids.Add(response[i]["book_id"]);
+                            for (int j = 0; j < 3; j++)
+                            {
+                                row[dt.Columns[j].ColumnName] = response[i][dt.Columns[j].ColumnName];
+                            }
                         }
+
+                        dt.Rows.Add(row);
                     }
-                    
-                    dt.Rows.Add(row);
                 }
+                
                 //disable ordering
                 foreach (DataGridViewColumn column in cdgwSelect.Columns)
                 {
@@ -233,14 +239,18 @@ namespace Desktop
 
         private void cdgwSelect_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (cdgwSelect.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() != "")
+            if (e.ColumnIndex != cdgwSelect.ColumnCount-1)
             {
-                cdgwSelect.Rows[e.RowIndex].Cells[e.ColumnIndex].ReadOnly = true;
+                if (cdgwSelect.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() != "")
+                {
+                    cdgwSelect.Rows[e.RowIndex].Cells[e.ColumnIndex].ReadOnly = true;
+                }
+                else
+                {
+                    cdgwSelect.Rows[e.RowIndex].Cells[e.ColumnIndex].ReadOnly = false;
+                }
             }
-            else
-            {
-                cdgwSelect.Rows[e.RowIndex].Cells[e.ColumnIndex].ReadOnly = false;
-            }
+            
         }
 
         private void PopupSelect_Load(object sender, EventArgs e)
@@ -310,10 +320,14 @@ namespace Desktop
                 }
                 else if (startMode == "getLangs" || startMode == "getAuthors" || startMode == "getCategories")
                 {
-                    res1 = (string)cdgwSelect.Rows[e.RowIndex].Cells[0].Value;
-                    //id = ids[e.RowIndex];
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
+                    if (cdgwSelect.Rows[e.RowIndex].Cells[0].Value.GetType() != typeof(System.DBNull))
+                    {
+                        res1 = (string)cdgwSelect.Rows[e.RowIndex].Cells[0].Value;
+                        //id = ids[e.RowIndex];
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
+                    
                 }else if (startMode == "deactivateBook")
                 {
                     await ApiComm.SendPost(new Dictionary<string, string> { { "type", "deactivateBook" }, { "book_id", ids[e.RowIndex] } });
