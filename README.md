@@ -23,6 +23,8 @@ Mesterremek projekt, könyvtárazó rendszer
         -nézni kell, pl 5 percenként, hogy jött-e új foglalás(az előzőket fájlban tároljuk pl), és olyankor kell egy popup, hogy új foglalás jött, hogy félre tudja majd tenni a polcra a könyvtáros (DONE)
         -Kiírni hogy adott típusú könyvből hány darab van (not necessary)
         -jelenleg sehogy sem tudunk előjegyeztetni az asztalin belül
+        -nem lehet teljesen blank az adatbázis, legalább a system-settings kell 
+        -weird thing ha könyvet adtam hozzá akkor hibát adott mikor egyből a részletesre akartam menni, de semmi hibát ha manuálisan mentm utána oda
 
 #WEB:
     KINÉZET:
