@@ -66,7 +66,17 @@
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
         $conn->close();
-        return $results->fetch_all(MYSQLI_ASSOC);
+        $out = $results->fetch_all(MYSQLI_ASSOC);
+        if(count($out) == 0){
+            $res = $results->fetch_fields(); 
+            $columns = [];
+            $columns[] = [];
+            foreach ($res as $key => $fields) {
+                $columns[0][$fields->name] = "";
+            } 
+            return  $columns;
+        }
+        return $out ;
 
     }
 
@@ -716,7 +726,18 @@
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
         $conn->close();
-        return $results->fetch_all(MYSQLI_ASSOC);
+        $out = $results->fetch_all(MYSQLI_ASSOC);
+        if(count($out) == 0){
+            $res = $results->fetch_fields(); 
+            $columns = [];
+            $columns[] = [];
+            foreach ($res as $key => $fields) {
+                $columns[0][$fields->name] = "";
+            } 
+            return  $columns;
+        }
+        return $out ;
+        //return $results->fetch_all(MYSQLI_ASSOC);
     }
 
     function GetCategories($ISBN_id, $inverse){
@@ -729,7 +750,18 @@
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
         $conn->close();
-        return $results->fetch_all(MYSQLI_ASSOC);
+        $out = $results->fetch_all(MYSQLI_ASSOC);
+        if(count($out) == 0){
+            $res = $results->fetch_fields(); 
+            $columns = [];
+            $columns[] = [];
+            foreach ($res as $key => $fields) {
+                $columns[0][$fields->name] = "";
+            } 
+            return  $columns;
+        }
+        return $out ;
+        //return $results->fetch_all(MYSQLI_ASSOC);
     }
     
     function DeactivateBook($book_id){
