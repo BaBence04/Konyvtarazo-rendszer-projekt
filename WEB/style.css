@@ -10,7 +10,8 @@
   --margin-after-header: 30px;
 
   /*HSL(hue, saturation, lightness)*/
-  --first-color: hsl(171, 85%, 26%);
+  /* first color hex: 	#0a7b6a */
+  --first-color: hsl(171, 85%, 26%); 
   --second-color: rgb(152, 205, 198);
   --title-color: hsl(230, 75%, 15%);
   --text-color: hsl(0, 0%, 0%);
@@ -519,7 +520,14 @@ main .book-details{
   background-color: var(--body-color);
   border-radius: 8px;
   position: relative;
-  width: 100%;
+  width: 80%;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.simlar-books-container {
+  margin: 0 auto;
+  display: flex;
 }
 
 .similar-books-section h2 {
@@ -544,10 +552,26 @@ main .book-details{
   margin: 20px, 20px;
 }
 
-.swiper-slide {
+/* .swiper-slide {
   opacity: 1 !important;
   visibility: visible !important;
   display: block !important;
+} */
+
+.prev-button,
+.next-button {
+  margin: 0 auto;
+  display: block;
+}
+
+
+.swiper-button:hover {
+  cursor: pointer;
+}
+
+.swiper-button {
+  display: flex;
+  align-items: center;
 }
 
 
@@ -691,6 +715,10 @@ main .book-details{
     width: 100%;
     margin: 0;    
   }
+
+  .book-image img {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -713,6 +741,10 @@ main .book-details{
   .buttons {
     gap: 10px;
   }
+
+  .book-image img {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 375px) {
@@ -726,6 +758,10 @@ main .book-details{
 
   .book-description {
     font-size: 11px;
+  }
+
+  .book-image img {
+    width: 100%;
   }
 }
 

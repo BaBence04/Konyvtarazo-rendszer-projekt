@@ -64,30 +64,40 @@
         </div>
     </div>
 
-    <div class="similar-books-section">
-        <h2>Ezek tetszhetnek még:</h2>
-            <div class="similar-books-slider swiper-wrapper">
-                
-                <?php
-                $similar_books = getSimilarBooks($book_data["ISBN_id"]);
-                foreach ($similar_books as $similar_book) {
-                    echo '<div class="book_item swiper-slide" data-ISBN="' . $similar_book['ISBN'] . '" onclick="OpenSimilarBookDetailed(this)">';
-                    echo '<img src="' . $similar_book['picture_base64'] . '" alt="' . $similar_book['title'] . '">';
-                    echo '<div class="book_info">';
-                    echo '<div class="book_title">' . $similar_book['title'] . '</div>';
-                    echo '<div class="book_author">' . $similar_book['authors'] . '</div>';
-                    echo '<div class="book_genre">#' . $similar_book['genres'] . '</div>';
-                    echo '</div>';
-                    echo '</div>';
-                }
-                ?>
-            </div>
-            <!-- <div class="swiper-pagination"></div> -->
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
+    <div class="simlar-books-container">
+        <div class="swiper-button">
+            <svg xmlns="http://www.w3.org/2000/svg" class="prev-button" onclick="ShowNextOrPreviousItem(-1);" height="40px" viewBox="0 -960 960 960" width="40px" fill="#0a7b6a"><path d="m313-440 196 196q12 12 11.5 28T508-188q-12 11-28 11.5T452-188L188-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l264-264q11-11 27.5-11t28.5 11q12 12 12 28.5T508-715L313-520h447q17 0 28.5 11.5T800-480q0 17-11.5 28.5T760-440H313Z"/></svg>
+        </div>
 
+        <div class="similar-books-section">
+            <h2>Ezek tetszhetnek még:</h2>
             
-    </div>          
+                <div class="similar-books-slider swiper-wrapper">
+                    <?php
+                    $similar_books = getSimilarBooks($book_data["ISBN_id"]);
+                    foreach ($similar_books as $similar_book) {
+                        echo '<div class="book_item swiper-slide" data-ISBN="' . $similar_book['ISBN'] . '" onclick="OpenSimilarBookDetailed(this)">';
+                        echo '<img src="' . $similar_book['picture_base64'] . '" alt="' . $similar_book['title'] . '">';
+                        echo '<div class="book_info">';
+                        echo '<div class="book_title">' . $similar_book['title'] . '</div>';
+                        echo '<div class="book_author">' . $similar_book['authors'] . '</div>';
+                        echo '<div class="book_genre">#' . $similar_book['genres'] . '</div>';
+                        echo '</div>';
+                        echo '</div>';
+                    }
+                    ?>
+                </div>
+                
+                <!-- <div class="swiper-pagination"></div> -->
+                
+        </div>  
+
+        <div class="swiper-button">
+            <svg xmlns="http://www.w3.org/2000/svg" class="next-button" onclick="ShowNextOrPreviousItem(1);" height="40px" viewBox="0 -960 960 960" width="40px" fill="#0a7b6a"><path d="M647-440H200q-17 0-28.5-11.5T160-480q0-17 11.5-28.5T200-520h447L451-716q-12-12-11.5-28t12.5-28q12-11 28-11.5t28 11.5l264 264q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L508-188q-11 11-27.5 11T452-188q-12-12-12-28.5t12-28.5l195-195Z"/></svg>
+        </div>
+    </div>
+
+        
 </main>
 
     <script>
