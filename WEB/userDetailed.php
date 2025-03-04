@@ -46,7 +46,7 @@
             <!-- <span class="indicator"></span> -->
         </div>
         <div class="nav-item" id="nav-books-on-shelf" data-link="polc" onclick="showSection(this); SetUrlToOpenSection(this);">
-            Könyves polc 
+            Kedvencek
             <!-- <span class="indicator"></span> -->
         </div>
     </div>
@@ -189,7 +189,7 @@
                             <span class="book-author"><?= str_replace(",", ", ", $book_data['authors'])?></span>
                         </div>
                         <div class="button_container">
-                            <button class="book_action_button" data-isbn-id="<?= $book_data["ISBN_id"] ?>" onclick="LevetelAPolcrol(this)">Levétel a polcról</button>
+                            <button class="book_action_button" data-isbn-id="<?= $book_data["ISBN_id"] ?>" onclick="LevetelAPolcrol(this)">Levétel a kedvencekről</button>
                         </div>
                     </div>
                 <?php endforeach;?>
