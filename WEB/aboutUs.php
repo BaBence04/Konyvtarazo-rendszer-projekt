@@ -10,17 +10,11 @@
     <style>
         body {
             font-family: 'Crimson Pro', serif;
-            background-color: hsl(0, 0%, 96%);
+            background-color: #f0f0f0;
             color: #333;
             margin: 0;
             padding: 0;
             overflow-x: hidden;
-        }
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 50px 0;
         }
         .hero {
             text-align: center;
@@ -49,6 +43,10 @@
             opacity: 0;
             transform: translateY(50px);
         }
+        .team-container {
+            height: 74vh;
+            align-items: center;
+        }
         .image {
             width: 100%;
             max-width: 600px;
@@ -58,10 +56,9 @@
             transform: scale(0.9);
         }
         .team {
-            display: flex;
+            display: grid;
             justify-content: center;
             gap: 20px;
-            flex-wrap: wrap;
         }
         .team-member {
             background: white;
@@ -72,21 +69,37 @@
             opacity: 0;
             transform: translateY(50px);
         }
+
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+        width: 8px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: rgb(152, 205, 198);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: rgb(152, 220, 210);
+        }
+
     </style>
 </head>
 <body>
     <div class="hero">
         <h1>About Our Library</h1>
     </div>
-    <div class="container">
+    <div class="team-container">
         <div class="section">
-            <h2></h2>
-            <p></p>
+            <h2>asdf</h2>
+            <p>asdf</p>
         </div>
-        <img src="library.jpg" alt="Library" class="image">
+        <!-- <img src="/web/imgs/img9.jpg" alt="Library" class="image"> -->
         <div class="section">
-            <h2></h2>
-            <p></p>
+            <h2>qwer</h2>
+            <p>qwer</p>
         </div>
         <div class="team">
             <div class="team-member">
