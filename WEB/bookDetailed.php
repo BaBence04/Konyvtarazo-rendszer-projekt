@@ -55,9 +55,9 @@
                             echo $buttonHtml;
                         }
                     
-
                     ?>
-                    <svg xmlns="http://www.w3.org/2000/svg" data-selected="<?= is_book_on_shelf($_SESSION["user_id"], $book_data["ISBN_id"]) ?>" data-isbn-id="<?=$book_data["ISBN_id"]?>" onclick="addOrRemoveFromShelf(this)" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-library-big"><rect width="8" height="18" x="3" y="3" rx="1"/><path d="M7 3v18"/><path d="M20.4 18.9c.2.5-.1 1.1-.6 1.3l-1.9.7c-.5.2-1.1-.1-1.3-.6L11.1 5.1c-.2-.5.1-1.1.6-1.3l1.9-.7c.5-.2 1.1.1 1.3.6Z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="heartIcon" onclick="addOrRemoveFromShelf(this);" data-selected="<?= is_book_on_shelf($_SESSION["user_id"], $book_data["ISBN_id"]) ?>" data-isbn-id="<?=$book_data["ISBN_id"]?>" width="24" height="24" viewBox="0 0 24 24" fill="white" stroke="black" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                    <!-- <svg xmlns="http://www.w3.org/2000/svg" data-selected="<?= is_book_on_shelf($_SESSION["user_id"], $book_data["ISBN_id"]) ?>" data-isbn-id="<?=$book_data["ISBN_id"]?>" onclick="addOrRemoveFromShelf(this)" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-library-big"><rect width="8" height="18" x="3" y="3" rx="1"/><path d="M7 3v18"/><path d="M20.4 18.9c.2.5-.1 1.1-.6 1.3l-1.9.7c-.5.2-1.1-.1-1.3-.6L11.1 5.1c-.2-.5.1-1.1.6-1.3l1.9-.7c.5-.2 1.1.1 1.3.6Z"/></svg> -->
 
                 <?php endif;?>
             </div>
