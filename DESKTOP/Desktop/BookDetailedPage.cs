@@ -198,7 +198,7 @@ namespace Desktop
 
         private void ctbISBN_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!(e.KeyChar >= 48 && e.KeyChar <= 57 || e.KeyChar == (char)Keys.Back))
+            if (!(e.KeyChar >= 48 && e.KeyChar <= 57 || e.KeyChar == (char)Keys.Back || ModifierKeys.HasFlag(Keys.Control)))
             {
                 e.Handled = true;
             }
@@ -240,7 +240,7 @@ namespace Desktop
 
         private async void cbtnAdd_Click(object sender, EventArgs e)
         {
-            if ((cdtpReleaseDate.Value < DateTime.Parse("2007.01.01.") && ctbISBN.Texts.Length == 11) || (cdtpReleaseDate.Value >= DateTime.Parse("2007.01.01.") && ctbISBN.Texts.Length == 13))
+            if ((cdtpReleaseDate.Value < DateTime.Parse("2007.01.01.") && ctbISBN.Texts.Length == 11) || (cdtpReleaseDate.Value >= DateTime.Parse("2007.01.01.") && ctbISBN.Texts.Length == 13) || (int.TryParse(ctbISBN.Texts, out int buff)))
             {
                 if (lblLang.Text != "Nyelv" && lblPublisher.Text != "Kiadó" && authors.Count>0 && categories.Count>0 && ctbTitle.Texts.Length>0 && ctbDescription.Texts.Length>0 && lblPicName.Text.Length>0)
                 {
@@ -262,7 +262,7 @@ namespace Desktop
                         {
                             List<Dictionary<string, string>> resp2 = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "addToInventory" }, { "ISBN_id", resp.First()["state"] } });
                             MessageBox.Show($"A hozzáadott könyv kódja: {resp2.First()["book_id"]}");
-                            LoginForm.main.OpenChildForm(new BookDetailedPage(resp.First()["state"]));
+                            LoginForm.main.OpenChildForm(new BookDetailedPage(ctbISBN.Texts));
                         }
                         this.Close();
                     }
@@ -278,7 +278,7 @@ namespace Desktop
             }
             else
             {
-                MessageBox.Show("Nem megfelelő hosszú az ISBN kód");
+                MessageBox.Show("Nem megfelelő hosszú vagy formátumú az ISBN kód");
             }
         }
 

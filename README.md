@@ -12,19 +12,9 @@ Mesterremek projekt, könyvtárazó rendszer
   
 
     BACKEND:
-        -nem tudom hogy lehet hozzáadni új szerzőt, és új kategóriát sem
-        -kinda pain in the butt, hogy a könyv hozzáadásál csak már felvitt kiadók közül választani
-        -nem lehet a desktop-ról új nyelvet felvinni
-        -a könyv hozzáadása popup nem középen indul
-        -a kiadók hozzáadásánál rossz a textbox-ok tabindexe, a legfelül levő a 2. az alatta leveő az 1. és utána 3. 4. 
-        -ahol szűrve van hogy csak számot lehessen beírni a textbox-ba ott jó lenne ha meg lenne csinálva, hogy lehessen "Ctrl+A"-t és "Ctrl+V"... használni, és jobb klikkel be lehet illeszteni szöveget
         -a popup form-ok a megnyitott form közepére nyíljanak meg
-        -az asztali program indításakor fusson le a lejárt foglalás törlő procedure, és küldje ki az értesítéseket (- Partly done)
-        -nézni kell, pl 5 percenként, hogy jött-e új foglalás(az előzőket fájlban tároljuk pl), és olyankor kell egy popup, hogy új foglalás jött, hogy félre tudja majd tenni a polcra a könyvtáros (DONE)
+        -nem mindig tűnik el a borrowingos felkiáltójel
         -Kiírni hogy adott típusú könyvből hány darab van (not necessary)
-        -jelenleg sehogy sem tudunk előjegyeztetni az asztalin belül
-        -nem lehet teljesen blank az adatbázis, legalább a system-settings kell 
-        -weird thing ha könyvet adtam hozzá akkor hibát adott mikor egyből a részletesre akartam menni, de semmi hibát ha manuálisan mentm utána oda
 
 #WEB:
     KINÉZET:

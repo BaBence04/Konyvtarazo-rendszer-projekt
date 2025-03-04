@@ -263,10 +263,9 @@ namespace Desktop
             {
                 updateSelectDgv("");
             }
-            if (startMode == "getLangs" || startMode == "getAuthors" || startMode == "getCategories")
+            if (startMode == "getLangs" || startMode == "getAuthors" || startMode == "getCategories" || startMode == "getPublishers")
             {
                 cdgwSelect.AllowUserToAddRows = true;
-                
             }
             ctbSearch.KeyPress += ctbSearch_KeyPress;
             cdgwSelect.CellClick += cdgwSelect_CellClick;
@@ -333,6 +332,38 @@ namespace Desktop
                     await ApiComm.SendPost(new Dictionary<string, string> { { "type", "deactivateBook" }, { "book_id", ids[e.RowIndex] } });
                     cdgwSelect.Rows.RemoveAt(e.RowIndex);
                     ids.RemoveAt(e.RowIndex);
+                }
+                else if (startMode == "getPublishers")
+                {
+                    if (cdgwSelect.Rows[e.RowIndex].Cells[0].Value.GetType() != typeof(System.DBNull) && cdgwSelect.Rows[e.RowIndex].Cells[1].Value.GetType() != typeof(System.DBNull) && cdgwSelect.Rows[e.RowIndex].Cells[2].Value.GetType() != typeof(System.DBNull) && cdgwSelect.Rows[e.RowIndex].Cells[3].Value.GetType() != typeof(System.DBNull))
+                    {
+                        res1 = (string)cdgwSelect.Rows[e.RowIndex].Cells[0].Value;
+                        res2 = (string)cdgwSelect.Rows[e.RowIndex].Cells[1].Value;
+                        res3 = (string)cdgwSelect.Rows[e.RowIndex].Cells[2].Value;
+                        if (ids.Count <= e.RowIndex)
+                        {
+                            List<Dictionary<string, string>> data = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "addPublisher" }, { "name", cdgwSelect.Rows[e.RowIndex].Cells[0].Value.ToString() }, { "phone", cdgwSelect.Rows[e.RowIndex].Cells[1].Value.ToString() }, { "email", cdgwSelect.Rows[e.RowIndex].Cells[2].Value.ToString() }, { "webpage", cdgwSelect.Rows[e.RowIndex].Cells[3].Value.ToString() } });
+                            if (data.First()["state"] == "fail")
+                            {
+                                MessageBox.Show("Ezzel a névvel már létezik kiadó");
+                            }
+                            else
+                            {
+                                this.DialogResult = DialogResult.OK;
+                                this.Close();
+                            }
+                        }
+
+
+
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ha újat szertne hozzáadni kérem az összes adatot adja meg");
+                    }
+                    
                 }
                 else if (startMode != "userTakeback")
                 {

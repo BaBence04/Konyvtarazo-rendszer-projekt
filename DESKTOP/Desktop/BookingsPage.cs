@@ -77,7 +77,10 @@ namespace Desktop
                 for (int i = 0; i < cdgvBookings.RowCount; i++) {
                     if (states[i] == "0")
                     {
-                        cdgvBookings.Rows[i].DefaultCellStyle.BackColor = Color.Red;
+                        cdgvBookings.Rows[i].DefaultCellStyle.BackColor = Color.Green;
+                    }else if (states[i] == "-1")
+                    {
+                        cdgvBookings.Rows[i].DefaultCellStyle.BackColor= Color.Red;
                     }
                 }
 
@@ -125,12 +128,30 @@ namespace Desktop
 
         private async void cdgvBookings_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex != -1 && states[e.RowIndex] == "0")
+            if (e.RowIndex != -1 && states[e.RowIndex] != "1")
             {
-                cdgvBookings.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.FromArgb(51, 51, 68);
-                states[e.RowIndex] = "1";
-                await ApiComm.SendPost(new Dictionary<string, string> { { "type", "changeHandled" }, { "id", ids[e.RowIndex] } });
-                if(states.Where(x=>x == "0").Count() == 0)
+                if (states[e.RowIndex] == "0")
+                {
+                    cdgvBookings.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.FromArgb(51, 51, 68);
+                    states[e.RowIndex] = "1";
+                    await ApiComm.SendPost(new Dictionary<string, string> { { "type", "changeHandled" }, { "id", ids[e.RowIndex] } });
+                }
+                else
+                {
+                    cdgvBookings.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.FromArgb(51, 51, 68);
+                    states.RemoveAt(e.RowIndex);
+                    await ApiComm.SendPost(new Dictionary<string, string> { { "type", "removeBooking" }, { "id", ids[e.RowIndex] } });
+                    if (ctbSearch.Texts != ctbSearch.PlaceholderText)
+                    {
+                        updateCdgvBookings(ctbSearch.Texts);
+                    }
+                    else
+                    {
+                        updateCdgvBookings("");
+                    }
+                }
+                
+                if(states.Where(x=>x != "1").Count() == 0)
                 {
                     LoginForm.main.pbNewBookings.Visible = false;
                 }

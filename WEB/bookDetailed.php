@@ -36,11 +36,12 @@
                 <!-- <button class="wishlist-button">Kívánságlistához adás</button> -->
     
                 <!-- if the user is logged in -->
-                <?php if(isset($_SESSION["user_id"])):?>
+                <?php if(isset($_SESSION["user_id"], $_SESSION["restricted"]) && $_SESSION["restricted"] == "false"):?>
 
                     <?php
                         //returns "reservation" | "booking"
                         $availability_data = CheckBookAvailability(GetIsbnIdByIsbn($book_data["ISBN"]),$_SESSION["user_id"]);
+                        var_dump( $availability_data);
                         //EZEKRE A GOMBOKRA KELL EGY DISABLED STÍLUS
                         if($availability_data["available"] == "true"){
                             $buttonHtml = '<button class="reserve-button" id="reserve-button" onclick="reserveOrBook();"';
@@ -111,6 +112,7 @@
                 success: function(response)  {
                         //Ezt is szép fancyre meg kell csinálni
                     if(response != '<?=isset($_SESSION["user_id"])? $availability_data["status"]:""?>'){
+                        console.log(response);
                         alert("A könyv állapota menetközben megváltozott, úgyhogy "+((response=="reservation")?"elő lett jegyezve":"le lett foglalva"));
                         
                     }else if(response == "reservation"){

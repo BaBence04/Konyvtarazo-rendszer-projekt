@@ -498,6 +498,7 @@
             this.Controls.Add(this.lblISBN);
             this.Controls.Add(this.label1);
             this.Name = "BookDetailedPage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BookDetailedPage_FormClosing);
             this.Load += new System.EventHandler(this.BookDetailedPage_Load);
             this.pManage.ResumeLayout(false);
