@@ -868,6 +868,19 @@
         //return $results->fetch_all(MYSQLI_ASSOC);
     }
 
+    function RemoveBooking($id){
+        require "databaseConnect.php";
+
+        $query = "CALL removeBooking(?);";
+
+        $stmt = $conn->prepare($query); // Prepare statement
+        $stmt->bind_param("i", $id); // Bind parameter to SQL query
+        $stmt->execute(); // Execute the SQL query
+        $results = $stmt->get_result();
+        $conn->close();
+        //return $results->fetch_all(MYSQLI_ASSOC);
+    }
+
     /**
      * Return true or false depending if the end date of borrowing the given book is extendable.
      *

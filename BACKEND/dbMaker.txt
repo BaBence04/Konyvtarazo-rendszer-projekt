@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS booking(
     book_id INT NOT NULL,
     user_id INT NOT NULL,
     end_date DATE,
-    handled BOOLEAN DEFAULT 0,
+    handled TINYINT DEFAULT 0,
     FOREIGN KEY(book_id) REFERENCES inventory(book_id),
     FOREIGN KEY(user_id) REFERENCES users(user_id) 
 );
