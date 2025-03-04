@@ -1076,8 +1076,12 @@
         if($conn_was_not_given){
             $conn->close();
         }
-
-        return $results->fetch_assoc()["result"] == "true";
+        $data = $results->fetch_assoc();
+        if($data != []){
+            return ["result"] == "true";
+        }else{
+            return false;
+        }
     }
 
     // proba
