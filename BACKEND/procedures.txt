@@ -1139,9 +1139,17 @@ BEGIN
 END;//
 DELIMITER ;
 
+-- gets all books that is on shelf
+DELIMITER //
+CREATE PROCEDURE IF NOT EXISTS getShelf(
+  IN user_id INT
+) 
+BEGIN
+  SELECT shelf.ISBN_id FROM shelf WHERE shelf.user_id = user_id;
+END;//
+DELIMITER ;
 
 -- gets similar books for bookDetailed
-
 DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS GetSimilarBooks(
   IN p_ISBN_id INT
