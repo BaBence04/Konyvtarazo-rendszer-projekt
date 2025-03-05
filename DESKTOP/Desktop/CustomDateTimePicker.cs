@@ -182,6 +182,10 @@ namespace Desktop
 			else this.Cursor = Cursors.Default;
 		}
 
+		protected override void OnPaintBackground(PaintEventArgs pevent)
+		{
+			
+		}
 
 
 
