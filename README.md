@@ -7,7 +7,6 @@ Mesterremek projekt, könyvtárazó rendszer
         -a könyvrészletesen lehessen a kiadóra lehessen rákattintani, és megnyitni annak a részleteit
         -automatikus törlős dologhoz valami frontend, popup window szerűség
         -minden ami a UsersPage-el kapcsolatos (alias onnan nyílik meg) szabadon style-olható mert minden készen van nem fogok már hozzányúlni nagy eséllel
-        -message box-okat kicserélni az újra
         -AddEmployee oldalon a vissza gomb nem működött és hibát is adott. Megcsináltam hogy ne dobjon hibát, de azt nem sikerült megoldani, hogy az X megjelenjen
   
 

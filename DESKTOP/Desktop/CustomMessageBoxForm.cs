@@ -76,6 +76,27 @@ namespace Desktop
 
 		}
 
+		public CustomMessageBoxForm(string text, string caption, bool noButtons)
+		{
+			InitializeComponent();
+			InitializeItems();
+			this.PrimaryColor = primaryColor;
+			this.labelMessage.Text = text;
+			this.labelCaption.Text = caption;
+
+			if (noButtons)
+			{
+				this.button1.Visible = false;
+				this.button2.Visible = false;
+				this.button3.Visible = false;
+			}
+			else
+			{
+				SetButtons(MessageBoxButtons.OK, MessageBoxDefaultButton.Button1);
+			}
+		}
+
+
 
 
 		private void InitializeItems()

@@ -57,23 +57,31 @@ namespace Desktop
 		{
             if (checkChanges())
             {
-                DialogResult res = MessageBox.Show("Menteni szeretné a változtatásokat?", "Váltotatás", MessageBoxButtons.YesNo);
-                if (res == DialogResult.Yes)
-                {
-                    Dictionary<string, string> data = new Dictionary<string, string>();
-                    data["type"] = "updateUser";
-                    data["id"] = user_id;
-                    data["firstname"] = ctbFirstname.Texts;
-                    data["surname"] = ctbSurname.Texts;
-                    data["birthplace"] = ctbBirthplace.Texts;
-                    data["birthdate"] = cdtpBirthDate.Value.ToString("yyyy-MM-dd");
-                    data["address"] = ctbAddress.Texts;
-                    data["email"] = ctbEmail.Texts;
-                    data["phone"] = ctbPhone.Texts;
-                    data["mmn"] = ctbMmn.Texts;
-                    await ApiComm.SendPost(data);
-                    
-                }
+                //DialogResult res = MessageBox.Show("Menteni szeretné a változtatásokat?", "Változatás", MessageBoxButtons.YesNo);
+
+				using (CustomMessageBoxForm msgBox = new CustomMessageBoxForm("Menteni szeretné a változtatásokat?", "Változatás", MessageBoxButtons.YesNo))
+				{
+					DialogResult res = msgBox.ShowDialog();
+
+					if (res == DialogResult.Yes)
+					{
+						Dictionary<string, string> data = new Dictionary<string, string>();
+						data["type"] = "updateUser";
+						data["id"] = user_id;
+						data["firstname"] = ctbFirstname.Texts;
+						data["surname"] = ctbSurname.Texts;
+						data["birthplace"] = ctbBirthplace.Texts;
+						data["birthdate"] = cdtpBirthDate.Value.ToString("yyyy-MM-dd");
+						data["address"] = ctbAddress.Texts;
+						data["email"] = ctbEmail.Texts;
+						data["phone"] = ctbPhone.Texts;
+						data["mmn"] = ctbMmn.Texts;
+						await ApiComm.SendPost(data);
+
+					}
+				}
+
+
                 
 
             }
@@ -89,31 +97,47 @@ namespace Desktop
 
         private async void ctbExtendMembership_Click(object sender, EventArgs e)
         {
-			if (MessageBox.Show($"Biztosan meg szeretné hosszabbítani a tagságot 1 évvel?\r\n Ár:{LoginForm.main.system_settings["membership_fee"]} Ft", "Tagság hosszabbítása", MessageBoxButtons.YesNo) == DialogResult.Yes)
+			/*if (MessageBox.Show($"Biztosan meg szeretné hosszabbítani a tagságot 1 évvel?\r\n Ár: {LoginForm.main.system_settings["membership_fee"]} Ft", "Tagság hosszabbítása", MessageBoxButtons.YesNo) == DialogResult.Yes)
 			{
 				List<Dictionary<string, string>> res = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "renewMembership" }, { "id", user_id } });
 				lblTagsag.Text = res.First()["membership_end_date"];
+			}*/
+
+			using (CustomMessageBoxForm msgBox = new CustomMessageBoxForm($"Biztosan meg szeretné hosszabbítani a tagságot 1 évvel?\r\n Ár: {LoginForm.main.system_settings["membership_fee"]} Ft", "Tagság hosszabbítása", MessageBoxButtons.YesNo))
+			{
+				if (msgBox.ShowDialog() == DialogResult.Yes)
+				{
+					List<Dictionary<string, string>> res = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "renewMembership" }, { "id", user_id } });
+					lblTagsag.Text = res.First()["membership_end_date"];
+				}
 			}
-        }
+		}
 
         private async void btnDeactivateUser_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show($"Biztosan véglegesen deaktiválni szeretné ezt a felhasználót?", "Felhasználó deaktiválása", MessageBoxButtons.YesNo) == DialogResult.Yes)
-
+            /*if(MessageBox.Show($"Biztosan véglegesen deaktiválni szeretné ezt a felhasználót?", "Felhasználó deaktiválása", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-				List<Dictionary<string, string>> res = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "deactivateUser" }, { "id", user_id } });
-				//deactivate user sets membershipdate back by 1 day and runs auto delete so it deletes them 
-				List<Dictionary<string, string>> reservationResult = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string>() { { "type", "deleteExpiredReservations" } });
-				string reservationChanges = reservationResult.First()["output"];
-				List<Dictionary<string, string>> bookingResult = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string>() { { "type", "deleteExpiredBookings" } });
-				string outputChanges = bookingResult.First()["output"];
-				if (outputChanges.Length > 0 || reservationChanges.Length > 0)
+
+			}*/
+
+			using (CustomMessageBoxForm msgBox = new CustomMessageBoxForm($"Biztosan véglegesen deaktiválni szeretné ezt a felhasználót?", "Felhasználó deaktiválása", MessageBoxButtons.YesNo))
+			{
+				if (msgBox.ShowDialog() == DialogResult.Yes)
 				{
-					//write it out changes once it is implemented
+					List<Dictionary<string, string>> res = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "deactivateUser" }, { "id", user_id } });
+					//deactivate user sets membershipdate back by 1 day and runs auto delete so it deletes them 
+					List<Dictionary<string, string>> reservationResult = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string>() { { "type", "deleteExpiredReservations" } });
+					string reservationChanges = reservationResult.First()["output"];
+					List<Dictionary<string, string>> bookingResult = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string>() { { "type", "deleteExpiredBookings" } });
+					string outputChanges = bookingResult.First()["output"];
+					if (outputChanges.Length > 0 || reservationChanges.Length > 0)
+					{
+						//write it out changes once it is implemented
+					}
+					Deactivated();
 				}
-				Deactivated();
 			}
-        }
+		}
 
 		private void Deactivated()
 		{

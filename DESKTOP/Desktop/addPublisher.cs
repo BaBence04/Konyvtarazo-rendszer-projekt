@@ -27,8 +27,12 @@ namespace Desktop
                 List<Dictionary<string, string>> data = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "addPublisher" }, { "name", ctbName.Texts }, { "phone", ctbTel.Texts }, { "email", ctbEmail.Texts }, { "webpage", ctbWeb.Texts } });
                 if (data.First()["state"] == "fail")
                 {
-                    MessageBox.Show("Ezzel a névvel már létezik kiadó");
-                }
+                    //MessageBox.Show("Ezzel a névvel már létezik kiadó");
+					using (CustomMessageBoxForm msgBox = new CustomMessageBoxForm("Ezzel a névvel már létezik kiadó.", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error))
+					{
+						msgBox.ShowDialog();
+					}
+				}
                 else
                 {
                     this.DialogResult = DialogResult.OK;

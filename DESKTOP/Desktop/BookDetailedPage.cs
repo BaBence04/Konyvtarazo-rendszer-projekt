@@ -131,8 +131,12 @@ namespace Desktop
         private async void cbtnAddBook_Click(object sender, EventArgs e)
         {
             List<Dictionary<string, string>> resp = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "addToInventory" }, { "ISBN_id", original["ISBN_id"] } });
-            MessageBox.Show($"A hozzáadott könyv kódja: {resp.First()["book_id"]}");
-        }
+            //MessageBox.Show($"A hozzáadott könyv kódja: {resp.First()["book_id"]}");
+			using (CustomMessageBoxForm msgBox = new CustomMessageBoxForm($"A hozzáadott könyv kódja: {resp.First()["book_id"]}", "Könyvkód", MessageBoxButtons.OK, MessageBoxIcon.Error))
+			{
+				msgBox.ShowDialog();
+			}
+		}
 
         private void cbtnBack_Click(object sender, EventArgs e)
         {
@@ -159,29 +163,37 @@ namespace Desktop
             {
                 if (checkChanges())
                 {
-                    DialogResult res = MessageBox.Show("Menteni szeretné a változtatásokat?", "Váltotatás", MessageBoxButtons.YesNo);
-                    if (res == DialogResult.Yes)
-                    {
-                        Dictionary<string, string> data = new Dictionary<string, string>();
-                        data["type"] = "updateBook";
-                        data["id"] = original["ISBN_id"];
-                        data["title"] = ctbTitle.Texts;
-                        data["release_date"] = cdtpReleaseDate.Value.ToString("yyyy-MM-dd");
-                        data["lang"] = lblLang.Text;
-                        data["publisher"] = lblPublisher.Text;
-                        data["authors"] = String.Join(",", authors.Select(x => x.Text));
-                        data["genres"] = String.Join(",", categories.Select(x => x.Text));
-                        data["description"] = ctbDescription.Texts;
-                        data["picture_base64"] = picBase64;
-                        await ApiComm.SendPost(data);
-                    
-                    }
-                }
+					using (CustomMessageBoxForm msgBox = new CustomMessageBoxForm("Menteni szeretné a változtatásokat?", "Változatás", MessageBoxButtons.YesNo))
+					{
+						DialogResult res = msgBox.ShowDialog();
+
+						if (res == DialogResult.Yes)
+						{
+							Dictionary<string, string> data = new Dictionary<string, string>();
+							data["type"] = "updateBook";
+							data["id"] = original["ISBN_id"];
+							data["title"] = ctbTitle.Texts;
+							data["release_date"] = cdtpReleaseDate.Value.ToString("yyyy-MM-dd");
+							data["lang"] = lblLang.Text;
+							data["publisher"] = lblPublisher.Text;
+							data["authors"] = String.Join(",", authors.Select(x => x.Text));
+							data["genres"] = String.Join(",", categories.Select(x => x.Text));
+							data["description"] = ctbDescription.Texts;
+							data["picture_base64"] = picBase64;
+							await ApiComm.SendPost(data);
+
+						}
+					}
+				}
             }
             else
             {
-                MessageBox.Show("Ne hagyjon egy mezőt sem üresen");
-            }
+                //MessageBox.Show("Ne hagyjon egy mezőt sem üresen");
+				using (CustomMessageBoxForm msgBox = new CustomMessageBoxForm("Ne hagyjon egy mezőt sem üresen.", "Hiányzó adatok", MessageBoxButtons.OK, MessageBoxIcon.Error))
+				{
+					msgBox.ShowDialog();
+				}
+			}
             
         }
 
@@ -258,28 +270,47 @@ namespace Desktop
                     List<Dictionary<string, string>> resp = (List<Dictionary<string, string>>)await ApiComm.SendPost(data);
                     if (resp.First()["state"] != "Already exists")
                     {
-                        if(MessageBox.Show("Szeretne egyből ennek a könyvnek a részletes oldalára kerülni", "Sikeres hozzáadás!", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                        {
-                            List<Dictionary<string, string>> resp2 = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "addToInventory" }, { "ISBN_id", resp.First()["state"] } });
-                            MessageBox.Show($"A hozzáadott könyv kódja: {resp2.First()["book_id"]}");
-                            LoginForm.main.OpenChildForm(new BookDetailedPage(ctbISBN.Texts));
-                        }
-                        this.Close();
+						using (CustomMessageBoxForm msgBox = new CustomMessageBoxForm("Szeretne egyből ennek a könyvnek a részletes oldalára kerülni.", "Sikeres hozzáadás!", MessageBoxButtons.YesNo))
+						{
+							DialogResult res = msgBox.ShowDialog();
+
+							List<Dictionary<string, string>> resp2 = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "addToInventory" }, { "ISBN_id", resp.First()["state"] } });
+							//MessageBox.Show($"A hozzáadott könyv kódja: {resp2.First()["book_id"]}");
+							using (CustomMessageBoxForm msgBoxK = new CustomMessageBoxForm($"A hozzáadott könyv kódja: {resp2.First()["book_id"]}", "Könyvkód", MessageBoxButtons.OK))
+							{
+								msgBoxK.ShowDialog();
+							}
+
+							LoginForm.main.OpenChildForm(new BookDetailedPage(ctbISBN.Texts));
+						}
+						this.Close();
                     }
                     else
                     {
-                        MessageBox.Show("Ilyen könyv típus már fent van az adatbázisban");
-                    }
+                        //MessageBox.Show("Ilyen könyv típus már fent van az adatbázisban");
+						using (CustomMessageBoxForm msgBox = new CustomMessageBoxForm("Ilyen könyv típus már fent van az adatbázisban.", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error))
+						{
+							msgBox.ShowDialog();
+						}
+					}
                 }
                 else
                 {
-                    MessageBox.Show("Ne hagyjon egy mezőt sem üresen");
-                }
+                    //MessageBox.Show("Ne hagyjon egy mezőt sem üresen");
+					using (CustomMessageBoxForm msgBox = new CustomMessageBoxForm("Ne hagyjon egy mezőt sem üresen.", "Hiányzó adatok", MessageBoxButtons.OK, MessageBoxIcon.Error))
+					{
+						msgBox.ShowDialog();
+					}
+				}
             }
             else
             {
-                MessageBox.Show("Nem megfelelő hosszú vagy formátumú az ISBN kód");
-            }
+                //MessageBox.Show("Nem megfelelő hosszú vagy formátumú az ISBN kód");
+				using (CustomMessageBoxForm msgBox = new CustomMessageBoxForm("Nem megfelelő hosszú vagy formátumú az ISBN kód.", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error))
+				{
+					msgBox.ShowDialog();
+				}
+			}
         }
 
         private async void LoadData() { 

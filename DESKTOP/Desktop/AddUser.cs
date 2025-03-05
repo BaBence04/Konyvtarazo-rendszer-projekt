@@ -42,13 +42,21 @@ namespace Desktop
                 }
                 else
                 {
-                    MessageBox.Show("Ennek a személynek már van fiókja");
-                }
+                    //MessageBox.Show("Ennek a személynek már van fiókja");
+					using (CustomMessageBoxForm msgBox = new CustomMessageBoxForm("Ennek a személynek már van fiókja.", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error))
+					{
+						msgBox.ShowDialog();
+					}
+				}
             }
             else
             {
-                MessageBox.Show("Kérem minden mezőt töltsön ki");
-            }
+                //MessageBox.Show("Kérem minden mezőt töltsön ki");
+				using (CustomMessageBoxForm msgBox = new CustomMessageBoxForm("Kérem minden mezőt töltsön ki.", "Hiányzó adatok", MessageBoxButtons.OK, MessageBoxIcon.Error))
+				{
+					msgBox.ShowDialog();
+				}
+			}
         }
 
         private void cbtnBack_Click(object sender, EventArgs e)

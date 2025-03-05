@@ -163,10 +163,15 @@ namespace Desktop
                 {
                     if (!canBook && !canReserve)
                     {
-                        MessageBox.Show("Ez a felhasználó nem tud se foglalni sem előjegyezni, mert már a maximális van mind a kettőből");
-                        this.Close();
-                    }
-                    if (!canBook)
+						using (CustomMessageBoxForm msgBox = new CustomMessageBoxForm("Ez a felhasználó nem tud se foglalni sem előjegyezni, mert már a maximális van mind a kettőből",	"Figyelmeztetés", MessageBoxButtons.OK,	MessageBoxIcon.Warning))
+						{
+							msgBox.ShowDialog();
+						}
+
+						this.Close();
+
+					}
+					if (!canBook)
                     {
                         response = response.Where(x => x["state"] != "booking").ToList();
                     }if (!canReserve)
@@ -309,13 +314,17 @@ namespace Desktop
             {
                 if (startMode == "bookOrReserve")
                 {
-                    MessageBox.Show("Biztosan végre szeretné hajtani a műveletet");
+                    MessageBox.Show("Biztosan végre szeretné hajtani a műveletet");//yesNo vagy OK
                     List<Dictionary<string, string>> resp = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "addReservationOrBooking" }, { "ISBN", ids[e.RowIndex] }, { "userid", optionalId } });
                     if (resp.First()["status"] != (string)cdgwSelect.Rows[e.RowIndex].Cells[2].Value)
                     {
-                        MessageBox.Show("Közben megváltozott a foglalás");
-                    }
-                    this.Close();
+						using (CustomMessageBoxForm msgBox = new CustomMessageBoxForm("Közben megváltozott a foglalás.", "Figyelmeztetés", true)) //a true miatt lesz gomb nelkuli.
+						{
+							msgBox.ShowDialog();
+						}
+
+					}
+					this.Close();
                 }
                 else if (startMode == "getLangs" || startMode == "getAuthors" || startMode == "getCategories")
                 {
@@ -345,9 +354,14 @@ namespace Desktop
                             List<Dictionary<string, string>> data = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "addPublisher" }, { "name", cdgwSelect.Rows[e.RowIndex].Cells[0].Value.ToString() }, { "phone", cdgwSelect.Rows[e.RowIndex].Cells[1].Value.ToString() }, { "email", cdgwSelect.Rows[e.RowIndex].Cells[2].Value.ToString() }, { "webpage", cdgwSelect.Rows[e.RowIndex].Cells[3].Value.ToString() } });
                             if (data.First()["state"] == "fail")
                             {
-                                MessageBox.Show("Ezzel a névvel már létezik kiadó");
-                            }
-                            else
+                                //MessageBox.Show("Ezzel a névvel már létezik kiadó");
+								using (CustomMessageBoxForm msgBox = new CustomMessageBoxForm("Ezzel a névvel már létezik kiadó",	"Figyelmeztetés", true)) //a true miatt lesz gomb nelkuli.
+								{
+									msgBox.ShowDialog();
+								}
+
+							}
+							else
                             {
                                 this.DialogResult = DialogResult.OK;
                                 this.Close();
@@ -361,8 +375,12 @@ namespace Desktop
                     }
                     else
                     {
-                        MessageBox.Show("Ha újat szertne hozzáadni kérem az összes adatot adja meg");
-                    }
+						//MessageBox.Show("Ha újat szertne hozzáadni kérem az összes adatot adja meg");
+						using (CustomMessageBoxForm msgBox = new CustomMessageBoxForm("Ha újat szertne hozzáadni kérem az összes adatot adja meg.", "Figyelmeztetés", true))
+						{
+							msgBox.ShowDialog();
+						}
+					}
                     
                 }
                 else if (startMode != "userTakeback")

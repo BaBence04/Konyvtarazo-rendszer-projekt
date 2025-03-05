@@ -37,30 +37,50 @@ namespace Desktop
                         List<Dictionary<string, string>> resp = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "changeEmplPass" }, {"empl_id", LoginForm.employee },{ "oldPass", ctbOldPass.Texts }, { "newPass", ctbNewPass.Texts } });
                         if (resp.First()["result"] == "siker")
                         {
-                            MessageBox.Show("Sikeresen megváltoztatta a jelszavát");
-                            ctbNewPass.Texts = "";
+                            //MessageBox.Show("Sikeresen megváltoztatta a jelszavát");
+							using (CustomMessageBoxForm msgBox = new CustomMessageBoxForm("Sikeresen megváltoztatta a jelszavát.", "Figyelmeztetés", MessageBoxButtons.OK))
+							{
+								msgBox.ShowDialog();
+							}
+							ctbNewPass.Texts = "";
                             ctbNewPassAgain.Texts = "";
                             ctbOldPass.Texts = "";
                         }
                         else
                         {
-                            MessageBox.Show("Hibás a régi jelszó");
-                        }
+                            //MessageBox.Show("Hibás a régi jelszó");
+							using (CustomMessageBoxForm msgBox = new CustomMessageBoxForm("Hibás a régi jelszó.", "Figyelmeztetés", MessageBoxButtons.OK))
+							{
+								msgBox.ShowDialog();
+							}
+						}
                     }
                     else
                     {
-                        MessageBox.Show("A régi jelszó megegyezik az új jelszóval");
-                    }
+                        //MessageBox.Show("A régi jelszó megegyezik az új jelszóval");
+						using (CustomMessageBoxForm msgBox = new CustomMessageBoxForm("A régi jelszó megegyezik az új jelszóval.", "Figyelmeztetés", MessageBoxButtons.OK))
+						{
+							msgBox.ShowDialog();
+						}
+					}
                 }
                 else
                 {
-                    MessageBox.Show("Az új jelszó nem egyezik meg a két mezőben");
-                }
+                    //MessageBox.Show("Az új jelszó nem egyezik meg a két mezőben");
+					using (CustomMessageBoxForm msgBox = new CustomMessageBoxForm("Az új jelszó nem egyezik meg a két mezőben.", "Figyelmeztetés", MessageBoxButtons.OK))
+					{
+						msgBox.ShowDialog();
+					}
+				}
             }
             else
             {
-                MessageBox.Show("Az összes mezőt töltse ki");
-            }
+                //MessageBox.Show("Az összes mezőt töltse ki");
+				using (CustomMessageBoxForm msgBox = new CustomMessageBoxForm("Az összes mezőt töltse ki.", "Figyelmeztetés", MessageBoxButtons.OK))
+				{
+					msgBox.ShowDialog();
+				}
+			}
         }
         private async void UpdateEmployeesCdgw()
         {
@@ -169,16 +189,26 @@ namespace Desktop
                 {
                     if (ids[e.RowIndex] != LoginForm.employee)
                     {
-                        if (MessageBox.Show("Biztosan véglegesen deaktiválni szeretné ezt az alkalmazottat?", "Alkalmazott deaktiválása", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                        {
-                            await ApiComm.SendPost(new Dictionary<string, string> { { "type", "deactivateEmpl" }, { "empl_id", ids[e.RowIndex] } });
-                            UpdateEmployeesCdgw();
-                        }
-                    }
+						using (CustomMessageBoxForm msgBox = new CustomMessageBoxForm("Biztosan véglegesen deaktiválni szeretné ezt az alkalmazottat?", "Alkalmazott deaktiválása", MessageBoxButtons.YesNo))
+						{
+							DialogResult res = msgBox.ShowDialog();
+
+							if (res == DialogResult.Yes)
+							{
+								await ApiComm.SendPost(new Dictionary<string, string> { { "type", "deactivateEmpl" }, { "empl_id", ids[e.RowIndex] } });
+								UpdateEmployeesCdgw();
+
+							}
+						}
+					}
                     else
                     {
-                        MessageBox.Show("Az admin felhasználót nem lehet törölni");
-                    }
+                        //MessageBox.Show("Az admin felhasználót nem lehet törölni");
+						using (CustomMessageBoxForm msgBox = new CustomMessageBoxForm("Az admin felhasználót nem lehet törölni.", "Bejelentkezés hiba", MessageBoxButtons.OK, MessageBoxIcon.Error))
+						{
+							msgBox.ShowDialog();
+						}
+					}
                 }
             }
             
@@ -193,12 +223,18 @@ namespace Desktop
             }
             else
             {
-                if (MessageBox.Show("Biztosan véglegesen deaktiválni szeretné ezt az alkalmazottat?", "Alkalmazott deaktiválása", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    await ApiComm.SendPost(new Dictionary<string, string> { { "type", "deactivateEmpl" }, { "empl_id", LoginForm.employee } });
-                    LoginForm.main.Close();
-                }
-            }
+                using (CustomMessageBoxForm msgBox = new CustomMessageBoxForm("Biztosan véglegesen deaktiválni szeretné ezt az alkalmazottat?", "Alkalmazott deaktiválása", MessageBoxButtons.YesNo))
+				{
+					DialogResult res = msgBox.ShowDialog();
+
+					if (res == DialogResult.Yes)
+					{
+						await ApiComm.SendPost(new Dictionary<string, string> { { "type", "deactivateEmpl" }, { "empl_id", LoginForm.employee } });
+						LoginForm.main.Close();
+
+					}
+				}
+			}
             
         }
 

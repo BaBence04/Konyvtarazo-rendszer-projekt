@@ -61,13 +61,21 @@ namespace Desktop
                 }
                 else
                 {
-                    MessageBox.Show("Helytelen felhasználónév vagy jelszó", "Bejelentkezés hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                    //MessageBox.Show("Helytelen felhasználónév vagy jelszó", "Bejelentkezés hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					using (CustomMessageBoxForm msgBox = new CustomMessageBoxForm("Helytelen felhasználónév vagy jelszó.", "Bejelentkezés hiba", MessageBoxButtons.OK, MessageBoxIcon.Error))
+					{
+						msgBox.ShowDialog();
+					}
+				}
             }
             else
             {
-                MessageBox.Show("Nem adott meg felhasználónevet vagy jelszót", "Bejelentkezés hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                //MessageBox.Show("Nem adott meg felhasználónevet vagy jelszót", "Bejelentkezés hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				using (CustomMessageBoxForm msgBox = new CustomMessageBoxForm("Nem adott meg felhasználónevet vagy jelszót.", "Bejelentkezés hiba", MessageBoxButtons.OK, MessageBoxIcon.Error))
+				{
+					msgBox.ShowDialog();
+				}
+			}
         }
         private void tbLoginUname_KeyPress(object sender, KeyPressEventArgs e)
         {

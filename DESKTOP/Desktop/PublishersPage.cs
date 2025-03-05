@@ -126,9 +126,15 @@ namespace Desktop
             List<Dictionary<string, string>> result = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string>() { { "type", "deletePublisher" }, { "id", ids[e.Row.Index] } });
             if (result.First()["state"] == "fail")
             {
-                MessageBox.Show("A kiadóhoz hozzá van rendelve legalább 1 könyv nem lehet törölni");
-            }
-            else
+                //MessageBox.Show("A kiadóhoz hozzá van rendelve legalább 1 könyv nem lehet törölni");
+
+				using (CustomMessageBoxForm msgBox = new CustomMessageBoxForm("A kiadóhoz hozzá van rendelve legalább 1 könyv nem lehet törölni.", "Figyelmeztetés", MessageBoxButtons.OK, MessageBoxIcon.Warning))
+				{
+					msgBox.ShowDialog();
+				}
+
+			}
+			else
             {
                 cdgvPublishers.Rows.Remove(e.Row);
             }

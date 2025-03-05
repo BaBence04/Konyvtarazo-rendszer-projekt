@@ -46,8 +46,12 @@ namespace Desktop
             }
             else
             {
-                MessageBox.Show("Minden adatmezőt helyesen töltsön ki");
-            }
+                //MessageBox.Show("Minden adatmezőt helyesen töltsön ki");
+				using (CustomMessageBoxForm msgBox = new CustomMessageBoxForm("Minden adatmezőt helyesen töltsön ki.", "Hiányzó adatok", MessageBoxButtons.OK, MessageBoxIcon.Warning))
+				{
+					msgBox.ShowDialog();
+				}
+			}
             
 
         }
