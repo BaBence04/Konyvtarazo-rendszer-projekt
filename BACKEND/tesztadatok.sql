@@ -42,7 +42,7 @@ INSERT INTO reservation (ISBN_id, user_id) VALUES
 (1, 1),
 (2, 2);
 
-INSERT INTO employees (empl_name, empl_uname, password, active) VALUES
+INSERT INTO employees (empl_name, empl_uname, password, active, admin) VALUES
 ('Tóth Péter', 'AABBC', '*2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19', 1, 1),
 ('Nagy László', 'BBCCD', '*2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19', 1, 0);
 

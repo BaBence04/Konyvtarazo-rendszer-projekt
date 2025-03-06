@@ -259,7 +259,11 @@ namespace Desktop
 
         private void EmployeeDetailedPage_FormClosing(object sender, FormClosingEventArgs e)
         {
-            SaveChanges();
+            if (mode == "system_settings")
+            {
+                SaveChanges();
+            }
+            
         }
         private async void SaveChanges()
         {
