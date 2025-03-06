@@ -15,7 +15,8 @@
   --second-color: rgb(152, 205, 198);
   --title-color: hsl(230, 75%, 15%);
   --text-color: hsl(0, 0%, 0%);
-  --body-color: 	hsl(0, 0%, 96%);
+  /* --body-color: 	hsl(0, 0%, 96%); */
+  --body-color: #e8e8e8;
   --container-color: hsl(230, 100%, 97%);
   --border-color: hsl(230, 25%, 80%);
   --white-color: hsl(180, 0%, 100%);
@@ -101,7 +102,7 @@ button {
 }
 
 body {
-  background-color: #e8e8e8;
+  background-color: var(--body-color);
 /*   color: var(--text-color); */
   /* padding-top: 4rem; */
   /* padding-top: calc(var(--header-height) + var(--margin-after-header)); */
@@ -347,7 +348,7 @@ main .book-details{
 }
 
 .grid-item {
-  background-color: #e8e8e8;
+  background-color: var(--body-color);
   border: none;
   padding: 20px;
   text-align: center;
@@ -407,12 +408,15 @@ hr {
 /* From Uiverse.io by Yaya12085 */ 
 .ui-like {
   --icon-size: 24px;
-  --icon-secondary-color: rgb(255, 255, 255);
+  --icon-secondary-color: var(--inp-col);
   --icon-hover-color: rgb(211, 205, 205);
   --icon-primary-color: rgb(230, 26, 26);
-  --icon-circle-border: 1px solid var(--icon-primary-color);
+  --icon-circle-border: 1px solid black;
   --icon-circle-size: 35px;
   --icon-anmt-duration: 0.3s;
+
+  width: 32px;
+  display: inline-block;
 }
 
 .ui-like input {
