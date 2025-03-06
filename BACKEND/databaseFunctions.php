@@ -1090,8 +1090,13 @@
             $conn->close();
         }
         $data = $results->fetch_assoc();
-        if($data != []){
-            return ["result"] == "true";
+        // echo "<pre>";
+        // var_dump($data);
+        // echo "</pre>";
+        
+        if(key_exists("result",$data)){
+            // echo "itt";
+            return $data["result"] == "true";
         }else{
             return false;
         }
