@@ -7,7 +7,9 @@
                 <div class='book-title'>".$data["title"]."</div>
                 <div class='book-author'>".str_replace(",",", ",$data["authors"])."</div>
 
-                <div class='book-genres'>".str_replace(",",", ",$data["genres"])."</div>
+                <div class='book-genres'>".'#' . str_replace(",", ", #", $data["genres"])."</div>
+
+                
 
                 <label class='ui-like'>
                     <input type='checkbox' class='like-input'>

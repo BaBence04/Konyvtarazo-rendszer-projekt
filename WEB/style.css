@@ -109,8 +109,9 @@ body {
 
   display: flex;
   flex-direction: column;
-  min-height: 100dvh;
+  min-height: 100vh;
   position: relative;
+  padding-top: 30px;
 }
 
 h1{
@@ -363,7 +364,7 @@ main .book-details{
 }
 
 .grid-item:hover {
-  background-color: var(--second-color);
+  background-color: var(--white-color);
   transition: 0.4s ease-in-out;
 }
 
@@ -753,7 +754,11 @@ hr {
   background-color: #218838;
 }
 
-/* proba */
+/* SIMILAR BOOKS SECTION */
+
+.simlar-books-container {
+  padding-bottom: 12rem;
+}
 
 .similar-books-section {
   margin-top: 40px;
