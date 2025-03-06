@@ -1,7 +1,7 @@
 <?php
     // require "sql.php";
 
-    $results_per_page = 8;
+    $results_per_page = 12;
     function get_books_filtered($title, $genre, $author, $release_date, $lang, $isbn, $page){
         require "databaseConnect.php";
 
@@ -1011,7 +1011,7 @@
         return $results->fetch_all(MYSQLI_ASSOC)[0];
     }
 
-    function get_books_from_users_shelf(int $user_id, mysqli $conn=null) : array {
+    function get_users_favorite_books(int $user_id, mysqli $conn=null) : array {
         $conn_was_not_given = $conn == null;
 
         if($conn_was_not_given){
