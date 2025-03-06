@@ -27,13 +27,12 @@
             <div class="release_date">Kiadás éve: <?=$book_data["release_date"]?></div>
             <div class="isbn" title="Az ISBN számok olyan egyedi azonosítók amikkel be lehet azonosítani könyveket">ISBN: <?=$book_data["ISBN"]?></div>
     
-            <?php if(!isset($_SESSION["user_id"])): ?>
+            <!-- <?php if(!isset($_SESSION["user_id"])): ?>
             <div class="availability">Elérhető</div>
             <?php endif;?>
-    
+     -->
     
             <div class="buttons">
-                <!-- <button class="wishlist-button">Kívánságlistához adás</button> -->
     
                 <!-- if the user is logged in -->
                 <?php if(isset($_SESSION["user_id"], $_SESSION["restricted"]) && $_SESSION["restricted"] == "false"):?>
@@ -41,7 +40,7 @@
                     <?php
                         //returns "reservation" | "booking"
                         $availability_data = CheckBookAvailability(GetIsbnIdByIsbn($book_data["ISBN"]),$_SESSION["user_id"]);
-                        var_dump( $availability_data);
+                        // var_dump( $availability_data);
                         //EZEKRE A GOMBOKRA KELL EGY DISABLED STÍLUS
                         if($availability_data["available"] == "true"){
                             $buttonHtml = '<button class="reserve-button" id="reserve-button" onclick="reserveOrBook();"';
@@ -142,27 +141,7 @@
             }
         }
 
-        function addOrRemoveFromShelf(element){
-            const isbnId = element.getAttribute("data-isbn-id");
-            if(parseInt(isbnId) != isbnId) return;
-
-            const selected = element.getAttribute("data-selected") == "1";
-            let action = selected?"removeFromShelf":"addToShelf";
-
-            $.ajax({
-                url: "/BACKEND/api.php",
-                type: "POST", //send it through get method
-                data: { 
-                    action: action,
-                    ISBN_id: isbnId
-                },
-                success: function(response)  {
-                    selected?element.setAttribute("data-selected", 0):element.setAttribute("data-selected", 1); 
-                    // location.reload();
-                }
-            }); 
-
-        }
+        
 
         // document.addEventListener("DOMContentLoaded", function () {
         //     const swiper = new Swiper('.slider-container', {
