@@ -71,9 +71,6 @@ if(count($parts_of_path) == 1){
     $page_to_load = "aboutUs";
     $page_title = "Rólunk";
 
-  }elseif($path == "kapcsolat"){
-    $page_to_load = "contacts";
-    $page_title = "Kapcsolat";
   }else{
     header("Location: /web/");
   }
