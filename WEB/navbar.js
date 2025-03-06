@@ -294,6 +294,28 @@ function ForgotPassword(){
   }
 }
 
+function addOrRemoveFromShelf(element){
+  const isbnId = element.getAttribute("data-isbn-id");
+  if(parseInt(isbnId) != isbnId) return;
+
+  const selected = element.checked;
+  let action = !selected?"removeFromShelf":"addToShelf";
+
+  $.ajax({
+      url: "/BACKEND/api.php",
+      type: "POST", //send it through get method
+      data: { 
+          action: action,
+          ISBN_id: isbnId
+      },
+      success: function(response)  {
+          selected?element.setAttribute("data-selected", 0):element.setAttribute("data-selected", 1); 
+          // location.reload();
+      }
+  }); 
+
+}
+
 
 // loginClose.addEventListener("click", () => {
 //     login.classList.remove("show-login");
@@ -327,7 +349,27 @@ function TogglePasswordVisibility(imgElement, inputId){
 // let waitingforServer = false;
 
 /* LOGIN SCRIPT */
-loginBtn.addEventListener("click", () => {
+// loginBtn.addEventListener("click", () => {
+function ShowLoginOrOpenUserDetailed(){
+  isLoggedIn((response)=>{
+    console.log(response)
+    if(response == ""){
+      login.classList.add("show-login");
+      waitingforServer = false;
+
+      //checks if the response is a number (it is the user_id)
+    }else if(!isNaN(response)){
+      window.open("/web/fiok", "_self");
+      
+    }else{
+      console.error(response);
+    }
+  });
+  
+}
+  
+
+function isLoggedIn(callbackFuncOnSuccess){
   if(waitingforServer){
     return;
   }
@@ -341,19 +383,13 @@ loginBtn.addEventListener("click", () => {
         action: "isLoggedIn"
     },
     success: function(response)  {
-      console.log(response)
-      if(response == ""){
-        login.classList.add("show-login");
-        waitingforServer = false;
-
-      }else{
-        window.open("/web/fiok", "_self");
-      }
+      callbackFuncOnSuccess(response);
     }
     });
 
 
-});
+};
+
 
 /* navbar script */
 
