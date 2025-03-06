@@ -6,7 +6,7 @@
     $previously_borrowed_books = GetPreviouslyBorrowedBooks($_SESSION["user_id"]);  
     
     $booked_and_reserved_books = GetBookedAndReservedBooks($_SESSION["user_id"]);
-    $books_on_shelf = get_books_from_users_shelf($_SESSION["user_id"]);
+    $books_on_shelf = get_users_favorite_books($_SESSION["user_id"]);
 
     $booked_books = [];
     $reserved_books = [];
