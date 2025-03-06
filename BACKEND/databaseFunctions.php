@@ -1,7 +1,7 @@
 <?php
     // require "sql.php";
 
-    $results_per_page = 8;
+    $results_per_page = 12;
     function get_books_filtered($title, $genre, $author, $release_date, $lang, $isbn, $page){
         require "databaseConnect.php";
 
