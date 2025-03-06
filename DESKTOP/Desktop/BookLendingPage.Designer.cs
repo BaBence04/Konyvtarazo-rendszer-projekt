@@ -28,7 +28,6 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-            this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -47,18 +46,6 @@
             this.pChooseBook.SuspendLayout();
             this.pChooseUser.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(156, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(431, 42);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Ez a könyv kiadása oldal";
             // 
             // label5
             // 
@@ -117,15 +104,15 @@
             // 
             this.cbtnChooseBook.BackColor = System.Drawing.Color.Black;
             this.cbtnChooseBook.BorderColor = System.Drawing.Color.White;
-            this.cbtnChooseBook.BorderRadius = 30;
+            this.cbtnChooseBook.BorderRadius = 40;
             this.cbtnChooseBook.BorderSize = 0;
             this.cbtnChooseBook.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbtnChooseBook.FlatAppearance.BorderSize = 0;
             this.cbtnChooseBook.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbtnChooseBook.ForeColor = System.Drawing.Color.White;
-            this.cbtnChooseBook.Location = new System.Drawing.Point(24, 23);
+            this.cbtnChooseBook.Location = new System.Drawing.Point(24, 16);
             this.cbtnChooseBook.Name = "cbtnChooseBook";
-            this.cbtnChooseBook.Size = new System.Drawing.Size(132, 32);
+            this.cbtnChooseBook.Size = new System.Drawing.Size(132, 39);
             this.cbtnChooseBook.TabIndex = 16;
             this.cbtnChooseBook.Text = "Konyv kiválasztása";
             this.cbtnChooseBook.UseVisualStyleBackColor = false;
@@ -196,7 +183,7 @@
             this.cbtnChooseUser.ForeColor = System.Drawing.Color.White;
             this.cbtnChooseUser.Location = new System.Drawing.Point(13, 16);
             this.cbtnChooseUser.Name = "cbtnChooseUser";
-            this.cbtnChooseUser.Size = new System.Drawing.Size(147, 46);
+            this.cbtnChooseUser.Size = new System.Drawing.Size(147, 39);
             this.cbtnChooseUser.TabIndex = 16;
             this.cbtnChooseUser.Text = "Felhasználó kiválasztása";
             this.cbtnChooseUser.UseVisualStyleBackColor = false;
@@ -208,14 +195,14 @@
             this.lblHistory.AutoSize = true;
             this.lblHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.75F);
             this.lblHistory.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblHistory.Location = new System.Drawing.Point(156, 364);
+            this.lblHistory.Location = new System.Drawing.Point(83, 295);
             this.lblHistory.Name = "lblHistory";
-            this.lblHistory.Size = new System.Drawing.Size(175, 29);
+            this.lblHistory.Size = new System.Drawing.Size(0, 29);
             this.lblHistory.TabIndex = 21;
-            this.lblHistory.Text = "Olvasas history";
             // 
             // cbtnKiad
             // 
+            this.cbtnKiad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cbtnKiad.BackColor = System.Drawing.Color.Black;
             this.cbtnKiad.BorderColor = System.Drawing.Color.White;
             this.cbtnKiad.BorderRadius = 40;
@@ -224,7 +211,7 @@
             this.cbtnKiad.FlatAppearance.BorderSize = 0;
             this.cbtnKiad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbtnKiad.ForeColor = System.Drawing.Color.White;
-            this.cbtnKiad.Location = new System.Drawing.Point(455, 507);
+            this.cbtnKiad.Location = new System.Drawing.Point(538, 481);
             this.cbtnKiad.Name = "cbtnKiad";
             this.cbtnKiad.Size = new System.Drawing.Size(132, 40);
             this.cbtnKiad.TabIndex = 20;
@@ -234,6 +221,7 @@
             // 
             // backBtn
             // 
+            this.backBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.backBtn.BackColor = System.Drawing.Color.Black;
             this.backBtn.BorderColor = System.Drawing.Color.White;
             this.backBtn.BorderRadius = 40;
@@ -242,7 +230,7 @@
             this.backBtn.FlatAppearance.BorderSize = 0;
             this.backBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.backBtn.ForeColor = System.Drawing.Color.White;
-            this.backBtn.Location = new System.Drawing.Point(25, 507);
+            this.backBtn.Location = new System.Drawing.Point(49, 481);
             this.backBtn.Name = "backBtn";
             this.backBtn.Size = new System.Drawing.Size(132, 40);
             this.backBtn.TabIndex = 15;
@@ -269,7 +257,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "BookLendingPage";
@@ -282,8 +269,6 @@
 		}
 
 		#endregion
-
-		private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

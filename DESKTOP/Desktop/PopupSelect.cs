@@ -17,6 +17,30 @@ namespace Desktop
         public string res1, res2, res3, id;
         private bool canReserve, canBook;
         private List<string> ids = new List<string>();
+
+        [Category("Border")]
+        [Browsable(true)]
+        public float BorderWidth { get; set; } = 1.0f;
+        [Category("Border")]
+        [Browsable(true)]
+        public Color BorderColor { get; set; } = Color.Black;
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+            using (Pen pen = new Pen(BorderColor, BorderWidth))
+            {
+                Rectangle borderRect = new Rectangle(
+                    (int)(BorderWidth / 2),
+                    (int)(BorderWidth / 2),
+                    (int)(this.ClientSize.Width - BorderWidth),
+                    (int)(this.ClientSize.Height - BorderWidth)
+                );
+
+                e.Graphics.DrawRectangle(pen, borderRect);
+            }
+        }
+
         public PopupSelect(string mode, string id)
         {
             startMode = mode;
@@ -42,7 +66,10 @@ namespace Desktop
                     break;
             }
             InitializeComponent();
-            
+
+            FormDragger.MakeDraggable(this);
+            this.BorderColor = Color.FromArgb(10, 123, 106);
+            this.BorderWidth = 2;
         }
         public PopupSelect(string mode)
         {
@@ -68,6 +95,10 @@ namespace Desktop
 
             }
             InitializeComponent();
+
+            FormDragger.MakeDraggable(this);
+            //this.BorderColor = Color.FromArgb(10, 123, 106);
+            //this.BorderWidth = 2;
         }
         
 

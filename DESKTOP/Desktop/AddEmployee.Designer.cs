@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddEmployee));
             this.ctbEmplName = new Desktop.CustomTextbox();
             this.cbtnAdd = new Desktop.CustomButton();
             this.ctbEmplPass = new Desktop.CustomTextbox();
@@ -46,8 +45,8 @@
             this.ctbEmplName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ctbEmplName.ForeColor = System.Drawing.Color.DimGray;
             this.ctbEmplName.IsReadOnly = false;
-            this.ctbEmplName.Location = new System.Drawing.Point(26, 44);
-            this.ctbEmplName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ctbEmplName.Location = new System.Drawing.Point(26, 64);
+            this.ctbEmplName.Margin = new System.Windows.Forms.Padding(4);
             this.ctbEmplName.Multiline = false;
             this.ctbEmplName.Name = "ctbEmplName";
             this.ctbEmplName.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
@@ -87,7 +86,7 @@
             this.ctbEmplPass.ForeColor = System.Drawing.Color.DimGray;
             this.ctbEmplPass.IsReadOnly = false;
             this.ctbEmplPass.Location = new System.Drawing.Point(26, 131);
-            this.ctbEmplPass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ctbEmplPass.Margin = new System.Windows.Forms.Padding(4);
             this.ctbEmplPass.Multiline = false;
             this.ctbEmplPass.Name = "ctbEmplPass";
             this.ctbEmplPass.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
@@ -125,7 +124,7 @@
             this.button_CloseForm.FlatAppearance.BorderSize = 0;
             this.button_CloseForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_CloseForm.ForeColor = System.Drawing.Color.White;
-            this.button_CloseForm.Image = ((System.Drawing.Image)(resources.GetObject("button_CloseLoginForm.Image")));
+            this.button_CloseForm.Image = global::Desktop.Properties.Resources.close_line_white;
             this.button_CloseForm.Location = new System.Drawing.Point(248, 2);
             this.button_CloseForm.Name = "button_CloseForm";
             this.button_CloseForm.Size = new System.Drawing.Size(40, 40);

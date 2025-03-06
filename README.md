@@ -4,16 +4,12 @@ Mesterremek projekt, könyvtárazó rendszer
 
 #ASZTALI:
     KINÉZET:
-        -a könyvrészletesen lehessen a kiadóra lehessen rákattintani, és megnyitni annak a részleteit
-        -automatikus törlős dologhoz valami frontend, popup window szerűség
-        -minden ami a UsersPage-el kapcsolatos (alias onnan nyílik meg) szabadon style-olható mert minden készen van nem fogok már hozzányúlni nagy eséllel
-        -AddEmployee oldalon a vissza gomb nem működött és hibát is adott. Megcsináltam hogy ne dobjon hibát, de azt nem sikerült megoldani, hogy az X megjelenjen
-  
 
     BACKEND:
         -a popup form-ok a megnyitott form közepére nyíljanak meg
         -nem mindig tűnik el a borrowingos felkiáltójel
         -Kiírni hogy adott típusú könyvből hány darab van (not necessary)
+        -a könyvrészletesen lehessen a kiadóra rákattintani, és megnyitni annak a részleteit
 
 #WEB:
     KINÉZET:

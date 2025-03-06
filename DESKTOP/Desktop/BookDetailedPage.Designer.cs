@@ -308,7 +308,7 @@
             this.ctbTitle.BackColor = System.Drawing.SystemColors.Window;
             this.ctbTitle.BorderColor = System.Drawing.Color.MediumSlateBlue;
             this.ctbTitle.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.ctbTitle.BorderRadius = 0;
+            this.ctbTitle.BorderRadius = 10;
             this.ctbTitle.BorderSize = 2;
             this.ctbTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ctbTitle.ForeColor = System.Drawing.Color.DimGray;
@@ -355,7 +355,7 @@
             // cdtpReleaseDate
             // 
             this.cdtpReleaseDate.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.cdtpReleaseDate.BorderRadius = 10;
+            this.cdtpReleaseDate.BorderRadius = 1;
             this.cdtpReleaseDate.BorderSize = 0;
             this.cdtpReleaseDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
             this.cdtpReleaseDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
@@ -434,7 +434,7 @@
             this.ctbISBN.BackColor = System.Drawing.SystemColors.Window;
             this.ctbISBN.BorderColor = System.Drawing.Color.MediumSlateBlue;
             this.ctbISBN.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.ctbISBN.BorderRadius = 0;
+            this.ctbISBN.BorderRadius = 10;
             this.ctbISBN.BorderSize = 2;
             this.ctbISBN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ctbISBN.ForeColor = System.Drawing.Color.DimGray;
