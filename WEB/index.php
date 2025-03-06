@@ -157,7 +157,7 @@ if(count($parts_of_path) == 1){
       require_once "bookDetailed.php";
 
     }else {
-        echo "<h2>Az oldal nem található</h2>";
+      require_once "404.html";
     }
     
     require_once "footer.html";
