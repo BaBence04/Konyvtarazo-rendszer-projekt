@@ -111,8 +111,15 @@ namespace Desktop
                 { "button_Publishers", CurrentTheme == "Light" ? Image.FromFile(imagePath + "publisher-line_black.png") : Image.FromFile(imagePath + "publisher-line_white.png") },
 
                 { "button_CloseLoginForm", CurrentTheme == "Light" ? Image.FromFile(imagePath + "close-line_black.png") : Image.FromFile(imagePath + "close-line_white.png") },
-                
-                { "pbNewBookings", CurrentTheme == "Light" ? Image.FromFile(imagePath + "red_excl.png") : Image.FromFile(imagePath + "red_excl.png") }
+
+                { "button_Borrowings", CurrentTheme == "Light" ? Image.FromFile(imagePath + "book-open-line_black.png") : Image.FromFile(imagePath + "book-open-line_white.png") },
+
+                { "button_Bookings", CurrentTheme == "Light" ? Image.FromFile(imagePath + "calendar-line_black.png") : Image.FromFile(imagePath + "calendar-line_white.png") },
+
+                { "button_Reservations", CurrentTheme == "Light" ? Image.FromFile(imagePath + "reserved-line_black.png") : Image.FromFile(imagePath + "reserved-line_white.png") },
+
+
+                { "pbNewBookings", CurrentTheme == "Light" ? Image.FromFile(imagePath + "red_excl_c.png") : Image.FromFile(imagePath + "red_excl_c.png") }
             };
 
 			if (control is Form form)

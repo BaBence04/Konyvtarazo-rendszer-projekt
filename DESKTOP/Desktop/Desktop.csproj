@@ -399,5 +399,11 @@
   <ItemGroup>
     <None Include="Resources\publisher-line_black.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\book-open-line_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\book-open-line_black.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

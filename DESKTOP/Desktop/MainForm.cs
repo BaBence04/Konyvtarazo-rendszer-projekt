@@ -87,7 +87,7 @@ namespace Desktop
 
         private void InitializeMenu()
         {
-            Button[] menuButtons = { button_HomePage, button_Books, button_Users, button_Publishers, btnBookings, btnReservations, btnBorrowings };
+            Button[] menuButtons = { button_HomePage, button_Books, button_Users, button_Publishers, button_Bookings, button_Reservations, button_Borrowings };
 
             _currentActiveButton = button_HomePage;
             SetActiveButtonStyle(_currentActiveButton);
