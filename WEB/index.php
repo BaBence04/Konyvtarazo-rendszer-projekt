@@ -159,8 +159,6 @@ if(count($parts_of_path) == 1){
     }else if($page_to_load === "bookDetailed"){
       require_once "bookDetailed.php";
 
-    }else if($page_to_load === "contacts"){
-      echo "kapcsolatok oldal"; 
     }else {
         echo "<h2>Az oldal nem található</h2>";
     }
