@@ -45,7 +45,7 @@
             Korábban kivett <span>könyvek</span> 
             <!-- <span class="indicator"></span> -->
         </div>
-        <div class="nav-item" id="nav-books-on-shelf" data-link="polc" onclick="showSection(this); SetUrlToOpenSection(this);">
+        <div class="nav-item" id="nav-books-on-shelf" data-link="kedvencek" onclick="showSection(this); SetUrlToOpenSection(this);">
             Kedvencek
             <!-- <span class="indicator"></span> -->
         </div>
@@ -181,7 +181,7 @@
 
         <div class="section" id="books-on-shelf">
             <?php if(count($books_on_shelf) > 0): ?>
-                <h3>Polcon levő könyvek</h3>
+                <h3>Kedvencek</h3>
                 <?php foreach ($books_on_shelf as $book_data): ?>
                     <div class="book-item">
                         <div class="book-details_container">
@@ -195,7 +195,7 @@
                 <?php endforeach;?>
 
             <?php else: ?>
-                <p>Még nem tett könyvet a polcára! A könyvek részletes oldalán tud hozzáadni egy könyvet!</p>
+                <p>Még nem tett könyvet a kedvencek közé!</p>
             <?php endif; ?>
         </div>
 
