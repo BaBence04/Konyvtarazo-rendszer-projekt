@@ -1094,7 +1094,7 @@
         // var_dump($data);
         // echo "</pre>";
         
-        if(key_exists("result",$data)){
+        if($data != null && key_exists("result",$data)){
             // echo "itt";
             return $data["result"] == "true";
         }else{
