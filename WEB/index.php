@@ -44,7 +44,6 @@ if (!isset($_SESSION['user_id']) && isset($_COOKIE['remember_me'])) {
       setcookie('remember_me', '', time() - 3600, '/');
   }
 }
-
 $path = explode("?",explode("web/",$_SERVER['REQUEST_URI'])[1])[0];
 $parts_of_path = explode("/", $path);
 $page_to_load = "mainPage";
