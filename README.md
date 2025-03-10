@@ -8,6 +8,8 @@ Mesterremek projekt, könyvtárazó rendszer
         -az alkalmazott részletes nem jó full screen-en minden top-left-hez van igazítva
 
     BACKEND:
+        -ne negatív legyen, hogy mikor olvasta legutóbb a felhasználó akönvet
+        -valahogy jelöljük, hogy a kivett könyveknél előzőe az adott sorban levő
         -az alkalmazott hozzáadás után frissüljön az alkalmazottak dgv, ha nyitva van, és lehet rossz a név generálása is
         -a system settings nél rosszak az oszlop neve
         -a popup form-ok a megnyitott form közepére nyíljanak meg
