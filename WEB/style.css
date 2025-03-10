@@ -7,7 +7,7 @@
 
 :root {
   --header-height: 75px;
-  /* --margin-after-header: 30px; */
+  --margin-after-header: 30px;
 
   /*HSL(hue, saturation, lightness)*/
   /* first color hex: 	#0a7b6a */
@@ -213,7 +213,8 @@ a {
 }
 
 div.space-after-nav{
-  margin-top: var(--header-height);
+  box-sizing: content-box;
+  padding-top: var(--header-height);
   height: var(--margin-after-header);
   width: 100%;
   background-color: var(--body-color);
