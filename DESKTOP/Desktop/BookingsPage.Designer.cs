@@ -137,7 +137,8 @@
             this.cdgvBookings.HeaderForeColor = System.Drawing.Color.WhiteSmoke;
             this.cdgvBookings.HeaderGradientColor = System.Drawing.Color.SlateBlue;
             this.cdgvBookings.HoverRowColor = System.Drawing.Color.LightSteelBlue;
-            this.cdgvBookings.Location = new System.Drawing.Point(3, 152);
+            this.cdgvBookings.Location = new System.Drawing.Point(0, 149);
+            this.cdgvBookings.Margin = new System.Windows.Forms.Padding(0);
             this.cdgvBookings.Name = "cdgvBookings";
             this.cdgvBookings.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -149,7 +150,7 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.cdgvBookings.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.cdgvBookings.SelectedRowColor = System.Drawing.Color.CornflowerBlue;
-            this.cdgvBookings.Size = new System.Drawing.Size(693, 295);
+            this.cdgvBookings.Size = new System.Drawing.Size(699, 301);
             this.cdgvBookings.TabIndex = 1;
             this.cdgvBookings.UseHeaderGradient = false;
             this.cdgvBookings.UseRoundedCorners = false;

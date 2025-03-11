@@ -162,7 +162,8 @@
             this.cdgvBorrowings.HeaderForeColor = System.Drawing.Color.WhiteSmoke;
             this.cdgvBorrowings.HeaderGradientColor = System.Drawing.Color.SlateBlue;
             this.cdgvBorrowings.HoverRowColor = System.Drawing.Color.LightSteelBlue;
-            this.cdgvBorrowings.Location = new System.Drawing.Point(3, 188);
+            this.cdgvBorrowings.Location = new System.Drawing.Point(0, 185);
+            this.cdgvBorrowings.Margin = new System.Windows.Forms.Padding(0);
             this.cdgvBorrowings.Name = "cdgvBorrowings";
             this.cdgvBorrowings.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -174,7 +175,7 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.cdgvBorrowings.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.cdgvBorrowings.SelectedRowColor = System.Drawing.Color.CornflowerBlue;
-            this.cdgvBorrowings.Size = new System.Drawing.Size(734, 368);
+            this.cdgvBorrowings.Size = new System.Drawing.Size(740, 374);
             this.cdgvBorrowings.TabIndex = 3;
             this.cdgvBorrowings.UseHeaderGradient = false;
             this.cdgvBorrowings.UseRoundedCorners = false;
