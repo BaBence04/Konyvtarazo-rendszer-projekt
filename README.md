@@ -17,11 +17,8 @@ Mesterremek projekt, könyvtárazó rendszer
 
 #WEB:
     KINÉZET:
-        -a rólunk oldalra is kell a hörcsög
         -a főoldalra kell még a footer
         -a profilon a kevencek-nél felcsúszik a footer, ott is kell adni egy min-heigt
-        -jelenleg csak a könyv részletes oldalon lehet látni hogy az adott könyv a polcon van-e, de lehet kéne valahogy jelezni az összes könyvnél is
-        -lehetne egyértelműbb, hogy mit csinál a "könyvespolcra helyezés" gomb   
         
         
 
