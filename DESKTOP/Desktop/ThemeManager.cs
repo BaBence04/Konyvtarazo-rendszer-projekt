@@ -161,6 +161,13 @@ namespace Desktop
                     button.ForeColor = CurrentTheme == "Light" ? Color.Black : Color.White;
                 }
 
+                else if (button.Name == "cbtnLogout")
+                {
+                    button.BackColor = Color.Brown;
+                    button.ForeColor = Color.White;
+                }
+
+
                 else
                 {
                     button.BackColor = CurrentTheme == "Light" ? Color.FromArgb(220, 220, 220) : Color.FromArgb(25, 25, 39);
