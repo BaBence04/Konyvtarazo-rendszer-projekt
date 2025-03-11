@@ -201,9 +201,21 @@ namespace Desktop
             else if (control is CustomDataGridView dataGrid)
             {
                 dataGrid.BackgroundColor = CurrentTheme == "Light" ? Color.FromArgb(245, 245, 245) : Color.FromArgb(51, 51, 68);
+                dataGrid.GridColor = CurrentTheme == "Light" ? Color.FromArgb(245, 245, 245) : Color.FromArgb(51, 51, 68);
+                dataGrid.HeaderBackColor = CurrentTheme == "Light" ? Color.FromArgb(245, 245, 245) : Color.FromArgb(35, 35, 55);
+
 				dataGrid.CellBackColor = CurrentTheme == "Light" ? Color.FromArgb(245, 245, 245) : Color.FromArgb(51, 51, 68);
 				dataGrid.AlternatingRowBackColor = CurrentTheme == "Light" ? Color.FromArgb(220, 220, 220) : Color.FromArgb(71, 71, 88);
             }
+            else if (control is CustomTextbox CtextBox)
+            {
+                CtextBox.BackColor = CurrentTheme == "Light" ? Color.FromArgb(245, 245, 245) : Color.FromArgb(71, 71, 88);
+                CtextBox.BorderColor = CurrentTheme == "Light" ? Color.FromArgb(10, 123, 106) : Color.FromArgb(10, 123, 106);
+            }
+
+
+
+
             foreach (Control childControl in control.Controls)
 			{
 				ApplyTheme(childControl);

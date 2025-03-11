@@ -4,7 +4,6 @@ Mesterremek projekt, könyvtárazó rendszer
 
 #ASZTALI:
     KINÉZET:
-        -a keresés nem vált témát
         -az alkalmazott részletes nem jó full screen-en minden top-left-hez van igazítva
 
     BACKEND:
