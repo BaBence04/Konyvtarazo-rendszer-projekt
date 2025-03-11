@@ -82,7 +82,8 @@
             this.cdgwReservations.HeaderForeColor = System.Drawing.Color.WhiteSmoke;
             this.cdgwReservations.HeaderGradientColor = System.Drawing.Color.SlateBlue;
             this.cdgwReservations.HoverRowColor = System.Drawing.Color.LightSteelBlue;
-            this.cdgwReservations.Location = new System.Drawing.Point(3, 188);
+            this.cdgwReservations.Location = new System.Drawing.Point(0, 185);
+            this.cdgwReservations.Margin = new System.Windows.Forms.Padding(0);
             this.cdgwReservations.Name = "cdgwReservations";
             this.cdgwReservations.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -94,7 +95,7 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.cdgwReservations.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.cdgwReservations.SelectedRowColor = System.Drawing.Color.CornflowerBlue;
-            this.cdgwReservations.Size = new System.Drawing.Size(734, 368);
+            this.cdgwReservations.Size = new System.Drawing.Size(740, 374);
             this.cdgwReservations.TabIndex = 0;
             this.cdgwReservations.UseHeaderGradient = false;
             this.cdgwReservations.UseRoundedCorners = false;
