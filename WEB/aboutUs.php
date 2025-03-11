@@ -202,6 +202,9 @@ footer {
   <title>About Us</title>
 </head>
 <body>
+    <?php require_once "loadingScreen.html"; ?>
+
+
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="hero-content">

@@ -4,7 +4,6 @@ Mesterremek projekt, könyvtárazó rendszer
 
 #ASZTALI:
     KINÉZET:
-        -az alkalmazott részletes nem jó full screen-en minden top-left-hez van igazítva
 
     BACKEND:
         -ne negatív legyen, hogy mikor olvasta legutóbb a felhasználó akönvet
