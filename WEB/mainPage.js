@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const lenis = new Lenis({
         lerp: 0.08,
-        duration: 0.5,
+        duration: 0.3,
         smooth: true,
     });
 
@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (navigator.userAgent.toLowerCase().includes("chrome")) {
         document.body.classList.add("chrome-browser");
     }
-    
+
 
 
 

@@ -50,8 +50,9 @@
             </div>
             <div class="divider"></div>
             <div class="intro-header">
-                <h1>JUSTICE</h1>
-                <h1>FOR ALL</h1>
+                <!-- <img src="/web/imgs/books_line.png" alt=""> -->
+                <h1>Könyvfoglalás</h1>
+                <h1>egy kattingtással</h1>
             </div>
         </section>
         <section class="ws section" id="ws_section"></section>
@@ -60,8 +61,9 @@
             <h1 class="overlay">OF MISERY</h1>
         </section>
         <section class="outro section" id="outro_section">
-            <h1 class="text-toLeft">MY FRIEND</h1>
-            <h1 class="text-toRight">OF MISERY</h1>
+            <h1 class="text-toLeft">“There is no friend </h1>
+            <h1 class="text-toRight">as loyal as a book.”</h1>
+            <p><i>– Ernest Hemingway</i></p>
         </section>
         <?php require_once "footer.html"; ?>
     </div>

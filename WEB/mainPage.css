@@ -172,6 +172,10 @@ section {
     color: #1a222a;
 }
 
+.tagline p{
+    font-size: 1.6rem;
+}
+
 .header-right {
     margin: 0 20px;
     opacity: 0;
@@ -237,6 +241,24 @@ section.ws{
     text-align: center;
     background-color: #e1dedc;
     color: #1a222a;
+}
+
+#outro_section h1{
+    font-size: calc(12px + 6vw);
+    margin-bottom: 3rem;
+}
+
+#outro_section p {
+    font-size: calc(12px + 1.5vw);
+}
+
+.intro-header h1 {
+    font-size: 8vw;
+    margin-bottom: 3rem;
+}
+
+.intro-header img {
+    height: 8vw;
 }
 
 .footer {
