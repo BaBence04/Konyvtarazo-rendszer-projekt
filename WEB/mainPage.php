@@ -63,11 +63,7 @@
             <h1 class="text-toLeft">MY FRIEND</h1>
             <h1 class="text-toRight">OF MISERY</h1>
         </section>
-<!--         <section class="footer">
-            <div class="footer-bg">
-                
-            </div>
-        </section> -->
+        <?php require_once "footer.html"; ?>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
