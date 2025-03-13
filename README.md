@@ -5,8 +5,10 @@ Mesterremek projekt, könyvtárazó rendszer
 #ASZTALI:
     KINÉZET:
         -lehessen görgetni a könyv hozzáadásánál a könyv leírásában, és legyen nagyobb is
+        -a könyv hozzáadásnál nem vált témát(legalábbis gonodlom, mert világos sötét módkor)
 
     BACKEND:
+        -meglepően sokszor amikor a könyvrészletesről visszamegy az ember a könyvek-hez, olyankor feldobja, hogy vannak mentetlen változtatások mégha nem is csináltál semmit, ahol több a kategória ott biztos csinálja (több szerzőnél nem tudom)
         -checkolja a program kép feltöltéskor, hogy túl nagy-e és figyelmeztessen
         -könyv hozzáadása után amikor megkérdezi hogy dobjon-e a részletes oldalra, olyankor ha nemet mondasz is odadob
         -rossz a tab indexelés a könyv hozzáadásánál, először a címbe kattint bele
