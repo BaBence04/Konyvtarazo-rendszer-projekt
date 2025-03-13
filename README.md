@@ -4,8 +4,10 @@ Mesterremek projekt, könyvtárazó rendszer
 
 #ASZTALI:
     KINÉZET:
+        -lehessen görgetni a könyv hozzáadásánál a könyv leírásában, és legyen nagyobb is
 
     BACKEND:
+        -checkolja a program kép feltöltéskor, hogy túl nagy-e és figyelmeztessen
         -könyv hozzáadása után amikor megkérdezi hogy dobjon-e a részletes oldalra, olyankor ha nemet mondasz is odadob
         -rossz a tab indexelés a könyv hozzáadásánál, először a címbe kattint bele
         -a könyv hozzáadásánál ne kép cseréje hanem hozzáadása legyen kiírva
