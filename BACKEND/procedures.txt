@@ -992,7 +992,7 @@ CREATE PROCEDURE IF NOT EXISTS getHistory(
   IN userID INT
 ) 
 BEGIN
-  SELECT CASE WHEN (SELECT COUNT(borrowings.borrowing_id) FROM borrowings INNER JOIN inventory ON inventory.book_id = borrowings.book_id WHERE inventory.ISBN_id = (SELECT inventory.ISBN_id FROM inventory WHERE inventory.book_id = bookID) AND borrowings.user_id = userID AND borrowings.returned) = 0 THEN "not" ELSE (SELECT DATEDIFF(start_date, CURRENT_DATE()) as Days FROM borrowings INNER JOIN inventory ON inventory.book_id = borrowings.book_id WHERE inventory.ISBN_id = (SELECT inventory.ISBN_id FROM inventory WHERE inventory.book_id = bookID ORDER BY 1 DESC LIMIT 1) AND borrowings.user_id = userID AND borrowings.returned) END AS result;
+  SELECT CASE WHEN (SELECT COUNT(borrowings.borrowing_id) FROM borrowings INNER JOIN inventory ON inventory.book_id = borrowings.book_id WHERE inventory.ISBN_id = (SELECT inventory.ISBN_id FROM inventory WHERE inventory.book_id = bookID) AND borrowings.user_id = userID AND borrowings.returned) = 0 THEN "not" ELSE (SELECT DATEDIFF(CURRENT_DATE(), start_date) as Days FROM borrowings INNER JOIN inventory ON inventory.book_id = borrowings.book_id WHERE inventory.ISBN_id = (SELECT inventory.ISBN_id FROM inventory WHERE inventory.book_id = bookID ) AND borrowings.user_id = userID AND borrowings.returned ORDER BY 1 DESC LIMIT 1) END AS result;
 END;//
 DELIMITER ;
 

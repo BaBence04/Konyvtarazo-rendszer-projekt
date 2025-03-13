@@ -10,16 +10,12 @@ Mesterremek projekt, könyvtárazó rendszer
         -checkolja a program kép feltöltéskor, hogy túl nagy-e és figyelmeztessen
         -könyv hozzáadása után amikor megkérdezi hogy dobjon-e a részletes oldalra, olyankor ha nemet mondasz is odadob
         -rossz a tab indexelés a könyv hozzáadásánál, először a címbe kattint bele
-        -a könyv hozzáadásánál ne kép cseréje hanem hozzáadása legyen kiírva
         -a könyvhozzáadásnál a publisher-t nem lehet hozzáadni ha még nincs egy sem benne
-        -ne negatív legyen, hogy mikor olvasta legutóbb a felhasználó akönvet
-        -valahogy jelöljük, hogy a kivett könyveknél előzőe az adott sorban levő
-        -az alkalmazott hozzáadás után frissüljön az alkalmazottak dgv, ha nyitva van, és lehet rossz a név generálása is
-        -a system settings nél rosszak az oszlop neve
         -a popup form-ok a megnyitott form közepére nyíljanak meg
-        -nem mindig tűnik el a borrowingos felkiáltójel
+        -nem mindig tűnik el a borrowingos felkiáltójel(not sure if relevant)
         -Kiírni hogy adott típusú könyvből hány darab van (not necessary)
         -a könyvrészletesen lehessen a kiadóra rákattintani, és megnyitni annak a részleteit
+        -nem biztos hogy működik a popupform üres author/genre/publisher-nél így
 
 #WEB:
     KINÉZET:

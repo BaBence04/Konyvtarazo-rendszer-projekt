@@ -42,13 +42,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.pAuthors = new System.Windows.Forms.Panel();
             this.pCategories = new System.Windows.Forms.Panel();
-            this.lblAuthorDeleteMode = new System.Windows.Forms.Label();
-            this.lblCategoryDeleteMode = new System.Windows.Forms.Label();
             this.cbtnDeactivate = new Desktop.CustomButton();
             this.cbtnBack = new Desktop.CustomButton();
-            this.cbtnDeleteCategory = new Desktop.CustomButton();
             this.cbtnAddCategory = new Desktop.CustomButton();
-            this.cbtnDeleteAuthor = new Desktop.CustomButton();
             this.cbtnAddAuthor = new Desktop.CustomButton();
             this.ctbTitle = new Desktop.CustomTextbox();
             this.label8 = new System.Windows.Forms.Label();
@@ -179,28 +175,6 @@
             this.pCategories.Size = new System.Drawing.Size(225, 76);
             this.pCategories.TabIndex = 20;
             // 
-            // lblAuthorDeleteMode
-            // 
-            this.lblAuthorDeleteMode.AutoSize = true;
-            this.lblAuthorDeleteMode.ForeColor = System.Drawing.Color.Red;
-            this.lblAuthorDeleteMode.Location = new System.Drawing.Point(430, 61);
-            this.lblAuthorDeleteMode.Name = "lblAuthorDeleteMode";
-            this.lblAuthorDeleteMode.Size = new System.Drawing.Size(114, 13);
-            this.lblAuthorDeleteMode.TabIndex = 0;
-            this.lblAuthorDeleteMode.Text = "Szerzők törlés módban";
-            this.lblAuthorDeleteMode.Visible = false;
-            // 
-            // lblCategoryDeleteMode
-            // 
-            this.lblCategoryDeleteMode.AutoSize = true;
-            this.lblCategoryDeleteMode.ForeColor = System.Drawing.Color.Red;
-            this.lblCategoryDeleteMode.Location = new System.Drawing.Point(417, 178);
-            this.lblCategoryDeleteMode.Name = "lblCategoryDeleteMode";
-            this.lblCategoryDeleteMode.Size = new System.Drawing.Size(127, 13);
-            this.lblCategoryDeleteMode.TabIndex = 21;
-            this.lblCategoryDeleteMode.Text = "Kategóriák törlés módban";
-            this.lblCategoryDeleteMode.Visible = false;
-            // 
             // cbtnDeactivate
             // 
             this.cbtnDeactivate.BackColor = System.Drawing.Color.Black;
@@ -235,23 +209,6 @@
             this.cbtnBack.UseVisualStyleBackColor = false;
             this.cbtnBack.Click += new System.EventHandler(this.cbtnBack_Click);
             // 
-            // cbtnDeleteCategory
-            // 
-            this.cbtnDeleteCategory.BackColor = System.Drawing.Color.Black;
-            this.cbtnDeleteCategory.BorderColor = System.Drawing.Color.White;
-            this.cbtnDeleteCategory.BorderRadius = 40;
-            this.cbtnDeleteCategory.BorderSize = 0;
-            this.cbtnDeleteCategory.FlatAppearance.BorderSize = 0;
-            this.cbtnDeleteCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbtnDeleteCategory.ForeColor = System.Drawing.Color.White;
-            this.cbtnDeleteCategory.Location = new System.Drawing.Point(550, 235);
-            this.cbtnDeleteCategory.Name = "cbtnDeleteCategory";
-            this.cbtnDeleteCategory.Size = new System.Drawing.Size(122, 35);
-            this.cbtnDeleteCategory.TabIndex = 15;
-            this.cbtnDeleteCategory.Text = "Töröl";
-            this.cbtnDeleteCategory.UseVisualStyleBackColor = false;
-            this.cbtnDeleteCategory.Click += new System.EventHandler(this.cbtnDeleteCategory_Click);
-            // 
             // cbtnAddCategory
             // 
             this.cbtnAddCategory.BackColor = System.Drawing.Color.Black;
@@ -268,23 +225,6 @@
             this.cbtnAddCategory.Text = "Hozzáad";
             this.cbtnAddCategory.UseVisualStyleBackColor = false;
             this.cbtnAddCategory.Click += new System.EventHandler(this.cbtnAddCategory_Click);
-            // 
-            // cbtnDeleteAuthor
-            // 
-            this.cbtnDeleteAuthor.BackColor = System.Drawing.Color.Black;
-            this.cbtnDeleteAuthor.BorderColor = System.Drawing.Color.White;
-            this.cbtnDeleteAuthor.BorderRadius = 40;
-            this.cbtnDeleteAuthor.BorderSize = 0;
-            this.cbtnDeleteAuthor.FlatAppearance.BorderSize = 0;
-            this.cbtnDeleteAuthor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbtnDeleteAuthor.ForeColor = System.Drawing.Color.White;
-            this.cbtnDeleteAuthor.Location = new System.Drawing.Point(550, 118);
-            this.cbtnDeleteAuthor.Name = "cbtnDeleteAuthor";
-            this.cbtnDeleteAuthor.Size = new System.Drawing.Size(122, 35);
-            this.cbtnDeleteAuthor.TabIndex = 13;
-            this.cbtnDeleteAuthor.Text = "Töröl";
-            this.cbtnDeleteAuthor.UseVisualStyleBackColor = false;
-            this.cbtnDeleteAuthor.Click += new System.EventHandler(this.cbtnDeleteAuthor_Click);
             // 
             // cbtnAddAuthor
             // 
@@ -477,14 +417,10 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.ctbDescription);
             this.Controls.Add(this.cdtpReleaseDate);
-            this.Controls.Add(this.lblCategoryDeleteMode);
-            this.Controls.Add(this.lblAuthorDeleteMode);
             this.Controls.Add(this.pCategories);
             this.Controls.Add(this.pAuthors);
             this.Controls.Add(this.cbtnBack);
-            this.Controls.Add(this.cbtnDeleteCategory);
             this.Controls.Add(this.cbtnAddCategory);
-            this.Controls.Add(this.cbtnDeleteAuthor);
             this.Controls.Add(this.cbtnAddAuthor);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label9);
@@ -522,8 +458,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label2;
         private CustomButton cbtnAddAuthor;
-        private CustomButton cbtnDeleteAuthor;
-        private CustomButton cbtnDeleteCategory;
         private CustomButton cbtnAddCategory;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private CustomButton cbtnBack;
@@ -531,8 +465,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel pAuthors;
         private System.Windows.Forms.Panel pCategories;
-        private System.Windows.Forms.Label lblAuthorDeleteMode;
-        private System.Windows.Forms.Label lblCategoryDeleteMode;
         private System.Windows.Forms.Label label8;
         private CustomButton cbtnAddBook;
         private CustomDateTimePicker cdtpReleaseDate;

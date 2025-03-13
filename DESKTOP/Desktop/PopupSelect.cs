@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Services;
@@ -56,13 +57,15 @@ namespace Desktop
                     break;
                 case "getAuthors":
                     searchMode = mode;
-                    
                     break;
                 case "getCategories":
                     searchMode = mode;
                     break;
                 case "deactivateBook":
                     searchMode = "getBooks";
+                    break;
+                case "getPublishers":
+                    searchMode = mode;
                     break;
             }
             InitializeComponent();
@@ -108,6 +111,7 @@ namespace Desktop
             cdgwSelect.Columns.Clear();
             ids.Clear();
             List<Dictionary<string, string>> response;
+            DataGridViewButtonColumn btns = new DataGridViewButtonColumn();
             if (searchMode == "getLangs")
             {
                 response = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", searchMode } });
@@ -149,17 +153,32 @@ namespace Desktop
                                 col.ReadOnly = true;
                                 col.ColumnName = item.Key;
                             }
-                            
+
                             col.Caption = item.Key;
                             dt.Columns.Add(col);
                         }
 
                     }
+                    if (startMode == "getAuthors" || startMode == "getCategories")
+                    {
+                        ctbSearch.Visible = false;
+                        cbtnSearch.Text = "Választás";
+                        
+                    }
+                    else
+                    {
+                        //add button row for detailed page
+                        btns.Name = "Választás";
+                        btns.Text = "Választ";
+                        btns.UseColumnTextForButtonValue = true;
+                    }
+                    
                 }
                 else
                 {
                     ctbSearch.Visible = false;
-                    cbtnSearch.Visible = false;
+                    cbtnSearch.Text = "Visszavétel";
+                    //cbtnSearch.Visible = false;
                     col = new DataColumn();
                     col.DataType = typeof(string);
                     col.ReadOnly = true;
@@ -177,13 +196,13 @@ namespace Desktop
                     col.ColumnName = "fizetendo";
                     col.Caption = "fizetendo";
                     dt.Columns.Add(col);
+                    //add checkbox
+                    DataGridViewCheckBoxColumn checkRow = new DataGridViewCheckBoxColumn();
+                    checkRow.Name = "Választás";
+                    cdgwSelect.Columns.Add(checkRow);
                 }
                 
-                //add button row for detailed page
-                DataGridViewButtonColumn btns = new DataGridViewButtonColumn();
-                btns.Name = "Választás";
-                btns.Text = "Választ";
-                btns.UseColumnTextForButtonValue = true;
+                
 
                 //search for only available books if we want books
                 if (startMode == "userBorrow")
@@ -226,6 +245,33 @@ namespace Desktop
                 //make rows
                 if (!((startMode == "getLangs" || startMode == "getAuthors" || startMode == "getCategories") && response.First().Values.ToList()[0] == ""))
                 {
+                    if (startMode == "getPublishers" && optionalId!= null)
+                    {
+                        row = dt.NewRow();
+                        foreach (KeyValuePair<string, string> item in response.Where(x => x["name"] == optionalId).First())
+                        {
+                            if (item.Key == "publisher_id")
+                            {
+                                ids.Add(item.Value);
+                            }
+                            else
+                            {
+
+                                row[item.Key] = item.Value;
+                            }
+                        }
+                        dt.Rows.Add(row);
+                    }
+                    else if (startMode == "getAuthors" || startMode == "getCategories")
+                    {
+                        foreach (string item in optionalId.Split(';'))
+                        {
+                            row = dt.NewRow();
+                            row[startMode == "getAuthors" ? "author" : "genre"] = item;
+                            dt.Rows.Add(row);
+                            
+                        }
+                    }
                     for (int i = 0; i < response.Count(); i++)
                     {
                         row = dt.NewRow();
@@ -240,7 +286,6 @@ namespace Desktop
                                 }
                                 else if (item.Key != "available")
                                 {
-
                                     row[item.Key] = item.Value;
                                 }
                             }
@@ -253,18 +298,47 @@ namespace Desktop
                                 row[dt.Columns[j].ColumnName] = response[i][dt.Columns[j].ColumnName];
                             }
                         }
+                        if (!(startMode == "getPublishers" && optionalId != null && response[i]["name"] == optionalId))
+                        {
+                            dt.Rows.Add(row);
 
-                        dt.Rows.Add(row);
+                        }
+
+                            
                     }
                 }
-                
+
                 //disable ordering
                 foreach (DataGridViewColumn column in cdgwSelect.Columns)
                 {
                     column.SortMode = DataGridViewColumnSortMode.NotSortable;
                 }
                 cdgwSelect.DataSource = dt;
-                cdgwSelect.Columns.Add(btns);
+                if (startMode != "userTakeback" && startMode != "getAuthors" && startMode != "getCategories")
+                {
+                    cdgwSelect.Columns.Add(btns);
+
+                }
+                else
+                {
+                    DataGridViewCheckBoxColumn checkRow = new DataGridViewCheckBoxColumn();
+                    checkRow.Name = "Választás";
+                    checkRow.FalseValue = false;
+                    cdgwSelect.Columns.Add(checkRow);
+                    foreach(var checkbox in cdgwSelect.Rows.Cast<DataGridViewRow>().Select(x => x.Cells["Választás"]))
+                    {
+                        checkbox.Value = false;
+                    }
+                    if (startMode == "getAuthors" || startMode == "getCategories")
+                    {
+                        for (int i = 0; i < optionalId.Split(';').Length; i++)
+                        {
+                            cdgwSelect.Rows[i].Cells["Választás"].Value = true;
+                        }
+                    }
+                    
+                }
+                
             }
         }
 
@@ -275,7 +349,7 @@ namespace Desktop
 
         private void cdgwSelect_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex != cdgwSelect.ColumnCount-1)
+            if (e.ColumnIndex != cdgwSelect.ColumnCount-1 && cdgwSelect.AllowUserToAddRows)
             {
                 if (cdgwSelect.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() != "")
                 {
@@ -302,9 +376,19 @@ namespace Desktop
             if (startMode == "getLangs" || startMode == "getAuthors" || startMode == "getCategories" || startMode == "getPublishers")
             {
                 cdgwSelect.AllowUserToAddRows = true;
+                cdgwSelect.UserAddedRow += cdgwSelect_UserAddedRow;
             }
             ctbSearch.KeyPress += ctbSearch_KeyPress;
             cdgwSelect.CellClick += cdgwSelect_CellClick;
+        }
+
+        private void cdgwSelect_UserAddedRow(object sender, DataGridViewRowEventArgs e)
+        {
+            if (startMode == "getAuthors" || startMode == "getCategories")
+            {
+                e.Row.Cells["Választás"].Value = false;
+            }
+           
         }
 
         private void cbtnBack_Click(object sender, EventArgs e)
@@ -312,16 +396,44 @@ namespace Desktop
             this.Close();
         }
 
-        private void cbtnSearch_Click(object sender, EventArgs e)
+        private async void cbtnSearch_Click(object sender, EventArgs e)
         {
-            if (ctbSearch.Texts != ctbSearch.PlaceholderText)
+            if (startMode != "userTakeback" && startMode != "getAuthors" && startMode != "getCategories")
             {
-                updateSelectDgv(ctbSearch.Texts);
+                if (ctbSearch.Texts != ctbSearch.PlaceholderText)
+                {
+                    updateSelectDgv(ctbSearch.Texts);
+                }
+                else
+                {
+                    updateSelectDgv("");
+                }
             }
             else
             {
-                updateSelectDgv("");
+                if (startMode == "userTakeback")
+                {
+                    CustomMessageBoxForm pop = new CustomMessageBoxForm($"Fizetendő: {cdgwSelect.Rows.Cast<DataGridViewRow>().Where(x => (bool)x.Cells["Választás"].Value).Sum(x => int.Parse((string)x.Cells["fizetendo"].Value))} Ft a késedelmekből", "Biztosan vissza szeretné venni ezeket a könyveket?", MessageBoxButtons.YesNo);
+                    if (pop.ShowDialog() == DialogResult.Yes)
+                    {
+                        foreach (DataGridViewRow row in cdgwSelect.Rows.Cast<DataGridViewRow>().Where(x => (bool)x.Cells["Választás"].Value))
+                        {
+                            var output = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "returnBook" }, { "user_id", optionalId }, { "bookID", ids[row.Index] }, { "empl_id", LoginForm.employee } });
+                        }
+                        LoginForm.main.CheckForBookings(true);
+                    }
+                }
+                else
+                {
+                    res1 = String.Join(";",cdgwSelect.Rows.Cast<DataGridViewRow>().Where(x => (bool)x.Cells["Választás"].Value).Select(x => x.Cells[startMode=="getAuthors"?"author":"genre"].Value).ToArray());
+                    //id = ids[e.RowIndex];
+                    this.DialogResult = DialogResult.OK;
+                }
+                
+                
+                this.Close();
             }
+            
         }
 
         private void ctbSearch_KeyPress(object sender, KeyPressEventArgs e)
@@ -341,95 +453,95 @@ namespace Desktop
         }
         private async void cdgwSelect_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == cdgwSelect.Columns["Választás"].Index && e.RowIndex != -1)
+            if (startMode != "userTakeback" && startMode != "getAuthors" && startMode != "getCategories")
             {
-                if (startMode == "bookOrReserve")
+                if (e.ColumnIndex == cdgwSelect.Columns["Választás"].Index && e.RowIndex != -1)
                 {
-                    MessageBox.Show("Biztosan végre szeretné hajtani a műveletet");//yesNo vagy OK
-                    List<Dictionary<string, string>> resp = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "addReservationOrBooking" }, { "ISBN", ids[e.RowIndex] }, { "userid", optionalId } });
-                    if (resp.First()["status"] != (string)cdgwSelect.Rows[e.RowIndex].Cells[2].Value)
+                    if (startMode == "bookOrReserve")
                     {
-						using (CustomMessageBoxForm msgBox = new CustomMessageBoxForm("Közben megváltozott a foglalás.", "Figyelmeztetés", true)) //a true miatt lesz gomb nelkuli.
-						{
-							msgBox.ShowDialog();
-						}
+                        MessageBox.Show("Biztosan végre szeretné hajtani a műveletet");//yesNo vagy OK
+                        List<Dictionary<string, string>> resp = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "addReservationOrBooking" }, { "ISBN", ids[e.RowIndex] }, { "userid", optionalId } });
+                        if (resp.First()["status"] != (string)cdgwSelect.Rows[e.RowIndex].Cells[2].Value)
+                        {
+                            using (CustomMessageBoxForm msgBox = new CustomMessageBoxForm("Közben megváltozott a foglalás.", "Figyelmeztetés", true)) //a true miatt lesz gomb nelkuli.
+                            {
+                                msgBox.ShowDialog();
+                            }
 
-					}
-					this.Close();
-                }
-                else if (startMode == "getLangs" || startMode == "getAuthors" || startMode == "getCategories")
-                {
-                    if (cdgwSelect.Rows[e.RowIndex].Cells[0].Value.GetType() != typeof(System.DBNull))
-                    {
-                        res1 = (string)cdgwSelect.Rows[e.RowIndex].Cells[0].Value;
-                        //id = ids[e.RowIndex];
-                        this.DialogResult = DialogResult.OK;
+                        }
                         this.Close();
                     }
-                    
-                }else if (startMode == "deactivateBook")
-                {
-                    await ApiComm.SendPost(new Dictionary<string, string> { { "type", "deactivateBook" }, { "book_id", ids[e.RowIndex] } });
-                    cdgwSelect.Rows.RemoveAt(e.RowIndex);
-                    ids.RemoveAt(e.RowIndex);
-                }
-                else if (startMode == "getPublishers")
-                {
-                    if (cdgwSelect.Rows[e.RowIndex].Cells[0].Value.GetType() != typeof(System.DBNull) && cdgwSelect.Rows[e.RowIndex].Cells[1].Value.GetType() != typeof(System.DBNull) && cdgwSelect.Rows[e.RowIndex].Cells[2].Value.GetType() != typeof(System.DBNull) && cdgwSelect.Rows[e.RowIndex].Cells[3].Value.GetType() != typeof(System.DBNull))
+                    else if (startMode == "getLangs")
+                    {
+                        if (cdgwSelect.Rows[e.RowIndex].Cells[0].Value.GetType() != typeof(System.DBNull))
+                        {
+                            res1 = (string)cdgwSelect.Rows[e.RowIndex].Cells[0].Value;
+                            //id = ids[e.RowIndex];
+                            this.DialogResult = DialogResult.OK;
+                            this.Close();
+                        }
+
+                    }
+                    else if (startMode == "deactivateBook")
+                    {
+                        await ApiComm.SendPost(new Dictionary<string, string> { { "type", "deactivateBook" }, { "book_id", ids[e.RowIndex] } });
+                        cdgwSelect.Rows.RemoveAt(e.RowIndex);
+                        ids.RemoveAt(e.RowIndex);
+                    }
+                    else if (startMode == "getPublishers")
+                    {
+                        if (cdgwSelect.Rows[e.RowIndex].Cells[0].Value.GetType() != typeof(System.DBNull) && cdgwSelect.Rows[e.RowIndex].Cells[1].Value.GetType() != typeof(System.DBNull) && cdgwSelect.Rows[e.RowIndex].Cells[2].Value.GetType() != typeof(System.DBNull) && cdgwSelect.Rows[e.RowIndex].Cells[3].Value.GetType() != typeof(System.DBNull))
+                        {
+                            res1 = (string)cdgwSelect.Rows[e.RowIndex].Cells[0].Value;
+                            res2 = (string)cdgwSelect.Rows[e.RowIndex].Cells[1].Value;
+                            res3 = (string)cdgwSelect.Rows[e.RowIndex].Cells[2].Value;
+                            if (ids.Count <= e.RowIndex)
+                            {
+                                List<Dictionary<string, string>> data = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "addPublisher" }, { "name", cdgwSelect.Rows[e.RowIndex].Cells[0].Value.ToString() }, { "phone", cdgwSelect.Rows[e.RowIndex].Cells[1].Value.ToString() }, { "email", cdgwSelect.Rows[e.RowIndex].Cells[2].Value.ToString() }, { "webpage", cdgwSelect.Rows[e.RowIndex].Cells[3].Value.ToString() } });
+                                if (data.First()["state"] == "fail")
+                                {
+                                    //MessageBox.Show("Ezzel a névvel már létezik kiadó");
+                                    using (CustomMessageBoxForm msgBox = new CustomMessageBoxForm("Ezzel a névvel már létezik kiadó", "Figyelmeztetés", true)) //a true miatt lesz gomb nelkuli.
+                                    {
+                                        msgBox.ShowDialog();
+                                    }
+
+                                }
+                                else
+                                {
+                                    this.DialogResult = DialogResult.OK;
+                                    this.Close();
+                                }
+                            }
+
+
+
+                            this.DialogResult = DialogResult.OK;
+                            this.Close();
+                        }
+                        else
+                        {
+                            //MessageBox.Show("Ha újat szertne hozzáadni kérem az összes adatot adja meg");
+                            using (CustomMessageBoxForm msgBox = new CustomMessageBoxForm("Ha újat szertne hozzáadni kérem az összes adatot adja meg.", "Figyelmeztetés", true))
+                            {
+                                msgBox.ShowDialog();
+                            }
+                        }
+
+                    }
+                    else if (startMode != "userTakeback")
                     {
                         res1 = (string)cdgwSelect.Rows[e.RowIndex].Cells[0].Value;
                         res2 = (string)cdgwSelect.Rows[e.RowIndex].Cells[1].Value;
                         res3 = (string)cdgwSelect.Rows[e.RowIndex].Cells[2].Value;
-                        if (ids.Count <= e.RowIndex)
-                        {
-                            List<Dictionary<string, string>> data = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "addPublisher" }, { "name", cdgwSelect.Rows[e.RowIndex].Cells[0].Value.ToString() }, { "phone", cdgwSelect.Rows[e.RowIndex].Cells[1].Value.ToString() }, { "email", cdgwSelect.Rows[e.RowIndex].Cells[2].Value.ToString() }, { "webpage", cdgwSelect.Rows[e.RowIndex].Cells[3].Value.ToString() } });
-                            if (data.First()["state"] == "fail")
-                            {
-                                //MessageBox.Show("Ezzel a névvel már létezik kiadó");
-								using (CustomMessageBoxForm msgBox = new CustomMessageBoxForm("Ezzel a névvel már létezik kiadó",	"Figyelmeztetés", true)) //a true miatt lesz gomb nelkuli.
-								{
-									msgBox.ShowDialog();
-								}
-
-							}
-							else
-                            {
-                                this.DialogResult = DialogResult.OK;
-                                this.Close();
-                            }
-                        }
-
-
+                        id = ids[e.RowIndex];
 
                         this.DialogResult = DialogResult.OK;
                         this.Close();
                     }
-                    else
-                    {
-						//MessageBox.Show("Ha újat szertne hozzáadni kérem az összes adatot adja meg");
-						using (CustomMessageBoxForm msgBox = new CustomMessageBoxForm("Ha újat szertne hozzáadni kérem az összes adatot adja meg.", "Figyelmeztetés", true))
-						{
-							msgBox.ShowDialog();
-						}
-					}
-                    
                 }
-                else if (startMode != "userTakeback")
-                {
-                    res1 = (string)cdgwSelect.Rows[e.RowIndex].Cells[0].Value;
-                    res2 = (string)cdgwSelect.Rows[e.RowIndex].Cells[1].Value;
-                    res3 = (string)cdgwSelect.Rows[e.RowIndex].Cells[2].Value;
-                    id = ids[e.RowIndex];
-
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
-                }
-                else
-                {
-                    LoginForm.main.OpenChildForm(new BookTakebackPage(ids[e.RowIndex]));
-                    this.Close();
-                }
-            } 
+            }
+            
         }
         private async void getUserStatus()
         {
