@@ -6,6 +6,8 @@ Mesterremek projekt, könyvtárazó rendszer
     KINÉZET:
 
     BACKEND:
+        -a könyv hozzáadásánál ne kép cseréje hanem hozzáadása legyen kiírva
+        -a könyvhozzáadásnál a publisher-t nem lehet hozzáadni ha még nincs egy sem benne
         -ne negatív legyen, hogy mikor olvasta legutóbb a felhasználó akönvet
         -valahogy jelöljük, hogy a kivett könyveknél előzőe az adott sorban levő
         -az alkalmazott hozzáadás után frissüljön az alkalmazottak dgv, ha nyitva van, és lehet rossz a név generálása is
