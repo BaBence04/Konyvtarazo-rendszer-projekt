@@ -41,13 +41,15 @@
     if(isset($_GET["page_number"])){
         $page_number = $_GET["page_number"];
     }
-
-    require_once "bookListFilters.php";
 ?>
 
+<main>
+    <?php require_once "bookListFilters.php";?>
+    
+    <div id="results">
+        <?=create_listed_books_elements($title, $genre, $author, $release_date, $lang, $isbn, $page_number)?>
+    </div>
+</main>
 
-<div id="results">
-    <?=create_listed_books_elements($title, $genre, $author, $release_date, $lang, $isbn, $page_number)?>
-</div>
     
 <script src="/web/bookList.js"></script>
