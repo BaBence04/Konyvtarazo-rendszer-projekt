@@ -6,6 +6,7 @@ Mesterremek projekt, könyvtárazó rendszer
     KINÉZET:
 
     BACKEND:
+        -rossz a tab indexelés a könyv hozzáadásánál, először a címbe kattint bele
         -a könyv hozzáadásánál ne kép cseréje hanem hozzáadása legyen kiírva
         -a könyvhozzáadásnál a publisher-t nem lehet hozzáadni ha még nincs egy sem benne
         -ne negatív legyen, hogy mikor olvasta legutóbb a felhasználó akönvet
