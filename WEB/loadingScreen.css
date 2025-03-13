@@ -1,3 +1,7 @@
+.image-wrapper img {
+  will-change: transform;
+}
+
 .loading-screen {
   position: fixed;
   z-index: 999999;
