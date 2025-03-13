@@ -227,7 +227,8 @@ main.container, main{
   /* margin-top: calc(); */
   min-height: calc(100dvh - (var(--header-height) + var(--margin-after-header)));
   padding-top: 0;
-  max-width: min(90dvw, 1200px);
+  max-width: min(90dvw, 1400px);
+  width: 100%;
   margin-inline: auto;
 }
 
@@ -334,7 +335,9 @@ main .book-details{
 
 
 /* összes könyv */
-
+#results{
+  width: 100%;
+}
 
 .grid-container {
   display: grid;
@@ -343,9 +346,9 @@ main .book-details{
   /* grid-template-rows: repeat(6, auto); */
   gap: 75px;
   padding: 20px;
-  max-width: 1400px;
+  /* max-width: 1400px; */
   margin: 0 auto;
-  width: 80%;
+  width: 100%;
 }
 
 .grid-item {
@@ -621,11 +624,9 @@ hr {
   }
 } */
 
-@media screen and (max-width: 810px) {
-  .grid-container {
-    width: 90%;
-  }
-}
+/* @media screen and (max-width: 810px) {
+  
+} */
 
 /* @media screen and (max-width: 530px) {
   .grid-container {
@@ -1051,9 +1052,6 @@ hr {
 }
 
 #filters {
-  /* display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  column-gap: 20px;  */
   padding: 20px;
   border-radius: 10px;
   background-color: var(--body-color);
