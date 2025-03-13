@@ -339,8 +339,8 @@ main .book-details{
 .grid-container {
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(auto-fill, 220px);
-  grid-template-rows: repeat(6, auto);
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  /* grid-template-rows: repeat(6, auto); */
   gap: 75px;
   padding: 20px;
   max-width: 1400px;
@@ -357,7 +357,7 @@ main .book-details{
   cursor: pointer;
   /* border-radius: 0.5rem; */
   transition: 0.4s;
-  width: 250px;
+  width: 100%;
   
   border-radius: 20px;
   border: var(--second-color) solid 1px;
@@ -615,25 +615,23 @@ hr {
 
 /* //:Like button// */
 
-@media screen and (max-width: 1074px) {
+/* @media screen and (max-width: 1074px) {
   .grid-container {
     grid-template-columns: repeat(auto-fill, 220px);
   }
-}
+} */
 
 @media screen and (max-width: 810px) {
   .grid-container {
-    grid-template-columns: repeat(auto-fill, 220px);
     width: 90%;
   }
 }
 
-@media screen and (max-width: 530px) {
+/* @media screen and (max-width: 530px) {
   .grid-container {
-    grid-template-columns: repeat(auto-fill, 220px);
-    width: 90%;
+    width: 100%;
   }
-}
+} */
 
 
 /* könyv részletes */
