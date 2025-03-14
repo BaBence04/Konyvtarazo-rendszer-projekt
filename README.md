@@ -8,6 +8,7 @@ Mesterremek projekt, könyvtárazó rendszer
         -a könyv hozzáadásnál nem vált témát(legalábbis gonodlom, mert világos sötét módkor)
 
     BACKEND:
+        -a könyv hozzáadása után ha arra nyom a felhasználó, hogy ne nyissa meg a részletest, akkor is fel kell ugrania a popupnak hogy mi az id-ja a könyvnek ami hozzá lett adva az inventory-hoz
         -meglepően sokszor amikor a könyvrészletesről visszamegy az ember a könyvek-hez, olyankor feldobja, hogy vannak mentetlen változtatások mégha nem is csináltál semmit, ahol több a kategória ott biztos csinálja (több szerzőnél nem tudom)
         -a popup form-ok a megnyitott form közepére nyíljanak meg
         -nem mindig tűnik el a borrowingos felkiáltójel(not sure if relevant)
