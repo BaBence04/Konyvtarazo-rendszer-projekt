@@ -33,7 +33,7 @@ namespace Desktop
                 //make the dataset columns
                 foreach (KeyValuePair<string, string> item in response[0])
                 {
-                    if (item.Key != "borrowing_id")
+                    if (item.Key != "borrowing_id" && ((item.Key != "returned" && !cbReturnedToo.Checked) || cbReturnedToo.Checked))
                     {
                         col = new DataColumn();
                         col.DataType = typeof(string);
@@ -57,9 +57,16 @@ namespace Desktop
                         {
                             ids.Add(item.Value);
                         }
-                        else
+                        else if((item.Key != "returned" && !cbReturnedToo.Checked) || cbReturnedToo.Checked)
                         {
-                            row[item.Key] = item.Value;
+                            if (item.Key == "returned")
+                            {
+                                row[item.Key] = Convert.ToBoolean(int.Parse(item.Value))?"Visszahozott":"Kivett";
+                            }
+                            else
+                            {
+                                row[item.Key] = item.Value;
+                            }
                         }
 
                     }

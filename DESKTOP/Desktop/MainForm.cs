@@ -44,7 +44,7 @@ namespace Desktop
 			lblEmplUname.Text = LoginForm.empl_uname;
 			List<Dictionary<string, string>> temp = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "getSystemSettings" } });
 			system_settings = temp.First();
-			CheckForBookings();
+			CheckForBookings(false);
 			
             //WHEN FINAL VERSION UNCOMMENT THIS ALSO NOT REALLY TESTED
             /*
@@ -69,18 +69,29 @@ namespace Desktop
         }
 
 
-        public async Task CheckForBookings()
-        {
-            while (true)
-            {
-				//the txt file is temporary we may change if we find better solution
-				List<Dictionary<string, string>> resp = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { {"type", "checkForBookings" } });
-				if (resp.First()["result"] == "true")
-				{
-					pbNewBookings.Visible = true;
-				}
-				await Task.Delay(TimeSpan.FromMinutes(15));
+        public async Task CheckForBookings(bool now)
+		{
+			if (!now)
+			{
+                while (true)
+                {
+                    List<Dictionary<string, string>> resp = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "checkForBookings" } });
+                    if (resp.First()["result"] == "true")
+                    {
+                        pbNewBookings.Visible = true;
+                    }
+                    await Task.Delay(TimeSpan.FromMinutes(15));
+                }
+			}
+			else
+			{
+                List<Dictionary<string, string>> resp = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "checkForBookings" } });
+                if (resp.First()["result"] == "true")
+                {
+                    pbNewBookings.Visible = true;
+                }
             }
+            
         }
 
         //CurrentPAga indicator

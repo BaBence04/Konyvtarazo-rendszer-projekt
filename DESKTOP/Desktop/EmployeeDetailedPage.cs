@@ -220,6 +220,7 @@ namespace Desktop
             {
                 AddEmployee add = new AddEmployee();
                 add.ShowDialog();
+                UpdateEmployeesCdgw();
             }
             else
             {

@@ -10,7 +10,6 @@
     <style>
 /* General Styles */
 body {
-  font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -19,12 +18,13 @@ body {
 
 /* Hero Section */
 .hero-section {
-  background: url('/web/imgs/about_us_hero.jpg') no-repeat center center/cover;
+  /* background: url('/web/imgs/about_us_hero.jpg') no-repeat center center/cover; */
+  background-color: #dbebe8;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: black;
   text-align: center;
 }
 
@@ -39,7 +39,6 @@ body {
 }
 
 .experience-badge {
-  background: rgba(255, 255, 255, 0.2);
   padding: 20px;
   border-radius: 10px;
   display: inline-block;
@@ -60,9 +59,10 @@ body {
 .team-section {
   padding: 60px 20px;
   text-align: center;
-  background: url('/web/imgs/team_bg.jpg') no-repeat center center/cover;
+  /* background: url('/web/imgs/team_bg.jpg') no-repeat center center/cover; */
   height: 100vh;
   align-items: center;
+  background-color: #ccd39d;
 }
 
 .team-section h2 {
@@ -113,17 +113,17 @@ body {
 
 /* Mission Section */
 .mission-section {
-  background: url('/web/imgs/mission_bg.jpg') no-repeat center center/cover;
+  /* background: url('/web/imgs/mission_bg.jpg') no-repeat center center/cover; */
   color: white;
   padding: 60px 20px;
   text-align: center;
   height: 50vh;
+  background-color: #9dc6c0;
 }
 
 .mission-content {
   max-width: 800px;
   margin: 0 auto;
-  background: rgba(0, 0, 0, 0.6);
   padding: 20px;
   border-radius: 10px;
 }
@@ -181,6 +181,10 @@ footer {
   margin: 0 10px;
 }
 
+#team_img {
+  width: 50%;
+}
+
 /* Animations */
 @keyframes fadeInUp {
   to {
@@ -208,11 +212,12 @@ footer {
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="hero-content">
+        <div class="experience-badge">
+          <img id="team_img" src="/web/imgs/team_illustration.jpg" alt="" srcset="">
+        </div>
         <h1>Welcome to Our Team</h1>
         <p>We are a group of passionate professionals dedicated to excellence.</p>
-        <div class="experience-badge">
 
-        </div>
         </div>
     </section>
 
