@@ -188,8 +188,17 @@ namespace Desktop
                             data["genres"] = String.Join(",", categories.Select(x => x.Text));
                             data["description"] = ctbDescription.Texts;
                             data["picture_base64"] = picBase64;
-                            await ApiComm.SendPost(data);
-
+                            try
+                            {
+                                await ApiComm.SendPost(data);
+                            }
+                            catch (Exception ex) when (ex is UriFormatException)
+                            {
+                                using (CustomMessageBoxForm err = new CustomMessageBoxForm("Túl nagy méretű kép és/vagy túl nagy méretű leírás", "Frissítés/hozzáadás hiba"))
+                                {
+                                    err.ShowDialog();
+                                }
+                            }
                         }
                     }
                 }
@@ -276,32 +285,51 @@ namespace Desktop
                     data["allGenres"] = String.Join(",", categories.Select(x => x.Text));
                     data["descript"] = ctbDescription.Texts;
                     data["picture"] = picBase64;
-                    List<Dictionary<string, string>> resp = (List<Dictionary<string, string>>)await ApiComm.SendPost(data);
-                    if (resp.First()["state"] != "Already exists")
+                    
+                    try
                     {
-                        using (CustomMessageBoxForm msgBox = new CustomMessageBoxForm("Szeretne egyből ennek a könyvnek a részletes oldalára kerülni.", "Sikeres hozzáadás!", MessageBoxButtons.YesNo))
-                        {
-                            DialogResult res = msgBox.ShowDialog();
+                        List<Dictionary<string, string>> resp = (List<Dictionary<string, string>>)await ApiComm.SendPost(data);
 
-                            List<Dictionary<string, string>> resp2 = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "addToInventory" }, { "ISBN_id", resp.First()["state"] } });
-                            //MessageBox.Show($"A hozzáadott könyv kódja: {resp2.First()["book_id"]}");
-                            using (CustomMessageBoxForm msgBoxK = new CustomMessageBoxForm($"A hozzáadott könyv kódja: {resp2.First()["book_id"]}", "Könyvkód", MessageBoxButtons.OK))
+                        if (resp.First()["state"] != "Already exists")
+                        {
+                            using (CustomMessageBoxForm msgBox = new CustomMessageBoxForm("Szeretne egyből ennek a könyvnek a részletes oldalára kerülni.", "Sikeres hozzáadás!", MessageBoxButtons.YesNo))
                             {
-                                msgBoxK.ShowDialog();
-                            }
+                                DialogResult res = msgBox.ShowDialog();
 
-                            LoginForm.main.OpenChildForm(new BookDetailedPage(ctbISBN.Texts));
+                                List<Dictionary<string, string>> resp2 = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "addToInventory" }, { "ISBN_id", resp.First()["state"] } });
+                                //MessageBox.Show($"A hozzáadott könyv kódja: {resp2.First()["book_id"]}");
+                                if (res == DialogResult.Yes)
+                                {
+                                    using (CustomMessageBoxForm msgBoxK = new CustomMessageBoxForm($"A hozzáadott könyv kódja: {resp2.First()["book_id"]}", "Könyvkód", MessageBoxButtons.OK))
+                                    {
+                                        msgBoxK.ShowDialog();
+                                    }
+
+                                    LoginForm.main.OpenChildForm(new BookDetailedPage(ctbISBN.Texts));
+                                }
+
+                            }
+                            this.Close();
                         }
-                        this.Close();
-                    }
-                    else
-                    {
-                        //MessageBox.Show("Ilyen könyv típus már fent van az adatbázisban");
-                        using (CustomMessageBoxForm msgBox = new CustomMessageBoxForm("Ilyen könyv típus már fent van az adatbázisban.", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error))
+                        else
                         {
-                            msgBox.ShowDialog();
+                            //MessageBox.Show("Ilyen könyv típus már fent van az adatbázisban");
+                            using (CustomMessageBoxForm msgBox = new CustomMessageBoxForm("Ilyen könyv típus már fent van az adatbázisban.", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error))
+                            {
+                                msgBox.ShowDialog();
+                            }
                         }
                     }
+                    catch (Exception ex) when(ex is UriFormatException)
+                    {
+                        using (CustomMessageBoxForm err = new CustomMessageBoxForm("Túl nagy méretű kép és/vagy túl nagy méretű leírás", "Frissítés/hozzáadás hiba"))
+                        {
+                            err.ShowDialog();
+                        }
+                        
+
+                    }
+                    
                 }
                 else
                 {

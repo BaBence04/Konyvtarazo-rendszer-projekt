@@ -9,14 +9,9 @@ Mesterremek projekt, könyvtárazó rendszer
 
     BACKEND:
         -meglepően sokszor amikor a könyvrészletesről visszamegy az ember a könyvek-hez, olyankor feldobja, hogy vannak mentetlen változtatások mégha nem is csináltál semmit, ahol több a kategória ott biztos csinálja (több szerzőnél nem tudom)
-        -checkolja a program kép feltöltéskor, hogy túl nagy-e és figyelmeztessen
-        -könyv hozzáadása után amikor megkérdezi hogy dobjon-e a részletes oldalra, olyankor ha nemet mondasz is odadob
-        -rossz a tab indexelés a könyv hozzáadásánál, először a címbe kattint bele
-        -a könyvhozzáadásnál a publisher-t nem lehet hozzáadni ha még nincs egy sem benne
         -a popup form-ok a megnyitott form közepére nyíljanak meg
         -nem mindig tűnik el a borrowingos felkiáltójel(not sure if relevant)
         -Kiírni hogy adott típusú könyvből hány darab van (not necessary)
-        -a könyvrészletesen lehessen a kiadóra rákattintani, és megnyitni annak a részleteit
         -nem biztos hogy működik a popupform üres author/genre/publisher-nél így
 
 #WEB:

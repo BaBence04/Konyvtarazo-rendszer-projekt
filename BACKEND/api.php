@@ -277,7 +277,8 @@
         }else if(isset($_POST["type"]) && $_POST["type"] == "removeBooking" && isset($_POST["id"]) && count($_POST) == 2){
             RemoveBooking($_POST["id"]);
         }else{
-            throw new Exception("Nincs ilyen");
+            echo var_dump($_POST);
+            //throw new Exception("Nincs ilyen");
         }
     }
 
