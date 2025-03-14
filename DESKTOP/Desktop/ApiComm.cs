@@ -14,17 +14,32 @@ namespace Desktop
     {
         public static async Task<object> SendPost(Dictionary<string, string> args)
         {
-            var client = new HttpClient();
-            var values = args;
-            var content = new FormUrlEncodedContent(values);
-            var response = await client.PostAsync("http://localhost:8000/BACKEND/api.php", content);
-            var responseString = await response.Content.ReadAsStringAsync();
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-            var responseDir = serializer.Deserialize(responseString, typeof(List<Dictionary<string, string>>));
-            client.Dispose();
-  
-            return responseDir;
+            try
+            {
+                using (var client = new HttpClient())
+                using (var content = new MultipartFormDataContent())
+                {
+                    foreach (var pair in args)
+                    {
+                        content.Add(new StringContent(pair.Value), pair.Key);
+                    }
+
+                    var response = await client.PostAsync("http://localhost:8000/BACKEND/api.php", content);
+                    var responseString = await response.Content.ReadAsStringAsync();
+
+                    JavaScriptSerializer serializer = new JavaScriptSerializer();
+                    var responseDir = serializer.Deserialize(responseString, typeof(List<Dictionary<string, string>>));
+
+                    return responseDir;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "\n" + ex.InnerException?.Message);
+            }
+            return null;
         }
+
 
     }
 }
