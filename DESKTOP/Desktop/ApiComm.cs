@@ -29,8 +29,16 @@ namespace Desktop
             var responseDir = serializer.Deserialize(responseString, typeof(List<Dictionary<string, string>>));
             client.Dispose();
 
-            return responseDir;
+                    return responseDir;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "\n" + ex.InnerException?.Message);
+            }
+            return null;
         }
+
 
     }
 }
