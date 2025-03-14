@@ -15,14 +15,18 @@ namespace Desktop
         public static async Task<object> SendPost(Dictionary<string, string> args)
         {
             var client = new HttpClient();
-            var values = args;
-            var content = new FormUrlEncodedContent(values);
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+
+            //var content = new FormUrlEncodedContent(values);
+
+            var jsonString = serializer.Serialize(args);
+            var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
             var response = await client.PostAsync("http://localhost:8000/BACKEND/api.php", content);
             var responseString = await response.Content.ReadAsStringAsync();
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            
             var responseDir = serializer.Deserialize(responseString, typeof(List<Dictionary<string, string>>));
             client.Dispose();
-  
+
             return responseDir;
         }
 

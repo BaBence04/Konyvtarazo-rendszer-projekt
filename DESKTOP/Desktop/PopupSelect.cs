@@ -243,7 +243,8 @@ namespace Desktop
                     response = response.Where(x => x["state"] == "reservation").ToList();
                 }
                 //make rows
-                if (!((startMode == "getLangs" || startMode == "getAuthors" || startMode == "getCategories") && response.First().Values.ToList()[0] == ""))
+                //the first condition is kinda spit and ducktape solution but it could work flawlessly
+                if (response.Count == 0 || !((startMode == "getLangs" || startMode == "getAuthors" || startMode == "getCategories") && response.First().Values.ToList()[0] == ""))
                 {
                     if (startMode == "getPublishers" && optionalId!= null)
                     {
@@ -262,7 +263,7 @@ namespace Desktop
                         }
                         dt.Rows.Add(row);
                     }
-                    else if (startMode == "getAuthors" || startMode == "getCategories")
+                    else if ((startMode == "getAuthors" || startMode == "getCategories" )&& optionalId.Length > 0)
                     {
                         foreach (string item in optionalId.Split(';'))
                         {
@@ -329,7 +330,7 @@ namespace Desktop
                     {
                         checkbox.Value = false;
                     }
-                    if (startMode == "getAuthors" || startMode == "getCategories")
+                    if ((startMode == "getAuthors" || startMode == "getCategories")&& optionalId.Length>0)
                     {
                         for (int i = 0; i < optionalId.Split(';').Length; i++)
                         {

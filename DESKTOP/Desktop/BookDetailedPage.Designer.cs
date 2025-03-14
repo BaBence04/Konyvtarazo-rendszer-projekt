@@ -388,7 +388,7 @@
             this.ctbISBN.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.ctbISBN.PlaceholderText = "";
             this.ctbISBN.Size = new System.Drawing.Size(178, 31);
-            this.ctbISBN.TabIndex = 29;
+            this.ctbISBN.TabIndex = 2;
             this.ctbISBN.Texts = "";
             this.ctbISBN.UnderlinedStyle = false;
             this.ctbISBN.Visible = false;
