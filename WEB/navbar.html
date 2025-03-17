@@ -65,8 +65,18 @@
               <a onclick="ToggleForgotPassword_Login();">Elfelejtettem a jelszavamat</a>
           </div>
           <div id="remember_me_holder">
-            <input type="checkbox" name="remember_me" id="remember_me_checkbox">
-            <label for="remember_me_checkbox">Emlékezz rám</label>
+<!--             <input type="checkbox" name="remember_me" id="remember_me_checkbox">
+            <label for="remember_me_checkbox">Emlékezz rám</label> -->
+            <div class="checkbox-wrapper-46">
+              <input type="checkbox" id="cbx-46" class="inp-cbx" name="remember_me" id="remember_me_checkbox"/>
+              <label for="cbx-46" class="cbx"
+                ><span>
+                  <svg viewBox="0 0 12 10" height="10px" width="12px">
+                    <polyline points="1.5 6 4.5 9 10.5 1"></polyline></svg></span
+                ><span>Emlékezz rám</span>
+              </label>
+            </div>
+
 
           </div>
           <input type="button" onclick="CheckLogin();" id="loginButton" value="Bejelentkezés" name="submit">

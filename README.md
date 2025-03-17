@@ -6,6 +6,7 @@ Mesterremek projekt, könyvtárazó rendszer
     KINÉZET:
         -lehessen görgetni a könyv hozzáadásánál a könyv leírásában, és legyen nagyobb is
         -a könyv hozzáadásnál nem vált témát(legalábbis gonodlom, mert világos sötét módkor)
+        -új könyv hozzáadása - ne legyen méretezhető a popup
 
     BACKEND:
         -a könyv hozzáadása után ha arra nyom a felhasználó, hogy ne nyissa meg a részletest, akkor is fel kell ugrania a popupnak hogy mi az id-ja a könyvnek ami hozzá lett adva az inventory-hoz
@@ -17,9 +18,6 @@ Mesterremek projekt, könyvtárazó rendszer
 
 #WEB:
     KINÉZET:
-        -a főoldalra kell még a footer
-        -a profilon a kevencek-nél felcsúszik a footer, ott is kell adni egy min-heigt
-        
         
 
     PHP/JS:
