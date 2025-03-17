@@ -33,7 +33,6 @@
      -->
     
             <div class="buttons">
-    
                 <!-- if the user is logged in -->
                 <?php if(isset($_SESSION["user_id"], $_SESSION["restricted"]) && $_SESSION["restricted"] == "false"):?>
 
@@ -56,7 +55,9 @@
                         }
                         // var_dump(is_book_on_shelf($_SESSION["user_id"], $book_data["ISBN_id"]));
                     ?>
+                <?php endif;?>
 
+                <?php if(isset($_SESSION["user_id"], $_SESSION["restricted"])):?>
                     <label class='ui-like'>
                         <input type='checkbox' onchange='addOrRemoveFromShelf(this);' data-isbn-id='<?=$book_data["ISBN_id"]?>' class='like-input'  <?= is_book_on_shelf($_SESSION["user_id"], $book_data["ISBN_id"])==true?"checked":"" ?>>
                         <div class='like'>
