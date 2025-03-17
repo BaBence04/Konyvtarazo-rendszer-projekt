@@ -23,7 +23,7 @@ namespace Desktop
             cdgvPublishers.Columns.Clear();
             ids.Clear();
             List<Dictionary<string, string>> response = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "getPublishers" }, { "search", search } });
-            if (response.Count > 0)
+            if (response.Count > 0 && response[0]["publisher_id"] != "")
             {
                 DataTable dt = new DataTable();
                 DataColumn col;

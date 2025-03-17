@@ -244,7 +244,7 @@ namespace Desktop
                 }
                 //make rows
                 //the first condition is kinda spit and ducktape solution but it could work flawlessly
-                if (response.Count == 0 || !((startMode == "getLangs" || startMode == "getAuthors" || startMode == "getCategories") && response.First().Values.ToList()[0] == ""))
+                if (response.Count == 0 || !((startMode == "getLangs" ||  startMode == "getPublishers" || startMode == "getAuthors" || startMode == "getCategories") && response.First().Values.ToList()[0] == "") ||  ((startMode == "getAuthors" || startMode == "getCategories") && !(optionalId.Length == 0 && response.First().Values.ToList()[0] == "")))
                 {
                     if (startMode == "getPublishers" && optionalId!= null)
                     {
@@ -273,40 +273,42 @@ namespace Desktop
                             
                         }
                     }
-                    for (int i = 0; i < response.Count(); i++)
+                    if (response[0][startMode=="getAuthors"?"author_id":"genre_id"] == "" && optionalId.Length==0)
                     {
-                        row = dt.NewRow();
-                        if (startMode != "userTakeback")
+                        for (int i = 0; i < response.Count(); i++)
                         {
-                            foreach (KeyValuePair<string, string> item in response[i])
+                            row = dt.NewRow();
+                            if (startMode != "userTakeback")
                             {
+                                foreach (KeyValuePair<string, string> item in response[i])
+                                {
 
-                                if (item.Key == "user_id" || item.Key == "book_id" || item.Key == "id" || item.Key == "ISBN_id" || item.Key == "publisher_id" || item.Key == "lang_id" || item.Key == "author_id" || item.Key == "genre_id")
-                                {
-                                    ids.Add(item.Value);
-                                }
-                                else if (item.Key != "available")
-                                {
-                                    row[item.Key] = item.Value;
+                                    if (item.Key == "user_id" || item.Key == "book_id" || item.Key == "id" || item.Key == "ISBN_id" || item.Key == "publisher_id" || item.Key == "lang_id" || item.Key == "author_id" || item.Key == "genre_id")
+                                    {
+                                        ids.Add(item.Value);
+                                    }
+                                    else if (item.Key != "available")
+                                    {
+                                        row[item.Key] = item.Value;
+                                    }
                                 }
                             }
-                        }
-                        else
-                        {
-                            ids.Add(response[i]["book_id"]);
-                            for (int j = 0; j < 3; j++)
+                            else
                             {
-                                row[dt.Columns[j].ColumnName] = response[i][dt.Columns[j].ColumnName];
+                                ids.Add(response[i]["book_id"]);
+                                for (int j = 0; j < 3; j++)
+                                {
+                                    row[dt.Columns[j].ColumnName] = response[i][dt.Columns[j].ColumnName];
+                                }
+                            }
+                            if (!(startMode == "getPublishers" && optionalId != null && response[i]["name"] == optionalId))
+                            {
+                                dt.Rows.Add(row);
+
                             }
                         }
-                        if (!(startMode == "getPublishers" && optionalId != null && response[i]["name"] == optionalId))
-                        {
-                            dt.Rows.Add(row);
-
-                        }
-
-                            
                     }
+                    
                 }
 
                 //disable ordering
