@@ -271,7 +271,7 @@
             this.ctbISBN.BorderRadius = 10;
             this.ctbISBN.BorderSize = 2;
             this.ctbISBN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.ctbISBN.ForeColor = System.Drawing.Color.DimGray;
+            this.ctbISBN.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.ctbISBN.IsReadOnly = false;
             this.ctbISBN.Location = new System.Drawing.Point(24, 35);
             this.ctbISBN.Margin = new System.Windows.Forms.Padding(4);
@@ -315,7 +315,7 @@
             this.ctbDescription.BorderRadius = 0;
             this.ctbDescription.BorderSize = 2;
             this.ctbDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.ctbDescription.ForeColor = System.Drawing.Color.DimGray;
+            this.ctbDescription.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.ctbDescription.IsReadOnly = false;
             this.ctbDescription.Location = new System.Drawing.Point(123, 278);
             this.ctbDescription.Margin = new System.Windows.Forms.Padding(4);
@@ -405,7 +405,7 @@
             this.ctbTitle.BorderRadius = 10;
             this.ctbTitle.BorderSize = 2;
             this.ctbTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.ctbTitle.ForeColor = System.Drawing.Color.DimGray;
+            this.ctbTitle.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.ctbTitle.IsReadOnly = false;
             this.ctbTitle.Location = new System.Drawing.Point(24, 98);
             this.ctbTitle.Margin = new System.Windows.Forms.Padding(4);

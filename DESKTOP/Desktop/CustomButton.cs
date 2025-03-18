@@ -61,6 +61,7 @@ namespace Desktop
             this.Size = new Size(150, 40);
             this.BackColor = Color.Black;
             this.ForeColor = Color.White;
+            this.Cursor = Cursors.Hand;
         }
 
         private GraphicsPath GetFigurePath(RectangleF rect, float radius)

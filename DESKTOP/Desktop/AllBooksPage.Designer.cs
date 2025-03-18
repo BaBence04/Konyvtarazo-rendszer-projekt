@@ -95,7 +95,7 @@
             this.ctbSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ctbSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(88)))));
             this.ctbSearch.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.ctbSearch.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.ctbSearch.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(218)))), ((int)(((byte)(220)))));
             this.ctbSearch.BorderRadius = 15;
             this.ctbSearch.BorderSize = 2;
             this.ctbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -111,6 +111,7 @@
             this.ctbSearch.PlaceholderText = "Keresés";
             this.ctbSearch.Size = new System.Drawing.Size(250, 31);
             this.ctbSearch.TabIndex = 1;
+            this.ctbSearch.TextBoxScrollBars = System.Windows.Forms.ScrollBars.None;
             this.ctbSearch.Texts = "Keresés";
             this.ctbSearch.UnderlinedStyle = false;
             // 

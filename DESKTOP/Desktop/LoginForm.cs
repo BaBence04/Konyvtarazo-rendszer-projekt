@@ -24,6 +24,12 @@ namespace Desktop
 
 		}
 
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            ThemeManager.ApplyTheme(this);
+        }
+
         private void button_CloseLoginForm_Click(object sender, EventArgs e)
         {
             this.Close();

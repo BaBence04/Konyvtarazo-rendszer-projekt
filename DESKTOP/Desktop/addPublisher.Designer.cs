@@ -45,10 +45,10 @@
             this.ctbTel.BorderRadius = 14;
             this.ctbTel.BorderSize = 2;
             this.ctbTel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.ctbTel.ForeColor = System.Drawing.Color.DimGray;
+            this.ctbTel.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.ctbTel.IsReadOnly = false;
             this.ctbTel.Location = new System.Drawing.Point(26, 175);
-            this.ctbTel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ctbTel.Margin = new System.Windows.Forms.Padding(4);
             this.ctbTel.Multiline = false;
             this.ctbTel.Name = "ctbTel";
             this.ctbTel.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
@@ -57,6 +57,7 @@
             this.ctbTel.PlaceholderText = "Kiadó telefonszáma";
             this.ctbTel.Size = new System.Drawing.Size(250, 31);
             this.ctbTel.TabIndex = 2;
+            this.ctbTel.TextBoxScrollBars = System.Windows.Forms.ScrollBars.None;
             this.ctbTel.Texts = "Kiadó telefonszáma";
             this.ctbTel.UnderlinedStyle = false;
             // 
@@ -68,10 +69,10 @@
             this.ctbName.BorderRadius = 14;
             this.ctbName.BorderSize = 2;
             this.ctbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.ctbName.ForeColor = System.Drawing.Color.DimGray;
+            this.ctbName.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.ctbName.IsReadOnly = false;
             this.ctbName.Location = new System.Drawing.Point(26, 103);
-            this.ctbName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ctbName.Margin = new System.Windows.Forms.Padding(4);
             this.ctbName.Multiline = false;
             this.ctbName.Name = "ctbName";
             this.ctbName.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
@@ -80,6 +81,7 @@
             this.ctbName.PlaceholderText = "Kiadó neve";
             this.ctbName.Size = new System.Drawing.Size(250, 31);
             this.ctbName.TabIndex = 1;
+            this.ctbName.TextBoxScrollBars = System.Windows.Forms.ScrollBars.None;
             this.ctbName.Texts = "Kiadó neve";
             this.ctbName.UnderlinedStyle = false;
             // 
@@ -91,10 +93,10 @@
             this.ctbEmail.BorderRadius = 14;
             this.ctbEmail.BorderSize = 2;
             this.ctbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.ctbEmail.ForeColor = System.Drawing.Color.DimGray;
+            this.ctbEmail.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.ctbEmail.IsReadOnly = false;
             this.ctbEmail.Location = new System.Drawing.Point(26, 241);
-            this.ctbEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ctbEmail.Margin = new System.Windows.Forms.Padding(4);
             this.ctbEmail.Multiline = false;
             this.ctbEmail.Name = "ctbEmail";
             this.ctbEmail.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
@@ -103,6 +105,7 @@
             this.ctbEmail.PlaceholderText = "Kiadó e-mail címe";
             this.ctbEmail.Size = new System.Drawing.Size(250, 31);
             this.ctbEmail.TabIndex = 3;
+            this.ctbEmail.TextBoxScrollBars = System.Windows.Forms.ScrollBars.None;
             this.ctbEmail.Texts = "Kiadó e-mail címe";
             this.ctbEmail.UnderlinedStyle = false;
             // 
@@ -114,10 +117,10 @@
             this.ctbWeb.BorderRadius = 14;
             this.ctbWeb.BorderSize = 2;
             this.ctbWeb.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.ctbWeb.ForeColor = System.Drawing.Color.DimGray;
+            this.ctbWeb.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.ctbWeb.IsReadOnly = false;
             this.ctbWeb.Location = new System.Drawing.Point(26, 312);
-            this.ctbWeb.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ctbWeb.Margin = new System.Windows.Forms.Padding(4);
             this.ctbWeb.Multiline = false;
             this.ctbWeb.Name = "ctbWeb";
             this.ctbWeb.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
@@ -126,6 +129,7 @@
             this.ctbWeb.PlaceholderText = "Kiadó weboldala";
             this.ctbWeb.Size = new System.Drawing.Size(250, 31);
             this.ctbWeb.TabIndex = 4;
+            this.ctbWeb.TextBoxScrollBars = System.Windows.Forms.ScrollBars.None;
             this.ctbWeb.Texts = "Kiadó weboldala";
             this.ctbWeb.UnderlinedStyle = false;
             // 

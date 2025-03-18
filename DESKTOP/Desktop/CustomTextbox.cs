@@ -16,7 +16,7 @@ namespace Desktop
     {
         //Fields
         private Color borderColor = Color.MediumSlateBlue;
-        private Color borderFocusColor = Color.HotPink;
+        private Color borderFocusColor = Color.FromArgb(168, 218, 220);
         private int borderSize = 2;
         private bool underlinedStyle = false;
         private bool isFocused = false;

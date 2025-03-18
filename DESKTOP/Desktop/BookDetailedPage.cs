@@ -244,10 +244,15 @@ namespace Desktop
             {
                 isbn = mode;
             }
-
-
             InitializeComponent();
         }
+
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            ThemeManager.ApplyTheme(this);
+        }
+
 
         private void BookDetailedPage_Load(object sender, EventArgs e)
         {

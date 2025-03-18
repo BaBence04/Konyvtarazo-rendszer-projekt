@@ -21,6 +21,12 @@ namespace Desktop
             this.BorderWidth = 2;
         }
 
+        protected override void OnShown(EventArgs e)
+        {
+            ThemeManager.ApplyTheme(this);
+            base.OnShown(e);
+        }
+
         private async void cbtnAdd_Click(object sender, EventArgs e)
         {
             if (ctbAddress.Texts!="" && ctbEmail.Texts!="" && ctbFirstName.Texts != "" && ctbMmn.Texts != "" && ctbPhone.Texts  != "" && ctbSurname.Texts != "" && ctbBirthplace.Texts != "")
