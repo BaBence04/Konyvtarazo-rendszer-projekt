@@ -315,24 +315,24 @@ input[type=button]:hover, button:hover{
     font-size: 1rem;
   }
 
-  /* From Uiverse.io by vishnupprajapat */ 
-.checkbox-wrapper-46 input[type="checkbox"] {
+    /* From Uiverse.io by vishnupprajapat */ 
+#remember_me_holder input[type="checkbox"] {
   display: none;
   visibility: hidden;
 }
 
-.checkbox-wrapper-46 .cbx {
+#remember_me_holder .cbx {
   margin: auto;
   -webkit-user-select: none;
   user-select: none;
   cursor: pointer;
 }
-.checkbox-wrapper-46 .cbx span {
+#remember_me_holder .cbx span {
   display: inline-block;
   vertical-align: middle;
   transform: translate3d(0, 0, 0);
 }
-.checkbox-wrapper-46 .cbx span:first-child {
+#remember_me_holder .cbx span:first-child {
   position: relative;
   width: 18px;
   height: 18px;
@@ -342,7 +342,7 @@ input[type=button]:hover, button:hover{
   border: 1px solid #68a1bf;
   transition: all 0.2s ease;
 }
-.checkbox-wrapper-46 .cbx span:first-child svg {
+#remember_me_holder .cbx span:first-child svg {
   position: absolute;
   top: 3px;
   left: 2px;
@@ -357,7 +357,7 @@ input[type=button]:hover, button:hover{
   transition-delay: 0.1s;
   transform: translate3d(0, 0, 0);
 }
-.checkbox-wrapper-46 .cbx span:first-child:before {
+#remember_me_holder .cbx span:first-child:before {
   content: "";
   width: 100%;
   height: 100%;
@@ -367,22 +367,22 @@ input[type=button]:hover, button:hover{
   opacity: 1;
   border-radius: 50%;
 }
-.checkbox-wrapper-46 .cbx span:last-child {
+#remember_me_holder .cbx span:last-child {
   padding-left: 8px;
 }
-.checkbox-wrapper-46 .cbx:hover span:first-child {
+#remember_me_holder .cbx:hover span:first-child {
   border-color: #68a1bf;
 }
 
-.checkbox-wrapper-46 .inp-cbx:checked + .cbx span:first-child {
+#remember_me_holder .inp-cbx:checked + .cbx span:first-child {
   background: #68a1bf;
   border-color: #68a1bf;
   animation: wave-46 0.4s ease;
 }
-.checkbox-wrapper-46 .inp-cbx:checked + .cbx span:first-child svg {
+#remember_me_holder .inp-cbx:checked + .cbx span:first-child svg {
   stroke-dashoffset: 0;
 }
-.checkbox-wrapper-46 .inp-cbx:checked + .cbx span:first-child:before {
+#remember_me_holder .inp-cbx:checked + .cbx span:first-child:before {
   transform: scale(3.5);
   opacity: 0;
   transition: all 0.6s ease;
@@ -393,6 +393,8 @@ input[type=button]:hover, button:hover{
     transform: scale(0.9);
   }
 }
+
+
 
 
 
