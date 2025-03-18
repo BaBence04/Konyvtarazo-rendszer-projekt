@@ -118,7 +118,7 @@
                 },
                 success: function(response)  {
                         //Ezt is szép fancyre meg kell csinálni
-                    if(response != '<?=isset($_SESSION["user_id"])? $availability_data["status"]:""?>'){
+                    if(response != '<?=(isset($_SESSION["user_id"], $_SESSION["restricted"]) && $_SESSION["restricted"] == "false")? $availability_data["status"]:""?>'){
                         console.log(response);
                         alert("A könyv állapota menetközben megváltozott, úgyhogy "+((response=="reservation")?"elő lett jegyezve":"le lett foglalva"));
                         
