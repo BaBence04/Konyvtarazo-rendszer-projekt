@@ -492,13 +492,13 @@
         $conn->close();
         //return $results->fetch_all(MYSQLI_ASSOC);
     }
-    function UpdateSystemSettings($membership_fee, $borrowing_time, $lengthening_time, $reservation_time, $max_reservations, $max_lengthenings, $latency_fee, $reset_token_expiration, $login_token_expiration){
+    function UpdateSystemSettings($membership_fee, $borrowing_time, $lengthening_time, $booking_time, $max_reservations, $max_lengthenings, $latency_fee, $reset_token_expiration, $login_token_expiration){
         require "databaseConnect.php";
 
         $query = "CALL updateSystemSettings(?,?,?,?,?,?,?,?,?);";
         
         $stmt = $conn->prepare($query); // Prepare statement
-        $stmt->bind_param("iiiiiiiii", $membership_fee, $borrowing_time, $lengthening_time, $reservation_time, $max_reservations, $max_lengthenings, $latency_fee, $reset_token_expiration, $login_token_expiration); // Bind parameter to SQL query
+        $stmt->bind_param("iiiiiiiii", $membership_fee, $borrowing_time, $lengthening_time, $booking_time, $max_reservations, $max_lengthenings, $latency_fee, $reset_token_expiration, $login_token_expiration); // Bind parameter to SQL query
         $stmt->execute(); // Execute the SQL query
         $results = $stmt->get_result();
         $conn->close();
@@ -1029,7 +1029,7 @@
             require "databaseConnect.php";
         }
 
-        $query = "CALL getBooksFromShelf(?);";
+        $query = "CALL getBooksFromFavorites(?);";
 
         $stmt = $conn->prepare($query); // Prepare statement
         $stmt->bind_param("i", $user_id); // Bind parameter to SQL query
@@ -1043,14 +1043,14 @@
         return $results->fetch_all(MYSQLI_ASSOC);
     }
 
-    function add_books_to_users_shelf(int $user_id, int $ISBN_id, mysqli $conn=null) : void {
+    function add_books_to_users_favorites(int $user_id, int $ISBN_id, mysqli $conn=null) : void {
         $conn_was_not_given = $conn == null;
 
         if($conn_was_not_given){
             require "databaseConnect.php";
         }
 
-        $query = "CALL addBooksToShelf(?,?);";
+        $query = "CALL addBooksToFavorites(?,?);";
 
         $stmt = $conn->prepare($query); // Prepare statement
         $stmt->bind_param("ii", $user_id, $ISBN_id); // Bind parameter to SQL query
@@ -1070,7 +1070,7 @@
             require "databaseConnect.php";
         }
 
-        $query = "CALL removeBooksFromShelf(?,?);";
+        $query = "CALL removeBooksFromFavorites(?,?);";
 
         $stmt = $conn->prepare($query); // Prepare statement
         $stmt->bind_param("ii", $user_id, $ISBN_id); // Bind parameter to SQL query
@@ -1090,7 +1090,7 @@
             require "databaseConnect.php";
         }
 
-        $query = "CALL isItOnShelf(?,?);";
+        $query = "CALL isItOnFavorites(?,?);";
 
         $stmt = $conn->prepare($query); // Prepare statement
         $stmt->bind_param("ii", $user_id, $ISBN_id); // Bind parameter to SQL query
