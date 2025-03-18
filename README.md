@@ -32,8 +32,9 @@ SQL:
 
 ADDITIONAL STUFF TO DO:
 -api endpoint dokkumentáció, mert kezd nehéz lenni követni hogy mi történik 
--minden a ami shelf az adatbázisban favorites-re kell átnevezni 
+-minden a ami shelf az adatbázisban favorites-re kell átnevezni - DONE Bálint része még nem 
 -törölni a votes és users_votes_conn táblákat és a kapcsolati térképet így frissíteni
+-update token kell???
 
 KÉRDÉSEK A KÖNYVTÁROSOKHOZ:
 -ha valaki lefoglal egy könyvet, de valaki nézegeti azt a könyvet a könyvtárban, akkor olyankor mivan(feltételezzük, hogy nincs több az adott könyből a könyvtárban)?
