@@ -139,20 +139,22 @@ if(count($parts_of_path) == 1){
 </head>
 <body>
   <?php require_once "navbar.html"; ?>
-  <div class="space-after-nav"></div>
   <?php
     if ($page_to_load === 'mainPage') {
       require_once "mainPage.php";
 
     }else if ($page_to_load === 'bookList') {
+      echo '<div class="space-after-nav"></div>';
       require_once "bookList.php";
 
     }else if ($page_to_load === 'aboutUs') {
       require_once "aboutUs.php";
     }else if ($page_to_load === 'userDetailed') {
+      echo '<div class="space-after-nav"></div>';
       require_once "userDetailed.php";      
 
     }else if($page_to_load === "bookDetailed"){
+      echo '<div class="space-after-nav"></div>';
       require_once "bookDetailed.php";
 
     }else {

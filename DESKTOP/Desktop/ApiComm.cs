@@ -30,16 +30,10 @@ namespace Desktop
             client.Dispose();
 
                     return responseDir;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message + "\n" + ex.InnerException?.Message);
-            }
-            return null;
         }
-
-
     }
+
+
 }
+
 

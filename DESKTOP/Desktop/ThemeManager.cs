@@ -90,6 +90,27 @@ namespace Desktop
             {
                 ApplyTheme(form);
             }
+
+            Application.AddMessageFilter(new MessageFilter());
+        }
+
+        private class MessageFilter : IMessageFilter
+        {
+            public bool PreFilterMessage(ref Message m)
+            {
+                if (m.Msg == 0x200) // WM_MOUSEMOVE
+                {
+                    if (m.HWnd != IntPtr.Zero && !Control.FromHandle(m.HWnd).IsDisposed)
+                    {
+                        Form form = Control.FromHandle(m.HWnd) as Form;
+                        if (form != null && !form.IsDisposed && !form.IsHandleCreated)
+                        {
+                            ThemeManager.ApplyTheme(form);
+                        }
+                    }
+                }
+                return false;
+            }
         }
 
         public static void ApplyTheme(Control control)
@@ -225,6 +246,7 @@ namespace Desktop
             {
                 CtextBox.BackColor = CurrentTheme == "Light" ? Color.FromArgb(245, 245, 245) : Color.FromArgb(71, 71, 88);
                 CtextBox.BorderColor = CurrentTheme == "Light" ? Color.FromArgb(10, 123, 106) : Color.FromArgb(10, 123, 106);
+                CtextBox.BorderFocusColor = CurrentTheme == "Light" ? Color.FromArgb(168, 218, 220) : Color.FromArgb(168, 218, 220);
             }
 
 

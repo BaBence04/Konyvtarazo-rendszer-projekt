@@ -16,7 +16,7 @@ namespace Desktop
     {
         //Fields
         private Color borderColor = Color.MediumSlateBlue;
-        private Color borderFocusColor = Color.HotPink;
+        private Color borderFocusColor = Color.FromArgb(168, 218, 220);
         private int borderSize = 2;
         private bool underlinedStyle = false;
         private bool isFocused = false;
@@ -354,11 +354,20 @@ namespace Desktop
             }
         }
 
+        [Category("Custom Properties")]
+        public ScrollBars TextBoxScrollBars
+        {
+            get { return textBox1.ScrollBars; }
+            set { textBox1.ScrollBars = value; }
+        }
+
+
 
 
         //EVENTS
 
         public event EventHandler _TextChanged;
+
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {

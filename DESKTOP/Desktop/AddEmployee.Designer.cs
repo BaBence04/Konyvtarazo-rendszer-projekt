@@ -43,7 +43,7 @@
             this.ctbEmplName.BorderRadius = 14;
             this.ctbEmplName.BorderSize = 2;
             this.ctbEmplName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.ctbEmplName.ForeColor = System.Drawing.Color.DimGray;
+            this.ctbEmplName.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.ctbEmplName.IsReadOnly = false;
             this.ctbEmplName.Location = new System.Drawing.Point(26, 64);
             this.ctbEmplName.Margin = new System.Windows.Forms.Padding(4);
@@ -55,6 +55,7 @@
             this.ctbEmplName.PlaceholderText = "Név";
             this.ctbEmplName.Size = new System.Drawing.Size(237, 31);
             this.ctbEmplName.TabIndex = 1;
+            this.ctbEmplName.TextBoxScrollBars = System.Windows.Forms.ScrollBars.None;
             this.ctbEmplName.Texts = "Név";
             this.ctbEmplName.UnderlinedStyle = false;
             // 
@@ -83,7 +84,7 @@
             this.ctbEmplPass.BorderRadius = 14;
             this.ctbEmplPass.BorderSize = 2;
             this.ctbEmplPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.ctbEmplPass.ForeColor = System.Drawing.Color.DimGray;
+            this.ctbEmplPass.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.ctbEmplPass.IsReadOnly = false;
             this.ctbEmplPass.Location = new System.Drawing.Point(26, 131);
             this.ctbEmplPass.Margin = new System.Windows.Forms.Padding(4);
@@ -95,6 +96,7 @@
             this.ctbEmplPass.PlaceholderText = "Jelszó";
             this.ctbEmplPass.Size = new System.Drawing.Size(237, 31);
             this.ctbEmplPass.TabIndex = 4;
+            this.ctbEmplPass.TextBoxScrollBars = System.Windows.Forms.ScrollBars.None;
             this.ctbEmplPass.Texts = "Jelszó";
             this.ctbEmplPass.UnderlinedStyle = false;
             // 
