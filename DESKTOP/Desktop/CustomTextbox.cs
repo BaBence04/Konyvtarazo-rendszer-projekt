@@ -354,11 +354,20 @@ namespace Desktop
             }
         }
 
+        [Category("Custom Properties")]
+        public ScrollBars TextBoxScrollBars
+        {
+            get { return textBox1.ScrollBars; }
+            set { textBox1.ScrollBars = value; }
+        }
+
+
 
 
         //EVENTS
 
         public event EventHandler _TextChanged;
+
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {

@@ -4,9 +4,7 @@ Mesterremek projekt, könyvtárazó rendszer
 
 #ASZTALI:
     KINÉZET:
-        -lehessen görgetni a könyv hozzáadásánál a könyv leírásában, és legyen nagyobb is
         -a könyv hozzáadásnál nem vált témát(legalábbis gonodlom, mert világos sötét módkor)
-        -új könyv hozzáadása - ne legyen méretezhető a popup
 
     BACKEND:
         -a könyv hozzáadása után ha arra nyom a felhasználó, hogy ne nyissa meg a részletest, akkor is fel kell ugrania a popupnak hogy mi az id-ja a könyvnek ami hozzá lett adva az inventory-hoz
