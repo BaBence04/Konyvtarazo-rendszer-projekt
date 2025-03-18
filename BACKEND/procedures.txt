@@ -447,19 +447,6 @@ END;//
 DELIMITER ;
 
 -- PROCEDURES FOR THE DESKTOP APP
--- Gets all books can be searched by book id and isbn
--- NOT TESTED NEED TO TEST IN APP
-DELIMITER //
-CREATE PROCEDURE IF NOT EXISTS getAllBooks(
-  IN searchTerm VARCHAR(13),
-  IN offseter INT,
-  IN limiter INT
-) BEGIN
-SELECT book.ISBN, inventory.book_id, book.title FROM book INNER JOIN inventory ON inventory.ISBN_id = book.ISBN_id WHERE (inventory.book_id = searchTerm OR book.ISBN = searchTerm) OR searchTerm = '' LIMIT limiter OFFSET offseter;
-END;//
-DELIMITER ;
-
-
 -- deletes expired tokens
 DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS deleteExpiredTokens() 
@@ -671,15 +658,6 @@ IF (SELECT COUNT(book.ISBN_id) FROM book WHERE book.ISBN = ISBN) = 0 THEN
 ELSE
 	SELECT 'Already exists' AS state;
 END IF;
-END;//
-DELIMITER ;
-
--- Add a book
-DELIMITER //
-CREATE PROCEDURE IF NOT EXISTS addBook(
-  IN ISBN VARCHAR(13)
-) BEGIN
-INSERT INTO inventory(inventory.ISBN_id, inventory.available) VALUES((SELECT book.ISBN_id FROM book WHERE book.ISBN = ISBN), 1);
 END;//
 DELIMITER ;
 
