@@ -1620,7 +1620,7 @@ a, a:active, a:hover, a:visited, a:link{
 
 
 @media screen and (max-width: 768px) {
-  .container {
+  .container:not(#header .container){
       flex-direction: column;
       width: 100%;
   }
