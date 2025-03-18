@@ -385,7 +385,7 @@ function LevetelAPolcrol(element){
         url: "/BACKEND/api.php",
         type: "POST", //send it through post method
         data: { 
-            action: "removeFromShelf",
+            action: "removeFromFavorites",
             ISBN_id: isbnId
         },
         success: function(response)  {

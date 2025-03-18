@@ -294,12 +294,12 @@ function ForgotPassword(){
   }
 }
 
-function addOrRemoveFromShelf(element){
+function addOrRemoveFromFavorites(element){
   const isbnId = element.getAttribute("data-isbn-id");
   if(parseInt(isbnId) != isbnId) return;
 
   const selected = element.checked;
-  let action = !selected?"removeFromShelf":"addToShelf";
+  let action = !selected?"removeFromFavorites":"addToFavorites";
 
   $.ajax({
       url: "/BACKEND/api.php",

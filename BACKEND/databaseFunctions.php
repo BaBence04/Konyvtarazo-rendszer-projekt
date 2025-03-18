@@ -1063,7 +1063,7 @@
         return;
     }
 
-    function remove_books_from_users_shelf(int $user_id, int $ISBN_id, mysqli $conn=null) : void {
+    function remove_books_from_users_favorites(int $user_id, int $ISBN_id, mysqli $conn=null) : void {
         $conn_was_not_given = $conn == null;
 
         if($conn_was_not_given){
@@ -1083,7 +1083,7 @@
         return;
     }
 
-    function is_book_on_shelf(int $user_id, int $ISBN_id, mysqli $conn=null) : bool {
+    function is_book_on_favorites(int $user_id, int $ISBN_id, mysqli $conn=null) : bool {
         $conn_was_not_given = $conn == null;
 
         if($conn_was_not_given){

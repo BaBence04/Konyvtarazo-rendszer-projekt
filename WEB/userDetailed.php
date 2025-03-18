@@ -6,7 +6,7 @@
     $previously_borrowed_books = GetPreviouslyBorrowedBooks($_SESSION["user_id"]);  
     
     $booked_and_reserved_books = GetBookedAndReservedBooks($_SESSION["user_id"]);
-    $books_on_shelf = get_users_favorite_books($_SESSION["user_id"]);
+    $books_on_favorites = get_users_favorite_books($_SESSION["user_id"]);
 
     $booked_books = [];
     $reserved_books = [];
@@ -45,7 +45,7 @@
             Korábban kivett <span>könyvek</span> 
             <!-- <span class="indicator"></span> -->
         </div>
-        <div class="nav-item" id="nav-books-on-shelf" data-link="kedvencek" onclick="showSection(this); SetUrlToOpenSection(this);">
+        <div class="nav-item" id="nav-books-on-favorites" data-link="kedvencek" onclick="showSection(this); SetUrlToOpenSection(this);">
             Kedvencek
             <!-- <span class="indicator"></span> -->
         </div>
@@ -179,10 +179,10 @@
             <?php endif; ?>
         </div>
 
-        <div class="section" id="books-on-shelf">
-            <?php if(count($books_on_shelf) > 0): ?>
+        <div class="section" id="books-on-favorites">
+            <?php if(count($books_on_favorites) > 0): ?>
                 <h3>Kedvencek</h3>
-                <?php foreach ($books_on_shelf as $book_data): ?>
+                <?php foreach ($books_on_favorites as $book_data): ?>
                     <div class="book-item">
                         <div class="book-details_container">
                             <a href="/web/konyveink/<?=$book_data['ISBN']?>"><?=$book_data['title']?></a>

@@ -143,13 +143,13 @@
 
             echo json_encode($response);
 
-            //remove book from the shelf
-        }else if(isset($_POST["ISBN_id"], $_POST["action"], $_SESSION["user_id"]) && count($_POST) == 2 && $_POST["action"] == "removeFromShelf"){
-            remove_books_from_users_shelf($_SESSION["user_id"], $_POST["ISBN_id"]);
+            //remove book from the favorites
+        }else if(isset($_POST["ISBN_id"], $_POST["action"], $_SESSION["user_id"]) && count($_POST) == 2 && $_POST["action"] == "removeFromFavorites"){
+            remove_books_from_users_favorites($_SESSION["user_id"], $_POST["ISBN_id"]);
 
-            //add book to the shelf
-        }else if(isset($_POST["ISBN_id"], $_POST["action"], $_SESSION["user_id"]) && count($_POST) == 2 && $_POST["action"] == "addToShelf"){
-            add_books_to_users_shelf($_SESSION["user_id"], $_POST["ISBN_id"]);
+            //add book to the favorites
+        }else if(isset($_POST["ISBN_id"], $_POST["action"], $_SESSION["user_id"]) && count($_POST) == 2 && $_POST["action"] == "addToFavorites"){
+            add_books_to_users_favorites($_SESSION["user_id"], $_POST["ISBN_id"]);
 
             //reset password
         }else if(isset($_POST["reset_token"], $_POST["password"]) && count($_POST)==2){
