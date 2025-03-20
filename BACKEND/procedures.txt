@@ -455,28 +455,6 @@ DELETE FROM tokens WHERE tokens.expiry_date < NOW();
 END;//
 DELIMITER ;
 
--- updates tokens
-DELIMITER //
-CREATE PROCEDURE IF NOT EXISTS updateToken(
-  IN user_id INT,
-  IN newToken VARCHAR(11),
-  IN oldToken VARCHAR(11),
-  IN type VARCHAR(255)
-) BEGIN
-
-IF (type = "reset") THEN 
-  UPDATE tokens SET tokens.token = newToken, tokens.expiry_date = (SELECT DATE_ADD(NOW(), INTERVAL (SELECT system_settings.reset_token_expiration FROM system_settings) HOUR)) WHERE tokens.type = type AND tokens.user_id  = user_id AND tokens.token = oldToken;
-  SELECT "true" as result;
-ELSEIF (type = "remember_me") THEN
-  UPDATE tokens SET tokens.token = newToken, tokens.expiry_date = (SELECT DATE_ADD(NOW(), INTERVAL (SELECT system_settings.login_token_expiration FROM system_settings) DAY)) WHERE tokens.type = type AND tokens.user_id  = user_id AND tokens.token = oldToken;
-  SELECT "true" as result;
-ELSE
-  SELECT "unhandled type given" as result;
-
-END IF;
-
-END;//
-DELIMITER ;
 
 -- generates token and deletes expired ones
 DELIMITER //
@@ -963,7 +941,7 @@ BEGIN
 END;//
 DELIMITER ;
 
--- gets all usernames that starts with the sent one for username generation
+-- if the user already read this book then it gets how many days ago did he/she read it 
 DELIMITER //
 CREATE PROCEDURE IF NOT EXISTS getHistory(
   IN bookID INT,
@@ -1126,16 +1104,6 @@ CREATE PROCEDURE IF NOT EXISTS isItOnFavorites(
 ) 
 BEGIN
   SELECT CASE WHEN (SELECT COUNT(ISBN_id) FROM favorites WHERE favorites.user_id = user_id AND favorites.ISBN_id = ISBN_id)>0 THEN "true" ELSE "false" END AS result FROM favorites;
-END;//
-DELIMITER ;
-
--- gets all books that is on favorites
-DELIMITER //
-CREATE PROCEDURE IF NOT EXISTS getFavorites(
-  IN user_id INT
-) 
-BEGIN
-  SELECT favorites.ISBN_id FROM favorites WHERE favorites.user_id = user_id;
 END;//
 DELIMITER ;
 

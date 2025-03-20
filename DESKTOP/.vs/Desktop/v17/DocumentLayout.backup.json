@@ -1,8 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\xampp\\htdocs\\novak_marton\\Konyvtarazo-rendszer-projekt\\DESKTOP\\",
+  "WorkspaceRootPath": "C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\",
   "Documents": [
     {
+<<<<<<< Updated upstream
       "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|c:\\xampp\\htdocs\\novak_marton\\konyvtarazo-rendszer-projekt\\desktop\\desktop\\custombutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|solutionrelative:desktop\\custombutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -73,6 +74,22 @@
     {
       "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|C:\\xampp\\htdocs\\novak_marton\\Konyvtarazo-rendszer-projekt\\DESKTOP\\desktop\\apicomm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|solutionrelative:desktop\\apicomm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+=======
+      "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|c:\\xampp\\htdocs\\konyvtarazo-rendszer-projekt\\desktop\\desktop\\bookdetailedpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|solutionrelative:desktop\\bookdetailedpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\desktop\\popupselect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|solutionrelative:desktop\\popupselect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\desktop\\apicomm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|solutionrelative:desktop\\apicomm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\desktop\\popupselect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B72EFB17-EDFD-41C1-9CF6-6207D4B01DDB}|Desktop\\Desktop.csproj|solutionrelative:desktop\\popupselect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+>>>>>>> Stashed changes
     }
   ],
   "DocumentGroupContainers": [
@@ -92,7 +109,7 @@
               "RelativeDocumentMoniker": "Desktop\\CustomButton.cs",
               "ToolTip": "C:\\xampp\\htdocs\\novak_marton\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\CustomButton.cs",
               "RelativeToolTip": "Desktop\\CustomButton.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAAAowD8AAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAACkAAAAAAAAAAAAowDsAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-18T09:07:06.904Z",
               "EditorCaption": ""
@@ -289,9 +306,9 @@
               "$type": "Document",
               "DocumentIndex": 12,
               "Title": "BookDetailedPage.cs [Design]",
-              "DocumentMoniker": "C:\\xampp\\htdocs\\novak_marton\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\BookDetailedPage.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\BookDetailedPage.cs",
               "RelativeDocumentMoniker": "Desktop\\BookDetailedPage.cs",
-              "ToolTip": "C:\\xampp\\htdocs\\novak_marton\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\BookDetailedPage.cs [Design]",
+              "ToolTip": "C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\BookDetailedPage.cs [Design]",
               "RelativeToolTip": "Desktop\\BookDetailedPage.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-18T08:04:48.357Z",
@@ -299,16 +316,42 @@
             },
             {
               "$type": "Document",
+<<<<<<< Updated upstream
               "DocumentIndex": 17,
+=======
+              "DocumentIndex": 3,
+              "Title": "PopupSelect.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\PopupSelect.cs",
+              "RelativeDocumentMoniker": "Desktop\\PopupSelect.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\PopupSelect.cs",
+              "RelativeToolTip": "Desktop\\PopupSelect.cs",
+              "ViewState": "AgIAAP4AAAAAAAAAAAAAAAkBAABvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T10:14:30.71Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PopupSelect.cs [Design]",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\PopupSelect.cs",
+              "RelativeDocumentMoniker": "Desktop\\PopupSelect.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\novak_marton\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\PopupSelect.cs [Design]",
+              "RelativeToolTip": "..\\..\\novak_marton\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\PopupSelect.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T10:14:28.871Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+>>>>>>> Stashed changes
               "Title": "ApiComm.cs",
-              "DocumentMoniker": "C:\\xampp\\htdocs\\novak_marton\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\ApiComm.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\ApiComm.cs",
               "RelativeDocumentMoniker": "Desktop\\ApiComm.cs",
-              "ToolTip": "C:\\xampp\\htdocs\\novak_marton\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\ApiComm.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\Konyvtarazo-rendszer-projekt\\DESKTOP\\Desktop\\ApiComm.cs",
               "RelativeToolTip": "Desktop\\ApiComm.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAADgvx8AAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T09:51:52.645Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-14T09:51:52.645Z"
             }
           ]
         }
