@@ -80,28 +80,28 @@
 
     }
 
-    function GetBookByIsbnId($id){
-        require "databaseConnect.php";
+    // function GetBookByIsbnId($id){
+    //     require "databaseConnect.php";
 
-        $query = "CALL GetBookById(?);";
+    //     $query = "CALL GetBookById(?);";
 
-        $stmt = $conn->prepare($query); // Prepare statement
-        $stmt->bind_param("s", $id); // Bind parameter to SQL query
-        $stmt->execute(); // Execute the SQL query
-        $results = $stmt->get_result();
-        $conn->close();
-        $data = $results->fetch_all(MYSQLI_ASSOC);
+    //     $stmt = $conn->prepare($query); // Prepare statement
+    //     $stmt->bind_param("s", $id); // Bind parameter to SQL query
+    //     $stmt->execute(); // Execute the SQL query
+    //     $results = $stmt->get_result();
+    //     $conn->close();
+    //     $data = $results->fetch_all(MYSQLI_ASSOC);
 
-        if(count($data)>1){
-            throw new Exception("HIBA! több mint egy könyv van ugyanazzal az ISBN idval az adatbázisban!");
-        }elseif(count($data)==0){
-            return [];
-        }elseif(count($data)==1){
-            return $data[0];
+    //     if(count($data)>1){
+    //         throw new Exception("HIBA! több mint egy könyv van ugyanazzal az ISBN idval az adatbázisban!");
+    //     }elseif(count($data)==0){
+    //         return [];
+    //     }elseif(count($data)==1){
+    //         return $data[0];
 
-        }
+    //     }
 
-    }
+    // }
 
     function GetBookByIsbn($isbn){
         require "databaseConnect.php";
@@ -341,18 +341,18 @@
     }
 
     //From here mainly desktop functions
-    function GetAllBooks($searchTerm, $offseter, $limiter){
-        require "databaseConnect.php";
+    // function GetAllBooks($searchTerm, $offseter, $limiter){
+    //     require "databaseConnect.php";
 
-        $query = "CALL getAllBooks(?,?,?);";
+    //     $query = "CALL getAllBooks(?,?,?);";
 
-        $stmt = $conn->prepare($query); // Prepare statement
-        $stmt->bind_param("sii", $searchTerm,$offseter, $limiter); // Bind parameter to SQL query
-        $stmt->execute(); // Execute the SQL query
-        $results = $stmt->get_result();
-        $conn->close();
-        return $results->fetch_all(MYSQLI_ASSOC);
-    }
+    //     $stmt = $conn->prepare($query); // Prepare statement
+    //     $stmt->bind_param("sii", $searchTerm,$offseter, $limiter); // Bind parameter to SQL query
+    //     $stmt->execute(); // Execute the SQL query
+    //     $results = $stmt->get_result();
+    //     $conn->close();
+    //     return $results->fetch_all(MYSQLI_ASSOC);
+    // }
 
     function AddBookType($isbn, $title, $allGenres, $allAuthors, $publisher, $releaseDate, $lang, $descript, $picture){
         require "databaseConnect.php";
@@ -368,18 +368,6 @@
         
     }
 
-    function AddBook($isbn){
-        require "databaseConnect.php";
-
-        $query = "CALL extendReturnDate(?);";
-
-        $stmt = $conn->prepare($query); // Prepare statement
-        $stmt->bind_param("s", $isbn); // Bind parameter to SQL query
-        $stmt->execute(); // Execute the SQL query
-        $results = $stmt->get_result();
-        $conn->close();
-        return $results->fetch_all(MYSQLI_ASSOC);
-    }
 
     function LoginEmployee($username, $pw){
         require "databaseConnect.php";
