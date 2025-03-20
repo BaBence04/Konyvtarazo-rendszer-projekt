@@ -20,6 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `konyvtar`
 --
+DROP DATABASE IF EXISTS `konyvater`;
 CREATE DATABASE IF NOT EXISTS `konyvtar` DEFAULT CHARACTER SET utf8 COLLATE utf8_hungarian_ci;
 USE `konyvtar`;
 
@@ -480,20 +481,20 @@ CREATE TABLE `reservation` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `shelf`
+-- Table structure for table `favorites`
 --
 
-DROP TABLE IF EXISTS `shelf`;
-CREATE TABLE `shelf` (
+DROP TABLE IF EXISTS `favorites`;
+CREATE TABLE `favorites` (
   `user_id` int(11) NOT NULL,
   `ISBN_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
--- Dumping data for table `shelf`
+-- Dumping data for table `favorites`
 --
 
-INSERT INTO `shelf` (`user_id`, `ISBN_id`) VALUES
+INSERT INTO `favorites` (`user_id`, `ISBN_id`) VALUES
 (1, 13);
 
 -- --------------------------------------------------------
@@ -687,9 +688,9 @@ ALTER TABLE `reservation`
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `shelf`
+-- Indexes for table `favorites`
 --
-ALTER TABLE `shelf`
+ALTER TABLE `favorites`
   ADD PRIMARY KEY (`user_id`,`ISBN_id`),
   ADD KEY `ISBN_id` (`ISBN_id`);
 
@@ -849,11 +850,11 @@ ALTER TABLE `reservation`
   ADD CONSTRAINT `reservation_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
 
 --
--- Constraints for table `shelf`
+-- Constraints for table `favorites`
 --
-ALTER TABLE `shelf`
-  ADD CONSTRAINT `shelf_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
-  ADD CONSTRAINT `shelf_ibfk_2` FOREIGN KEY (`ISBN_id`) REFERENCES `book` (`ISBN_id`);
+ALTER TABLE `favorites`
+  ADD CONSTRAINT `favorites_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
+  ADD CONSTRAINT `favorites_ibfk_2` FOREIGN KEY (`ISBN_id`) REFERENCES `book` (`ISBN_id`);
 
 --
 -- Constraints for table `tokens`
