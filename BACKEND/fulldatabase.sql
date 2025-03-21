@@ -20,7 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `konyvtar`
 --
-DROP DATABASE IF EXISTS `konyvater`;
+DROP DATABASE IF EXISTS `konyvtar`;
 CREATE DATABASE IF NOT EXISTS `konyvtar` DEFAULT CHARACTER SET utf8 COLLATE utf8_hungarian_ci;
 USE `konyvtar`;
 
