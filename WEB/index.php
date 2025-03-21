@@ -2,6 +2,7 @@
 require_once "../BACKEND/databaseFunctions.php";
 require_once "../BACKEND/additionalFunctions.php";
 
+setup_session_cookie();
 session_start();
 
 $session_lifetime = 1800; // 30 minutes of inactivity before logout
@@ -10,8 +11,9 @@ if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > 
     session_unset();
     session_destroy();
     setcookie(session_name(), '', time() - 3600, '/'); // Expire session cookie
-    header("Location: /web/");
-    exit();
+
+    setup_session_cookie();
+    session_start();
 }
 
 $_SESSION['last_activity'] = time(); // Update activity time
