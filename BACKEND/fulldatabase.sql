@@ -508,7 +508,7 @@ CREATE TABLE `system_settings` (
   `membership_fee` int(11) DEFAULT NULL,
   `borrowing_time` int(11) DEFAULT NULL,
   `lengthening_time` int(11) DEFAULT NULL,
-  `reservation_time` int(11) DEFAULT NULL,
+  `booking_time` int(11) DEFAULT NULL,
   `max_reservations` int(11) DEFAULT NULL,
   `max_lengthenings` int(11) DEFAULT NULL,
   `latency_fee` int(11) DEFAULT NULL,
@@ -520,7 +520,7 @@ CREATE TABLE `system_settings` (
 -- Dumping data for table `system_settings`
 --
 
-INSERT INTO `system_settings` (`membership_fee`, `borrowing_time`, `lengthening_time`, `reservation_time`, `max_reservations`, `max_lengthenings`, `latency_fee`, `reset_token_expiration`, `login_token_expiration`) VALUES
+INSERT INTO `system_settings` (`membership_fee`, `borrowing_time`, `lengthening_time`, `booking_time`, `max_reservations`, `max_lengthenings`, `latency_fee`, `reset_token_expiration`, `login_token_expiration`) VALUES
 (1000, 30, 15, 10, 5, 2, 500, 24, 30);
 
 -- --------------------------------------------------------
