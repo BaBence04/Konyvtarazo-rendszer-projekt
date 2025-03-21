@@ -89,7 +89,7 @@
                     $result = ["status" => "successful"];        
                     
                 }else{
-                    $result = ["status" => "error", "message"=>"Couldn't log in with the new password, seek help! The result given back: $login_result[result]"];        
+                    $result = ["status" => "error", "message"=>"Couldn't log in with the new password, seek help!"];        
                 }
 
             }else{
@@ -98,7 +98,7 @@
 
             echo json_encode($result);
             
-            
+        //kivett könyv meghosszabbítása
         }else if(count($_POST)==2 && isset($_SESSION["user_id"], $_SESSION["restricted"], $_POST["book_id"], $_POST["action"]) && $_POST["action"] == "extend" && $_SESSION["restricted"] == "false" ){
             $result = [];
             
@@ -110,6 +110,8 @@
             }
 
             echo json_encode($result);
+
+        //is user logged in
         }else if(isset($_POST["action"]) && count($_POST) == 1 && $_POST["action"] == "isLoggedIn"){
             echo isset($_SESSION['user_id']) ? $_SESSION["user_id"] : "";
 
@@ -140,7 +142,6 @@
                 $response = ["status"=>"invalid"];
             }else{
                 $response = reset_password($user_id);
-            
             }
 
             echo json_encode($response);
@@ -172,7 +173,7 @@
 
             echo json_encode($response);
         
-
+            //login employee
         }else if(isset($_POST["username"], $_POST["passw"]) && count($_POST)==2){
             echo json_encode(LoginEmployee($_POST["username"], $_POST["passw"]));
         }
