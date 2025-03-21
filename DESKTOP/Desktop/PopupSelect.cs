@@ -273,7 +273,7 @@ namespace Desktop
                             
                         }
                     }
-                    if (response[0][startMode=="getAuthors"?"author_id":"genre_id"] == "" && optionalId.Length==0)
+                    if (!((startMode == "getAuthors" &&response[0]["author_id"] == "") || (startMode == "getCategories" && response[0]["genre_id"] == "") && optionalId.Length==0))
                     {
                         for (int i = 0; i < response.Count(); i++)
                         {
