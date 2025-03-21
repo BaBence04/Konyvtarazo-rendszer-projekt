@@ -577,29 +577,6 @@ INSERT INTO `users` (`user_id`, `surname`, `first_name`, `username`, `birth_date
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users_votes_conn`
---
-
-DROP TABLE IF EXISTS `users_votes_conn`;
-CREATE TABLE `users_votes_conn` (
-  `user_id` int(11) NOT NULL,
-  `vote_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `votes`
---
-
-DROP TABLE IF EXISTS `votes`;
-CREATE TABLE `votes` (
-  `vote_id` int(11) NOT NULL,
-  `author` varchar(255) DEFAULT NULL,
-  `book_title` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
-
---
 -- Indexes for dumped tables
 --
 
@@ -708,19 +685,6 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`);
 
 --
--- Indexes for table `users_votes_conn`
---
-ALTER TABLE `users_votes_conn`
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `vote_id` (`vote_id`);
-
---
--- Indexes for table `votes`
---
-ALTER TABLE `votes`
-  ADD PRIMARY KEY (`vote_id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -791,12 +755,6 @@ ALTER TABLE `users`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `votes`
---
-ALTER TABLE `votes`
-  MODIFY `vote_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- Constraints for dumped tables
 --
 
@@ -861,14 +819,6 @@ ALTER TABLE `favorites`
 --
 ALTER TABLE `tokens`
   ADD CONSTRAINT `tokens_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
-
---
--- Constraints for table `users_votes_conn`
---
-ALTER TABLE `users_votes_conn`
-  ADD CONSTRAINT `users_votes_conn_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
-  ADD CONSTRAINT `users_votes_conn_ibfk_2` FOREIGN KEY (`vote_id`) REFERENCES `votes` (`vote_id`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
