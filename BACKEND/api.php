@@ -13,6 +13,8 @@
         session_unset();
         session_destroy();
         setcookie(session_name(), '', time() - 3600, '/'); // Expire session cookie
+        
+        setup_session_cookie();
         session_start();
     }
 
