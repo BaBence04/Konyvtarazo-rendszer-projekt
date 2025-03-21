@@ -235,6 +235,7 @@
             this.cbtnDeactivate.BorderColor = System.Drawing.Color.White;
             this.cbtnDeactivate.BorderRadius = 40;
             this.cbtnDeactivate.BorderSize = 0;
+            this.cbtnDeactivate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbtnDeactivate.FlatAppearance.BorderSize = 0;
             this.cbtnDeactivate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbtnDeactivate.ForeColor = System.Drawing.Color.White;
@@ -252,6 +253,7 @@
             this.cbtnAddBook.BorderColor = System.Drawing.Color.White;
             this.cbtnAddBook.BorderRadius = 40;
             this.cbtnAddBook.BorderSize = 0;
+            this.cbtnAddBook.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbtnAddBook.FlatAppearance.BorderSize = 0;
             this.cbtnAddBook.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbtnAddBook.ForeColor = System.Drawing.Color.White;
@@ -295,6 +297,7 @@
             this.cbtnAddPicture.BorderColor = System.Drawing.Color.White;
             this.cbtnAddPicture.BorderRadius = 40;
             this.cbtnAddPicture.BorderSize = 0;
+            this.cbtnAddPicture.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbtnAddPicture.FlatAppearance.BorderSize = 0;
             this.cbtnAddPicture.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbtnAddPicture.ForeColor = System.Drawing.Color.White;
@@ -336,6 +339,7 @@
             this.cdtpReleaseDate.BorderColor = System.Drawing.Color.PaleVioletRed;
             this.cdtpReleaseDate.BorderRadius = 1;
             this.cdtpReleaseDate.BorderSize = 0;
+            this.cdtpReleaseDate.CustomFormat = "";
             this.cdtpReleaseDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
             this.cdtpReleaseDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.cdtpReleaseDate.Location = new System.Drawing.Point(24, 178);
@@ -352,6 +356,7 @@
             this.cbtnBack.BorderColor = System.Drawing.Color.White;
             this.cbtnBack.BorderRadius = 40;
             this.cbtnBack.BorderSize = 0;
+            this.cbtnBack.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbtnBack.FlatAppearance.BorderSize = 0;
             this.cbtnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbtnBack.ForeColor = System.Drawing.Color.White;
@@ -369,6 +374,7 @@
             this.cbtnAddCategory.BorderColor = System.Drawing.Color.White;
             this.cbtnAddCategory.BorderRadius = 40;
             this.cbtnAddCategory.BorderSize = 0;
+            this.cbtnAddCategory.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbtnAddCategory.FlatAppearance.BorderSize = 0;
             this.cbtnAddCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbtnAddCategory.ForeColor = System.Drawing.Color.White;
@@ -386,6 +392,7 @@
             this.cbtnAddAuthor.BorderColor = System.Drawing.Color.White;
             this.cbtnAddAuthor.BorderRadius = 40;
             this.cbtnAddAuthor.BorderSize = 0;
+            this.cbtnAddAuthor.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbtnAddAuthor.FlatAppearance.BorderSize = 0;
             this.cbtnAddAuthor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbtnAddAuthor.ForeColor = System.Drawing.Color.White;

@@ -4,11 +4,9 @@ Mesterremek projekt, könyvtárazó rendszer
 
 #ASZTALI:
     KINÉZET:
+        -könyv hozzáadásánál ha a release_date-es dateTimePickerre kattintok akkor nekem egy olyan hibát dob, ami utána teljesen kifagyasztja az egész gépet a hibát a ThemeManager.cs PreFilterMessage functionban dobja null reference exception-al
 
     BACKEND:
-        -a fulldatabase.sql-el nem ad ki semmit az új könyv feltöltésénél a kategória és a szerző, és ha utána rákattintok(lehet máskor is) a kiadókra, akkor kiakad
-        -a könyv hozzáadása után ha arra nyom a felhasználó, hogy ne nyissa meg a részletest, akkor is fel kell ugrania a popupnak hogy mi az id-ja a könyvnek ami hozzá lett adva az inventory-hoz
-        -meglepően sokszor amikor a könyvrészletesről visszamegy az ember a könyvek-hez, olyankor feldobja, hogy vannak mentetlen változtatások mégha nem is csináltál semmit, ahol több a kategória ott biztos csinálja (több szerzőnél nem tudom)
         -a popup form-ok a megnyitott form közepére nyíljanak meg
         -nem mindig tűnik el a borrowingos felkiáltójel(not sure if relevant)
         -Kiírni hogy adott típusú könyvből hány darab van (not necessary)
@@ -32,10 +30,7 @@ SQL:
 
 
 ADDITIONAL STUFF TO DO:
--api endpoint dokkumentáció, mert kezd nehéz lenni követni hogy mi történik 
--minden a ami shelf az adatbázisban favorites-re kell átnevezni - DONE Bálint része még nem 
--törölni a votes és users_votes_conn táblákat és a kapcsolati térképet így frissíteni
--update token kell???
+-api endpoint dokkumentáció, mert kezd nehéz lenni követni hogy mi történik
 
 KÉRDÉSEK A KÖNYVTÁROSOKHOZ:
 -ha valaki lefoglal egy könyvet, de valaki nézegeti azt a könyvet a könyvtárban, akkor olyankor mivan(feltételezzük, hogy nincs több az adott könyből a könyvtárban)?

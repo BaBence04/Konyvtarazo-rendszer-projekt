@@ -312,6 +312,10 @@ namespace Desktop
 
                                     LoginForm.main.OpenChildForm(new BookDetailedPage(ctbISBN.Texts));
                                 }
+                                using (CustomMessageBoxForm msgBoxK = new CustomMessageBoxForm($"A hozzáadott könyv kódja: {resp2.First()["book_id"]}", "Könyvkód", MessageBoxButtons.OK))
+                                {
+                                    msgBoxK.ShowDialog();
+                                }
 
                             }
                             this.Close();
