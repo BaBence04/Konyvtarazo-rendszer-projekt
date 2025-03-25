@@ -7,22 +7,11 @@
     setup_session_cookie();
     session_start();
 
-    $session_lifetime = 1800; // 10s of inactivity before logout
+    CheckForLastActivity();
 
-    if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > $session_lifetime)) {
-        session_unset();
-        session_destroy();
-        setcookie(session_name(), '', time() - 3600, '/'); // Expire session cookie
-        
-        setup_session_cookie();
-        session_start();
-    }
-
-    $_SESSION['last_activity'] = time(); // Update activity time
-
-    //listBooksFiltered
 
     if($_SERVER['REQUEST_METHOD'] === 'GET'){
+        //listBooksFiltered
         if(isset($_GET["title"],$_GET["genre"],$_GET["author"],$_GET["release_date"],$_GET["lang"],$_GET["ISBN"]) && (count($_GET)==6 || (count($_GET) == 7 && isset($_GET["page_number"])))){
             $page_number = 1;
             if(isset($_GET["page_number"])){
