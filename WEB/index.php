@@ -5,18 +5,8 @@ require_once "../BACKEND/additionalFunctions.php";
 setup_session_cookie();
 session_start();
 
-$session_lifetime = 1800; // 30 minutes of inactivity before logout
+CheckForLastActivity();
 
-if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > $session_lifetime)) {
-    session_unset();
-    session_destroy();
-    setcookie(session_name(), '', time() - 3600, '/'); // Expire session cookie
-
-    setup_session_cookie();
-    session_start();
-}
-
-$_SESSION['last_activity'] = time(); // Update activity time
 
 // If the user is not logged in, check for the "remember me" cookie
 if (!isset($_SESSION['user_id']) && isset($_COOKIE['remember_me'])) {
@@ -26,6 +16,8 @@ if (!isset($_SESSION['user_id']) && isset($_COOKIE['remember_me'])) {
   $data = create_token($token, -1, "remember_me");
 
   if ($data["result"] == "loginFound") {
+    session_regenerate_id(true); //for security reasons
+
       // Token is valid, log the user in
       $_SESSION['user_id'] = $data['user_id'];
       $_SESSION["restricted"] = $data["member"]=="false"?"true":"false";
@@ -100,6 +92,8 @@ if(count($parts_of_path) == 1){
     if($book_data != []){
       $page_to_load = "bookDetailed";
       $page_title = $book_data["title"];
+    }else{
+      header("Location: /web/404.html");
     }
   }
 }
