@@ -4,13 +4,16 @@ Mesterremek projekt, könyvtárazó rendszer
 
 #ASZTALI:
     KINÉZET:
-        -könyv hozzáadásánál ha a release_date-es dateTimePickerre kattintok akkor nekem egy olyan hibát dob, ami utána teljesen kifagyasztja az egész gépet a hibát a ThemeManager.cs PreFilterMessage functionban dobja null reference exception-al
+        -custom datetime picker helyett lehet numericUpDown, arra még van idő
+
 
     BACKEND:
         -a popup form-ok a megnyitott form közepére nyíljanak meg
         -nem mindig tűnik el a borrowingos felkiáltójel(not sure if relevant)
         -Kiírni hogy adott típusú könyvből hány darab van (not necessary)
         -nem biztos hogy működik a popupform üres author/genre/publisher-nél így
+
+        -!!Ide írom hogy lássátok: Ha az asztaliban már bármi furán néz ki, nem vált témát, nem reszponzív, akkor írjátok nekem todo-nak.
 
 #WEB:
     KINÉZET:

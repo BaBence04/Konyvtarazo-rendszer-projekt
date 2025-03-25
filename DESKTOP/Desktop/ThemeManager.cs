@@ -91,10 +91,10 @@ namespace Desktop
                 ApplyTheme(form);
             }
 
-            Application.AddMessageFilter(new MessageFilter());
+            //Application.AddMessageFilter(new MessageFilter());
         }
 
-        private class MessageFilter : IMessageFilter
+        /*private class MessageFilter : IMessageFilter
         {
             public bool PreFilterMessage(ref Message m)
             {
@@ -111,7 +111,7 @@ namespace Desktop
                 }
                 return false;
             }
-        }
+        }*/
 
         public static void ApplyTheme(Control control)
 		{
