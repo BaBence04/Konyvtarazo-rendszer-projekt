@@ -32,8 +32,6 @@ namespace Desktop
                     return responseDir;
         }
     }
-
-
 }
 
 

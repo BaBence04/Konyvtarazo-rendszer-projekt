@@ -45,6 +45,7 @@
             this.cbtnBack.BorderColor = System.Drawing.Color.White;
             this.cbtnBack.BorderRadius = 40;
             this.cbtnBack.BorderSize = 0;
+            this.cbtnBack.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbtnBack.FlatAppearance.BorderSize = 0;
             this.cbtnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbtnBack.ForeColor = System.Drawing.Color.White;
@@ -76,6 +77,7 @@
             this.ctbSearch.PlaceholderText = "";
             this.ctbSearch.Size = new System.Drawing.Size(190, 31);
             this.ctbSearch.TabIndex = 2;
+            this.ctbSearch.TextBoxScrollBars = System.Windows.Forms.ScrollBars.None;
             this.ctbSearch.Texts = "";
             this.ctbSearch.UnderlinedStyle = false;
             // 
