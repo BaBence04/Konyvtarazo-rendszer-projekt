@@ -176,10 +176,11 @@ namespace Desktop
 			}
 			else if (control is Button button)
 			{
-                if (button.Tag as string == "DropdownMenu")
+                if (button.Tag as string == "menuButtons")
                 {
-                    button.BackColor = CurrentTheme == "Light" ? Color.FromArgb(235, 235, 235) : Color.FromArgb(34, 34, 48);
+                    button.BackColor = CurrentTheme == "Light" ? Color.FromArgb(220, 220, 220) : Color.FromArgb(25, 25, 39);
                     button.ForeColor = CurrentTheme == "Light" ? Color.Black : Color.White;
+
                 }
 
                 else if (button.Name == "cbtnLogout")
@@ -191,8 +192,8 @@ namespace Desktop
 
                 else
                 {
-                    button.BackColor = CurrentTheme == "Light" ? Color.FromArgb(220, 220, 220) : Color.FromArgb(25, 25, 39);
-                    button.ForeColor = CurrentTheme == "Light" ? Color.Black : Color.White;
+                    button.BackColor = Color.FromArgb(10, 123, 106);
+                    button.ForeColor = Color.White;
 
 
 					if (buttonIcons.TryGetValue(button.Name, out var icon))
@@ -245,6 +246,7 @@ namespace Desktop
             else if (control is CustomTextbox CtextBox)
             {
                 CtextBox.BackColor = CurrentTheme == "Light" ? Color.FromArgb(245, 245, 245) : Color.FromArgb(71, 71, 88);
+                CtextBox.ForeColor = CurrentTheme == "Light" ? Color.Black : Color.White;
                 CtextBox.BorderColor = CurrentTheme == "Light" ? Color.FromArgb(10, 123, 106) : Color.FromArgb(10, 123, 106);
                 CtextBox.BorderFocusColor = CurrentTheme == "Light" ? Color.FromArgb(168, 218, 220) : Color.FromArgb(168, 218, 220);
             }

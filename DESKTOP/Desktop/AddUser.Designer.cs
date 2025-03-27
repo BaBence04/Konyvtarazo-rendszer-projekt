@@ -58,7 +58,7 @@
             this.cdtpBirthDate.BorderColor = System.Drawing.Color.PaleVioletRed;
             this.cdtpBirthDate.BorderRadius = 1;
             this.cdtpBirthDate.BorderSize = 0;
-            this.cdtpBirthDate.CustomFormat = "YYYY";
+            this.cdtpBirthDate.CustomFormat = "yyyy.MM.dd";
             this.cdtpBirthDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
             this.cdtpBirthDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.cdtpBirthDate.Location = new System.Drawing.Point(11, 176);
