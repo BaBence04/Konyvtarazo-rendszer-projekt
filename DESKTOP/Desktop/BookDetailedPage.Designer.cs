@@ -95,9 +95,9 @@
             this.label4.ForeColor = System.Drawing.SystemColors.Control;
             this.label4.Location = new System.Drawing.Point(21, 156);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(95, 13);
+            this.label4.Size = new System.Drawing.Size(78, 13);
             this.label4.TabIndex = 5;
-            this.label4.Text = "Megjelenési dátum";
+            this.label4.Text = "Megjelenési év";
             // 
             // label5
             // 
@@ -339,9 +339,9 @@
             this.cdtpReleaseDate.BorderColor = System.Drawing.Color.PaleVioletRed;
             this.cdtpReleaseDate.BorderRadius = 1;
             this.cdtpReleaseDate.BorderSize = 0;
-            this.cdtpReleaseDate.CustomFormat = "";
+            this.cdtpReleaseDate.CustomFormat = "yyyy";
             this.cdtpReleaseDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.cdtpReleaseDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.cdtpReleaseDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.cdtpReleaseDate.Location = new System.Drawing.Point(24, 178);
             this.cdtpReleaseDate.MinimumSize = new System.Drawing.Size(4, 35);
             this.cdtpReleaseDate.Name = "cdtpReleaseDate";

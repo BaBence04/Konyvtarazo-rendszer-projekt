@@ -58,8 +58,9 @@
             this.cdtpBirthDate.BorderColor = System.Drawing.Color.PaleVioletRed;
             this.cdtpBirthDate.BorderRadius = 1;
             this.cdtpBirthDate.BorderSize = 0;
+            this.cdtpBirthDate.CustomFormat = "YYYY";
             this.cdtpBirthDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.cdtpBirthDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.cdtpBirthDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.cdtpBirthDate.Location = new System.Drawing.Point(11, 176);
             this.cdtpBirthDate.MinimumSize = new System.Drawing.Size(4, 35);
             this.cdtpBirthDate.Name = "cdtpBirthDate";
@@ -92,6 +93,7 @@
             this.cbtnBack.BorderColor = System.Drawing.Color.White;
             this.cbtnBack.BorderRadius = 40;
             this.cbtnBack.BorderSize = 0;
+            this.cbtnBack.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbtnBack.FlatAppearance.BorderSize = 0;
             this.cbtnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbtnBack.ForeColor = System.Drawing.Color.White;
@@ -123,6 +125,7 @@
             this.ctbAddress.PlaceholderText = "Lakhely/cím";
             this.ctbAddress.Size = new System.Drawing.Size(150, 31);
             this.ctbAddress.TabIndex = 15;
+            this.ctbAddress.TextBoxScrollBars = System.Windows.Forms.ScrollBars.None;
             this.ctbAddress.Texts = "Lakhely/cím";
             this.ctbAddress.UnderlinedStyle = false;
             // 
@@ -146,6 +149,7 @@
             this.ctbMmn.PlaceholderText = "Anyja neve";
             this.ctbMmn.Size = new System.Drawing.Size(150, 31);
             this.ctbMmn.TabIndex = 13;
+            this.ctbMmn.TextBoxScrollBars = System.Windows.Forms.ScrollBars.None;
             this.ctbMmn.Texts = "Anyja neve";
             this.ctbMmn.UnderlinedStyle = false;
             // 
@@ -169,6 +173,7 @@
             this.ctbBirthplace.PlaceholderText = "Születési hely";
             this.ctbBirthplace.Size = new System.Drawing.Size(150, 31);
             this.ctbBirthplace.TabIndex = 11;
+            this.ctbBirthplace.TextBoxScrollBars = System.Windows.Forms.ScrollBars.None;
             this.ctbBirthplace.Texts = "Születési hely";
             this.ctbBirthplace.UnderlinedStyle = false;
             // 
@@ -192,6 +197,7 @@
             this.ctbEmail.PlaceholderText = "E-mail";
             this.ctbEmail.Size = new System.Drawing.Size(150, 31);
             this.ctbEmail.TabIndex = 9;
+            this.ctbEmail.TextBoxScrollBars = System.Windows.Forms.ScrollBars.None;
             this.ctbEmail.Texts = "E-mail";
             this.ctbEmail.UnderlinedStyle = false;
             // 
@@ -215,6 +221,7 @@
             this.ctbPhone.PlaceholderText = "Telefonszám";
             this.ctbPhone.Size = new System.Drawing.Size(150, 31);
             this.ctbPhone.TabIndex = 7;
+            this.ctbPhone.TextBoxScrollBars = System.Windows.Forms.ScrollBars.None;
             this.ctbPhone.Texts = "Telefonszám";
             this.ctbPhone.UnderlinedStyle = false;
             // 
@@ -238,6 +245,7 @@
             this.ctbFirstName.PlaceholderText = "Keresztnév";
             this.ctbFirstName.Size = new System.Drawing.Size(150, 31);
             this.ctbFirstName.TabIndex = 4;
+            this.ctbFirstName.TextBoxScrollBars = System.Windows.Forms.ScrollBars.None;
             this.ctbFirstName.Texts = "Keresztnév";
             this.ctbFirstName.UnderlinedStyle = false;
             // 
@@ -247,6 +255,7 @@
             this.cbtnAdd.BorderColor = System.Drawing.Color.White;
             this.cbtnAdd.BorderRadius = 40;
             this.cbtnAdd.BorderSize = 0;
+            this.cbtnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbtnAdd.FlatAppearance.BorderSize = 0;
             this.cbtnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbtnAdd.ForeColor = System.Drawing.Color.White;
@@ -278,6 +287,7 @@
             this.ctbSurname.PlaceholderText = "Vezetéknév";
             this.ctbSurname.Size = new System.Drawing.Size(150, 31);
             this.ctbSurname.TabIndex = 0;
+            this.ctbSurname.TextBoxScrollBars = System.Windows.Forms.ScrollBars.None;
             this.ctbSurname.Texts = "Vezetéknév";
             this.ctbSurname.UnderlinedStyle = false;
             // 
