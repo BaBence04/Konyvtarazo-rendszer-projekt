@@ -83,7 +83,7 @@
                     <?php
                     $similar_books = getSimilarBooks($book_data["ISBN_id"]);
                     foreach ($similar_books as $similar_book) {
-                        echo '<div class="book_item swiper-slide" data-ISBN="' . $similar_book['ISBN'] . '" onclick="OpenSimilarBookDetailed(this)">';
+                        echo '<div class="book_item swiper-slide" data-ISBN="' . $similar_book['ISBN'] . '" onclick="OpenBookDetailed(this)">';
                         echo '<img src="' . $similar_book['picture_base64'] . '" alt="' . $similar_book['title'] . '">';
                         echo '<div class="book_info">';
                         echo '<div class="book_title">' . $similar_book['title'] . '</div>';

@@ -13,7 +13,6 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: #333;
 }
 
 /* Hero Section */
@@ -60,7 +59,7 @@ body {
   padding: 60px 20px;
   text-align: center;
   /* background: url('/web/imgs/team_bg.jpg') no-repeat center center/cover; */
-  height: 100vh;
+  /* height: 100vh; */
   align-items: center;
   background-color: #ccd39d;
 }
@@ -146,6 +145,7 @@ body {
   background: hsl(171, 85%, 26%);
   color: white;
   text-align: center;
+  height: auto;
 }
 
 .stat-item {

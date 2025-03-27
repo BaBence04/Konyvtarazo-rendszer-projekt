@@ -108,7 +108,13 @@ function ToggleForgotPassword_Login(){
 }
 
 
+function OpenBookDetailed(element){     
+  if(document.querySelector(".ui-like:hover")==undefined){
+      let isbn = element.getAttribute("data-isbn");
+      open("/web/konyveink/"+isbn, "_self");
 
+  }
+}
 
 
 

@@ -4,8 +4,6 @@ Mesterremek projekt, könyvtárazó rendszer
 
 #ASZTALI:
     KINÉZET:
-        -custom datetime picker helyett lehet numericUpDown, arra még van idő
-
 
     BACKEND:
         -a popup form-ok a megnyitott form közepére nyíljanak meg
