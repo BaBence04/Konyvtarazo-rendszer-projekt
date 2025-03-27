@@ -24,7 +24,7 @@
             <div class="book-description">
                 <?= $book_data["description"]?>
             </div>
-            <div class="release_date">Kiadás éve: <?=$book_data["release_date"]?></div>
+            <div class="release_date">Kiadás éve: <?=explode("-", $book_data["release_date"])[0]?></div>
             <div class="isbn" title="Az ISBN számok olyan egyedi azonosítók amikkel be lehet azonosítani könyveket">ISBN: <?=$book_data["ISBN"]?></div>
     
             <!-- <?php if(!isset($_SESSION["user_id"])): ?>

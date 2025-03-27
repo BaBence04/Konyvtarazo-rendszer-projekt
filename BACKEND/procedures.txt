@@ -29,7 +29,7 @@ WHERE
   book.title LIKE CONCAT("%", title, "%")
   AND genres.genre LIKE CONCAT("%", genre, "%")
   AND authors.author LIKE CONCAT("%", author, "%")
-  AND CAST(book.release_date AS VARCHAR(255)) LIKE CONCAT("%", release_date, "%")
+  AND IF(release_date LIKE "", YEAR(book.release_date) LIKE CONCAT("%", release_date, "%"), YEAR(book.release_date) = release_date)
   AND languages.lang LIKE CONCAT("%", var_languages, "%")
   AND book.ISBN LIKE CONCAT("%", var_ISBN, "%")
   AND inventory.available = TRUE

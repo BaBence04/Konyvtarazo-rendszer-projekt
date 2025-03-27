@@ -31,7 +31,6 @@
             this.ctbEmplName = new Desktop.CustomTextbox();
             this.cbtnAdd = new Desktop.CustomButton();
             this.ctbEmplPass = new Desktop.CustomTextbox();
-            this.cbtnBack = new Desktop.CustomButton();
             this.button_CloseForm = new Desktop.CustomButton();
             this.SuspendLayout();
             // 
@@ -65,12 +64,13 @@
             this.cbtnAdd.BorderColor = System.Drawing.Color.White;
             this.cbtnAdd.BorderRadius = 40;
             this.cbtnAdd.BorderSize = 0;
+            this.cbtnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbtnAdd.FlatAppearance.BorderSize = 0;
             this.cbtnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbtnAdd.ForeColor = System.Drawing.Color.White;
-            this.cbtnAdd.Location = new System.Drawing.Point(181, 227);
+            this.cbtnAdd.Location = new System.Drawing.Point(46, 227);
             this.cbtnAdd.Name = "cbtnAdd";
-            this.cbtnAdd.Size = new System.Drawing.Size(82, 41);
+            this.cbtnAdd.Size = new System.Drawing.Size(193, 41);
             this.cbtnAdd.TabIndex = 2;
             this.cbtnAdd.Text = "Hozzáad";
             this.cbtnAdd.UseVisualStyleBackColor = false;
@@ -100,22 +100,6 @@
             this.ctbEmplPass.Texts = "Jelszó";
             this.ctbEmplPass.UnderlinedStyle = false;
             // 
-            // cbtnBack
-            // 
-            this.cbtnBack.BackColor = System.Drawing.Color.Black;
-            this.cbtnBack.BorderColor = System.Drawing.Color.White;
-            this.cbtnBack.BorderRadius = 40;
-            this.cbtnBack.BorderSize = 0;
-            this.cbtnBack.FlatAppearance.BorderSize = 0;
-            this.cbtnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbtnBack.ForeColor = System.Drawing.Color.White;
-            this.cbtnBack.Location = new System.Drawing.Point(26, 227);
-            this.cbtnBack.Name = "cbtnBack";
-            this.cbtnBack.Size = new System.Drawing.Size(82, 41);
-            this.cbtnBack.TabIndex = 5;
-            this.cbtnBack.Text = "Vissza";
-            this.cbtnBack.UseVisualStyleBackColor = false;
-            // 
             // button_CloseForm
             // 
             this.button_CloseForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
@@ -141,7 +125,6 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
             this.ClientSize = new System.Drawing.Size(290, 316);
             this.Controls.Add(this.button_CloseForm);
-            this.Controls.Add(this.cbtnBack);
             this.Controls.Add(this.ctbEmplPass);
             this.Controls.Add(this.cbtnAdd);
             this.Controls.Add(this.ctbEmplName);
@@ -157,7 +140,6 @@
         private CustomTextbox ctbEmplName;
         private CustomButton cbtnAdd;
         private CustomTextbox ctbEmplPass;
-        private CustomButton cbtnBack;
         private CustomButton button_CloseForm;
     }
 }

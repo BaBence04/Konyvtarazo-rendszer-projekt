@@ -32,7 +32,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cdtpBirthDate = new Desktop.CustomDateTimePicker();
             this.button_CloseForm = new Desktop.CustomButton();
-            this.cbtnBack = new Desktop.CustomButton();
             this.ctbAddress = new Desktop.CustomTextbox();
             this.ctbMmn = new Desktop.CustomTextbox();
             this.ctbBirthplace = new Desktop.CustomTextbox();
@@ -86,24 +85,6 @@
             this.button_CloseForm.TabIndex = 18;
             this.button_CloseForm.UseVisualStyleBackColor = false;
             this.button_CloseForm.Click += new System.EventHandler(this.button_CloseForm_Click);
-            // 
-            // cbtnBack
-            // 
-            this.cbtnBack.BackColor = System.Drawing.Color.Black;
-            this.cbtnBack.BorderColor = System.Drawing.Color.White;
-            this.cbtnBack.BorderRadius = 40;
-            this.cbtnBack.BorderSize = 0;
-            this.cbtnBack.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cbtnBack.FlatAppearance.BorderSize = 0;
-            this.cbtnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbtnBack.ForeColor = System.Drawing.Color.White;
-            this.cbtnBack.Location = new System.Drawing.Point(34, 429);
-            this.cbtnBack.Name = "cbtnBack";
-            this.cbtnBack.Size = new System.Drawing.Size(127, 40);
-            this.cbtnBack.TabIndex = 17;
-            this.cbtnBack.Text = "Vissza";
-            this.cbtnBack.UseVisualStyleBackColor = false;
-            this.cbtnBack.Click += new System.EventHandler(this.cbtnBack_Click);
             // 
             // ctbAddress
             // 
@@ -259,9 +240,9 @@
             this.cbtnAdd.FlatAppearance.BorderSize = 0;
             this.cbtnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbtnAdd.ForeColor = System.Drawing.Color.White;
-            this.cbtnAdd.Location = new System.Drawing.Point(216, 429);
+            this.cbtnAdd.Location = new System.Drawing.Point(24, 426);
             this.cbtnAdd.Name = "cbtnAdd";
-            this.cbtnAdd.Size = new System.Drawing.Size(127, 40);
+            this.cbtnAdd.Size = new System.Drawing.Size(324, 40);
             this.cbtnAdd.TabIndex = 2;
             this.cbtnAdd.Text = "Hozzáad";
             this.cbtnAdd.UseVisualStyleBackColor = false;
@@ -299,7 +280,6 @@
             this.ClientSize = new System.Drawing.Size(379, 503);
             this.Controls.Add(this.cdtpBirthDate);
             this.Controls.Add(this.button_CloseForm);
-            this.Controls.Add(this.cbtnBack);
             this.Controls.Add(this.ctbAddress);
             this.Controls.Add(this.ctbMmn);
             this.Controls.Add(this.ctbBirthplace);
@@ -329,7 +309,6 @@
         private CustomTextbox ctbBirthplace;
         private CustomTextbox ctbAddress;
         private CustomTextbox ctbMmn;
-        private CustomButton cbtnBack;
         private CustomButton button_CloseForm;
         private CustomDateTimePicker cdtpBirthDate;
     }
