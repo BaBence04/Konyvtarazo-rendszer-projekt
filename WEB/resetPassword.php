@@ -75,7 +75,7 @@
                         
 
                     }else if(data["status"] == "expired"){
-                        alert("Ezzel a linkkel már egyszer meg lett változtatva a jelszó! Ha nem tudja jelszavát, kérem kérjen új linket!");
+                        alert("Érvénytelen link! Ha nem tudja jelszavát, kérem kérjen új linket!");
                     }else{
                         alert(data["status"]);
                     }
