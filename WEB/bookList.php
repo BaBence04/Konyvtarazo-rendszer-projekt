@@ -4,7 +4,7 @@
 
 ?>
 
-<h1>Összes könyvünk</h1>
+<h1>Könyveink</h1>
 
 <?php
     $title = "";

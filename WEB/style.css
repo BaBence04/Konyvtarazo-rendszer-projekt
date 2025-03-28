@@ -1039,7 +1039,6 @@ hr {
 }
 #filters input[type="button"] {
   padding: 10px 20px;
-  font-size: 14px;
   color: white;
   background-color: var(--first-color);
   border: none;
