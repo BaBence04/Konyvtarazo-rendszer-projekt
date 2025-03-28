@@ -57,8 +57,120 @@
         </section>
         <section class="ws section" id="ws_section"></section>
         <section class="trans-bg-content section" id="tbg_section">
-            <h1 class="overlay">MY FRIEND</h1>
-            <h1 class="overlay">OF MISERY</h1>
+            <div class="allBoooks-service">
+                <div class="service-container">
+                    <img src="/web/imgs/book-icon_2.png" class="services-img">
+                    <h2>Ismerje meg kínálatunkat és merüljön el a változatos mesevilágokban!</h2>
+                    <a href="/web/konyveink">
+                    <button class="button">
+                    <span class="button__icon-wrapper">
+                        <svg
+                        viewBox="0 0 14 15"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="button__icon-svg"
+                        width="10"
+                        >
+                        <path
+                            d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
+                            fill="currentColor"
+                        ></path>
+                        </svg>
+
+                        <svg
+                        viewBox="0 0 14 15"
+                        fill="none"
+                        width="10"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="button__icon-svg button__icon-svg--copy"
+                        >
+                        <path
+                            d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
+                            fill="currentColor"
+                        ></path>
+                        </svg>
+                    </span>
+                    Könyvek böngészése
+                    </button></a>
+                </div>
+
+
+            </div>
+
+            <div class="team-service">
+                <div class="service-container">
+                    <img src="/web/imgs/team-icon.png" class="services-img">
+                    <h2>Kukkantson be a színfalak mögé és ismerje meg csapatunkat</h2>
+                    <a href="/web/rolunk">
+                    <button class="button">
+                    <span class="button__icon-wrapper">
+                        <svg
+                        viewBox="0 0 14 15"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="button__icon-svg"
+                        width="10"
+                        >
+                        <path
+                            d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
+                            fill="currentColor"
+                        ></path>
+                        </svg>
+
+                        <svg
+                        viewBox="0 0 14 15"
+                        fill="none"
+                        width="10"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="button__icon-svg button__icon-svg--copy"
+                        >
+                        <path
+                            d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
+                            fill="currentColor"
+                        ></path>
+                        </svg>
+                    </span>
+                    Megismerkedés a csapatunkkal
+                    </button></a>
+                </div>
+            </div>
+
+            <div class="login-service">
+                <div class="service-container">
+                    <img src="/web/imgs/login-icon.png" class="services-img">
+                    <h2>Jelentkezzen be, hogy hozzáférjen az összes funkcióhoz (könyv elmentése, könyv előjegyzése)</h2>
+                    <button href="#" class="button" onclick="ShowLoginOrOpenUserDetailed();">
+                    <span class="button__icon-wrapper">
+                        <svg
+                        viewBox="0 0 14 15"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="button__icon-svg"
+                        width="10"
+                        >
+                        <path
+                            d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
+                            fill="currentColor"
+                        ></path>
+                        </svg>
+
+                        <svg
+                        viewBox="0 0 14 15"
+                        fill="none"
+                        width="10"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="button__icon-svg button__icon-svg--copy"
+                        >
+                        <path
+                            d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
+                            fill="currentColor"
+                        ></path>
+                        </svg>
+                    </span>
+                    Bejelentkezés / Fiók
+                    </button>
+                </div>
+            </div>
         </section>
         <section class="outro section" id="outro_section">
             <h1 class="text-toLeft">“There is no friend </h1>
