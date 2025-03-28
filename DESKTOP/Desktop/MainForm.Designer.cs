@@ -130,6 +130,7 @@
             this.button_Publishers.Padding = new System.Windows.Forms.Padding(21, 0, 0, 0);
             this.button_Publishers.Size = new System.Drawing.Size(234, 48);
             this.button_Publishers.TabIndex = 7;
+            this.button_Publishers.Tag = "menuButtons";
             this.button_Publishers.Text = "  Kiadók";
             this.button_Publishers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_Publishers.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -151,6 +152,7 @@
             this.button_Reservations.Padding = new System.Windows.Forms.Padding(21, 0, 0, 0);
             this.button_Reservations.Size = new System.Drawing.Size(234, 48);
             this.button_Reservations.TabIndex = 5;
+            this.button_Reservations.Tag = "menuButtons";
             this.button_Reservations.Text = "  Előjegyzés";
             this.button_Reservations.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_Reservations.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -172,6 +174,7 @@
             this.button_Bookings.Padding = new System.Windows.Forms.Padding(21, 0, 0, 0);
             this.button_Bookings.Size = new System.Drawing.Size(234, 48);
             this.button_Bookings.TabIndex = 6;
+            this.button_Bookings.Tag = "menuButtons";
             this.button_Bookings.Text = "  Foglalások";
             this.button_Bookings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_Bookings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -193,6 +196,7 @@
             this.button_Borrowings.Padding = new System.Windows.Forms.Padding(21, 0, 0, 0);
             this.button_Borrowings.Size = new System.Drawing.Size(234, 48);
             this.button_Borrowings.TabIndex = 8;
+            this.button_Borrowings.Tag = "menuButtons";
             this.button_Borrowings.Text = "  Kivett könyvek";
             this.button_Borrowings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_Borrowings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -214,6 +218,7 @@
             this.button_Users.Padding = new System.Windows.Forms.Padding(21, 0, 0, 0);
             this.button_Users.Size = new System.Drawing.Size(234, 48);
             this.button_Users.TabIndex = 4;
+            this.button_Users.Tag = "menuButtons";
             this.button_Users.Text = "  Felhasználók";
             this.button_Users.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_Users.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -236,6 +241,7 @@
             this.button_Books.Padding = new System.Windows.Forms.Padding(21, 0, 0, 0);
             this.button_Books.Size = new System.Drawing.Size(234, 48);
             this.button_Books.TabIndex = 3;
+            this.button_Books.Tag = "menuButtons";
             this.button_Books.Text = "  Könyvek";
             this.button_Books.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_Books.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -258,6 +264,7 @@
             this.button_HomePage.Padding = new System.Windows.Forms.Padding(21, 0, 0, 0);
             this.button_HomePage.Size = new System.Drawing.Size(234, 48);
             this.button_HomePage.TabIndex = 1;
+            this.button_HomePage.Tag = "menuButtons";
             this.button_HomePage.Text = "  Főoldal";
             this.button_HomePage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_HomePage.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;

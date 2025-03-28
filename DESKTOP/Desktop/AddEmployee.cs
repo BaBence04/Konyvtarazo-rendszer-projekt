@@ -84,5 +84,10 @@ namespace Desktop
         {
             this.Close();
         }
+
+        private void cbtnBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

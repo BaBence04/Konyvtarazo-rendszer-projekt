@@ -24,7 +24,7 @@
             <div class="book-description">
                 <?= $book_data["description"]?>
             </div>
-            <div class="release_date">Kiadás éve: <?=$book_data["release_date"]?></div>
+            <div class="release_date">Kiadás éve: <?=explode("-", $book_data["release_date"])[0]?></div>
             <div class="isbn" title="Az ISBN számok olyan egyedi azonosítók amikkel be lehet azonosítani könyveket">ISBN: <?=$book_data["ISBN"]?></div>
     
             <!-- <?php if(!isset($_SESSION["user_id"])): ?>
@@ -83,7 +83,7 @@
                     <?php
                     $similar_books = getSimilarBooks($book_data["ISBN_id"]);
                     foreach ($similar_books as $similar_book) {
-                        echo '<div class="book_item swiper-slide" data-ISBN="' . $similar_book['ISBN'] . '" onclick="OpenSimilarBookDetailed(this)">';
+                        echo '<div class="book_item swiper-slide" data-ISBN="' . $similar_book['ISBN'] . '" onclick="OpenBookDetailed(this)">';
                         echo '<img src="' . $similar_book['picture_base64'] . '" alt="' . $similar_book['title'] . '">';
                         echo '<div class="book_info">';
                         echo '<div class="book_title">' . $similar_book['title'] . '</div>';

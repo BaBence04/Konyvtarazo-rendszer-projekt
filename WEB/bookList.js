@@ -14,13 +14,7 @@ function HideAndShowFilters(){
   }
 }
 
-function OpenBookDetailed(element){     
-    if(document.querySelector(".ui-like:hover")==undefined){
-        let isbn = element.getAttribute("data-isbn");
-        open("./konyveink/"+isbn, "_self");
 
-    }
-}
 
 function applyFilters(){
   const currentUrl = new URL(window.location);

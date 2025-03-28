@@ -32,7 +32,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cdtpBirthDate = new Desktop.CustomDateTimePicker();
             this.button_CloseForm = new Desktop.CustomButton();
-            this.cbtnBack = new Desktop.CustomButton();
             this.ctbAddress = new Desktop.CustomTextbox();
             this.ctbMmn = new Desktop.CustomTextbox();
             this.ctbBirthplace = new Desktop.CustomTextbox();
@@ -58,8 +57,9 @@
             this.cdtpBirthDate.BorderColor = System.Drawing.Color.PaleVioletRed;
             this.cdtpBirthDate.BorderRadius = 1;
             this.cdtpBirthDate.BorderSize = 0;
+            this.cdtpBirthDate.CustomFormat = "yyyy.MM.dd";
             this.cdtpBirthDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.cdtpBirthDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.cdtpBirthDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.cdtpBirthDate.Location = new System.Drawing.Point(11, 176);
             this.cdtpBirthDate.MinimumSize = new System.Drawing.Size(4, 35);
             this.cdtpBirthDate.Name = "cdtpBirthDate";
@@ -86,23 +86,6 @@
             this.button_CloseForm.UseVisualStyleBackColor = false;
             this.button_CloseForm.Click += new System.EventHandler(this.button_CloseForm_Click);
             // 
-            // cbtnBack
-            // 
-            this.cbtnBack.BackColor = System.Drawing.Color.Black;
-            this.cbtnBack.BorderColor = System.Drawing.Color.White;
-            this.cbtnBack.BorderRadius = 40;
-            this.cbtnBack.BorderSize = 0;
-            this.cbtnBack.FlatAppearance.BorderSize = 0;
-            this.cbtnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbtnBack.ForeColor = System.Drawing.Color.White;
-            this.cbtnBack.Location = new System.Drawing.Point(34, 429);
-            this.cbtnBack.Name = "cbtnBack";
-            this.cbtnBack.Size = new System.Drawing.Size(127, 40);
-            this.cbtnBack.TabIndex = 17;
-            this.cbtnBack.Text = "Vissza";
-            this.cbtnBack.UseVisualStyleBackColor = false;
-            this.cbtnBack.Click += new System.EventHandler(this.cbtnBack_Click);
-            // 
             // ctbAddress
             // 
             this.ctbAddress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
@@ -123,6 +106,7 @@
             this.ctbAddress.PlaceholderText = "Lakhely/cím";
             this.ctbAddress.Size = new System.Drawing.Size(150, 31);
             this.ctbAddress.TabIndex = 15;
+            this.ctbAddress.TextBoxScrollBars = System.Windows.Forms.ScrollBars.None;
             this.ctbAddress.Texts = "Lakhely/cím";
             this.ctbAddress.UnderlinedStyle = false;
             // 
@@ -146,6 +130,7 @@
             this.ctbMmn.PlaceholderText = "Anyja neve";
             this.ctbMmn.Size = new System.Drawing.Size(150, 31);
             this.ctbMmn.TabIndex = 13;
+            this.ctbMmn.TextBoxScrollBars = System.Windows.Forms.ScrollBars.None;
             this.ctbMmn.Texts = "Anyja neve";
             this.ctbMmn.UnderlinedStyle = false;
             // 
@@ -169,6 +154,7 @@
             this.ctbBirthplace.PlaceholderText = "Születési hely";
             this.ctbBirthplace.Size = new System.Drawing.Size(150, 31);
             this.ctbBirthplace.TabIndex = 11;
+            this.ctbBirthplace.TextBoxScrollBars = System.Windows.Forms.ScrollBars.None;
             this.ctbBirthplace.Texts = "Születési hely";
             this.ctbBirthplace.UnderlinedStyle = false;
             // 
@@ -192,6 +178,7 @@
             this.ctbEmail.PlaceholderText = "E-mail";
             this.ctbEmail.Size = new System.Drawing.Size(150, 31);
             this.ctbEmail.TabIndex = 9;
+            this.ctbEmail.TextBoxScrollBars = System.Windows.Forms.ScrollBars.None;
             this.ctbEmail.Texts = "E-mail";
             this.ctbEmail.UnderlinedStyle = false;
             // 
@@ -215,6 +202,7 @@
             this.ctbPhone.PlaceholderText = "Telefonszám";
             this.ctbPhone.Size = new System.Drawing.Size(150, 31);
             this.ctbPhone.TabIndex = 7;
+            this.ctbPhone.TextBoxScrollBars = System.Windows.Forms.ScrollBars.None;
             this.ctbPhone.Texts = "Telefonszám";
             this.ctbPhone.UnderlinedStyle = false;
             // 
@@ -238,6 +226,7 @@
             this.ctbFirstName.PlaceholderText = "Keresztnév";
             this.ctbFirstName.Size = new System.Drawing.Size(150, 31);
             this.ctbFirstName.TabIndex = 4;
+            this.ctbFirstName.TextBoxScrollBars = System.Windows.Forms.ScrollBars.None;
             this.ctbFirstName.Texts = "Keresztnév";
             this.ctbFirstName.UnderlinedStyle = false;
             // 
@@ -247,12 +236,13 @@
             this.cbtnAdd.BorderColor = System.Drawing.Color.White;
             this.cbtnAdd.BorderRadius = 40;
             this.cbtnAdd.BorderSize = 0;
+            this.cbtnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbtnAdd.FlatAppearance.BorderSize = 0;
             this.cbtnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbtnAdd.ForeColor = System.Drawing.Color.White;
-            this.cbtnAdd.Location = new System.Drawing.Point(216, 429);
+            this.cbtnAdd.Location = new System.Drawing.Point(24, 426);
             this.cbtnAdd.Name = "cbtnAdd";
-            this.cbtnAdd.Size = new System.Drawing.Size(127, 40);
+            this.cbtnAdd.Size = new System.Drawing.Size(324, 40);
             this.cbtnAdd.TabIndex = 2;
             this.cbtnAdd.Text = "Hozzáad";
             this.cbtnAdd.UseVisualStyleBackColor = false;
@@ -278,6 +268,7 @@
             this.ctbSurname.PlaceholderText = "Vezetéknév";
             this.ctbSurname.Size = new System.Drawing.Size(150, 31);
             this.ctbSurname.TabIndex = 0;
+            this.ctbSurname.TextBoxScrollBars = System.Windows.Forms.ScrollBars.None;
             this.ctbSurname.Texts = "Vezetéknév";
             this.ctbSurname.UnderlinedStyle = false;
             // 
@@ -289,7 +280,6 @@
             this.ClientSize = new System.Drawing.Size(379, 503);
             this.Controls.Add(this.cdtpBirthDate);
             this.Controls.Add(this.button_CloseForm);
-            this.Controls.Add(this.cbtnBack);
             this.Controls.Add(this.ctbAddress);
             this.Controls.Add(this.ctbMmn);
             this.Controls.Add(this.ctbBirthplace);
@@ -319,7 +309,6 @@
         private CustomTextbox ctbBirthplace;
         private CustomTextbox ctbAddress;
         private CustomTextbox ctbMmn;
-        private CustomButton cbtnBack;
         private CustomButton button_CloseForm;
         private CustomDateTimePicker cdtpBirthDate;
     }
