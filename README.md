@@ -33,6 +33,7 @@ SQL:
 
 ADDITIONAL STUFF TO DO:
 -api endpoint dokkumentáció, mert kezd nehéz lenni követni hogy mi történik
+-TESZTELÉSI DOKUMENTÁCIÓHOZ NEM TUDOM KELL-E KÉP HA NEM ELÉG HOSSZÚ RAKUNK KÉPEKET
 
 KÉRDÉSEK A KÖNYVTÁROSOKHOZ:
 -ha valaki lefoglal egy könyvet, de valaki nézegeti azt a könyvet a könyvtárban, akkor olyankor mivan(feltételezzük, hogy nincs több az adott könyből a könyvtárban)?
