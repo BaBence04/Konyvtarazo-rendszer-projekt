@@ -244,10 +244,11 @@ namespace Desktop
                 isbn = mode;
             }
             InitializeComponent();
-            FormDragger.MakeDraggable(this);
+			this.Padding = new Padding((int)BorderWidth);
+			FormDragger.MakeDraggable(this);
             this.BorderColor = Color.FromArgb(10, 123, 106);
-            this.BorderWidth = 2;
-        }
+            this.BorderWidth = 8;
+		}
 
         protected override void OnShown(EventArgs e)
         {
@@ -258,7 +259,7 @@ namespace Desktop
 
         [Category("Border")]
         [Browsable(true)]
-        public float BorderWidth { get; set; } = 1.0f;
+        public float BorderWidth { get; set; } = 8.0f;
         [Category("Border")]
         [Browsable(true)]
         public Color BorderColor { get; set; } = Color.Black;

@@ -192,8 +192,8 @@ namespace Desktop
 
                 else
                 {
-                    button.BackColor = Color.FromArgb(10, 123, 106);
-                    button.ForeColor = Color.White;
+                    button.BackColor = CurrentTheme == "Light" ? Color.FromArgb(143, 143, 143) : Color.FromArgb(36, 72, 85);
+					button.ForeColor = Color.White;
 
 
 					if (buttonIcons.TryGetValue(button.Name, out var icon))
@@ -247,7 +247,7 @@ namespace Desktop
             {
                 CtextBox.BackColor = CurrentTheme == "Light" ? Color.FromArgb(245, 245, 245) : Color.FromArgb(71, 71, 88);
                 CtextBox.ForeColor = CurrentTheme == "Light" ? Color.Black : Color.White;
-                CtextBox.BorderColor = CurrentTheme == "Light" ? Color.FromArgb(10, 123, 106) : Color.FromArgb(10, 123, 106);
+                CtextBox.BorderColor = CurrentTheme == "Light" ? Color.FromArgb(143, 143, 143) : Color.FromArgb(36, 72, 85);
                 CtextBox.BorderFocusColor = CurrentTheme == "Light" ? Color.FromArgb(168, 218, 220) : Color.FromArgb(168, 218, 220);
             }
 
