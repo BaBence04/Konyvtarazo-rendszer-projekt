@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Win32;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Desktop
 {
@@ -174,16 +175,11 @@ namespace Desktop
                 }
 
 			}
-			else if (control is Button button)
+			else if (control is CustomButton button)
 			{
-                if (button.Tag as string == "menuButtons")
-                {
-                    button.BackColor = CurrentTheme == "Light" ? Color.FromArgb(220, 220, 220) : Color.FromArgb(25, 25, 39);
-                    button.ForeColor = CurrentTheme == "Light" ? Color.Black : Color.White;
 
-                }
 
-                else if (button.Name == "cbtnLogout")
+                if (button.Name == "cbtnLogout")
                 {
                     button.BackColor = Color.Brown;
                     button.ForeColor = Color.White;
@@ -208,6 +204,15 @@ namespace Desktop
                 }
 
             }
+            else if (control is System.Windows.Forms.Button Nbutton)
+            {
+				if (Nbutton.Tag as string == "menuButtons")
+				{
+					Nbutton.BackColor = CurrentTheme == "Light" ? Color.FromArgb(220, 220, 220) : Color.FromArgb(25, 25, 39);
+					Nbutton.ForeColor = CurrentTheme == "Light" ? Color.Black : Color.White;
+
+				}
+			}
 			else if (control is Label label)
 			{
 				label.ForeColor = CurrentTheme == "Light" ? Color.Black : Color.FromArgb(245, 245, 245);
@@ -243,13 +248,22 @@ namespace Desktop
                 dataGrid.AlternatingRowsDefaultCellStyle.BackColor = CurrentTheme == "Light" ? Color.FromArgb(220, 220, 220) : Color.FromArgb(71, 71, 88);
             }
 
-            else if (control is CustomTextbox CtextBox)
+			else if (control is CustomDateTimePicker dateTP)
+			{
+				dateTP.SkinColor = CurrentTheme == "Light" ? Color.FromArgb(245, 245, 245) : Color.FromArgb(71, 71, 88);
+				dateTP.TextColor = CurrentTheme == "Light" ? Color.Black : Color.White;
+				dateTP.BorderColor = CurrentTheme == "Light" ? Color.FromArgb(143, 143, 143) : Color.FromArgb(36, 72, 85);
+			}
+
+			else if (control is CustomTextbox CtextBox)
             {
                 CtextBox.BackColor = CurrentTheme == "Light" ? Color.FromArgb(245, 245, 245) : Color.FromArgb(71, 71, 88);
                 CtextBox.ForeColor = CurrentTheme == "Light" ? Color.Black : Color.White;
                 CtextBox.BorderColor = CurrentTheme == "Light" ? Color.FromArgb(143, 143, 143) : Color.FromArgb(36, 72, 85);
                 CtextBox.BorderFocusColor = CurrentTheme == "Light" ? Color.FromArgb(168, 218, 220) : Color.FromArgb(168, 218, 220);
-            }
+                CtextBox.PlaceholderColor = Color.DarkGray;
+
+			}
 
 
 

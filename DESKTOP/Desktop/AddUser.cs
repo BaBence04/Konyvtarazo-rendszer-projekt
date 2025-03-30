@@ -19,11 +19,11 @@ namespace Desktop
             FormDragger.MakeDraggable(this);
             this.BorderColor = Color.FromArgb(10, 123, 106);
             this.BorderWidth = 2;
-        }
+			ThemeManager.ApplyTheme(this);
+		}
 
         protected override void OnShown(EventArgs e)
         {
-            ThemeManager.ApplyTheme(this);
             base.OnShown(e);
         }
 

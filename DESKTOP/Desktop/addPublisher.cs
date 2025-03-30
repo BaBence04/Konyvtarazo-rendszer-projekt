@@ -22,7 +22,6 @@ namespace Desktop
 
         protected override void OnShown(EventArgs e)
         {
-            ThemeManager.ApplyTheme(this);
             base.OnShown(e);
         }
 

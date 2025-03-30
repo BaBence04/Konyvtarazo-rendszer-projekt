@@ -244,15 +244,11 @@ namespace Desktop
                 isbn = mode;
             }
             InitializeComponent();
-			this.Padding = new Padding((int)BorderWidth);
-			FormDragger.MakeDraggable(this);
-            this.BorderColor = Color.FromArgb(10, 123, 106);
-            this.BorderWidth = 8;
+			ThemeManager.ApplyTheme(this);
 		}
 
         protected override void OnShown(EventArgs e)
         {
-            ThemeManager.ApplyTheme(this);
             base.OnShown(e);
         }
 
@@ -293,10 +289,19 @@ namespace Desktop
                 cbtnBack.Click -= cbtnBack_Click;
                 cbtnBack.Click += cbtnAdd_Click;
                 this.FormClosing -= BookDetailedPage_FormClosing;
-            }
+
+				this.Padding = new Padding((int)BorderWidth);
+				FormDragger.MakeDraggable(this);
+				this.BorderColor = Color.FromArgb(36, 72, 85);
+				this.BorderWidth = 2;
+			}
             else
             {
-                LoadData();
+				this.Padding = new Padding(0);
+				this.BorderColor = Color.FromArgb(36, 72, 85);
+				this.BorderWidth = 0;
+
+				LoadData();
             }
 
         }
