@@ -16,5 +16,17 @@ namespace Desktop
         {
             InitializeComponent();
         }
-    }
+
+
+		private void customButton4_Click(object sender, EventArgs e)
+		{
+			LoginForm.main.Close();
+		}
+
+		private void quickAddUser_Click(object sender, EventArgs e)
+		{
+			AddUser addUserForm = new AddUser();
+			addUserForm.Show();
+		}
+	}
 }

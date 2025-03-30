@@ -405,5 +405,14 @@
   <ItemGroup>
     <None Include="Resources\book-open-line_black.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\main_page_ill.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logout-circle-r-line_black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logout-circle-r-line_white.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

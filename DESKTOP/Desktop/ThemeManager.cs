@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Win32;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Desktop
 {
@@ -175,44 +174,34 @@ namespace Desktop
                 }
 
 			}
-			else if (control is CustomButton button)
+			else if (control is Button button)
 			{
-
-
-                if (button.Name == "cbtnLogout")
-                {
-                    button.BackColor = Color.Brown;
-                    button.ForeColor = Color.White;
-                }
-
-
-                else
-                {
-                    button.BackColor = CurrentTheme == "Light" ? Color.FromArgb(143, 143, 143) : Color.FromArgb(36, 72, 85);
-					button.ForeColor = Color.White;
-
-
-					if (buttonIcons.TryGetValue(button.Name, out var icon))
-					{
-                        if (button.Name == "button_CloseLoginForm")
-                        {
-                            button.BackColor = CurrentTheme == "Light" ? Color.FromArgb(245, 245, 245) : Color.FromArgb(51, 51, 68);
-                            button.Image = icon;
-                        }
-                        button.Image = icon;
-					}
-                }
-
-            }
-            else if (control is System.Windows.Forms.Button Nbutton)
-            {
-				if (Nbutton.Tag as string == "menuButtons")
+				if (button.Tag as string == "menuButtons")
 				{
-					Nbutton.BackColor = CurrentTheme == "Light" ? Color.FromArgb(220, 220, 220) : Color.FromArgb(25, 25, 39);
-					Nbutton.ForeColor = CurrentTheme == "Light" ? Color.Black : Color.White;
+					button.BackColor = CurrentTheme == "Light" ? Color.FromArgb(220, 220, 220) : Color.FromArgb(25, 25, 39);
+					button.ForeColor = CurrentTheme == "Light" ? Color.Black : Color.White;
+				}
+				else if (button.Tag as string == "logoutBtn")
+				{
+					button.BackColor = Color.FromArgb(255, 68, 68);
+					button.ForeColor = Color.White;
+				}
+				else
+				{
+					button.BackColor = CurrentTheme == "Light" ? Color.FromArgb(143, 143, 143) : Color.FromArgb(25, 25, 39);
+					button.ForeColor = Color.White;
+				}
 
+				if (buttonIcons.TryGetValue(button.Name, out var icon))
+				{
+					button.Image = icon;
+					if (button.Name == "button_CloseLoginForm")
+					{
+						button.BackColor = CurrentTheme == "Light" ? Color.FromArgb(245, 245, 245) : Color.FromArgb(51, 51, 68);
+					}
 				}
 			}
+
 			else if (control is Label label)
 			{
 				label.ForeColor = CurrentTheme == "Light" ? Color.Black : Color.FromArgb(245, 245, 245);

@@ -326,7 +326,7 @@
 			this.panel3.Location = new System.Drawing.Point(703, 20);
 			this.panel3.Margin = new System.Windows.Forms.Padding(4);
 			this.panel3.Name = "panel3";
-			this.panel3.Size = new System.Drawing.Size(219, 196);
+			this.panel3.Size = new System.Drawing.Size(219, 241);
 			this.panel3.TabIndex = 2;
 			// 
 			// cbtnAddAuthor
@@ -340,7 +340,7 @@
 			this.cbtnAddAuthor.FlatAppearance.BorderSize = 0;
 			this.cbtnAddAuthor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.cbtnAddAuthor.ForeColor = System.Drawing.Color.White;
-			this.cbtnAddAuthor.Location = new System.Drawing.Point(35, 28);
+			this.cbtnAddAuthor.Location = new System.Drawing.Point(35, 70);
 			this.cbtnAddAuthor.Margin = new System.Windows.Forms.Padding(4);
 			this.cbtnAddAuthor.Name = "cbtnAddAuthor";
 			this.cbtnAddAuthor.Size = new System.Drawing.Size(163, 43);
@@ -360,7 +360,7 @@
 			this.cbtnAddCategory.FlatAppearance.BorderSize = 0;
 			this.cbtnAddCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.cbtnAddCategory.ForeColor = System.Drawing.Color.White;
-			this.cbtnAddCategory.Location = new System.Drawing.Point(35, 110);
+			this.cbtnAddCategory.Location = new System.Drawing.Point(35, 174);
 			this.cbtnAddCategory.Margin = new System.Windows.Forms.Padding(4);
 			this.cbtnAddCategory.Name = "cbtnAddCategory";
 			this.cbtnAddCategory.Size = new System.Drawing.Size(163, 43);

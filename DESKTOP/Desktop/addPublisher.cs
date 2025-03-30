@@ -18,10 +18,12 @@ namespace Desktop
 			FormDragger.MakeDraggable(this);
             this.BorderColor = Color.FromArgb(36, 72, 85);
             this.BorderWidth = 2;
+			ThemeManager.ApplyTheme(this);
 		}
 
         protected override void OnShown(EventArgs e)
         {
+            
             base.OnShown(e);
         }
 

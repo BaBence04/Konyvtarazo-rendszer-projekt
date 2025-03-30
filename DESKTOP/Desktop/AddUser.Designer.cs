@@ -62,7 +62,7 @@
 			this.cdtpBirthDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
 			this.cdtpBirthDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
 			this.cdtpBirthDate.Location = new System.Drawing.Point(15, 217);
-			this.cdtpBirthDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.cdtpBirthDate.Margin = new System.Windows.Forms.Padding(4);
 			this.cdtpBirthDate.MinimumSize = new System.Drawing.Size(4, 35);
 			this.cdtpBirthDate.Name = "cdtpBirthDate";
 			this.cdtpBirthDate.Size = new System.Drawing.Size(199, 35);
@@ -82,7 +82,7 @@
 			this.button_CloseForm.ForeColor = System.Drawing.Color.White;
 			this.button_CloseForm.Image = ((System.Drawing.Image)(resources.GetObject("button_CloseForm.Image")));
 			this.button_CloseForm.Location = new System.Drawing.Point(448, 4);
-			this.button_CloseForm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.button_CloseForm.Margin = new System.Windows.Forms.Padding(4);
 			this.button_CloseForm.Name = "button_CloseForm";
 			this.button_CloseForm.Size = new System.Drawing.Size(53, 49);
 			this.button_CloseForm.TabIndex = 18;
@@ -100,7 +100,7 @@
 			this.ctbAddress.ForeColor = System.Drawing.Color.DimGray;
 			this.ctbAddress.IsReadOnly = false;
 			this.ctbAddress.Location = new System.Drawing.Point(15, 432);
-			this.ctbAddress.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+			this.ctbAddress.Margin = new System.Windows.Forms.Padding(5);
 			this.ctbAddress.Multiline = false;
 			this.ctbAddress.Name = "ctbAddress";
 			this.ctbAddress.Padding = new System.Windows.Forms.Padding(13, 9, 13, 9);
@@ -124,7 +124,7 @@
 			this.ctbMmn.ForeColor = System.Drawing.Color.DimGray;
 			this.ctbMmn.IsReadOnly = false;
 			this.ctbMmn.Location = new System.Drawing.Point(288, 432);
-			this.ctbMmn.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+			this.ctbMmn.Margin = new System.Windows.Forms.Padding(5);
 			this.ctbMmn.Multiline = false;
 			this.ctbMmn.Name = "ctbMmn";
 			this.ctbMmn.Padding = new System.Windows.Forms.Padding(13, 9, 13, 9);
@@ -148,7 +148,7 @@
 			this.ctbBirthplace.ForeColor = System.Drawing.Color.DimGray;
 			this.ctbBirthplace.IsReadOnly = false;
 			this.ctbBirthplace.Location = new System.Drawing.Point(288, 217);
-			this.ctbBirthplace.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+			this.ctbBirthplace.Margin = new System.Windows.Forms.Padding(5);
 			this.ctbBirthplace.Multiline = false;
 			this.ctbBirthplace.Name = "ctbBirthplace";
 			this.ctbBirthplace.Padding = new System.Windows.Forms.Padding(13, 9, 13, 9);
@@ -172,7 +172,7 @@
 			this.ctbEmail.ForeColor = System.Drawing.Color.DimGray;
 			this.ctbEmail.IsReadOnly = false;
 			this.ctbEmail.Location = new System.Drawing.Point(15, 334);
-			this.ctbEmail.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+			this.ctbEmail.Margin = new System.Windows.Forms.Padding(5);
 			this.ctbEmail.Multiline = false;
 			this.ctbEmail.Name = "ctbEmail";
 			this.ctbEmail.Padding = new System.Windows.Forms.Padding(13, 9, 13, 9);
@@ -196,7 +196,7 @@
 			this.ctbPhone.ForeColor = System.Drawing.Color.DimGray;
 			this.ctbPhone.IsReadOnly = false;
 			this.ctbPhone.Location = new System.Drawing.Point(288, 334);
-			this.ctbPhone.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+			this.ctbPhone.Margin = new System.Windows.Forms.Padding(5);
 			this.ctbPhone.Multiline = false;
 			this.ctbPhone.Name = "ctbPhone";
 			this.ctbPhone.Padding = new System.Windows.Forms.Padding(13, 9, 13, 9);
@@ -220,7 +220,7 @@
 			this.ctbFirstName.ForeColor = System.Drawing.Color.DimGray;
 			this.ctbFirstName.IsReadOnly = false;
 			this.ctbFirstName.Location = new System.Drawing.Point(288, 113);
-			this.ctbFirstName.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+			this.ctbFirstName.Margin = new System.Windows.Forms.Padding(5);
 			this.ctbFirstName.Multiline = false;
 			this.ctbFirstName.Name = "ctbFirstName";
 			this.ctbFirstName.Padding = new System.Windows.Forms.Padding(13, 9, 13, 9);
@@ -244,7 +244,7 @@
 			this.cbtnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.cbtnAdd.ForeColor = System.Drawing.Color.White;
 			this.cbtnAdd.Location = new System.Drawing.Point(32, 524);
-			this.cbtnAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.cbtnAdd.Margin = new System.Windows.Forms.Padding(4);
 			this.cbtnAdd.Name = "cbtnAdd";
 			this.cbtnAdd.Size = new System.Drawing.Size(432, 49);
 			this.cbtnAdd.TabIndex = 2;
@@ -263,7 +263,7 @@
 			this.ctbSurname.ForeColor = System.Drawing.Color.DimGray;
 			this.ctbSurname.IsReadOnly = false;
 			this.ctbSurname.Location = new System.Drawing.Point(15, 113);
-			this.ctbSurname.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+			this.ctbSurname.Margin = new System.Windows.Forms.Padding(5);
 			this.ctbSurname.Multiline = false;
 			this.ctbSurname.Name = "ctbSurname";
 			this.ctbSurname.Padding = new System.Windows.Forms.Padding(13, 9, 13, 9);
@@ -294,9 +294,9 @@
 			this.Controls.Add(this.cbtnAdd);
 			this.Controls.Add(this.ctbSurname);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-			this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Margin = new System.Windows.Forms.Padding(4);
 			this.Name = "AddUser";
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Felhasználó hozzáadása";
 			this.ResumeLayout(false);
 			this.PerformLayout();

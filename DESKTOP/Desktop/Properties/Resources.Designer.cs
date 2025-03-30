@@ -353,9 +353,39 @@ namespace Desktop.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap logout_circle_r_line_black {
+            get {
+                object obj = ResourceManager.GetObject("logout-circle-r-line_black", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logout_circle_r_line_white {
+            get {
+                object obj = ResourceManager.GetObject("logout-circle-r-line_white", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap mail_add_line {
             get {
                 object obj = ResourceManager.GetObject("mail-add-line", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap main_page_ill {
+            get {
+                object obj = ResourceManager.GetObject("main_page_ill", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -73,6 +73,7 @@ namespace Desktop
             FormDragger.MakeDraggable(this);
             this.BorderColor = Color.FromArgb(10, 123, 106);
             this.BorderWidth = 2;
+            ThemeManager.ApplyTheme(this);
         }
         public PopupSelect(string mode)
         {
@@ -100,9 +101,10 @@ namespace Desktop
             InitializeComponent();
 
             FormDragger.MakeDraggable(this);
-            //this.BorderColor = Color.FromArgb(10, 123, 106);
-            //this.BorderWidth = 2;
-        }
+			//this.BorderColor = Color.FromArgb(10, 123, 106);
+			//this.BorderWidth = 2;
+			ThemeManager.ApplyTheme(this);
+		}
         
 
         private async void updateSelectDgv(string search)

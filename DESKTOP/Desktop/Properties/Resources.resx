@@ -133,11 +133,17 @@
   <data name="icons8-add-26 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-add-26 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="close_line_white" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\close-line_white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8-request-26" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-request-26.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="rb_8684" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\rb_8684.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="9650640_7788" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\9650640_7788.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-home-26" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-home-26.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -154,8 +160,20 @@
   <data name="user-line1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\user-line1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="book_open_line_white" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\book-open-line_white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8-users-26" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-users-26.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="publisher_line_white" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\publisher-line_white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="main_page_ill" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\main_page_ill.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="add-line_white" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\icons\add-line_white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-add-26" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-add-26.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -165,6 +183,9 @@
   </data>
   <data name="home-line2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\home-line2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="calendarWhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\calendarWhite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="home-line_light-green" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\home-line_light-green.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -187,8 +208,11 @@
   <data name="home-line_light-blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\home-line_light-blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="9650640_7788" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\9650640_7788.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="book_open_line_black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\book-open-line_black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="calendarBlack" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\calendarBlack.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="girReading_upscaled" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\girReading_upscaled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -199,6 +223,9 @@
   <data name="icons8-add-262" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-add-262.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="publisher_line_black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\publisher-line_black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8-export-26" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-export-26.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -208,28 +235,10 @@
   <data name="rb_6263" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\rb_6263.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="add-line_white" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\icons\add-line_white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="logout-circle-r-line_black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logout-circle-r-line_black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="calendarBlack" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\calendarBlack.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="calendarWhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\calendarWhite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="close_line_white" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\close-line_white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="publisher_line_black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\publisher-line_black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="publisher_line_white" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\publisher-line_white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="book_open_line_black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\book-open-line_black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="book_open_line_white" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\book-open-line_white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="logout-circle-r-line_white" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logout-circle-r-line_white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
