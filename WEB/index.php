@@ -20,6 +20,7 @@ if (!isset($_SESSION['user_id']) && isset($_COOKIE['remember_me'])) {
 
       // Token is valid, log the user in
       $_SESSION['user_id'] = $data['user_id'];
+      $_SESSION['username'] = $data["username"];
       $_SESSION["restricted"] = $data["member"]=="false"?"true":"false";
 
       //generate new token for security reasons
