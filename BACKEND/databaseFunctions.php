@@ -357,6 +357,8 @@
     function AddBookType($isbn, $title, $allGenres, $allAuthors, $publisher, $releaseDate, $lang, $descript, $picture){
         require "databaseConnect.php";
 
+        $picture = str_replace(" ", "+", $picture);
+
         $query = "CALL addBookType(?,?,?,?,?,?,?,?,?);";
 
         $stmt = $conn->prepare($query); // Prepare statement
@@ -470,6 +472,8 @@
 
     function UpdateBook($id, $title, $release_date, $lang, $publisher, $authors, $genres, $description, $picture_base64){
         require "databaseConnect.php";
+
+        $picture_base64 = str_replace(" ", "+", $picture_base64);
 
         $query = "CALL updateBookDetails(?,?,?,?,?,?,?,?,?);";
         
