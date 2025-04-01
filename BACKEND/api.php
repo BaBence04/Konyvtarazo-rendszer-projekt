@@ -45,7 +45,7 @@
 
                 // var_dump($gotPw);
                 $_SESSION['user_id'] = $result["user_id"];
-                $_SESSION['username'] = $_POST["uname"];
+                $_SESSION['username'] = $result["username"];
                 
                 //if restricted isset, and true than the current users membership is due
                 $_SESSION["restricted"] = $result["member"]=="false"?"true":"false";
