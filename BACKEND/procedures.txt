@@ -235,7 +235,7 @@ IF((SELECT COUNT(users.user_id) FROM users WHERE users.username = username)=0) T
 ELSEIF((SELECT COUNT(users.user_id) FROM users WHERE users.username = username AND users.password IS NULL AND users.active) = 1) THEN
   SELECT 'not registered' AS result;
 ELSE
-  SELECT CASE WHEN (users.active) THEN CASE WHEN (users.password = PASSWORD(pw)) THEN 'true' ELSE 'false' END END AS 'result', CASE WHEN users.membership_end_date<CURRENT_DATE() THEN 'false' ELSE 'true' END AS 'member', user_id FROM users WHERE users.username = username;
+  SELECT CASE WHEN (users.active) THEN CASE WHEN (users.password = PASSWORD(pw)) THEN 'true' ELSE 'false' END END AS 'result', CASE WHEN users.membership_end_date<CURRENT_DATE() THEN 'false' ELSE 'true' END AS 'member', user_id, users.username FROM users WHERE users.username = username;
 END IF;
 END;//
 DELIMITER ;
