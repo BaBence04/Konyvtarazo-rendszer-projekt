@@ -45,13 +45,10 @@ namespace Desktop
 			List<Dictionary<string, string>> temp = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string> { { "type", "getSystemSettings" } });
 			system_settings = temp.First();
 			CheckForBookings(false);
-			
-            //WHEN FINAL VERSION UNCOMMENT THIS ALSO NOT REALLY TESTED
-            /*
 			List<Dictionary<string, string>> reservationResult = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string>() { { "type", "deleteExpiredReservations" } });
-			string resrvationChanges = resrvationResult.First()["output"];
+			//string resrvationChanges = resrvationResult.First()["output"];
 			List<Dictionary<string, string>> bookingResult = (List<Dictionary<string, string>>)await ApiComm.SendPost(new Dictionary<string, string>() { { "type", "deleteExpiredBookings" } });
-			string outputChanges = outputResult.First()["output"];
+			/*string outputChanges = outputResult.First()["output"];
 			if (outputChanges.Length >0 || reservationChanges.Lenth >0)
 			{
 				changes = changes.Remove(0, 1);
@@ -67,7 +64,6 @@ namespace Desktop
 
 
         }
-
 
         public async Task CheckForBookings(bool now)
 		{

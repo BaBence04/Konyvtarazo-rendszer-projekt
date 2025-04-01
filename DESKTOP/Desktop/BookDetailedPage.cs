@@ -338,11 +338,6 @@ namespace Desktop
                                 //MessageBox.Show($"A hozzáadott könyv kódja: {resp2.First()["book_id"]}");
                                 if (res == DialogResult.Yes)
                                 {
-                                    using (CustomMessageBoxForm msgBoxK = new CustomMessageBoxForm($"A hozzáadott könyv kódja: {resp2.First()["book_id"]}", "Könyvkód", MessageBoxButtons.OK))
-                                    {
-                                        msgBoxK.ShowDialog();
-                                    }
-
                                     LoginForm.main.OpenChildForm(new BookDetailedPage(ctbISBN.Texts));
                                 }
                                 using (CustomMessageBoxForm msgBoxK = new CustomMessageBoxForm($"A hozzáadott könyv kódja: {resp2.First()["book_id"]}", "Könyvkód", MessageBoxButtons.OK))
