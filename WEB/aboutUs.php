@@ -38,22 +38,22 @@
 
     <!-- Team Section -->
     <section class="team-section">
-        <h2>Meet Our Team</h2>
+        <!-- <h2>Ismerje meg csapatunkat!</h2> -->
         <div class="team-grid">
         <div class="team-member">
-            <img src="/web/imgs/img2.jpg" alt="Person 1" class="member-image">
+            <img src="/web/imgs/bence.jpg" alt="Bence" class="member-image">
             <h3>Bence</h3>
             <p class="role">Backend, SQL</p>
             <p class="description">Bence felelős a weboldalunk és asztali alkalmazásunk backend részéért.</p>
         </div>
         <div class="team-member">
-            <img src="/web/imgs/img2.jpg" alt="Person 2" class="member-image">
+            <img src="/web/imgs/balint.jpg" alt="Bálint" class="member-image">
             <h3>Bálint</h3>
             <p class="role">Backend, frontend</p>
-            <p class="description">Bálint felelős a backend és frontend </p>
+            <p class="description">Bálint felelős a backend és frontend integrációjáért.</p>
         </div>
         <div class="team-member">
-            <img src="/web/imgs/img2.jpg" alt="Person 3" class="member-image">
+            <img src="/web/imgs/marci.jpeg" alt="Person 3" class="member-image">
             <h3>Márton</h3>
             <p class="role">Frontend, design</p>
             <p class="description">Márton felelős a project fontend és a design részéért.</p>
@@ -65,7 +65,7 @@
     <section class="mission-section">
         <div class="mission-content">
         <h2>Küldetésünk</h2>
-        <p>A célunk egy komprehenzív könyvtárazó rendszer elkészítése és üzemeltetése, mely mind design és funkcionalitás szempontjából meghalad számos hasonló célokra fejlesztett rendszert. Továbbá szeretnénk, hogy rendszerünk nem csak felhasználók, hanem dolgozók számára is egy kényelmes és stílusos softvare-t készítsünk.</p>
+        <p>A célunk egy komprehenzív könyvtárazó rendszer elkészítése és üzemeltetése, mely mind design és funkcionalitás szempontjából meghalad számos hasonló célokra fejlesztett rendszert. Továbbá szeretnénk, hogy nem csak felhasználók, hanem dolgozók számára is egy kényelmes és stílusos software-t készítsünk.</p>
         </div>
     </section>
 

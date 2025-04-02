@@ -78,15 +78,10 @@ body {
   
   .member-image {
     width: 300px;
-    height: 300px;
-    border-radius: 50%;
+    border-radius: .5rem;
     object-fit: cover;
     margin-bottom: 15px;
     transition: transform 0.3s ease;
-  }
-  
-  .member-image:hover {
-    transform: scale(1.1);
   }
   
   .role {
@@ -102,11 +97,10 @@ body {
   /* Mission Section */
   .mission-section {
     /* background: url('/web/imgs/mission_bg.jpg') no-repeat center center/cover; */
-    color: white;
+    color: black;
     padding: 60px 20px;
     text-align: center;
-    height: 50vh;
-    background-color: #9dc6c0;
+    background-color: #ccd39d;
   }
   
   .mission-content {
