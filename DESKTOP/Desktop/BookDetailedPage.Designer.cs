@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BookDetailedPage));
 			this.label1 = new System.Windows.Forms.Label();
 			this.lblISBN = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
@@ -39,16 +40,10 @@
 			this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
 			this.ofdPic = new System.Windows.Forms.OpenFileDialog();
 			this.lblPicName = new System.Windows.Forms.Label();
-			this.ctbISBN = new Desktop.CustomTextbox();
-			this.cbtnAddPicture = new Desktop.CustomButton();
-			this.cdtpReleaseDate = new Desktop.CustomDateTimePicker();
-			this.ctbTitle = new Desktop.CustomTextbox();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.panel7 = new System.Windows.Forms.Panel();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.panel3 = new System.Windows.Forms.Panel();
-			this.cbtnAddAuthor = new Desktop.CustomButton();
-			this.cbtnAddCategory = new Desktop.CustomButton();
 			this.panel2 = new System.Windows.Forms.Panel();
 			this.label9 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
@@ -58,15 +53,22 @@
 			this.panel4 = new System.Windows.Forms.Panel();
 			this.panel5 = new System.Windows.Forms.Panel();
 			this.label10 = new System.Windows.Forms.Label();
-			this.ctbDescription = new Desktop.CustomTextbox();
 			this.panel10 = new System.Windows.Forms.Panel();
 			this.pManage = new System.Windows.Forms.Panel();
 			this.label8 = new System.Windows.Forms.Label();
-			this.cbtnDeactivate = new Desktop.CustomButton();
 			this.label6 = new System.Windows.Forms.Label();
-			this.cbtnAddBook = new Desktop.CustomButton();
 			this.panel6 = new System.Windows.Forms.Panel();
 			this.panel8 = new System.Windows.Forms.Panel();
+			this.button_CloseForm = new Desktop.CustomButton();
+			this.ctbISBN = new Desktop.CustomTextbox();
+			this.ctbTitle = new Desktop.CustomTextbox();
+			this.cdtpReleaseDate = new Desktop.CustomDateTimePicker();
+			this.cbtnAddAuthor = new Desktop.CustomButton();
+			this.cbtnAddCategory = new Desktop.CustomButton();
+			this.ctbDescription = new Desktop.CustomTextbox();
+			this.cbtnDeactivate = new Desktop.CustomButton();
+			this.cbtnAddBook = new Desktop.CustomButton();
+			this.cbtnAddPicture = new Desktop.CustomButton();
 			this.cbtnBack = new Desktop.CustomButton();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.panel7.SuspendLayout();
@@ -185,93 +187,6 @@
 			this.lblPicName.Size = new System.Drawing.Size(0, 16);
 			this.lblPicName.TabIndex = 28;
 			// 
-			// ctbISBN
-			// 
-			this.ctbISBN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-			this.ctbISBN.BorderColor = System.Drawing.Color.MediumSlateBlue;
-			this.ctbISBN.BorderFocusColor = System.Drawing.Color.HotPink;
-			this.ctbISBN.BorderRadius = 10;
-			this.ctbISBN.BorderSize = 2;
-			this.ctbISBN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-			this.ctbISBN.ForeColor = System.Drawing.Color.WhiteSmoke;
-			this.ctbISBN.IsReadOnly = false;
-			this.ctbISBN.Location = new System.Drawing.Point(29, 37);
-			this.ctbISBN.Margin = new System.Windows.Forms.Padding(5);
-			this.ctbISBN.Multiline = false;
-			this.ctbISBN.Name = "ctbISBN";
-			this.ctbISBN.Padding = new System.Windows.Forms.Padding(13, 9, 13, 9);
-			this.ctbISBN.PasswordChar = false;
-			this.ctbISBN.PlaceholderColor = System.Drawing.Color.DarkGray;
-			this.ctbISBN.PlaceholderText = "";
-			this.ctbISBN.Size = new System.Drawing.Size(237, 39);
-			this.ctbISBN.TabIndex = 2;
-			this.ctbISBN.TextBoxScrollBars = System.Windows.Forms.ScrollBars.None;
-			this.ctbISBN.Texts = "";
-			this.ctbISBN.UnderlinedStyle = false;
-			this.ctbISBN.Visible = false;
-			this.ctbISBN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ctbISBN_KeyPress);
-			// 
-			// cbtnAddPicture
-			// 
-			this.cbtnAddPicture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.cbtnAddPicture.BackColor = System.Drawing.Color.Black;
-			this.cbtnAddPicture.BorderColor = System.Drawing.Color.White;
-			this.cbtnAddPicture.BorderRadius = 40;
-			this.cbtnAddPicture.BorderSize = 0;
-			this.cbtnAddPicture.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.cbtnAddPicture.FlatAppearance.BorderSize = 0;
-			this.cbtnAddPicture.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.cbtnAddPicture.ForeColor = System.Drawing.Color.White;
-			this.cbtnAddPicture.Location = new System.Drawing.Point(29, 14);
-			this.cbtnAddPicture.Margin = new System.Windows.Forms.Padding(4);
-			this.cbtnAddPicture.Name = "cbtnAddPicture";
-			this.cbtnAddPicture.Size = new System.Drawing.Size(152, 49);
-			this.cbtnAddPicture.TabIndex = 27;
-			this.cbtnAddPicture.Text = "Kép cseréje";
-			this.cbtnAddPicture.UseVisualStyleBackColor = false;
-			this.cbtnAddPicture.Click += new System.EventHandler(this.cbtnAddPicture_Click);
-			// 
-			// cdtpReleaseDate
-			// 
-			this.cdtpReleaseDate.BorderColor = System.Drawing.Color.PaleVioletRed;
-			this.cdtpReleaseDate.BorderRadius = 1;
-			this.cdtpReleaseDate.BorderSize = 2;
-			this.cdtpReleaseDate.CustomFormat = "yyyy";
-			this.cdtpReleaseDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-			this.cdtpReleaseDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.cdtpReleaseDate.Location = new System.Drawing.Point(29, 206);
-			this.cdtpReleaseDate.Margin = new System.Windows.Forms.Padding(4);
-			this.cdtpReleaseDate.MinimumSize = new System.Drawing.Size(4, 35);
-			this.cdtpReleaseDate.Name = "cdtpReleaseDate";
-			this.cdtpReleaseDate.Size = new System.Drawing.Size(236, 35);
-			this.cdtpReleaseDate.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(72)))), ((int)(((byte)(85)))));
-			this.cdtpReleaseDate.TabIndex = 24;
-			this.cdtpReleaseDate.TextColor = System.Drawing.Color.White;
-			// 
-			// ctbTitle
-			// 
-			this.ctbTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-			this.ctbTitle.BorderColor = System.Drawing.Color.MediumSlateBlue;
-			this.ctbTitle.BorderFocusColor = System.Drawing.Color.HotPink;
-			this.ctbTitle.BorderRadius = 10;
-			this.ctbTitle.BorderSize = 2;
-			this.ctbTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-			this.ctbTitle.ForeColor = System.Drawing.Color.WhiteSmoke;
-			this.ctbTitle.IsReadOnly = false;
-			this.ctbTitle.Location = new System.Drawing.Point(29, 114);
-			this.ctbTitle.Margin = new System.Windows.Forms.Padding(5);
-			this.ctbTitle.Multiline = false;
-			this.ctbTitle.Name = "ctbTitle";
-			this.ctbTitle.Padding = new System.Windows.Forms.Padding(13, 9, 13, 9);
-			this.ctbTitle.PasswordChar = false;
-			this.ctbTitle.PlaceholderColor = System.Drawing.Color.DarkGray;
-			this.ctbTitle.PlaceholderText = "";
-			this.ctbTitle.Size = new System.Drawing.Size(237, 39);
-			this.ctbTitle.TabIndex = 3;
-			this.ctbTitle.TextBoxScrollBars = System.Windows.Forms.ScrollBars.None;
-			this.ctbTitle.Texts = "";
-			this.ctbTitle.UnderlinedStyle = false;
-			// 
 			// tableLayoutPanel1
 			// 
 			this.tableLayoutPanel1.ColumnCount = 1;
@@ -294,6 +209,7 @@
 			// 
 			// panel7
 			// 
+			this.panel7.Controls.Add(this.button_CloseForm);
 			this.panel7.Controls.Add(this.panel1);
 			this.panel7.Controls.Add(this.panel3);
 			this.panel7.Controls.Add(this.panel2);
@@ -323,51 +239,11 @@
 			this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.panel3.Controls.Add(this.cbtnAddAuthor);
 			this.panel3.Controls.Add(this.cbtnAddCategory);
-			this.panel3.Location = new System.Drawing.Point(703, 20);
+			this.panel3.Location = new System.Drawing.Point(703, 90);
 			this.panel3.Margin = new System.Windows.Forms.Padding(4);
 			this.panel3.Name = "panel3";
-			this.panel3.Size = new System.Drawing.Size(219, 241);
+			this.panel3.Size = new System.Drawing.Size(219, 171);
 			this.panel3.TabIndex = 2;
-			// 
-			// cbtnAddAuthor
-			// 
-			this.cbtnAddAuthor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.cbtnAddAuthor.BackColor = System.Drawing.Color.Black;
-			this.cbtnAddAuthor.BorderColor = System.Drawing.Color.White;
-			this.cbtnAddAuthor.BorderRadius = 40;
-			this.cbtnAddAuthor.BorderSize = 0;
-			this.cbtnAddAuthor.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.cbtnAddAuthor.FlatAppearance.BorderSize = 0;
-			this.cbtnAddAuthor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.cbtnAddAuthor.ForeColor = System.Drawing.Color.White;
-			this.cbtnAddAuthor.Location = new System.Drawing.Point(35, 70);
-			this.cbtnAddAuthor.Margin = new System.Windows.Forms.Padding(4);
-			this.cbtnAddAuthor.Name = "cbtnAddAuthor";
-			this.cbtnAddAuthor.Size = new System.Drawing.Size(163, 43);
-			this.cbtnAddAuthor.TabIndex = 12;
-			this.cbtnAddAuthor.Text = "Hozzáad";
-			this.cbtnAddAuthor.UseVisualStyleBackColor = false;
-			this.cbtnAddAuthor.Click += new System.EventHandler(this.cbtnAddAuthor_Click);
-			// 
-			// cbtnAddCategory
-			// 
-			this.cbtnAddCategory.Anchor = System.Windows.Forms.AnchorStyles.Right;
-			this.cbtnAddCategory.BackColor = System.Drawing.Color.Black;
-			this.cbtnAddCategory.BorderColor = System.Drawing.Color.White;
-			this.cbtnAddCategory.BorderRadius = 40;
-			this.cbtnAddCategory.BorderSize = 0;
-			this.cbtnAddCategory.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.cbtnAddCategory.FlatAppearance.BorderSize = 0;
-			this.cbtnAddCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.cbtnAddCategory.ForeColor = System.Drawing.Color.White;
-			this.cbtnAddCategory.Location = new System.Drawing.Point(35, 174);
-			this.cbtnAddCategory.Margin = new System.Windows.Forms.Padding(4);
-			this.cbtnAddCategory.Name = "cbtnAddCategory";
-			this.cbtnAddCategory.Size = new System.Drawing.Size(163, 43);
-			this.cbtnAddCategory.TabIndex = 14;
-			this.cbtnAddCategory.Text = "Hozzáad";
-			this.cbtnAddCategory.UseVisualStyleBackColor = false;
-			this.cbtnAddCategory.Click += new System.EventHandler(this.cbtnAddCategory_Click);
 			// 
 			// panel2
 			// 
@@ -468,34 +344,6 @@
 			this.label10.TabIndex = 26;
 			this.label10.Text = "Leírás";
 			// 
-			// ctbDescription
-			// 
-			this.ctbDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.ctbDescription.AutoScroll = true;
-			this.ctbDescription.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-			this.ctbDescription.BorderColor = System.Drawing.Color.MediumSlateBlue;
-			this.ctbDescription.BorderFocusColor = System.Drawing.Color.HotPink;
-			this.ctbDescription.BorderRadius = 0;
-			this.ctbDescription.BorderSize = 2;
-			this.ctbDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-			this.ctbDescription.ForeColor = System.Drawing.Color.WhiteSmoke;
-			this.ctbDescription.IsReadOnly = false;
-			this.ctbDescription.Location = new System.Drawing.Point(8, 46);
-			this.ctbDescription.Margin = new System.Windows.Forms.Padding(5);
-			this.ctbDescription.Multiline = true;
-			this.ctbDescription.Name = "ctbDescription";
-			this.ctbDescription.Padding = new System.Windows.Forms.Padding(13, 9, 13, 9);
-			this.ctbDescription.PasswordChar = false;
-			this.ctbDescription.PlaceholderColor = System.Drawing.Color.DarkGray;
-			this.ctbDescription.PlaceholderText = "";
-			this.ctbDescription.Size = new System.Drawing.Size(599, 120);
-			this.ctbDescription.TabIndex = 25;
-			this.ctbDescription.TextBoxScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.ctbDescription.Texts = "";
-			this.ctbDescription.UnderlinedStyle = false;
-			// 
 			// panel10
 			// 
 			this.panel10.Controls.Add(this.pManage);
@@ -532,25 +380,6 @@
 			this.label8.TabIndex = 23;
 			this.label8.Text = "Könyv felvétele";
 			// 
-			// cbtnDeactivate
-			// 
-			this.cbtnDeactivate.BackColor = System.Drawing.Color.Black;
-			this.cbtnDeactivate.BorderColor = System.Drawing.Color.White;
-			this.cbtnDeactivate.BorderRadius = 40;
-			this.cbtnDeactivate.BorderSize = 0;
-			this.cbtnDeactivate.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.cbtnDeactivate.FlatAppearance.BorderSize = 0;
-			this.cbtnDeactivate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.cbtnDeactivate.ForeColor = System.Drawing.Color.White;
-			this.cbtnDeactivate.Location = new System.Drawing.Point(20, 57);
-			this.cbtnDeactivate.Margin = new System.Windows.Forms.Padding(4);
-			this.cbtnDeactivate.Name = "cbtnDeactivate";
-			this.cbtnDeactivate.Size = new System.Drawing.Size(195, 43);
-			this.cbtnDeactivate.TabIndex = 17;
-			this.cbtnDeactivate.Text = "Leselejtez";
-			this.cbtnDeactivate.UseVisualStyleBackColor = false;
-			this.cbtnDeactivate.Click += new System.EventHandler(this.cbtnDeactivate_Click);
-			// 
 			// label6
 			// 
 			this.label6.AutoSize = true;
@@ -561,25 +390,6 @@
 			this.label6.Size = new System.Drawing.Size(127, 16);
 			this.label6.TabIndex = 18;
 			this.label6.Text = "Könyv leselejtezése";
-			// 
-			// cbtnAddBook
-			// 
-			this.cbtnAddBook.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(123)))), ((int)(((byte)(106)))));
-			this.cbtnAddBook.BorderColor = System.Drawing.Color.White;
-			this.cbtnAddBook.BorderRadius = 40;
-			this.cbtnAddBook.BorderSize = 0;
-			this.cbtnAddBook.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.cbtnAddBook.FlatAppearance.BorderSize = 0;
-			this.cbtnAddBook.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.cbtnAddBook.ForeColor = System.Drawing.Color.White;
-			this.cbtnAddBook.Location = new System.Drawing.Point(235, 57);
-			this.cbtnAddBook.Margin = new System.Windows.Forms.Padding(4);
-			this.cbtnAddBook.Name = "cbtnAddBook";
-			this.cbtnAddBook.Size = new System.Drawing.Size(195, 43);
-			this.cbtnAddBook.TabIndex = 22;
-			this.cbtnAddBook.Text = "Felvesz";
-			this.cbtnAddBook.UseVisualStyleBackColor = false;
-			this.cbtnAddBook.Click += new System.EventHandler(this.cbtnAddBook_Click);
 			// 
 			// panel6
 			// 
@@ -600,6 +410,218 @@
 			this.panel8.Name = "panel8";
 			this.panel8.Size = new System.Drawing.Size(212, 71);
 			this.panel8.TabIndex = 7;
+			// 
+			// button_CloseForm
+			// 
+			this.button_CloseForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+			this.button_CloseForm.BorderColor = System.Drawing.Color.White;
+			this.button_CloseForm.BorderRadius = 40;
+			this.button_CloseForm.BorderSize = 0;
+			this.button_CloseForm.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.button_CloseForm.FlatAppearance.BorderSize = 0;
+			this.button_CloseForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.button_CloseForm.ForeColor = System.Drawing.Color.White;
+			this.button_CloseForm.Image = ((System.Drawing.Image)(resources.GetObject("button_CloseForm.Image")));
+			this.button_CloseForm.Location = new System.Drawing.Point(885, 5);
+			this.button_CloseForm.Margin = new System.Windows.Forms.Padding(4);
+			this.button_CloseForm.Name = "button_CloseForm";
+			this.button_CloseForm.Size = new System.Drawing.Size(53, 49);
+			this.button_CloseForm.TabIndex = 19;
+			this.button_CloseForm.UseVisualStyleBackColor = false;
+			this.button_CloseForm.Click += new System.EventHandler(this.button_CloseForm_Click);
+			// 
+			// ctbISBN
+			// 
+			this.ctbISBN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+			this.ctbISBN.BorderColor = System.Drawing.Color.MediumSlateBlue;
+			this.ctbISBN.BorderFocusColor = System.Drawing.Color.HotPink;
+			this.ctbISBN.BorderRadius = 10;
+			this.ctbISBN.BorderSize = 2;
+			this.ctbISBN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			this.ctbISBN.ForeColor = System.Drawing.Color.WhiteSmoke;
+			this.ctbISBN.IsReadOnly = false;
+			this.ctbISBN.Location = new System.Drawing.Point(29, 37);
+			this.ctbISBN.Margin = new System.Windows.Forms.Padding(5);
+			this.ctbISBN.Multiline = false;
+			this.ctbISBN.Name = "ctbISBN";
+			this.ctbISBN.Padding = new System.Windows.Forms.Padding(13, 9, 13, 9);
+			this.ctbISBN.PasswordChar = false;
+			this.ctbISBN.PlaceholderColor = System.Drawing.Color.DarkGray;
+			this.ctbISBN.PlaceholderText = "";
+			this.ctbISBN.Size = new System.Drawing.Size(237, 39);
+			this.ctbISBN.TabIndex = 2;
+			this.ctbISBN.TextBoxScrollBars = System.Windows.Forms.ScrollBars.None;
+			this.ctbISBN.Texts = "";
+			this.ctbISBN.UnderlinedStyle = false;
+			this.ctbISBN.Visible = false;
+			this.ctbISBN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ctbISBN_KeyPress);
+			// 
+			// ctbTitle
+			// 
+			this.ctbTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+			this.ctbTitle.BorderColor = System.Drawing.Color.MediumSlateBlue;
+			this.ctbTitle.BorderFocusColor = System.Drawing.Color.HotPink;
+			this.ctbTitle.BorderRadius = 10;
+			this.ctbTitle.BorderSize = 2;
+			this.ctbTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			this.ctbTitle.ForeColor = System.Drawing.Color.WhiteSmoke;
+			this.ctbTitle.IsReadOnly = false;
+			this.ctbTitle.Location = new System.Drawing.Point(29, 114);
+			this.ctbTitle.Margin = new System.Windows.Forms.Padding(5);
+			this.ctbTitle.Multiline = false;
+			this.ctbTitle.Name = "ctbTitle";
+			this.ctbTitle.Padding = new System.Windows.Forms.Padding(13, 9, 13, 9);
+			this.ctbTitle.PasswordChar = false;
+			this.ctbTitle.PlaceholderColor = System.Drawing.Color.DarkGray;
+			this.ctbTitle.PlaceholderText = "";
+			this.ctbTitle.Size = new System.Drawing.Size(237, 39);
+			this.ctbTitle.TabIndex = 3;
+			this.ctbTitle.TextBoxScrollBars = System.Windows.Forms.ScrollBars.None;
+			this.ctbTitle.Texts = "";
+			this.ctbTitle.UnderlinedStyle = false;
+			// 
+			// cdtpReleaseDate
+			// 
+			this.cdtpReleaseDate.BorderColor = System.Drawing.Color.PaleVioletRed;
+			this.cdtpReleaseDate.BorderRadius = 1;
+			this.cdtpReleaseDate.BorderSize = 2;
+			this.cdtpReleaseDate.CustomFormat = "yyyy";
+			this.cdtpReleaseDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+			this.cdtpReleaseDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.cdtpReleaseDate.Location = new System.Drawing.Point(29, 206);
+			this.cdtpReleaseDate.Margin = new System.Windows.Forms.Padding(4);
+			this.cdtpReleaseDate.MinimumSize = new System.Drawing.Size(4, 35);
+			this.cdtpReleaseDate.Name = "cdtpReleaseDate";
+			this.cdtpReleaseDate.Size = new System.Drawing.Size(236, 35);
+			this.cdtpReleaseDate.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(72)))), ((int)(((byte)(85)))));
+			this.cdtpReleaseDate.TabIndex = 24;
+			this.cdtpReleaseDate.TextColor = System.Drawing.Color.White;
+			// 
+			// cbtnAddAuthor
+			// 
+			this.cbtnAddAuthor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.cbtnAddAuthor.BackColor = System.Drawing.Color.Black;
+			this.cbtnAddAuthor.BorderColor = System.Drawing.Color.White;
+			this.cbtnAddAuthor.BorderRadius = 40;
+			this.cbtnAddAuthor.BorderSize = 0;
+			this.cbtnAddAuthor.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.cbtnAddAuthor.FlatAppearance.BorderSize = 0;
+			this.cbtnAddAuthor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.cbtnAddAuthor.ForeColor = System.Drawing.Color.White;
+			this.cbtnAddAuthor.Location = new System.Drawing.Point(35, 13);
+			this.cbtnAddAuthor.Margin = new System.Windows.Forms.Padding(4);
+			this.cbtnAddAuthor.Name = "cbtnAddAuthor";
+			this.cbtnAddAuthor.Size = new System.Drawing.Size(163, 43);
+			this.cbtnAddAuthor.TabIndex = 12;
+			this.cbtnAddAuthor.Text = "Hozzáad";
+			this.cbtnAddAuthor.UseVisualStyleBackColor = false;
+			this.cbtnAddAuthor.Click += new System.EventHandler(this.cbtnAddAuthor_Click);
+			// 
+			// cbtnAddCategory
+			// 
+			this.cbtnAddCategory.Anchor = System.Windows.Forms.AnchorStyles.Right;
+			this.cbtnAddCategory.BackColor = System.Drawing.Color.Black;
+			this.cbtnAddCategory.BorderColor = System.Drawing.Color.White;
+			this.cbtnAddCategory.BorderRadius = 40;
+			this.cbtnAddCategory.BorderSize = 0;
+			this.cbtnAddCategory.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.cbtnAddCategory.FlatAppearance.BorderSize = 0;
+			this.cbtnAddCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.cbtnAddCategory.ForeColor = System.Drawing.Color.White;
+			this.cbtnAddCategory.Location = new System.Drawing.Point(35, 116);
+			this.cbtnAddCategory.Margin = new System.Windows.Forms.Padding(4);
+			this.cbtnAddCategory.Name = "cbtnAddCategory";
+			this.cbtnAddCategory.Size = new System.Drawing.Size(163, 43);
+			this.cbtnAddCategory.TabIndex = 14;
+			this.cbtnAddCategory.Text = "Hozzáad";
+			this.cbtnAddCategory.UseVisualStyleBackColor = false;
+			this.cbtnAddCategory.Click += new System.EventHandler(this.cbtnAddCategory_Click);
+			// 
+			// ctbDescription
+			// 
+			this.ctbDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.ctbDescription.AutoScroll = true;
+			this.ctbDescription.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+			this.ctbDescription.BorderColor = System.Drawing.Color.MediumSlateBlue;
+			this.ctbDescription.BorderFocusColor = System.Drawing.Color.HotPink;
+			this.ctbDescription.BorderRadius = 0;
+			this.ctbDescription.BorderSize = 2;
+			this.ctbDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			this.ctbDescription.ForeColor = System.Drawing.Color.WhiteSmoke;
+			this.ctbDescription.IsReadOnly = false;
+			this.ctbDescription.Location = new System.Drawing.Point(8, 46);
+			this.ctbDescription.Margin = new System.Windows.Forms.Padding(5);
+			this.ctbDescription.Multiline = true;
+			this.ctbDescription.Name = "ctbDescription";
+			this.ctbDescription.Padding = new System.Windows.Forms.Padding(13, 9, 13, 9);
+			this.ctbDescription.PasswordChar = false;
+			this.ctbDescription.PlaceholderColor = System.Drawing.Color.DarkGray;
+			this.ctbDescription.PlaceholderText = "";
+			this.ctbDescription.Size = new System.Drawing.Size(599, 120);
+			this.ctbDescription.TabIndex = 25;
+			this.ctbDescription.TextBoxScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.ctbDescription.Texts = "";
+			this.ctbDescription.UnderlinedStyle = false;
+			// 
+			// cbtnDeactivate
+			// 
+			this.cbtnDeactivate.BackColor = System.Drawing.Color.Black;
+			this.cbtnDeactivate.BorderColor = System.Drawing.Color.White;
+			this.cbtnDeactivate.BorderRadius = 40;
+			this.cbtnDeactivate.BorderSize = 0;
+			this.cbtnDeactivate.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.cbtnDeactivate.FlatAppearance.BorderSize = 0;
+			this.cbtnDeactivate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.cbtnDeactivate.ForeColor = System.Drawing.Color.White;
+			this.cbtnDeactivate.Location = new System.Drawing.Point(20, 57);
+			this.cbtnDeactivate.Margin = new System.Windows.Forms.Padding(4);
+			this.cbtnDeactivate.Name = "cbtnDeactivate";
+			this.cbtnDeactivate.Size = new System.Drawing.Size(195, 43);
+			this.cbtnDeactivate.TabIndex = 17;
+			this.cbtnDeactivate.Text = "Leselejtez";
+			this.cbtnDeactivate.UseVisualStyleBackColor = false;
+			this.cbtnDeactivate.Click += new System.EventHandler(this.cbtnDeactivate_Click);
+			// 
+			// cbtnAddBook
+			// 
+			this.cbtnAddBook.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(123)))), ((int)(((byte)(106)))));
+			this.cbtnAddBook.BorderColor = System.Drawing.Color.White;
+			this.cbtnAddBook.BorderRadius = 40;
+			this.cbtnAddBook.BorderSize = 0;
+			this.cbtnAddBook.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.cbtnAddBook.FlatAppearance.BorderSize = 0;
+			this.cbtnAddBook.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.cbtnAddBook.ForeColor = System.Drawing.Color.White;
+			this.cbtnAddBook.Location = new System.Drawing.Point(235, 57);
+			this.cbtnAddBook.Margin = new System.Windows.Forms.Padding(4);
+			this.cbtnAddBook.Name = "cbtnAddBook";
+			this.cbtnAddBook.Size = new System.Drawing.Size(195, 43);
+			this.cbtnAddBook.TabIndex = 22;
+			this.cbtnAddBook.Text = "Felvesz";
+			this.cbtnAddBook.UseVisualStyleBackColor = false;
+			this.cbtnAddBook.Click += new System.EventHandler(this.cbtnAddBook_Click);
+			// 
+			// cbtnAddPicture
+			// 
+			this.cbtnAddPicture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.cbtnAddPicture.BackColor = System.Drawing.Color.Black;
+			this.cbtnAddPicture.BorderColor = System.Drawing.Color.White;
+			this.cbtnAddPicture.BorderRadius = 40;
+			this.cbtnAddPicture.BorderSize = 0;
+			this.cbtnAddPicture.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.cbtnAddPicture.FlatAppearance.BorderSize = 0;
+			this.cbtnAddPicture.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.cbtnAddPicture.ForeColor = System.Drawing.Color.White;
+			this.cbtnAddPicture.Location = new System.Drawing.Point(29, 14);
+			this.cbtnAddPicture.Margin = new System.Windows.Forms.Padding(4);
+			this.cbtnAddPicture.Name = "cbtnAddPicture";
+			this.cbtnAddPicture.Size = new System.Drawing.Size(152, 49);
+			this.cbtnAddPicture.TabIndex = 27;
+			this.cbtnAddPicture.Text = "Kép cseréje";
+			this.cbtnAddPicture.UseVisualStyleBackColor = false;
+			this.cbtnAddPicture.Click += new System.EventHandler(this.cbtnAddPicture_Click);
 			// 
 			// cbtnBack
 			// 
@@ -700,5 +722,6 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Panel panel10;
-    }
+		private CustomButton button_CloseForm;
+	}
 }

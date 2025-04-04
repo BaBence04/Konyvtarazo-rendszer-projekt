@@ -192,14 +192,14 @@ namespace Desktop
 					button.ForeColor = Color.White;
 				}
 
-				if (buttonIcons.TryGetValue(button.Name, out var icon))
+				/*if (buttonIcons.TryGetValue(button.Name, out var icon))
 				{
 					button.Image = icon;
 					if (button.Name == "button_CloseLoginForm")
 					{
 						button.BackColor = CurrentTheme == "Light" ? Color.FromArgb(245, 245, 245) : Color.FromArgb(51, 51, 68);
 					}
-				}
+				}*/
 			}
 
 			else if (control is Label label)

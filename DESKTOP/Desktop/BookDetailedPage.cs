@@ -252,8 +252,12 @@ namespace Desktop
             base.OnShown(e);
         }
 
+		private void button_CloseForm_Click(object sender, EventArgs e)
+		{
+            this.Close();
+		}
 
-        [Category("Border")]
+		[Category("Border")]
         [Browsable(true)]
         public float BorderWidth { get; set; } = 8.0f;
         [Category("Border")]
@@ -294,12 +298,15 @@ namespace Desktop
 				FormDragger.MakeDraggable(this);
 				this.BorderColor = Color.FromArgb(36, 72, 85);
 				this.BorderWidth = 2;
+
+				button_CloseForm.Visible = true;
 			}
             else
             {
 				this.Padding = new Padding(0);
 				this.BorderColor = Color.FromArgb(36, 72, 85);
 				this.BorderWidth = 0;
+				button_CloseForm.Visible = false;
 
 				LoadData();
             }
