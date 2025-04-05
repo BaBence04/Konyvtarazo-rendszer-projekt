@@ -42,8 +42,14 @@
 			this.lblPicName = new System.Windows.Forms.Label();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.panel7 = new System.Windows.Forms.Panel();
+			this.button_CloseForm = new Desktop.CustomButton();
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.ctbISBN = new Desktop.CustomTextbox();
+			this.ctbTitle = new Desktop.CustomTextbox();
+			this.cdtpReleaseDate = new Desktop.CustomDateTimePicker();
 			this.panel3 = new System.Windows.Forms.Panel();
+			this.cbtnAddAuthor = new Desktop.CustomButton();
+			this.cbtnAddCategory = new Desktop.CustomButton();
 			this.panel2 = new System.Windows.Forms.Panel();
 			this.label9 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
@@ -53,22 +59,16 @@
 			this.panel4 = new System.Windows.Forms.Panel();
 			this.panel5 = new System.Windows.Forms.Panel();
 			this.label10 = new System.Windows.Forms.Label();
+			this.ctbDescription = new Desktop.CustomTextbox();
 			this.panel10 = new System.Windows.Forms.Panel();
 			this.pManage = new System.Windows.Forms.Panel();
 			this.label8 = new System.Windows.Forms.Label();
-			this.label6 = new System.Windows.Forms.Label();
-			this.panel6 = new System.Windows.Forms.Panel();
-			this.panel8 = new System.Windows.Forms.Panel();
-			this.button_CloseForm = new Desktop.CustomButton();
-			this.ctbISBN = new Desktop.CustomTextbox();
-			this.ctbTitle = new Desktop.CustomTextbox();
-			this.cdtpReleaseDate = new Desktop.CustomDateTimePicker();
-			this.cbtnAddAuthor = new Desktop.CustomButton();
-			this.cbtnAddCategory = new Desktop.CustomButton();
-			this.ctbDescription = new Desktop.CustomTextbox();
 			this.cbtnDeactivate = new Desktop.CustomButton();
+			this.label6 = new System.Windows.Forms.Label();
 			this.cbtnAddBook = new Desktop.CustomButton();
+			this.panel6 = new System.Windows.Forms.Panel();
 			this.cbtnAddPicture = new Desktop.CustomButton();
+			this.panel8 = new System.Windows.Forms.Panel();
 			this.cbtnBack = new Desktop.CustomButton();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.panel7.SuspendLayout();
@@ -134,9 +134,9 @@
 			this.label5.Location = new System.Drawing.Point(28, 10);
 			this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(42, 16);
+			this.label5.Size = new System.Drawing.Size(45, 16);
 			this.label5.TabIndex = 6;
-			this.label5.Text = "Kiadó";
+			this.label5.Text = "Kiadó:";
 			// 
 			// lblPublisher
 			// 
@@ -157,9 +157,9 @@
 			this.label7.Location = new System.Drawing.Point(28, 86);
 			this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(42, 16);
+			this.label7.Size = new System.Drawing.Size(45, 16);
 			this.label7.TabIndex = 8;
-			this.label7.Text = "Nyelv";
+			this.label7.Text = "Nyelv:";
 			// 
 			// lblLang
 			// 
@@ -220,197 +220,6 @@
 			this.panel7.Size = new System.Drawing.Size(961, 278);
 			this.panel7.TabIndex = 0;
 			// 
-			// panel1
-			// 
-			this.panel1.Controls.Add(this.label1);
-			this.panel1.Controls.Add(this.label3);
-			this.panel1.Controls.Add(this.ctbISBN);
-			this.panel1.Controls.Add(this.ctbTitle);
-			this.panel1.Controls.Add(this.label4);
-			this.panel1.Controls.Add(this.cdtpReleaseDate);
-			this.panel1.Location = new System.Drawing.Point(12, 20);
-			this.panel1.Margin = new System.Windows.Forms.Padding(4);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(273, 256);
-			this.panel1.TabIndex = 0;
-			// 
-			// panel3
-			// 
-			this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.panel3.Controls.Add(this.cbtnAddAuthor);
-			this.panel3.Controls.Add(this.cbtnAddCategory);
-			this.panel3.Location = new System.Drawing.Point(703, 90);
-			this.panel3.Margin = new System.Windows.Forms.Padding(4);
-			this.panel3.Name = "panel3";
-			this.panel3.Size = new System.Drawing.Size(219, 171);
-			this.panel3.TabIndex = 2;
-			// 
-			// panel2
-			// 
-			this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.panel2.Controls.Add(this.label9);
-			this.panel2.Controls.Add(this.label2);
-			this.panel2.Controls.Add(this.pAuthors);
-			this.panel2.Controls.Add(this.pCategories);
-			this.panel2.Location = new System.Drawing.Point(300, 20);
-			this.panel2.Margin = new System.Windows.Forms.Padding(4);
-			this.panel2.Name = "panel2";
-			this.panel2.Size = new System.Drawing.Size(381, 270);
-			this.panel2.TabIndex = 1;
-			// 
-			// label9
-			// 
-			this.label9.AutoSize = true;
-			this.label9.ForeColor = System.Drawing.SystemColors.Control;
-			this.label9.Location = new System.Drawing.Point(16, 12);
-			this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(55, 16);
-			this.label9.TabIndex = 10;
-			this.label9.Text = "Szerzők";
-			// 
-			// label2
-			// 
-			this.label2.AutoSize = true;
-			this.label2.ForeColor = System.Drawing.SystemColors.Control;
-			this.label2.Location = new System.Drawing.Point(16, 143);
-			this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(72, 16);
-			this.label2.TabIndex = 11;
-			this.label2.Text = "Kategóriák";
-			// 
-			// pAuthors
-			// 
-			this.pAuthors.Location = new System.Drawing.Point(20, 32);
-			this.pAuthors.Margin = new System.Windows.Forms.Padding(4);
-			this.pAuthors.Name = "pAuthors";
-			this.pAuthors.Size = new System.Drawing.Size(324, 94);
-			this.pAuthors.TabIndex = 19;
-			// 
-			// pCategories
-			// 
-			this.pCategories.Location = new System.Drawing.Point(20, 162);
-			this.pCategories.Margin = new System.Windows.Forms.Padding(4);
-			this.pCategories.Name = "pCategories";
-			this.pCategories.Size = new System.Drawing.Size(324, 94);
-			this.pCategories.TabIndex = 20;
-			// 
-			// panel9
-			// 
-			this.panel9.Controls.Add(this.panel4);
-			this.panel9.Controls.Add(this.panel5);
-			this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panel9.Location = new System.Drawing.Point(4, 290);
-			this.panel9.Margin = new System.Windows.Forms.Padding(4);
-			this.panel9.Name = "panel9";
-			this.panel9.Size = new System.Drawing.Size(961, 197);
-			this.panel9.TabIndex = 1;
-			// 
-			// panel4
-			// 
-			this.panel4.Controls.Add(this.label5);
-			this.panel4.Controls.Add(this.lblPublisher);
-			this.panel4.Controls.Add(this.label7);
-			this.panel4.Controls.Add(this.lblLang);
-			this.panel4.Location = new System.Drawing.Point(5, 21);
-			this.panel4.Margin = new System.Windows.Forms.Padding(4);
-			this.panel4.Name = "panel4";
-			this.panel4.Size = new System.Drawing.Size(273, 153);
-			this.panel4.TabIndex = 3;
-			// 
-			// panel5
-			// 
-			this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.panel5.Controls.Add(this.label10);
-			this.panel5.Controls.Add(this.ctbDescription);
-			this.panel5.Location = new System.Drawing.Point(315, 18);
-			this.panel5.Margin = new System.Windows.Forms.Padding(4);
-			this.panel5.Name = "panel5";
-			this.panel5.Size = new System.Drawing.Size(635, 170);
-			this.panel5.TabIndex = 4;
-			// 
-			// label10
-			// 
-			this.label10.AutoSize = true;
-			this.label10.ForeColor = System.Drawing.SystemColors.Control;
-			this.label10.Location = new System.Drawing.Point(4, 22);
-			this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(44, 16);
-			this.label10.TabIndex = 26;
-			this.label10.Text = "Leírás";
-			// 
-			// panel10
-			// 
-			this.panel10.Controls.Add(this.pManage);
-			this.panel10.Controls.Add(this.panel6);
-			this.panel10.Controls.Add(this.panel8);
-			this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panel10.Location = new System.Drawing.Point(4, 495);
-			this.panel10.Margin = new System.Windows.Forms.Padding(4);
-			this.panel10.Name = "panel10";
-			this.panel10.Size = new System.Drawing.Size(961, 142);
-			this.panel10.TabIndex = 2;
-			// 
-			// pManage
-			// 
-			this.pManage.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-			this.pManage.Controls.Add(this.label8);
-			this.pManage.Controls.Add(this.cbtnDeactivate);
-			this.pManage.Controls.Add(this.label6);
-			this.pManage.Controls.Add(this.cbtnAddBook);
-			this.pManage.Location = new System.Drawing.Point(255, 11);
-			this.pManage.Margin = new System.Windows.Forms.Padding(4);
-			this.pManage.Name = "pManage";
-			this.pManage.Size = new System.Drawing.Size(439, 111);
-			this.pManage.TabIndex = 30;
-			// 
-			// label8
-			// 
-			this.label8.AutoSize = true;
-			this.label8.ForeColor = System.Drawing.SystemColors.Control;
-			this.label8.Location = new System.Drawing.Point(231, 17);
-			this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(98, 16);
-			this.label8.TabIndex = 23;
-			this.label8.Text = "Könyv felvétele";
-			// 
-			// label6
-			// 
-			this.label6.AutoSize = true;
-			this.label6.ForeColor = System.Drawing.SystemColors.Control;
-			this.label6.Location = new System.Drawing.Point(16, 17);
-			this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(127, 16);
-			this.label6.TabIndex = 18;
-			this.label6.Text = "Könyv leselejtezése";
-			// 
-			// panel6
-			// 
-			this.panel6.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-			this.panel6.Controls.Add(this.cbtnAddPicture);
-			this.panel6.Location = new System.Drawing.Point(47, 51);
-			this.panel6.Margin = new System.Windows.Forms.Padding(4);
-			this.panel6.Name = "panel6";
-			this.panel6.Size = new System.Drawing.Size(203, 71);
-			this.panel6.TabIndex = 5;
-			// 
-			// panel8
-			// 
-			this.panel8.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-			this.panel8.Controls.Add(this.cbtnBack);
-			this.panel8.Location = new System.Drawing.Point(701, 51);
-			this.panel8.Margin = new System.Windows.Forms.Padding(4);
-			this.panel8.Name = "panel8";
-			this.panel8.Size = new System.Drawing.Size(212, 71);
-			this.panel8.TabIndex = 7;
-			// 
 			// button_CloseForm
 			// 
 			this.button_CloseForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
@@ -429,6 +238,20 @@
 			this.button_CloseForm.TabIndex = 19;
 			this.button_CloseForm.UseVisualStyleBackColor = false;
 			this.button_CloseForm.Click += new System.EventHandler(this.button_CloseForm_Click);
+			// 
+			// panel1
+			// 
+			this.panel1.Controls.Add(this.label1);
+			this.panel1.Controls.Add(this.label3);
+			this.panel1.Controls.Add(this.ctbISBN);
+			this.panel1.Controls.Add(this.ctbTitle);
+			this.panel1.Controls.Add(this.label4);
+			this.panel1.Controls.Add(this.cdtpReleaseDate);
+			this.panel1.Location = new System.Drawing.Point(12, 20);
+			this.panel1.Margin = new System.Windows.Forms.Padding(4);
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(273, 256);
+			this.panel1.TabIndex = 0;
 			// 
 			// ctbISBN
 			// 
@@ -497,6 +320,17 @@
 			this.cdtpReleaseDate.TabIndex = 24;
 			this.cdtpReleaseDate.TextColor = System.Drawing.Color.White;
 			// 
+			// panel3
+			// 
+			this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.panel3.Controls.Add(this.cbtnAddAuthor);
+			this.panel3.Controls.Add(this.cbtnAddCategory);
+			this.panel3.Location = new System.Drawing.Point(703, 90);
+			this.panel3.Margin = new System.Windows.Forms.Padding(4);
+			this.panel3.Name = "panel3";
+			this.panel3.Size = new System.Drawing.Size(219, 171);
+			this.panel3.TabIndex = 2;
+			// 
 			// cbtnAddAuthor
 			// 
 			this.cbtnAddAuthor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -537,6 +371,105 @@
 			this.cbtnAddCategory.UseVisualStyleBackColor = false;
 			this.cbtnAddCategory.Click += new System.EventHandler(this.cbtnAddCategory_Click);
 			// 
+			// panel2
+			// 
+			this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.panel2.Controls.Add(this.label9);
+			this.panel2.Controls.Add(this.label2);
+			this.panel2.Controls.Add(this.pAuthors);
+			this.panel2.Controls.Add(this.pCategories);
+			this.panel2.Location = new System.Drawing.Point(300, 20);
+			this.panel2.Margin = new System.Windows.Forms.Padding(4);
+			this.panel2.Name = "panel2";
+			this.panel2.Size = new System.Drawing.Size(381, 270);
+			this.panel2.TabIndex = 1;
+			// 
+			// label9
+			// 
+			this.label9.AutoSize = true;
+			this.label9.ForeColor = System.Drawing.SystemColors.Control;
+			this.label9.Location = new System.Drawing.Point(16, 12);
+			this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.label9.Name = "label9";
+			this.label9.Size = new System.Drawing.Size(58, 16);
+			this.label9.TabIndex = 10;
+			this.label9.Text = "Szerzők:";
+			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.ForeColor = System.Drawing.SystemColors.Control;
+			this.label2.Location = new System.Drawing.Point(16, 143);
+			this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(75, 16);
+			this.label2.TabIndex = 11;
+			this.label2.Text = "Kategóriák:";
+			// 
+			// pAuthors
+			// 
+			this.pAuthors.Location = new System.Drawing.Point(20, 32);
+			this.pAuthors.Margin = new System.Windows.Forms.Padding(4);
+			this.pAuthors.Name = "pAuthors";
+			this.pAuthors.Size = new System.Drawing.Size(324, 94);
+			this.pAuthors.TabIndex = 19;
+			// 
+			// pCategories
+			// 
+			this.pCategories.Location = new System.Drawing.Point(20, 162);
+			this.pCategories.Margin = new System.Windows.Forms.Padding(4);
+			this.pCategories.Name = "pCategories";
+			this.pCategories.Size = new System.Drawing.Size(324, 94);
+			this.pCategories.TabIndex = 20;
+			// 
+			// panel9
+			// 
+			this.panel9.Controls.Add(this.panel4);
+			this.panel9.Controls.Add(this.panel5);
+			this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.panel9.Location = new System.Drawing.Point(4, 290);
+			this.panel9.Margin = new System.Windows.Forms.Padding(4);
+			this.panel9.Name = "panel9";
+			this.panel9.Size = new System.Drawing.Size(961, 197);
+			this.panel9.TabIndex = 1;
+			// 
+			// panel4
+			// 
+			this.panel4.Controls.Add(this.label5);
+			this.panel4.Controls.Add(this.lblPublisher);
+			this.panel4.Controls.Add(this.label7);
+			this.panel4.Controls.Add(this.lblLang);
+			this.panel4.Location = new System.Drawing.Point(5, 21);
+			this.panel4.Margin = new System.Windows.Forms.Padding(4);
+			this.panel4.Name = "panel4";
+			this.panel4.Size = new System.Drawing.Size(273, 153);
+			this.panel4.TabIndex = 3;
+			// 
+			// panel5
+			// 
+			this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.panel5.Controls.Add(this.label10);
+			this.panel5.Controls.Add(this.ctbDescription);
+			this.panel5.Location = new System.Drawing.Point(315, 18);
+			this.panel5.Margin = new System.Windows.Forms.Padding(4);
+			this.panel5.Name = "panel5";
+			this.panel5.Size = new System.Drawing.Size(635, 170);
+			this.panel5.TabIndex = 4;
+			// 
+			// label10
+			// 
+			this.label10.AutoSize = true;
+			this.label10.ForeColor = System.Drawing.SystemColors.Control;
+			this.label10.Location = new System.Drawing.Point(4, 22);
+			this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.label10.Name = "label10";
+			this.label10.Size = new System.Drawing.Size(44, 16);
+			this.label10.TabIndex = 26;
+			this.label10.Text = "Leírás";
+			// 
 			// ctbDescription
 			// 
 			this.ctbDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -565,6 +498,42 @@
 			this.ctbDescription.Texts = "";
 			this.ctbDescription.UnderlinedStyle = false;
 			// 
+			// panel10
+			// 
+			this.panel10.Controls.Add(this.pManage);
+			this.panel10.Controls.Add(this.panel6);
+			this.panel10.Controls.Add(this.panel8);
+			this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.panel10.Location = new System.Drawing.Point(4, 495);
+			this.panel10.Margin = new System.Windows.Forms.Padding(4);
+			this.panel10.Name = "panel10";
+			this.panel10.Size = new System.Drawing.Size(961, 142);
+			this.panel10.TabIndex = 2;
+			// 
+			// pManage
+			// 
+			this.pManage.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+			this.pManage.Controls.Add(this.label8);
+			this.pManage.Controls.Add(this.cbtnDeactivate);
+			this.pManage.Controls.Add(this.label6);
+			this.pManage.Controls.Add(this.cbtnAddBook);
+			this.pManage.Location = new System.Drawing.Point(255, 11);
+			this.pManage.Margin = new System.Windows.Forms.Padding(4);
+			this.pManage.Name = "pManage";
+			this.pManage.Size = new System.Drawing.Size(439, 111);
+			this.pManage.TabIndex = 30;
+			// 
+			// label8
+			// 
+			this.label8.AutoSize = true;
+			this.label8.ForeColor = System.Drawing.SystemColors.Control;
+			this.label8.Location = new System.Drawing.Point(231, 17);
+			this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(98, 16);
+			this.label8.TabIndex = 23;
+			this.label8.Text = "Könyv felvétele";
+			// 
 			// cbtnDeactivate
 			// 
 			this.cbtnDeactivate.BackColor = System.Drawing.Color.Black;
@@ -583,6 +552,17 @@
 			this.cbtnDeactivate.Text = "Leselejtez";
 			this.cbtnDeactivate.UseVisualStyleBackColor = false;
 			this.cbtnDeactivate.Click += new System.EventHandler(this.cbtnDeactivate_Click);
+			// 
+			// label6
+			// 
+			this.label6.AutoSize = true;
+			this.label6.ForeColor = System.Drawing.SystemColors.Control;
+			this.label6.Location = new System.Drawing.Point(16, 17);
+			this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(127, 16);
+			this.label6.TabIndex = 18;
+			this.label6.Text = "Könyv leselejtezése";
 			// 
 			// cbtnAddBook
 			// 
@@ -603,6 +583,16 @@
 			this.cbtnAddBook.UseVisualStyleBackColor = false;
 			this.cbtnAddBook.Click += new System.EventHandler(this.cbtnAddBook_Click);
 			// 
+			// panel6
+			// 
+			this.panel6.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+			this.panel6.Controls.Add(this.cbtnAddPicture);
+			this.panel6.Location = new System.Drawing.Point(47, 51);
+			this.panel6.Margin = new System.Windows.Forms.Padding(4);
+			this.panel6.Name = "panel6";
+			this.panel6.Size = new System.Drawing.Size(203, 71);
+			this.panel6.TabIndex = 5;
+			// 
 			// cbtnAddPicture
 			// 
 			this.cbtnAddPicture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -622,6 +612,16 @@
 			this.cbtnAddPicture.Text = "Kép cseréje";
 			this.cbtnAddPicture.UseVisualStyleBackColor = false;
 			this.cbtnAddPicture.Click += new System.EventHandler(this.cbtnAddPicture_Click);
+			// 
+			// panel8
+			// 
+			this.panel8.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+			this.panel8.Controls.Add(this.cbtnBack);
+			this.panel8.Location = new System.Drawing.Point(701, 51);
+			this.panel8.Margin = new System.Windows.Forms.Padding(4);
+			this.panel8.Name = "panel8";
+			this.panel8.Size = new System.Drawing.Size(212, 71);
+			this.panel8.TabIndex = 7;
 			// 
 			// cbtnBack
 			// 
