@@ -100,7 +100,7 @@
             <div class="team-service">
                 <div class="service-container">
                     <img src="/web/imgs/team-icon.png" class="services-img">
-                    <h2>Kukkantson be a színfalak mögé és ismerje meg csapatunkat</h2>
+                    <h2>Kukkantson be a színfalak mögé és ismerje meg csapatunkat!</h2>
                     <a href="/web/rolunk">
                     <button class="button">
                     <span class="button__icon-wrapper">
@@ -138,7 +138,7 @@
             <div class="login-service">
                 <div class="service-container">
                     <img src="/web/imgs/login-icon.png" class="services-img">
-                    <h2>Jelentkezzen be, hogy hozzáférjen az összes funkcióhoz (könyv elmentése, könyv előjegyzése)</h2>
+                    <h2>Jelentkezzen be, hogy hozzáférjen az összes funkcióhoz!</h2>
                     <button href="#" class="button" onclick="ShowLoginOrOpenUserDetailed();">
                     <span class="button__icon-wrapper">
                         <svg

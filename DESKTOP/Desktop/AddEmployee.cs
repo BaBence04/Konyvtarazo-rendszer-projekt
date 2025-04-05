@@ -17,6 +17,7 @@ namespace Desktop
         {
             InitializeComponent();
             FormDragger.MakeDraggable(this);
+            ThemeManager.ApplyTheme(this);
             this.BorderColor = Color.FromArgb(10, 123, 106);
 			this.BorderWidth = 2;
 		}

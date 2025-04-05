@@ -645,7 +645,7 @@ CREATE PROCEDURE IF NOT EXISTS loginEmployee(
   IN username VARCHAR(255), 
   IN pw VARCHAR(255)
 ) BEGIN
-SELECT CASE WHEN employees.password = PASSWORD(pw) AND employees.active THEN employees.empl_id ELSE 'false' END AS 'info' FROM employees WHERE employees.empl_uname = username;
+SELECT CASE WHEN (SELECT (employees.password = PASSWORD(pw) AND employees.active) WHERE employees.empl_uname = username) THEN employees.empl_id ELSE 'false' END AS 'info' FROM employees;
 END;//
 DELIMITER ;
 

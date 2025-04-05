@@ -19,6 +19,7 @@ namespace Desktop
         public LoginForm()
         {
             InitializeComponent();
+            ThemeManager.Initialize();
             ThemeManager.ApplyTheme(this);
 			FormDragger.MakeDraggable(this);
 
@@ -27,7 +28,7 @@ namespace Desktop
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            ThemeManager.ApplyTheme(this);
+            //ThemeManager.ApplyTheme(this);
         }
 
         private void button_CloseLoginForm_Click(object sender, EventArgs e)
