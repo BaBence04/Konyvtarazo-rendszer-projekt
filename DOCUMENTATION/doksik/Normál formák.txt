@@ -1,0 +1,275 @@
+0.NF{
+    tábla:
+ISBN_id : Primary key: int
+book_id :Primary key: int
+available: bool
+publisher_id
+name :varchar
+phone :varchar
+email :varchar
+webpage: varchar
+genre_name :varchar
+genre_id :Primarykey : int
+user_id :Primarykey : int
+surname :varchar
+firstname :varchar
+birth_date :date
+birth_place: varchar
+address: varchar
+mother_maiden_name: varchar
+membership_end_date :date
+email :varchar
+phone_number : int
+password – in hash	
+active: bool
+start_date :date
+end_date :date
+borrowing_id :Primarykey : int
+empl_e: int
+reservation_id:Primarykey : int
+booking_id :Primarykey : int
+end_date: date
+book_title :varchar
+author :varchar
+vote_id :Primarykey : int
+author_id:Primarykey: int
+author_name: varchar
+ISBN: varchar(10/13) depending on release_date. Before 2007.01.01 only 10 digit
+title :varchar
+release_date :date
+lang_id : int
+description: text
+picture_base64: text
+lang_id: : int
+lang: varchar
+empl_id: Primary key: int
+empl_name: varchar
+password: varchar
+    system settings tábla:
+membership_fee: int
+borrowing_time: int
+lengthening_time: int
+reservation_time: int
+max_reservations: int
+latency_fee: int
+max_lengthenings: int
+}
+1.NF{
+    tábla:
+ISBN_id : Primary key: int 
+publisher_id 
+name :varchar 
+phone :varchar 
+email :varchar 
+webpage: varchar  
+ISBN: varchar(10/13) depending on release_date. Before 2007.01.01 only 10 digit 
+title :varchar 
+release_date :date 
+lang_id : int 
+description: text 
+picture_base64: text 
+lang_id: : int 
+lang: varchar 
+    system settings tábla:
+membership_fee: int 
+borrowing_time: int 
+lengthening_time: int 
+reservation_time: int 
+max_reservations: int 
+latency_fee: int 
+max_lengthenings: int 
+author_id: int 
+author_name: varchar 
+    tobbi:
+ISBN_id : Primary key: int 
+book_id :Primary key: int 
+available: bool 
+genre_name :varchar 
+genre_id :: int 
+user_id :Primarykey : int 
+surname :varchar 
+firstname :varchar 
+birth_date :date 
+birth_place: varchar 
+address: varchar 
+mother_maiden_name: varchar 
+membership_end_date :date 
+email :varchar 
+phone_number : int 
+password – in hash	
+active: bool 
+start_date :date 
+end_date :date 
+borrowing_id :Primarykey : int
+emlp_e: int 
+reservation_id:Primarykey : int 
+booking_id :Primarykey : int 
+end_date: date 
+book_title :varchar 
+author :varchar 
+vote_id :Primarykey : int 
+empl_id: Primary key: int 
+empl_name: varchar 
+password: varchar 
+}
+2.NF{
+    tábla:
+ISBN_id : Primary key: int 
+publisher_id 
+name :varchar 
+phone :varchar 
+email :varchar 
+webpage: varchar  
+ISBN: varchar(10/13) depending on release_date. Before 2007.01.01 only 10 digit 
+title :varchar 
+release_date :date 
+lang_id : int 
+description: text 
+picture_base64: text 
+lang_id: : int 
+lang: varchar 
+    employees tábla:
+empl_id: Primary key: int 
+empl_name: varchar 
+password: varchar 
+    system_settings tábla
+membership_fee: int 
+borrowing_time: int 
+lengthening_time: int 
+reservation_time: int 
+max_reservations: int 
+latency_fee: int 
+max_lengthenings: int 
+author_id: int 
+author_name: varchar 
+    adott könyvtár könyvei tábla:
+ISBN_id : foreign key: int
+book_id :foreign key: int
+available: bool
+    kategóriák tábla:
+genre_name :varchar
+genre_id :Primarykey : int
+    könyv - kategóriák kapcsolótábla:
+ISBN_id: Foreignkey: int
+genre_id: Foreignkey: int
+    adott könyvtár felhasználói tábla:
+user_id :Primarykey : int
+surname :varchar
+firstname :varchar
+birth_date :date
+birth_place: varchar
+address: varchar
+mother_maiden_name: varchar
+membership_end_date :date
+email :varchar
+phone_number : int
+password – in hash	
+active: bool
+    kölcsönzések– tárolja a könyv kivételeket (borrowing):
+start_date :date
+end_date :date
+borrowing_id :Primarykey : int
+user_id :Foreignkey : int
+book_id :Foreignkey : int
+empl_e: int
+    előjegyzés – tárolja az előjegyzéseket(reservation):
+reservation_id:Primarykey : int
+user_id :Foreignkey : int
+ISBN_id :Foreignkey : int
+    foglalás – tárolja a lefoglalásokat (booking):
+booking_id :Primarykey : int
+user_id :Foreignkey : int
+book_id :Foreignkey : int
+end_date: date
+    adott könyvtár könyv beszerzésre való szavazás tábla:
+book_title :varchar
+author :varchar
+vote_id :Primarykey : int
+    szavazás – felhasználó kapcsolótábla:
+user_id :Foreignkey: int
+vote_id :Foreignkey: int
+}
+3.NF{
+    adott könyvtár könyvei tábla:
+ISBN_id : foreign key: int
+book_id :foreign key: int
+available: bool
+    kiadók tábla:
+publisher_id
+name :varchar
+phone :varchar
+email :varchar
+webpage: varchar
+    kategóriák tábla:
+genre_name :varchar
+genre_id :Primarykey : int
+    könyv - kategóriák kapcsolótábla:
+ISBN_id: Foreignkey: int
+genre_id: Foreignkey: int
+    adott könyvtár felhasználói tábla:
+user_id :Primarykey : int
+surname :varchar
+firstname :varchar
+birth_date :date
+birth_place: varchar
+address: varchar
+mother_maiden_name: varchar
+membership_end_date :date
+email :varchar
+phone_number : int
+password – in hash	
+active: bool
+    kölcsönzések– tárolja a könyv kivételeket (borrowing):
+start_date :date
+end_date :date
+borrowing_id :Primarykey : int
+user_id :Foreignkey : int
+book_id :Foreignkey : int
+empl_e: Foreignkey: int
+    előjegyzés – tárolja az előjegyzéseket(reservation):
+reservation_id:Primarykey : int
+user_id :Foreignkey : int
+ISBN_id :Foreignkey : int
+    foglalás – tárolja a lefoglalásokat (booking):
+booking_id :Primarykey : int
+user_id :Foreignkey : int
+book_id :Foreignkey : int
+end_date: date
+    adott könyvtár könyv beszerzésre való szavazás tábla:
+book_title :varchar
+author :varchar
+vote_id :Primarykey : int
+    szavazás – felhasználó kapcsolótábla:
+user_id :Foreignkey: int
+vote_id :Foreignkey: int
+    szerző – köny kapcsolótábla:
+ISBN_id :Foreignkey: int
+author_id:Foreignkey: int
+    szerzők tábla: 
+author_id:Primarykey: int
+author_name: varchar
+    könyv tipus tábla 
+ISBN_id: Primary key: int
+ISBN: varchar(10/13) depending on release_date. Before 2007.01.01 only 10 digit
+title :varchar
+publisher_id :int
+release_date :date
+lang_id : int
+description: text
+picture_base64: text
+    nyelvek tábla:
+lang_id: Primary key: int
+lang: varchar
+    alkalmazottak tábla: 
+empl_id: Primary key: int
+empl_name: varchar
+password: varchar
+rendszer beállítások tábla: 
+membership_fee: int
+borrowing_time: int
+lengthening_time: int
+reservation_time: int
+max_reservations: int
+latency_fee: int
+max_lengthenings: int
+}
