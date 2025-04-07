@@ -198,10 +198,6 @@ namespace Desktop
                     col.ColumnName = "fizetendo";
                     col.Caption = "fizetendo";
                     dt.Columns.Add(col);
-                    //add checkbox
-                    DataGridViewCheckBoxColumn checkRow = new DataGridViewCheckBoxColumn();
-                    checkRow.Name = "Választás";
-                    cdgwSelect.Columns.Add(checkRow);
                 }
                 
                 
