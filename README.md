@@ -32,8 +32,8 @@ SQL:
 
 
 ADDITIONAL STUFF TO DO:
--api endpoint dokkumentáció, mert kezd nehéz lenni követni hogy mi történik
--TESZTELÉSI DOKUMENTÁCIÓHOZ NEM TUDOM KELL-E KÉP HA NEM ELÉG HOSSZÚ RAKUNK KÉPEKET
+-Fejlesztési irány az még lehet nem ártana
+-Forrás megjelölés
 
 KÉRDÉSEK A KÖNYVTÁROSOKHOZ:
 -ha valaki lefoglal egy könyvet, de valaki nézegeti azt a könyvet a könyvtárban, akkor olyankor mivan(feltételezzük, hogy nincs több az adott könyből a könyvtárban)?
@@ -42,6 +42,12 @@ KÉRDÉSEK A KÖNYVTÁROSOKHOZ:
 -ha lejár a taggság, akkor az előjegyzései is törlődnek?
 -hogy működik egy könyv leselejtezése? (mi van ha éppen valaki lefoglalta, előjegyezte... akkor törlődik vagy megvárják, míg nem lesz)
 
+PPT-BE BERAKNI
+-rövid bemutatkozás, projekt bemutatás, és a stack ismertetés, munkafelosztás, ütemezés?
+-adatbázis mainly az eljárások és talán tesztadatok
+-weboldal rövid bemutatása néhány technikailag érdekes funkció bemutatása, design  
+-asztali rövid bemutatása néhány technikailag érdekes funkció bemutatása (kommunikáció apival, popup select), design
+-fejlesztési irányok?, nehézségek, tanulságok 
 
 DONE THIS WEEK:
 -kész a custom datetimepicker
