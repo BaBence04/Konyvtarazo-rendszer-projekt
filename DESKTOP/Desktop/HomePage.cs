@@ -20,7 +20,7 @@ namespace Desktop
 
 		private void customButton4_Click(object sender, EventArgs e)
 		{
-			this.Close();
+			Application.Exit();
 		}
 
 		private void quickAddUser_Click(object sender, EventArgs e)
