@@ -34,6 +34,8 @@ SQL:
 ADDITIONAL STUFF TO DO:
 -Fejlesztési irány az még lehet nem ártana
 -Forrás megjelölés
+-Indítási útmutató
+-Tartalomjegyzégben tesztelés kövi oldalon
 
 KÉRDÉSEK A KÖNYVTÁROSOKHOZ:
 -ha valaki lefoglal egy könyvet, de valaki nézegeti azt a könyvet a könyvtárban, akkor olyankor mivan(feltételezzük, hogy nincs több az adott könyből a könyvtárban)?
