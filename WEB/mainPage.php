@@ -51,8 +51,8 @@
             <div class="divider"></div>
             <div class="intro-header">
                 <!-- <img src="/web/imgs/books_line.png" alt=""> -->
-                <h1>Könyvfoglalás</h1>
-                <h1>egy kattingtással</h1>
+                <h1>Az Ön online</h1>
+                <h1>könyvtára</h1>
             </div>
         </section>
         <section class="ws section" id="ws_section"></section>
