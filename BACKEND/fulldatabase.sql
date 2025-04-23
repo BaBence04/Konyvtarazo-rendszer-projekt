@@ -572,7 +572,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `surname`, `first_name`, `username`, `birth_date`, `membership_end_date`, `email`, `phone_number`, `password`, `birth_place`, `address`, `mother_maiden_name`, `active`) VALUES
-(1, 'Horti-Nagy', 'Bálint', 'hoba123', '1985-03-15', '2025-03-15', 'hortibalint@gmail.com', '06123456789', '*477F8AF5BB7731B7567AFDB68676D8F9B3B8EE85', 'Budapest', '123 Main St', 'Nagy Erzsebet', 1);
+(1, 'Horti-Nagy', 'Bálint', 'hoba123', '1985-03-15', '2025-12-15', 'hortibalint@gmail.com', '06123456789', '*477F8AF5BB7731B7567AFDB68676D8F9B3B8EE85', 'Budapest', '123 Main St', 'Nagy Erzsebet', 1);
 
 -- --------------------------------------------------------
 
