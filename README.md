@@ -58,21 +58,21 @@ DONE THIS WEEK:
 
 Ofő megjegyzései a doksihoz:
 Dokumentációról:
-- 2.o. hiányzik a konzulens. Kérem a megkapott konzultációs lapot, illetve annak tartalmát használják, ahogy a hallgatói nyilatkozat esetében is!
+- 2.o. hiányzik a konzulens. Kérem a megkapott konzultációs lapot, illetve annak tartalmát használják, ahogy a hallgatói nyilatkozat esetében is! (PARTIALLY DONE - Bence még nincs kitöltve teljesen)
 - Fejlesztői dokumentációból hiányzik a cél és feladatmegosztás.
-- Címszinteken a karakterméretek legyen eltérőek, ahogy megyünk lefelé a szinteken, úgy csökkenjen a karakterméret is. Szerintem a 18-as és 12-es méreten kívül mást is ismernek! :)
-- 11.oldal alján szöveg nélküli cím! Helyesírást nézzék át, többször a Word is jóra javítana! Vessző hiány, szóköztöbblet több helyen is van.
-- 16.o. Felhasználó pont is kerüljön a következő oldalra!
-- 20. o. "további 48 endpointot" helyett endpoint-ot kell használni, előtte a többeszszám angolul volt endpoints. Nézzék át ezeket is!
-- 22.o.. Kapcsolatok helyett Adatbázis leírás jobb lenne!
+- Címszinteken a karakterméretek legyen eltérőek, ahogy megyünk lefelé a szinteken, úgy csökkenjen a karakterméret is. Szerintem a 18-as és 12-es méreten kívül mást is ismernek! :) (DONE - Bence)
+- 11.oldal alján szöveg nélküli cím! Helyesírást nézzék át, többször a Word is jóra javítana! Vessző hiány, szóköztöbblet több helyen is van. (DONE - Bence)
+- 16.o. Felhasználó pont is kerüljön a következő oldalra! (DONE - Bence)  
+- 20. o. "további 48 endpointot" helyett endpoint-ot kell használni, előtte a többeszszám angolul volt endpoints. Nézzék át ezeket is!(DONE - Bence)
+- 22.o.. Kapcsolatok helyett Adatbázis leírás jobb lenne! (DONE - Bence) 
  
-- 23. o. Táblák helyett Táblák leírása cím lenne praktikus!
-- 36. oldalon kezdődő táblázat a következő oldalakon elveszíti a fejlécét. Több oldalas táblázatnál az oldal tetejént ismételjék a fejlécet!
-- A szövegben több helyen szenvedő szerkezet található, ami helytelen pl. "a legelső LLM által volt generálva, s a legtöbb ideig ezek az adatok voltak használva" --> az első adatokat LLM segítségével generáltuk
+- 23. o. Táblák helyett Táblák leírása cím lenne praktikus! (DONE - Bence) 
+- 36. oldalon kezdődő táblázat a következő oldalakon elveszíti a fejlécét. Több oldalas táblázatnál az oldal tetejént ismételjék a fejlécet! (DONE - Bence) 
+- A szövegben több helyen szenvedő szerkezet található, ami helytelen pl. "a legelső LLM által volt generálva, s a legtöbb ideig ezek az adatok voltak használva" --> az első adatokat LLM segítségével generáltuk (PARTIALLY DONE - Bence)
 - 48 oldaltól a felhasználói dokumentációban "keresd meg ... nyisd meg ... kattints rá ... látogasd meg..." tegező módot cseréljék le, vagy amennyiben máshonnét vették, akkor az idézetet tegyék idézőjelek közé, s adjék meg a forrását!
 - 50. o. Asztali alkalmazás felhasználói dokumentációba, hogyan használhatjuk a weboldal funkcióit? Biztos ezt akarták írni?
-- 50. o. kép felett: "bal felső sarokban lévő x", a képen jobb oldalon van!
-- 51. oldal betűméret miért változott 11-esre? Utána javul a helyzet, majd a 61. oldalon újra. Nézzék át!
+- 50. o. kép felett: "bal felső sarokban lévő x", a képen jobb oldalon van! (DONE - Bence) 
+- 51. oldal betűméret miért változott 11-esre? Utána javul a helyzet, majd a 61. oldalon újra. Nézzék át! (DONE - Bence) 
 - Emlékezzenek rá, hogy van sorkizárt igazítás a Word-ben, s ha lehet használják is! Képek több helyen túllógnak a margón! Fejlécet és a tartalmat válasszák el egy vonallal, több helyen összeolvad az oldal tartalmával, s zavaró így zavaró az olvasásnál!
 
 Javításokat május 1. éjfélig kérjük legkésőbb! Jelezzék, ha feltöltötték a GIT-re!
