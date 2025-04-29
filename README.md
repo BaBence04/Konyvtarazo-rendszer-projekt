@@ -18,7 +18,8 @@ Mesterremek projekt, könyvtárazó rendszer
         
 
     PHP/JS:
-        -AKADÁLYOZZA MEG HOGY LEHESSEN HTML-T BEÍRNI AZ ADATBÁZISBA (futtasson le az adaton, egy html_encode()-ot)
+        -AKADÁLYOZZA MEG HOGY LEHESSEN HTML-T BEÍRNI AZ ADATBÁZISBA (futtasson le az adaton, egy html_encode()-ot) - lehet nincs is sehol ahol tud felvinni a jelszón kívűl
+            
         -ha bence írtál új procedure-t arra, hogy megkapjuk a kedvencek között levő könyveket, akkor már kettő van, mert volt már korábban is egy ami a userDetailed-en van használva
         -lehet hogy kéne küldeni emailt amikor megváltozik a jelszó, hogy tudja ha esetleg valaki megváltoztatta
         -advanced search
