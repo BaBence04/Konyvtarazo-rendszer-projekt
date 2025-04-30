@@ -62,8 +62,6 @@ Dokumentációról:
  
 - A szövegben több helyen szenvedő szerkezet található, ami helytelen pl. "a legelső LLM által volt generálva, s a legtöbb ideig ezek az adatok voltak használva" --> az első adatokat LLM segítségével generáltuk (PARTIALLY DONE - Bence)
 
-- 48 oldaltól a felhasználói dokumentációban "keresd meg ... nyisd meg ... kattints rá ... látogasd meg..." tegező módot cseréljék le, vagy amennyiben máshonnét vették, akkor az idézetet tegyék idézőjelek közé, s adjék meg a forrását! - Bálint megcsinálja
-
 Javításokat május 1. éjfélig kérjük legkésőbb! Jelezzék, ha feltöltötték a GIT-re!
 
 Ez csak én:
