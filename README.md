@@ -11,8 +11,6 @@ Mesterremek projekt, könyvtárazó rendszer
         -Kiírni hogy adott típusú könyvből hány darab van (not necessary)
         -nem biztos hogy működik a popupform üres author/genre/publisher-nél így
 
-        -!!Ide írom hogy lássátok: Ha az asztaliban már bármi furán néz ki, nem vált témát, nem reszponzív, akkor írjátok nekem todo-nak.
-
 #WEB:
     KINÉZET:
         
@@ -60,14 +58,11 @@ DONE THIS WEEK:
 Ofő megjegyzései a doksihoz:
 Dokumentációról:
 - 2.o. hiányzik a konzulens. Kérem a megkapott konzultációs lapot, illetve annak tartalmát használják, ahogy a hallgatói nyilatkozat esetében is! (PARTIALLY DONE - Bence még nincs kitöltve teljesen)
-- Fejlesztői dokumentációból hiányzik a cél és feladatmegosztás.
+
  
 - A szövegben több helyen szenvedő szerkezet található, ami helytelen pl. "a legelső LLM által volt generálva, s a legtöbb ideig ezek az adatok voltak használva" --> az első adatokat LLM segítségével generáltuk (PARTIALLY DONE - Bence)
 
 - 48 oldaltól a felhasználói dokumentációban "keresd meg ... nyisd meg ... kattints rá ... látogasd meg..." tegező módot cseréljék le, vagy amennyiben máshonnét vették, akkor az idézetet tegyék idézőjelek közé, s adjék meg a forrását! - Bálint megcsinálja
-- 50. o. Asztali alkalmazás felhasználói dokumentációba, hogyan használhatjuk a weboldal funkcióit? Biztos ezt akarták írni?
-
-- Emlékezzenek rá, hogy van sorkizárt igazítás a Word-ben, s ha lehet használják is! Képek több helyen túllógnak a margón! Fejlécet és a tartalmat válasszák el egy vonallal, több helyen összeolvad az oldal tartalmával, s zavaró így zavaró az olvasásnál!
 
 Javításokat május 1. éjfélig kérjük legkésőbb! Jelezzék, ha feltöltötték a GIT-re!
 
