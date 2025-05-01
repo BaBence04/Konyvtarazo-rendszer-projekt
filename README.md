@@ -47,8 +47,6 @@ DONE THIS WEEK:
 
 
 Ofő megjegyzései a doksihoz:
-Dokumentációról:
  
-- A szövegben több helyen szenvedő szerkezet található, ami helytelen pl. "a legelső LLM által volt generálva, s a legtöbb ideig ezek az adatok voltak használva" --> az első adatokat LLM segítségével generáltuk (PARTIALLY DONE - Bence)
-
-Javításokat május 1. éjfélig kérjük legkésőbb! Jelezzék, ha feltöltötték a GIT-re!
+- Az ábrán a kódon formázzák meg, mert ez nem felel meg a tiszta kód elveinek! 
+ 
