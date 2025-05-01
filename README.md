@@ -58,12 +58,7 @@ DONE THIS WEEK:
 
 Ofő megjegyzései a doksihoz:
 Dokumentációról:
-- 2.o. hiányzik a konzulens. Kérem a megkapott konzultációs lapot, illetve annak tartalmát használják, ahogy a hallgatói nyilatkozat esetében is! (PARTIALLY DONE - Bence még nincs kitöltve teljesen)
-
  
 - A szövegben több helyen szenvedő szerkezet található, ami helytelen pl. "a legelső LLM által volt generálva, s a legtöbb ideig ezek az adatok voltak használva" --> az első adatokat LLM segítségével generáltuk (PARTIALLY DONE - Bence)
 
 Javításokat május 1. éjfélig kérjük legkésőbb! Jelezzék, ha feltöltötték a GIT-re!
-
-Ez csak én:
-- dokumentációban és preziben kicserélni a lejárt tagsággal csinált screenshotokat
