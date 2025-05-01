@@ -35,6 +35,7 @@ ADDITIONAL STUFF TO DO:
 -Forrás megjelölés
 -Indítási útmutató - Bálint átírja
 -Tartalomjegyzégben tesztelés kövi oldalon
+-Konzultációs lapon a szolgáltatások még nincs kitöltve
 
 KÉRDÉSEK A KÖNYVTÁROSOKHOZ:
 -ha valaki lefoglal egy könyvet, de valaki nézegeti azt a könyvet a könyvtárban, akkor olyankor mivan(feltételezzük, hogy nincs több az adott könyből a könyvtárban)?
